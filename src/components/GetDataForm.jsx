@@ -5,6 +5,8 @@ import DatePickerComp from "./DatePicker";
 import SelectField from "./SelectField";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
+import { Stack } from "@mui/material";
+import Button from "@mui/material/Button";
 
 const users = [
   " ",
@@ -28,7 +30,7 @@ const userType = ["Particular", "Publicista"];
 
 const GetDataForm = () => {
   return (
-    <Box sx={{ flexGrow: 1, width: 600 }}>
+    <Box sx={{ flexGrow: 1, minWidth: 160, width: 600 }}>
       <Grid container spacing={2}>
         <Grid sm={12} md={12} xs={8}>
           <Text item label={"Nombre"} />
@@ -60,13 +62,24 @@ const GetDataForm = () => {
           <DatePickerComp label={"Fecha y hora Entrega"} />
         </Grid>
 
-        <Grid xs={2} md={2}>
+        <Grid item xs={4} md={2}>
           <SelectField
-            item
             options={userType}
             text={"Tipo de cliente"}
             label={"Tipo de cliente"}
           />
+        </Grid>
+        <Grid xs={5} md={4}>
+          <Stack width={500} item spacing={1} direction="row">
+            <Button size="medium" variant="outlined">
+              Producto
+            </Button>
+            <Button width="100px" variant="outlined">
+              Entrada Manual
+            </Button>
+            <Button variant="outlined">Entrada Automática</Button>
+            <Button variant="outlined">Corte en Vinilo</Button>
+          </Stack>
         </Grid>
       </Grid>
     </Box>
