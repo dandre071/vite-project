@@ -62,21 +62,25 @@ const GetDataForm = () => {
           <DatePickerComp label={"Fecha y hora Entrega"} />
         </Grid>
 
-        <Grid item xs={4} md={2}>
+        <Grid xs={3} md={2}>
           <SelectField
+            item
             options={userType}
             text={"Tipo de cliente"}
             label={"Tipo de cliente"}
           />
         </Grid>
-        <Grid xs={5} md={4}>
-          <Stack width={500} item spacing={1} direction="row">
-            <Button size="medium" variant="outlined">
+        <Grid lg={9} xs={9} md={9}>
+          <Stack
+            sx={{ height: 55, marginLeft: 1, marginRight: 0 }}
+            item
+            spacing={1}
+            direction="row"
+          >
+            <Button sx={{ wordWrap: false }} variant="outlined">
               Producto
             </Button>
-            <Button width="100px" variant="outlined">
-              Entrada Manual
-            </Button>
+            <Button variant="string">Entrada Manual</Button>
             <Button variant="outlined">Entrada Automática</Button>
             <Button variant="outlined">Corte en Vinilo</Button>
           </Stack>
