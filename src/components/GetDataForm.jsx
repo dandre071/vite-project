@@ -5,8 +5,9 @@ import DatePickerComp from "./DatePicker";
 import SelectField from "./SelectField";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import { Stack } from "@mui/material";
-import Button from "@mui/material/Button";
+import { Button } from "@mui/material";
+import ButtonG from "./Button";
+import { WrapText } from "@mui/icons-material";
 
 const users = [
   " ",
@@ -58,32 +59,19 @@ const GetDataForm = () => {
           <DatePickerComp label={"Fecha y hora recepción"} />
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} lg={6}>
           <DatePickerComp label={"Fecha y hora Entrega"} />
         </Grid>
-
-        <Grid xs={3} md={2}>
+        <Grid lg={9} xs={9} md={9}>
+          <ButtonG sx={{ margin: 0 }} item />
+        </Grid>
+        <Grid item lg={3} xs={3} md={3}>
           <SelectField
-            item
+            sx={{ width: 50, WrapText: true }}
             options={userType}
             text={"Tipo de cliente"}
             label={"Tipo de cliente"}
           />
-        </Grid>
-        <Grid lg={9} xs={9} md={9}>
-          <Stack
-            sx={{ height: 55, marginLeft: 1, marginRight: 0 }}
-            item
-            spacing={1}
-            direction="row"
-          >
-            <Button sx={{ wordWrap: false }} variant="outlined">
-              Producto
-            </Button>
-            <Button variant="string">Entrada Manual</Button>
-            <Button variant="outlined">Entrada Automática</Button>
-            <Button variant="outlined">Corte en Vinilo</Button>
-          </Stack>
         </Grid>
       </Grid>
     </Box>
