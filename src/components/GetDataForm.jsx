@@ -59,7 +59,7 @@ const GetDataForm = () => {
           <DatePickerComp label={"Fecha y hora recepción"} />
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} lg={6}>
           <DatePickerComp label={"Fecha y hora Entrega"} />
         </Grid>
 
