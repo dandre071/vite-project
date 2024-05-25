@@ -79,7 +79,10 @@ const GetDataForm = () => {
             spacing={1}
             direction="row"
           >
-            <Button sx={{ wordWrap: false, fontSize: 12 }} variant="outlined">
+            <Button
+              sx={{ wordWrap: false, fontSize: 12, border: 2 }}
+              variant="outlined"
+            >
               <ProductPriceModal text={"Producto"} />
             </Button>
 

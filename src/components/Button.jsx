@@ -22,7 +22,7 @@ const ButtonG = () => {
       }}
     >
       <Button
-        sx={{ margin: 0, fontSize: 14, lineHeight: 1.5 }}
+        sx={{ margin: 0, fontSize: 14, lineHeight: 1.5, border: 2 }}
         variant="contained"
         disableElevation
       >
