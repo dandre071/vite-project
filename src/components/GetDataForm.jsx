@@ -8,7 +8,7 @@ import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import { Stack } from "@mui/material";
 import Button from "@mui/material/Button";
 import ProductPriceModal from "./ProductPriceModal";
-
+import ManualProductModal from "./ManualProductModal";
 const users = [
   " ",
   "Alejandra",
@@ -87,7 +87,7 @@ const GetDataForm = () => {
             </Button>
 
             <Button sx={{ fontSize: 12 }} variant="outlined">
-              Entrada Manual
+              <ManualProductModal text={"Producto Manual"} />
             </Button>
             <Button sx={{ fontSize: 12 }} variant="outlined">
               Entrada Automática
