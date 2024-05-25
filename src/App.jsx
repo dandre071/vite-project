@@ -13,7 +13,7 @@ function Print() {
       <GetDataForm />
 
       <ProductPriceModal />
-      <ProductSearchInput />
+      {/*<ProductSearchInput />*/}
       {/* <Auto  />*/}
     </div>
   );

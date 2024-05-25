@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import { Stack } from "@mui/material";
 import Button from "@mui/material/Button";
+import ProductPriceModal from "./ProductPriceModal";
 
 const users = [
   " ",
@@ -62,8 +63,9 @@ const GetDataForm = () => {
           <DatePickerComp label={"Fecha y hora Entrega"} />
         </Grid>
 
-        <Grid xs={3} md={2}>
+        <Grid xs={3} md={3} lg={3}>
           <SelectField
+            sx={{}}
             item
             options={userType}
             text={"Tipo de cliente"}
@@ -77,12 +79,19 @@ const GetDataForm = () => {
             spacing={1}
             direction="row"
           >
-            <Button sx={{ wordWrap: false }} variant="outlined">
-              Producto
+            <Button sx={{ wordWrap: false, fontSize: 12 }} variant="outlined">
+              <ProductPriceModal text={"Producto"} />
             </Button>
-            <Button variant="string">Entrada Manual</Button>
-            <Button variant="outlined">Entrada Automática</Button>
-            <Button variant="outlined">Corte en Vinilo</Button>
+
+            <Button sx={{ fontSize: 12 }} variant="outlined">
+              Entrada Manual
+            </Button>
+            <Button sx={{ fontSize: 12 }} variant="outlined">
+              Entrada Automática
+            </Button>
+            <Button sx={{ fontSize: 12 }} variant="outlined">
+              Corte en Vinilo
+            </Button>
           </Stack>
         </Grid>
       </Grid>
