@@ -9,6 +9,26 @@ import { Stack } from "@mui/material";
 import Button from "@mui/material/Button";
 import ProductPriceModal from "./ProductPriceModal";
 import ManualProductModal from "./ManualProductModal";
+import AutoProductModal from "./AutoProductModal";
+
+const materialWidth = [60, 70, 105, 125, 150, 160];
+
+const choice = ["Si", "No"];
+
+const materials = [
+  "Banner",
+  "Adhesivo",
+  "Panaflex",
+  "Reflectivo",
+  "Microperforado",
+  "Lienzo",
+  "Aviso Con Estructura",
+  "Aviso Luminoso",
+  "Aviso Luminoso 2 Caras",
+  "Retablo",
+  "Adhesivo + Acrílico (Pequeño)",
+  "Adhesivo + Acrílico (Grande)",
+];
 
 const users = [
   " ",
@@ -88,10 +108,15 @@ const GetDataForm = () => {
             </Button>
 
             <Button sx={{ fontSize: 12 }} variant="outlined">
-              <ManualProductModal text={"Producto Manual"} />
+              <ManualProductModal choice={choice} text={"Producto Manual"} />
             </Button>
             <Button sx={{ fontSize: 12 }} variant="outlined">
-              Entrada Automática
+              <AutoProductModal
+                text={"Auto"}
+                matSize={materialWidth}
+                material={materials}
+                choice={choice}
+              />
             </Button>
             <Button sx={{ fontSize: 12 }} variant="outlined">
               Corte en Vinilo

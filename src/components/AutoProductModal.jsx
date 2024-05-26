@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { TextField } from "@mui/material";
 import Modal from "@mui/material/Modal";
-import ProductSearchInput from "./ProductSearchInput";
+
 import { BorderStyle } from "@mui/icons-material";
 import TextAreas from "./TextAreas";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
@@ -15,7 +15,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 500,
   bgcolor: "background.paper",
   border: "0px transparent #000 5px",
 
@@ -23,7 +23,7 @@ const style = {
   p: 4,
 };
 
-const ManualProductModal = ({ text, choice }) => {
+const AutoProductModal = ({ text, matSize, material, choice }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -39,26 +39,39 @@ const ManualProductModal = ({ text, choice }) => {
         <Box borderRadius="10px" sx={style}>
           <Grid container spacing={2} sx={{ flexGrow: 1 }}>
             <Grid item sm={12}>
-              <ModalHeader title={"Producto Manual"} />
+              <ModalHeader title={"Producto Auto"} />
             </Grid>
-            <Grid item sm={12}>
-              <TextField required fullWidth label={"Producto"} />
+
+            <Grid item sm={7}>
+              <SelectField
+                fullWidth
+                item
+                options={material}
+                text={"Material"}
+                label={"Material"}
+              />
             </Grid>
-            <Grid item sm={4}>
-              <TextField fullWidth type={"number"} label={"Cant"} />
-            </Grid>
-            <Grid item sm={8}>
-              <TextField fullWidth type={"text"} label={"Precio"} />
-            </Grid>
-            <Grid item sm={6}>
+
+            <Grid item sm={5}>
               <SelectField
                 item
-                options={choice}
-                text={"Acabado"}
+                options={matSize}
+                text={"Ancho del material"}
                 label={"Tipo de cliente"}
               />
             </Grid>
-            <Grid item sm={6}>
+            <Grid item sm={4}>
+              <TextField fullWidth type={"text"} label={"Ancho"} />
+            </Grid>
+
+            <Grid item sm={4}>
+              <TextField fullWidth type={"text"} label={"Alto"} />
+            </Grid>
+
+            <Grid item sm={4}>
+              <TextField fullWidth type={"number"} label={"Cant"} />
+            </Grid>
+            <Grid item sm={4}>
               <SelectField
                 item
                 options={choice}
@@ -66,6 +79,28 @@ const ManualProductModal = ({ text, choice }) => {
                 label={"Tipo de cliente"}
               />
             </Grid>
+            <Grid item sm={4}>
+              <SelectField
+                item
+                options={choice}
+                text={"Acabado"}
+                label={"Tipo de cliente"}
+              />
+            </Grid>
+            <Grid item sm={4}>
+              <div
+                className="price-holder"
+                style={{
+                  textAlign: "right",
+                  fontSize: 25,
+                  fontWeight: 700,
+                  color: "#f10000",
+                }}
+              >
+                $ 000000
+              </div>
+            </Grid>
+
             <Grid item sm={12}>
               <TextAreas label={"Descripción"} description={"Descripción"} />
             </Grid>
@@ -87,4 +122,4 @@ const ManualProductModal = ({ text, choice }) => {
   );
 };
 
-export default ManualProductModal;
+export default AutoProductModal;
