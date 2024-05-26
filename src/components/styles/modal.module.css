@@ -1,7 +1,4 @@
-.item {
-  font-size: 1.2em;
-}
-.modal-header {
+.modalheader {
   display: "flex";
   background: "red";
   height: 70;

@@ -9,6 +9,7 @@ import { Stack } from "@mui/material";
 import Button from "@mui/material/Button";
 import ProductPriceModal from "./ProductPriceModal";
 import ManualProductModal from "./ManualProductModal";
+
 const users = [
   " ",
   "Alejandra",

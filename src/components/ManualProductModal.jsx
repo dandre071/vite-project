@@ -7,7 +7,7 @@ import ProductSearchInput from "./ProductSearchInput";
 import { BorderStyle } from "@mui/icons-material";
 import TextAreas from "./TextAreas";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-
+import ModalHeader from "./ModalHeader";
 import SelectField from "./SelectField";
 
 const options = ["Si", "No"];
@@ -17,7 +17,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 500,
+  width: 400,
   bgcolor: "background.paper",
   border: "0px transparent #000 5px",
 
@@ -41,7 +41,10 @@ const ManualProductModal = ({ text }) => {
         <Box borderRadius="10px" sx={style}>
           <Grid container spacing={2} sx={{ flexGrow: 1 }}>
             <Grid item sm={12}>
-              <TextField fullWidth label={"Producto"} />
+              <ModalHeader title={"Producto Manual"} />
+            </Grid>
+            <Grid item sm={12}>
+              <TextField required fullWidth label={"Producto"} />
             </Grid>
             <Grid item sm={4}>
               <TextField fullWidth type={"number"} label={"Cant"} />
@@ -74,7 +77,6 @@ const ManualProductModal = ({ text }) => {
                 fullWidth
                 type="submit"
                 variant="contained"
-                color="success"
                 disableElevation
               >
                 Agregar

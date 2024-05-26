@@ -30,7 +30,7 @@ const ProductSearchInput = () => {
           on
           id="controllable-states-demo"
           options={options}
-          sx={{ width: 500 }}
+          fullWidth
           renderInput={(params) => <TextField {...params} label="Productos" />}
         />
       </Grid>
@@ -41,7 +41,15 @@ const ProductSearchInput = () => {
         <div>Valor del Producto:</div>
       </Grid>
       <Grid item sm={5}>
-        <div className="price-holder" style={{ textAlign: "right" }}>
+        <div
+          className="price-holder"
+          style={{
+            textAlign: "right",
+            fontSize: 25,
+            fontWeight: 700,
+            color: "#f10000",
+          }}
+        >
           {value !== null && ` ${colPesos.format(value.price)}`}
         </div>
       </Grid>
