@@ -53,6 +53,7 @@ const ProductPriceModal = ({ text }) => {
                 type="submit"
                 variant="contained"
                 disableElevation
+                color="info"
               >
                 Agregar
               </Button>

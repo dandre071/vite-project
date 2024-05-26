@@ -76,6 +76,7 @@ const ManualProductModal = ({ text, choice }) => {
                 type="submit"
                 variant="contained"
                 disableElevation
+                color="info"
               >
                 Agregar
               </Button>

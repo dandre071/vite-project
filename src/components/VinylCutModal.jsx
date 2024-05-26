@@ -13,14 +13,14 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 500,
+  width: 400,
   bgcolor: "background.paper",
   border: "0px transparent #000 5px",
 
   boxShadow: 24,
   p: 4,
 };
-const VinylCutModal = ({ text, materials, choice, descolillado }) => {
+const VinylCutModal = ({ text, materials, choice, descolillado, theme }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -53,18 +53,19 @@ const VinylCutModal = ({ text, materials, choice, descolillado }) => {
               <TextField fullWidth type={"text"} label={"Largo (cm)"} />
             </Grid>
 
-            <Grid item sm={4}>
+            <Grid item sm={3}>
               <TextField fullWidth type={"number"} label={"Cant"} />
             </Grid>
             <Grid item sm={4}>
               <SelectField
+                fullWidth
                 item
                 options={descolillado}
                 text={"Descolillado"}
                 label={"Tipo de cliente"}
               />
             </Grid>
-            <Grid item sm={4}>
+            <Grid item sm={5}>
               <SelectField
                 item
                 options={choice}
@@ -74,9 +75,14 @@ const VinylCutModal = ({ text, materials, choice, descolillado }) => {
             </Grid>
             <Grid item sm={4}>
               <Button
-                sx={{ height: 50, fontSize: 20, background: "#56dc4c" }}
+                sx={{
+                  height: 50,
+                  fontSize: 20,
+                  color: "white",
+                }}
                 fullWidth
                 type="submit"
+                color="success"
                 variant="contained"
                 disableElevation
               >
@@ -91,7 +97,7 @@ const VinylCutModal = ({ text, materials, choice, descolillado }) => {
                   textAlign: "center",
                   fontSize: 25,
                   fontWeight: 700,
-                  color: "#f10000",
+                  color: {},
                 }}
               >
                 $ 000000
@@ -108,6 +114,7 @@ const VinylCutModal = ({ text, materials, choice, descolillado }) => {
                 type="submit"
                 variant="contained"
                 disableElevation
+                color="info"
               >
                 Agregar
               </Button>

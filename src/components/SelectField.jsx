@@ -13,7 +13,7 @@ const SelectField = ({ text, options }) => {
   };
 
   return (
-    <Box sx={{ minWidth: 160 }}>
+    <Box sx={{}}>
       <FormControl size="normal" fullWidth>
         <InputLabel id="demo-select-small-label">{text}</InputLabel>
         <Select

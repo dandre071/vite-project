@@ -14,7 +14,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 500,
+  width: 400,
   bgcolor: "background.paper",
   border: "0px transparent #000 5px",
 
@@ -110,6 +110,7 @@ const AutoProductModal = ({ text, matSize, material, choice }) => {
                 type="submit"
                 variant="contained"
                 disableElevation
+                color="info"
               >
                 Agregar
               </Button>

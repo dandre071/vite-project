@@ -2,7 +2,8 @@ import React from "react";
 
 const header = {
   display: "flex",
-  background: "#1c1c30",
+  /*background: "#1304a4",*/
+  color: "#1304a4",
   height: 70,
   alignItems: "center",
   justifyContent: "center",
