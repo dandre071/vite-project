@@ -10,11 +10,20 @@ import Button from "@mui/material/Button";
 import ProductPriceModal from "./ProductPriceModal";
 import ManualProductModal from "./ManualProductModal";
 import AutoProductModal from "./AutoProductModal";
+import VinylCutModal from "./VinylCutModal";
 
 const materialWidth = [60, 70, 105, 125, 150, 160];
-
+const vinyls = [
+  "Vinilo",
+  "Vinilo Reflectivo",
+  "Vinilo Rosado",
+  "Vinilo Holograma",
+  "Vinilo Letras Chinas",
+  "Vinilo Espejo",
+  "Vinilo Fluorescente",
+];
 const choice = ["Si", "No"];
-
+const descolillado = ["Grande", "Pequeño"];
 const materials = [
   "Banner",
   "Adhesivo",
@@ -119,7 +128,12 @@ const GetDataForm = () => {
               />
             </Button>
             <Button sx={{ fontSize: 12 }} variant="outlined">
-              Corte en Vinilo
+              <VinylCutModal
+                text={"Corte en vinilo"}
+                materials={vinyls}
+                choice={choice}
+                descolillado={descolillado}
+              />
             </Button>
           </Stack>
         </Grid>

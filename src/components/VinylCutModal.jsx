@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { TextField } from "@mui/material";
 import Modal from "@mui/material/Modal";
-import { BorderStyle } from "@mui/icons-material";
 import TextAreas from "./TextAreas";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "./ModalHeader";
@@ -21,8 +20,7 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-
-const AutoProductModal = ({ text, matSize, material, choice }) => {
+const VinylCutModal = ({ text, materials, choice, descolillado }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -38,33 +36,21 @@ const AutoProductModal = ({ text, matSize, material, choice }) => {
         <Box borderRadius="10px" sx={style}>
           <Grid container spacing={2} sx={{ flexGrow: 1 }}>
             <Grid item sm={12}>
-              <ModalHeader title={"Producto Auto"} />
+              <ModalHeader title={"Corte en vinilo"} />
             </Grid>
 
-            <Grid item sm={7}>
+            <Grid item sm={8}>
               <SelectField
                 fullWidth
                 item
-                options={material}
+                options={materials}
                 text={"Material"}
                 label={"Material"}
               />
             </Grid>
 
-            <Grid item sm={5}>
-              <SelectField
-                item
-                options={matSize}
-                text={"Ancho del material"}
-                label={"Tipo de cliente"}
-              />
-            </Grid>
             <Grid item sm={4}>
-              <TextField fullWidth type={"text"} label={"Ancho"} />
-            </Grid>
-
-            <Grid item sm={4}>
-              <TextField fullWidth type={"text"} label={"Alto"} />
+              <TextField fullWidth type={"text"} label={"Largo (cm)"} />
             </Grid>
 
             <Grid item sm={4}>
@@ -73,8 +59,8 @@ const AutoProductModal = ({ text, matSize, material, choice }) => {
             <Grid item sm={4}>
               <SelectField
                 item
-                options={choice}
-                text={"Laminado"}
+                options={descolillado}
+                text={"Descolillado"}
                 label={"Tipo de cliente"}
               />
             </Grid>
@@ -82,15 +68,27 @@ const AutoProductModal = ({ text, matSize, material, choice }) => {
               <SelectField
                 item
                 options={choice}
-                text={"Acabado"}
+                text={"Transportador"}
                 label={"Tipo de cliente"}
               />
             </Grid>
             <Grid item sm={4}>
+              <Button
+                sx={{ height: 50, fontSize: 20, background: "#56dc4c" }}
+                fullWidth
+                type="submit"
+                variant="contained"
+                disableElevation
+              >
+                Calcular
+              </Button>
+            </Grid>
+
+            <Grid item sm={8}>
               <div
                 className="price-holder"
                 style={{
-                  textAlign: "right",
+                  textAlign: "center",
                   fontSize: 25,
                   fontWeight: 700,
                   color: "#f10000",
@@ -121,4 +119,4 @@ const AutoProductModal = ({ text, matSize, material, choice }) => {
   );
 };
 
-export default AutoProductModal;
+export default VinylCutModal;

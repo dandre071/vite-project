@@ -17,6 +17,7 @@ const SelectField = ({ text, options }) => {
       <FormControl size="normal" fullWidth>
         <InputLabel id="demo-select-small-label">{text}</InputLabel>
         <Select
+          sx={{}}
           labelId="demo-select-small-label"
           id="demo-select-small"
           value={age}
