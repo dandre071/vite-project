@@ -13,7 +13,7 @@ const ModalHeader = ({ title }) => {
   return (
     <>
       <div style={header}>
-        <h1 style={{ color: "white" }}>{title}</h1>
+        <h1 style={{ color: "#0303b3" }}>{title}</h1>
       </div>
     </>
   );

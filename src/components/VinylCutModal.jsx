@@ -20,7 +20,14 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-const VinylCutModal = ({ text, materials, choice, descolillado, theme }) => {
+const VinylCutModal = ({
+  text,
+  materials,
+  choice,
+  descolillado,
+
+  colors,
+}) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -97,7 +104,7 @@ const VinylCutModal = ({ text, materials, choice, descolillado, theme }) => {
                   textAlign: "center",
                   fontSize: 25,
                   fontWeight: 700,
-                  color: {},
+                  color: "#ff2c2e",
                 }}
               >
                 $ 000000

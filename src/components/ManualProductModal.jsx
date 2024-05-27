@@ -23,7 +23,7 @@ const style = {
   p: 4,
 };
 
-const ManualProductModal = ({ text, choice }) => {
+const ManualProductModal = ({ text, choice, acabado }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -53,19 +53,20 @@ const ManualProductModal = ({ text, choice }) => {
             <Grid item sm={6}>
               <SelectField
                 item
-                options={choice}
+                options={acabado}
                 text={"Acabado"}
                 label={"Tipo de cliente"}
               />
             </Grid>
-            <Grid item sm={6}>
+
+            {/*<Grid item sm={6}>
               <SelectField
                 item
                 options={choice}
                 text={"Laminado"}
                 label={"Tipo de cliente"}
               />
-            </Grid>
+            </Grid>*/}
             <Grid item sm={12}>
               <TextAreas label={"Descripción"} description={"Descripción"} />
             </Grid>

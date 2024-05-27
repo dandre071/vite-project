@@ -12,6 +12,15 @@ import ManualProductModal from "./ManualProductModal";
 import AutoProductModal from "./AutoProductModal";
 import VinylCutModal from "./VinylCutModal";
 
+const colors = {
+  main: "#0303b3",
+  light: "#597fff",
+  dark: "#00159a",
+  warning: "#ffce2d",
+  success: "#41f749",
+  info: "#260987",
+};
+
 const materialWidth = [60, 70, 105, 125, 150, 160];
 const vinyls = [
   "Vinilo",
@@ -57,6 +66,15 @@ const users = [
   "Yulieth",
 ];
 
+const acabados = [
+  "Sin acabado",
+  "Tubos",
+  "Ojales",
+  "Palos",
+  "Bolsillos",
+  "Laminado",
+];
+
 const userType = ["Particular", "Publicista"];
 
 const GetDataForm = () => {
@@ -85,7 +103,7 @@ const GetDataForm = () => {
           <SelectField options={users} text={"Realiza"} label={"Recibe"} />
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={6} md={6}>
           <DatePickerComp label={"Fecha y hora recepción"} />
         </Grid>
 
@@ -113,11 +131,19 @@ const GetDataForm = () => {
               sx={{ wordWrap: false, fontSize: 12, border: 2 }}
               variant="outlined"
             >
-              <ProductPriceModal text={"Producto"} />
+              <ProductPriceModal
+                colors={colors}
+                text={"Producto"}
+                acabado={acabados}
+              />
             </Button>
 
             <Button sx={{ fontSize: 12 }} variant="outlined">
-              <ManualProductModal choice={choice} text={"Producto Manual"} />
+              <ManualProductModal
+                choice={choice}
+                text={"Producto Manual"}
+                acabado={acabados}
+              />
             </Button>
             <Button sx={{ fontSize: 12 }} variant="outlined">
               <AutoProductModal
@@ -125,6 +151,8 @@ const GetDataForm = () => {
                 matSize={materialWidth}
                 material={materials}
                 choice={choice}
+                colors={colors}
+                acabado={acabados}
               />
             </Button>
             <Button sx={{ fontSize: 12 }} variant="outlined">
@@ -133,6 +161,7 @@ const GetDataForm = () => {
                 materials={vinyls}
                 choice={choice}
                 descolillado={descolillado}
+                colors={{ colors }}
               />
             </Button>
           </Stack>

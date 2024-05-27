@@ -7,6 +7,7 @@ import ProductPriceModal from "./components/ProductPriceModal";
 import Text from "./components/TextField";
 import GetDataForm from "./components/GetDataForm";
 import { createTheme, ThemeProvider } from "@mui/material";
+import ProductList from "./components/ProductList";
 
 const theme = createTheme({
   palette: {
@@ -53,6 +54,7 @@ function Print() {
         <ProductPriceModal />
         {/*<ProductSearchInput />*/}
         {/* <Auto  />*/}
+        <ProductList />
       </ThemeProvider>
     </div>
   );

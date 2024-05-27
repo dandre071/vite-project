@@ -9,7 +9,7 @@ const DatePickerComp = ({ label }) => {
   const [value, setValue] = React.useState(dayjs("2024-01-01T00:00"));
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer components={["DateTimePicker", "DateTimePicker"]}>
+      <DemoContainer components={["DateTimePicker"]}>
         {/*<DateTimePicker
           label="Uncontrolled picker"
           defaultValue={dayjs('2022-04-17T15:30')}

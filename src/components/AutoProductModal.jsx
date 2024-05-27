@@ -22,7 +22,7 @@ const style = {
   p: 4,
 };
 
-const AutoProductModal = ({ text, matSize, material, choice }) => {
+const AutoProductModal = ({ text, matSize, material, choice, acabado }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -70,23 +70,16 @@ const AutoProductModal = ({ text, matSize, material, choice }) => {
             <Grid item sm={4}>
               <TextField fullWidth type={"number"} label={"Cant"} />
             </Grid>
-            <Grid item sm={4}>
+
+            <Grid item sm={6}>
               <SelectField
                 item
-                options={choice}
-                text={"Laminado"}
-                label={"Tipo de cliente"}
-              />
-            </Grid>
-            <Grid item sm={4}>
-              <SelectField
-                item
-                options={choice}
+                options={acabado}
                 text={"Acabado"}
                 label={"Tipo de cliente"}
               />
             </Grid>
-            <Grid item sm={4}>
+            <Grid item sm={6}>
               <div
                 className="price-holder"
                 style={{
