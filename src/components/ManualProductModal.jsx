@@ -9,6 +9,7 @@ import TextAreas from "./TextAreas";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "./ModalHeader";
 import SelectField from "./SelectField";
+import AddBtn from "./AddBtn";
 
 const style = {
   position: "absolute",
@@ -71,16 +72,7 @@ const ManualProductModal = ({ text, choice, acabado }) => {
               <TextAreas label={"Descripción"} description={"Descripción"} />
             </Grid>
             <Grid item sm={12}>
-              <Button
-                sx={{ height: 50, fontSize: 20 }}
-                fullWidth
-                type="submit"
-                variant="contained"
-                disableElevation
-                color="info"
-              >
-                Agregar
-              </Button>
+              <AddBtn />
             </Grid>
           </Grid>
         </Box>

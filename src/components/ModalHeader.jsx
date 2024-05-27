@@ -1,9 +1,10 @@
+import { Typography } from "@mui/material";
 import React from "react";
 
 const header = {
   display: "flex",
   /*background: "#1304a4",*/
-  color: "#1304a4",
+
   height: 70,
   alignItems: "center",
   justifyContent: "center",
@@ -13,7 +14,14 @@ const ModalHeader = ({ title }) => {
   return (
     <>
       <div style={header}>
-        <h1 style={{ color: "#0303b3" }}>{title}</h1>
+        <Typography
+          variant="h4"
+          component="h2"
+          fontWeight={600}
+          sx={{ color: `primary.main` }}
+        >
+          {title}
+        </Typography>
       </div>
     </>
   );

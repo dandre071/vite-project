@@ -98,12 +98,11 @@ const AutoProductModal = ({ text, matSize, material, choice, acabado }) => {
             </Grid>
             <Grid item sm={12}>
               <Button
-                sx={{ height: 50, fontSize: 20 }}
+                sx={{ height: 50, fontSize: 20, color: "white" }}
                 fullWidth
                 type="submit"
                 variant="contained"
                 disableElevation
-                color="info"
               >
                 Agregar
               </Button>
