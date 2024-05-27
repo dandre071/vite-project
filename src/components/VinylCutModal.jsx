@@ -116,7 +116,7 @@ const VinylCutModal = ({
               <TextAreas label={"Descripción"} description={"Descripción"} />
             </Grid>
             <Grid item sm={12}>
-              <AddBtn />
+              <AddBtn onClick={handleClose} />
             </Grid>
           </Grid>
         </Box>
