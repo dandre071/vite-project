@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grid, Stack } from "@mui/material";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import ClearIcon from "@mui/icons-material/Clear";
 import EditIcon from "@mui/icons-material/Edit";
 import Divider from "@mui/material/Divider";
 
@@ -76,7 +76,7 @@ const ProductList = () => {
           {`$ ${data[0].price}`}
         </Box>
         <Box sx={{ gridArea: "btn1", display: "grid" }}>
-          <DeleteForeverIcon
+          <ClearIcon
             color="warning"
             fontSize="large"
             sx={{ placeSelf: "center" }}
