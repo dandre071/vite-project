@@ -80,7 +80,7 @@ const userType = ["Particular", "Publicista"];
 const GetDataForm = () => {
   return (
     <Box sx={{ flexGrow: 1, minWidth: 160, width: 600 }}>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} justifyItems={"end"} alignItems={"end"}>
         <Grid sm={12} md={12} xs={8}>
           <Text item label={"Nombre"} />
         </Grid>
@@ -106,68 +106,68 @@ const GetDataForm = () => {
         <Grid item xs={6} md={6}>
           <DatePickerComp label={"Fecha y hora recepción"} />
         </Grid>
-
-        <Grid item xs={12} md={6} lg={6}>
-          <DatePickerComp label={"Fecha y hora Entrega"} />
-        </Grid>
-
-        <Grid xs={3} md={3} lg={3}>
+        <Grid item xs={6} md={6} lg={6}>
           <SelectField
             sx={{}}
-            item
             options={userType}
             text={"Tipo de cliente"}
             label={"Tipo de cliente"}
           />
         </Grid>
-        <Grid lg={9} xs={9} md={9}>
+        <Grid item xs={12} md={6} lg={6}>
+          <DatePickerComp label={"Fecha y hora Entrega"} />
+        </Grid>
+        <Grid item xs={6} md={6} lg={6} justifySelf={"end"}>
+          <SelectField
+            sx={{}}
+            options={userType}
+            text={"Tipo de cliente"}
+            label={"Tipo de cliente"}
+          />
+        </Grid>
+        <Grid item lg={12} xs={12} md={12}>
           <Stack
-            sx={{ height: 55, marginLeft: 1, marginRight: 0 }}
-            item
+            sx={{
+              height: 55,
+              borderStyle: "solid",
+              borderWidth: 1,
+              borderRadius: 2,
+              marginRight: 0,
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+              p: 2,
+            }}
             spacing={1}
             direction="row"
           >
-            <Button
-              sx={{ wordWrap: false, fontSize: 12, border: 2 }}
-              variant="outlined"
-            >
-              <ProductPriceModal
-                colors={colors}
-                text={"Producto"}
-                acabado={acabados}
-              />
-            </Button>
+            <ProductPriceModal
+              colors={colors}
+              text={"Producto"}
+              acabado={acabados}
+            />
 
-            <Button sx={{ fontSize: 12 }} variant="outlined">
-              <ManualProductModal
-                choice={choice}
-                text={"Producto Manual"}
-                acabado={acabados}
-              />
-            </Button>
-            <Button sx={{ fontSize: 12 }} variant="outlined">
-              <AutoProductModal
-                text={"Auto"}
-                matSize={materialWidth}
-                material={materials}
-                choice={choice}
-                colors={colors}
-                acabado={acabados}
-              />
-            </Button>
-            <Button
-              sx={{ fontSize: 12, color: "white" }}
-              variant="contained"
-              type="submit"
-            >
-              <VinylCutModal
-                text={"Corte en vinilo"}
-                materials={vinyls}
-                choice={choice}
-                descolillado={descolillado}
-                colors={{ colors }}
-              />
-            </Button>
+            <ManualProductModal
+              choice={choice}
+              text={"Producto Manual"}
+              acabado={acabados}
+            />
+
+            <AutoProductModal
+              text={"Auto"}
+              matSize={materialWidth}
+              material={materials}
+              choice={choice}
+              colors={colors}
+              acabado={acabados}
+            />
+
+            <VinylCutModal
+              text={"Corte en vinilo"}
+              materials={vinyls}
+              choice={choice}
+              descolillado={descolillado}
+              colors={{ colors }}
+            />
           </Stack>
         </Grid>
       </Grid>

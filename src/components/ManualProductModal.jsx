@@ -10,7 +10,7 @@ import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "./ModalHeader";
 import SelectField from "./SelectField";
 import AddBtn from "./AddBtn";
-
+import OpenModalBtn from "./OpenModalBtn";
 const style = {
   position: "absolute",
   top: "50%",
@@ -30,7 +30,7 @@ const ManualProductModal = ({ text, choice, acabado }) => {
   const handleClose = () => setOpen(false);
   return (
     <div>
-      <Button onClick={handleOpen}>{text}</Button>
+      <OpenModalBtn text={"Producto Manual"} onClick={handleOpen} />
       <Modal
         open={open}
         onClose={handleClose}
@@ -72,7 +72,7 @@ const ManualProductModal = ({ text, choice, acabado }) => {
               <TextAreas label={"Descripción"} description={"Descripción"} />
             </Grid>
             <Grid item sm={12}>
-              <AddBtn />
+              <AddBtn fullWidth />
             </Grid>
           </Grid>
         </Box>

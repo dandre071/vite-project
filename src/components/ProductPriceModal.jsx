@@ -9,7 +9,7 @@ import TextAreas from "./TextAreas";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "./ModalHeader";
 import AddBtn from "./AddBtn";
-
+import OpenModalBtn from "./OpenModalBtn";
 const style = {
   position: "absolute",
   top: "50%",
@@ -29,7 +29,11 @@ const ProductPriceModal = ({ text }) => {
   const handleClose = () => setOpen(false);
   return (
     <div>
-      <Button onClick={handleOpen}>{text}</Button>
+      <OpenModalBtn
+        fullWidth
+        text={"Producto dsdsdsdsds"}
+        onClick={handleOpen}
+      />
       <Modal
         open={open}
         onClose={handleClose}

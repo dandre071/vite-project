@@ -13,10 +13,11 @@ const theme = createTheme({
   palette: {
     type: "light",
     primary: {
-      light: "#4D80FF",
-      main: "#0066FF",
-      dark: "#0456D0",
-      darker: "#002E98",
+      main: "#0078ff",
+      light: "#00acff",
+      dark: "#0064ff",
+
+      contrastText: "#e2f2ff",
     },
     secondary: {
       main: "#595C5F",
@@ -27,6 +28,7 @@ const theme = createTheme({
       default: "#f1f1f1",
     },
     text: {
+      main: "primary",
       secondary: "#595C5F",
       disabled: "#d6d6d6",
     },
@@ -42,8 +44,8 @@ const theme = createTheme({
     divider: "rgba(86,86,86,0.12)",
 
     info: {
-      main: "#260987",
-      dark: "#1e0c5e",
+      main: "#0090ff",
+      dark: "#0081ff",
     },
   },
 });
@@ -54,9 +56,6 @@ function Print() {
       <ThemeProvider theme={theme}>
         <GetDataForm theme={{ theme }} />
 
-        <ProductPriceModal />
-        {/*<ProductSearchInput />*/}
-        {/* <Auto  />*/}
         <ProductList />
       </ThemeProvider>
     </div>

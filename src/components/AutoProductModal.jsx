@@ -8,7 +8,7 @@ import TextAreas from "./TextAreas";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "./ModalHeader";
 import SelectField from "./SelectField";
-
+import OpenModalBtn from "./OpenModalBtn";
 const style = {
   position: "absolute",
   top: "50%",
@@ -28,7 +28,7 @@ const AutoProductModal = ({ text, matSize, material, choice, acabado }) => {
   const handleClose = () => setOpen(false);
   return (
     <div>
-      <Button onClick={handleOpen}>{text}</Button>
+      <OpenModalBtn text={"Producto Automático"} onClick={handleOpen} />
       <Modal
         open={open}
         onClose={handleClose}

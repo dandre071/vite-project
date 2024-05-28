@@ -14,7 +14,12 @@ const AddBtn = ({ onClick }) => {
       sx={{
         height: 50,
         fontSize: 20,
-        color: "white",
+        color: "primary.main",
+        borderStyle: "solid",
+        borderWidth: 2,
+        borderColor: "primary",
+        bgcolor: "white",
+        "&:hover": { bgcolor: "primary", color: "white" },
       }}
       color="primary"
       fullWidth

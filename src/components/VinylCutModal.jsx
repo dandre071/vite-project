@@ -8,6 +8,7 @@ import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "./ModalHeader";
 import SelectField from "./SelectField";
 import AddBtn from "./AddBtn";
+import OpenModalBtn from "./OpenModalBtn";
 
 const style = {
   position: "absolute",
@@ -34,7 +35,7 @@ const VinylCutModal = ({
   const handleClose = () => setOpen(false);
   return (
     <div>
-      <Button onClick={handleOpen}>{text}</Button>
+      <OpenModalBtn text={"Corte en vinilo"} onClick={handleOpen} />
       <Modal
         open={open}
         onClose={handleClose}
