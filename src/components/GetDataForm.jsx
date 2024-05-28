@@ -155,7 +155,11 @@ const GetDataForm = () => {
                 acabado={acabados}
               />
             </Button>
-            <Button sx={{ fontSize: 12 }} variant="outlined">
+            <Button
+              sx={{ fontSize: 12, color: "white" }}
+              variant="contained"
+              type="submit"
+            >
               <VinylCutModal
                 text={"Corte en vinilo"}
                 materials={vinyls}

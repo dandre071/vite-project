@@ -19,7 +19,7 @@ const theme = createTheme({
       darker: "#002E98",
     },
     secondary: {
-      main: "#F8002E",
+      main: "#595C5F",
       light: "#ed4b82",
       dark: "#a31545",
     },
@@ -27,14 +27,14 @@ const theme = createTheme({
       default: "#f1f1f1",
     },
     text: {
-      secondary: "#646464",
+      secondary: "#595C5F",
       disabled: "#d6d6d6",
     },
     error: {
       main: "#ff0d00",
     },
     warning: {
-      main: "#ffce2d",
+      main: "#dc3545",
     },
     success: {
       main: "#41f749",

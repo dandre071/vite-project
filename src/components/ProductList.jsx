@@ -1,8 +1,9 @@
 import React from "react";
-import { Box, Grid, Stack } from "@mui/material";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import EditIcon from "@mui/icons-material/Edit";
 import Divider from "@mui/material/Divider";
+import { fontGrid } from "@mui/material/styles/cssUtils";
 
 const data = [
   {
@@ -16,86 +17,111 @@ const data = [
 const style = {
   padding: 2,
 };
+
 const ProductList = () => {
   return (
     <div>
       <Box
         borderRadius={1}
         sx={{
+          maxWidth: 600,
           display: "grid",
-          gridTemplateColumns: "repeat(9, 1fr)",
+          gridTemplateColumns: "1fr 4fr 2fr 2fr 1.5fr",
           gap: 0.2,
-          gridTemplateRows: "35px 55px",
-          gridTemplateAreas: `"cant product product product product product product price price "
-        "cant-value description  description description description description description  btn1 btn2"
+          gridTemplateRows: " 35px 35px",
+          gridTemplateAreas: ` "cant-value product product product product product product product unit-price  price btn1"
+        "cant-value description description description description description description description description description btn1"
         `,
-          height: 90,
-          background: "#fafafa",
+
+          background: "white",
           padding: 0.5,
+          borderStyle: "solid",
+          borderWidth: 0,
+          borderColor: "secondary",
         }}
       >
         <Box
           sx={{
-            gridArea: "cant",
-
+            gridArea: "cant-value",
             display: "grid",
-            justifyContent: "center",
             alignContent: "center",
+            justifyContent: "center",
+
+            padding: 0,
           }}
-          style={style}
         >
-          Cant
+          {data[0].cant}
         </Box>
 
-        <Box sx={{ gridArea: "cant-value" }}>{data[0].cant}</Box>
         <Box
           sx={{
             gridArea: "product",
-
+            display: "grid",
             textAlign: "left",
-            paddingLeft: 1,
-            fontWeight: 700,
+
+            justifyContent: "start",
+            alignContent: "center",
+
+            margin: 0,
           }}
         >
-          {data[0].product}
+          <Typography sx={{ fontWeight: 700, fontSize: 18, color: "black" }}>
+            {data[0].product}
+          </Typography>
         </Box>
 
-        <Box sx={{ gridArea: "description" }}>{data[0].description}</Box>
+        <Box sx={{ gridArea: "description" }}>
+          <Typography
+            fullWidth
+            sx={{
+              margin: 0,
+              fontWeight: 300,
+              fontSize: 13,
+              color: "secondary.main",
+            }}
+          >
+            {data[0].description}
+          </Typography>
+        </Box>
+
         <Box
           sx={{
             gridArea: "price",
-
+            color: "black",
             display: "grid",
             alignItems: "center",
             textAlign: "right",
-            paddingRight: 1,
-            fontSize: 20,
+
+            fontSize: 18,
             fontWeight: 700,
           }}
         >
           {`$ ${data[0].price}`}
         </Box>
-        <Box sx={{ gridArea: "btn1", display: "grid" }}>
+
+        <Box
+          sx={{
+            gridArea: "unit-price",
+            color: "secondary.main",
+            display: "grid",
+            alignItems: "center",
+            textAlign: "right",
+            paddingRight: 2,
+            fontSize: 18,
+            fontWeight: 400,
+          }}
+        >
+          {`$ ${data[0].price}`}
+        </Box>
+        <Box sx={{ gridArea: "btn1", display: "grid", paddingLeft: 1 }}>
           <ClearIcon
             color="warning"
-            fontSize="large"
+            fontSize="medium"
             sx={{ placeSelf: "center" }}
           />
         </Box>
-        <Box
-          sx={{
-            gridArea: "btn2",
-
-            display: "grid",
-          }}
-        >
-          <EditIcon
-            color="success"
-            fontSize="medium"
-            sx={{ alignSelf: "center", justifySelf: "center" }}
-          />
-        </Box>
       </Box>
+      <Divider sx={{ borderWidth: 1.5 }} />
     </div>
   );
 };
