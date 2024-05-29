@@ -6,8 +6,9 @@ const OpenModalBtn = ({ onClick, text }) => {
       color="info"
       variant="contained"
       onClick={onClick}
+      fullWidth
       sx={{
-        fontSize: 14,
+        fontSize: 13,
         fontWeight: 900,
         lineHeight: 1.5,
         height: 55,

@@ -11,6 +11,7 @@ const Text = ({ label, type }) => {
         label={label}
         variant="outlined"
         type={type}
+        sx={{ height: 50, padding: 0, fontSize: 10 }}
         size="normal"
       />
       {/* <TextField id="filled-basic" label="Filled" variant="filled" />

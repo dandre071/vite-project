@@ -14,15 +14,22 @@ const SelectField = ({ text, options }) => {
 
   return (
     <Box sx={{}}>
-      <FormControl size="normal" fullWidth>
+      <FormControl size="normal" fullWidth sx={{ justifyContent: "end" }}>
         <InputLabel id="demo-select-small-label">{text}</InputLabel>
         <Select
-          sx={{ color: `primary.main` }}
+          slotProps={{ textField: { size: "normal" } }}
+          sx={{
+            color: `primary.main`,
+
+            p: 0,
+            m: 0,
+          }}
           labelId="demo-select-small-label"
           id="demo-select-small"
           value={age}
           label={text}
           onChange={handleChange}
+          size="normal"
         >
           {options.map((x) => (
             <MenuItem key={x} value={x}>

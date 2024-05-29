@@ -15,9 +15,11 @@ const DatePickerComp = ({ label }) => {
           defaultValue={dayjs('2022-04-17T15:30')}
         />*/}
         <DateTimePicker
+          slotProps={{ textField: { size: "normal" } }}
           label={label}
           value={value}
           onChange={(newValue) => setValue(newValue)}
+          sx={{ height: 60, fontSize: 10, p: 0 }}
         />
       </DemoContainer>
     </LocalizationProvider>
