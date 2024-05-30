@@ -80,7 +80,7 @@ const userType = ["Particular", "Publicista"];
 const GetDataForm = () => {
   return (
     <Box sx={{ flexGrow: 1, minWidth: 160, width: 500 }}>
-      <Grid container spacing={2} justifyItems={"end"} alignItems={"end"}>
+      <Grid container spacing={2.5} justifyContent={"end"}>
         <Grid sm={12} md={12} xs={8}>
           <Text item label={"Nombre"} />
         </Grid>
@@ -106,7 +106,7 @@ const GetDataForm = () => {
         <Grid item xs={7} md={7}>
           <DatePickerComp label={"Fecha y hora recepción"} />
         </Grid>
-        <Grid item xs={5} md={5} lg={5}>
+        <Grid margin={0} item xs={5} md={5} lg={5}>
           <SelectField
             sx={{}}
             options={userType}
@@ -114,7 +114,7 @@ const GetDataForm = () => {
             label={"Tipo de cliente"}
           />
         </Grid>
-        <Grid item xs={6} md={7} lg={7}>
+        <Grid item xs={7} md={7} lg={7}>
           <DatePickerComp label={"Fecha y hora Entrega"} />
         </Grid>
         <Grid item xs={5} md={5} lg={5} justifySelf={"end"}>
