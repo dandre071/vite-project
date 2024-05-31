@@ -8,6 +8,7 @@ import Text from "./components/TextField";
 import GetDataForm from "./components/GetDataForm";
 import { createTheme, ThemeProvider } from "@mui/material";
 import ProductList from "./components/ProductList";
+import Picker from "./components/Picker";
 
 const theme = createTheme({
   palette: {
@@ -58,6 +59,7 @@ function Print() {
 
         <ProductList />
       </ThemeProvider>
+      <Picker />
     </div>
   );
 }

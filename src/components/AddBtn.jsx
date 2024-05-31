@@ -19,7 +19,12 @@ const AddBtn = ({ onClick }) => {
         borderWidth: 2,
         borderColor: "primary",
         bgcolor: "white",
-        "&:hover": { bgcolor: "primary", color: "white" },
+        scale: 1,
+        "&:hover": {
+          bgcolor: "primary",
+          color: "white",
+          transform: { scale: 0.5 },
+        },
       }}
       color="primary"
       fullWidth

@@ -13,7 +13,6 @@ const Text = ({ label, type }) => {
         type={type}
         sx={{ height: 50, padding: 0, fontSize: 10 }}
         size="normal"
-        sx={{ fontWeight: 900 }}
       />
       {/* <TextField id="filled-basic" label="Filled" variant="filled" />
       <TextField id="standard-basic" label="Standard" variant="standard" />*/}
