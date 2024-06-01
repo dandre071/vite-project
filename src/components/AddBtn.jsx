@@ -2,9 +2,7 @@ import React from "react";
 import { Button } from "@mui/material";
 import { sum } from "./logic";
 import Alert from "@mui/material/Alert";
-const onClick = () => {
-  console.log(sum());
-};
+
 const AddBtn = () => {
   return (
     <Button
@@ -28,7 +26,7 @@ const AddBtn = () => {
       type="submit"
       variant="contained"
       disableElevation
-      onClick={onClick}
+      onClick={sum}
     >
       Agregar
     </Button>
