@@ -1,14 +1,11 @@
 import React from "react";
 import { Button } from "@mui/material";
-
+import { sum } from "./logic";
 import Alert from "@mui/material/Alert";
-
-const handleSubmit = () => {
-  <Alert severity="success">This is a success Alert.</Alert>;
-  alert("This is a success Alert.");
+const onClick = () => {
+  console.log(sum());
 };
-
-const AddBtn = ({ onClick }) => {
+const AddBtn = () => {
   return (
     <Button
       sx={{
