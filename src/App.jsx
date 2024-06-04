@@ -14,23 +14,23 @@ const theme = createTheme({
   palette: {
     type: "light",
     primary: {
-      main: "#0078ff",
-      light: "#00acff",
-      dark: "#0064ff",
+      main: "#086bff",
+      light: "#f1f6ff",
+      dark: "#003fa0",
 
       contrastText: "#e2f2ff",
     },
     secondary: {
-      main: "#595C5F",
-      light: "#ed4b82",
-      dark: "#a31545",
+      main: "#B0BEC5",
+      light: "#ECEFF1",
+      dark: "#546E7A",
     },
     background: {
       default: "#f1f1f1",
     },
     text: {
       main: "primary",
-      secondary: "#595C5F",
+      secondary: "secondary",
       disabled: "#d6d6d6",
     },
     error: {

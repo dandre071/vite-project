@@ -4,16 +4,14 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { TextField } from "@mui/material";
+import { useState } from "react";
 
-const SelectField = ({ text, options }) => {
-  const [age, setAge] = React.useState("");
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+const SelectField = ({ text, options, option, setOption, onChange }) => {
+  /* console.log(option); */
 
   return (
-    <Box sx={{}}>
+    <Box sx={{ display: "flex", gap: 2 }}>
       <FormControl size="normal" fullWidth sx={{ justifyContent: "end" }}>
         <InputLabel id="demo-select-small-label">{text}</InputLabel>
         <Select
@@ -26,9 +24,8 @@ const SelectField = ({ text, options }) => {
           }}
           labelId="demo-select-small-label"
           id="demo-select-small"
-          value={age}
+          value={option}
           label={text}
-          onChange={handleChange}
           size="normal"
         >
           {options.map((x) => (
@@ -38,6 +35,16 @@ const SelectField = ({ text, options }) => {
           ))}
         </Select>
       </FormControl>
+      {(option == "Ojales" || option == "Bolsillos") && (
+        <TextField
+          sx={{ width: "40%" }}
+          fullWidth
+          value={option}
+          type={"number"}
+          label={"Cant"}
+          onChange={onChange}
+        />
+      )}
     </Box>
   );
 };

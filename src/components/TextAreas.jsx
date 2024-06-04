@@ -2,7 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
-const TextAreas = ({ label, description }) => {
+const TextAreas = ({ label, description, name }) => {
   return (
     <Box
       component="form"
@@ -13,6 +13,7 @@ const TextAreas = ({ label, description }) => {
       autoComplete="off"
     >
       <TextField
+        name={name}
         fullWidth
         id="outlined-multiline-static"
         label={label}

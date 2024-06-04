@@ -16,10 +16,10 @@ const ModalHeader = ({ title }) => {
     <>
       <div style={header}>
         <Typography
-          variant="h6"
+          variant="h5"
           component="h2"
-          fontWeight={600}
-          sx={{ color: `secondary.main` }}
+          fontWeight={400}
+          sx={{ color: `primary.main` }}
         >
           {title}
         </Typography>

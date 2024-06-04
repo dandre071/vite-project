@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@mui/material";
+import { Button, Input } from "@mui/material";
 import { sum } from "./logic";
 import Alert from "@mui/material/Alert";
 
@@ -9,24 +9,15 @@ const AddBtn = () => {
       sx={{
         height: 50,
         fontSize: 20,
-        color: "primary.main",
-        borderStyle: "solid",
-        borderWidth: 2,
-        borderColor: "primary",
-        bgcolor: "white",
-        scale: 1,
-        "&:hover": {
-          bgcolor: "primary",
-          color: "white",
-          transform: { scale: 0.5 },
-        },
+
+        bgcolor: "primary.main",
       }}
-      color="primary"
       fullWidth
       type="submit"
       variant="contained"
       disableElevation
-      onClick={sum}
+      // onClick={sum}
+      // onSubmit={onSubmit}
     >
       Agregar
     </Button>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Text from "./TextField";
 import DatePickerComp from "./DatePicker";
@@ -78,11 +78,18 @@ const acabados = [
 const userType = ["Particular", "Publicista"];
 
 const GetDataForm = () => {
+  const [name, setName] = useState("");
+  const handleChange = (e) => {
+    setName(e.target.value);
+
+    console.log(name);
+  };
+
   return (
     <Box sx={{ flexGrow: 1, minWidth: 160, width: 500 }}>
       <Grid container spacing={2.5} justifyContent={"end"}>
         <Grid sm={12} md={12} xs={8}>
-          <Text item label={"Nombre"} />
+          <Text item label={"Nombre"} value={name} onChange={handleChange} />
         </Grid>
         <Grid sm={12} xs={8} md={7}>
           <Text item label={"Email"} />

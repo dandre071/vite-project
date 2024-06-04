@@ -2,8 +2,9 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import array from "../db";
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import Divider from "@mui/material/Divider";
+
 const options = array;
 const colPesos = new Intl.NumberFormat("es-CO", {
   style: "currency",
@@ -41,17 +42,18 @@ const ProductSearchInput = () => {
         <div>Valor del Producto:</div>
       </Grid>
       <Grid item sm={5}>
-        <div
+        <Box
           className="price-holder"
-          style={{
+          sx={{
             textAlign: "right",
             fontSize: 25,
             fontWeight: 700,
-            color: "#f10000",
+            color: "secondary",
           }}
+          color={"primary"}
         >
           {value !== null && ` ${colPesos.format(value.price)}`}
-        </div>
+        </Box>
       </Grid>
     </Grid>
   );
