@@ -165,7 +165,7 @@ const GetDataForm = () => {
               material={materials}
               choice={choice}
               colors={colors}
-              acabado={acabados}
+              options={acabados}
             />
 
             <VinylCutModal

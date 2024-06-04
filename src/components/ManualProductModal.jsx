@@ -4,15 +4,21 @@ import Button from "@mui/material/Button";
 import { FormControl, Input, TextField } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import ProductSearchInput from "./ProductSearchInput";
-
 import TextAreas from "./TextAreas";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "./ModalHeader";
-import SelectField from "./SelectField";
+/* import SelectField from "./SelectField"; */
 import AddBtn from "./AddBtn";
 import OpenModalBtn from "./OpenModalBtn";
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import InputLabel from "@mui/material/InputLabel";
+import FormSelect from "./FormSelect";
+import { acabados } from "./lists";
+import BasicSelect from "./BasicSelect.jsx";
+import { FormInputText } from "./FormInputText.jsx";
 
 const style = {
   position: "absolute",
@@ -27,27 +33,25 @@ const style = {
   p: 4,
 };
 
-const ManualProductModal = ({ text, choice, acabado }) => {
+const ManualProductModal = ({ text, choice }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const [option, setOption] = useState("");
 
   const { control, handleSubmit } = useForm({
     defaultValues: {
       producto: "",
       precio: "",
       acabado: "",
+      cantidad_acabado: "",
       cantidad: "",
       description: "",
     },
   });
-  const onSubmit = (data) => console.log(data);
-  const handleOptChange = (event) => {
-    setOption(event.target.value);
-    console.log(option);
+  const onSubmit = (data) => {
+    console.log(data);
   };
+
   return (
     <Box>
       <OpenModalBtn text={"Producto Manual"} onClick={handleOpen} />
@@ -108,27 +112,98 @@ const ManualProductModal = ({ text, choice, acabado }) => {
                   )}
                 />
               </Grid>
-
               <Grid item sm={12}>
+                <FormSelect
+                  name={"acabado"}
+                  defaultValue={"Sin acabado"}
+                  options={acabados}
+                  label={"Acabado"}
+                  control={control}
+                />
+              </Grid>
+
+              {/* <Grid item sm={12}>
+                <FormSelect
+                  name={"acabado"}
+                  control={control}
+                  defaultValue={acabados[0]}
+                  required={true}
+                  options={acabados}
+                  label={"Acabado"}
+                  updateValue={updateValue}
+                />
+              </Grid> */}
+              {/*   <Grid item sm={12}>
                 <Controller
                   name="acabado"
                   control={control}
                   render={({ field }) => (
-                    <SelectField
-                      onChange={handleOptChange}
-                      setOption={setOption}
-                      {...field}
-                      fullWidth
-                      label={"Acabado"}
-                      value={option}
-                      type="text"
-                      options={acabado}
-                      option={option}
-                    />
+                    <FormControl fullWidth>
+                      <InputLabel
+                        variant="outlined"
+                        htmlFor="uncontrolled-native"
+                      >
+                        Acabado
+                      </InputLabel>
+                      <Select
+                        native={false}
+                        fullWidth
+                        label="Acabado"
+                        text="Acabado"
+                        name="acabado"
+                        defaultValue={"Sin acabado"}
+                        value={option}
+                        onChange={handleOptChange}
+                      >
+                        {acabado.map((x) => (
+                          <MenuItem key={x} value={x}>
+                            {x}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  )}
+                /> */}
+
+              {/* <FormControl fullWidth>
+                  <InputLabel variant="outlined" htmlFor="uncontrolled-native">
+                    Acabado
+                  </InputLabel>
+                  <Select
+                    fullWidth
+                    label="Acabado"
+                    text="Acabado"
+                    defaultValue={"Sin acabado"}
+                    onChange={(e) => console.log(e.target.value)}
+                  >
+                    {acabado.map((x) => (
+                      <MenuItem key={x} value={x}>
+                        {x}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid> */}
+
+              {/*  <Grid item sm={12}>
+                <Controller
+                  name="select"
+                  control={control}
+                  render={({ field }) => (
+                    <>
+                      <InputLabel id="demo-simple-select-label">
+                        Acabado
+                      </InputLabel>
+                      <Select {...field} fullWidth label={"Acabado"}>
+                        {" "}
+                        {acabados.map((x) => (
+                          <MenuItem key={x}>{x}</MenuItem>
+                        ))}
+                      </Select>
+                    </>
                   )}
                 />
               </Grid>
-
               <Grid item sm={12}>
                 <Controller
                   name="description"
@@ -144,7 +219,23 @@ const ManualProductModal = ({ text, choice, acabado }) => {
                     />
                   )}
                 />
+              </Grid> */}
+              <Grid item sm={12}>
+                <FormInputText
+                  disabled={false}
+                  name={"description"}
+                  variant="outlined"
+                  control={control}
+                  defaultValue={""}
+                  label={"Descripción del trabajo"}
+                  type="text"
+                  required={false}
+                  rows={4}
+                  multiline={true}
+                  autofocus={false}
+                />
               </Grid>
+
               <Grid item sm={12}>
                 <AddBtn fullWidth />
               </Grid>
