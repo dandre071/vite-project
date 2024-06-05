@@ -14,33 +14,33 @@ const theme = createTheme({
   palette: {
     type: "light",
     primary: {
-      main: "#086bff",
-      light: "#f1f6ff",
-      dark: "#003fa0",
+      main: "#0073FC",
+      light: "#E3EDFB",
+      dark: "#0054FC",
 
       contrastText: "#e2f2ff",
     },
     secondary: {
-      main: "#B0BEC5",
-      light: "#ECEFF1",
-      dark: "#546E7A",
+      main: "#B8B8B8",
+      light: "#EDEDED",
+      dark: "#777777",
     },
     background: {
       default: "#f1f1f1",
     },
     text: {
-      main: "primary",
-      secondary: "secondary",
-      disabled: "#d6d6d6",
+      main: "#313131",
+      secondary: "secondary.main",
+      disabled: "secondary.light",
     },
     error: {
-      main: "#ff0d00",
+      main: "#F44336",
     },
     warning: {
-      main: "#dc3545",
+      main: "#FF3D00",
     },
     success: {
-      main: "#41f749",
+      main: "#22C55E",
     },
     divider: "rgba(86,86,86,0.12)",
 
@@ -50,16 +50,19 @@ const theme = createTheme({
     },
   },
 });
-
+let localData;
 function Print() {
   return (
     <div>
       <ThemeProvider theme={theme}>
         <GetDataForm theme={{ theme }} />
-
-        <ProductList />
+        <Picker />
+        <h1>
+          {(localData = localStorage.getItem("Manual-Products"))}
+          {console.log(JSON.parse(localData))}
+        </h1>
+        {/* <ProductList /> */}
       </ThemeProvider>
-      <Picker />
     </div>
   );
 }

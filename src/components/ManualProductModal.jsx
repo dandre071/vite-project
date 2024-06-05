@@ -67,6 +67,7 @@ const ManualProductModal = ({ text, choice }) => {
     tempItems = [...tempItems, data];
     localStorage.setItem("Manual-Products", JSON.stringify(data));
     console.log(tempItems);
+    alert("Producto agregado correctamente");
   };
 
   return (
