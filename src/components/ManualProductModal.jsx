@@ -10,7 +10,7 @@ import ModalHeader from "./ModalHeader";
 /* import SelectField from "./SelectField"; */
 import AddBtn from "./AddBtn";
 import OpenModalBtn from "./OpenModalBtn";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
@@ -19,6 +19,7 @@ import FormSelect from "./FormSelect";
 import { acabados } from "./lists";
 import BasicSelect from "./BasicSelect.jsx";
 import { FormInputText } from "./FormInputText.jsx";
+import { productTemp } from "./utils/temp.js";
 
 const style = {
   position: "absolute",
@@ -26,7 +27,8 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "background.paper",
+  /*  bgcolor: "rgba(255,255,255,0.5)", */
+  bgcolor: "white",
   border: "0px transparent #000 5px",
 
   boxShadow: 24,
@@ -48,8 +50,23 @@ const ManualProductModal = ({ text, choice }) => {
       description: "",
     },
   });
-  const onSubmit = (data) => {
+  /*   const [data, setData] = useState([]);
+
+  useEffect(() => {
+    localStorage.setItem("dataKey", JSON.stringify(data));
+  }, [data]); */
+  let tempItems = [];
+
+  /*   const onSubmit = (data) => {
+    localStorage.setItem("manual", JSON.stringify({ ...data, data }));
     console.log(data);
+  };
+ */
+  const onSubmit = (data) => {
+    /* localStorage.setItem("manual", JSON.stringify({ ...data, data })); */
+    tempItems = [...tempItems, data];
+    localStorage.setItem("Manual-Products", JSON.stringify(data));
+    console.log(tempItems);
   };
 
   return (

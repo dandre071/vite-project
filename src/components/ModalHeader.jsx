@@ -1,4 +1,4 @@
-import { Divider, Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 import React from "react";
 
 const header = {
@@ -14,16 +14,17 @@ const header = {
 const ModalHeader = ({ title }) => {
   return (
     <>
-      <div style={header}>
+      <Box style={header}>
         <Typography
           variant="h5"
           component="h2"
-          fontWeight={400}
+          fontWeight={500}
           sx={{ color: `primary.main` }}
         >
           {title}
         </Typography>
-      </div>
+      </Box>
+      <Divider />
     </>
   );
 };

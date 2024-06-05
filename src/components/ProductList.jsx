@@ -5,20 +5,9 @@ import EditIcon from "@mui/icons-material/Edit";
 import Divider from "@mui/material/Divider";
 import { fontGrid } from "@mui/material/styles/cssUtils";
 
-const data = [
-  {
-    id: 1,
-    cant: 2,
-    product: "1000 tarjetas en brillo",
-    description: "blah blah blah",
-    price: 2000000,
-  },
-];
-const style = {
-  padding: 2,
-};
-
 const ProductList = () => {
+  let data = localStorage.getItem("ddsdsfdf");
+
   return (
     <div>
       <Box
