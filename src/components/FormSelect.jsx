@@ -41,29 +41,38 @@ const FormSelect = ({
               label={label}
               disabled={disabled}
               error={!!error}
+              sx={{ color: `text.main` }}
             >
               {options.map((option, index) => (
-                <MenuItem value={option} key={index}>
+                <MenuItem
+                  value={option}
+                  key={index}
+                  sx={{ color: `text.main` }}
+                >
                   {option}
                 </MenuItem>
               ))}
             </Select>
-            {(value == "Ojales" || value == "Bolsillos") && (
+            {/*} {(value == "Ojales" || value == "Bolsillos") && (
               <Controller
                 name="cantidad-acabado"
                 control={control}
                 render={({ field }) => (
                   <TextField
                     {...field}
-                    sx={{ width: "30%" }}
+                    sx={{
+                      width: "30%",
+                      bgcolor: "secondary.light",
+                    }}
                     fullWidth
                     type={"number"}
                     label={"Cant"}
                     defaultValue={1}
+                    variant={"outlined"}
                   />
                 )}
               />
-            )}
+            )}*/}
           </Box>
         )}
       />

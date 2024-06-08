@@ -36,8 +36,15 @@ export const FormInputText = ({
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <TextField
           helperText={error ? error.message : null}
-          sx={{ my: 1 }}
-          margin="dense"
+          sx={{
+            my: 1,
+            color: "text.main",
+
+            p: 0,
+            backgroundColor: "#F9F9F9",
+            fontSize: 2,
+          }}
+          margin="normal"
           error={!!error}
           fullWidth
           label={label}
@@ -49,6 +56,7 @@ export const FormInputText = ({
           onChange={onChange}
           value={value}
           variant={variant}
+          minRows
         />
       )}
     />

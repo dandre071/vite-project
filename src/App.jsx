@@ -14,9 +14,9 @@ const theme = createTheme({
   palette: {
     type: "light",
     primary: {
-      main: "#0073FC",
+      main: "#0054FC",
       light: "#E3EDFB",
-      dark: "#0054FC",
+      dark: "#0041F9",
 
       contrastText: "#e2f2ff",
     },
@@ -29,7 +29,8 @@ const theme = createTheme({
       default: "#f1f1f1",
     },
     text: {
-      main: "#313131",
+      main: "red",
+      /* main: "#464F5E", */
       secondary: "secondary.main",
       disabled: "secondary.light",
     },
@@ -57,10 +58,10 @@ function Print() {
       <ThemeProvider theme={theme}>
         <GetDataForm theme={{ theme }} />
         <Picker />
-        <h1>
+        {/*  <h1>
           {(localData = localStorage.getItem("Manual-Products"))}
           {console.log(JSON.parse(localData))}
-        </h1>
+        </h1> */}
         {/* <ProductList /> */}
       </ThemeProvider>
     </div>

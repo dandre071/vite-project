@@ -11,7 +11,12 @@ const Text = ({ label, type, value, onChange }) => {
         label={label}
         variant="outlined"
         type={type}
-        sx={{ height: 50, padding: 0, fontSize: 10 }}
+        sx={{
+          height: 50,
+          padding: 0,
+          fontSize: 10,
+          color: `text.main`,
+        }}
         size="normal"
         value={value}
         onChange={onChange}
