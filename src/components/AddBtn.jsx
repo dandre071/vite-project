@@ -1,22 +1,29 @@
 import React from "react";
 import { Button, Input } from "@mui/material";
-import { sum } from "./logic";
-import Alert from "@mui/material/Alert";
+/* import { useLocalStorage } from "../Hooks/useLocal.js"; */
+
+import useLocalStorage from "../Hooks/useLocalState.jsx";
 
 const AddBtn = () => {
+  const { handleSubmitData } = useLocalStorage();
+
   return (
     <Button
       sx={{
         height: 50,
         fontSize: 20,
 
-        /* bgcolor: "primary.main", */
+        color: "white",
         bgcolor: "primary.main",
+        width: 200,
+        borderRadius: 2,
       }}
-      fullWidth
       type="submit"
       variant="contained"
       disableElevation
+      disableRipple
+      onSubmit={handleSubmitData}
+
       // onClick={sum}
       // onSubmit={onSubmit}
     >

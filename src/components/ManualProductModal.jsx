@@ -1,133 +1,46 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import {
-  FormControl,
-  Input,
-  TextField,
-  ThemeProvider,
-  createTheme,
-} from "@mui/material";
+
+import { ListItem, TextField } from "@mui/material";
 import Modal from "@mui/material/Modal";
-import ProductSearchInput from "./ProductSearchInput";
-import TextAreas from "./TextAreas";
+
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "./ModalHeader";
-/* import SelectField from "./SelectField"; */
+
 import AddBtn from "./AddBtn";
 import OpenModalBtn from "./OpenModalBtn";
-import { useState, useEffect, useRef } from "react";
-import { useForm, Controller } from "react-hook-form";
-
-import FormSelect from "./FormSelect";
+import { useState } from "react";
 import { acabados } from "./lists";
-import BasicSelect from "./BasicSelect.jsx";
 import { FormInputText } from "./FormInputText.jsx";
+import FormSelect2 from "./Forms/FormSelect2.jsx";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 470,
-  /*  bgcolor: "rgba(255,255,255,0.5)", */
-  bgcolor: `white`,
-  p: 0,
-  boxShadow: 5,
-};
+import {
+  styleConf,
+  themeColors,
+  inputPropsConf,
+  textStyles,
+} from "./utils/configs.js";
+import useLocalStorage from "../Hooks/useLocalState.jsx";
 
-const Theme = createTheme({
-  overrides: {
-    MuiInputBase: {
-      input: {
-        background: "#fff",
-        color: "red",
-      },
-    },
-  },
-});
-
-const textFieldStyles = (textFieldStyles) => ({
-  textField: {
-    width: "90%",
-    marginLeft: "auto",
-    marginRight: "auto",
-    paddingBottom: 0,
-    marginTop: 0,
-    fontWeight: 500,
-  },
-  input: {
-    color: "red",
-  },
-});
-
-const ManualProductModal = ({ text, choice }) => {
+const ManualProductModal = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    return setOpen(false);
+  };
+
+  const { formData, handleChange, handleSubmitData } = useLocalStorage();
 
   const styleParams = { radius: 20, padd: 6 };
 
-  const { control, handleSubmit } = useForm({
-    defaultValues: {
-      producto: "",
-      precio: "",
-      acabado: "",
-      cantAcabado: "",
-      cantidad: "",
-      description: "",
-    },
-  });
-
-  const [obj, updater] = useState({
-    producto: "",
-    precio: "",
-    acabado: "",
-    cantidad_acabado: "",
-    cantidad: "",
-    description: "",
-  });
-
-  const productUpdater = () => {};
-
-  let tempItems = [];
-  let dataItem;
-  {
-    /* const onSubmit = (data) => {
-    localStorage.setItem("manual", JSON.stringify({ ...data, data }));
-    tempItems = [...tempItems, data];
-    localStorage.setItem("Manual-Products", JSON.stringify(data));
-    dataItem = data.producto;
-    console.log(dataItem);
-
-    alert("Producto agregado correctamente");
-  };
- */
-  }
-  const productRef = useRef("fdgfgfg");
-
-  const [formData, setFormData] = useState({
-    producto: "",
-    precio: "",
-    cantidad: null,
-    acabado: "",
-    cantAcabado: null,
-    descripcion: "",
-  });
-
-  const acabado = formData.acabado;
-  const handleChange = (event) => {
-    setFormData((prevFormData) => {
-      return { ...prevFormData, [event.target.name]: event.target.value };
-    });
-  };
-  const handleSubmitData = (e) => {
-    e.preventDefault();
-    console.log(formData);
-  };
+  /* const isAcabado = () => {
+    return formData.acabado != "Sin acabado"
+      ? `Acabado: ${formData.acabado}`
+      : "Sin acabado";
+  }; */
 
   return (
-    <Box style={{ bg: "secondary.light", BorderColor: "black" }}>
+    <Box style={{ bg: "red", BorderColor: "black" }}>
       <OpenModalBtn text={"Producto Manual"} onClick={handleOpen} />
 
       <Modal
@@ -136,13 +49,11 @@ const ManualProductModal = ({ text, choice }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box borderRadius="10px" sx={style}>
-          <ModalHeader title={"Configuración Manual"} style={{ p: 0 }} />
-
+        <Box borderRadius="10px" sx={styleConf}>
           <Box
             borderRadius="10px"
             sx={{
-              pt: 0.5,
+              pt: 0,
               pr: 6,
               pl: 6,
               pb: 3,
@@ -152,6 +63,7 @@ const ManualProductModal = ({ text, choice }) => {
               bgcolor: "white",
             }}
           >
+            <ModalHeader title={"Configuración Manual"} style={{ pb: 20 }} />
             <form
               /* onSubmit={handleSubmit(onSubmit)} */ onSubmit={
                 handleSubmitData
@@ -159,114 +71,127 @@ const ManualProductModal = ({ text, choice }) => {
               onChange={handleChange}
               noValidate
             >
-              <Grid container spacing={1.2} sx={{ flexGrow: 1 }}>
+              <Grid container spacing={1.5} sx={{ flexGrow: 1, p: 0, m: 0 }}>
                 <Grid item sm={12}></Grid>
-                <h4>{dataItem}</h4>
-                <Grid item sm={12}>
-                  <Controller
+
+                <Grid item sm={12} xs={12}>
+                  <TextField
                     name="producto"
-                    control={control}
-                    render={({ field }) => (
-                      <TextField
-                        value={formData.name}
-                        ref={productRef}
-                        fullWidth
-                        label={"Producto"}
-                        type="text"
-                        InputProps={{
-                          style: {
-                            color: "red",
-                            /* background: "blue", */
-                          },
-                        }}
-                        {...field}
-                      />
-                    )}
+                    value={formData.name}
+                    fullWidth
+                    label={"Producto"}
+                    type="text"
+                    InputProps={{
+                      style: { ...inputPropsConf },
+                    }}
+                    sx={{ ...textStyles }}
                   />
                 </Grid>
-                <Grid item sm={8}>
-                  <Controller
+                <Grid item sm={8} xs={8}>
+                  <TextField
                     name="precio"
-                    control={control}
-                    render={({ field }) => (
-                      <TextField
-                        fullWidth
-                        label={"Precio"}
-                        type="number"
-                        {...field}
-                      />
-                    )}
+                    fullWidth
+                    label={"Precio"}
+                    type="number"
+                    value={formData.precio}
+                    InputProps={{
+                      style: inputPropsConf,
+                    }}
+                    sx={textStyles}
                   />
                 </Grid>
 
-                <Grid item sm={4}>
-                  <Controller
+                <Grid item sm={4} xs={4}>
+                  <TextField
+                    value={formData.cantidad}
                     name="cantidad"
-                    control={control}
-                    render={({ field }) => (
-                      <TextField
-                        fullWidth
-                        label={"Cantidad"}
-                        type="number"
-                        {...field}
-                        defaultValue={1}
-                        style={textFieldStyles.input}
-                      />
-                    )}
+                    fullWidth
+                    defaultValue={1}
+                    label={"Cantidad"}
+                    type="number"
+                    InputProps={{
+                      style: inputPropsConf,
+                    }}
+                    sx={textStyles}
                   />
-                </Grid>
-                <Grid item sm={12}>
-                  <FormSelect
-                    name="acabado"
-                    defaultValue={"Sin acabado"}
-                    options={acabados}
-                    label={"Acabado"}
-                    control={control}
-                    value={formData.acabado}
-                  />
-                  {formData.acabado === "Ojales" && (
-                    <Controller
-                      name="cantAcabado"
-                      control={control}
-                      render={({ field }) => (
-                        <TextField
-                          {...field}
-                          sx={{
-                            width: "100",
-                            bgcolor: "secondary.light",
-                          }}
-                          fullWidth
-                          type={"number"}
-                          label={"Cant"}
-                          defaultValue={1}
-                          variant={"outlined"}
-                          value={formData.cantAcabado}
-                        />
-                      )}
-                    />
-                  )}
                 </Grid>
 
-                <Grid item sm={12}>
+                <Grid item sm={12} xs={12}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      gap: 1.2,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      m: 0,
+                    }}
+                  >
+                    <FormSelect2
+                      fullWidth
+                      name="acabado"
+                      options={acabados}
+                      label={"Acabado"}
+                      value={formData.acabado}
+                      onChange={handleChange}
+                      theme={themeColors}
+                      style={{ textStyles }}
+                      sx={{ borderRadius: 20 }}
+                    />
+                    {/* renders 'cantidad acabado' if 'acabado' equals to 'ojales | bolsillos */}
+                    {(formData.acabado == "Ojales" ||
+                      formData.acabado == "Bolsillos") && (
+                      <TextField
+                        sx={{
+                          ...inputPropsConf,
+                          color: themeColors.darkText,
+                          width: "49%",
+                          borderRadius: 2,
+                        }}
+                        fullWidth
+                        type={"number"}
+                        label={"Cantidad"}
+                        defaultValue={1}
+                        variant={"outlined"}
+                        value={formData.cantAcabado}
+                        name="cantAcabado"
+                        InputProps={{
+                          style: inputPropsConf,
+                        }}
+                      />
+                    )}
+                  </Box>
+                </Grid>
+
+                <Grid item sm={12} xs={12}>
                   <FormInputText
                     disabled={false}
-                    name={"description"}
+                    name={"descripcion"}
                     variant={"outlined"}
-                    control={control}
                     defaultValue={""}
                     label={"Descripción del trabajo"}
                     type="text"
                     required={false}
                     multiline={true}
                     autofocus={false}
+                    value={formData.value}
+                    rows={5}
                   />
                 </Grid>
 
-                <Grid item sm={12}>
-                  <AddBtn fullWidth />
+                <Grid
+                  item
+                  sm={12}
+                  xs={12}
+                  sx={{ display: "flex", justifyContent: "center", pt: 2 }}
+                >
+                  <AddBtn />
                 </Grid>
               </Grid>
             </form>
+
+            {/* <h3>{`${formData.producto}  ${isAcabado()} ${
+              formData.precio * formData.cantidad
+            }`}</h3> */}
           </Box>
         </Box>
       </Modal>

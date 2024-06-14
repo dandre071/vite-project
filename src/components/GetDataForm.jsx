@@ -1,16 +1,29 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import Text from "./TextField";
 import DatePickerComp from "./DatePicker";
 import SelectField from "./SelectField";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import { Stack } from "@mui/material";
-import Button from "@mui/material/Button";
+import { ListItem, Stack } from "@mui/material";
+
 import ProductPriceModal from "./ProductPriceModal";
 import ManualProductModal from "./ManualProductModal";
 import AutoProductModal from "./AutoProductModal";
 import VinylCutModal from "./VinylCutModal";
+import { ThemeProvider } from "styled-components";
+import { FormInputDate } from "./Forms/FormInputDate";
+
+import {
+  materialWidth,
+  users,
+  materials,
+  acabados,
+  userType,
+  choice,
+  vinyls,
+  descolillado,
+} from "./lists";
 
 const colors = {
   main: "#0303b3",
@@ -21,68 +34,54 @@ const colors = {
   info: "#260987",
 };
 
-const materialWidth = [60, 70, 105, 125, 150, 160];
-const vinyls = [
-  "Vinilo",
-  "Vinilo Reflectivo",
-  "Vinilo Rosado",
-  "Vinilo Holograma",
-  "Vinilo Letras Chinas",
-  "Vinilo Espejo",
-  "Vinilo Fluorescente",
-];
-const choice = ["Si", "No"];
-const descolillado = ["Grande", "Pequeño"];
-const materials = [
-  "Banner",
-  "Adhesivo",
-  "Panaflex",
-  "Reflectivo",
-  "Microperforado",
-  "Lienzo",
-  "Aviso Con Estructura",
-  "Aviso Luminoso",
-  "Aviso Luminoso 2 Caras",
-  "Retablo",
-  "Adhesivo + Acrílico (Pequeño)",
-  "Adhesivo + Acrílico (Grande)",
-];
-
-const users = [
-  " ",
-  "Alejandra",
-  "Angélica",
-  "Angi",
-  "Dayana",
-  "Diego",
-  "Gladys Sofìa",
-  "Haylin",
-  "Laura",
-  "Loraine",
-  "Olga",
-  "Oswaldo",
-  "Seidy",
-  "Servando",
-  "Yulieth",
-];
-
-const acabados = [
-  "Sin acabado",
-  "Tubos",
-  "Ojales",
-  "Palos",
-  "Bolsillos",
-  "Laminado",
-];
-
-const userType = ["Particular", "Publicista"];
-
 const GetDataForm = () => {
   const [name, setName] = useState("");
+
   const handleChange = (e) => {
     setName(e.target.value);
 
     console.log(name);
+  };
+
+  const [formData, setFormData] = useState(
+    {
+      producto: "",
+      precio: "",
+      cantidad: 1,
+      acabado: "",
+      cantAcabado: 1,
+      descripcion: "",
+      precioTotal: null,
+    } || []
+  );
+  const [products, setProducts] = useState(() => {
+    let initial = JSON.parse(localStorage.getItem("products"));
+    return initial;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("products", JSON.stringify(products));
+    JSON.parse(localStorage.getItem("products"));
+  });
+
+  const handleChangeData = (event) => {
+    setFormData((prevFormData) => {
+      return { ...prevFormData, [event.target.name]: event.target.value };
+    });
+  };
+
+  function addProduct() {
+    const newProduct = {
+      ...formData,
+    };
+    setProducts((prevProducts) => [...prevProducts, newProduct]);
+    return products;
+  }
+
+  const handleSubmitData = (e) => {
+    e.preventDefault();
+    addProduct();
+    return products;
   };
 
   return (
@@ -154,6 +153,7 @@ const GetDataForm = () => {
             />
 
             <ManualProductModal
+              onSubmit={handleChangeData}
               choice={choice}
               text={"Producto Manual"}
               acabado={acabados}
@@ -178,6 +178,17 @@ const GetDataForm = () => {
           </Stack>
         </Grid>
       </Grid>
+      {/* <Box>
+        {[...products].map((product) => (
+          <Box key={product.index}>
+            <Grid container sx={{ flexGrow: 1, p: 0, m: 0 }}>
+              <Grid item sm={12}>
+                <ListItem>{product.producto}</ListItem>
+              </Grid>
+            </Grid>
+          </Box>
+        ))}
+      </Box> */}
     </Box>
   );
 };

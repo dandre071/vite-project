@@ -8,19 +8,15 @@ import TextField from "@mui/material/TextField";
 
 const FormSelect = ({
   control,
-  disabled = false,
-  required = false,
+  disabled,
+  required,
   name,
   defaultValue,
   options,
   label,
+  onChange,
 }) => {
   const [value, setValue] = useState("");
-
-  const onChange = (e) => {
-    setValue(e.target.value);
-    console.log(value);
-  };
 
   return (
     <FormControl fullWidth sx={{ my: 1 }}>
@@ -29,7 +25,7 @@ const FormSelect = ({
         sx={{ display: "flex" }}
         name={name}
         control={control}
-        defaultValue={defaultValue || ""}
+        defaultValue={options[0]}
         required={required}
         key={`select-${name}`}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
@@ -45,6 +41,7 @@ const FormSelect = ({
             >
               {options.map((option, index) => (
                 <MenuItem
+                  name={name}
                   value={option}
                   key={index}
                   sx={{ color: `text.main` }}
@@ -53,26 +50,6 @@ const FormSelect = ({
                 </MenuItem>
               ))}
             </Select>
-            {/*} {(value == "Ojales" || value == "Bolsillos") && (
-              <Controller
-                name="cantidad-acabado"
-                control={control}
-                render={({ field }) => (
-                  <TextField
-                    {...field}
-                    sx={{
-                      width: "30%",
-                      bgcolor: "secondary.light",
-                    }}
-                    fullWidth
-                    type={"number"}
-                    label={"Cant"}
-                    defaultValue={1}
-                    variant={"outlined"}
-                  />
-                )}
-              />
-            )}*/}
           </Box>
         )}
       />

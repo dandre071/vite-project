@@ -1,18 +1,21 @@
-import * as React from "react";
-import dayjs from "dayjs";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+import { DateField } from "@mui/x-date-pickers";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 
-const DatePickerComp = ({ label, width }) => {
-  const [value, setValue] = React.useState(null);
+export const FormInputDate = ({
+  name,
+  label,
+  required = false,
+  defaultValue,
+  value,
+  onChange,
+}) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer
-        components={["DateTimePicker"]}
-        sx={{ background: "red", width: { width } }}
-      >
+      {" "}
+      {/* Use the appropriate adapter */}
+      <DemoContainer components={["DateTimePicker"]} sx={{}}>
         <DateTimePicker
           label={label}
           value={value}
@@ -27,5 +30,3 @@ const DatePickerComp = ({ label, width }) => {
     </LocalizationProvider>
   );
 };
-
-export default DatePickerComp;

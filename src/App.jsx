@@ -6,63 +6,28 @@ import ProductSearchInput from "./components/ProductSearchInput";
 import ProductPriceModal from "./components/ProductPriceModal";
 import Text from "./components/TextField";
 import GetDataForm from "./components/GetDataForm";
-import { createTheme, ThemeProvider } from "@mui/material";
+import { Box, createTheme, Grid, ListItem, ThemeProvider } from "@mui/material";
 import ProductList from "./components/ProductList";
 import Picker from "./components/Picker";
+import { theme } from "./Styles/styles";
+import Cart from "./components/Cart";
+import useLocalStorage from "./Hooks/useLocalState";
+import { useEffect, useState } from "react";
 
-const theme = createTheme({
-  palette: {
-    type: "light",
-    primary: {
-      main: "#0054FC",
-      light: "#E3EDFB",
-      dark: "#0041F9",
-
-      contrastText: "#e2f2ff",
-    },
-    secondary: {
-      main: "#B8B8B8",
-      light: "#EDEDED",
-      dark: "#777777",
-    },
-    background: {
-      default: "#f1f1f1",
-    },
-    text: {
-      main: "red",
-      /* main: "#464F5E", */
-      secondary: "secondary.main",
-      disabled: "secondary.light",
-    },
-    error: {
-      main: "#F44336",
-    },
-    warning: {
-      main: "#FF3D00",
-    },
-    success: {
-      main: "#22C55E",
-    },
-    divider: "rgba(86,86,86,0.12)",
-
-    info: {
-      main: "#0090ff",
-      dark: "#0081ff",
-    },
-  },
-});
-let localData;
 function Print() {
+  /* const { products } = useLocalStorage(); */
+
   return (
     <div>
       <ThemeProvider theme={theme}>
         <GetDataForm theme={{ theme }} />
-        <Picker />
+        {/* <Picker /> */}
         {/*  <h1>
           {(localData = localStorage.getItem("Manual-Products"))}
           {console.log(JSON.parse(localData))}
         </h1> */}
         {/* <ProductList /> */}
+        <Cart />
       </ThemeProvider>
     </div>
   );
