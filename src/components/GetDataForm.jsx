@@ -35,15 +35,7 @@ const colors = {
 };
 
 const GetDataForm = () => {
-  const [name, setName] = useState("");
-
-  const handleChange = (e) => {
-    setName(e.target.value);
-
-    console.log(name);
-  };
-
-  const [formData, setFormData] = useState(
+  /* const [formData, setFormData] = useState(
     {
       producto: "",
       precio: "",
@@ -53,42 +45,13 @@ const GetDataForm = () => {
       descripcion: "",
       precioTotal: null,
     } || []
-  );
-  const [products, setProducts] = useState(() => {
-    let initial = JSON.parse(localStorage.getItem("products"));
-    return initial;
-  });
-
-  useEffect(() => {
-    localStorage.setItem("products", JSON.stringify(products));
-    JSON.parse(localStorage.getItem("products"));
-  });
-
-  const handleChangeData = (event) => {
-    setFormData((prevFormData) => {
-      return { ...prevFormData, [event.target.name]: event.target.value };
-    });
-  };
-
-  function addProduct() {
-    const newProduct = {
-      ...formData,
-    };
-    setProducts((prevProducts) => [...prevProducts, newProduct]);
-    return products;
-  }
-
-  const handleSubmitData = (e) => {
-    e.preventDefault();
-    addProduct();
-    return products;
-  };
+  ); */
 
   return (
     <Box sx={{ flexGrow: 1, minWidth: 160, width: 500 }}>
       <Grid container spacing={2.5} justifyContent={"end"}>
         <Grid sm={12} md={12} xs={8}>
-          <Text item label={"Nombre"} value={name} onChange={handleChange} />
+          <Text item label={"Nombre"} value={name} />
         </Grid>
         <Grid sm={12} xs={8} md={7}>
           <Text item label={"Email"} />
@@ -153,7 +116,7 @@ const GetDataForm = () => {
             />
 
             <ManualProductModal
-              onSubmit={handleChangeData}
+              // onSubmit={handleChangeData}
               choice={choice}
               text={"Producto Manual"}
               acabado={acabados}
@@ -178,17 +141,6 @@ const GetDataForm = () => {
           </Stack>
         </Grid>
       </Grid>
-      {/* <Box>
-        {[...products].map((product) => (
-          <Box key={product.index}>
-            <Grid container sx={{ flexGrow: 1, p: 0, m: 0 }}>
-              <Grid item sm={12}>
-                <ListItem>{product.producto}</ListItem>
-              </Grid>
-            </Grid>
-          </Box>
-        ))}
-      </Box> */}
     </Box>
   );
 };

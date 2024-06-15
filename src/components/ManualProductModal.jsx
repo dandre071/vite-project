@@ -20,7 +20,8 @@ import {
   inputPropsConf,
   textStyles,
 } from "./utils/configs.js";
-import useLocalStorage from "../Hooks/useLocalState.jsx";
+import useLocalStorage from "../Hooks/useLocalState";
+import { useEffect } from "react";
 
 const ManualProductModal = () => {
   const [open, setOpen] = useState(false);
@@ -29,13 +30,23 @@ const ManualProductModal = () => {
     return setOpen(false);
   };
 
-  const { formData, handleChange, handleSubmitData } = useLocalStorage();
+  const {
+    submitForm,
+    handleRemoveProduct,
+    formValues,
 
+    initialValues,
+    handleChange,
+  } = useLocalStorage();
+
+  /*   useEffect(() => {
+    localStorage.setItem("formValues", JSON.stringify(formValues));
+  }, [formValues]); */
   const styleParams = { radius: 20, padd: 6 };
 
   /* const isAcabado = () => {
-    return formData.acabado != "Sin acabado"
-      ? `Acabado: ${formData.acabado}`
+    return initialValues.acabado != "Sin acabado"
+      ? `Acabado: ${initialValues.acabado}`
       : "Sin acabado";
   }; */
 
@@ -65,9 +76,7 @@ const ManualProductModal = () => {
           >
             <ModalHeader title={"Configuración Manual"} style={{ pb: 20 }} />
             <form
-              /* onSubmit={handleSubmit(onSubmit)} */ onSubmit={
-                handleSubmitData
-              }
+              /* onSubmit={handleSubmit(onSubmit)} */ onSubmit={submitForm}
               onChange={handleChange}
               noValidate
             >
@@ -77,7 +86,7 @@ const ManualProductModal = () => {
                 <Grid item sm={12} xs={12}>
                   <TextField
                     name="producto"
-                    value={formData.name}
+                    value={initialValues.producto}
                     fullWidth
                     label={"Producto"}
                     type="text"
@@ -85,6 +94,7 @@ const ManualProductModal = () => {
                       style: { ...inputPropsConf },
                     }}
                     sx={{ ...textStyles }}
+                    //onChange={handleChange}
                   />
                 </Grid>
                 <Grid item sm={8} xs={8}>
@@ -93,7 +103,7 @@ const ManualProductModal = () => {
                     fullWidth
                     label={"Precio"}
                     type="number"
-                    value={formData.precio}
+                    value={initialValues.precio}
                     InputProps={{
                       style: inputPropsConf,
                     }}
@@ -103,7 +113,7 @@ const ManualProductModal = () => {
 
                 <Grid item sm={4} xs={4}>
                   <TextField
-                    value={formData.cantidad}
+                    value={initialValues.cantidad}
                     name="cantidad"
                     fullWidth
                     defaultValue={1}
@@ -131,15 +141,15 @@ const ManualProductModal = () => {
                       name="acabado"
                       options={acabados}
                       label={"Acabado"}
-                      value={formData.acabado}
+                      value={initialValues.acabado}
                       onChange={handleChange}
                       theme={themeColors}
                       style={{ textStyles }}
                       sx={{ borderRadius: 20 }}
                     />
                     {/* renders 'cantidad acabado' if 'acabado' equals to 'ojales | bolsillos */}
-                    {(formData.acabado == "Ojales" ||
-                      formData.acabado == "Bolsillos") && (
+                    {(initialValues.acabado == "Ojales" ||
+                      initialValues.acabado == "Bolsillos") && (
                       <TextField
                         sx={{
                           ...inputPropsConf,
@@ -152,7 +162,7 @@ const ManualProductModal = () => {
                         label={"Cantidad"}
                         defaultValue={1}
                         variant={"outlined"}
-                        value={formData.cantAcabado}
+                        value={initialValues.cantAcabado}
                         name="cantAcabado"
                         InputProps={{
                           style: inputPropsConf,
@@ -173,7 +183,7 @@ const ManualProductModal = () => {
                     required={false}
                     multiline={true}
                     autofocus={false}
-                    value={formData.value}
+                    value={initialValues.value}
                     rows={5}
                   />
                 </Grid>
@@ -189,8 +199,8 @@ const ManualProductModal = () => {
               </Grid>
             </form>
 
-            {/* <h3>{`${formData.producto}  ${isAcabado()} ${
-              formData.precio * formData.cantidad
+            {/* <h3>{`${initialValues.producto}  ${isAcabado()} ${
+              initialValues.precio * initialValues.cantidad
             }`}</h3> */}
           </Box>
         </Box>
