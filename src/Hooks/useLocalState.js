@@ -12,15 +12,22 @@ const useLocalStorage = () => {
       precioTotal: null,
     } || []
   );
-
+  const [product, setProduct] = useState("");
   const [formValues, setFormValues] = useState(
     JSON.parse(localStorage.getItem("formValues")) || []
   );
   useEffect(() => {
     localStorage.setItem("formValues", JSON.stringify(formValues));
   }, [formValues]);
+
+  /*  const handleChange = (e) => {
+    setInitialValues(() => ({
+      ...initialValues,
+      [e.target.name]: e.target.value,
+    }));
+  };
+ */
   const handleChange = (e) => {
-    e.preventDefault();
     setInitialValues(() => ({
       ...initialValues,
       [e.target.name]: e.target.value,
@@ -28,7 +35,7 @@ const useLocalStorage = () => {
   };
 
   const submitForm = (e) => {
-    /* e.preventDefault(); */
+    e.preventDefault();
     setFormValues((prevFormValues) => [...prevFormValues, initialValues]);
     setInitialValues({
       producto: "",
@@ -78,6 +85,12 @@ const useLocalStorage = () => {
     </div> 
     
   };*/
-  return { formValues, initialValues, handleChange, submitForm };
+  return {
+    formValues,
+    initialValues,
+    handleChange,
+    submitForm,
+    setInitialValues,
+  };
 };
 export default useLocalStorage;

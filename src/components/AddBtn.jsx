@@ -1,9 +1,9 @@
 import React from "react";
 import { Button, Input } from "@mui/material";
-import useLocalStorage from "../Hooks/useLocalState";
+/* import useLocalStorage from "../Hooks/useLocalState"; */
 
-const AddBtn = () => {
-  const { submitForm } = useLocalStorage();
+const AddBtn = ({ onSubmit }) => {
+  /* const { submitForm } = useLocalStorage(); */
 
   return (
     <Button
@@ -20,10 +20,10 @@ const AddBtn = () => {
       variant="contained"
       disableElevation
       disableRipple
-      onClick={submitForm}
+      // onClick={submitForm}
 
       // onClick={sum}
-      // onSubmit={onSubmit}
+      onSubmit={onSubmit}
     >
       Agregar
     </Button>

@@ -20,8 +20,10 @@ import {
   inputPropsConf,
   textStyles,
 } from "./utils/configs.js";
-import useLocalStorage from "../Hooks/useLocalState";
+/* import useLocalStorage from "../Hooks/useLocalState"; */
 import { useEffect } from "react";
+import { useGetFormData } from "../Hooks/custom-Hooks.js";
+import { useLocalStorage } from "../Hooks/custom-Hooks.js";
 
 const ManualProductModal = () => {
   const [open, setOpen] = useState(false);
@@ -30,26 +32,57 @@ const ManualProductModal = () => {
     return setOpen(false);
   };
 
-  const {
+  /* const {
     submitForm,
     handleRemoveProduct,
     formValues,
-
+    setInitialValues,
     initialValues,
-    handleChange,
+     handleChange, 
   } = useLocalStorage();
 
-  /*   useEffect(() => {
+ useEffect(() => {
     localStorage.setItem("formValues", JSON.stringify(formValues));
-  }, [formValues]); */
-  const styleParams = { radius: 20, padd: 6 };
+  }, [formValues]); 
+  
 
-  /* const isAcabado = () => {
+  const isAcabado = () => {
     return initialValues.acabado != "Sin acabado"
       ? `Acabado: ${initialValues.acabado}`
       : "Sin acabado";
-  }; */
+  }; 
+  const [product, setProduct] = useState("");
+  const handleChange = (e) => {
+    setInitialValues(() => ({
+      ...initialValues,
+      [e.target.name]: e.target.value,
+    }));
+  };
+*/
+  const styleParams = { radius: 20, padd: 6 };
+  const formValues = {
+    producto: "",
+    precio: "",
+    cantidad: 1,
+    acabado: "",
+    cantAcabado: 1,
+    descripcion: "",
+    precioTotal: null,
+  };
 
+  const [formData, setFormData, handleChange] = useGetFormData(formValues);
+
+  /* onst [storedValue, setStoredValue, formValues, handleChange, submitForm] =
+    useLocalStorage("productos-nuevos", {
+      producto: "",
+      precio: "",
+      cantidad: 1,
+      acabado: "",
+      cantAcabado: 1,
+      descripcion: "",
+      precioTotal: null,
+    });
+ */
   return (
     <Box style={{ bg: "red", BorderColor: "black" }}>
       <OpenModalBtn text={"Producto Manual"} onClick={handleOpen} />
@@ -76,9 +109,9 @@ const ManualProductModal = () => {
           >
             <ModalHeader title={"Configuración Manual"} style={{ pb: 20 }} />
             <form
-              /* onSubmit={handleSubmit(onSubmit)} */ onSubmit={submitForm}
+              /* onSubmit={handleSubmit(onSubmit)}  onSubmit={submitForm}*/
               onChange={handleChange}
-              noValidate
+              /*    noValidate */
             >
               <Grid container spacing={1.5} sx={{ flexGrow: 1, p: 0, m: 0 }}>
                 <Grid item sm={12}></Grid>
@@ -86,7 +119,8 @@ const ManualProductModal = () => {
                 <Grid item sm={12} xs={12}>
                   <TextField
                     name="producto"
-                    value={initialValues.producto}
+                    /* value={initialValues.producto} */
+                    /* value={initialValues.producto} */
                     fullWidth
                     label={"Producto"}
                     type="text"
@@ -94,7 +128,7 @@ const ManualProductModal = () => {
                       style: { ...inputPropsConf },
                     }}
                     sx={{ ...textStyles }}
-                    //onChange={handleChange}
+                    onChange={handleChange}
                   />
                 </Grid>
                 <Grid item sm={8} xs={8}>
@@ -103,7 +137,7 @@ const ManualProductModal = () => {
                     fullWidth
                     label={"Precio"}
                     type="number"
-                    value={initialValues.precio}
+                    /*  value={initialValues.precio} */
                     InputProps={{
                       style: inputPropsConf,
                     }}
@@ -113,10 +147,10 @@ const ManualProductModal = () => {
 
                 <Grid item sm={4} xs={4}>
                   <TextField
-                    value={initialValues.cantidad}
+                    /*  value={initialValues.cantidad} */
                     name="cantidad"
                     fullWidth
-                    defaultValue={1}
+                    /*  defaultValue={1} */
                     label={"Cantidad"}
                     type="number"
                     InputProps={{
@@ -141,14 +175,14 @@ const ManualProductModal = () => {
                       name="acabado"
                       options={acabados}
                       label={"Acabado"}
-                      value={initialValues.acabado}
+                      /* value={initialValues.acabado} */
                       onChange={handleChange}
                       theme={themeColors}
                       style={{ textStyles }}
                       sx={{ borderRadius: 20 }}
                     />
                     {/* renders 'cantidad acabado' if 'acabado' equals to 'ojales | bolsillos */}
-                    {(initialValues.acabado == "Ojales" ||
+                    {/*{(initialValues.acabado == "Ojales" ||
                       initialValues.acabado == "Bolsillos") && (
                       <TextField
                         sx={{
@@ -162,13 +196,13 @@ const ManualProductModal = () => {
                         label={"Cantidad"}
                         defaultValue={1}
                         variant={"outlined"}
-                        value={initialValues.cantAcabado}
+                        value={initialValues.cantAcabado} 
                         name="cantAcabado"
                         InputProps={{
                           style: inputPropsConf,
                         }}
-                      />
-                    )}
+                      
+                    )}/>*/}
                   </Box>
                 </Grid>
 
@@ -183,7 +217,7 @@ const ManualProductModal = () => {
                     required={false}
                     multiline={true}
                     autofocus={false}
-                    value={initialValues.value}
+                    /*  value={initialValues.value} */
                     rows={5}
                   />
                 </Grid>
@@ -194,7 +228,7 @@ const ManualProductModal = () => {
                   xs={12}
                   sx={{ display: "flex", justifyContent: "center", pt: 2 }}
                 >
-                  <AddBtn />
+                  <AddBtn /* onSubmit={setStoredValue} */ />
                 </Grid>
               </Grid>
             </form>
