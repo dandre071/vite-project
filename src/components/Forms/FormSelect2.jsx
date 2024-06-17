@@ -24,6 +24,7 @@ const FormSelect2 = ({
 
       <Box sx={{ display: "flex" }}>
         <Select
+          defaultValue={"Sin acabado"}
           name={name}
           onChange={onChange}
           fullWidth

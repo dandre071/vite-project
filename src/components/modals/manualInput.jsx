@@ -5,28 +5,29 @@ import { ListItem, TextField } from "@mui/material";
 import Modal from "@mui/material/Modal";
 
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import ModalHeader from "./ModalHeader";
+import ModalHeader from "../ModalHeader";
 
-import AddBtn from "./AddBtn";
-import OpenModalBtn from "./OpenModalBtn";
+import AddBtn from "../AddBtn";
+import OpenModalBtn from "../OpenModalBtn";
 import { useState } from "react";
-import { acabados } from "./lists";
-import { FormInputText } from "./FormInputText.jsx";
-import FormSelect2 from "./Forms/FormSelect2.jsx";
+import { acabados } from "../lists";
+import { FormInputText } from "../FormInputText.jsx";
+import FormSelect2 from "../Forms/FormSelect2.jsx";
 
 import {
   styleConf,
   themeColors,
   inputPropsConf,
   textStyles,
-} from "./utils/configs.js";
+} from "../utils/configs.js";
 /* import {
   useHandleInputChange,
   useLocalStorage,
 } from "../Hooks/custom-Hooks.js"; */
 import { useEffect } from "react";
+import { useLocalStorage } from "../../Hooks/hooks.js";
 
-const ManualProductModal = () => {
+const ManualInput = ({ text }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -52,7 +53,7 @@ const ManualProductModal = () => {
     precioTotal: null,
   };
 
-  /*   const [initialValues, setInitialValues] = useState({
+  const [initialValues, setInitialValues] = useState({
     producto: "",
     precio: "",
     cantidad: 1,
@@ -61,61 +62,23 @@ const ManualProductModal = () => {
     descripcion: "",
     precioTotal: null,
   });
- */
+
   /*  const { formData, setFormData, handleChange } =
     useHandleInputChange(formValues); */
 
-  const [formData, setFormData] = useState({
-    producto: "",
-    precio: "",
-    cantidad: 1,
-    acabado: "",
-    cantAcabado: 1,
-    descripcion: "",
-    precioTotal: null,
-  });
-  const handleInputChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  console.log(formData);
-
-  const [productItems, setProductItems] = useState(
-    JSON.parse(localStorage.getItem("productItems")) || []
-  );
-
-  useEffect(() => {
-    localStorage.setItem("productItems", JSON.stringify(productItems));
-  }, [productItems]);
-
-  const submitForm = (e) => {
-    e.preventDefault();
-    setProductItems((prevProductItems) => [...prevProductItems, formData]);
-    setFormData({
-      producto: "",
-      precio: "",
-      cantidad: 1,
-      acabado: "",
-      cantAcabado: 1,
-      descripcion: "",
-      precioTotal: null,
-    });
-  };
-
-  /*   const [productList, setProductList, removeValue] = useLocalStorage(
-    "prodList",
+  const { formData, setFormData, submitForm } = useLocalStorage(
+    "products",
     initialValues
   );
- */
-  /* const handleChange = (e) => {
-    setInitialValues(() => ({
-      ...initialValues,
-      [e.target.name]: e.target.value,
-    }));
-    console.log(initialValues);
-  }; */
-
+  // const { handleInputChange } = useLocalStorage();
+  //const { submitForm } = useLocalStorage("products", formData);
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  console.log(formData);
   return (
     <Box style={{ bg: "red", BorderColor: "black" }}>
-      <OpenModalBtn text={"Producto Manual"} onClick={handleOpen} />
+      <OpenModalBtn text={text} onClick={handleOpen} />
 
       <Modal
         open={open}
@@ -142,7 +105,9 @@ const ManualProductModal = () => {
               /* onSubmit={handleSubmit(onSubmit)}  onSubmit={submitForm}*/
               onSubmit={submitForm}
               noValidate
-              onChange={handleInputChange}
+              onChange={(e) =>
+                setFormData({ ...formData, [e.target.name]: e.target.value })
+              }
             >
               <Grid container spacing={1.5} sx={{ flexGrow: 1, p: 0, m: 0 }}>
                 <Grid item sm={12}></Grid>
@@ -275,4 +240,4 @@ const ManualProductModal = () => {
   );
 };
 
-export default ManualProductModal;
+export default ManualInput;

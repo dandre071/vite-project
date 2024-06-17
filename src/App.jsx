@@ -13,7 +13,7 @@ import { theme } from "./Styles/styles";
 import Cart from "./components/Cart";
 import useLocalStorage from "./Hooks/useLocalState";
 import { useEffect, useState } from "react";
-
+import ManualInput from "./components/modals/manualInput";
 function Print() {
   /* const { products } = useLocalStorage(); */
 

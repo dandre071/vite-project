@@ -1,60 +1,42 @@
 import { useEffect, useState } from "react";
-import { set } from "react-hook-form";
 
-export function useLocalStorage(key, initialValue) {
-  const [storedValue, setStoredValue] = useState(() => {
-    try {
-      const item = localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
-    } catch (error) {
-      return initialValue;
-    }
-  });
+export const useHandleInputChange = (initialValues) => {
+  const [formData, setFormData] = useState(initialValues);
 
-  const setValue = (value) => {
-    useEffect(() => {
-      try {
-        setStoredValue(value);
-        localStorage.setItem(key, JSON.stringify(value));
-      } catch (error) {
-        console.error(error);
-      }
-    });
-  };
-  const [formValues, setFormValues] = useState();
-
-  /*  const handleChange = (e) => {
-    setFormValues(() => ({
-      ...formValues,
-      [e.target.name]: e.target.value,
-    }));
-    console.log(formValues);
-  }; */
-  const submitForm = (e) => {
-    e.preventDefault();
-    setFormValues((prevFormValues) => [...prevFormValues, formData]);
-    formData({
-      producto: "",
-      precio: "",
-      cantidad: 1,
-      acabado: "",
-      cantAcabado: 1,
-      descripcion: "",
-      precioTotal: null,
-    });
-  };
-  return [storedValue, setStoredValue, formValues, handleChange, submitForm];
-}
-
-export function useGetFormData({ form }) {
-  const [formData, setFormData] = useState(form);
   const handleChange = (e) => {
     setFormData(() => ({
-      ...formData,
+      ...initialValues,
       [e.target.name]: e.target.value,
     }));
-    console.log(formData);
+    console.log(initialValues);
   };
+  return { formData, setFormData, handleChange };
+};
 
-  return [formData, setFormData, handleChange];
+export const useFormData = (initialValues, e) => {
+  const [formData, setFormData] = useState(initialValues);
+  //const [productItems, setProductItems] = useState(formData);
+
+  const newFormData = setFormData(() => ({
+    ...initialValues,
+    [e.target.name]: e.target.value,
+  }));
+
+  return { formData, newFormData };
+};
+
+function getStorageValue(key, defaultValue) {
+  const initialValue = localStorage.getItem(key);
+  return initialValue ? JSON.parse(initialValue) : defaultValue;
 }
+
+export const useLocalStorage = (key, defaultValue) => {
+  const [value, setValue] = useState(() => {
+    return getStorageValue(key, defaultValue);
+  });
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+
+  return [value, setValue];
+};

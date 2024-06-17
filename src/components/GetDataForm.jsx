@@ -13,7 +13,7 @@ import AutoProductModal from "./AutoProductModal";
 import VinylCutModal from "./VinylCutModal";
 import { ThemeProvider } from "styled-components";
 import { FormInputDate } from "./Forms/FormInputDate";
-
+import ManualInput from "./modals/manualInput";
 import {
   materialWidth,
   users,
@@ -137,6 +137,12 @@ const GetDataForm = () => {
               choice={choice}
               descolillado={descolillado}
               colors={{ colors }}
+            />
+            <ManualInput
+              // onSubmit={handleChangeData}
+              choice={choice}
+              text={"Manual input"}
+              acabado={acabados}
             />
           </Stack>
         </Grid>
