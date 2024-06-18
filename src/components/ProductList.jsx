@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import EditIcon from "@mui/icons-material/Edit";
 import Divider from "@mui/material/Divider";
 import { fontGrid } from "@mui/material/styles/cssUtils";
+import { useLocalStorage } from "../Hooks/hooks";
+import { getStorageValue } from "../functions/getters";
 
 const ProductList = () => {
-  let data = localStorage.getItem("ddsdsfdf");
+  const [initialValues, setInitialValues] = useState(
+    {
+      producto: "",
+      precio: "",
+      cantidad: 1,
+      acabado: "",
+      cantAcabado: 1,
+      descripcion: "",
+      precioTotal: null,
+    } || []
+  );
 
+  const list = getStorageValue("products", initialValues);
+  console.log(list[0]);
   return (
     <div>
       <Box
@@ -39,7 +53,7 @@ const ProductList = () => {
             padding: 0,
           }}
         >
-          {data[0].cant}
+          {list[1].producto}
         </Box>
 
         <Box
@@ -55,7 +69,7 @@ const ProductList = () => {
           }}
         >
           <Typography sx={{ fontWeight: 700, fontSize: 18, color: "black" }}>
-            {data[0].product}
+            {}
           </Typography>
         </Box>
 
@@ -69,7 +83,7 @@ const ProductList = () => {
               color: "secondary.main",
             }}
           >
-            {data[0].description}
+            {list[0].description}
           </Typography>
         </Box>
 
@@ -85,7 +99,7 @@ const ProductList = () => {
             fontWeight: 700,
           }}
         >
-          {`$ ${data[0].price}`}
+          {`$ `}
         </Box>
 
         <Box
@@ -100,7 +114,7 @@ const ProductList = () => {
             fontWeight: 400,
           }}
         >
-          {`$ ${data[0].price}`}
+          {`$ ${list[1].price}`}
         </Box>
         <Box sx={{ gridArea: "btn1", display: "grid", paddingLeft: 1 }}>
           <ClearIcon

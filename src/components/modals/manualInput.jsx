@@ -75,7 +75,7 @@ const ManualInput = ({ text }) => {
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  console.log(formData);
+  /*   console.log(formData); */
   return (
     <Box style={{ bg: "red", BorderColor: "black" }}>
       <OpenModalBtn text={text} onClick={handleOpen} />

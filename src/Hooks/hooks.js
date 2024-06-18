@@ -26,5 +26,12 @@ export const useLocalStorage = (key, formValues) => {
       precioTotal: null,
     });
   };
-  return { formData, setFormData, submitForm, handleInputChange };
+
+  return {
+    formData,
+    setFormData,
+    submitForm,
+    handleInputChange,
+    productItems,
+  };
 };
