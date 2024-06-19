@@ -24,6 +24,7 @@ import {
   vinyls,
   descolillado,
 } from "./lists";
+import ManualInput2 from "./modals/manualInput copy";
 
 const colors = {
   main: "#0303b3",
@@ -115,12 +116,12 @@ const GetDataForm = () => {
               acabado={acabados}
             />
 
-            <ManualProductModal
+            {/*  <ManualProductModal
               // onSubmit={handleChangeData}
               choice={choice}
               text={"Producto Manual"}
               acabado={acabados}
-            />
+            /> */}
 
             <AutoProductModal
               text={"Auto"}
@@ -138,7 +139,13 @@ const GetDataForm = () => {
               descolillado={descolillado}
               colors={{ colors }}
             />
-            <ManualInput
+            {/*  <ManualInput
+              // onSubmit={handleChangeData}
+              choice={choice}
+              text={"Manual input"}
+              acabado={acabados}
+            /> */}
+            <ManualInput2
               // onSubmit={handleChangeData}
               choice={choice}
               text={"Manual input"}

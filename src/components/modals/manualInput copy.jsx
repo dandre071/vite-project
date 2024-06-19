@@ -28,7 +28,7 @@ import { useEffect } from "react";
 import { useLocalStorage } from "../../Hooks/hooks.js";
 import { useShoppingCart } from "../../store/shoppingCart.js";
 
-const ManualInput = ({ text }) => {
+const ManualInput2 = ({ text }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -44,41 +44,11 @@ const ManualInput = ({ text }) => {
   }; */
 
   const styleParams = { radius: 20, padd: 6 };
-  const formValues = {
-    producto: "",
-    precio: "",
-    cantidad: 1,
-    acabado: "",
-    cantAcabado: 1,
-    descripcion: "",
-    precioTotal: null,
-  };
 
-  const [initialValues, setInitialValues] = useState({
-    producto: "",
-    precio: "",
-    cantidad: 1,
-    acabado: "",
-    cantAcabado: 1,
-    descripcion: "",
-    precioTotal: null,
-  });
-
-  /*  const { formData, setFormData, handleChange } =
-    useHandleInputChange(formValues); */
-
-  const { formData, setFormData, submitForm } = useLocalStorage(
-    "products",
-    initialValues
-  );
-  // const { handleInputChange } = useLocalStorage();
-  //const { submitForm } = useLocalStorage("products", formData);
-  const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
+  const items = useShoppingCart((state) => state.items);
+  const item = [];
   //using zustand implementation
-  const [product, setProduct] = useState({
+  const [products, setProduct] = useState({
     id: "",
     name: "",
     price: "",
@@ -92,12 +62,17 @@ const ManualInput = ({ text }) => {
     descolillado: "",
     transfer: false,
   });
-  const addItem = useShoppingCart((state) => state.addItem);
-  const handlerAdd = (product) => {
-    addItem(product);
-    console.log(items);
+  const handleInputChange = (e) => {
+    setProduct({ ...products, [e.target.name]: e.target.value });
+    console.log(products);
   };
+  const addItem = useShoppingCart((state) => state.addItem);
 
+  const handlerAdd = (e) => {
+    e.preventDefault();
+    addItem(products);
+  };
+  console.log(items);
   return (
     <Box style={{ bg: "red", BorderColor: "black" }}>
       <OpenModalBtn text={text} onClick={handleOpen} />
@@ -125,11 +100,10 @@ const ManualInput = ({ text }) => {
             <ModalHeader title={"Configuración Manual"} style={{ pb: 20 }} />
             <form
               /* onSubmit={handleSubmit(onSubmit)}  onSubmit={submitForm}*/
-              onSubmit={submitForm}
+              /* onClick={handlerAdd} */
+              onSubmit={handlerAdd}
               noValidate
-              onChange={(e) =>
-                setFormData({ ...formData, [e.target.name]: e.target.value })
-              }
+              onChange={handleInputChange}
             >
               <Grid container spacing={1.5} sx={{ flexGrow: 1, p: 0, m: 0 }}>
                 <Grid item sm={12}></Grid>
@@ -137,8 +111,8 @@ const ManualInput = ({ text }) => {
                 <Grid item sm={12} xs={12}>
                   <TextField
                     //onChange={handleChange}
-                    name="producto"
-                    value={formData.producto}
+                    name="name"
+                    value={products.name}
                     fullWidth
                     label={"Producto"}
                     type="text"
@@ -146,16 +120,17 @@ const ManualInput = ({ text }) => {
                       style: { ...inputPropsConf },
                     }}
                     sx={{ ...textStyles }}
+                    onChange={handleInputChange}
                   />
                 </Grid>
                 <Grid item sm={8} xs={8}>
                   <TextField
                     //onChange={handleChange}
-                    name="precio"
+                    name="price"
                     fullWidth
                     label={"Precio"}
                     type="number"
-                    value={formData.precio}
+                    value={products.price}
                     InputProps={{
                       style: inputPropsConf,
                     }}
@@ -165,8 +140,8 @@ const ManualInput = ({ text }) => {
 
                 <Grid item sm={4} xs={4}>
                   <TextField
-                    value={formData.cantidad}
-                    name="cantidad"
+                    value={products.quantity}
+                    name="quantity"
                     fullWidth
                     /*  defaultValue={1} */
                     label={"Cantidad"}
@@ -190,10 +165,10 @@ const ManualInput = ({ text }) => {
                   >
                     <FormSelect2
                       fullWidth
-                      name="acabado"
+                      name="finish"
                       options={acabados}
                       label={"Acabado"}
-                      value={formData.acabado}
+                      /*  value={formData.acabado} */
                       theme={themeColors}
                       style={{ textStyles }}
                       sx={{ borderRadius: 20 }}
@@ -228,7 +203,7 @@ const ManualInput = ({ text }) => {
                 <Grid item sm={12} xs={12}>
                   <FormInputText
                     disabled={false}
-                    name={"descripcion"}
+                    name={"description"}
                     variant={"outlined"}
                     defaultValue={""}
                     label={"Descripción del trabajo"}
@@ -236,7 +211,7 @@ const ManualInput = ({ text }) => {
                     required={false}
                     multiline={true}
                     autofocus={false}
-                    value={formData.descripcion}
+                    value={products.description}
                     rows={5}
                   />
                 </Grid>
@@ -262,4 +237,4 @@ const ManualInput = ({ text }) => {
   );
 };
 
-export default ManualInput;
+export default ManualInput2;

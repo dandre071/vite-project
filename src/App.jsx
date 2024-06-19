@@ -26,7 +26,7 @@ function Print() {
           {(localData = localStorage.getItem("Manual-Products"))}
           {console.log(JSON.parse(localData))}
         </h1> */}
-        <ProductList />
+        {/*  <ProductList /> */}
         <Cart />
       </ThemeProvider>
     </div>
