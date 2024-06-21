@@ -5,30 +5,28 @@ import { ListItem, TextField } from "@mui/material";
 import Modal from "@mui/material/Modal";
 
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import ModalHeader from "../ModalHeader";
+import ModalHeader from "./ModalHeader";
 
-import AddBtn from "../AddBtn";
-import OpenModalBtn from "../OpenModalBtn";
+import AddBtn from "./AddBtn";
+import OpenModalBtn from "./OpenModalBtn";
 import { useState } from "react";
-import { acabados } from "../lists";
-import { FormInputText } from "../FormInputText.jsx";
-import FormSelect2 from "../Forms/FormSelect2.jsx";
+import { acabados } from "./lists";
+import { FormInputText } from "./FormInputText.jsx";
+import FormSelect2 from "./Forms/FormSelect2.jsx";
 
 import {
   styleConf,
   themeColors,
   inputPropsConf,
   textStyles,
-} from "../utils/configs.js";
+} from "./utils/configs.js";
 /* import {
   useHandleInputChange,
   useLocalStorage,
 } from "../Hooks/custom-Hooks.js"; */
 import { useEffect } from "react";
-import { useLocalStorage } from "../../Hooks/hooks.js";
-import { useShoppingCart } from "../../store/shoppingCart.js";
 
-const ManualInput = ({ text }) => {
+const ManualProductModal = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -54,7 +52,7 @@ const ManualInput = ({ text }) => {
     precioTotal: null,
   };
 
-  const [initialValues, setInitialValues] = useState({
+  /*   const [initialValues, setInitialValues] = useState({
     producto: "",
     precio: "",
     cantidad: 1,
@@ -63,44 +61,61 @@ const ManualInput = ({ text }) => {
     descripcion: "",
     precioTotal: null,
   });
-
+ */
   /*  const { formData, setFormData, handleChange } =
     useHandleInputChange(formValues); */
 
-  const { formData, setFormData, submitForm } = useLocalStorage(
-    "products",
-    initialValues
-  );
-  // const { handleInputChange } = useLocalStorage();
-  //const { submitForm } = useLocalStorage("products", formData);
-  const handleInputChange = (e) => {
+  const [formData, setFormData] = useState({
+    producto: "",
+    precio: "",
+    cantidad: 1,
+    acabado: "",
+    cantAcabado: 1,
+    descripcion: "",
+    precioTotal: null,
+  });
+  const handleInputChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  console.log(formData);
+
+  const [productItems, setProductItems] = useState(
+    JSON.parse(localStorage.getItem("productItems")) || []
+  );
+
+  useEffect(() => {
+    localStorage.setItem("productItems", JSON.stringify(productItems));
+  }, [productItems]);
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    setProductItems((prevProductItems) => [...prevProductItems, formData]);
+    setFormData({
+      producto: "",
+      precio: "",
+      cantidad: 1,
+      acabado: "",
+      cantAcabado: 1,
+      descripcion: "",
+      precioTotal: null,
+    });
   };
 
-  //using zustand implementation
-  const [product, setProduct] = useState({
-    id: "",
-    name: "",
-    price: "",
-    quantity: null,
-    description: "",
-    height: null,
-    width: null,
-    matWidth: null,
-    finish: "",
-    material: "",
-    descolillado: "",
-    transfer: false,
-  });
-  const addItem = useShoppingCart((state) => state.addItem);
-  const handlerAdd = (product) => {
-    addItem(product);
-    console.log(items);
-  };
+  /*   const [productList, setProductList, removeValue] = useLocalStorage(
+    "prodList",
+    initialValues
+  );
+ */
+  /* const handleChange = (e) => {
+    setInitialValues(() => ({
+      ...initialValues,
+      [e.target.name]: e.target.value,
+    }));
+    console.log(initialValues);
+  }; */
 
   return (
     <Box style={{ bg: "red", BorderColor: "black" }}>
-      <OpenModalBtn text={text} onClick={handleOpen} />
+      <OpenModalBtn text={"Producto Manual"} onClick={handleOpen} />
 
       <Modal
         open={open}
@@ -127,9 +142,7 @@ const ManualInput = ({ text }) => {
               /* onSubmit={handleSubmit(onSubmit)}  onSubmit={submitForm}*/
               onSubmit={submitForm}
               noValidate
-              onChange={(e) =>
-                setFormData({ ...formData, [e.target.name]: e.target.value })
-              }
+              onChange={handleInputChange}
             >
               <Grid container spacing={1.5} sx={{ flexGrow: 1, p: 0, m: 0 }}>
                 <Grid item sm={12}></Grid>
@@ -262,4 +275,4 @@ const ManualInput = ({ text }) => {
   );
 };
 
-export default ManualInput;
+export default ManualProductModal;

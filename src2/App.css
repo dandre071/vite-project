@@ -1,0 +1,10 @@
+.item {
+  font-size: 1.2em;
+}
+.modal-header {
+  display: "flex";
+  background: "red";
+  height: 70;
+  align-items: "center";
+  justify-content: "center";
+}

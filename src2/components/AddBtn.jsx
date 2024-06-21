@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Input } from "@mui/material";
 /* import useLocalStorage from "../Hooks/useLocalState"; */
 
-const AddBtn = ({ onSubmit, onClick }) => {
+const AddBtn = ({ onSubmit }) => {
   /* const { submitForm } = useLocalStorage(); */
 
   return (
@@ -22,7 +22,7 @@ const AddBtn = ({ onSubmit, onClick }) => {
       disableRipple
       // onClick={submitForm}
 
-      /*     onClick={onClick} */
+      // onClick={sum}
       onSubmit={onSubmit}
     >
       Agregar

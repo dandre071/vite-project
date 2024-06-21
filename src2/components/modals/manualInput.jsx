@@ -26,7 +26,6 @@ import {
 } from "../Hooks/custom-Hooks.js"; */
 import { useEffect } from "react";
 import { useLocalStorage } from "../../Hooks/hooks.js";
-import { useShoppingCart } from "../../store/shoppingCart.js";
 
 const ManualInput = ({ text }) => {
   const [open, setOpen] = useState(false);
@@ -67,37 +66,19 @@ const ManualInput = ({ text }) => {
   /*  const { formData, setFormData, handleChange } =
     useHandleInputChange(formValues); */
 
-  const { formData, setFormData, submitForm } = useLocalStorage(
-    "products",
+  const { formData, setFormData, submitForm, productItems } = useLocalStorage(
+    "productItems",
     initialValues
   );
+  /* console.log(formData); */
+  /* console.log(productItems); */
   // const { handleInputChange } = useLocalStorage();
   //const { submitForm } = useLocalStorage("products", formData);
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  //using zustand implementation
-  const [product, setProduct] = useState({
-    id: "",
-    name: "",
-    price: "",
-    quantity: null,
-    description: "",
-    height: null,
-    width: null,
-    matWidth: null,
-    finish: "",
-    material: "",
-    descolillado: "",
-    transfer: false,
-  });
-  const addItem = useShoppingCart((state) => state.addItem);
-  const handlerAdd = (product) => {
-    addItem(product);
-    console.log(items);
-  };
-
+  /*   console.log(formData); */
+  console.log(productItems[0]);
   return (
     <Box style={{ bg: "red", BorderColor: "black" }}>
       <OpenModalBtn text={text} onClick={handleOpen} />
@@ -257,6 +238,12 @@ const ManualInput = ({ text }) => {
             }`}</h3> */}
           </Box>
         </Box>
+        {productItems &&
+          [productItems].map((x, index) => (
+            <Box key={index}>
+              <h1>{x}</h1>
+            </Box>
+          ))}
       </Modal>
     </Box>
   );

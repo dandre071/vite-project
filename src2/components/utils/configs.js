@@ -32,33 +32,31 @@ export const themeColors = {
   lightSecondary: theme.palette.secondary.main,
   darkSecondary: theme.palette.secondary.main,
 };
-const globalTextBlue = themeColors.mainPrimary;
 
 export const inputPropsConf = {
-  color: globalTextBlue,
-  bgcolor: "white",
-  /*  bgcolor: themeColors.bgLight, */
+  color: themeColors.mainPrimary,
+  bgcolor: themeColors.bgLight,
   fontWeight: 500,
   fontSize: 18,
   borderRadius: 10,
 };
 
 export const fieldStyle = {
-  /* color: themeColors.mainText, */
-  /*  bgcolor: themeColors.bgLight, */
-  color: globalTextBlue,
-  bgcolor: "white",
+  color: themeColors.mainPrimary,
+  bgcolor: themeColors.bgLight,
   fontWeight: 500,
-  fontSize: 18,
   borderRadius: 1.5,
 };
 
 export const textStyles = {
   p: 0,
   m: 0,
-  /*  bgcolor: themeColors.bgLight, */
-  bgcolor: "white",
+  bgcolor: themeColors.bgLight,
   fontSize: 3,
   fontWeight: 400,
   borderRadius: 1.5,
 };
+
+export const productArray = [];
+
+export const totalPrice = null;

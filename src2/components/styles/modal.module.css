@@ -1,0 +1,7 @@
+.modalheader {
+  display: "flex";
+  background: "red";
+  height: 70;
+  align-items: "center";
+  justify-content: "center";
+}
