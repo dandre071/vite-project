@@ -5,19 +5,26 @@ const CalcBtn = ({ onClick }) => {
     <Button
       sx={{
         height: 50,
+        width: 100,
         fontSize: 16,
-        color: "primary.main",
-        bgcolor: "primary.light",
-        borderRadius: 3,
+        color: "white",
+        bgcolor: "success.main",
+        borderRadius: 2,
         borderStyle: "none",
         scale: 1,
+        textTransform: " initial",
         "&:hover": {
+          bgcolor: "success.dark",
+        },
+        /* "&:hover": {
           bgcolor: "white",
           borderStyle: "solid",
           borderColor: "primary.main",
           borderWidth: 2,
-          scale: 1.5,
-        },
+          transform: "scale(1.1)",
+          transformOrigin: "center",
+          transition: "scale 1",
+        }, */
       }}
       variant="contained"
       disableElevation

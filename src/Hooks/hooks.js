@@ -38,25 +38,9 @@ export const useLocalStorage = (key, formValues) => {
   };
 };
 
-export const useProduct = (addItem) => {
-  const initialState = {
-    id: "",
-    name: "",
-    price: 0,
-    quantity: 0,
-    description: "",
-    height: 0,
-    width: 0,
-    matWidth: 0,
-    finish: "Sin acabado",
-    finishQ: 0,
-    material: "",
-    descolillado: "",
-    transfer: false,
-    itemTotalPrice: 0,
-  };
+export const useProduct = (addItem, initialState) => {
   const [products, setProducts] = useState(initialState);
-  //const addItem = useShoppingCart((state) => state.addItem);
+
   const handleInputChange = (e) => {
     setProducts({ ...products, [e.target.name]: e.target.value });
 
@@ -72,10 +56,9 @@ export const useProduct = (addItem) => {
 
   const handlerAdd = (e) => {
     e.preventDefault();
-    /* addItem(products); */
+
     addItem({
       ...products,
-      /*  itemTotalPrice: products.price * products.quantity, */
     });
 
     setProducts(initialState);

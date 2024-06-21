@@ -110,11 +110,11 @@ const GetDataForm = () => {
             spacing={1}
             direction="row"
           >
-            <ProductPriceModal
+            {/* <ProductPriceModal
               colors={colors}
               text={"Producto"}
               acabado={acabados}
-            />
+            /> */}
 
             {/*  <ManualProductModal
               // onSubmit={handleChangeData}

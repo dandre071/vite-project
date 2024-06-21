@@ -7,7 +7,7 @@ import TextAreas from "./TextAreas";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "./ModalHeader";
 import SelectField from "./SelectField";
-import AddBtn from "./AddBtn";
+import AddBtn from "./Buttons/AddBtn";
 import OpenModalBtn from "./OpenModalBtn";
 
 const style = {
