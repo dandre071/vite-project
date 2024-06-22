@@ -8,29 +8,41 @@ const header = {
 
   justifyContent: "center",
 
-  alignItems: "end",
+  alignItems: "center",
 };
 
 const ModalHeader = ({ title }) => {
   return (
     <>
       <Box
-        style={header}
+        style={{ ...header, height: 70 }}
         sx={{
-          justifyContent: "center",
-          bgcolor: themeColors.neutralLight,
+          width: 420,
+
+          //bgcolor: themeColors.neutralLight,
+          bgcolor: themeColors.mainPrimary,
+          borderRadius: 3,
         }}
       >
         <Typography
           variant="h5"
           component="h2"
-          fontWeight={500}
-          fontSize={"1.5em"}
-          sx={{ color: themeColors.mainPrimary, pb: 1.5 }}
+          fontWeight={600}
+          fontSize={"1.8em"}
+          sx={{
+            textAlign: "left",
+            color: themeColors.lightPrimary,
+            // color: "black",
+
+            //bgcolor: themeColors.lightPrimary,
+
+            borderRadius: 2,
+          }}
         >
           {title}
         </Typography>
       </Box>
+      {/*<Divider sx={{ borderWidth: 0.7, bgcolor: "secondary.dark" }} />*/}
       {/*  <Divider sx={{ borderColor: "secondary.light", borderWidth: 1 }} /> */}
     </>
   );

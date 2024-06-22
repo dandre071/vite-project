@@ -1,31 +1,26 @@
-import React from "react";
-import { Box, Button, Divider, Input } from "@mui/material";
-/* import useLocalStorage from "../Hooks/useLocalState"; */
+import { Box, Button, Divider } from "@mui/material";
 
-const AddBtn = ({ onSubmit, onClick }) => {
-  /* const { submitForm } = useLocalStorage(); */
-
+const AddBtn = ({ onClick }) => {
   return (
     <Box>
-      <Divider />
       <Button
         sx={{
           height: 50,
-          fontSize: 20,
+          fontSize: 22,
           textTransform: " initial",
           color: "white",
           bgcolor: "primary.main",
           width: 200,
-          borderRadius: 2,
+          borderRadius: 2.5,
+          pt: 3,
+          pb: 3,
         }}
         type="submit"
         variant="contained"
         disableElevation
         disableRipple
-        // onClick={submitForm}
-
-        /*     onClick={onClick} */
-        onSubmit={onSubmit}
+        //onSubmit={onClick}
+        onClick={onClick}
       >
         Agregar
       </Button>

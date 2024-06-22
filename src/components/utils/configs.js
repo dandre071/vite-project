@@ -6,7 +6,7 @@ export const styleConf = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 470,
-
+  height: 500,
   bgcolor: `white`,
   p: 0,
   boxShadow: 5,

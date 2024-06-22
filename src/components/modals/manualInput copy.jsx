@@ -1,6 +1,5 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
-import { Button, Input, TextField, Typography } from "@mui/material";
+import { Divider, TextField } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "../ModalHeader";
@@ -18,7 +17,7 @@ import {
 } from "../utils/configs.js";
 import { useProduct } from "../../Hooks/hooks.js";
 import { useShoppingCart } from "../../store/shoppingCart.js";
-import CalcBtn from "../Buttons/CalcBtn.jsx";
+
 import { colPesos } from "../utils/configs.js";
 import PriceCalc from "../PriceCalc.jsx";
 const module = "ManualInput";
@@ -58,7 +57,7 @@ const ManualInput2 = ({ text }) => {
 
   console.log(items);
   return (
-    <Box style={{ bg: "red", BorderColor: "black" }}>
+    <Box>
       <OpenModalBtn text={text} onClick={handleOpen} />
       <Modal
         open={open}
@@ -66,191 +65,174 @@ const ManualInput2 = ({ text }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box borderRadius="10px" sx={styleConf}>
+        <Box>
           <Box
             borderRadius="10px"
             sx={{
-              pt: 0,
-              pr: 6,
-              pl: 6,
-              pb: 3,
-              borderTopRightRadius: styleParams.radius,
-              borderTopLeftRadius: styleParams.radius,
-              bgcolor: "white",
+              ...styleConf,
+              alignContent: "center",
+              justifyContent: "center",
+              display: "grid",
+              gridTemplateRows: "1fr 2fr 1fr",
+              pt: 2,
             }}
           >
-            <ModalHeader title={"Configuración Manual"} style={{ pb: 20 }} />
-            <form onSubmit={handlerAdd} noValidate onChange={handleInputChange}>
-              <Grid container spacing={1.5} sx={{ flexGrow: 1, p: 0, m: 0 }}>
-                <Grid item sm={12}></Grid>
-                <Grid item sm={12} xs={12}>
-                  <TextField
-                    name="name"
-                    value={products.name}
-                    fullWidth
-                    label={"Producto"}
-                    type="text"
-                    InputProps={{
-                      style: { ...inputPropsConf },
-                    }}
-                    sx={{ ...textStyles }}
-                    onChange={handleInputChange}
-                  />
-                </Grid>
-                <Grid item sm={8} xs={8}>
-                  <TextField
-                    name="price"
-                    fullWidth
-                    label={"Precio"}
-                    type="number"
-                    value={products.price}
-                    InputProps={{
-                      style: inputPropsConf,
-                    }}
-                    sx={textStyles}
-                  />
-                </Grid>
-                <Grid item sm={4} xs={4}>
-                  <TextField
-                    value={products.quantity}
-                    name="quantity"
-                    fullWidth
-                    label={"Cantidad"}
-                    type="number"
-                    InputProps={{
-                      style: inputPropsConf,
-                    }}
-                    sx={textStyles}
-                  />
-                </Grid>
-                <Grid item sm={12} xs={12}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      gap: 1.2,
-                      justifyContent: "center",
-                      alignItems: "center",
-                      m: 0,
-                    }}
-                  >
-                    <FormSelect2
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "end    ",
+              }}
+            >
+              <ModalHeader title={"Configuración Manual"} style={{}} />
+            </Box>
+
+            <Box
+              borderRadius="10px"
+              sx={{
+                pt: 0,
+                pr: 6,
+                pl: 6,
+                pb: 1,
+                borderTopRightRadius: styleParams.radius,
+                borderTopLeftRadius: styleParams.radius,
+                bgcolor: "white",
+              }}
+            >
+              <form
+                onSubmit={handlerAdd}
+                noValidate
+                onChange={handleInputChange}
+              >
+                <Grid container spacing={1.5} sx={{ flexGrow: 1, p: 0, m: 0 }}>
+                  <Grid item sm={12}></Grid>
+                  <Grid item sm={12} xs={12}>
+                    <TextField
+                      name="name"
+                      value={products.name}
                       fullWidth
-                      name="finish"
-                      options={acabados}
-                      label={"Acabado"}
-                      theme={themeColors}
-                      style={{ textStyles }}
-                      sx={{ borderRadius: 20 }}
-                      defaultValue={"Sin acabado"}
+                      label={"Producto"}
+                      type="text"
+                      InputProps={{
+                        style: { ...inputPropsConf },
+                      }}
+                      sx={{ ...textStyles }}
                       onChange={handleInputChange}
                     />
-
-                    {(products.finish == "Ojales" ||
-                      products.finish == "Bolsillos") && (
-                      <TextField
-                        sx={{
-                          ...inputPropsConf,
-                          color: themeColors.darkText,
-                          width: "49%",
-                          borderRadius: 2,
-                        }}
-                        fullWidth
-                        type={"number"}
-                        label={"Cantidad"}
-                        defaultValue={1}
-                        variant={"outlined"}
-                        value={products.finishQ}
-                        name="finishQ"
-                        InputProps={{
-                          style: inputPropsConf,
-                        }}
-                      />
-                    )}
-                  </Box>
-                </Grid>
-                {/*Total price module*/}
-                <Grid item sm={12} xs={12}>
-                  <PriceCalc
-                    name={"itemTotalPrice"}
-                    onChange={totalCalc}
-                    text={`${colPesos.format(products.itemTotalPrice)}`}
-                    onClick={totalCalc}
-                  />
-                </Grid>
-                {/*  <Grid
-                  sx={{
-                    display: "grid",
-                    bgcolor: "secondary.light",
-                    borderRadius: 2,
-                    gridTemplateColumns: "4fr 8fr",
-                    width: "120%",
-                    alignItems: "center",
-
-                    justifyContent: "center",
-                  }}
-                  item
-                  sm={12}
-                  xs={12}
-                >
-                  <Box>
-                    <CalcBtn onClick={totalCalc} />
-                  </Box>
-                  <Box>
-                    <Typography
-                      sx={{
-                        // width: "40%",
-                        alignContent: "center",
-                        justifyContent: "end",
-                        lineHeight: 1,
-                        textAlign: "right",
+                  </Grid>
+                  <Grid item sm={8} xs={8}>
+                    <TextField
+                      name="price"
+                      fullWidth
+                      label={"Precio"}
+                      type="number"
+                      value={products.price}
+                      InputProps={{
+                        style: inputPropsConf,
                       }}
-                    >
-                      Total:
-                    </Typography>
-                    <Typography
-                      name={"itemTotalPrice"}
-                      // value={products.itemTotalPrice}
-                      onChange={totalCalc}
+                      sx={textStyles}
+                    />
+                  </Grid>
+                  <Grid item sm={4} xs={4}>
+                    <TextField
+                      value={products.quantity}
+                      name="quantity"
+                      fullWidth
+                      label={"Cantidad"}
+                      type="number"
+                      InputProps={{
+                        style: { ...inputPropsConf, textAlign: "right" },
+                      }}
+                      sx={{ ...textStyles, textAlign: "right" }}
+                    />
+                  </Grid>
+                  <Grid item sm={12} xs={12}>
+                    <Box
                       sx={{
-                        fontWeight: 700,
-                        color: "text.dark",
                         display: "flex",
-                        justifyContent: "right",
-                        textAlign: "right",
-                        fontSize: 25,
+                        gap: 1.2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        m: 0,
                       }}
                     >
-                      {`${colPesos.format(products.itemTotalPrice)}`}
-                    </Typography>
-                  </Box>
-                </Grid> */}
+                      <FormSelect2
+                        fullWidth
+                        name="finish"
+                        options={acabados}
+                        label={"Acabado"}
+                        theme={themeColors}
+                        style={{ textStyles }}
+                        sx={{ borderRadius: 20 }}
+                        defaultValue={"Sin acabado"}
+                        onChange={handleInputChange}
+                      />
 
-                <Grid item sm={12} xs={12}>
-                  <FormInputText
-                    disabled={false}
-                    name={"description"}
-                    variant={"outlined"}
-                    defaultValue={""}
-                    label={"Descripción del trabajo"}
-                    type="text"
-                    required={false}
-                    multiline={true}
-                    autofocus={false}
-                    value={products.description}
-                    rows={5}
-                  />
+                      {(products.finish == "Ojales" ||
+                        products.finish == "Bolsillos") && (
+                        <TextField
+                          sx={{
+                            ...inputPropsConf,
+                            color: themeColors.darkText,
+                            width: "49%",
+                            borderRadius: 2,
+                          }}
+                          fullWidth
+                          type={"number"}
+                          label={"Cantidad"}
+                          defaultValue={1}
+                          variant={"outlined"}
+                          value={products.finishQ}
+                          name="finishQ"
+                          InputProps={{
+                            style: inputPropsConf,
+                          }}
+                        />
+                      )}
+                    </Box>
+                  </Grid>
+                  {/*Total price module*/}
+                  <Grid item sm={12} xs={12}>
+                    <PriceCalc
+                      name={"itemTotalPrice"}
+                      onChange={totalCalc}
+                      text={`${colPesos.format(products.itemTotalPrice)}`}
+                      onClick={totalCalc}
+                    />
+                  </Grid>
+
+                  <Grid item sm={12} xs={12}>
+                    <FormInputText
+                      disabled={false}
+                      name={"description"}
+                      variant={"outlined"}
+                      defaultValue={""}
+                      label={"Descripción del trabajo"}
+                      type="text"
+                      required={false}
+                      multiline={true}
+                      autofocus={false}
+                      value={products.description}
+                      rows={3}
+                    />
+                  </Grid>
                 </Grid>
-                <Grid
-                  item
-                  sm={12}
-                  xs={12}
-                  sx={{ display: "flex", justifyContent: "center", pt: 2 }}
-                >
-                  <AddBtn />
-                </Grid>
+                {/*  <h2>{`${items[52].name}- ${items[52].finish}`}</h2> */}
+              </form>{" "}
+              <Grid
+                item
+                sm={12}
+                xs={12}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  pt: 2,
+                  pb: 2,
+                }}
+              >
+                <AddBtn onClick={handlerAdd} />
               </Grid>
-              {/*  <h2>{`${items[52].name}- ${items[52].finish}`}</h2> */}
-            </form>
+            </Box>
           </Box>
         </Box>
       </Modal>

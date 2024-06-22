@@ -5,7 +5,7 @@ const CalcBtn = ({ onClick }) => {
     <Button
       sx={{
         height: 50,
-        width: 100,
+        width: 120,
         fontSize: 16,
         color: "white",
         bgcolor: "success.main",
