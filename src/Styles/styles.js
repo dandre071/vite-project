@@ -29,7 +29,7 @@ export const theme = createTheme({
       main: "#F44336",
     },
     warning: {
-      main: "#FF3D00",
+      main: "#d92323",
     },
     success: {
       main: "#22C55E",

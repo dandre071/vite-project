@@ -6,7 +6,7 @@ import ProductSearchInput from "./components/ProductSearchInput";
 import ProductPriceModal from "./components/ProductPriceModal";
 import Text from "./components/TextField";
 import GetDataForm from "./components/GetDataForm";
-import { Box, createTheme, Grid, ListItem, ThemeProvider } from "@mui/material";
+import { Box, createTheme, Grid, ThemeProvider } from "@mui/material";
 import ProductList from "./components/ProductList";
 import Picker from "./components/Picker";
 import { theme } from "./Styles/styles";
@@ -14,6 +14,8 @@ import Cart from "./components/Cart";
 import useLocalStorage from "./Hooks/useLocalState";
 import { useEffect, useState } from "react";
 import ManualInput from "./components/modals/manualInput";
+import ListItem from "./components/ListItem";
+
 function Print() {
   /* const { products } = useLocalStorage(); */
 
@@ -21,6 +23,7 @@ function Print() {
     <div>
       <ThemeProvider theme={theme}>
         <GetDataForm theme={{ theme }} />
+        <ListItem />
         {/* <Picker /> */}
         {/*  <h1>
           {(localData = localStorage.getItem("Manual-Products"))}

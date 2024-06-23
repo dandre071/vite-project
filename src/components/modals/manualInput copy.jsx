@@ -25,9 +25,14 @@ const module = "ManualInput";
 const ManualInput2 = ({ text }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => {
+  /*  const handleClose = () => {
     return setOpen(false);
+  }; */
+  const handleClose = () => {
+    setOpen(false);
+    resetForm();
   };
+
   const initialState = {
     id: "",
     module: "ManualInput",
@@ -50,10 +55,8 @@ const ManualInput2 = ({ text }) => {
   const items = useShoppingCart((state) => state.items);
   const addItem = useShoppingCart((state) => state.addItem);
   //use product hook
-  const { products, handleInputChange, handlerAdd, totalCalc } = useProduct(
-    addItem,
-    initialState
-  );
+  const { products, handleInputChange, handlerAdd, totalCalc, resetForm } =
+    useProduct(addItem, initialState);
 
   console.log(items);
   return (

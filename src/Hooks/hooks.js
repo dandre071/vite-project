@@ -61,8 +61,20 @@ export const useProduct = (addItem, initialState) => {
       ...products,
     });
 
+    //setProducts(initialState);
+    resetForm();
+  };
+
+  const resetForm = () => {
     setProducts(initialState);
   };
 
-  return { products, setProducts, handleInputChange, handlerAdd, totalCalc };
+  return {
+    products,
+    setProducts,
+    handleInputChange,
+    handlerAdd,
+    totalCalc,
+    resetForm,
+  };
 };
