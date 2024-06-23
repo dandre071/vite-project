@@ -54,7 +54,7 @@ export const useProduct = (addItem, initialState) => {
     });
   };
 
-  const handlerAdd = (e) => {
+  const handlerAdd = (e, handleClose) => {
     e.preventDefault();
 
     addItem({
@@ -63,6 +63,7 @@ export const useProduct = (addItem, initialState) => {
 
     //setProducts(initialState);
     resetForm();
+    handleClose();
   };
 
   const resetForm = () => {

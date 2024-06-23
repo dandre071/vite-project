@@ -6,7 +6,7 @@ const CalcBtn = ({ onClick }) => {
       sx={{
         height: 50,
         width: 120,
-        fontSize: 16,
+        fontSize: 20,
         color: "white",
         bgcolor: "success.main",
         borderRadius: 2,

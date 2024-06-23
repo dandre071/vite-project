@@ -1,73 +1,113 @@
-import { Grid, Typography } from "@mui/material";
+import { Box, Divider, Grid, Typography } from "@mui/material";
 import DeleteBtn from "./Buttons/DeleteBtn";
 import { colPesos } from "./utils/configs";
-
+import { themeColors } from "./utils/configs";
 const ListItem = (price) => {
   return (
     <Grid
       borderRadius={2}
       container
-      flexGrow={1}
       sx={{
-        height: 90,
+        width: 600,
+        height: 80,
         borderRadius: 2,
-        bgcolor: "secondary.light",
+        bgcolor: "white",
         alignContent: "center",
+        borderStyle: "solid",
+        borderWidth: 1,
+        borderColor: themeColors.infoDark,
       }}
     >
       <Grid
         item
-        sm={1}
-        sx={{ alignContent: "center", justifyContent: "center" }}
-      >
-        <Typography variant="h6" sx={{ textAlign: "center" }}>
-          1
-        </Typography>
-      </Grid>
-      <Grid
-        item
         sm={7}
         sx={{
-          bgcolor: "green",
           display: "grid",
-          gridTemplateRows: "2fr 1fr",
+          // gridTemplateRows: "50px 40px",
+          height: " 100%",
+          p: 1,
+          gap: 0.5,
         }}
       >
-        <Grid sx={{ bgcolor: "blue" }}>
+        <Box>
           <Typography
-            noWrap
-            variant="h6"
-            sx={{
-              alignContent: "end",
-              p: 1,
-            }}
             style={{
               whiteSpace: "pre-wrap",
               lineHeight: 1,
+              display: "grid",
+              color: themeColors.darkPrimary,
+              fontSize: 18,
+              fontWeight: 600,
+              alignContent: "end",
             }}
+          >
+            esta es una prueba para ver como se rompe la linea fdfdgff
+          </Typography>
+        </Box>
+        <Typography
+          style={{
+            whiteSpace: "pre-wrap",
+            lineHeight: 1,
+            display: "grid",
+
+            fontSize: 14,
+          }}
+          sx={{}}
+        >
+          esta es una prueba para ver como se rompe la linea
+        </Typography>
+
+        {/* <Grid sx={{ bgcolor: "pink", display: "grid", alignContent: "start" }}>
+          <Typography
+            style={{
+              whiteSpace: "pre-wrap",
+              lineHeight: 1,
+              display: "grid",
+              justifyContent: "end",
+              alignItems: "end",
+            }}
+            sx={{ fontSize: 14 }}
           >
             esta es una prueba para ver como se rompe la linea
           </Typography>
-        </Grid>
-        <Grid sx={{ bgcolor: "pink", p: 1 }}></Grid>
+        </Grid> */}
       </Grid>
-
+      <Grid
+        item
+        sm={1}
+        sx={{
+          alignContent: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Box
+          sx={{
+            bgcolor: "primary.main",
+            color: "primary.light",
+            width: "80%",
+            borderRadius: 1.5,
+          }}
+        >
+          <Typography variant="h6" sx={{ textAlign: "center", fontSize: 18 }}>
+            1
+          </Typography>
+        </Box>
+      </Grid>
       <Grid
         item
         sm={3}
         sx={{
-          bgcolor: "yellow",
+          display: "grid",
+
           alignContent: "center",
+          justifyContent: "end",
         }}
-        style={{ justifySelf: "center" }}
       >
         <Typography
           variant="p"
           sx={{
-            p: 1,
-            fontSize: 20,
+            fontSize: 18,
             fontWeight: 800,
-            justifySelf: "center",
           }}
         >
           {`${colPesos.format(233323)}`}
@@ -76,11 +116,16 @@ const ListItem = (price) => {
       <Grid
         item
         sm={1}
-        sx={{ alignContent: "center", justifyContent: "center" }}
+        sx={{
+          alignContent: "center",
+          justifyContent: "center",
+          display: "grid",
+        }}
       >
         <DeleteBtn
           sx={{
             fontSize: 35,
+
             "&:hover": {
               cursor: "pointer",
             },

@@ -1,6 +1,6 @@
 import { Box, Button, Divider } from "@mui/material";
 
-const AddBtn = ({ onClick }) => {
+const AddBtn = ({ onClick, handleClose }) => {
   return (
     <Box>
       <Button
