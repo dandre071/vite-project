@@ -4,60 +4,61 @@ import { colPesos } from "./utils/configs";
 import { themeColors } from "./utils/configs";
 const ListItem = (price) => {
   return (
-    <Grid
-      borderRadius={2}
-      container
-      sx={{
-        width: 600,
-        height: 80,
-        borderRadius: 2,
-        bgcolor: "white",
-        alignContent: "center",
-        borderStyle: "solid",
-        borderWidth: 1,
-        borderColor: themeColors.infoDark,
-      }}
-    >
+    <Box>
       <Grid
-        item
-        sm={7}
+        borderRadius={2}
+        container
         sx={{
-          display: "grid",
-          // gridTemplateRows: "50px 40px",
-          height: " 100%",
-          p: 1,
-          gap: 0.5,
+          width: 600,
+          height: 80,
+          borderRadius: 2,
+          bgcolor: "white",
+          alignContent: "center",
+          borderStyle: "solid",
+          borderWidth: 1,
+          borderColor: themeColors.infoDark,
         }}
       >
-        <Box>
+        <Grid
+          item
+          sm={7}
+          sx={{
+            display: "grid",
+            // gridTemplateRows: "50px 40px",
+            height: " 100%",
+            p: 1,
+            gap: 0.5,
+          }}
+        >
+          <Box>
+            <Typography
+              style={{
+                whiteSpace: "pre-wrap",
+                lineHeight: 1,
+                display: "grid",
+                color: themeColors.neutralDark,
+                fontSize: 18,
+                fontWeight: 600,
+                alignContent: "end",
+              }}
+            >
+              esta es una prueba para ver como se rompe la linea fdfdgff
+            </Typography>
+          </Box>
           <Typography
             style={{
               whiteSpace: "pre-wrap",
               lineHeight: 1,
               display: "grid",
-              color: themeColors.darkPrimary,
-              fontSize: 18,
-              fontWeight: 600,
-              alignContent: "end",
+              color: themeColors.darkSecondary,
+              fontSize: 14,
             }}
+            sx={{}}
           >
-            esta es una prueba para ver como se rompe la linea fdfdgff
+            esta es una prueba para ver como se rompe la linea
           </Typography>
-        </Box>
-        <Typography
-          style={{
-            whiteSpace: "pre-wrap",
-            lineHeight: 1,
-            display: "grid",
 
-            fontSize: 14,
-          }}
-          sx={{}}
-        >
-          esta es una prueba para ver como se rompe la linea
-        </Typography>
-
-        {/* <Grid sx={{ bgcolor: "pink", display: "grid", alignContent: "start" }}>
+          {/* <Grid sx={{ bgcolor: "pink", display: "grid", alignContent: "start" }}>
           <Typography
             style={{
               whiteSpace: "pre-wrap",
@@ -71,68 +72,70 @@ const ListItem = (price) => {
             esta es una prueba para ver como se rompe la linea
           </Typography>
         </Grid> */}
-      </Grid>
-      <Grid
-        item
-        sm={1}
-        sx={{
-          alignContent: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Box
+        </Grid>
+        <Grid
+          item
+          sm={1}
           sx={{
-            bgcolor: "primary.main",
-            color: "primary.light",
-            width: "80%",
-            borderRadius: 1.5,
+            alignContent: "center",
+            justifyContent: "center",
           }}
         >
-          <Typography variant="h6" sx={{ textAlign: "center", fontSize: 18 }}>
-            1
+          <Box
+            sx={{
+              bgcolor: "primary.main",
+              color: "primary.light",
+              width: "80%",
+              borderRadius: 1.5,
+            }}
+          >
+            <Typography variant="h6" sx={{ textAlign: "center", fontSize: 18 }}>
+              1
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid
+          item
+          sm={3}
+          sx={{
+            display: "grid",
+
+            alignContent: "center",
+            justifyContent: "end",
+          }}
+        >
+          <Typography
+            variant="p"
+            sx={{
+              fontSize: 18,
+              fontWeight: 800,
+            }}
+          >
+            {`${colPesos.format(233323)}`}
           </Typography>
-        </Box>
-      </Grid>
-      <Grid
-        item
-        sm={3}
-        sx={{
-          display: "grid",
-
-          alignContent: "center",
-          justifyContent: "end",
-        }}
-      >
-        <Typography
-          variant="p"
+        </Grid>
+        <Grid
+          item
           sx={{
-            fontSize: 18,
-            fontWeight: 800,
+            alignContent: "center",
+            justifyContent: "center",
+            display: "grid",
+            position: "relative",
+            left: 25,
           }}
         >
-          {`${colPesos.format(233323)}`}
-        </Typography>
-      </Grid>
-      <Grid
-        item
-        sm={1}
-        sx={{
-          alignContent: "center",
-          justifyContent: "center",
-          display: "grid",
-        }}
-      >
-        <DeleteBtn
-          sx={{
-            fontSize: 35,
+          <DeleteBtn
+            sx={{
+              fontSize: 35,
 
-            "&:hover": {
-              cursor: "pointer",
-            },
-          }}
-        />
+              "&:hover": {
+                cursor: "pointer",
+              },
+            }}
+          />
+        </Grid>
       </Grid>
-    </Grid>
+    </Box>
   );
 };
 
