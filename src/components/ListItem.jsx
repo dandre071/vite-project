@@ -79,6 +79,9 @@ const ListItem = (price) => {
           sx={{
             alignContent: "center",
             justifyContent: "center",
+            borderRightStyle: "solid",
+            borderRightWidth: 2,
+            borderColor: "primary.main",
           }}
         >
           <Box
@@ -104,6 +107,7 @@ const ListItem = (price) => {
             justifyContent: "end",
           }}
         >
+          <Divider orientation="vertical" width={2} />
           <Typography
             variant="p"
             sx={{
