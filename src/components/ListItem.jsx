@@ -2,7 +2,7 @@ import { Box, Divider, Grid, Typography } from "@mui/material";
 import DeleteBtn from "./Buttons/DeleteBtn";
 import { colPesos } from "./utils/configs";
 import { themeColors } from "./utils/configs";
-const ListItem = (price) => {
+const ListItem = ({ price, text, name, description, q, total }) => {
   return (
     <Box>
       <Box
@@ -21,8 +21,8 @@ const ListItem = (price) => {
             bgcolor: "white",
             alignContent: "center",
             borderStyle: "solid",
-            borderWidth: 1,
-            borderColor: themeColors.infoDark,
+            borderWidth: 2,
+            borderColor: themeColors.lightPrimary,
           }}
         >
           <Grid
@@ -36,19 +36,18 @@ const ListItem = (price) => {
               gap: 0.5,
             }}
           >
-            <Box>
+            <Box sx={{ display: "flex", alignItems: "end" }}>
               <Typography
                 style={{
                   whiteSpace: "pre-wrap",
                   lineHeight: 1,
-                  display: "grid",
+                  display: "flex",
                   color: themeColors.neutralDark,
-                  fontSize: 18,
-                  fontWeight: 600,
-                  alignContent: "end",
+                  fontSize: 20,
+                  fontWeight: 700,
                 }}
               >
-                esta es una prueba para ver como se rompe la linea fdfdgff
+                {text}
               </Typography>
             </Box>
             <Typography
@@ -56,12 +55,12 @@ const ListItem = (price) => {
                 whiteSpace: "pre-wrap",
                 lineHeight: 1.1,
                 display: "grid",
-                color: themeColors.darkSecondary,
+                color: themeColors.neutralDark,
                 fontSize: 14,
               }}
               sx={{}}
             >
-              esta es una prueba para ver como se rompe la linea ffdfrtrtrtrtr
+              {description}
             </Typography>
 
             {/* <Grid sx={{ bgcolor: "pink", display: "grid", alignContent: "start" }}>
@@ -93,11 +92,11 @@ const ListItem = (price) => {
           >
             <Box
               sx={{
-                /*  bgcolor: "primary.main", */
-                borderStyle: "solid",
-                borderWidth: 1,
-                color: "black",
-                width: "70%",
+                bgcolor: themeColors.success,
+                // borderStyle: "solid",
+                //borderWidth: 1,
+                color: "white",
+                width: "90%",
                 height: 30,
                 borderRadius: 1.5,
                 alignContent: "center",
@@ -106,76 +105,62 @@ const ListItem = (price) => {
             >
               <Typography
                 variant="h6"
-                sx={{ textAlign: "center", fontSize: 18 }}
+                sx={{
+                  textAlign: "center",
+                  fontSize: 20,
+                  fontWeight: 800,
+                  p: 0,
+                }}
               >
-                100
+                {q}
               </Typography>
             </Box>
           </Grid>
           <Grid
             item
-            sm={4}
+            sm={3}
             sx={{
               display: "flex",
-              justifyContent: "space-between",
-              p: 1,
-              alignItems: "center",
               justifyContent: "end",
+
+              alignItems: "center",
             }}
           >
             {/* <Divider orientation="vertical" width={2} /> */}
             <Typography
               variant="p"
               sx={{
-                pr: 2,
-                fontSize: 18,
-                fontWeight: 600,
-                color: "secondary.dark",
+                fontSize: 20,
+                fontWeight: 800,
+                color: "black",
+                textAlign: "right",
               }}
             >
-              {`${colPesos.format(10233323)}`}
+              {`${colPesos.format(total)}`}
             </Typography>
-            {/* <Box
+          </Grid>
+          <Grid
+            item
+            sm={1}
+            sx={{
+              display: "flex",
+              p: 0,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <DeleteBtn
               sx={{
-                bgcolor: "white",
-                width: 35,
-                height: 35,
-                borderRadius: "50%",
+                fontSize: 35,
+                color: themeColors.warning,
+                "&:hover": {
+                  cursor: "pointer",
+                  // color: "red",
+                },
               }}
-            >
-              <DeleteBtn
-                sx={{
-                  fontSize: 35,
-
-                  "&:hover": {
-                    cursor: "pointer",
-                  },
-                }}
-              />
-            </Box> */}
+            />
           </Grid>
         </Grid>
-        <Box
-          sx={{
-            position: "absolute",
-            right: -15,
-            top: 25,
-            bgcolor: "white",
-            width: 35,
-            height: 35,
-            borderRadius: "50%",
-          }}
-        >
-          <DeleteBtn
-            sx={{
-              fontSize: 35,
-
-              "&:hover": {
-                cursor: "pointer",
-              },
-            }}
-          />
-        </Box>
       </Box>
     </Box>
   );

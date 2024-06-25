@@ -40,11 +40,11 @@ export const useLocalStorage = (key, formValues) => {
 
 export const useProduct = (addItem, initialState) => {
   const [products, setProducts] = useState(initialState);
-
+  const [open, setOpen] = useState(true);
   const handleInputChange = (e) => {
     setProducts({ ...products, [e.target.name]: e.target.value });
 
-    console.log(products);
+    // console.log(products);
   };
 
   const totalCalc = () => {
@@ -54,16 +54,12 @@ export const useProduct = (addItem, initialState) => {
     });
   };
 
-  const handlerAdd = (e, handleClose) => {
+  const handlerAdd = (e) => {
     e.preventDefault();
-
     addItem({
       ...products,
     });
-
-    //setProducts(initialState);
     resetForm();
-    handleClose();
   };
 
   const resetForm = () => {
@@ -78,4 +74,14 @@ export const useProduct = (addItem, initialState) => {
     totalCalc,
     resetForm,
   };
+};
+
+export const useOpen = () => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  return { open, setOpen, handleOpen, handleClose };
 };

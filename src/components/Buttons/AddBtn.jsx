@@ -1,6 +1,7 @@
 import { Box, Button, Divider } from "@mui/material";
+import { useOpen } from "../../Hooks/hooks";
 
-const AddBtn = ({ onClick, handleClose }) => {
+const AddBtn = ({ onClick }) => {
   return (
     <Box>
       <Button

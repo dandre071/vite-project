@@ -20,19 +20,27 @@ import { useShoppingCart } from "../../store/shoppingCart.js";
 
 import { colPesos } from "../utils/configs.js";
 import PriceCalc from "../PriceCalc.jsx";
+
 const module = "ManualInput";
 
 const ManualInput2 = ({ text }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  /*  const handleClose = () => {
-    return setOpen(false);
-  }; */
   const handleClose = () => {
-    setOpen(false);
     resetForm();
+    setOpen(false);
   };
+  /*   
+  const handlerAdd = (e) => {
+    e.preventDefault();
+    addItem({
+      ...products,
+    });
+    //resetForm();
+    handleClose();
+  }; */
 
+  /* const { open, setOpen, handleOpen, handleClose } = useOpen(); */
   const initialState = {
     id: "",
     module: "ManualInput",
@@ -55,10 +63,18 @@ const ManualInput2 = ({ text }) => {
   const items = useShoppingCart((state) => state.items);
   const addItem = useShoppingCart((state) => state.addItem);
   //use product hook
-  const { products, handleInputChange, handlerAdd, totalCalc, resetForm } =
-    useProduct(addItem, initialState);
-
-  console.log(items);
+  const {
+    products,
+    setProducts,
+    handleInputChange,
+    handlerAdd,
+    totalCalc,
+    resetForm,
+  } = useProduct(addItem, initialState);
+  const add = () => {
+    handlerAdd;
+  };
+  //console.log(items);
   return (
     <Box>
       <OpenModalBtn text={text} onClick={handleOpen} />

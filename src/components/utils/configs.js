@@ -83,4 +83,5 @@ export const textStyles = {
 export const colPesos = new Intl.NumberFormat("es-CO", {
   style: "currency",
   currency: "COP",
+  minimumFractionDigits: 0,
 });

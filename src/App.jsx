@@ -20,10 +20,10 @@ function Print() {
   /* const { products } = useLocalStorage(); */
 
   return (
-    <div>
+    <Box>
       <ThemeProvider theme={theme}>
         <GetDataForm theme={{ theme }} />
-        <ListItem />
+        {/*  <ListItem /> */}
         {/* <Picker /> */}
         {/*  <h1>
           {(localData = localStorage.getItem("Manual-Products"))}
@@ -32,7 +32,7 @@ function Print() {
         {/*  <ProductList /> */}
         <Cart />
       </ThemeProvider>
-    </div>
+    </Box>
   );
 }
 export default Print;

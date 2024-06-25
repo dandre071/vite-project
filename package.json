@@ -25,6 +25,7 @@
     "react-hook-form": "^7.51.5",
     "react-hook-form-mui": "^7.0.0",
     "styled-components": "^6.1.11",
+    "uuid": "^10.0.0",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
