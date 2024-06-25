@@ -15,7 +15,7 @@ const ModalHeader = ({ title }) => {
   return (
     <>
       <Box
-        style={{ ...header, height: 70 }}
+        style={{ ...header, height: 60 }}
         sx={{
           width: 420,
 
@@ -28,7 +28,7 @@ const ModalHeader = ({ title }) => {
           variant="h5"
           component="h2"
           fontWeight={600}
-          fontSize={"1.8em"}
+          fontSize={"1.5em"}
           sx={{
             textAlign: "left",
             color: themeColors.lightPrimary,
