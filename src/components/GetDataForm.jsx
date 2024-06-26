@@ -58,7 +58,7 @@ const GetDataForm = () => {
           <Text item label={"Email"} />
         </Grid>
         <Grid xs={12} md={5}>
-          <Text item label={"Teléfono"} />
+          <Text type={"tel"} item label={"Teléfono"} />
         </Grid>
 
         <Grid item xs={12} md={4}>

@@ -40,10 +40,17 @@ export const useShoppingCart = create()(
         }));
       },
       updateItem: (product) => {},
-      removeItem: (productId) => {},
+      removeItem: (id) => {
+        set((state) => ({
+          items: state.items.filter((item) => item.id !== id),
+        }));
+      },
       increaseQuantity: (productId, quantity = 1) => {},
       decreaseQuantity: (productId, quantity = 1) => {},
-      getTotalPrice: () => {},
+      getTotalPrice: (items) => {
+        const totalPrice = state.items.map((item) => item.itemTotalPrice);
+        return totalPrice;
+      },
       clearCart: () => {},
     }),
     {

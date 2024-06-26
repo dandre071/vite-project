@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useShoppingCart } from "../store/shoppingCart";
 import { v4 as uuidv4 } from "uuid";
+
 export const useLocalStorage = (key, formValues) => {
   const [formData, setFormData] = useState(formValues);
 
@@ -94,4 +95,14 @@ export const useOpen = () => {
     setOpen(false);
   };
   return { open, setOpen, handleOpen, handleClose };
+};
+
+export const useGetCartTotalPrice = () => {
+  const items = useShoppingCart((state) => state.items);
+  const globalTotalPrice = items.map((item) => item.itemTotalPrice);
+  let total;
+  items.length > 0
+    ? (total = globalTotalPrice.reduce((a, b) => a + b))
+    : (total = 0);
+  return total;
 };

@@ -1,9 +1,13 @@
-import { Box, Grid, Stack } from "@mui/material";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 import useLocalStorage from "../Hooks/useLocalState";
 import { useRef, useState } from "react";
 import { useEffect } from "react";
 import ListItem from "./ListItem";
 import { useShoppingCart } from "../store/shoppingCart";
+import { getTotalCart } from "./utils/helpers";
+import { useGetCartTotalPrice } from "../Hooks/hooks";
+import { colPesos } from "./utils/configs";
+colPesos;
 //import { v4 as uuidv4 } from "uuid";
 const Cart = () => {
   const items = useShoppingCart((state) => state.items);
@@ -12,17 +16,18 @@ const Cart = () => {
     console.log(newList);
   };
  */
+
   const [list, setList] = useState(items);
 
-  const handleRemove = () => {
-    const newList = list.filter((item, index) => !item[index] === 1);
-    setList(newList);
-    console.log(newList);
-  };
-
+  const { removeItem } = useShoppingCart();
+  const totalPrice = useGetCartTotalPrice();
+  console.log(totalPrice);
   return (
     <>
       {" "}
+      <Typography variant="h5">
+        {items.length === 0 && "Aún no has agregado productos"}
+      </Typography>
       <Stack display={"flex"} spacing={1}>
         {items.map((item) => (
           <ListItem
@@ -31,12 +36,18 @@ const Cart = () => {
             total={item.itemTotalPrice}
             q={item.quantity}
             description={item.description}
-            onClick={handleRemove}
+            onClick={() => {
+              removeItem(item.id);
+            }}
           />
         ))}
         {/*  {items.map((item) => (
           <h1 key={item}>{item.name}</h1>
         ))} */}
+        <Typography>{`Artículos en el carrito: ${items.length}`}</Typography>
+        <Typography variant="h5">{`Total Carrito: ${colPesos.format(
+          totalPrice
+        )}`}</Typography>
       </Stack>
     </>
   );

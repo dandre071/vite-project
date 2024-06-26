@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material";
+import { themeColors } from "../components/utils/configs";
 
 export const theme = createTheme({
   palette: {
@@ -42,3 +43,16 @@ export const theme = createTheme({
     },
   },
 });
+
+export const listItemStyle = {
+  width: 550,
+  height: 85,
+  borderRadius: 2,
+  bgcolor: "white",
+
+  alignContent: "center",
+
+  /*  borderStyle: "solid",
+  borderWidth: 2,
+  borderColor: themeColors.lightPrimary, */
+};

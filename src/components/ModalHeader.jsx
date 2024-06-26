@@ -17,7 +17,7 @@ const ModalHeader = ({ title }) => {
       <Box
         style={{ ...header, height: 60 }}
         sx={{
-          width: 420,
+          width: 350,
 
           //bgcolor: themeColors.neutralLight,
           bgcolor: themeColors.mainPrimary,

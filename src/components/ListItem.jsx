@@ -3,6 +3,7 @@ import DeleteBtn from "./Buttons/DeleteBtn";
 import { colPesos } from "./utils/configs";
 import { themeColors } from "./utils/configs";
 import { useShoppingCart } from "../store/shoppingCart";
+import { listItemStyle } from "../Styles/styles";
 
 const ListItem = ({
   price,
@@ -30,20 +31,7 @@ const ListItem = ({
           display: "flex",
         }}
       >
-        <Grid
-          borderRadius={2}
-          container
-          sx={{
-            width: 550,
-            height: 85,
-            borderRadius: 2,
-            bgcolor: "white",
-            alignContent: "center",
-            borderStyle: "solid",
-            borderWidth: 2,
-            borderColor: themeColors.lightPrimary,
-          }}
-        >
+        <Grid borderRadius={2} container sx={listItemStyle}>
           <Grid
             item
             sm={7}
