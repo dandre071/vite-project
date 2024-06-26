@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useShoppingCart } from "../store/shoppingCart";
-
+import { v4 as uuidv4 } from "uuid";
 export const useLocalStorage = (key, formValues) => {
   const [formData, setFormData] = useState(formValues);
 
@@ -58,8 +58,17 @@ export const useProduct = (addItem, initialState) => {
     e.preventDefault();
     addItem({
       ...products,
+      id: uuidv4(),
     });
     resetForm();
+  };
+  const items = useShoppingCart((state) => state.items);
+  const [list, setList] = useState(items);
+
+  const handleRemove = (id) => {
+    const newList = items.filter((item) => item.id !== id);
+
+    setList(newList);
   };
 
   const resetForm = () => {
@@ -73,6 +82,7 @@ export const useProduct = (addItem, initialState) => {
     handlerAdd,
     totalCalc,
     resetForm,
+    handleRemove,
   };
 };
 

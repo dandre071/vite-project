@@ -65,16 +65,19 @@ const ManualInput2 = ({ text }) => {
   //use product hook
   const {
     products,
-    setProducts,
+
     handleInputChange,
     handlerAdd,
     totalCalc,
     resetForm,
   } = useProduct(addItem, initialState);
-  const add = () => {
-    handlerAdd;
-  };
-  //console.log(items);
+
+  /* const removeItem = (id) => {};
+  const cart = items;
+  console.log(items[0]);
+  const newCart = cart.filter((item) => !item.id === id);
+  console.log(newCart); */
+
   return (
     <Box>
       <OpenModalBtn text={text} onClick={handleOpen} />

@@ -2,7 +2,26 @@ import { Box, Divider, Grid, Typography } from "@mui/material";
 import DeleteBtn from "./Buttons/DeleteBtn";
 import { colPesos } from "./utils/configs";
 import { themeColors } from "./utils/configs";
-const ListItem = ({ price, text, name, description, q, total }) => {
+import { useShoppingCart } from "../store/shoppingCart";
+
+const ListItem = ({
+  price,
+  text,
+  name,
+  description,
+  q,
+  total,
+  item,
+  onClick,
+}) => {
+  const items = useShoppingCart((state) => state.items);
+  /* const [newItems, setNewItems] = useState(items); */
+  // console.log(items);
+  /* const handleRemove = (id) => {
+    const newList = items.filter((item) => !item.id == id);
+    console.log(newList);
+  };
+ */
   return (
     <Box>
       <Box
@@ -150,6 +169,7 @@ const ListItem = ({ price, text, name, description, q, total }) => {
             }}
           >
             <DeleteBtn
+              onClick={onClick}
               sx={{
                 fontSize: 35,
                 color: themeColors.warning,
