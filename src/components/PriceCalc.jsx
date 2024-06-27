@@ -2,7 +2,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import CalcBtn from "./Buttons/CalcBtn";
 
-const PriceCalc = ({ name, onClick, onChange, text }) => {
+const PriceCalc = ({ name, onClick, onChange, text, value }) => {
   return (
     <Grid
       sx={{
@@ -33,6 +33,7 @@ const PriceCalc = ({ name, onClick, onChange, text }) => {
           Total:
         </Typography>
         <Typography
+          value={value}
           name={name}
           onChange={onChange}
           sx={{

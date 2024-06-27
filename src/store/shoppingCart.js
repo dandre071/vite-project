@@ -34,9 +34,9 @@ export const useShoppingCart = create()(
   persist(
     (set, get) => ({
       items: [],
-      addItem: (product) => {
+      addItem: (values) => {
         set((state) => ({
-          items: [...state.items, product],
+          items: [...state.items, values],
         }));
       },
       updateItem: (product) => {},

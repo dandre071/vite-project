@@ -57,8 +57,16 @@ const ManualInput2 = ({ text }) => {
   const items = useShoppingCart((state) => state.items);
   const addItem = useShoppingCart((state) => state.addItem);
   //use product hook
+  const {
+    products,
 
-  const formik = useFormik({
+    handleInputChange,
+    handlerAdd,
+    totalCalc,
+    resetForm,
+  } = useProduct(addItem, initialState);
+
+  /* const formik = useFormik({
     initialValues: {
       id: "",
       module: "ManualInput",
@@ -77,17 +85,9 @@ const ManualInput2 = ({ text }) => {
       itemTotalPrice: 0,
     },
     validationSchema: productSchema,
-    onSubmit: (values) => console.log(values),
-  });
+    onSubmit: handlerAdd,
+  }); */
 
-  const {
-    products,
-
-    handleInputChange,
-    handlerAdd,
-    //totalCalc,
-    resetForm,
-  } = useProduct(addItem, formik.initialValues);
   /*  const handlerAdd = async (e) => {
     e.preventDefault();
 
@@ -111,15 +111,6 @@ const ManualInput2 = ({ text }) => {
     //}
   };
  */
-  const [formikValues, setFormikValues] = useState(formik.values);
-
-  const totalCalc = (values) => {
-    setFormikValues({
-      ...formik.values,
-      itemTotalPrice: formik.values.quantity * formik.values.price,
-    });
-  };
-
   return (
     <Box>
       <OpenModalBtn text={text} onClick={handleOpen} />
@@ -165,10 +156,9 @@ const ManualInput2 = ({ text }) => {
             >
               <form
                 //onSubmit={handlerAdd}
-                onSubmit={formik.handleSubmit}
+
                 noValidate
-                //onChange={handleInputChange}
-                onChange={formik.handleChange}
+                onChange={handleInputChange}
               >
                 <Grid container spacing={1.5} sx={{ flexGrow: 1, p: 0, m: 0 }}>
                   <Grid item sm={12}></Grid>
@@ -184,7 +174,7 @@ const ManualInput2 = ({ text }) => {
                       // }
                       name="name"
                       //value={formik.values.name}
-                      value={formik.values.name}
+                      value={products.name}
                       fullWidth
                       label={"Producto"}
                       type="text"
@@ -192,8 +182,7 @@ const ManualInput2 = ({ text }) => {
                         style: { ...inputPropsConf },
                       }}
                       sx={{ ...textStyles }}
-                      // onChange={handleInputChange}
-                      onChange={formik.handleChange}
+                      onChange={handleInputChange}
                     />
                   </Grid>
                   <Grid item sm={8} xs={8}>
@@ -202,17 +191,16 @@ const ManualInput2 = ({ text }) => {
                       fullWidth
                       label={"Precio"}
                       type="number"
-                      value={formik.values.price}
+                      value={products.price}
                       InputProps={{
                         style: inputPropsConf,
                       }}
                       sx={textStyles}
-                      onChange={formik.handleChange}
                     />
                   </Grid>
                   <Grid item sm={4} xs={4}>
                     <TextField
-                      value={formik.values.quantity}
+                      value={products.quantity}
                       name="quantity"
                       fullWidth
                       label={"Cantidad"}
@@ -242,11 +230,11 @@ const ManualInput2 = ({ text }) => {
                         style={{ textStyles }}
                         sx={{ borderRadius: 20 }}
                         defaultValue={"Sin acabado"}
-                        onChange={formik.handleChange}
+                        onChange={handleInputChange}
                       />
 
-                      {(formik.values.finish == "Ojales" ||
-                        formik.values.finish == "Bolsillos") && (
+                      {(products.finish == "Ojales" ||
+                        products.finish == "Bolsillos") && (
                         <TextField
                           sx={{
                             ...inputPropsConf,
@@ -259,7 +247,7 @@ const ManualInput2 = ({ text }) => {
                           label={"Cantidad"}
                           defaultValue={1}
                           variant={"outlined"}
-                          value={formik.values.finishQ}
+                          value={products.finishQ}
                           name="finishQ"
                           InputProps={{
                             style: inputPropsConf,
@@ -271,10 +259,9 @@ const ManualInput2 = ({ text }) => {
                   {/*Total price module*/}
                   <Grid item sm={12} xs={12}>
                     <PriceCalc
-                      value={formik.values.itemTotalPrice}
                       name={"itemTotalPrice"}
-                      //onChange={totalCalc}
-                      text={`${colPesos.format(formik.values.itemTotalPrice)}`}
+                      onChange={totalCalc}
+                      text={`${colPesos.format(products.itemTotalPrice)}`}
                       onClick={totalCalc}
                     />
                   </Grid>
@@ -290,26 +277,26 @@ const ManualInput2 = ({ text }) => {
                       required={false}
                       multiline={true}
                       autofocus={false}
-                      value={formik.values.description}
+                      value={products.description}
                       rows={3}
                     />
                   </Grid>
                 </Grid>
-                {/*  <h2>{`${items[52].name}- ${items[52].finish}`}</h2> */}{" "}
-                <Grid
-                  item
-                  sm={12}
-                  xs={12}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    pt: 2,
-                    pb: 2,
-                  }}
-                >
-                  <AddBtn onClick={handlerAdd} />
-                </Grid>
+                {/*  <h2>{`${items[52].name}- ${items[52].finish}`}</h2> */}
               </form>{" "}
+              <Grid
+                item
+                sm={12}
+                xs={12}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  pt: 2,
+                  pb: 2,
+                }}
+              >
+                <AddBtn onClick={handlerAdd} />
+              </Grid>
             </Box>
           </Box>
         </Box>

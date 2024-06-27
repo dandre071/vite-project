@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useShoppingCart } from "../store/shoppingCart";
 import { v4 as uuidv4 } from "uuid";
-
+import { object, string, number, date, boolean } from "yup";
+import { productSchema } from "../components/Validations";
 export const useLocalStorage = (key, formValues) => {
   const [formData, setFormData] = useState(formValues);
 
@@ -40,29 +41,46 @@ export const useLocalStorage = (key, formValues) => {
 };
 
 export const useProduct = (addItem, initialState) => {
-  const [products, setProducts] = useState(initialState);
-  const [open, setOpen] = useState(true);
-  const handleInputChange = (e) => {
-    setProducts({ ...products, [e.target.name]: e.target.value });
+  /*   let schema = object({
+    name: string().required(),
+    price: number().required().positive().integer(),
+    quantity: number().required().positive().integer(),
+    description: string().required(),
+    height: number().required().positive(),
+    width: number().required().positive(),
+    matWidth: number().required().positive(),
+    finish: string().required(),
+    finishQ: number().required().positive(),
+    material: string().required(),
+    descolillado: string().required(),
+    transfer: boolean(),
+  }); */
 
-    // console.log(products);
+  const [values, setProducts] = useState(initialState);
+  const [open, setOpen] = useState(true);
+
+  const handleInputChange = (e) => {
+    setProducts({ ...values, [e.target.name]: e.target.value });
   };
 
   const totalCalc = () => {
     setProducts({
-      ...products,
-      itemTotalPrice: products.quantity * products.price,
+      ...values,
+      itemTotalPrice: values.quantity * products.price,
     });
   };
 
   const handlerAdd = (e) => {
     e.preventDefault();
+
     addItem({
-      ...products,
+      ...values,
       id: uuidv4(),
     });
+
     resetForm();
   };
+
   const items = useShoppingCart((state) => state.items);
   const [list, setList] = useState(items);
 
@@ -77,7 +95,7 @@ export const useProduct = (addItem, initialState) => {
   };
 
   return {
-    products,
+    values,
     setProducts,
     handleInputChange,
     handlerAdd,
