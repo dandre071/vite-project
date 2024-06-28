@@ -3,7 +3,9 @@ import { useShoppingCart } from "../store/shoppingCart";
 import { v4 as uuidv4 } from "uuid";
 import { object, string, number, date, boolean } from "yup";
 import { productSchema } from "../components/Validations";
-export const useLocalStorage = (key, formValues) => {
+import { useFormik } from "formik";
+
+export const useLocalStorage = (key, formValues, initialValues) => {
   const [formData, setFormData] = useState(formValues);
 
   const handleInputChange = (e) =>
@@ -41,6 +43,26 @@ export const useLocalStorage = (key, formValues) => {
 };
 
 export const useProduct = (addItem, initialState) => {
+  const formik = useFormik({
+    initialValues: {
+      id: "",
+      module: "ManualInput",
+      name: "",
+      price: null,
+      quantity: 1,
+      description: "",
+      height: 0,
+      width: 0,
+      matWidth: 0,
+      finish: "Sin acabado",
+      finishQ: 1,
+      material: "",
+      descolillado: "",
+      transfer: false,
+      itemTotalPrice: 0,
+    },
+  });
+
   /*   let schema = object({
     name: string().required(),
     price: number().required().positive().integer(),
@@ -66,8 +88,12 @@ export const useProduct = (addItem, initialState) => {
   const totalCalc = () => {
     setProducts({
       ...values,
-      itemTotalPrice: values.quantity * products.price,
+      itemTotalPrice: values.quantity * values.price,
     });
+  };
+  const resetForm = () => {
+    formik.setValues(formik.initialValues);
+    // setProducts(initialState);
   };
 
   const handlerAdd = (e) => {
@@ -88,10 +114,6 @@ export const useProduct = (addItem, initialState) => {
     const newList = items.filter((item) => item.id !== id);
 
     setList(newList);
-  };
-
-  const resetForm = () => {
-    setProducts(initialState);
   };
 
   return {

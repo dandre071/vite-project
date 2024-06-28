@@ -19,7 +19,7 @@ const FormSelect2 = ({
   style,
 }) => {
   return (
-    <FormControl fullWidth sx={{ my: 1 }}>
+    <FormControl fullWidth sx={{ my: 1 }} onChange={onChange}>
       <InputLabel id={`input-label-${name}`}>{label}</InputLabel>
 
       <Box sx={{ display: "flex" }}>
