@@ -24,29 +24,42 @@ const Cart = () => {
   console.log(totalPrice);
   return (
     <>
-      {" "}
-      <Typography variant="h5">
-        {items.length === 0 && "Aún no has agregado productos"}
-      </Typography>
-      <Stack display={"flex"} spacing={1}>
-        {items.map((item) => (
-          <ListItem
-            key={item.index}
-            text={item.name}
-            total={item.itemTotalPrice}
-            q={item.quantity}
-            description={item.description}
-            onClick={() => {
-              removeItem(item.id);
-            }}
-          />
-        ))}
-
+      <Box borderRadius={2} sx={{ bgcolor: "green", height: 70 }}>
         <Typography>{`Artículos en el carrito: ${items.length}`}</Typography>
         <Typography variant="h5">{`Total Carrito: ${colPesos.format(
           totalPrice
         )}`}</Typography>
-      </Stack>
+      </Box>
+      <Box
+        spacing={2}
+        sx={{
+          minWidth: 450,
+          minHeight: 100,
+          bgcolor: "red",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {" "}
+        <Typography variant="h5">
+          {items.length === 0 && "Aún no has agregado productos"}
+        </Typography>
+        <Stack display={"flex"} spacing={1}>
+          {items.map((item) => (
+            <ListItem
+              key={item.index}
+              text={item.name}
+              total={item.itemTotalPrice}
+              q={item.quantity}
+              description={item.description}
+              onClick={() => {
+                removeItem(item.id);
+              }}
+            />
+          ))}
+        </Stack>
+      </Box>
     </>
   );
 };
