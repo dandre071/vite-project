@@ -29,7 +29,8 @@ const ManualInput2 = ({ text }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
-    resetForm();
+    //resetForm();
+    formik.resetForm();
     setOpen(false);
   };
   const handlerAdd = (e) => {
@@ -37,7 +38,7 @@ const ManualInput2 = ({ text }) => {
       ...formik.values,
       id: uuidv4(),
     });
-    resetForm();
+    formik.resetForm();
     setOpen(false);
   };
   const initialState = {
@@ -59,7 +60,7 @@ const ManualInput2 = ({ text }) => {
   };
   const styleParams = { radius: 20, padd: 6 };
   //use Zustand store
-  const items = useShoppingCart((state) => state.items);
+  //const items = useShoppingCart((state) => state.items);
   const addItem = useShoppingCart((state) => state.addItem);
   //use product hook
 
@@ -86,16 +87,12 @@ const ManualInput2 = ({ text }) => {
     onSubmit: handlerAdd,
   });
 
-  console.log(formik.errors);
+  //console.log(formik.errors);
   const totalCalc = () => {
     formik.setValues({
       ...formik.values,
       itemTotalPrice: formik.values.quantity * formik.values.price,
     });
-  };
-
-  const resetForm = () => {
-    formik.setValues(formik.initialValues);
   };
 
   return (
