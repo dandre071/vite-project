@@ -17,14 +17,11 @@ import {
 } from "../utils/configs.js";
 import { useProduct } from "../../Hooks/hooks.js";
 import { useShoppingCart } from "../../store/shoppingCart.js";
-
 import { colPesos } from "../utils/configs.js";
 import PriceCalc from "../PriceCalc.jsx";
-
 import { v4 as uuidv4 } from "uuid";
 import { productSchema } from "../Validations.js";
-import { useFormik, Formik, Field, ErrorMessage } from "formik";
-import { object, string, number, date, boolean } from "yup";
+import { useFormik } from "formik";
 
 const module = "ManualInput";
 
@@ -35,22 +32,14 @@ const ManualInput2 = ({ text }) => {
     resetForm();
     setOpen(false);
   };
-  const productSchema = object().shape({
-    name: string().required("Invalid email address"),
-    //.min(1, "El nombre tiene que tener al menos un carácter")
-    // .max(10, "El nombre no puede superar los 10 carácteres"),
-    price: number().required().positive().integer(),
-    quantity: number().required().positive().integer(),
-    description: string(),
-    //height: number().required().positive(),
-    //width: number().required().positive(),
-    //matWidth: number().required().positive(),
-    finish: string().required(),
-    finishQ: number()?.required().positive(),
-    //material: string().required(),
-    //descolillado: string().required(),
-    // transfer: boolean(),
-  });
+  const handlerAdd = (e) => {
+    addItem({
+      ...formik.values,
+      id: uuidv4(),
+    });
+    resetForm();
+    setOpen(false);
+  };
   const initialState = {
     id: "",
     module: "ManualInput",
@@ -93,40 +82,22 @@ const ManualInput2 = ({ text }) => {
       itemTotalPrice: 0,
     },
     validationSchema: productSchema,
-    //onSubmit: handlerAdd,
+
+    onSubmit: handlerAdd,
   });
 
-  console.log(formik.values);
+  console.log(formik.errors);
   const totalCalc = () => {
     formik.setValues({
       ...formik.values,
       itemTotalPrice: formik.values.quantity * formik.values.price,
     });
   };
-  /*   const {
-    //handlerAdd,
-    //totalCalc,
-    resetForm,
-  } = useProduct(addItem, formik.values); */
+
   const resetForm = () => {
     formik.setValues(formik.initialValues);
-    // setProducts(initialState);
-  };
-  const handlerAdd = (e) => {
-    e.preventDefault();
-
-    addItem({
-      ...formik.values,
-      id: uuidv4(),
-    });
-
-    resetForm();
-    setOpen(false);
   };
 
-  const errorMessage = (message) => (
-    <p className="validation-error-message">{message}</p>
-  );
   return (
     <Box>
       <OpenModalBtn text={text} onClick={handleOpen} />
@@ -138,21 +109,23 @@ const ManualInput2 = ({ text }) => {
       >
         <Box>
           <Box
-            borderRadius="10px"
+            //borderRadius="10px"
             sx={{
               ...styleConf,
               alignContent: "center",
               justifyContent: "center",
               display: "grid",
-              gridTemplateRows: "1fr 2fr 1fr",
-              pt: 2,
+              gridTemplateRows: "2fr 1fr",
+              pt: 0,
             }}
           >
             <Box
               sx={{
+                position: "relative",
+                top: 30,
                 display: "flex",
                 justifyContent: "center",
-                alignItems: "end    ",
+                alignItems: "end",
               }}
             >
               <ModalHeader title={"Configuración Manual"} style={{}} />
@@ -161,61 +134,48 @@ const ManualInput2 = ({ text }) => {
             <Box
               borderRadius="10px"
               sx={{
-                pt: 0,
+                pt: 5,
                 pr: 6,
                 pl: 6,
                 pb: 1,
-                borderTopRightRadius: styleParams.radius,
-                borderTopLeftRadius: styleParams.radius,
+
+                borderRadius: 3,
                 bgcolor: "white",
               }}
             >
-              <form
-                //onSubmit={handlerAdd}
-                onSubmit={handlerAdd}
-                noValidate
-                //onChange={handleInputChange}
-                //onChange={formik.handleChange}
-              >
+              <form onSubmit={formik.handleSubmit}>
                 <Grid container spacing={1.5} sx={{ flexGrow: 1, p: 0, m: 0 }}>
                   <Grid item sm={12}></Grid>
                   <Grid item sm={12} xs={12}>
                     <TextField
-                      required
-                      //fieldState={!error}
-                      //error={!products.name}
-                      //helperText="Campo requerido."
-                      //helperText={
-                      /* products.name == 0 ? "Campo requerido" : "ererer" */
-                      //  textFieldError()
-                      // }
-                      name="name"
-                      //value={formik.values.name}
+                      onBlur={formik.handleBlur}
+                      error={formik.errors.name && formik.touched.name}
+                      helperText={formik.errors.name}
                       value={formik.values.name}
+                      name="name"
+                      onChange={formik.handleChange}
                       fullWidth
                       label={"Producto"}
                       type="text"
                       InputProps={{
-                        style: { ...inputPropsConf },
+                        style: inputPropsConf,
                       }}
-                      sx={{ ...textStyles }}
-                      // onChange={handleInputChange}
-                      onChange={formik.handleChange}
                     />
-                    {/* <ErrorMessage name="name" render={errorMessage} /> */}
+                    {/* {formik.errors.name && <p>{formik.errors.name}</p>} */}
                   </Grid>
                   <Grid item sm={8} xs={8}>
                     <TextField
+                      error={formik.errors.price}
+                      helperText={formik.errors.price}
+                      value={formik.values.price}
+                      onChange={formik.handleChange}
                       name="price"
                       fullWidth
                       label={"Precio"}
                       type="number"
-                      value={formik.values.price}
                       InputProps={{
                         style: inputPropsConf,
                       }}
-                      sx={textStyles}
-                      onChange={formik.handleChange}
                     />
                   </Grid>
                   <Grid item sm={4} xs={4}>
@@ -233,6 +193,15 @@ const ManualInput2 = ({ text }) => {
                     />
                   </Grid>
                   <Grid item sm={12} xs={12}>
+                    <PriceCalc
+                      value={formik.values.itemTotalPrice}
+                      name={"itemTotalPrice"}
+                      text={`${colPesos.format(formik.values.itemTotalPrice)}`}
+                      onClick={totalCalc}
+                    />
+                  </Grid>
+
+                  <Grid item sm={12} xs={12}>
                     <Box
                       sx={{
                         display: "flex",
@@ -243,6 +212,8 @@ const ManualInput2 = ({ text }) => {
                       }}
                     >
                       <FormSelect2
+                        error={formik.errors.finish}
+                        helperText={formik.errors.finish}
                         fullWidth
                         name="finish"
                         options={acabados}
@@ -279,15 +250,6 @@ const ManualInput2 = ({ text }) => {
                     </Box>
                   </Grid>
                   {/*Total price module*/}
-                  <Grid item sm={12} xs={12}>
-                    <PriceCalc
-                      value={formik.values.itemTotalPrice}
-                      name={"itemTotalPrice"}
-                      //onChange={totalCalc}
-                      text={`${colPesos.format(formik.values.itemTotalPrice)}`}
-                      onClick={totalCalc}
-                    />
-                  </Grid>
 
                   <Grid item sm={12} xs={12}>
                     <FormInputText
@@ -306,7 +268,7 @@ const ManualInput2 = ({ text }) => {
                     />
                   </Grid>
                 </Grid>
-                {/*  <h2>{`${items[52].name}- ${items[52].finish}`}</h2> */}{" "}
+
                 <Grid
                   item
                   sm={12}

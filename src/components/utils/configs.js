@@ -63,23 +63,6 @@ export const textStyles = {
   borderRadius: 1.5,
 };
 
-/* export const initialState = {
-  id: "",
-  name: "",
-  price: 0,
-  quantity: 0,
-  description: "",
-  height: 0,
-  width: 0,
-  matWidth: 0,
-  finish: "Sin acabado",
-  finishQ: 0,
-  material: "",
-  descolillado: "",
-  transfer: false,
-  itemTotalPrice: 0,
-};
- */
 export const colPesos = new Intl.NumberFormat("es-CO", {
   style: "currency",
   currency: "COP",

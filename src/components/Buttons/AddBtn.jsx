@@ -1,7 +1,7 @@
 import { Box, Button, Divider } from "@mui/material";
 import { useOpen } from "../../Hooks/hooks";
 
-const AddBtn = ({ onClick }) => {
+const AddBtn = ({ onClick, onSubmit }) => {
   return (
     <Box>
       <Button
@@ -21,7 +21,8 @@ const AddBtn = ({ onClick }) => {
         disableElevation
         disableRipple
         //onSubmit={onClick}
-        onClick={onClick}
+
+        onClick={onSubmit}
       >
         Agregar
       </Button>

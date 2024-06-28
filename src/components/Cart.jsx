@@ -41,9 +41,7 @@ const Cart = () => {
             }}
           />
         ))}
-        {/*  {items.map((item) => (
-          <h1 key={item}>{item.name}</h1>
-        ))} */}
+
         <Typography>{`Artículos en el carrito: ${items.length}`}</Typography>
         <Typography variant="h5">{`Total Carrito: ${colPesos.format(
           totalPrice

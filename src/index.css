@@ -15,3 +15,12 @@ body {
   justify-content: center;
   /* background-color: rgb(177, 206, 233);*/
 }
+
+.input-error {
+  border-style: solid;
+  border-color: "red";
+  border-width: 2;
+}
+.test {
+  background-color: red;
+}

@@ -17,6 +17,8 @@ const FormSelect2 = ({
   value,
   theme,
   style,
+  error,
+  helperText,
 }) => {
   return (
     <FormControl fullWidth sx={{ my: 1 }} onChange={onChange}>
@@ -40,7 +42,7 @@ const FormSelect2 = ({
           style={{ ...style, borderStyle: "none" }}
         >
           {options.map((option, index) => (
-            <MenuItem value={option} key={index} sx={{ style }}>
+            <MenuItem error={error} value={option} key={index} sx={{ style }}>
               {option}
             </MenuItem>
           ))}
