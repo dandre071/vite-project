@@ -24,14 +24,15 @@ const Cart = () => {
     <>
       <Box
         sx={{
-          // bgcolor: "#f7f7f7",
+          bgcolor: "white",
           gap: 1,
           borderRadius: 2,
           display: "grid",
-          gridTemplateRows: "50px auto 150px",
+          gridTemplateRows: "50px auto auto",
           justifyContent: "start",
           alignItems: "center",
           p: 1,
+          border: `2px solid #f3f3f3`,
         }}
       >
         {/********** */}
@@ -41,6 +42,7 @@ const Cart = () => {
             color: "black",
             height: "100%",
             bgcolor: "#f7f7f7",
+            bgcolor: "primary.main",
             width: "100%",
             borderRadius: 2,
             display: "grid",
@@ -58,11 +60,10 @@ const Cart = () => {
 
         <Stack spacing={1} sx={{ alignItems: "center" }}>
           <Box
-            spacing={1}
             sx={{
-              border: `2px solid #f3f3f3`,
+              //border: `2px solid #f3f3f3`,
               width: 550,
-              minHeight: 300,
+              minHeight: "auto",
               //bgcolor: "#f7f7f7",
               //bgcolor: "white",
               display: "flex",
@@ -78,7 +79,7 @@ const Cart = () => {
               <Box
                 sx={{
                   position: "relative",
-                  top: 50,
+                  //top: 50,
                   display: "flex",
                   flexDirection: "column",
 
@@ -138,7 +139,6 @@ const Cart = () => {
             justifySelf: "center",
             width: 550,
             height: 100,
-            pt: 3,
           }}
         >
           <Stack direction={"row"} sx={{}}>
