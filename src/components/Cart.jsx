@@ -22,82 +22,136 @@ const Cart = () => {
   console.log(totalPrice);
   return (
     <>
-      <Stack spacing={1} sx={{ alignItems: "center" }}>
-        <Box sx={{ position: "relative", top: 40 }}>
-          <ModalHeader title={"Carrito de Compras"} />
-        </Box>
-
+      <Box
+        sx={{
+          // bgcolor: "#f7f7f7",
+          gap: 1,
+          borderRadius: 2,
+          display: "grid",
+          gridTemplateRows: "50px auto 150px",
+          justifyContent: "start",
+          alignItems: "center",
+          p: 1,
+        }}
+      >
+        {/********** */}
         <Box
-          spacing={2}
           sx={{
-            width: 550,
-            minHeight: 100,
-            bgcolor: "secondary.light",
-            display: "flex",
+            position: "relative",
+            color: "black",
+            height: "100%",
+            bgcolor: "#f7f7f7",
+            width: "100%",
+            borderRadius: 2,
+            display: "grid",
+
             justifyContent: "center",
             alignItems: "center",
-            borderRadius: 3,
-            p: 2,
-            pt: 6,
           }}
         >
-          {items.length === 0 && (
-            <Stack sx={{ display: "flex", alignItems: "center" }}>
-              <ShoppingBagOutlinedIcon
-                sx={{ fontSize: 80, color: "secondary.dark" }}
-              />
-              <Typography variant="h5" sx={{ color: "secondary.dark" }}>
-                Aún no has agregado productos
-              </Typography>
-            </Stack>
-          )}
-
-          <Stack display={"flex"} spacing={1}>
-            {items.map((item) => (
-              <ListItem
-                key={item.index}
-                text={item.name}
-                total={item.itemTotalPrice}
-                q={item.quantity}
-                description={item.description}
-                onClick={() => {
-                  removeItem(item.id);
-                }}
-              />
-            ))}
-          </Stack>
+          <Typography variant="h5" sx={{ fontWeight: 600 }}>
+            Compras
+          </Typography>
         </Box>
-        {items.length !== 0 && (
-          <Box borderRadius={2} sx={{ bgcolor: "primary.dark", height: 120 }}>
-            <Stack
-              spacing={1}
-              sx={{
-                alignItems: "center",
-                pt: 3,
-                width: 580,
-                justifyContent: "space-evenly",
-              }}
-            >
-              <Stack
-                direction={"row"}
+        {/********** */}
+        {/********** */}
+
+        <Stack spacing={1} sx={{ alignItems: "center" }}>
+          <Box
+            spacing={1}
+            sx={{
+              border: `2px solid #f3f3f3`,
+              width: 550,
+              minHeight: 300,
+              //bgcolor: "#f7f7f7",
+              //bgcolor: "white",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "start",
+              alignItems: "center",
+              borderRadius: 2,
+              pt: 2,
+              pb: 2,
+            }}
+          >
+            {items.length === 0 && (
+              <Box
                 sx={{
+                  position: "relative",
+                  top: 50,
                   display: "flex",
-                  justifyContent: "space-between",
-                  width: 500,
+                  flexDirection: "column",
+
+                  alignSelf: "center",
                 }}
               >
-                <Typography>{`Artículos: ${items.length}`}</Typography>
-                <Typography
-                  variant="h5"
-                  sx={{ fontWeight: 600, color: "primary.light" }}
-                >{`Total: ${colPesos.format(totalPrice)}`}</Typography>
-              </Stack>
-
-              <AddBtn width={300} bg={"primary.light"} color={"primary.dark"} />
-            </Stack>
+                <Stack
+                  sx={{
+                    alignItems: "center",
+                    alignSelf: "center",
+                  }}
+                >
+                  <ShoppingBagOutlinedIcon
+                    sx={{ fontSize: 80, color: "secondary.main" }}
+                  />
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      color: "secondary.main",
+                    }}
+                  >
+                    Aún no se han agregado productos.
+                  </Typography>
+                </Stack>
+              </Box>
+            )}
+            <Stack display={"flex"} spacing={1}>
+              {items.map((item) => (
+                <ListItem
+                  key={item.index}
+                  text={item.name}
+                  total={item.itemTotalPrice}
+                  q={item.quantity}
+                  description={item.description}
+                  onClick={() => {
+                    removeItem(item.id);
+                  }}
+                />
+              ))}
+            </Stack>{" "}
+            {/********** */}
           </Box>
-        )}
-      </Stack>
+          {/* {items.length !== 0 && (
+         >
+          </Box>
+        )} */}
+        </Stack>
+        {/********** */}
+
+        <Stack
+          sx={{
+            display: "flex",
+            borderRadius: 2,
+            bgcolor: "primary.light",
+            alignItems: "center",
+            justifyContent: "center",
+            justifySelf: "center",
+            width: 550,
+            height: 100,
+            pt: 3,
+          }}
+        >
+          <Stack direction={"row"} sx={{}}>
+            <Typography>{`Artículos: ${items.length}`}</Typography>
+            <Typography
+              variant="h5"
+              sx={{ fontWeight: 600, color: "primary.dark" }}
+            >{`Total: ${colPesos.format(totalPrice)}`}</Typography>
+          </Stack>
+
+          <AddBtn width={300} bg={"primary.main"} color={"primary.light"} />
+        </Stack>
+      </Box>
     </>
   );
 };

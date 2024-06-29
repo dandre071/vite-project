@@ -25,7 +25,7 @@ const ListItem = ({
         sx={{
           position: "relative",
           display: "flex",
-          width: 530,
+          width: 500,
         }}
       >
         <Grid borderRadius={2} container sx={listItemStyle}>
@@ -125,40 +125,28 @@ const ListItem = ({
             </Typography>
           </Grid>
           <Grid
-            item
-            sm={1}
             sx={{
-              display: "flex",
+              top: 20,
+              left: 20,
+              position: "relative",
               p: 0,
               alignItems: "center",
               justifyContent: "center",
             }}
           >
-            <motion.div
-              className="animatable"
-              whileHover={{
-                //scale: 1.2,
-                // rotateZ: 180,
+            <DeleteBtn
+              onClick={onClick}
+              sx={{
+                fontSize: 38,
+                color: themeColors.warning,
+                bgcolor: "white",
+                borderRadius: "50%",
 
-                originX: "50%",
-                originY: "50%",
-
-                // rotateZ: 180,
-                transition: { duration: 0.3 },
+                "&:hover": {
+                  cursor: "pointer",
+                },
               }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <DeleteBtn
-                onClick={onClick}
-                sx={{
-                  fontSize: 35,
-                  color: themeColors.warning,
-                  "&:hover": {
-                    cursor: "pointer",
-                  },
-                }}
-              />
-            </motion.div>
+            />
           </Grid>
         </Grid>
       </Box>

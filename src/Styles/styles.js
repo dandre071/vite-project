@@ -52,7 +52,10 @@ export const listItemStyle = {
 
   alignContent: "center",
 
-  /*  borderStyle: "solid",
+  borderStyle: "solid",
   borderWidth: 2,
-  borderColor: themeColors.lightPrimary, */
+  borderColor: "secondary.light",
+  /*  "&:hover": {
+    bgcolor: "#F5F5F5",
+  }, */
 };
