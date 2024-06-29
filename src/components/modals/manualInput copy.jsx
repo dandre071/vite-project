@@ -277,7 +277,7 @@ const ManualInput2 = ({ text }) => {
                     pb: 2,
                   }}
                 >
-                  <AddBtn onSubmit={formik.handleSubmit} />
+                  <AddBtn onSubmit={formik.handleSubmit} width={200} />
                 </Grid>
               </form>{" "}
             </Box>

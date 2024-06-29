@@ -1,6 +1,6 @@
 import { Padding } from "@mui/icons-material";
 import { Box, Divider, Typography } from "@mui/material";
-import React from "react";
+
 import { themeColors } from "./utils/configs";
 const header = {
   display: "grid",
@@ -19,7 +19,6 @@ const ModalHeader = ({ title }) => {
         sx={{
           width: 350,
 
-          //bgcolor: themeColors.neutralLight,
           bgcolor: themeColors.mainPrimary,
           borderRadius: 3,
         }}
@@ -32,9 +31,6 @@ const ModalHeader = ({ title }) => {
           sx={{
             textAlign: "left",
             color: themeColors.lightPrimary,
-            // color: "black",
-
-            //bgcolor: themeColors.lightPrimary,
 
             borderRadius: 2,
           }}
@@ -42,8 +38,6 @@ const ModalHeader = ({ title }) => {
           {title}
         </Typography>
       </Box>
-      {/*<Divider sx={{ borderWidth: 0.7, bgcolor: "secondary.dark" }} />*/}
-      {/*  <Divider sx={{ borderColor: "secondary.light", borderWidth: 1 }} /> */}
     </>
   );
 };

@@ -5,6 +5,7 @@ import { themeColors } from "./utils/configs";
 import { useShoppingCart } from "../store/shoppingCart";
 import { listItemStyle, theme } from "../Styles/styles";
 import { motion } from "framer-motion";
+import ModalHeader from "./ModalHeader";
 motion;
 const ListItem = ({
   price,
@@ -24,6 +25,7 @@ const ListItem = ({
         sx={{
           position: "relative",
           display: "flex",
+          width: 530,
         }}
       >
         <Grid borderRadius={2} container sx={listItemStyle}>

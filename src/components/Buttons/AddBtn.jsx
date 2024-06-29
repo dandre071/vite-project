@@ -1,20 +1,28 @@
 import { Box, Button, Divider } from "@mui/material";
 import { useOpen } from "../../Hooks/hooks";
 
-const AddBtn = ({ onClick, onSubmit }) => {
+const AddBtn = ({ onClick, onSubmit, width, color, bg }) => {
   return (
     <Box>
       <Button
+        fullWidth
         sx={{
           height: 50,
           fontSize: 22,
           textTransform: " initial",
-          color: "white",
-          bgcolor: "primary.main",
-          width: 200,
+          color: color,
+          bgcolor: bg,
+          width: width,
           borderRadius: 2.5,
           pt: 3,
           pb: 3,
+          "&:hover": {
+            color: bg,
+            bgcolor: "primary.main",
+            borderStyle: "solid",
+            borderWidth: 3,
+            borderColor: bg,
+          },
         }}
         type="submit"
         variant="contained"
