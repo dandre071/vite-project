@@ -43,10 +43,10 @@ const Cart = () => {
             height: "100%",
             bgcolor: "#f7f7f7",
             bgcolor: "primary.main",
-            width: "100%",
+            width: "90%",
             borderRadius: 2,
             display: "grid",
-
+            justifySelf: "center",
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -137,7 +137,7 @@ const Cart = () => {
             alignItems: "center",
             justifyContent: "center",
             justifySelf: "center",
-            width: 550,
+            width: 500,
             height: 100,
           }}
         >
