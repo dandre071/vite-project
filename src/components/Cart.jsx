@@ -32,6 +32,8 @@ const Cart = () => {
           justifyContent: "start",
           alignItems: "center",
           p: 1,
+          pb: 2,
+          pt: 2,
           border: `2px solid #f3f3f3`,
         }}
       >
@@ -39,11 +41,11 @@ const Cart = () => {
         <Box
           sx={{
             position: "relative",
-            color: "black",
+            color: "primary.light",
             height: "100%",
             bgcolor: "#f7f7f7",
             bgcolor: "primary.main",
-            width: "90%",
+            width: "95%",
             borderRadius: 2,
             display: "grid",
             justifySelf: "center",
@@ -137,7 +139,7 @@ const Cart = () => {
             alignItems: "center",
             justifyContent: "center",
             justifySelf: "center",
-            width: 500,
+            width: 525,
             height: 100,
           }}
         >

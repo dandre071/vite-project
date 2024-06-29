@@ -25,7 +25,7 @@ const ListItem = ({
         sx={{
           position: "relative",
           display: "flex",
-          width: 500,
+          width: 520,
         }}
       >
         <Grid borderRadius={2} container sx={listItemStyle}>
