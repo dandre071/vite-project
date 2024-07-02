@@ -7,10 +7,10 @@ import ProductPriceModal from "./components/ProductPriceModal";
 import Text from "./components/TextField";
 import GetDataForm from "./components/GetDataForm";
 import { Box, createTheme, Grid, ThemeProvider } from "@mui/material";
-import ProductList from "./components/ProductList";
-import Picker from "./components/Picker";
-import { theme } from "./Styles/styles";
+
+//import { theme } from "./Styles/styles";
 import Cart from "./components/Cart";
+import { customTheme } from "./Hooks/useCustomTheme";
 import useLocalStorage from "./Hooks/useLocalState";
 import { useEffect, useState } from "react";
 import ManualInput from "./components/modals/manualInput";
@@ -21,8 +21,8 @@ function Print() {
 
   return (
     <Box>
-      <ThemeProvider theme={theme}>
-        <GetDataForm theme={{ theme }} />
+      <ThemeProvider theme={customTheme}>
+        <GetDataForm />
         {/*  <ListItem /> */}
         {/* <Picker /> */}
         {/*  <h1>
