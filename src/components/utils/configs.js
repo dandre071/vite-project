@@ -9,7 +9,7 @@ export const styleConf = {
   height: 500,
   bgcolor: `white`,
   p: 0,
-  boxShadow: 5,
+  boxShadow: 2,
 };
 
 export const themeColors = {
@@ -35,7 +35,7 @@ export const themeColors = {
 const globalTextBlue = themeColors.mainPrimary;
 
 export const inputPropsConf = {
-  color: globalTextBlue,
+  color: themeColors.mainText,
   bgcolor: "white",
   /*  bgcolor: themeColors.bgLight, */
   fontWeight: 500,
@@ -46,7 +46,7 @@ export const inputPropsConf = {
 export const fieldStyle = {
   /* color: themeColors.mainText, */
   /*  bgcolor: themeColors.bgLight, */
-  color: globalTextBlue,
+  color: themeColors.darkText,
   bgcolor: "white",
   fontWeight: 500,
   fontSize: 18,
@@ -57,6 +57,7 @@ export const textStyles = {
   p: 0,
   m: 0,
   /*  bgcolor: themeColors.bgLight, */
+  color: themeColors.darkText,
   bgcolor: "white",
   fontSize: 3,
   fontWeight: 400,

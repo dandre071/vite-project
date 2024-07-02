@@ -15,13 +15,14 @@ import {
   inputPropsConf,
   textStyles,
 } from "../utils/configs.js";
-import { useProduct } from "../../Hooks/hooks.js";
+
 import { useShoppingCart } from "../../store/shoppingCart.js";
 import { colPesos } from "../utils/configs.js";
 import PriceCalc from "../PriceCalc.jsx";
 import { v4 as uuidv4 } from "uuid";
 import { productSchema } from "../Validations.js";
 import { useFormik } from "formik";
+import { InputLabelProps, primaryFilledBtn } from "../../Styles/styles.js";
 
 const module = "ManualInput";
 
@@ -109,11 +110,13 @@ const ManualInput2 = ({ text }) => {
             //borderRadius="10px"
             sx={{
               ...styleConf,
+
               alignContent: "center",
               justifyContent: "center",
               display: "grid",
               gridTemplateRows: "2fr 1fr",
-              pt: 0,
+
+              borderRadius: 2,
             }}
           >
             <Box
@@ -123,13 +126,14 @@ const ManualInput2 = ({ text }) => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "end",
+                //backgroundColor: "red",
               }}
             >
               <ModalHeader title={"Configuración Manual"} style={{}} />
             </Box>
 
             <Box
-              borderRadius="10px"
+              borderRadius={10}
               sx={{
                 pt: 5,
                 pr: 6,
@@ -157,6 +161,9 @@ const ManualInput2 = ({ text }) => {
                       InputProps={{
                         style: inputPropsConf,
                       }}
+                      SelectProps={{ bgcolor: "white" }}
+                      startAdornment
+                      InputLabelProps={InputLabelProps}
                     />
                     {/* {formik.errors.name && <p>{formik.errors.name}</p>} */}
                   </Grid>
@@ -173,6 +180,7 @@ const ManualInput2 = ({ text }) => {
                       InputProps={{
                         style: inputPropsConf,
                       }}
+                      InputLabelProps={InputLabelProps}
                     />
                   </Grid>
                   <Grid item sm={4} xs={4}>
@@ -187,6 +195,7 @@ const ManualInput2 = ({ text }) => {
                       }}
                       sx={{ ...textStyles, textAlign: "right" }}
                       onChange={formik.handleChange}
+                      InputLabelProps={InputLabelProps}
                     />
                   </Grid>
                   <Grid item sm={12} xs={12}>
@@ -220,6 +229,7 @@ const ManualInput2 = ({ text }) => {
                         sx={{ borderRadius: 20 }}
                         defaultValue={"Sin acabado"}
                         onChange={formik.handleChange}
+                        InputLabelProps={InputLabelProps}
                       />
 
                       {(formik.values.finish == "Ojales" ||
@@ -242,6 +252,7 @@ const ManualInput2 = ({ text }) => {
                             style: inputPropsConf,
                           }}
                           onChange={formik.handleChange}
+                          InputLabelProps={InputLabelProps}
                         />
                       )}
                     </Box>
@@ -258,7 +269,7 @@ const ManualInput2 = ({ text }) => {
                       type="text"
                       required={false}
                       multiline={true}
-                      autofocus={false}
+                      autofocus
                       value={formik.values.description}
                       rows={3}
                       onChange={formik.handleChange}
@@ -277,7 +288,11 @@ const ManualInput2 = ({ text }) => {
                     pb: 2,
                   }}
                 >
-                  <AddBtn onSubmit={formik.handleSubmit} width={200} />
+                  <AddBtn
+                    onSubmit={formik.handleSubmit}
+                    width={370}
+                    sx={{ ...primaryFilledBtn, width: 370 }}
+                  />
                 </Grid>
               </form>{" "}
             </Box>

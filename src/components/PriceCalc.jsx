@@ -1,13 +1,14 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import CalcBtn from "./Buttons/CalcBtn";
+import { secondaryBtn } from "../Styles/styles";
 
 const PriceCalc = ({ name, onClick, onChange, text, value }) => {
   return (
     <Grid
       sx={{
         display: "grid",
-        bgcolor: "secondary.light",
+        bgcolor: "primary.light",
         borderRadius: 2,
         gridTemplateColumns: "4fr 8fr",
         p: 1.5,
@@ -18,7 +19,7 @@ const PriceCalc = ({ name, onClick, onChange, text, value }) => {
       item
     >
       <Box>
-        <CalcBtn onClick={onClick} />
+        <CalcBtn onClick={onClick} sx={secondaryBtn} />
       </Box>
       <Box>
         <Typography

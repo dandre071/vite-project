@@ -15,11 +15,11 @@ const ModalHeader = ({ title }) => {
   return (
     <>
       <Box
-        style={{ ...header, height: 60 }}
+        style={{ ...header, height: 80, color: "white" }}
         sx={{
-          width: 350,
+          width: 400,
 
-          bgcolor: themeColors.mainPrimary,
+          bgcolor: "primary.main",
           borderRadius: 3,
         }}
       >
@@ -30,7 +30,7 @@ const ModalHeader = ({ title }) => {
           fontSize={"1.5em"}
           sx={{
             textAlign: "left",
-            color: themeColors.lightPrimary,
+            color: "white",
 
             borderRadius: 2,
           }}

@@ -24,3 +24,14 @@ body {
 .test {
   background-color: red;
 }
+.MuiInputLabel-root {
+  font-size: 25px !important;
+  padding-bottom: 20px !important;
+}
+
+.MuiInput-root {
+  height: 45px !important;
+}
+.MuiFormLabel-root {
+  font-size: 18px !important;
+}

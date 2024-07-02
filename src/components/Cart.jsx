@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { useEffect } from "react";
 import ListItem from "./ListItem";
 import { useShoppingCart } from "../store/shoppingCart";
-import { getTotalCart } from "./utils/helpers";
+
 import { useGetCartTotalPrice } from "../Hooks/hooks";
 import { colPesos } from "./utils/configs";
 import AddBtn from "./Buttons/AddBtn";
@@ -44,7 +44,7 @@ const Cart = () => {
             color: "primary.light",
             height: "100%",
             bgcolor: "#f7f7f7",
-            bgcolor: "primary.main",
+            // bgcolor: "primary.main",
             width: "95%",
             borderRadius: 2,
             display: "grid",

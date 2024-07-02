@@ -1,6 +1,7 @@
 import { Controller } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import { FormInputProps } from "./FormInputProps";
+import { InputLabelProps } from "../../Styles/styles";
 
 export const FormInputText = ({ name, control, label }) => {
   return (
@@ -21,6 +22,9 @@ export const FormInputText = ({ name, control, label }) => {
           fullWidth
           label={label}
           variant="outlined"
+          sx={{ color: "red" }}
+          InputLabelProps={InputLabelProps}
+          InputProps={InputLabelProps}
         />
       )}
     />
