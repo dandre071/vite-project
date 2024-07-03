@@ -23,7 +23,7 @@ import { v4 as uuidv4 } from "uuid";
 import { productSchema } from "../Validations.js";
 import { useFormik } from "formik";
 import { InputLabelProps, primaryFilledBtn } from "../../Styles/styles.js";
-import { ThemeConsumer, ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
 import { customTheme, inputStyle } from "../../Hooks/useCustomTheme.jsx";
 
 const module = "ManualInput";
@@ -165,12 +165,12 @@ const ManualInput2 = ({ text }) => {
                         fullWidth
                         label={"Producto"}
                         type="text"
-                        sx={inputStyle}
+                        //sx={inputStyle}
                         //variant="primary"
                         //InputProps={{
                         //  style: inputPropsConf,
                         //}}
-                        SelectProps={{ bgcolor: "white" }}
+                        //SelectProps={{ bgcolor: "white" }}
 
                         //InputLabelProps={InputLabelProps}
                       />
@@ -186,10 +186,10 @@ const ManualInput2 = ({ text }) => {
                         fullWidth
                         label={"Precio"}
                         type="number"
-                        InputProps={{
-                          style: inputPropsConf,
-                        }}
-                        InputLabelProps={InputLabelProps}
+                        //InputProps={{
+                        //style: inputPropsConf,
+                        //}}
+                        // InputLabelProps={InputLabelProps}
                       />
                     </Grid>
                     <Grid item sm={4} xs={4}>
@@ -199,12 +199,12 @@ const ManualInput2 = ({ text }) => {
                         fullWidth
                         label={"Cantidad"}
                         type="number"
-                        InputProps={{
-                          style: { ...inputPropsConf, textAlign: "right" },
-                        }}
-                        sx={{ ...textStyles, textAlign: "right" }}
+                        // InputProps={{
+                        //   style: { ...inputPropsConf, textAlign: "right" },
+                        //}}
+                        // sx={{ ...textStyles, textAlign: "right" }}
                         onChange={formik.handleChange}
-                        InputLabelProps={InputLabelProps}
+                        // InputLabelProps={InputLabelProps}
                       />
                     </Grid>
                     <Grid item sm={12} xs={12}>
@@ -235,19 +235,19 @@ const ManualInput2 = ({ text }) => {
                           name="finish"
                           options={acabados}
                           label={"Acabado"}
-                          theme={themeColors}
-                          style={{ textStyles }}
-                          sx={{ borderRadius: 20 }}
+                          //theme={themeColors}
+                          //style={{ textStyles }}
+                          // sx={{ borderRadius: 20 }}
                           defaultValue={"Sin acabado"}
                           onChange={formik.handleChange}
-                          InputLabelProps={InputLabelProps}
+                          // InputLabelProps={InputLabelProps}
                         />
 
                         {(formik.values.finish == "Ojales" ||
                           formik.values.finish == "Bolsillos") && (
                           <TextField
                             sx={{
-                              ...inputPropsConf,
+                              //...inputPropsConf,
                               color: themeColors.darkText,
                               width: "49%",
                               borderRadius: 2,
@@ -259,11 +259,11 @@ const ManualInput2 = ({ text }) => {
                             variant={"outlined"}
                             value={formik.values.finishQ}
                             name="finishQ"
-                            InputProps={{
-                              style: inputPropsConf,
-                            }}
+                            // InputProps={{
+                            //   style: inputPropsConf,
+                            // }}
                             onChange={formik.handleChange}
-                            InputLabelProps={InputLabelProps}
+                            // InputLabelProps={InputLabelProps}
                           />
                         )}
                       </Box>
@@ -279,10 +279,10 @@ const ManualInput2 = ({ text }) => {
                         label={"Descripción del trabajo"}
                         type="text"
                         required={false}
-                        multiline={true}
+                        //multiline
                         autofocus
                         value={formik.values.description}
-                        rows={3}
+                        //rows={4}
                         onChange={formik.handleChange}
                       />
                     </Grid>

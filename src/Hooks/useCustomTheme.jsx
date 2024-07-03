@@ -49,7 +49,6 @@ export const customTheme = createTheme({
     borderRadius: 7,
   },
 
-  textField: {},
   overrides: {
     MuiAppBar: {
       colorInherit: {
@@ -58,15 +57,16 @@ export const customTheme = createTheme({
       },
     },
     MuiInputBase: {
-      colorInherit: {
+      Input: {
         backgroundColor: "#689f38",
         color: "#fff",
+        borderRadius: 10,
       },
     },
     MuiInputLabel: {
-      style: {
-        margin: "dense",
-        color: "brown",
+      root: {
+        color: "green",
+        fontSize: 13,
       },
     },
   },
@@ -97,8 +97,13 @@ export const customTheme = createTheme({
       size: "small",
     },
     MuiInputBase: {
-      margin: "dense",
-      backgroundColor: "red",
+      root: {
+        sx: {
+          color: "red",
+          borderRadius: 10,
+          height: 100,
+        },
+      },
     },
     MuiInputLabel: {
       margin: "dense",
@@ -111,8 +116,11 @@ export const customTheme = createTheme({
       size: "small",
     },
     MuiTextField: {
-      margin: "dense",
-      size: "large",
+      Input: {
+        color: "red",
+        borderRadius: 50,
+        height: 100,
+      },
     },
     MuiTooltip: {
       arrow: true,
@@ -142,9 +150,56 @@ export const customTheme = createTheme({
         },
       ],
     },
+    MuiSelect: {
+      MuiInputBase: {
+        color: "green",
+      },
+      defaultProps: {
+        sx: {
+          color: "red",
+        },
+        InputProps: {
+          sx: {
+            fontSize: 30,
+          },
+        },
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        //multiline: true,
+        sx: {
+          color: "red",
+        },
 
-    MuiInputLabel: {
-      color: "brown",
+        InputProps: {
+          sx: {
+            color: "red",
+            height: 60,
+            borderRadius: 2,
+            borderWidth: 4,
+            fontSize: 20,
+          },
+
+          rows: 3,
+        },
+        InputLabelProps: {
+          style: {
+            fontSize: 30,
+          },
+          sx: {
+            color: "green",
+          },
+        },
+        SelectProps: {
+          root: {
+            sx: {
+              color: "green",
+              fontSize: 30,
+            },
+          },
+        },
+      },
     },
   },
 });
