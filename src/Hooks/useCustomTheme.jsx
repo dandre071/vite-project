@@ -97,6 +97,7 @@ export const customTheme = createTheme({
       size: "small",
     },
     MuiInputBase: {
+      multiline: true,
       root: {
         sx: {
           color: "red",
@@ -116,10 +117,9 @@ export const customTheme = createTheme({
       size: "small",
     },
     MuiTextField: {
+      multiline: true,
       Input: {
-        color: "red",
-        borderRadius: 50,
-        height: 100,
+        sx: { color: "red", borderRadius: 50, height: 100 },
       },
     },
     MuiTooltip: {
@@ -165,24 +165,34 @@ export const customTheme = createTheme({
         },
       },
     },
-    MuiTextField: {
+    MuiInput: {
+      MuiInputBase: {
+        color: "green",
+      },
       defaultProps: {
-        //multiline: true,
         sx: {
           color: "red",
         },
-
+        InputProps: {
+          sx: {
+            fontSize: 30,
+          },
+        },
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        multiline: true,
         InputProps: {
           sx: {
             color: "red",
             height: 60,
             borderRadius: 2,
-            borderWidth: 4,
-            fontSize: 20,
+            bgcolor: "green",
+            fontSize: 18,
           },
-
-          rows: 3,
         },
+
         InputLabelProps: {
           style: {
             fontSize: 30,
