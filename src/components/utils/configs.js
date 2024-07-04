@@ -5,9 +5,9 @@ export const styleConf = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 470,
-  height: 500,
-  bgcolor: `white`,
+  //width: 480,
+  // height: 500,
+  // bgcolor: ,
   p: 0,
   boxShadow: 2,
 };

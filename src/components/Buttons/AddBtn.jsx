@@ -8,7 +8,7 @@ const AddBtn = ({ onClick, onSubmit, width, color, bg, sx }) => {
     <Box>
       <ThemeProvider theme={customTheme}>
         <Button
-          fullWidth
+          //fullWidth
           // sx={sx}
           type="submit"
           variant="primary"

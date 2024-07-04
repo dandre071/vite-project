@@ -1,14 +1,15 @@
-import { createTheme } from "@mui/material/styles";
-import { blue, red } from "@mui/material/colors";
+import { createTheme } from "@mui/material";
+import { blue, red, indigo } from "@mui/material/colors";
 import { redux } from "zustand/middleware";
 
 const primary = "customTheme.primary.main";
-
+const variantType = "filled";
 export const customTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#186cff",
+      //main: "#186cff",
+      main: "#2979ff",
       dark: "#2432ff",
       light: "#e8eaf6",
     },
@@ -44,86 +45,17 @@ export const customTheme = createTheme({
     },
   },
   spacing: 8,
-
+  width: [100, 150, 200, 250, 300, 350, 400, 450, 500],
+  height: [100, 150, 200, 250, 300, 350, 400, 450, 500],
   shape: {
-    borderRadius: 7,
+    borderRadius: 3,
   },
 
-  overrides: {
-    MuiAppBar: {
-      colorInherit: {
-        backgroundColor: "#689f38",
-        color: "#fff",
-      },
-    },
-    MuiInputBase: {
-      Input: {
-        backgroundColor: "#689f38",
-        color: "#fff",
-        borderRadius: 10,
-      },
-    },
-    MuiInputLabel: {
-      root: {
-        color: "green",
-        fontSize: 13,
-      },
-    },
-  },
+  overrides: {},
   props: {
+    MuiInputBase: { disableUnderline: true },
     MuiAppBar: {
       color: "inherit",
-    },
-    MuiButton: {
-      size: "medium",
-    },
-    MuiButtonGroup: {
-      size: "small",
-    },
-    MuiCheckbox: {
-      size: "small",
-    },
-    MuiFab: {
-      size: "small",
-    },
-    MuiFormControl: {
-      margin: "dense",
-      size: "medium",
-    },
-    MuiFormHelperText: {
-      margin: "dense",
-    },
-    MuiIconButton: {
-      size: "small",
-    },
-    MuiInputBase: {
-      multiline: true,
-      root: {
-        sx: {
-          color: "red",
-          borderRadius: 10,
-          height: 100,
-        },
-      },
-    },
-    MuiInputLabel: {
-      margin: "dense",
-      color: "red",
-    },
-    MuiRadio: {
-      size: "small",
-    },
-    MuiSwitch: {
-      size: "small",
-    },
-    MuiTextField: {
-      multiline: true,
-      Input: {
-        sx: { color: "red", borderRadius: 50, height: 100 },
-      },
-    },
-    MuiTooltip: {
-      arrow: true,
     },
   },
 
@@ -137,7 +69,7 @@ export const customTheme = createTheme({
             backgroundColor: " #186cff",
             color: "white",
             fontSize: 22,
-            width: 360,
+            //width: 360,
             borderRadius: 10,
             height: 60,
             p: 0,
@@ -145,69 +77,72 @@ export const customTheme = createTheme({
             "&:hover": {
               background: "#2432ff",
             },
-            //border: `2px dashed ${blue[500]}`,
           },
         },
       ],
     },
-    MuiSelect: {
-      MuiInputBase: {
-        color: "green",
-      },
-      defaultProps: {
-        sx: {
-          color: "red",
-        },
-        InputProps: {
-          sx: {
-            fontSize: 30,
-          },
-        },
-      },
-    },
-    MuiInput: {
-      MuiInputBase: {
-        color: "green",
-      },
-      defaultProps: {
-        sx: {
-          color: "red",
-        },
-        InputProps: {
-          sx: {
-            fontSize: 30,
-          },
-        },
-      },
-    },
-    MuiTextField: {
+
+    MuiInputLabel: {
       defaultProps: {
         multiline: true,
-        InputProps: {
-          sx: {
-            color: "red",
-            height: 60,
-            borderRadius: 2,
-            bgcolor: "green",
-            fontSize: 18,
-          },
-        },
+        //shrink: true,
 
-        InputLabelProps: {
-          style: {
-            fontSize: 30,
+        sx: {
+          bgcolor: "yellow",
+          color: "blue",
+          textAlign: "left",
+          height: 0,
+          fontSize: 18,
+          fontWeight: 600,
+        },
+      },
+    },
+
+    MuiTextField: {
+      defaultProps: {
+        underline: {
+          "&:before": {
+            borderBottomColor: "red",
           },
-          sx: {
-            color: "green",
+          "&:hover:not(.Mui-focused):before": {
+            borderBottomColor: "green",
+          },
+          "&:after": {
+            // focused
+            borderBottomColor: "purple",
           },
         },
-        SelectProps: {
-          root: {
-            sx: {
-              color: "green",
-              fontSize: 30,
-            },
+        variant: variantType,
+      },
+    },
+    MuiInputBase: {
+      defaultProps: {
+        root: {
+          bgcolor: "pink",
+        },
+        multiline: true,
+        disableUnderline: true,
+        sx: {
+          borderRadius: 2,
+          bgcolor: "green",
+          color: "black",
+          fontWeight: 600,
+          fontSize: 18,
+          "&:hover": {
+            backgroundColor: "red",
           },
+        },
+      },
+    },
+    MuiFormControl: {
+      defaultProps: {
+        variant: variantType,
+      },
+    },
+    MuiGrid2: {
+      defaultProps: {
+        sx: {
+          padding: 0.7,
         },
       },
     },

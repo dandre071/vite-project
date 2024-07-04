@@ -107,24 +107,27 @@ const ManualInput2 = ({ text }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box>
+        <Box sx={{ bgcolor: "purple" }}>
           <Box
             //borderRadius="10px"
             sx={{
               ...styleConf,
 
+              width: customTheme.width[7],
+              height: customTheme.height[8],
+              bgcolor: "red",
               alignContent: "center",
               justifyContent: "center",
               display: "grid",
               gridTemplateRows: "2fr 1fr",
 
-              borderRadius: 2,
+              borderRadius: customTheme.shape.borderRadius,
             }}
           >
             <Box
               sx={{
                 position: "relative",
-                top: 30,
+                // top: 30,
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "end",
@@ -135,15 +138,14 @@ const ManualInput2 = ({ text }) => {
             </Box>
 
             <Box
-              borderRadius={10}
               sx={{
-                pt: 5,
-                pr: 6,
-                pl: 6,
+                pt: 3,
                 pb: 1,
+                width: customTheme.width[6],
+                height: customTheme.height[5],
 
                 borderRadius: 3,
-                bgcolor: "white",
+                bgcolor: "orange",
               }}
             >
               <ThemeProvider theme={customTheme}>
@@ -153,7 +155,7 @@ const ManualInput2 = ({ text }) => {
                     spacing={1.5}
                     sx={{ flexGrow: 1, p: 0, m: 0 }}
                   >
-                    <Grid item sm={12}></Grid>
+                    {/* <Grid item sm={12}></Grid> */}
                     <Grid item sm={12} xs={12}>
                       <TextField
                         onBlur={formik.handleBlur}
@@ -256,7 +258,7 @@ const ManualInput2 = ({ text }) => {
                             type={"number"}
                             label={"Cantidad"}
                             defaultValue={1}
-                            variant={"outlined"}
+                            //variant={"outlined"}
                             value={formik.values.finishQ}
                             name="finishQ"
                             // InputProps={{
@@ -270,11 +272,11 @@ const ManualInput2 = ({ text }) => {
                     </Grid>
                     {/*Total price module*/}
 
-                    <Grid item sm={12} xs={12}>
+                    <Grid item sm={12} xs={12} sx={{ p: 0 }}>
                       <FormInputText
                         disabled={false}
                         name={"description"}
-                        variant={"outlined"}
+                        //variant={"outlined"}
                         defaultValue={""}
                         label={"Descripción del trabajo"}
                         type="text"
@@ -295,14 +297,12 @@ const ManualInput2 = ({ text }) => {
                     sx={{
                       display: "flex",
                       justifyContent: "center",
-                      pt: 2,
-                      pb: 2,
                     }}
                   >
                     <AddBtn
                       onSubmit={formik.handleSubmit}
-                      width={370}
-                      sx={{ ...primaryFilledBtn, width: 370 }}
+                      //width={370}
+                      //sx={{ ...primaryFilledBtn, width: 370 }}
                     />
                   </Grid>
                 </form>{" "}

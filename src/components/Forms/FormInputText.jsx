@@ -15,16 +15,16 @@ export const FormInputText = ({ name, control, label }) => {
       }) => (
         <TextField
           helperText={error ? error.message : null}
-          size="small"
+          //size="small"
           error={!!error}
           onChange={onChange}
           value={value}
-          fullWidth
+          //fullWidth
           label={label}
-          variant="outlined"
-          sx={{ color: "red" }}
-          InputLabelProps={InputLabelProps}
-          InputProps={InputLabelProps}
+          //variant="outlined"
+          // sx={{ color: "red" }}
+          // InputLabelProps={InputLabelProps}
+          // InputProps={InputLabelProps}
         />
       )}
     />

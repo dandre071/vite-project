@@ -46,14 +46,7 @@ const FormSelect2 = ({
           value={value}
           label={label}
           disabled={disabled}
-          sx={
-            {
-              //  ...fieldStyle,
-              //padding: 0.2,
-              //borderRadius: 2,
-              //margin: 0,
-            }
-          }
+
           // style={{ ...style, borderStyle: "none" }}
           // InputLabelProps={InputLabelProps}
         >
