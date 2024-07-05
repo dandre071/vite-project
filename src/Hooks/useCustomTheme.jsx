@@ -1,6 +1,6 @@
 import { TrendingUp } from "@mui/icons-material";
 import { createTheme } from "@mui/material";
-import { blue, red, indigo } from "@mui/material/colors";
+import { blue, red, indigo, blueGrey } from "@mui/material/colors";
 import { redux } from "zustand/middleware";
 
 const primary = "customTheme.primary.main";
@@ -13,6 +13,8 @@ export const customTheme = createTheme({
       main: "#304ffe",
       dark: indigo[900],
       light: indigo[100],
+      lighter: indigo[50],
+      contrastText: "#304ffe",
     },
     secondary: {
       main: "#f50032",
@@ -37,7 +39,7 @@ export const customTheme = createTheme({
       dark: "#d04200",
     },
     info: {
-      main: "#009aec",
+      main: blueGrey[50],
       light: "#41bcff",
       dark: "#0060a4",
     },
@@ -111,7 +113,7 @@ export const customTheme = createTheme({
         //shrink: true,
 
         sx: {
-          bgcolor: "yellow",
+          // bgcolor: "yellow",
           color: "blue",
           textAlign: "left",
           height: 0,
@@ -128,7 +130,7 @@ export const customTheme = createTheme({
             borderBottomColor: "red",
           },
           "&:hover:not(.Mui-focused):before": {
-            borderBottomColor: "green",
+            borderBottomColor: "brown",
           },
           "&:after": {
             // focused
@@ -141,19 +143,16 @@ export const customTheme = createTheme({
 
     MuiInputBase: {
       defaultProps: {
-        root: {
-          bgcolor: "pink",
-        },
         multiline: true,
         disableUnderline: true,
         sx: {
           borderRadius: 2,
-          bgcolor: "green",
+          bgcolor: "primary.lighter",
           color: "black",
           fontWeight: 600,
           fontSize: 18,
           "&:hover": {
-            backgroundColor: "red",
+            backgroundColor: "primary.lighter",
           },
         },
       },

@@ -115,7 +115,8 @@ const ManualInput2 = ({ text }) => {
 
               width: customTheme.width[7],
               minHeight: customTheme.height[8],
-              bgcolor: "red",
+              bgcolor: "primary.dark",
+
               display: "flex",
               flexDirection: "column",
               flexGrow: 1,
@@ -151,7 +152,8 @@ const ManualInput2 = ({ text }) => {
                 //  height: customTheme.height[5],
 
                 borderRadius: 3,
-                bgcolor: "orange",
+                // bgcolor: "orange",
+                bgcolor: "white",
               }}
             >
               <ThemeProvider theme={customTheme}>
