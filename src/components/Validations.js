@@ -10,7 +10,10 @@ export const productSchema = object().shape({
     .required("Este campo es requerido.")
     .positive("El número debe ser positivo.")
     .integer(),
-  quantity: number().required().positive().integer(),
+  quantity: number("Sólo se permiten números").positive(
+    "El valor debe ser mayor a 0!"
+  ),
+
   description: string(),
   //height: number().required().positive(),
   //width: number().required().positive(),

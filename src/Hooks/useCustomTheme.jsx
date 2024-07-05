@@ -1,25 +1,40 @@
 import { TrendingUp } from "@mui/icons-material";
 import { createTheme } from "@mui/material";
-import { blue, red, indigo, blueGrey } from "@mui/material/colors";
+import {
+  blue,
+  red,
+  indigo,
+  blueGrey,
+  pink,
+  deepPurple,
+  lightBlue,
+} from "@mui/material/colors";
 import { redux } from "zustand/middleware";
 
 const primary = "customTheme.primary.main";
 const variantType = "filled";
+const primaryColor = "#2962ff";
 export const customTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
       //main: "#186cff",
-      main: "#304ffe",
-      dark: indigo[900],
-      light: indigo[100],
-      lighter: indigo[50],
+      main: primaryColor,
+      dark: "#304ffe",
+      light: indigo[50],
+      lighter: "#eef4fe",
       contrastText: "#304ffe",
     },
     secondary: {
-      main: "#f50032",
-      light: "#ef1420",
-      dark: "#f5001f",
+      /* main: blueGrey[300],
+      light: blueGrey[100],
+      lighter: blueGrey[50],
+      dark: blueGrey[800], */
+      main: "#ff1744",
+      light: "#ff4081",
+      lighter: pink[100],
+      dark: "#f7003b",
+      contrastText: "white",
     },
     divider: "rgba(125,125,125,0.12)",
     error: {
@@ -55,15 +70,7 @@ export const customTheme = createTheme({
     borderRadius: 3,
   },
 
-  overrides: {
-    /* MuiButton: {
-      primary: {
-        props: {
-          color: "primary",
-        },
-      },
-    }, */
-  },
+  overrides: {},
   props: {
     MuiInputBase: { disableUnderline: true },
     MuiAppBar: {
@@ -83,24 +90,52 @@ export const customTheme = createTheme({
       variants: [
         {
           props: {
-            variant: "primary",
+            variant: "secondary",
           },
-          color: "primary.main",
+
           style: {
             textTransform: "initial",
-            backgroundColor: "primary.main",
-            color: "white",
+            backgroundColor: "#ff1744",
+            color: "#fff",
             fontSize: 20,
-            width: 400,
+            // width: 400,
 
             borderRadius: 8,
             height: 60,
 
             p: 0,
             m: 0,
-            /* "&:hover": {
-              background: "#2432ff",
-            }, */
+            "&:hover": {
+              background: "#f7003b",
+            },
+          },
+        },
+        {
+          props: {
+            variant: "secondary-outlined",
+          },
+
+          style: {
+            textTransform: "initial",
+            backgroundColor: pink[50],
+            color: "#ff1744",
+            fontSize: 20,
+            // width: 400,
+            border: `2px solid ${"#ff1744"}`,
+            borderRadius: 8,
+            height: 60,
+
+            p: 0,
+            m: 0,
+            "&:hover": {
+              background: "#f7003b",
+              color: "#fff",
+            },
+            "&:disabled": {
+              background: pink[50],
+              color: pink[100],
+              border: "none",
+            },
           },
         },
       ],
@@ -114,7 +149,7 @@ export const customTheme = createTheme({
 
         sx: {
           // bgcolor: "yellow",
-          color: "blue",
+          color: "primary.main",
           textAlign: "left",
           height: 0,
           fontSize: 18,
@@ -125,18 +160,6 @@ export const customTheme = createTheme({
 
     MuiTextField: {
       defaultProps: {
-        underline: {
-          "&:before": {
-            borderBottomColor: "red",
-          },
-          "&:hover:not(.Mui-focused):before": {
-            borderBottomColor: "brown",
-          },
-          "&:after": {
-            // focused
-            borderBottomColor: "purple",
-          },
-        },
         variant: variantType,
       },
     },

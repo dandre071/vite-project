@@ -1,10 +1,11 @@
 import { Button } from "@mui/material";
 
-const CalcBtn = ({ onClick, sx }) => {
+const CalcBtn = ({ onClick, sx, disabled }) => {
   return (
     <Button
-      sx={sx}
-      variant="contained"
+      disabled={disabled}
+      //sx={sx}
+      variant="secondary-outlined"
       disableElevation
       disableRipple
       onClick={onClick}

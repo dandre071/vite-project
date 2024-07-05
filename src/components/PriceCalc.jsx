@@ -2,15 +2,18 @@ import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import CalcBtn from "./Buttons/CalcBtn";
 import { secondaryBtn } from "../Styles/styles";
+import { customTheme } from "../Hooks/useCustomTheme";
 
-const PriceCalc = ({ name, onClick, onChange, text, value }) => {
+const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
   return (
     <Grid
+      disabled={disabled}
       sx={{
         display: "grid",
         bgcolor: "primary.light",
-        borderRadius: 2,
+        borderRadius: customTheme.shape.borderRadius,
         gridTemplateColumns: "4fr 8fr",
+        // border: `2px solid ${customTheme.palette.primary.main}`,
         p: 1.5,
         alignItems: "center",
 
@@ -19,10 +22,14 @@ const PriceCalc = ({ name, onClick, onChange, text, value }) => {
       item
     >
       <Box>
-        <CalcBtn onClick={onClick} sx={secondaryBtn} />
+        <CalcBtn
+          onClick={onClick}
+          /* sx={secondaryBtn} */ disabled={disabled}
+        />
       </Box>
       <Box>
         <Typography
+          //disabled={disabled}
           sx={{
             // width: "40%",
             alignContent: "center",
@@ -34,6 +41,7 @@ const PriceCalc = ({ name, onClick, onChange, text, value }) => {
           Total:
         </Typography>
         <Typography
+          //disabled={disabled}
           value={value}
           name={name}
           onChange={onChange}
