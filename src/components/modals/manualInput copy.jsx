@@ -114,20 +114,26 @@ const ManualInput2 = ({ text }) => {
               ...styleConf,
 
               width: customTheme.width[7],
-              height: customTheme.height[8],
+              minHeight: customTheme.height[8],
               bgcolor: "red",
+              display: "flex",
+              flexDirection: "column",
+              flexGrow: 1,
+              flexWrap: "wrap",
               alignContent: "center",
               justifyContent: "center",
-              display: "grid",
-              gridTemplateRows: "2fr 1fr",
+              pt: 1,
+              pb: 1,
+              /* gridTemplateRows: "2fr 1fr",*/
 
               borderRadius: customTheme.shape.borderRadius,
             }}
           >
             <Box
               sx={{
-                position: "relative",
-                // top: 30,
+                position: "absolute",
+                top: -50,
+                left: 25,
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "end",
@@ -139,10 +145,10 @@ const ManualInput2 = ({ text }) => {
 
             <Box
               sx={{
-                pt: 3,
-                pb: 1,
+                p: customTheme.p[1],
+                pt: customTheme.p[5],
                 width: customTheme.width[6],
-                height: customTheme.height[5],
+                //  height: customTheme.height[5],
 
                 borderRadius: 3,
                 bgcolor: "orange",
@@ -150,11 +156,7 @@ const ManualInput2 = ({ text }) => {
             >
               <ThemeProvider theme={customTheme}>
                 <form onSubmit={formik.handleSubmit}>
-                  <Grid
-                    container
-                    spacing={1.5}
-                    sx={{ flexGrow: 1, p: 0, m: 0 }}
-                  >
+                  <Grid container spacing={1.5} sx={{ flexGrow: 1 }}>
                     {/* <Grid item sm={12}></Grid> */}
                     <Grid item sm={12} xs={12}>
                       <TextField
@@ -288,22 +290,17 @@ const ManualInput2 = ({ text }) => {
                         onChange={formik.handleChange}
                       />
                     </Grid>
-                  </Grid>
-
-                  <Grid
-                    item
-                    sm={12}
-                    xs={12}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <AddBtn
-                      onSubmit={formik.handleSubmit}
-                      //width={370}
-                      //sx={{ ...primaryFilledBtn, width: 370 }}
-                    />
+                    <Grid
+                      item
+                      sm={12}
+                      xs={12}
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <AddBtn onSubmit={formik.handleSubmit} />
+                    </Grid>
                   </Grid>
                 </form>{" "}
               </ThemeProvider>

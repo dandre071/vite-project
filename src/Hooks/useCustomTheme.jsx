@@ -1,3 +1,4 @@
+import { TrendingUp } from "@mui/icons-material";
 import { createTheme } from "@mui/material";
 import { blue, red, indigo } from "@mui/material/colors";
 import { redux } from "zustand/middleware";
@@ -9,9 +10,9 @@ export const customTheme = createTheme({
     mode: "light",
     primary: {
       //main: "#186cff",
-      main: "#2979ff",
-      dark: "#2432ff",
-      light: "#e8eaf6",
+      main: "#304ffe",
+      dark: indigo[900],
+      light: indigo[100],
     },
     secondary: {
       main: "#f50032",
@@ -45,42 +46,64 @@ export const customTheme = createTheme({
     },
   },
   spacing: 8,
+  p: [1, 2, 3, 4, 5, 6, 8, 10, 12],
   width: [100, 150, 200, 250, 300, 350, 400, 450, 500],
   height: [100, 150, 200, 250, 300, 350, 400, 450, 500],
   shape: {
     borderRadius: 3,
   },
 
-  overrides: {},
+  overrides: {
+    /* MuiButton: {
+      primary: {
+        props: {
+          color: "primary",
+        },
+      },
+    }, */
+  },
   props: {
     MuiInputBase: { disableUnderline: true },
     MuiAppBar: {
       color: "inherit",
     },
+    /*  MuiButton: {
+      defaultProps: {
+        root: {
+          color: "primary.main",
+        },
+      },
+    }, */
   },
 
   components: {
     MuiButton: {
       variants: [
         {
-          props: { variant: "primary" },
+          props: {
+            variant: "primary",
+          },
+          color: "primary.main",
           style: {
             textTransform: "initial",
-            backgroundColor: " #186cff",
+            backgroundColor: "primary.main",
             color: "white",
-            fontSize: 22,
-            //width: 360,
-            borderRadius: 10,
+            fontSize: 20,
+            width: 400,
+
+            borderRadius: 8,
             height: 60,
+
             p: 0,
             m: 0,
-            "&:hover": {
+            /* "&:hover": {
               background: "#2432ff",
-            },
+            }, */
           },
         },
       ],
     },
+    MuiSvgIcon: { defaultProps: { sx: { width: 35, height: 35 } } },
 
     MuiInputLabel: {
       defaultProps: {
@@ -93,7 +116,7 @@ export const customTheme = createTheme({
           textAlign: "left",
           height: 0,
           fontSize: 18,
-          fontWeight: 600,
+          fontWeight: 400,
         },
       },
     },
@@ -115,6 +138,7 @@ export const customTheme = createTheme({
         variant: variantType,
       },
     },
+
     MuiInputBase: {
       defaultProps: {
         root: {
