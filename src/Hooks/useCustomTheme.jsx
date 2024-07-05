@@ -21,8 +21,8 @@ export const customTheme = createTheme({
       //main: "#186cff",
       main: primaryColor,
       dark: "#304ffe",
-      light: indigo[50],
-      lighter: "#eef4fe",
+      light: "#dee7ff",
+      lighter: "#f3f6ff",
       contrastText: "#304ffe",
     },
     secondary: {
