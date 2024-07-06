@@ -349,6 +349,7 @@ const ManualInput2 = ({ text }) => {
                         Agregar
                       </Button>
                     </Grid>
+                    {formik.errors.name && <Typography>Hello</Typography>}
                   </Grid>
                 </form>{" "}
               </ThemeProvider>
