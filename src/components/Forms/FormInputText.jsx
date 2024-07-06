@@ -21,6 +21,7 @@ export const FormInputText = ({ name, control, label }) => {
           value={value}
           //fullWidth
           label={label}
+          sx={{ p: 0, width: 100 }}
           //variant="outlined"
           // sx={{ color: "red" }}
           // InputLabelProps={InputLabelProps}

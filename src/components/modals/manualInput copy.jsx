@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { Button, Divider, TextField } from "@mui/material";
+import { Button, Divider, TextField, Typography } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "../ModalHeader";
@@ -24,7 +24,7 @@ import { productSchema } from "../Validations.js";
 import { useFormik } from "formik";
 import { InputLabelProps, primaryFilledBtn } from "../../Styles/styles.js";
 import { ThemeProvider } from "styled-components";
-import { customTheme, inputStyle } from "../../Hooks/useCustomTheme.jsx";
+import { customTheme } from "../../Hooks/useCustomTheme.jsx";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 const module = "ManualInput";
 
@@ -143,7 +143,7 @@ const ManualInput2 = ({ text }) => {
                 bgcolor: "white",
               }}
             >
-              <Box
+              {/* <Box
                 sx={{
                   position: "absolute",
                   justifySelf: "center",
@@ -156,6 +156,18 @@ const ManualInput2 = ({ text }) => {
                 }}
               >
                 <ModalHeader title={"Configuración Manual"} style={{}} />
+              </Box> */}
+              <Box
+                sx={{
+                  height: 80,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Typography variant="h4" sx={{ fontWeight: 600 }}>
+                  Configuración Manual
+                </Typography>
               </Box>
               <ThemeProvider theme={customTheme}>
                 <form onSubmit={formik.handleSubmit}>
@@ -286,7 +298,12 @@ const ManualInput2 = ({ text }) => {
                       </Box>
                     </Grid>
                     {/*Total price module*/}
-                    <Grid item sm={12} xs={12} sx={{ p: 0 }}>
+                    <Grid
+                      item
+                      sm={12}
+                      xs={12}
+                      sx={{ pr: 1, pl: 1, pt: 0, pb: 0 }}
+                    >
                       <FormInputText
                         disabled={false}
                         name={"description"}
@@ -319,7 +336,8 @@ const ManualInput2 = ({ text }) => {
                             ? true
                             : false
                         }
-                        variant="secondary"
+                        /* variant="secondary" */
+                        variant="primary"
                         type="submit"
                         fullWidth
                         onSubmit={formik.handleSubmit}

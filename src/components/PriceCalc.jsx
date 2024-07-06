@@ -9,15 +9,17 @@ const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
     <Grid
       disabled={disabled}
       sx={{
-        display: "grid",
-        bgcolor: "primary.light",
+        display: "flex",
+        // bgcolor: "primary.light",
         borderRadius: customTheme.shape.borderRadius,
-        gridTemplateColumns: "4fr 8fr",
-        border: `2px solid ${customTheme.palette.primary.light}`,
-        p: 1.5,
+        //gridTemplateColumns: "4fr 8fr",
+        justifyContent: "space-between",
+        border: `1px solid ${customTheme.palette.secondary.main}`,
+        p: 2,
+
         alignItems: "center",
 
-        justifyContent: "center",
+        // justifyContent: "center",
       }}
       item
     >
@@ -51,7 +53,7 @@ const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
             display: "flex",
             justifyContent: "right",
             textAlign: "right",
-            fontSize: 25,
+            fontSize: 30,
           }}
         >
           {text}

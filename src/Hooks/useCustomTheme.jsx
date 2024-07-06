@@ -19,47 +19,53 @@ export const customTheme = createTheme({
     mode: "light",
     primary: {
       //main: "#186cff",
-      main: primaryColor,
-      dark: "#304ffe",
-      light: "#dee7ff",
-      lighter: "#f3f6ff",
-      contrastText: "#304ffe",
+      main: "#0067FF",
+      dark: "#0552db",
+      light: "#c0daff",
+      //lighter: "#f3f6ff",
+      //contrastText: "#304ffe",
     },
     secondary: {
       /* main: blueGrey[300],
       light: blueGrey[100],
       lighter: blueGrey[50],
       dark: blueGrey[800], */
-      main: "#ff1744",
-      light: "#ff4081",
-      lighter: pink[100],
-      dark: "#f7003b",
+      main: "#e50037",
+      light: "#f2d7e0",
+      // lighter: pink[100],
+      dark: "#c9003a",
       contrastText: "white",
     },
     divider: "rgba(125,125,125,0.12)",
     error: {
-      main: "#ff0000",
-      light: "#ff2727",
-      dark: "#d50000",
+      main: "#e2001b",
+      //light: "#ff2727",
+      // dark: "#d50000",
     },
     success: {
-      main: "#00cc33",
-      light: "#2eff62",
-      dark: "#00af2c",
-      contrastText: "rgba(255,255,255,0.87)",
+      main: "#49c134",
+      //light: "#2eff62",
+      //dark: "#00af2c",
+      //contrastText: "rgba(255,255,255,0.87)",
     },
     warning: {
-      main: "#ff7200",
-      light: "#ff8a2d",
-      dark: "#d04200",
+      main: "#ef491d",
+      /*  light: "#ff8a2d",
+      dark: "#d04200", */
     },
     info: {
-      main: blueGrey[50],
-      light: "#41bcff",
-      dark: "#0060a4",
+      main: "#0d97f4",
+      /* light: "#41bcff",
+      dark: "#0060a4", */
     },
     background: {
-      default: "#e6ecf9",
+      default: "#f1f1f2",
+      light: "#f7f7f7",
+      dark: "#e2e2e2",
+    },
+    text: {
+      main: "#02172a",
+      light: "#828187",
     },
   },
   spacing: 8,
@@ -67,7 +73,7 @@ export const customTheme = createTheme({
   width: [100, 150, 200, 250, 300, 350, 400, 450, 500],
   height: [100, 150, 200, 250, 300, 350, 400, 450, 500],
   shape: {
-    borderRadius: 3,
+    borderRadius: 4,
   },
 
   overrides: {},
@@ -89,6 +95,28 @@ export const customTheme = createTheme({
     MuiButton: {
       variants: [
         {
+          props: {
+            variant: "primary",
+            color: "primary.main",
+          },
+
+          style: {
+            textTransform: "initial",
+            //backgroundColor: "customTheme.palette.primary.main",
+            color: "#fff",
+            fontSize: 20,
+            // width: 400,
+
+            borderRadius: 8,
+            height: 60,
+
+            p: 0,
+            m: 0,
+            "&:hover": {
+              background: "#f7003b",
+            },
+          },
+
           props: {
             variant: "secondary",
           },
@@ -149,11 +177,12 @@ export const customTheme = createTheme({
 
         sx: {
           // bgcolor: "yellow",
-          color: "primary.main",
+          color: "text.main",
+          //color: "primary.main",
           textAlign: "left",
           height: 0,
           fontSize: 18,
-          fontWeight: 400,
+          fontWeight: 500,
         },
       },
     },
@@ -161,6 +190,8 @@ export const customTheme = createTheme({
     MuiTextField: {
       defaultProps: {
         variant: variantType,
+        minRows: 3,
+        fullWidth: true,
       },
     },
 
@@ -170,12 +201,12 @@ export const customTheme = createTheme({
         disableUnderline: true,
         sx: {
           borderRadius: 2,
-          bgcolor: "primary.lighter",
-          color: "black",
+          bgcolor: "background.defaul",
+          color: "text.main",
           fontWeight: 600,
-          fontSize: 18,
+          fontSize: 19,
           "&:hover": {
-            backgroundColor: "primary.lighter",
+            backgroundColor: "background.dark",
           },
         },
       },
@@ -195,7 +226,7 @@ export const customTheme = createTheme({
   },
 });
 
-export const inputStyle = {
+/* export const inputStyle = {
   "& .MuiOutlinedInput-root": {
     color: "primary.main",
     fontSize: 20,
@@ -230,3 +261,4 @@ export const inputStyle = {
     },
   },
 };
+ */
