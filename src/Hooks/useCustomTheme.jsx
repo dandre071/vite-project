@@ -38,7 +38,8 @@ export const customTheme = createTheme({
     },
     divider: "rgba(125,125,125,0.12)",
     error: {
-      main: "#e2001b",
+      main: "#e50037",
+      //main: "#e2001b",
       //light: "#ff2727",
       // dark: "#d50000",
     },
@@ -95,28 +96,6 @@ export const customTheme = createTheme({
     MuiButton: {
       variants: [
         {
-          /* props: {
-            variant: "prime",
-            color: "secondary",
-          },
-
-          style: {
-            textTransform: "initial",
-            background: "#ff1745",
-            color: "#fff",
-            fontSize: 20,
-            // width: 400,
-
-            borderRadius: 8,
-            height: 60,
-
-            p: 0,
-            m: 0,
-            "&:hover": {
-              background: "#f7003b",
-            },
-          },
-        }, */
           props: {
             variant: "prime",
             color: "primary",
@@ -136,6 +115,31 @@ export const customTheme = createTheme({
             m: 0,
             "&:hover": {
               background: "#0552db",
+            },
+          },
+        },
+        {
+          props: {
+            variant: "secondary",
+          },
+
+          style: {
+            textTransform: "initial",
+            background: "#e50037",
+            color: "#fff",
+            fontSize: 20,
+            // width: 400,
+
+            borderRadius: 8,
+            height: 60,
+
+            p: 0,
+            m: 0,
+            "&:hover": {
+              background: "#f7003b",
+            },
+            "&:disabled": {
+              background: "#f2d7e0",
             },
           },
         },

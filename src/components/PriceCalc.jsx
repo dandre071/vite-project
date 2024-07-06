@@ -14,7 +14,7 @@ const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
         borderRadius: customTheme.shape.borderRadius,
         //gridTemplateColumns: "4fr 8fr",
         justifyContent: "space-between",
-        border: `1px solid ${customTheme.palette.secondary.main}`,
+        //border: `1px solid ${customTheme.palette.secondary.main}`,
         p: 2,
 
         alignItems: "center",
