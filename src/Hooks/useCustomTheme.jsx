@@ -95,14 +95,14 @@ export const customTheme = createTheme({
     MuiButton: {
       variants: [
         {
-          props: {
-            variant: "primary",
-            color: "primary.main",
+          /* props: {
+            variant: "prime",
+            color: "secondary",
           },
 
           style: {
             textTransform: "initial",
-            //backgroundColor: "customTheme.palette.primary.main",
+            background: "#ff1745",
             color: "#fff",
             fontSize: 20,
             // width: 400,
@@ -116,14 +116,15 @@ export const customTheme = createTheme({
               background: "#f7003b",
             },
           },
-
+        }, */
           props: {
-            variant: "secondary",
+            variant: "prime",
+            color: "primary",
           },
 
           style: {
             textTransform: "initial",
-            backgroundColor: "#ff1744",
+            backgroundColor: "#0067FF",
             color: "#fff",
             fontSize: 20,
             // width: 400,
@@ -134,35 +135,7 @@ export const customTheme = createTheme({
             p: 0,
             m: 0,
             "&:hover": {
-              background: "#f7003b",
-            },
-          },
-        },
-        {
-          props: {
-            variant: "secondary-outlined",
-          },
-
-          style: {
-            textTransform: "initial",
-            backgroundColor: pink[50],
-            color: "#ff1744",
-            fontSize: 20,
-            // width: 400,
-            border: `2px solid ${"#ff1744"}`,
-            borderRadius: 8,
-            height: 60,
-
-            p: 0,
-            m: 0,
-            "&:hover": {
-              background: "#f7003b",
-              color: "#fff",
-            },
-            "&:disabled": {
-              background: pink[50],
-              color: pink[100],
-              border: "none",
+              background: "#0552db",
             },
           },
         },

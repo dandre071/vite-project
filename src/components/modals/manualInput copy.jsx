@@ -176,7 +176,7 @@ const ManualInput2 = ({ text }) => {
                     <Grid item sm={12} xs={12}>
                       <TextField
                         onBlur={formik.handleBlur}
-                        error={formik.errors.name && formik.touched.name}
+                        error={formik.errors.name /* && formik.touched.name */}
                         helperText={formik.errors.name}
                         value={formik.values.name}
                         name="name"
@@ -330,14 +330,15 @@ const ManualInput2 = ({ text }) => {
                       {/* <AddBtn onSubmit={formik.handleSubmit} /> */}
 
                       <Button
-                        disabled={
-                          /*  formik.errors.name */ formik.name === "" ||
-                          formik.errors.price
-                            ? true
-                            : false
-                        }
-                        /* variant="secondary" */
-                        variant="primary"
+                        //disabled={
+                        //formik.errors.name  formik.name === "" ||
+                        // formik.errors.price
+                        // ? true
+                        // : false
+
+                        //variant="secondary"
+                        // }
+                        variant="prime"
                         type="submit"
                         fullWidth
                         onSubmit={formik.handleSubmit}
