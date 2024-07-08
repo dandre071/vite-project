@@ -114,3 +114,11 @@ export const InputLabelProps = {
     "&.MuiOutlinedInput-notchedOutline": { fontSize: "28px" },
   },
 };
+export const header = {
+  display: "grid",
+  height: 100,
+
+  justifyContent: "center",
+
+  alignItems: "center",
+};

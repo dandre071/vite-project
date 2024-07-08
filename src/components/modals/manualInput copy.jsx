@@ -177,9 +177,7 @@ const ManualInput2 = ({ text }) => {
                   alignItems: "center",
                 }}
               >
-                <Typography variant="h4" sx={{ fontWeight: 900 }}>
-                  Configuración Manual
-                </Typography>
+                <ModalHeader title={"Configuración Manual"} />
               </Box>
               <ThemeProvider theme={customTheme}>
                 <form onSubmit={formik.handleSubmit}>

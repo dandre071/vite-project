@@ -9,6 +9,7 @@ import { useGetCartTotalPrice } from "../Hooks/hooks";
 import { colPesos } from "./utils/configs";
 import AddBtn from "./Buttons/AddBtn";
 import ModalHeader from "./ModalHeader";
+
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 colPesos;
 //import { v4 as uuidv4 } from "uuid";
@@ -37,28 +38,9 @@ const Cart = () => {
           border: `2px solid #f3f3f3`,
         }}
       >
-        {/********** */}
-        <Box
-          sx={{
-            position: "relative",
-            color: "primary.light",
-            height: "100%",
-            bgcolor: "#f7f7f7",
-            // bgcolor: "primary.main",
-            width: "95%",
-            borderRadius: 2,
-            display: "grid",
-            justifySelf: "center",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h5" sx={{ fontWeight: 600 }}>
-            Compras
-          </Typography>
+        <Box>
+          <ModalHeader title={"Compras"} />
         </Box>
-        {/********** */}
-        {/********** */}
 
         <Stack spacing={1} sx={{ alignItems: "center" }}>
           <Box
@@ -95,12 +77,12 @@ const Cart = () => {
                   }}
                 >
                   <ShoppingBagOutlinedIcon
-                    sx={{ fontSize: 80, color: "secondary.main" }}
+                    sx={{ fontSize: 80, color: "grey" }}
                   />
                   <Typography
                     variant="h6"
                     sx={{
-                      color: "secondary.main",
+                      color: "grey",
                     }}
                   >
                     Aún no se han agregado productos.
@@ -135,7 +117,7 @@ const Cart = () => {
           sx={{
             display: "flex",
             borderRadius: 2,
-            bgcolor: "primary.light",
+            bgcolor: "primary.dark",
             alignItems: "center",
             justifyContent: "center",
             justifySelf: "center",
@@ -147,7 +129,7 @@ const Cart = () => {
             <Typography>{`Artículos: ${items.length}`}</Typography>
             <Typography
               variant="h5"
-              sx={{ fontWeight: 600, color: "primary.dark" }}
+              sx={{ fontWeight: 600, color: "white" }}
             >{`Total: ${colPesos.format(totalPrice)}`}</Typography>
           </Stack>
 

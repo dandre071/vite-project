@@ -31,7 +31,7 @@ const ListItem = ({
         <Grid borderRadius={2} container sx={listItemStyle}>
           <Grid
             item
-            sm={7}
+            sm={8}
             sx={{
               display: "grid",
 
@@ -77,9 +77,9 @@ const ListItem = ({
           >
             <Box
               sx={{
-                borderStyle: "solid",
+                //borderStyle: "solid",
                 borderWidth: 3,
-                borderColor: "s",
+                //borderColor: "solid",
                 bgcolor: "primary.main",
                 width: 35,
                 height: 35,
@@ -91,7 +91,7 @@ const ListItem = ({
               <Typography
                 variant="h6"
                 sx={{
-                  color: "primary.main",
+                  color: "white",
                   textAlign: "center",
                   fontSize: 20,
                   fontWeight: 900,
@@ -137,13 +137,15 @@ const ListItem = ({
             <DeleteBtn
               onClick={onClick}
               sx={{
-                fontSize: 38,
-                color: "secondary.main",
-                bgcolor: "white",
+                fontSize: 30,
+                // color: "secondary.main",
+                color: "white",
+                bgcolor: "secondary.main",
                 borderRadius: "50%",
 
                 "&:hover": {
                   cursor: "pointer",
+                  bgcolor: "secondary.dark",
                 },
               }}
             />
