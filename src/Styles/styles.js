@@ -46,7 +46,7 @@ export const theme = createTheme({
 });
 
 export const listItemStyle = {
-  width: 550,
+  width: 500,
   height: 90,
   borderRadius: 3,
   bgcolor: "background.light",

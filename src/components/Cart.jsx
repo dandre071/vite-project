@@ -1,4 +1,4 @@
-import { Box, Divider, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Divider, Grid, Stack, Typography } from "@mui/material";
 import useLocalStorage from "../Hooks/useLocalState";
 import { useRef, useState } from "react";
 import { useEffect } from "react";
@@ -9,8 +9,10 @@ import { useGetCartTotalPrice } from "../Hooks/hooks";
 import { colPesos } from "./utils/configs";
 import AddBtn from "./Buttons/AddBtn";
 import ModalHeader from "./ModalHeader";
-
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import Badge from "@mui/material/Badge";
+
 colPesos;
 //import { v4 as uuidv4 } from "uuid";
 const Cart = () => {
@@ -98,6 +100,8 @@ const Cart = () => {
                   total={item.itemTotalPrice}
                   q={item.quantity}
                   description={item.description}
+                  qFinish={item.qFinish}
+                  finish={item.finish}
                   onClick={() => {
                     removeItem(item.id);
                   }}
@@ -115,26 +119,38 @@ const Cart = () => {
 
         <Stack
           sx={{
-            display: "flex",
+            display: "grid",
+            gridTemplateColumns: "1.5fr 1fr",
             borderRadius: 2,
             // bgcolor: "primary.dark",
-            bgcolor: "primary.light",
+            bgcolor: "primary.dark",
             alignItems: "center",
             justifyContent: "center",
-            justifySelf: "center",
+
             width: 525,
             height: 100,
           }}
         >
-          <Stack direction={"row"} sx={{}}>
-            <Typography>{`Artículos: ${items.length}`}</Typography>
-            <Typography
-              variant="h5"
-              sx={{ fontWeight: 600, color: "white" }}
-            >{`Total: ${colPesos.format(totalPrice)}`}</Typography>
-          </Stack>
-
-          <AddBtn width={300} />
+          <Stack sx={{ display: "grid", gridTemplateColumns: "1fr 2fr" }}>
+            <Badge
+              badgeContent={items.length}
+              color="secondary"
+              sx={{ justifySelf: "center", alignSelf: "center" }}
+            >
+              <ShoppingCartOutlinedIcon
+                sx={{ fontSize: 40, color: "primary.light" }}
+              />
+            </Badge>
+            <Box>
+              {/* <Typography>{`Artículos: ${items.length}`}</Typography> */}
+              <Typography>{`Total:`}</Typography>
+              <Typography
+                variant="h5"
+                sx={{ fontWeight: 600, color: "white" }}
+              >{`${colPesos.format(totalPrice)}`}</Typography>
+            </Box>
+          </Stack>{" "}
+          <Button sx={{ color: "white" }}>Finalizar</Button>
         </Stack>
       </Box>
     </>

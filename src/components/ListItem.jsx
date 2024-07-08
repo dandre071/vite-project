@@ -6,6 +6,7 @@ import { useShoppingCart } from "../store/shoppingCart";
 import { listItemStyle, theme } from "../Styles/styles";
 import { motion } from "framer-motion";
 import ModalHeader from "./ModalHeader";
+import { customTheme } from "../Hooks/useCustomTheme";
 motion;
 const ListItem = ({
   price,
@@ -16,6 +17,8 @@ const ListItem = ({
   total,
   item,
   onClick,
+  finish,
+  qFinish,
 }) => {
   const items = useShoppingCart((state) => state.items);
 
@@ -36,12 +39,18 @@ const ListItem = ({
             sx={{
               display: "grid",
               // bgcolor: "red",
-              height: " 100%",
+              // height: " 100%",
               p: 2,
               gap: 0.5,
             }}
           >
-            <Box sx={{ display: "flex", alignItems: "end" }}>
+            <Box
+              sx={
+                {
+                  /* display: "flex", alignItems: "end" */
+                }
+              }
+            >
               <Typography
                 style={{
                   whiteSpace: "pre-wrap",
@@ -55,18 +64,40 @@ const ListItem = ({
                 {text}
               </Typography>
             </Box>
-            <Typography
-              style={{
-                whiteSpace: "pre-wrap",
-                lineHeight: 1.1,
-                display: "grid",
-                color: themeColors.neutralDark,
+            {/*  <Box
+              sx={
+                {
+                  width: 100,
+                bgcolor: "success.main",
+                fontWeight: 500,
+                color: "white",
                 fontSize: 14,
+                borderRadius: customTheme.shape.borderRadius,
+                borderRadius: 2,
+                p: 0,
+                pl: 1, 
+                }
+              
+            >}*/}
+            <Typography
+              sx={{
+                position: "absolute",
+                //top: 10,
+                bottom: 6,
+                bgcolor: "success.main",
+                fontWeight: 500,
+                color: "white",
+                fontSize: 14,
+                borderRadius: customTheme.shape.borderRadius,
+                borderRadius: 2,
+                p: 1,
+                pt: 0,
+                pb: 0,
               }}
-              sx={{}}
             >
-              {description}
+              {qFinish > 0 ? `${finish}(${qFinish})` : finish}
             </Typography>
+            {/*  </Box> */}
           </Grid>
 
           <Grid
