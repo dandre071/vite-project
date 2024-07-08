@@ -5,7 +5,7 @@ const DeleteBtn = ({ sx, onClick }) => {
   return (
     <>
       {/* <HighlightOffIcon sx={sx} onClick={onClick} />; */}
-      <ClearIcon sx={sx} onClick={onClick} />;
+      <ClearIcon sx={sx} onClick={onClick} />
     </>
   );
 };

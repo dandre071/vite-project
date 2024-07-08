@@ -20,23 +20,24 @@ const ListItem = ({
   const items = useShoppingCart((state) => state.items);
 
   return (
-    <Box>
+    <Box sx={{ display: "flex" }}>
       <Box
         sx={{
+          // bgcolor: "primary.light",
           position: "relative",
           display: "flex",
-          width: 520,
+          // width: 600,
         }}
       >
         <Grid borderRadius={2} container sx={listItemStyle}>
           <Grid
             item
-            sm={8}
+            sm={7.5}
             sx={{
               display: "grid",
-
+              // bgcolor: "red",
               height: " 100%",
-              p: 1,
+              p: 2,
               gap: 0.5,
             }}
           >
@@ -70,10 +71,12 @@ const ListItem = ({
 
           <Grid
             item
-            sm={1}
+            sm={1.5}
             sx={{
-              display: "block",
-              alignContent: "center",
+              // bgcolor: "green",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
             <Box
@@ -82,8 +85,8 @@ const ListItem = ({
                 borderWidth: 3,
                 //borderColor: "solid",
                 bgcolor: "primary.main",
-                width: 35,
-                height: 35,
+                width: "100%",
+                height: 40,
                 borderRadius: 2,
                 alignContent: "center",
                 justifyContent: "center",
@@ -109,6 +112,8 @@ const ListItem = ({
             sx={{
               display: "flex",
               justifyContent: "end",
+              //  bgcolor: "orange",
+              pr: 1,
               //background: "palette.secondary.main",
               alignItems: "center",
             }}
@@ -125,34 +130,33 @@ const ListItem = ({
               {`${colPesos.format(total)}`}
             </Typography>
           </Grid>
-          <Grid
-            sx={{
-              top: 25,
-              left: 20,
-              position: "relative",
-              p: 0,
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <DeleteBtn
-              onClick={onClick}
-              sx={{
-                fontSize: 30,
-                // color: "secondary.main",
-                color: "white",
-                bgcolor: "secondary.main",
-                borderRadius: "50%",
-
-                "&:hover": {
-                  cursor: "pointer",
-                  bgcolor: "secondary.dark",
-                },
-              }}
-            />
-          </Grid>
         </Grid>
-      </Box>
+      </Box>{" "}
+      <Grid
+        sx={{
+          position: "relative",
+          top: 28,
+          p: 0,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <DeleteBtn
+          onClick={onClick}
+          sx={{
+            fontSize: 30,
+            // color: "secondary.main",
+            color: "white",
+            bgcolor: "secondary.main",
+            borderRadius: "50%",
+
+            "&:hover": {
+              cursor: "pointer",
+              bgcolor: "secondary.dark",
+            },
+          }}
+        />
+      </Grid>
     </Box>
   );
 };

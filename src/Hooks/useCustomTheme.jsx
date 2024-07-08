@@ -21,7 +21,7 @@ export const customTheme = createTheme({
       //main: "#186cff",
       main: "#0067FF",
       dark: "#0552db",
-      light: "#c0daff",
+      light: "#d6e7fc",
       //lighter: "#f3f6ff",
       //contrastText: "#304ffe",
     },
@@ -104,7 +104,7 @@ export const customTheme = createTheme({
           style: {
             textTransform: "initial",
             backgroundColor: "#0067FF",
-            color: "#fff",
+            color: "#d6e7fc",
             fontSize: 20,
             // width: 400,
 
@@ -115,6 +115,30 @@ export const customTheme = createTheme({
             m: 0,
             "&:hover": {
               background: "#0552db",
+            },
+          },
+        },
+        {
+          props: {
+            variant: "prime-light",
+            color: "primary",
+          },
+
+          style: {
+            textTransform: "initial",
+            backgroundColor: "#d6e7fc",
+            color: "#0552db",
+            fontSize: 20,
+            // width: 400,
+
+            borderRadius: 8,
+            height: 60,
+
+            p: 0,
+            m: 0,
+            "&:hover": {
+              background: "#0552db",
+              color: "#d6e7fc",
             },
           },
         },

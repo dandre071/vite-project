@@ -5,7 +5,7 @@ const CalcBtn = ({ onClick, sx, disabled }) => {
     <Button
       disabled={disabled}
       //sx={sx}
-      variant="secondary"
+      variant="prime-light"
       disableElevation
       disableRipple
       onClick={onClick}

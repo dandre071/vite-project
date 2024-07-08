@@ -48,7 +48,7 @@ export const theme = createTheme({
 export const listItemStyle = {
   width: 550,
   height: 90,
-  borderRadius: 2,
+  borderRadius: 3,
   bgcolor: "background.light",
 
   alignContent: "center",
