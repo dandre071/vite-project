@@ -139,7 +139,7 @@ export const customTheme = createTheme({
               background: "#f7003b",
             },
             "&:disabled": {
-              background: "#f2d7e0",
+              background: "#f7f7f7",
             },
           },
         },
@@ -167,7 +167,7 @@ export const customTheme = createTheme({
     MuiTextField: {
       defaultProps: {
         variant: variantType,
-        minRows: 3,
+        minRows: 2,
         fullWidth: true,
       },
     },

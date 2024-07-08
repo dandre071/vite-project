@@ -1,5 +1,11 @@
 import Box from "@mui/material/Box";
-import { Button, Divider, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Divider,
+  Snackbar,
+  TextField,
+  Typography,
+} from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "../ModalHeader";
@@ -15,17 +21,18 @@ import {
   inputPropsConf,
   textStyles,
 } from "../utils/configs.js";
-
+import Alert from "@mui/material/Alert";
 import { useShoppingCart } from "../../store/shoppingCart.js";
 import { colPesos } from "../utils/configs.js";
 import PriceCalc from "../PriceCalc.jsx";
 import { v4 as uuidv4 } from "uuid";
 import { productSchema } from "../Validations.js";
 import { useFormik } from "formik";
-import { InputLabelProps, primaryFilledBtn } from "../../Styles/styles.js";
+
 import { ThemeProvider } from "styled-components";
 import { customTheme } from "../../Hooks/useCustomTheme.jsx";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { AddBoxOutlined } from "@mui/icons-material";
 const module = "ManualInput";
 
 const ManualInput2 = ({ text }) => {
@@ -68,7 +75,10 @@ const ManualInput2 = ({ text }) => {
   //const items = useShoppingCart((state) => state.items);
   const addItem = useShoppingCart((state) => state.addItem);
   //use product hook
-
+  const disable = () => {
+    ///formik.values.price > 0 && formik.values.quantity > 0 ? false : true;
+    formik.errors.price || formik.errors.quantity ? true : false;
+  };
   const formik = useFormik({
     initialValues: {
       id: "",
@@ -134,6 +144,8 @@ const ManualInput2 = ({ text }) => {
             <Box
               sx={{
                 p: customTheme.p[5],
+                pt: customTheme.p[1],
+                pb: customTheme.p[1],
 
                 width: customTheme.width[6],
                 //  height: customTheme.height[5],
@@ -159,13 +171,13 @@ const ManualInput2 = ({ text }) => {
               </Box> */}
               <Box
                 sx={{
-                  height: 80,
+                  height: 100,
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                 }}
               >
-                <Typography variant="h4" sx={{ fontWeight: 600 }}>
+                <Typography variant="h4" sx={{ fontWeight: 900 }}>
                   Configuración Manual
                 </Typography>
               </Box>
@@ -194,6 +206,12 @@ const ManualInput2 = ({ text }) => {
                         //InputLabelProps={InputLabelProps}
                       />
                       {/* {formik.errors.name && <p>{formik.errors.name}</p>} */}
+
+                      {/*   {formik.errors.name && (
+                        <Alert severity="error" sx={{ fontSize: 10 }}>
+                          {formik.errors.name}
+                        </Alert>
+                      )} */}
                     </Grid>
                     <Grid item sm={8} xs={8}>
                       <TextField
@@ -220,12 +238,7 @@ const ManualInput2 = ({ text }) => {
                         fullWidth
                         label={"Cantidad"}
                         type="number"
-                        // InputProps={{
-                        //   style: { ...inputPropsConf, textAlign: "right" },
-                        //}}
-                        // sx={{ ...textStyles, textAlign: "right" }}
                         onChange={formik.handleChange}
-                        // InputLabelProps={InputLabelProps}
                       />
                     </Grid>
 
@@ -233,9 +246,11 @@ const ManualInput2 = ({ text }) => {
                     <Grid item sm={12} xs={12}>
                       <PriceCalc
                         disabled={
-                          formik.values.price > 0 && formik.values.quantity > 0
-                            ? false
-                            : true
+                          formik.errors.price ||
+                          formik.errors.quantity ||
+                          !formik.values.price
+                            ? true
+                            : false
                         }
                         value={formik.values.itemTotalPrice}
                         name={"itemTotalPrice"}
@@ -304,9 +319,11 @@ const ManualInput2 = ({ text }) => {
                       xs={12}
                       sx={{ pr: 1, pl: 1, pt: 0, pb: 0 }}
                     >
-                      <FormInputText
+                      {/* <FormInputText
                         disabled={false}
                         name={"description"}
+                        errors={formik.errors.description}
+                        helperText={formik.errors.description}
                         //variant={"outlined"}
                         defaultValue={""}
                         label={"Descripción del trabajo"}
@@ -316,7 +333,23 @@ const ManualInput2 = ({ text }) => {
                         autofocus
                         value={formik.values.description}
                         onChange={formik.handleChange}
+                      /> */}
+                      <TextField
+                        error={formik.errors.description}
+                        helperText={formik.errors.description}
+                        value={formik.values.description}
+                        name="description"
+                        fullWidth
+                        label={"Descripción"}
+                        type="text"
+                        onChange={formik.handleChange}
+                        minRows={2}
+                        multiline
+                        sx={{ pb: 3 }}
                       />
+                      {/*  {formik.errors.description && (
+                        <Typography>{formik.errors.description}</Typography>
+                      )} */}
                     </Grid>
                     <Grid
                       item
@@ -349,7 +382,13 @@ const ManualInput2 = ({ text }) => {
                         Agregar
                       </Button>
                     </Grid>
-                    {formik.errors.name && <Typography>Hello</Typography>}
+                    {/* <Grid item sm={12} sx={{ height: 10 }}>
+                      {formik.errors.name && (
+                        <Snackbar severity="error" fullWidth>
+                          {formik.errors.name}
+                        </Snackbar>
+                      )}
+                    </Grid> */}
                   </Grid>
                 </form>{" "}
               </ThemeProvider>

@@ -47,15 +47,15 @@ export const theme = createTheme({
 
 export const listItemStyle = {
   width: 550,
-  height: 85,
+  height: 90,
   borderRadius: 2,
-  bgcolor: "white",
+  bgcolor: "background.light",
 
   alignContent: "center",
 
-  borderStyle: "solid",
-  borderWidth: 2,
-  borderColor: "primary.main",
+  //borderStyle: "solid",
+  borderWidth: 3,
+  borderColor: "background.dark",
   /*  "&:hover": {
     bgcolor: "#F5F5F5",
   }, */

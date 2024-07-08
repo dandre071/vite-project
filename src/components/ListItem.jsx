@@ -78,12 +78,12 @@ const ListItem = ({
             <Box
               sx={{
                 borderStyle: "solid",
-                borderWidth: 2,
-                borderColor: themeColors.darkPrimary,
-                color: themeColors.darkSecondary,
-
-                height: 30,
-                borderRadius: 1.5,
+                borderWidth: 3,
+                borderColor: "s",
+                bgcolor: "primary.main",
+                width: 35,
+                height: 35,
+                borderRadius: 2,
                 alignContent: "center",
                 justifyContent: "center",
               }}
@@ -91,9 +91,10 @@ const ListItem = ({
               <Typography
                 variant="h6"
                 sx={{
+                  color: "primary.main",
                   textAlign: "center",
-                  fontSize: 18,
-                  fontWeight: 700,
+                  fontSize: 20,
+                  fontWeight: 900,
                   p: 0,
                 }}
               >
@@ -107,17 +108,16 @@ const ListItem = ({
             sx={{
               display: "flex",
               justifyContent: "end",
-
+              //background: "palette.secondary.main",
               alignItems: "center",
             }}
           >
-            {/* <Divider orientation="vertical" width={2} /> */}
             <Typography
               variant="p"
               sx={{
-                fontSize: 20,
+                fontSize: 22,
                 fontWeight: 700,
-                color: "black",
+                color: "text.main",
                 textAlign: "right",
               }}
             >
@@ -126,7 +126,7 @@ const ListItem = ({
           </Grid>
           <Grid
             sx={{
-              top: 20,
+              top: 25,
               left: 20,
               position: "relative",
               p: 0,
@@ -138,7 +138,7 @@ const ListItem = ({
               onClick={onClick}
               sx={{
                 fontSize: 38,
-                color: themeColors.warning,
+                color: "secondary.main",
                 bgcolor: "white",
                 borderRadius: "50%",
 

@@ -7,14 +7,14 @@ export const productSchema = object().shape({
   //.min(1, "El nombre tiene que tener al menos un carácter")
   // .max(10, "El nombre no puede superar los 10 carácteres"),
   price: number("Solo se admiten valores numéricos")
-    .required("Este campo es requerido.")
+    .required("Este campo es obligatorio.")
     .positive("El número debe ser positivo.")
     .integer(),
   quantity: number("Sólo se permiten números").positive(
     "El valor debe ser mayor a 0!"
   ),
 
-  description: string(),
+  description: string().required("Este campo es obligatorio."),
   //height: number().required().positive(),
   //width: number().required().positive(),
   //matWidth: number().required().positive(),
