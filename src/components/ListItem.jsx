@@ -84,8 +84,8 @@ const ListItem = ({
                 //borderStyle: "solid",
                 borderWidth: 3,
                 //borderColor: "solid",
-                bgcolor: "primary.main",
-                width: "100%",
+                bgcolor: "primary.light",
+                width: "80%",
                 height: 40,
                 borderRadius: 2,
                 alignContent: "center",
@@ -95,9 +95,9 @@ const ListItem = ({
               <Typography
                 variant="h6"
                 sx={{
-                  color: "white",
+                  color: "primary.main",
                   textAlign: "center",
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: 900,
                   p: 0,
                 }}
@@ -113,7 +113,7 @@ const ListItem = ({
               display: "flex",
               justifyContent: "end",
               //  bgcolor: "orange",
-              pr: 1,
+              pr: 2,
               //background: "palette.secondary.main",
               alignItems: "center",
             }}
@@ -121,7 +121,7 @@ const ListItem = ({
             <Typography
               variant="p"
               sx={{
-                fontSize: 22,
+                fontSize: 20,
                 fontWeight: 700,
                 color: "text.main",
                 textAlign: "right",
@@ -135,7 +135,10 @@ const ListItem = ({
       <Grid
         sx={{
           position: "relative",
-          top: 28,
+          /* top: 28,
+          right: 12, */
+          top: -3,
+          right: 25,
           p: 0,
           alignItems: "center",
           justifyContent: "center",

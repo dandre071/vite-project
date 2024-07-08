@@ -22,7 +22,7 @@ export const customTheme = createTheme({
       main: "#0067FF",
       dark: "#0552db",
       light: "#d6e7fc",
-      //lighter: "#f3f6ff",
+      lighter: "#f3f9ff",
       //contrastText: "#304ffe",
     },
     secondary: {
@@ -99,6 +99,7 @@ export const customTheme = createTheme({
           props: {
             variant: "prime",
             color: "primary",
+            //fullWidth: "true",
           },
 
           style: {
@@ -106,7 +107,7 @@ export const customTheme = createTheme({
             backgroundColor: "#0067FF",
             color: "#d6e7fc",
             fontSize: 20,
-            // width: 400,
+            //width: 400,
 
             borderRadius: 8,
             height: 60,
@@ -202,12 +203,12 @@ export const customTheme = createTheme({
         disableUnderline: true,
         sx: {
           borderRadius: 2,
-          bgcolor: "background.defaul",
+          bgcolor: "background.light",
           color: "text.main",
           fontWeight: 600,
           fontSize: 19,
           "&:hover": {
-            backgroundColor: "background.dark",
+            backgroundColor: "background.default",
           },
         },
       },

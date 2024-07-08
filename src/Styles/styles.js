@@ -50,15 +50,16 @@ export const listItemStyle = {
   height: 90,
   borderRadius: 3,
   bgcolor: "background.light",
-
+  bgcolor: "white",
   alignContent: "center",
 
-  //borderStyle: "solid",
-  borderWidth: 3,
-  borderColor: "background.dark",
-  /*  "&:hover": {
-    bgcolor: "#F5F5F5",
-  }, */
+  borderStyle: "solid",
+  borderWidth: 1.5,
+  borderColor: "primary.light",
+  "&:hover": {
+    bgcolor: "primary.lighter",
+    borderStyle: "none",
+  },
 };
 
 export const secondaryBtn = {

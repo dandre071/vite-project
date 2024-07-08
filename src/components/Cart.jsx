@@ -117,7 +117,8 @@ const Cart = () => {
           sx={{
             display: "flex",
             borderRadius: 2,
-            bgcolor: "primary.dark",
+            // bgcolor: "primary.dark",
+            bgcolor: "primary.light",
             alignItems: "center",
             justifyContent: "center",
             justifySelf: "center",
@@ -133,7 +134,7 @@ const Cart = () => {
             >{`Total: ${colPesos.format(totalPrice)}`}</Typography>
           </Stack>
 
-          <AddBtn width={300} bg={"primary.main"} color={"primary.light"} />
+          <AddBtn width={300} />
         </Stack>
       </Box>
     </>

@@ -360,25 +360,18 @@ const ManualInput2 = ({ text }) => {
                     >
                       {/* <AddBtn onSubmit={formik.handleSubmit} /> */}
 
-                      <Button
-                        //disabled={
-                        //formik.errors.name  formik.name === "" ||
-                        // formik.errors.price
-                        // ? true
-                        // : false
-
-                        //variant="secondary"
-                        // }
+                      <AddBtn
+                        disabled={!formik.errors ? false : true}
+                        title={"Agregar"}
                         variant="prime"
                         type="submit"
-                        fullWidth
                         onSubmit={formik.handleSubmit}
-                        startIcon={<AddShoppingCartIcon />}
+                        icon={<AddShoppingCartIcon />}
                         //color="primary.main"
                         //
                       >
                         Agregar
-                      </Button>
+                      </AddBtn>
                     </Grid>
                     {/* <Grid item sm={12} sx={{ height: 10 }}>
                       {formik.errors.name && (
