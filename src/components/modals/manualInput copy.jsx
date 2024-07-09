@@ -194,6 +194,11 @@ const ManualInput2 = ({ text }) => {
                       <TextField
                         onBlur={formik.handleBlur}
                         error={formik.errors.name /* && formik.touched.name */}
+                        /* helperText={
+                          <Box sx={{ bgcolor: "secondary.light" }}>
+                            {formik.errors.name}
+                          </Box>
+                        } */
                         helperText={formik.errors.name}
                         value={formik.values.name}
                         name="name"

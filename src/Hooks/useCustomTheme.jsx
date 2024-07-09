@@ -117,6 +117,9 @@ export const customTheme = createTheme({
             "&:hover": {
               background: "#0552db",
             },
+            "&:disabled": {
+              background: "#d6e7fc",
+            },
           },
         },
         {

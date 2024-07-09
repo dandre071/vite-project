@@ -21,7 +21,8 @@ const ListItem = ({
   qFinish,
 }) => {
   const items = useShoppingCart((state) => state.items);
-
+  console.log(finish.join);
+  //const finishText =
   return (
     <Box sx={{ display: "flex" }}>
       <Box
