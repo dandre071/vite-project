@@ -120,10 +120,10 @@ const Cart = () => {
         <Stack
           sx={{
             display: "grid",
-            gridTemplateColumns: "1.5fr 1fr",
+            gridTemplateColumns: "2fr 1fr",
             borderRadius: 2,
             // bgcolor: "primary.dark",
-            bgcolor: "primary.dark",
+            bgcolor: "primary.lighter",
             alignItems: "center",
             justifyContent: "center",
 
@@ -141,16 +141,37 @@ const Cart = () => {
                 sx={{ fontSize: 40, color: "primary.light" }}
               />
             </Badge>
-            <Box>
+            <Box sx={{ bgcolor: "primary.light", p: 1, borderRadius: 2 }}>
               {/* <Typography>{`Artículos: ${items.length}`}</Typography> */}
               <Typography>{`Total:`}</Typography>
               <Typography
                 variant="h5"
-                sx={{ fontWeight: 600, color: "white" }}
+                sx={{ fontWeight: 600, color: "text.main" }}
               >{`${colPesos.format(totalPrice)}`}</Typography>
-            </Box>
+            </Box>{" "}
+            <Stack
+              spacing={1}
+              sx={{
+                display: "flex",
+                bgcolor: "white",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Button
+                sx={{ color: "white", width: "80%", height: 50 }}
+                variant="prime"
+              >
+                Finalizar
+              </Button>
+              <Button
+                sx={{ color: "white", width: "80%", height: 50 }}
+                variant="secondary"
+              >
+                Cancelar
+              </Button>
+            </Stack>
           </Stack>{" "}
-          <Button sx={{ color: "white" }}>Finalizar</Button>
         </Stack>
       </Box>
     </>
