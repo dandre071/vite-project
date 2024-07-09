@@ -13,7 +13,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   justify-content: center;
-  /* background-color: rgb(177, 206, 233);*/
+  background-color: #0067ff;
 }
 
 .input-error {

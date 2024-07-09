@@ -1,4 +1,4 @@
-import { object, string, number, date, boolean } from "yup";
+import { object, string, number, date, boolean, array } from "yup";
 
 export const productSchema = object().shape({
   name: string()
@@ -18,7 +18,7 @@ export const productSchema = object().shape({
   //height: number().required().positive(),
   //width: number().required().positive(),
   //matWidth: number().required().positive(),
-  finish: string().required(),
+  finish: array().of(string()).required(),
   finishQ: number()?.required().positive(),
   //material: string().required(),
   //descolillado: string().required(),

@@ -21,6 +21,8 @@ const FormSelect2 = ({
   style,
   error,
   helperText,
+  multiple,
+  renderValue,
 }) => {
   return (
     <FormControl fullWidth sx={{ my: 1 }} onChange={onChange}>
@@ -39,6 +41,7 @@ const FormSelect2 = ({
 
       <Box sx={{ display: "flex" }}>
         <Select
+          multiple={multiple}
           defaultValue={"Sin acabado"}
           name={name}
           onChange={onChange}
@@ -46,7 +49,7 @@ const FormSelect2 = ({
           value={value}
           label={label}
           disabled={disabled}
-
+          // renderValue={renderValue}
           // style={{ ...style, borderStyle: "none" }}
           // InputLabelProps={InputLabelProps}
         >

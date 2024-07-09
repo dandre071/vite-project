@@ -2,6 +2,9 @@ import Box from "@mui/material/Box";
 import {
   Button,
   Divider,
+  FilledInput,
+  MenuItem,
+  Select,
   Snackbar,
   TextField,
   Typography,
@@ -76,8 +79,10 @@ const ManualInput2 = ({ text }) => {
   const addItem = useShoppingCart((state) => state.addItem);
   //use product hook
   const disable = () => {
-    ///formik.values.price > 0 && formik.values.quantity > 0 ? false : true;
-    formik.errors.price || formik.errors.quantity ? true : false;
+    if (formik.errors) {
+      return true;
+    }
+    return;
   };
   const formik = useFormik({
     initialValues: {
@@ -90,7 +95,7 @@ const ManualInput2 = ({ text }) => {
       height: 0,
       width: 0,
       matWidth: 0,
-      finish: "Sin acabado",
+      finish: [],
       finishQ: 1,
       material: "",
       descolillado: "",
@@ -134,13 +139,24 @@ const ManualInput2 = ({ text }) => {
               flexWrap: "wrap",
               alignContent: "center",
               justifyContent: "center",
-              pt: 1,
+              pt: 3,
               pb: 1,
               /* gridTemplateRows: "2fr 1fr",*/
 
               borderRadius: customTheme.shape.borderRadius,
             }}
           >
+            <Box
+              sx={{
+                height: 100,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "end",
+                borderBottom: `2px solid ${customTheme.palette.background.dark}`,
+              }}
+            >
+              <ModalHeader title={"Configuración Manual"} />
+            </Box>
             <Box
               sx={{
                 p: customTheme.p[5],
@@ -169,16 +185,7 @@ const ManualInput2 = ({ text }) => {
               >
                 <ModalHeader title={"Configuración Manual"} style={{}} />
               </Box> */}
-              <Box
-                sx={{
-                  height: 100,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <ModalHeader title={"Configuración Manual"} />
-              </Box>
+
               <ThemeProvider theme={customTheme}>
                 <form onSubmit={formik.handleSubmit}>
                   <Grid container spacing={1.5} sx={{ flexGrow: 1 }}>
@@ -240,27 +247,50 @@ const ManualInput2 = ({ text }) => {
                       />
                     </Grid>
 
-                    {/* {formik.values.price > 0 && ( */}
-                    <Grid item sm={12} xs={12}>
-                      <PriceCalc
-                        disabled={
-                          formik.errors.price ||
-                          formik.errors.quantity ||
-                          !formik.values.price
-                            ? true
-                            : false
-                        }
-                        value={formik.values.itemTotalPrice}
-                        name={"itemTotalPrice"}
-                        text={`${colPesos.format(
-                          formik.values.itemTotalPrice
-                        )}`}
-                        onClick={totalCalc}
-                      />
-                    </Grid>
-                    {/* )} */}
+                    {formik.values.price > 0 && (
+                      <Grid item sm={12} xs={12}>
+                        <PriceCalc
+                          disabled={
+                            formik.errors.price ||
+                            formik.errors.quantity ||
+                            !formik.values.price
+                              ? true
+                              : false
+                          }
+                          value={formik.values.itemTotalPrice}
+                          name={"itemTotalPrice"}
+                          text={`${colPesos.format(
+                            formik.values.itemTotalPrice
+                          )}`}
+                          onClick={totalCalc}
+                        />
+                      </Grid>
+                    )}
 
                     <Grid item sm={12} xs={12}>
+                      {/*  <Select
+                        //labelId="demo-multiple-name-label"
+                        // id="demo-multiple-name"
+                        multiple
+                        value={formik.values.finish}
+                        // input={<FilledInput label="Acabado" />}
+                        //MenuProps={acabados}
+                        name="finish"
+                        onChange={formik.handleChange}
+                        renderValue={(selected) => selected.join(", ")}
+                        sx={{ width: 205 }}
+                      >
+                        {acabados.map((acabado) => (
+                          <MenuItem
+                            key={acabado}
+                            value={formik.values.finish}
+                            // style={getStyles(name, personName, theme)}
+                          >
+                            {acabado}
+                          </MenuItem>
+                        ))}
+                      </Select>
+ */}
                       <Box
                         sx={{
                           display: "flex",
@@ -271,17 +301,20 @@ const ManualInput2 = ({ text }) => {
                         }}
                       >
                         <FormSelect2
+                          value={formik.values.finish}
+                          multiple={true}
                           error={formik.errors.finish}
                           helperText={formik.errors.finish}
                           fullWidth
                           name="finish"
+                          onChange={formik.handleChange}
                           options={acabados}
                           label={"Acabado"}
                           //theme={themeColors}
                           //style={{ textStyles }}
                           // sx={{ borderRadius: 20 }}
                           defaultValue={"Sin acabado"}
-                          onChange={formik.handleChange}
+                          renderValue={(selected) => selected.join(", ")}
                           // InputLabelProps={InputLabelProps}
                         />
 
@@ -349,30 +382,7 @@ const ManualInput2 = ({ text }) => {
                         <Typography>{formik.errors.description}</Typography>
                       )} */}
                     </Grid>
-                    <Grid
-                      item
-                      sm={12}
-                      xs={12}
-                      sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                      }}
-                    >
-                      {/* <AddBtn onSubmit={formik.handleSubmit} /> */}
 
-                      <AddBtn
-                        disabled={!formik.errors ? false : true}
-                        title={"Agregar"}
-                        variant="prime"
-                        type="submit"
-                        onSubmit={formik.handleSubmit}
-                        icon={<AddShoppingCartIcon />}
-                        //color="primary.main"
-                        //
-                      >
-                        Agregar
-                      </AddBtn>
-                    </Grid>
                     {/* <Grid item sm={12} sx={{ height: 10 }}>
                       {formik.errors.name && (
                         <Snackbar severity="error" fullWidth>
@@ -380,10 +390,34 @@ const ManualInput2 = ({ text }) => {
                         </Snackbar>
                       )}
                     </Grid> */}
-                  </Grid>
+                  </Grid>{" "}
                 </form>{" "}
               </ThemeProvider>
             </Box>
+            <Grid
+              sm={12}
+              xs={12}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                borderTop: `2px solid ${customTheme.palette.background.dark}`,
+                p: "15px 0px",
+              }}
+            >
+              <Button
+                sx={{ width: "80%" }}
+                disabled={!formik.values.itemTotalPrice ? true : false}
+                title={"Agregar"}
+                variant="prime"
+                type="submit"
+                onClick={formik.handleSubmit}
+                startIcon={<AddShoppingCartIcon />}
+                //color="primary.main"
+                //
+              >
+                Agregar
+              </Button>
+            </Grid>
           </Box>
         </Box>
       </Modal>
