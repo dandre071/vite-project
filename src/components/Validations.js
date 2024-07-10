@@ -14,7 +14,7 @@ export const productSchema = object().shape({
     "El valor debe ser mayor a 0!"
   ),
 
-  description: string().required("Este campo es obligatorio."),
+  description: string() /* required("Este campo es obligatorio.") */,
   //height: number().required().positive(),
   //width: number().required().positive(),
   //matWidth: number().required().positive(),

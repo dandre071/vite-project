@@ -23,6 +23,7 @@ const Cart = () => {
   const { removeItem } = useShoppingCart();
   const totalPrice = useGetCartTotalPrice();
   console.log(totalPrice);
+
   return (
     <>
       <Box
@@ -31,7 +32,7 @@ const Cart = () => {
           gap: 1,
           borderRadius: 2,
           display: "grid",
-          gridTemplateRows: "50px auto auto",
+          gridTemplateRows: "1fr auto auto",
           justifyContent: "start",
           alignItems: "center",
           p: 1,
@@ -40,21 +41,20 @@ const Cart = () => {
           border: `2px solid #f3f3f3`,
         }}
       >
-        <Box>
-          <ModalHeader title={"Compras"} />
-        </Box>
+        <ModalHeader title={"Compras"} />
 
         <Stack spacing={1} sx={{ alignItems: "center" }}>
           <Box
             sx={{
               //border: `2px solid #f3f3f3`,
               width: 550,
-              minHeight: "auto",
+              minHeight: 200,
               //bgcolor: "#f7f7f7",
               //bgcolor: "white",
               display: "flex",
+              bgcolor: "background.default",
               flexDirection: "column",
-              justifyContent: "start",
+              justifyContent: "center",
               alignItems: "center",
               borderRadius: 2,
               pt: 2,
@@ -76,6 +76,7 @@ const Cart = () => {
                   sx={{
                     alignItems: "center",
                     alignSelf: "center",
+                    position: "relative",
                   }}
                 >
                   <ShoppingBagOutlinedIcon
@@ -92,7 +93,7 @@ const Cart = () => {
                 </Stack>
               </Box>
             )}
-            <Stack display={"flex"} spacing={1}>
+            <Stack display={"flex"} spacing={1} sx={{ left: 10 }}>
               {items.map((item) => (
                 <ListItem
                   key={item.index}
@@ -117,62 +118,64 @@ const Cart = () => {
         </Stack>
         {/********** */}
 
-        <Stack
-          sx={{
-            display: "grid",
-            gridTemplateColumns: "2fr 1fr",
-            borderRadius: 2,
-            // bgcolor: "primary.dark",
-            bgcolor: "primary.lighter",
-            alignItems: "center",
-            justifyContent: "center",
+        {items.length && (
+          <Stack
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "2fr 1fr",
+              borderRadius: 2,
+              // bgcolor: "primary.dark",
+              bgcolor: "primary.lighter",
+              alignItems: "center",
+              justifyContent: "center",
 
-            width: 525,
-            height: 100,
-          }}
-        >
-          <Stack sx={{ display: "grid", gridTemplateColumns: "1fr 2fr" }}>
-            <Badge
-              badgeContent={items.length}
-              color="secondary"
-              sx={{ justifySelf: "center", alignSelf: "center" }}
-            >
-              <ShoppingCartOutlinedIcon
-                sx={{ fontSize: 40, color: "primary.light" }}
-              />
-            </Badge>
-            <Box sx={{ bgcolor: "primary.light", p: 1, borderRadius: 2 }}>
-              {/* <Typography>{`Artículos: ${items.length}`}</Typography> */}
-              <Typography>{`Total:`}</Typography>
-              <Typography
-                variant="h5"
-                sx={{ fontWeight: 600, color: "text.main" }}
-              >{`${colPesos.format(totalPrice)}`}</Typography>
-            </Box>{" "}
-            <Stack
-              spacing={1}
-              sx={{
-                display: "flex",
-                bgcolor: "white",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Button
-                sx={{ color: "white", width: "80%", height: 50 }}
-                variant="prime"
+              width: 525,
+              height: 100,
+            }}
+          >
+            <Stack sx={{ display: "grid", gridTemplateColumns: "1fr 2fr" }}>
+              <Badge
+                badgeContent={items.length}
+                color="secondary"
+                sx={{ justifySelf: "center", alignSelf: "center" }}
               >
-                Finalizar
-              </Button>
-              <Button
-                sx={{ color: "white", width: "80%", height: 50 }}
-                variant="secondary"
+                <ShoppingCartOutlinedIcon
+                  sx={{ fontSize: 40, color: "primary.light" }}
+                />
+              </Badge>
+              <Box sx={{ bgcolor: "primary.light", p: 1, borderRadius: 2 }}>
+                {/* <Typography>{`Artículos: ${items.length}`}</Typography> */}
+                <Typography>{`Total:`}</Typography>
+                <Typography
+                  variant="h5"
+                  sx={{ fontWeight: 600, color: "text.main" }}
+                >{`${colPesos.format(totalPrice)}`}</Typography>
+              </Box>{" "}
+              <Stack
+                spacing={1}
+                sx={{
+                  display: "flex",
+                  bgcolor: "white",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
               >
-                Cancelar
-              </Button>
+                <Button
+                  sx={{ color: "white", width: "80%", height: 50 }}
+                  variant="prime"
+                >
+                  Finalizar
+                </Button>
+                <Button
+                  sx={{ color: "white", width: "80%", height: 50 }}
+                  variant="secondary"
+                >
+                  Cancelar
+                </Button>
+              </Stack>
             </Stack>
-          </Stack>{" "}
-        </Stack>
+          </Stack>
+        )}
       </Box>
     </>
   );

@@ -46,6 +46,7 @@ const ManualInput2 = ({ text }) => {
     formik.resetForm();
     setOpen(false);
   };
+
   const handlerAdd = (e) => {
     addItem({
       ...formik.values,
@@ -107,11 +108,12 @@ const ManualInput2 = ({ text }) => {
     onSubmit: handlerAdd,
   });
   const errors = formik.errors;
-  console.log({ errors });
+  //console.log({ errors });
   const totalCalc = () => {
     formik.setValues({
       ...formik.values,
       itemTotalPrice: formik.values.quantity * formik.values.price,
+      //finish: formik.values.finish.join(),
     });
   };
 
@@ -146,28 +148,15 @@ const ManualInput2 = ({ text }) => {
               borderRadius: customTheme.shape.borderRadius,
             }}
           >
-            <Box
-              sx={{
-                height: 100,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "end",
-                borderBottom: `2px solid ${customTheme.palette.background.dark}`,
-              }}
-            >
-              <ModalHeader title={"Configuración Manual"} />
-            </Box>
+            <ModalHeader title={"Configuración Manual"} />
+
             <Box
               sx={{
                 p: customTheme.p[5],
                 pt: customTheme.p[1],
                 pb: customTheme.p[1],
-
                 width: customTheme.width[6],
-                //  height: customTheme.height[5],
-
                 borderRadius: 3,
-                // bgcolor: "orange",
                 bgcolor: "white",
               }}
             >
@@ -315,19 +304,14 @@ const ManualInput2 = ({ text }) => {
                           onChange={formik.handleChange}
                           options={acabados}
                           label={"Acabado"}
-                          //theme={themeColors}
-                          //style={{ textStyles }}
-                          // sx={{ borderRadius: 20 }}
                           defaultValue={"Sin acabado"}
                           renderValue={(selected) => selected.join(", ")}
-                          // InputLabelProps={InputLabelProps}
                         />
 
                         {(formik.values.finish == "Ojales" ||
                           formik.values.finish == "Bolsillos") && (
                           <TextField
                             sx={{
-                              //...inputPropsConf,
                               color: themeColors.darkText,
                               width: "49%",
                               borderRadius: 2,
@@ -336,14 +320,9 @@ const ManualInput2 = ({ text }) => {
                             type={"number"}
                             label={"Cantidad"}
                             defaultValue={1}
-                            //variant={"outlined"}
                             value={formik.values.finishQ}
                             name="finishQ"
-                            // InputProps={{
-                            //   style: inputPropsConf,
-                            // }}
                             onChange={formik.handleChange}
-                            // InputLabelProps={InputLabelProps}
                           />
                         )}
                       </Box>

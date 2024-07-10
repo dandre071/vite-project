@@ -3,13 +3,19 @@ import { Box, Divider, Typography } from "@mui/material";
 
 import { themeColors } from "./utils/configs";
 import { header } from "../Styles/styles";
+import { customTheme } from "../Hooks/useCustomTheme";
 const ModalHeader = ({ title }) => {
   return (
     <>
       <Box
-        style={{ ...header, height: 80, color: "black" }}
         sx={{
-          width: "100%",
+          height: 100,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "end",
+          pt: 1,
+          pb: 2,
+          borderBottom: `3px solid ${customTheme.palette.background.dark}`,
         }}
       >
         <Typography variant="h4" sx={{ fontWeight: 900 }}>

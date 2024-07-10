@@ -6,7 +6,7 @@ import { ThemeProvider } from "styled-components";
 import { fieldStyle, textStyles } from "../utils/configs";
 import { InputLabelProps } from "../../Styles/styles";
 import { customTheme } from "../../Hooks/useCustomTheme";
-
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 const FormSelect2 = ({
   control,
   disabled,
@@ -49,6 +49,7 @@ const FormSelect2 = ({
           value={value}
           label={label}
           disabled={disabled}
+          // IconComponent={<KeyboardArrowDownIcon />}
           // renderValue={renderValue}
           // style={{ ...style, borderStyle: "none" }}
           // InputLabelProps={InputLabelProps}

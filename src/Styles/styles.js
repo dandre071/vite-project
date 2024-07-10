@@ -49,9 +49,9 @@ export const listItemStyle = {
   width: 500,
   height: 90,
   borderRadius: 3,
-  bgcolor: "background.light",
+  //bgcolor: "background.light",
   bgcolor: "white",
-  alignContent: "center",
+  // alignContent: "center",
 
   borderStyle: "solid",
   borderWidth: 1.5,
