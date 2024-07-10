@@ -51,7 +51,11 @@ export const useShoppingCart = create()(
         const totalPrice = state.items.map((item) => item.itemTotalPrice);
         return totalPrice;
       },
-      clearCart: () => {},
+      clearCart: () => {
+        set((state) => ({
+          items: (state.items = []),
+        }));
+      },
     }),
     {
       name: "shopping-cart",

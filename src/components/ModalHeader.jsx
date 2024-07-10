@@ -15,10 +15,14 @@ const ModalHeader = ({ title }) => {
           alignItems: "end",
           pt: 1,
           pb: 2,
-          borderBottom: `3px solid ${customTheme.palette.background.dark}`,
+          borderBottom: `2px solid ${customTheme.palette.background.dark}`,
+          // bgcolor: "primary.main",
         }}
       >
-        <Typography variant="h4" sx={{ fontWeight: 900 }}>
+        <Typography
+          variant="h4"
+          sx={{ fontWeight: 900, color: "primary.main" }}
+        >
           {title}
         </Typography>
       </Box>

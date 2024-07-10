@@ -141,7 +141,7 @@ const ManualInput2 = ({ text }) => {
               flexWrap: "wrap",
               alignContent: "center",
               justifyContent: "center",
-              pt: 3,
+              pt: 1,
               pb: 1,
               /* gridTemplateRows: "2fr 1fr",*/
 
@@ -153,7 +153,7 @@ const ManualInput2 = ({ text }) => {
             <Box
               sx={{
                 p: customTheme.p[5],
-                pt: customTheme.p[1],
+                pt: customTheme.p[0],
                 pb: customTheme.p[1],
                 width: customTheme.width[6],
                 borderRadius: 3,
@@ -385,7 +385,8 @@ const ManualInput2 = ({ text }) => {
                 display: "flex",
                 justifyContent: "center",
                 borderTop: `2px solid ${customTheme.palette.background.dark}`,
-                p: "15px 0px",
+                pt: 2,
+                pb: 3,
               }}
             >
               <Button

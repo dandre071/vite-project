@@ -13,16 +13,22 @@ import { redux } from "zustand/middleware";
 
 const primary = "customTheme.primary.main";
 const variantType = "filled";
-const primaryColor = "#2962ff";
+const primaryColor = "#2714db";
+const primaryDarkColor = "#150cc4";
+const primaryLightColor = "#ecf3fe";
+const primaryLightherColor = "#f5f8ff";
+const secondaryColor = "#e50037";
 export const customTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
       //main: "#186cff",
-      main: "#0067FF",
-      dark: "#0552db",
-      light: "#d6e7fc",
-      lighter: "#f3f9ff",
+      //main: "#0067FF",
+      main: "#2714db",
+      //dark: "#0552db",
+      dark: "#173fce",
+      light: primaryLightColor,
+      lighter: primaryLightherColor,
       //contrastText: "#304ffe",
     },
     secondary: {
@@ -61,7 +67,8 @@ export const customTheme = createTheme({
     },
     background: {
       default: "#f1f1f2",
-      light: "#f7f7f7",
+      light: "#eef2ff",
+      //light: "#f7f7f7",
       dark: "#e2e2e2",
     },
     text: {
@@ -104,21 +111,24 @@ export const customTheme = createTheme({
 
           style: {
             textTransform: "initial",
-            backgroundColor: "#0067FF",
-            color: "#d6e7fc",
+            backgroundColor: primaryColor,
+            color: "white",
             fontSize: 20,
             //width: 400,
 
             borderRadius: 8,
-            height: 60,
+            height: 70,
 
             p: 0,
             m: 0,
             "&:hover": {
-              background: "#0552db",
+              background: primaryDarkColor,
             },
             "&:disabled": {
-              background: "#d6e7fc",
+              backgroundColor: primaryLightherColor,
+              border: `2px solid ${primaryColor}`,
+              color: primaryColor,
+              fontSize: 20,
             },
           },
         },
@@ -130,8 +140,9 @@ export const customTheme = createTheme({
 
           style: {
             textTransform: "initial",
-            backgroundColor: "#d6e7fc",
-            color: "#0552db",
+            // backgroundColor: "white",
+            border: `2px solid ${primaryColor}`,
+            color: primaryColor,
             fontSize: 20,
             // width: 400,
 
@@ -141,7 +152,7 @@ export const customTheme = createTheme({
             p: 0,
             m: 0,
             "&:hover": {
-              background: "#0552db",
+              background: "white",
               color: "#d6e7fc",
             },
           },
@@ -169,6 +180,31 @@ export const customTheme = createTheme({
             "&:disabled": {
               background: "#f7f7f7",
             },
+          },
+        },
+        {
+          props: {
+            variant: "secondary-outlined",
+          },
+
+          style: {
+            textTransform: "initial",
+            background: "white",
+            color: secondaryColor,
+            fontSize: 20,
+            // width: 400,
+            border: `2px solid ${secondaryColor}`,
+            borderRadius: 8,
+            height: 60,
+
+            p: 0,
+            m: 0,
+            /* "&:hover": {
+              background: "#f7003b",
+            },
+            "&:disabled": {
+              background: "#f7f7f7",
+            }, */
           },
         },
       ],
@@ -206,12 +242,28 @@ export const customTheme = createTheme({
         disableUnderline: true,
         sx: {
           borderRadius: 2,
-          bgcolor: "background.light",
+          bgcolor: "primary.lighter",
           color: "text.main",
           fontWeight: 600,
           fontSize: 19,
           "&:hover": {
-            backgroundColor: "background.default",
+            backgroundColor: "primary.light",
+          },
+        },
+      },
+    },
+    MuiFilledInput: {
+      defaultProps: {
+        multiline: true,
+        disableUnderline: true,
+        sx: {
+          borderRadius: 2,
+          bgcolor: "primary.lighter",
+          color: "text.main",
+          fontWeight: 600,
+          fontSize: 19,
+          "&:hover": {
+            backgroundColor: "primary.light",
           },
         },
       },

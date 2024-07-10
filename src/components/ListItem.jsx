@@ -7,6 +7,7 @@ import { listItemStyle, theme } from "../Styles/styles";
 import { motion } from "framer-motion";
 import ModalHeader from "./ModalHeader";
 import { customTheme } from "../Hooks/useCustomTheme";
+import { object } from "yup";
 motion;
 const ListItem = ({
   price,
@@ -21,8 +22,8 @@ const ListItem = ({
   qFinish,
 }) => {
   const items = useShoppingCart((state) => state.items);
-  const fin = finish.join(", ");
-  //console.log(fin);
+  //const fin = finish.join(", ");
+  // console.log(fin);
   //const finishText =
   return (
     <Box
@@ -30,15 +31,17 @@ const ListItem = ({
         display: "flex",
         p: 0,
         height: 90,
-        //alignItems: "center",
+        // bgcolor: "red",
+        // alignItems: "center",
       }}
     >
-      <Box>
+      <Box sx={{}}>
         <Box
           sx={{
             // bgcolor: "primary.light",
             position: "relative",
             display: "flex",
+
             // width: 600,
           }}
         >
@@ -55,6 +58,25 @@ const ListItem = ({
               }}
             >
               <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "end",
+                }}
+              >
+                <Typography
+                  style={{
+                    whiteSpace: "pre-wrap",
+                    lineHeight: 1,
+                    display: "flex",
+                    color: "text.main",
+                    fontSize: 20,
+                    fontWeight: 800,
+                  }}
+                >
+                  {text}
+                </Typography>
+              </Box>
+              <Box
                 sx={
                   {
                     /* display: "flex", alignItems: "end" */
@@ -65,54 +87,37 @@ const ListItem = ({
                   style={{
                     whiteSpace: "pre-wrap",
                     lineHeight: 1,
-                    display: "flex",
-                    color: themeColors.neutralDark,
-                    fontSize: 20,
-                    fontWeight: 700,
+
+                    color: customTheme.palette.text.light,
+                    fontSize: 14,
+                    fontWeight: 500,
                   }}
                 >
                   {text}
                 </Typography>
               </Box>
-              {/*  <Box
-              sx={
-                {
-                  width: 100,
+            </Grid>
+            <Typography
+              sx={{
+                position: "absolute",
+                //top: 10,
+                right: 6,
+                bottom: 6,
                 bgcolor: "success.main",
                 fontWeight: 500,
                 color: "white",
                 fontSize: 14,
-                borderRadius: customTheme.shape.borderRadius,
-                borderRadius: 2,
-                p: 0,
-                pl: 1, 
-                }
-              
-            >}*/}
-              <Typography
-                sx={{
-                  position: "absolute",
-                  //top: 10,
-                  bottom: 6,
-                  bgcolor: "success.main",
-                  fontWeight: 500,
-                  color: "white",
-                  fontSize: 14,
-                  borderRadius: customTheme.shape.borderRadius - 2.5,
-                  // borderRadius: 2,
-                  p: 1,
-                  pt: 0,
-                  pb: 0,
-                }}
-              >
-                {/* {console.log(items.finish)} */}
-                {qFinish > 0
-                  ? `${finish.join(" - ")}(${qFinish})`
-                  : finish.join(" - ")}
-              </Typography>
-              {/*  </Box> */}
-            </Grid>
-
+                borderRadius: customTheme.shape.borderRadius - 2.5,
+                // borderRadius: 2,
+                p: 1,
+                pt: 0,
+                pb: 0,
+              }}
+            >
+              {typeof finish === "string"
+                ? finish
+                : Array.from(finish).join(" - ")}
+            </Typography>
             <Grid
               item
               sm={1.5}
@@ -165,7 +170,7 @@ const ListItem = ({
               <Typography
                 variant="p"
                 sx={{
-                  fontSize: 20,
+                  fontSize: 21,
                   fontWeight: 700,
                   color: "text.main",
                   textAlign: "right",

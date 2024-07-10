@@ -13,7 +13,13 @@ body {
   min-width: 320px;
   min-height: 100vh;
   justify-content: center;
-  background-color: #1100ff;
+  /*  background-color: #eaeaf3; */
+  background: rgb(9, 0, 129);
+  /* background: linear-gradient(
+    172deg,
+    rgba(236, 243, 254, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  ); */
 }
 
 .input-error {

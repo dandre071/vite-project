@@ -10,16 +10,11 @@ const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
       disabled={disabled}
       sx={{
         display: "flex",
-        bgcolor: "background.light",
         borderRadius: customTheme.shape.borderRadius,
-        //gridTemplateColumns: "4fr 8fr",
         justifyContent: "space-between",
-        //border: `1px solid ${customTheme.palette.secondary.main}`,
+        border: `2px solid ${customTheme.palette.primary.main}`,
         p: 2,
-
         alignItems: "center",
-
-        // justifyContent: "center",
       }}
       item
     >
