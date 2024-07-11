@@ -1,5 +1,6 @@
 import { createTheme } from "@mui/material";
 import { themeColors } from "../components/utils/configs";
+import { customTheme } from "../Hooks/useCustomTheme";
 
 export const theme = createTheme({
   palette: {
@@ -122,4 +123,15 @@ export const header = {
   justifyContent: "center",
 
   alignItems: "center",
+};
+
+export const ModalCardStyle = {
+  bgcolor: "primary.light",
+  borderRadius: customTheme.shape.borderRadius - 2.5,
+  height: 220,
+  width: 200,
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  boxShadow: 1,
 };

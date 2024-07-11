@@ -9,6 +9,9 @@ import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "./ModalHeader";
 import SelectField from "./SelectField";
 import OpenModalBtn from "./OpenModalBtn";
+import { SlCalculator } from "react-icons/sl";
+import ModalCard from "./Cards/ModalCard";
+import { customTheme } from "../Hooks/useCustomTheme";
 const style = {
   position: "absolute",
   top: "50%",
@@ -28,7 +31,15 @@ const AutoProductModal = ({ text, matSize, material, choice, acabado }) => {
   const handleClose = () => setOpen(false);
   return (
     <div>
-      <OpenModalBtn text={"Producto Automático"} onClick={handleOpen} />
+      <ModalCard
+        title={"Producto Automático"}
+        onClick={handleOpen}
+        children={
+          <SlCalculator
+            style={{ color: customTheme.palette.primary.main, fontSize: 100 }}
+          />
+        }
+      />
       <Modal
         open={open}
         onClose={handleClose}

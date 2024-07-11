@@ -124,11 +124,15 @@ export const customTheme = createTheme({
             "&:hover": {
               background: primaryDarkColor,
             },
-            "&:disabled": {
+            /* "&:disabled": {
               backgroundColor: primaryLightherColor,
               border: `2px solid ${primaryColor}`,
               color: primaryColor,
               fontSize: 20,
+            }, */
+            "&:disabled": {
+              background: primaryColor,
+              color: primaryLightColor,
             },
           },
         },
@@ -178,7 +182,8 @@ export const customTheme = createTheme({
               background: "#f7003b",
             },
             "&:disabled": {
-              background: "#f7f7f7",
+              background: primaryColor,
+              color: primaryLightColor,
             },
           },
         },

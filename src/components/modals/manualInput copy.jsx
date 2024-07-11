@@ -35,7 +35,10 @@ import { useFormik } from "formik";
 import { ThemeProvider } from "styled-components";
 import { customTheme } from "../../Hooks/useCustomTheme.jsx";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { AddBoxOutlined } from "@mui/icons-material";
+import { AddBoxOutlined, ShoppingBag } from "@mui/icons-material";
+import ModalCard from "../Cards/ModalCard.jsx";
+import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
+
 const module = "ManualInput";
 
 const ManualInput2 = ({ text }) => {
@@ -119,7 +122,14 @@ const ManualInput2 = ({ text }) => {
 
   return (
     <Box>
-      <OpenModalBtn text={text} onClick={handleOpen} />
+      <ModalCard
+        title={"Producto Directo"}
+        onClick={handleOpen}
+        children={
+          <EditNoteOutlinedIcon sx={{ fontSize: 100, color: "primary.main" }} />
+        }
+      />
+      {/*  <OpenModalBtn text={text} onClick={handleOpen} /> */}
       <Modal
         open={open}
         onClose={handleClose}
