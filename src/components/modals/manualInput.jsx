@@ -10,8 +10,7 @@ import ModalHeader from "../ModalHeader";
 import AddBtn from "../Buttons/AddBtn.jsx";
 import OpenModalBtn from "../OpenModalBtn";
 import { useState } from "react";
-import { acabados } from "../lists";
-import { FormInputText } from "../FormInputText.jsx";
+//import { acabados } from "../lists";
 import FormSelect2 from "../Forms/FormSelect2.jsx";
 
 import {

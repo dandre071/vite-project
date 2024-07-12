@@ -1,29 +1,11 @@
 import Box from "@mui/material/Box";
-import {
-  Button,
-  Divider,
-  FilledInput,
-  MenuItem,
-  Select,
-  Snackbar,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "../ModalHeader";
-import AddBtn from "../Buttons/AddBtn.jsx";
-import OpenModalBtn from "../OpenModalBtn";
 import { useState } from "react";
-import { acabados } from "../lists";
-import { FormInputText } from "../FormInputText.jsx";
 import FormSelect2 from "../Forms/FormSelect2.jsx";
-import {
-  styleConf,
-  themeColors,
-  inputPropsConf,
-  textStyles,
-} from "../utils/configs.js";
+import { styleConf, themeColors } from "../utils/configs.js";
 import Alert from "@mui/material/Alert";
 import { useShoppingCart } from "../../store/shoppingCart.js";
 import { colPesos } from "../utils/configs.js";
@@ -31,7 +13,6 @@ import PriceCalc from "../PriceCalc.jsx";
 import { v4 as uuidv4 } from "uuid";
 import { productSchema } from "../Validations.js";
 import { useFormik } from "formik";
-
 import { ThemeProvider } from "styled-components";
 import { customTheme } from "../../Hooks/useCustomTheme.jsx";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -41,7 +22,7 @@ import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 
 const module = "ManualInput";
 
-const ManualInput2 = ({ text }) => {
+const ManualInput2 = ({ text, acabado }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -79,7 +60,6 @@ const ManualInput2 = ({ text }) => {
   };
   const styleParams = { radius: 20, padd: 6 };
   //use Zustand store
-  //const items = useShoppingCart((state) => state.items);
   const addItem = useShoppingCart((state) => state.addItem);
   //use product hook
   const disable = () => {
@@ -111,12 +91,10 @@ const ManualInput2 = ({ text }) => {
     onSubmit: handlerAdd,
   });
   const errors = formik.errors;
-  //console.log({ errors });
   const totalCalc = () => {
     formik.setValues({
       ...formik.values,
       itemTotalPrice: formik.values.quantity * formik.values.price,
-      //finish: formik.values.finish.join(),
     });
   };
 
@@ -129,7 +107,6 @@ const ManualInput2 = ({ text }) => {
           <EditNoteOutlinedIcon sx={{ fontSize: 50, color: "primary.light" }} />
         }
       />
-      {/*  <OpenModalBtn text={text} onClick={handleOpen} /> */}
       <Modal
         open={open}
         onClose={handleClose}
@@ -140,11 +117,8 @@ const ManualInput2 = ({ text }) => {
           <Box
             sx={{
               ...styleConf,
-
               width: "auto",
-              // minHeight: customTheme.height[8],
               bgcolor: "white",
-
               display: "flex",
               flexDirection: "column",
               flexGrow: 1,
@@ -153,8 +127,6 @@ const ManualInput2 = ({ text }) => {
               justifyContent: "center",
               pt: 1,
               pb: 1,
-              /* gridTemplateRows: "2fr 1fr",*/
-
               borderRadius: customTheme.shape.borderRadius,
             }}
           >
@@ -170,34 +142,13 @@ const ManualInput2 = ({ text }) => {
                 bgcolor: "white",
               }}
             >
-              {/* <Box
-                sx={{
-                  position: "absolute",
-                  justifySelf: "center",
-                  top: -50,
-                  //left: 25,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "end",
-                  //backgroundColor: "red",
-                }}
-              >
-                <ModalHeader title={"Configuración Manual"} style={{}} />
-              </Box> */}
-
               <ThemeProvider theme={customTheme}>
                 <form onSubmit={formik.handleSubmit}>
                   <Grid container spacing={1.5} sx={{ flexGrow: 1 }}>
-                    {/* <Grid item sm={12}></Grid> */}
                     <Grid item sm={12} xs={12}>
                       <TextField
                         onBlur={formik.handleBlur}
-                        error={formik.errors.name /* && formik.touched.name */}
-                        /* helperText={
-                          <Box sx={{ bgcolor: "secondary.light" }}>
-                            {formik.errors.name}
-                          </Box>
-                        } */
+                        error={formik.errors.name}
                         helperText={formik.errors.name}
                         value={formik.values.name}
                         name="name"
@@ -205,22 +156,7 @@ const ManualInput2 = ({ text }) => {
                         fullWidth
                         label={"Producto"}
                         type="text"
-                        //sx={inputStyle}
-                        //variant="primary"
-                        //InputProps={{
-                        //  style: inputPropsConf,
-                        //}}
-                        //SelectProps={{ bgcolor: "white" }}
-
-                        //InputLabelProps={InputLabelProps}
                       />
-                      {/* {formik.errors.name && <p>{formik.errors.name}</p>} */}
-
-                      {/*   {formik.errors.name && (
-                        <Alert severity="error" sx={{ fontSize: 10 }}>
-                          {formik.errors.name}
-                        </Alert>
-                      )} */}
                     </Grid>
                     <Grid item sm={8} xs={8}>
                       <TextField
@@ -232,10 +168,6 @@ const ManualInput2 = ({ text }) => {
                         fullWidth
                         label={"Precio"}
                         type="number"
-                        //InputProps={{
-                        //style: inputPropsConf,
-                        //}}
-                        // InputLabelProps={InputLabelProps}
                       />
                     </Grid>
                     <Grid item sm={4} xs={4}>
@@ -272,29 +204,6 @@ const ManualInput2 = ({ text }) => {
                     )}
 
                     <Grid item sm={12} xs={12}>
-                      {/*  <Select
-                        //labelId="demo-multiple-name-label"
-                        // id="demo-multiple-name"
-                        multiple
-                        value={formik.values.finish}
-                        // input={<FilledInput label="Acabado" />}
-                        //MenuProps={acabados}
-                        name="finish"
-                        onChange={formik.handleChange}
-                        renderValue={(selected) => selected.join(", ")}
-                        sx={{ width: 205 }}
-                      >
-                        {acabados.map((acabado) => (
-                          <MenuItem
-                            key={acabado}
-                            value={formik.values.finish}
-                            // style={getStyles(name, personName, theme)}
-                          >
-                            {acabado}
-                          </MenuItem>
-                        ))}
-                      </Select>
- */}
                       <Box
                         sx={{
                           display: "flex",
@@ -312,7 +221,7 @@ const ManualInput2 = ({ text }) => {
                           fullWidth
                           name="finish"
                           onChange={formik.handleChange}
-                          options={acabados}
+                          options={acabado}
                           label={"Acabado"}
                           defaultValue={"Sin acabado"}
                           renderValue={(selected) => selected.join(", ")}
@@ -344,21 +253,6 @@ const ManualInput2 = ({ text }) => {
                       xs={12}
                       sx={{ pr: 1, pl: 1, pt: 0, pb: 0 }}
                     >
-                      {/* <FormInputText
-                        disabled={false}
-                        name={"description"}
-                        errors={formik.errors.description}
-                        helperText={formik.errors.description}
-                        //variant={"outlined"}
-                        defaultValue={""}
-                        label={"Descripción del trabajo"}
-                        type="text"
-                        required={false}
-                        //multiline
-                        autofocus
-                        value={formik.values.description}
-                        onChange={formik.handleChange}
-                      /> */}
                       <TextField
                         error={formik.errors.description}
                         helperText={formik.errors.description}
@@ -372,18 +266,7 @@ const ManualInput2 = ({ text }) => {
                         multiline
                         sx={{ pb: 3 }}
                       />
-                      {/*  {formik.errors.description && (
-                        <Typography>{formik.errors.description}</Typography>
-                      )} */}
                     </Grid>
-
-                    {/* <Grid item sm={12} sx={{ height: 10 }}>
-                      {formik.errors.name && (
-                        <Snackbar severity="error" fullWidth>
-                          {formik.errors.name}
-                        </Snackbar>
-                      )}
-                    </Grid> */}
                   </Grid>{" "}
                 </form>{" "}
               </ThemeProvider>
@@ -407,8 +290,6 @@ const ManualInput2 = ({ text }) => {
                 type="submit"
                 onClick={formik.handleSubmit}
                 startIcon={<AddShoppingCartIcon />}
-                //color="primary.main"
-                //
               >
                 Agregar
               </Button>

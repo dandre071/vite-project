@@ -25,4 +25,12 @@ export const productSchema = object().shape({
   // transfer: boolean(),
 });
 
-//const product = await productSchema.validate(await fetchProduct());
+export const PersonSchema = object().shape({
+  billType: string(),
+  clientType: string(),
+  name: string(),
+  email: string().email(),
+  phone: number(),
+  nit: number().integer(),
+  receives: string(),
+});

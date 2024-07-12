@@ -15,7 +15,7 @@ const ModalHeader = ({ title }) => {
           alignItems: "end",
           pt: 1,
           pb: 2,
-          borderBottom: `2px solid ${customTheme.palette.background.dark}`,
+          // borderBottom: `2px solid ${customTheme.palette.background.dark}`,
           // bgcolor: "primary.main",
         }}
       >

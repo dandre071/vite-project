@@ -57,11 +57,12 @@ const Cart = () => {
                 //bgcolor: "#f7f7f7",
                 bgcolor: "white",
                 display: "flex",
-                bgcolor: "primary.lighter",
+                /*  bgcolor: "primary.lighter", */
+                bgcolor: "primary.light",
                 flexDirection: "column",
-                justifyContent: "center",
+                justifyContent: "start",
                 alignItems: "center",
-                borderRadius: 2,
+                borderRadius: 4,
                 pt: 2,
                 pb: 2,
               }}
@@ -132,7 +133,7 @@ const Cart = () => {
                 borderRadius: 2,
 
                 // bgcolor: "primary.light",
-                bgcolor: "primary.light",
+                bgcolor: "white",
                 alignItems: "center",
                 justifyContent: "center",
                 justifySelf: "center",

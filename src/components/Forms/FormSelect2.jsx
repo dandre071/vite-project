@@ -49,6 +49,7 @@ const FormSelect2 = ({
           value={value}
           label={label}
           disabled={disabled}
+          options={options}
           // IconComponent={<KeyboardArrowDownIcon />}
           // renderValue={renderValue}
           // style={{ ...style, borderStyle: "none" }}
