@@ -126,7 +126,7 @@ const ManualInput2 = ({ text }) => {
         title={"Producto Directo"}
         onClick={handleOpen}
         children={
-          <EditNoteOutlinedIcon sx={{ fontSize: 100, color: "primary.main" }} />
+          <EditNoteOutlinedIcon sx={{ fontSize: 50, color: "primary.light" }} />
         }
       />
       {/*  <OpenModalBtn text={text} onClick={handleOpen} /> */}

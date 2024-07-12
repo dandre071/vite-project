@@ -43,7 +43,7 @@ const VinylCutModal = ({
         onClick={handleOpen}
         children={
           <GiBoxCutter
-            style={{ color: customTheme.palette.primary.main, fontSize: 100 }}
+            style={{ color: customTheme.palette.primary.main, fontSize: 70 }}
           />
         }
       />

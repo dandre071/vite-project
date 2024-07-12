@@ -27,7 +27,7 @@ function Print() {
             display: "flex",
             justifyContent: "space-evenly",
             alignItems: "center",
-            gap: 30,
+            gap: 10,
           }}
         >
           <GetDataForm />

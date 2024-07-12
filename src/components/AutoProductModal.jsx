@@ -36,7 +36,7 @@ const AutoProductModal = ({ text, matSize, material, choice, acabado }) => {
         onClick={handleOpen}
         children={
           <SlCalculator
-            style={{ color: customTheme.palette.primary.main, fontSize: 100 }}
+            style={{ color: customTheme.palette.primary.main, fontSize: 50 }}
           />
         }
       />

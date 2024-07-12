@@ -49,7 +49,7 @@ const GetDataForm = () => {
   ); */
 
   return (
-    <Box sx={{ flexGrow: 1, minWidth: 160, width: 500 }}>
+    <Box sx={{ flexGrow: 1, minWidth: 160, width: 550 }}>
       <Grid container spacing={2.5} justifyContent={"end"}>
         <Grid sm={12} md={12} xs={8}>
           <Text item label={"Nombre"} value={name} />
@@ -98,17 +98,19 @@ const GetDataForm = () => {
         <Grid item lg={12} xs={12} md={12}>
           <Stack
             sx={{
-              height: 55,
-              borderStyle: "solid",
+              //borderStyle: "solid",
               borderWidth: 1,
               borderRadius: 2,
-              marginRight: 0,
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
+              bgcolor: "white",
+              display: "flex",
+              flexDirection: "row",
+              // gridTemplateColumns: "repeat(2, 1fr)",
+              justifyContent: "center",
+              placeItems: "center",
               p: 2,
             }}
             spacing={1}
-            direction="row"
+            // direction="column"
           >
             {/* <ProductPriceModal
               colors={colors}
