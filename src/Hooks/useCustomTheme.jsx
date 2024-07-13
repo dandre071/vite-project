@@ -90,6 +90,7 @@ export const customTheme = createTheme({
     MuiAppBar: {
       color: "inherit",
     },
+
     /*  MuiButton: {
       defaultProps: {
         root: {
@@ -223,7 +224,7 @@ export const customTheme = createTheme({
 
         sx: {
           // bgcolor: "yellow",
-          color: "text.main",
+          color: "blue",
           //color: "primary.main",
           textAlign: "left",
           height: 0,
@@ -240,6 +241,14 @@ export const customTheme = createTheme({
         fullWidth: true,
       },
     },
+    MuiFormLabel: {
+      defaultProps: {
+        style: {
+          color: "pink",
+          fontSize: 18,
+        },
+      },
+    },
 
     MuiInputBase: {
       defaultProps: {
@@ -253,6 +262,25 @@ export const customTheme = createTheme({
           fontSize: 19,
           "&:hover": {
             backgroundColor: "primary.light",
+          },
+          "&.Mui-focused": {
+            "&:hover:not(.Mui-focused)": {
+              "& .MuiFilledInput-notchedFilled": {
+                color: "danger",
+              },
+            },
+            "&.error": {
+              color: "red",
+            },
+          },
+          "& .MuiInputLabel-filled": {
+            color: "primary.main",
+            fontWeight: "bold",
+            "&.Mui-focused": {
+              color: "primary.main",
+              fontWeight: 400,
+              fontSize: 20,
+            },
           },
         },
       },

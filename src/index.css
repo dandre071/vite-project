@@ -33,11 +33,20 @@ body {
 .MuiInputLabel-root {
   font-size: 25px !important;
   padding-bottom: 20px !important;
+  color: blue;
+}
+.MuiInputLabel-shrink {
+  color: blue !important;
 }
 
-.MuiInput-root {
-  height: 45px !important;
-}
 .MuiFormLabel-root {
   font-size: 18px !important;
+  color: rgb(25, 115, 233) !important;
 }
+.MuiInputLabel-notched {
+  color: green !important;
+}
+/* .MuiFilledInput-input {
+  font-size: 18px !important;
+  color: rgb(55, 0, 255) !important;
+} */

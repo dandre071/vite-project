@@ -34,3 +34,34 @@ export const useShoppingCart = create()(
     }
   )
 );
+
+export const usePersonalData = create()(
+  persist(
+    (set, get) => ({
+      personalData: [],
+      addData: (values) => {
+        set((state) => ({
+          personalData: [values],
+        }));
+      },
+      updateData: (product) => {},
+      removeData: (id) => {
+        set((state) => ({
+          personalData: state.personalData.filter((data) => data.id !== id),
+        }));
+      },
+      /*  increaseQuantity: (productId, quantity = 1) => {},
+      decreaseQuantity: (productId, quantity = 1) => {}, */
+
+      clearCart: () => {
+        set((state) => ({
+          personalData: (state.personalData = []),
+        }));
+      },
+    }),
+    {
+      name: "personal-data",
+      // storage: createJSONStorage(() => sessionStorage) es cun campo opcional si NO queremos usar localStorage.
+    }
+  )
+);
