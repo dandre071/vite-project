@@ -162,9 +162,11 @@ const PersonalData = () => {
             />
           </Grid>
         </Grid>
-        <Button onClick={handleSubmit} endIcon={<ArrowForwardIcon />}>
-          Siguiente
-        </Button>
+        {formik.errors && (
+          <Button onClick={handleSubmit} endIcon={<ArrowForwardIcon />}>
+            Siguiente
+          </Button>
+        )}
       </form>
     </Box>
   );
