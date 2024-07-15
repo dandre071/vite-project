@@ -52,39 +52,6 @@ const useLocalStorage = () => {
     setFormValues(newProducts);
   };
 
-  /*return {
-    <div className="App">
-      <div>
-        companyname
-        <input
-          name="companyname"
-          value={initialValues.companyname}
-          onChange={(e) =>
-            setInitialValues({ ...initialValues, companyname: e.target.value })
-          }
-        />
-      </div>
-      <div>
-        website
-        <input
-          value={initialValues.website}
-          onChange={(e) =>
-            setInitialValues({ ...initialValues, website: e.target.value })
-          }
-        />
-      </div>
-      <ul className="todo-list">
-        {formValues.map((item, index) => (
-          <li key={index}>
-            {item.companyname}
-            <button onClick={() => handleRemoveProduct(index)}>Remove</button>
-          </li>
-        ))}
-      </ul>
-      <button onClick={submitForm}>onSubmit </button>
-    </div> 
-    
-  };*/
   return {
     formValues,
     initialValues,

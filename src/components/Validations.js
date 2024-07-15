@@ -38,7 +38,7 @@ export const PersonSchema = object().shape({
     .required("Este campo es obligatorio."),
   phone: number()
     .integer()
-    .max(10 /* , "Por favor ingrese un número válido." */)
+
     .required(),
   nit: number().integer(),
   // receives: string(),

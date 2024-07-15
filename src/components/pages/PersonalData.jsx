@@ -1,47 +1,34 @@
 import { Autocomplete, Box, Button, Grid, TextField } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FormSelect2 from "../Forms/FormSelect2";
 import { Form, useFormik } from "formik";
 import { options } from "../utils/options";
 import { PersonSchema } from "../Validations";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { usePersonalData } from "../../store/shoppingCart";
+import { usePersonalData, useShoppingCart } from "../../store/shoppingCart";
 import { ArrowForward } from "@mui/icons-material";
 import { fakeUsers } from "../utils/test";
 const PersonalData = () => {
-  /* const handlerAdd = (e) => {
-    addItem({
-      ...formik.values,
-    });
-  }; */
+  /* getLocalStorage("personal-data");
+  console.log(getLocalStorage("personal-data"));
+ */
 
-  const initialState = {
-    id: "",
-    module: "ManualInput",
-    name: "",
-    price: null,
-    quantity: 1,
-    description: "",
-    height: 0,
-    width: 0,
-    matWidth: 0,
-    finish: "Sin acabado",
-    finishQ: 1,
-    material: "",
-    descolillado: "",
-    transfer: false,
-    itemTotalPrice: 0,
-  };
-
+  //const localStore = usePersonalData((state) => state.getData());
   const users = fakeUsers.map((user) => user.name);
+  const localStore = usePersonalData((state) => state);
+  /* const getLocalStorage = (key) => JSON.parse(window.localStorage.getItem(key)); */
 
-  /* const checkUser = () => {
-    const users = fakeUsers.map((user) => user.name);
-    console.log(users);
-  }; */
+  /*   localStore
+    ? formik.setValues({
+        ...formik.values,
+        email: fakeUsers[userFound].email,
+        phone: fakeUsers[userFound].phone,
+        nit: fakeUsers[userFound].nit,
+      })
+    : console.log("nothing");
 
-  //use Zustand store
-  // const addItem = useShoppingCart((state) => state.addItem);
+  console.log(localStore); */
+
   //use product hook
   const disable = () => {
     if (formik.errors) {
@@ -53,6 +40,7 @@ const PersonalData = () => {
     addData(formik.values);
     console.log(formik.values);
   };
+
   const formik = useFormik({
     initialValues: {
       billType: "Recibo",
@@ -67,6 +55,7 @@ const PersonalData = () => {
 
     onSubmit: handleSubmit,
   });
+  console.log(formik.values);
   const addData = usePersonalData((state) => state.addData);
   // console.log(formik.values);
 
@@ -86,7 +75,26 @@ const PersonalData = () => {
     // return userId;
   };
 
+  /*  useEffect(() => {
+    const localData = JSON.parse(window.localStorage.getItem(key));
+    return localData;
+  });
+  const getLocalStorage = (key) => {
+    formik.setValues({
+      ...formik.values,
+      email: localData.email,
+      phone: localData.phone,
+      nit: localData.nit,
+    });
+  };
+  getLocalStorage("personal-data"); */
   // console.log(fakeUsers.filter((user) => user.name.indexOf(selectedUser)));
+
+  const getData = () => {
+    const localData = JSON.parse(localStorage.getItem("personal-data"));
+    console.log(localData);
+  };
+  getData();
 
   return (
     <Box>

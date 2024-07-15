@@ -34,7 +34,9 @@ export const useShoppingCart = create()(
     }
   )
 );
-
+const getLocalStorage = (key) => JSON.parse(window.localStorage.getItem(key));
+const setLocalStorage = (key, value) =>
+  window.localStorage.setItem(key, JSON.stringify(value));
 export const usePersonalData = create()(
   persist(
     (set, get) => ({
@@ -44,12 +46,21 @@ export const usePersonalData = create()(
           personalData: [values],
         }));
       },
+
       updateData: (product) => {},
       removeData: (id) => {
         set((state) => ({
           personalData: state.personalData.filter((data) => data.id !== id),
         }));
       },
+      /* 
+      data: getLocalStorage("personal-data") || [],
+      setData: (data) =>
+        set((state) => {
+          setLocalStorage("personal-data", data);
+          return { data };
+        }), */
+
       /*  increaseQuantity: (productId, quantity = 1) => {},
       decreaseQuantity: (productId, quantity = 1) => {}, */
 
@@ -59,6 +70,7 @@ export const usePersonalData = create()(
         }));
       },
     }),
+
     {
       name: "personal-data",
       // storage: createJSONStorage(() => sessionStorage) es cun campo opcional si NO queremos usar localStorage.
