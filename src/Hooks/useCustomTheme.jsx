@@ -213,6 +213,30 @@ export const customTheme = createTheme({
             }, */
           },
         },
+        {
+          props: {
+            variant: "success",
+          },
+
+          style: {
+            textTransform: "initial",
+            background: "#49c134",
+            // color: secondaryColor,
+            fontSize: 20,
+
+            borderRadius: 8,
+            height: 60,
+
+            p: 0,
+            m: 0,
+            /* "&:hover": {
+              background: "#f7003b",
+            },
+            "&:disabled": {
+              background: "#f7f7f7",
+            }, */
+          },
+        },
       ],
     },
     MuiSvgIcon: { defaultProps: { sx: { width: 35, height: 35 } } },

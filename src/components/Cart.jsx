@@ -15,6 +15,7 @@ import Badge from "@mui/material/Badge";
 import { customTheme } from "../Hooks/useCustomTheme";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { BorderBottom } from "@mui/icons-material";
+import { modal } from "../Styles/styles";
 
 colPesos;
 //import { v4 as uuidv4 } from "uuid";
@@ -30,22 +31,7 @@ const Cart = () => {
   return (
     <>
       <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-        <Box
-          sx={{
-            bgcolor: "white",
-            gap: 1,
-            borderRadius: 2,
-            display: "grid",
-            gridTemplateRows: "1fr auto auto",
-            justifyContent: "center",
-            alignItems: "center",
-            p: 1,
-            pb: 2,
-            //pt: 2,
-            border: `2px solid #f3f3f3`,
-            boxShadow: 2,
-          }}
-        >
+        <Box sx={modal}>
           <ModalHeader title={"Compras"} />
 
           <Stack spacing={1} sx={{ alignItems: "center" }}>
@@ -58,7 +44,7 @@ const Cart = () => {
                 bgcolor: "white",
                 display: "flex",
                 /*  bgcolor: "primary.lighter", */
-                bgcolor: "primary.light",
+                //bgcolor: "primary.light",
                 flexDirection: "column",
                 justifyContent: "start",
                 alignItems: "center",
@@ -100,7 +86,7 @@ const Cart = () => {
               <Stack display={"flex"} spacing={1.8} sx={{}}>
                 {items.map((item) => (
                   <ListItem
-                    key={item.index}
+                    key={item.id}
                     text={item.name}
                     total={item.itemTotalPrice}
                     q={item.quantity}
@@ -126,13 +112,9 @@ const Cart = () => {
           {items.length && (
             <Stack
               sx={{
-                /*  position: "relative",
-              top: 20, */
                 display: "grid",
                 gridTemplateColumns: "1.8fr 1.2fr",
                 borderRadius: 2,
-
-                // bgcolor: "primary.light",
                 bgcolor: "white",
                 alignItems: "center",
                 justifyContent: "center",
@@ -141,8 +123,7 @@ const Cart = () => {
                 height: 115,
                 pt: 2,
                 pb: 2,
-                //boxShadow: 2,
-                border: `2px solid ${customTheme.palette.primary.light}`,
+                boxShadow: 4,
               }}
             >
               <Stack sx={{}}>

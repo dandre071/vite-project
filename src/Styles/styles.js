@@ -136,3 +136,13 @@ export const ModalCardStyle = {
   justifyContent: "center",
   alignItems: "center",
 };
+
+export const modal = {
+  flexGrow: 1,
+  //minWidth: 160,
+  width: 500,
+  bgcolor: "white",
+  p: 3,
+  borderRadius: customTheme.shape.borderRadius,
+  boxShadow: 4,
+};
