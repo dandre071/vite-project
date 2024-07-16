@@ -68,15 +68,17 @@ const PersonalData = () => {
 
   const user = "diego";
   useEffect(() => {
-    formik.setValues({
-      ...formik.values,
-      billType: localStore[0].billType,
-      clientType: localStore[0].clientType,
-      name: localStore[0].name,
-      email: localStore[0].email,
-      phone: localStore[0].phone,
-      nit: localStore[0].nit,
-    });
+    localStore
+      ? formik.setValues({
+          ...formik.values,
+          billType: localStore[0].billType,
+          clientType: localStore[0].clientType,
+          name: localStore[0].name,
+          email: localStore[0].email,
+          phone: localStore[0].phone,
+          nit: localStore[0].nit,
+        })
+      : formik.initialValues;
   }, []);
   /* */
 
@@ -84,7 +86,7 @@ const PersonalData = () => {
     const selectedUser = formik.values.name;
     const userFound = users.indexOf(selectedUser);
     // console.log(fakeUsers.indexOf(userFound));
-    console.log(userFound);
+    //console.log(userFound);
     formik.setValues({
       ...formik.values,
       email: fakeUsers[userFound].email,
