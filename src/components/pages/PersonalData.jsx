@@ -41,6 +41,7 @@ const PersonalData = () => {
     console.log(formik.values);
   };
   const localData = usePersonalData((state) => state.personalData);
+  const localStore = usePersonalData((state) => state.personalData);
   const formik = useFormik({
     initialValues: {
       billType: "Recibo",
@@ -57,7 +58,7 @@ const PersonalData = () => {
   });
   // console.log(formik.values);
   const addData = usePersonalData((state) => state.addData);
-  const localStore = usePersonalData((state) => state.personalData);
+
   console.log(localStore);
 
   const handleAutoChange = (event, value) => {
@@ -78,7 +79,7 @@ const PersonalData = () => {
           phone: localStore[0].phone,
           nit: localStore[0].nit,
         })
-      : formik.initialValues;
+      : formik.setValues(formik.initialValues);
   }, []);
   /* */
 
@@ -138,7 +139,7 @@ const PersonalData = () => {
               type="text"
             /> */}
             <Autocomplete
-              defaultValue={localStore ? localStore[0].name : " "}
+              defaultValue={localStore ? localStore[0].name : ""}
               freeSolo={true}
               autoHighlight
               id="combo-box-demo"
