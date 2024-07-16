@@ -58,9 +58,13 @@ const PersonalData = () => {
   // console.log(formik.values);
   const addData = usePersonalData((state) => state.addData);
   const localStore = usePersonalData((state) => state.personalData);
-  console.log(localStore[0].name);
+  console.log(localStore);
 
-  const handleAutoChange = (event, value) => (formik.values.name = value);
+  const handleAutoChange = (event, value) => {
+    formik.values.name = value;
+    const found = users.filter((user) => user == formik.values.name);
+    console.log(found);
+  };
 
   const user = "diego";
   useEffect(() => {
@@ -132,6 +136,7 @@ const PersonalData = () => {
               type="text"
             /> */}
             <Autocomplete
+              defaultValue={localStore ? localStore[0].name : " "}
               freeSolo={true}
               autoHighlight
               id="combo-box-demo"
@@ -146,12 +151,10 @@ const PersonalData = () => {
               fullWidth
               renderInput={(params) => (
                 <TextField
-                  name="name"
                   {...params}
                   label="Nombre / Razón Social"
                   InputProps={{
                     ...params.InputProps,
-                    type: "search",
                   }}
                 />
               )}
