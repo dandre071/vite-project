@@ -15,7 +15,7 @@ const PersonalData = () => {
 
   //const localStore = usePersonalData((state) => state.getData());
   const users = fakeUsers.map((user) => user.name);
-  const localStore = usePersonalData((state) => state);
+
   /* const getLocalStorage = (key) => JSON.parse(window.localStorage.getItem(key)); */
 
   /*   localStore
@@ -45,7 +45,7 @@ const PersonalData = () => {
     initialValues: {
       billType: "Recibo",
       clientType: "Particular",
-      name: "",
+      name: "dffdfd",
       email: "",
       phone: "",
       nit: "",
@@ -55,9 +55,26 @@ const PersonalData = () => {
 
     onSubmit: handleSubmit,
   });
-  console.log(formik.values);
-  const addData = usePersonalData((state) => state.addData);
   // console.log(formik.values);
+  const addData = usePersonalData((state) => state.addData);
+  const localStore = usePersonalData((state) => state.personalData);
+  console.log(localStore[0].name);
+
+  const handleAutoChange = (event, value) => (formik.values.name = value);
+
+  const user = "diego";
+  useEffect(() => {
+    formik.setValues({
+      ...formik.values,
+      billType: localStore[0].billType,
+      clientType: localStore[0].clientType,
+      name: localStore[0].name,
+      email: localStore[0].email,
+      phone: localStore[0].phone,
+      nit: localStore[0].nit,
+    });
+  }, []);
+  /* */
 
   const checkUser = () => {
     const selectedUser = formik.values.name;
@@ -70,31 +87,7 @@ const PersonalData = () => {
       phone: fakeUsers[userFound].phone,
       nit: fakeUsers[userFound].nit,
     });
-    //formik.values.phone = fakeUsers[userId].phone;
-
-    // return userId;
   };
-
-  /*  useEffect(() => {
-    const localData = JSON.parse(window.localStorage.getItem(key));
-    return localData;
-  });
-  const getLocalStorage = (key) => {
-    formik.setValues({
-      ...formik.values,
-      email: localData.email,
-      phone: localData.phone,
-      nit: localData.nit,
-    });
-  };
-  getLocalStorage("personal-data"); */
-  // console.log(fakeUsers.filter((user) => user.name.indexOf(selectedUser)));
-
-  const getData = () => {
-    const localData = JSON.parse(localStorage.getItem("personal-data"));
-    console.log(localData);
-  };
-  getData();
 
   return (
     <Box>
@@ -149,10 +142,18 @@ const PersonalData = () => {
               error={formik.errors.name}
               helperText={formik.errors.name}
               name="name"
-              onChange={(event, value) => (formik.values.name = value)}
+              onChange={handleAutoChange}
               fullWidth
               renderInput={(params) => (
-                <TextField {...params} label="Nombre / Razón Social" />
+                <TextField
+                  name="name"
+                  {...params}
+                  label="Nombre / Razón Social"
+                  InputProps={{
+                    ...params.InputProps,
+                    type: "search",
+                  }}
+                />
               )}
             />
           </Grid>
