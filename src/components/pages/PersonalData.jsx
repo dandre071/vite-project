@@ -40,7 +40,7 @@ const PersonalData = () => {
     addData(formik.values);
     console.log(formik.values);
   };
-
+  const localData = usePersonalData((state) => state.personalData);
   const formik = useFormik({
     initialValues: {
       billType: "Recibo",
