@@ -40,7 +40,17 @@ const setLocalStorage = (key, value) =>
 export const usePersonalData = create()(
   persist(
     (set, get) => ({
-      personalData: [],
+      personalData: [
+        {
+          billType: "Recibo",
+          clientType: "Particular",
+          name: "",
+          email: "",
+          phone: "",
+          nit: "",
+          //receives: "",
+        },
+      ],
       addData: (values) => {
         set((state) => ({
           personalData: [values],

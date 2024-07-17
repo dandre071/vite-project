@@ -68,10 +68,22 @@ const PersonalData = () => {
   };
 
   const user = "diego";
+  /* useEffect(() => {
+    localStore
+      ? formik.setValues({
+          billType: localStore[0].billType,
+          clientType: localStore[0].clientType,
+          name: localStore[0].name,
+          email: localStore[0].email,
+          phone: localStore[0].phone,
+          nit: localStore[0].nit,
+        })
+      : formik.setValues(formik.initialValues);
+  }, []); */
+
   useEffect(() => {
     localStore
       ? formik.setValues({
-          ...formik.values,
           billType: localStore[0].billType,
           clientType: localStore[0].clientType,
           name: localStore[0].name,
@@ -86,8 +98,7 @@ const PersonalData = () => {
   const checkUser = () => {
     const selectedUser = formik.values.name;
     const userFound = users.indexOf(selectedUser);
-    // console.log(fakeUsers.indexOf(userFound));
-    //console.log(userFound);
+
     formik.setValues({
       ...formik.values,
       email: fakeUsers[userFound].email,
@@ -139,21 +150,22 @@ const PersonalData = () => {
               type="text"
             /> */}
             <Autocomplete
-              defaultValue={localStore ? localStore[0].name : ""}
+              defaultValue={() => localStore[0].name || ""}
               freeSolo={true}
               autoHighlight
               id="combo-box-demo"
               options={users}
-              sx={{ width: 300 }}
+              sx={{ textTransform: "capitalize" }}
               required
               onBlur={formik.handleBlur}
               error={formik.errors.name}
               helperText={formik.errors.name}
               name="name"
               onChange={handleAutoChange}
-              fullWidth
+              //autoCapitalize="initial"
               renderInput={(params) => (
                 <TextField
+                  fullWidth
                   {...params}
                   label="Nombre / Razón Social"
                   InputProps={{
