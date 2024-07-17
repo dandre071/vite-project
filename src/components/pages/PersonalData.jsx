@@ -8,6 +8,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { usePersonalData, useShoppingCart } from "../../store/shoppingCart";
 import { ArrowForward } from "@mui/icons-material";
 import { fakeUsers } from "../utils/test";
+import { colPesos } from "../utils/configs";
 const PersonalData = () => {
   /* getLocalStorage("personal-data");
   console.log(getLocalStorage("personal-data"));
@@ -211,12 +212,13 @@ const PersonalData = () => {
               onBlur={formik.handleBlur}
               error={formik.errors.phone}
               helperText={formik.errors.phone}
+              //value={colPesos.format(formik.values.phone)}
               value={formik.values.phone}
               name="phone"
               onChange={formik.handleChange}
               fullWidth
               label={"Teléfono"}
-              type="number"
+              type="tel"
             />
           </Grid>
           {/* <Grid item sm={4}>
