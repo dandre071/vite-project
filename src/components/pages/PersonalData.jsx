@@ -95,11 +95,11 @@ const PersonalData = () => {
       : formik.setValues(formik.initialValues);
   }, []);
   /* */
-
+  let selectedUser;
+  let userFound;
   const checkUser = () => {
-    const selectedUser = formik.values.name;
-    const userFound = users.indexOf(selectedUser);
-
+    selectedUser = formik.values.name;
+    userFound = users.indexOf(selectedUser);
     formik.setValues({
       ...formik.values,
       email: fakeUsers[userFound].email,
@@ -137,7 +137,11 @@ const PersonalData = () => {
               label={"Cliente"}
             />
           </Grid>
-          <Grid item sm={10}>
+          <Grid
+            item
+            sm={12}
+            sx={{ display: "flex", justifyContent: "space-between", gap: 1 }}
+          >
             {/*  <TextField
               required
               onBlur={formik.handleBlur}
@@ -156,7 +160,10 @@ const PersonalData = () => {
               autoHighlight
               id="combo-box-demo"
               options={users}
-              sx={{ textTransform: "capitalize" }}
+              sx={{
+                textTransform: "capitalize",
+                width: "90%",
+              }}
               required
               onBlur={formik.handleBlur}
               error={formik.errors.name}
@@ -175,12 +182,17 @@ const PersonalData = () => {
                 />
               )}
             />
+            {{ ...userFound } && (
+              <Button
+                onClick={checkUser}
+                variant="success"
+                sx={{ width: "10%" }}
+              >
+                <ArrowForwardIcon sx={{ color: "white", fontSize: 40 }} />
+              </Button>
+            )}
           </Grid>
-          <Grid item sm={2}>
-            <Button onClick={checkUser} variant="success">
-              <ArrowForwardIcon sx={{ color: "white", fontSize: 40 }} />
-            </Button>
-          </Grid>
+
           <Grid item sm={12}>
             <TextField
               onBlur={formik.handleBlur}
