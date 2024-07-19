@@ -15,6 +15,7 @@ import useLocalStorage from "./Hooks/useLocalState";
 import { useEffect, useState } from "react";
 import ManualInput from "./components/modals/manualInput";
 import ListItem from "./components/ListItem";
+import Factura from "./components/pages/Factura";
 
 function Print() {
   /* const { products } = useLocalStorage(); */
@@ -39,6 +40,7 @@ function Print() {
         </h1> */}
           {/*  <ProductList /> */}
           <Cart />
+          <Factura />
         </Stack>
       </ThemeProvider>
     </Box>
