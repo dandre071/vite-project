@@ -38,19 +38,19 @@ const Cart = () => {
             <Box
               sx={{
                 //border: `2px solid #f3f3f3`,
-                width: 550,
+                width: 530,
                 minHeight: 200,
                 //bgcolor: "#f7f7f7",
-                bgcolor: "white",
+                //bgcolor: "white",
                 display: "flex",
                 /*  bgcolor: "primary.lighter", */
-                //bgcolor: "primary.light",
+                // bgcolor: "#f3f3f3",
                 flexDirection: "column",
-                justifyContent: "start",
+                justifyContent: "center",
                 alignItems: "center",
                 borderRadius: 4,
-                pt: 2,
-                pb: 2,
+                pt: 1,
+                pb: 1,
               }}
             >
               {items.length === 0 && (
@@ -83,7 +83,7 @@ const Cart = () => {
                   </Stack>
                 </Box>
               )}
-              <Stack display={"flex"} spacing={1.8} sx={{}}>
+              <Stack display={"flex"} spacing={1} sx={{}}>
                 {items.map((item) => (
                   <ListItem
                     key={item.id}
@@ -108,32 +108,34 @@ const Cart = () => {
           </Stack>
           {/********** */}
         </Box>
-        <Box>
-          {items.length && (
+
+        {items.length && (
+          <Stack
+            sx={{
+              display: "flex",
+
+              borderRadius: 3,
+              bgcolor: "white",
+              alignItems: "center",
+              justifyContent: "center",
+
+              width: "100%",
+              height: 150,
+
+              boxShadow: 4,
+            }}
+          >
             <Stack
+              direction={"row"}
               sx={{
-                display: "grid",
-                gridTemplateColumns: "1.8fr 1.2fr",
-                borderRadius: 2,
-                bgcolor: "white",
-                alignItems: "center",
+                display: "flex",
+                // flexDirection: "row",
+                // bgcolor: "green",
                 justifyContent: "center",
-                justifySelf: "center",
-                width: "100%",
-                height: 115,
-                pt: 2,
-                pb: 2,
-                boxShadow: 4,
+                width: 480,
               }}
             >
-              <Stack sx={{}}>
-                <Stack
-                  sx={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 2fr",
-                  }}
-                >
-                  <Badge
+              {/* <Badge
                     badgeContent={items.length}
                     color="secondary"
                     sx={{ justifySelf: "center", alignSelf: "center" }}
@@ -141,52 +143,73 @@ const Cart = () => {
                     <ShoppingCartOutlinedIcon
                       sx={{ fontSize: 45, color: "primary.main" }}
                     />
-                  </Badge>
-                  <Box sx={{ bgcolor: "primary.light", p: 1, borderRadius: 2 }}>
-                    {/* <Typography>{`Artículos: ${items.length}`}</Typography> */}
-                    <Typography>{`Total:`}</Typography>
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        fontWeight: 800,
-                        color: "text.main",
-                        fontSize: 30,
-                      }}
-                    >{`${colPesos.format(totalPrice)}`}</Typography>
-                  </Box>{" "}
-                </Stack>
-              </Stack>
-
-              <Stack
-                spacing={1}
+                  </Badge> */}
+              <Box
                 sx={{
+                  //  bgcolor: "primary.light",
+                  height: 80,
+                  borderRadius: 2,
                   display: "flex",
-                  //bgcolor: "white",
+                  width: "100%",
+                  justifyContent: "space-between",
                   alignItems: "end",
-                  justifyContent: "end",
-                  pr: 1,
                 }}
               >
-                <Button
-                  startIcon={<ShoppingCartOutlinedIcon />}
-                  sx={{ color: "white", width: "70%", height: 50 }}
-                  variant="prime"
-                >
-                  Finalizar
-                </Button>
-                <Button
-                  onClick={clearCart}
-                  startIcon={<ClearOutlinedIcon />}
-                  sx={{ width: "70%", height: 50 }}
-                  // variant="secondary"
-                  variant="secondary-outlined"
-                >
-                  Cancelar
-                </Button>
-              </Stack>
+                {/* <Typography>{`Artículos: ${items.length}`}</Typography> */}
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: 800,
+                    color: "text.main",
+                    fontSize: 20,
+                  }}
+                >{`Total:`}</Typography>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: 800,
+                    color: "text.main",
+                    fontSize: 20,
+                  }}
+                >{`${colPesos.format(totalPrice)}`}</Typography>
+              </Box>
             </Stack>
-          )}
-        </Box>
+
+            <Stack
+              spacing={1}
+              direction={"row"}
+              sx={{
+                // borderTop: "1px solid grey",
+                width: 550,
+                pt: 1,
+                pb: 2,
+
+                display: "flex",
+                //bgcolor: "yellow",
+                // alignItems: "end",
+                justifyContent: "center",
+              }}
+            >
+              <Button
+                onClick={clearCart}
+                //startIcon={<ClearOutlinedIcon />}
+                sx={{ width: 30, height: 55 }}
+                // variant="secondary"
+                variant="secondary-outlined"
+              >
+                <ClearOutlinedIcon />
+                {/* Cancelar */}
+              </Button>
+              <Button
+                startIcon={<ShoppingCartOutlinedIcon />}
+                sx={{ color: "white", width: 400, height: 55 }}
+                variant="prime"
+              >
+                Finalizar
+              </Button>
+            </Stack>
+          </Stack>
+        )}
       </Box>
     </>
   );

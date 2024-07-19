@@ -53,10 +53,10 @@ export const listItemStyle = {
   //bgcolor: "background.light",
   bgcolor: "white",
   // alignContent: "center",
-  boxShadow: 3,
+  //boxShadow: 3,
   borderStyle: "solid",
-  borderWidth: 1.5,
-  borderColor: "primary.light",
+  borderWidth: 3,
+  borderColor: "background.light",
   /* "&:hover": {
     bgcolor: "primary.lighter",
     borderStyle: "none",

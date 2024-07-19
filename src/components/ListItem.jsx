@@ -30,7 +30,7 @@ const ListItem = ({
       sx={{
         display: "flex",
         p: 0,
-        height: 90,
+        height: 100,
         // bgcolor: "red",
         // alignItems: "center",
       }}
@@ -101,8 +101,8 @@ const ListItem = ({
               sx={{
                 position: "absolute",
                 //top: 10,
-                right: 6,
-                bottom: 6,
+                right: 15,
+                bottom: -10,
                 bgcolor: "success.main",
                 fontWeight: 500,
                 color: "white",

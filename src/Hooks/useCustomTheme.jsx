@@ -199,7 +199,7 @@ export const customTheme = createTheme({
             color: secondaryColor,
             fontSize: 20,
             // width: 400,
-            border: `2px solid ${secondaryColor}`,
+            border: `3px solid ${secondaryColor}`,
             borderRadius: 8,
             height: 60,
 
