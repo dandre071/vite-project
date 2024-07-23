@@ -1,17 +1,5 @@
 import { theme } from "../../Styles/styles";
 
-export const styleConf = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 470,
-
-  bgcolor: `white`,
-  p: 0,
-  boxShadow: 5,
-};
-
 export const themeColors = {
   neutralLight: "white",
   neutralDark: "black",
@@ -32,31 +20,50 @@ export const themeColors = {
   lightSecondary: theme.palette.secondary.main,
   darkSecondary: theme.palette.secondary.main,
 };
-
+const globalTextBlue = themeColors.mainPrimary;
+export const styleConf = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  //width: 480,
+  // height: 500,
+  // bgcolor: ,
+  p: 0,
+  boxShadow: 2,
+};
 export const inputPropsConf = {
-  color: themeColors.mainPrimary,
-  bgcolor: themeColors.bgLight,
+  color: themeColors.mainText,
+  bgcolor: "white",
+  /*  bgcolor: themeColors.bgLight, */
   fontWeight: 500,
   fontSize: 18,
   borderRadius: 10,
 };
 
 export const fieldStyle = {
-  color: themeColors.mainPrimary,
-  bgcolor: themeColors.bgLight,
+  /* color: themeColors.mainText, */
+  /*  bgcolor: themeColors.bgLight, */
+  color: themeColors.darkText,
+  bgcolor: "white",
   fontWeight: 500,
+  fontSize: 18,
   borderRadius: 1.5,
 };
 
 export const textStyles = {
   p: 0,
   m: 0,
-  bgcolor: themeColors.bgLight,
+  /*  bgcolor: themeColors.bgLight, */
+  color: themeColors.darkText,
+  bgcolor: "white",
   fontSize: 3,
   fontWeight: 400,
   borderRadius: 1.5,
 };
 
-export const productArray = [];
-
-export const totalPrice = null;
+export const colPesos = new Intl.NumberFormat("es-CO", {
+  style: "currency",
+  currency: "COP",
+  minimumFractionDigits: 0,
+});

@@ -8,7 +8,7 @@ import { BorderStyle } from "@mui/icons-material";
 import TextAreas from "./TextAreas";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "./ModalHeader";
-import AddBtn from "./AddBtn";
+import AddBtn from "./Buttons/AddBtn";
 import OpenModalBtn from "./OpenModalBtn";
 const style = {
   position: "absolute",

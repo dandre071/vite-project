@@ -1,37 +1,28 @@
 import { Padding } from "@mui/icons-material";
 import { Box, Divider, Typography } from "@mui/material";
-import React from "react";
+
 import { themeColors } from "./utils/configs";
-const header = {
-  display: "grid",
-  height: 100,
-
-  justifyContent: "center",
-
-  alignItems: "end",
-};
-
+import { header } from "../Styles/styles";
+import { customTheme } from "../Hooks/useCustomTheme";
 const ModalHeader = ({ title }) => {
   return (
     <>
       <Box
-        style={header}
         sx={{
+          height: 100,
+          display: "flex",
           justifyContent: "center",
-          bgcolor: themeColors.neutralLight,
+          alignItems: "end",
+          pt: 1,
+          pb: 2,
+          // borderBottom: `2px solid ${customTheme.palette.background.dark}`,
+          // bgcolor: "primary.main",
         }}
       >
-        <Typography
-          variant="h5"
-          component="h2"
-          fontWeight={500}
-          fontSize={"1.5em"}
-          sx={{ color: themeColors.mainPrimary, pb: 1.5 }}
-        >
+        <Typography variant="h4" sx={{ fontWeight: 900, color: "text.main" }}>
           {title}
         </Typography>
       </Box>
-      {/*  <Divider sx={{ borderColor: "secondary.light", borderWidth: 1 }} /> */}
     </>
   );
 };

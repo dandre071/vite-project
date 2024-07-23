@@ -7,9 +7,12 @@ import TextAreas from "./TextAreas";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "./ModalHeader";
 import SelectField from "./SelectField";
-import AddBtn from "./AddBtn";
+import AddBtn from "./Buttons/AddBtn";
 import OpenModalBtn from "./OpenModalBtn";
-
+import ModalCard from "./Cards/ModalCard";
+import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
+import { GiBoxCutter } from "react-icons/gi";
+import { customTheme } from "../Hooks/useCustomTheme";
 const style = {
   position: "absolute",
   top: "50%",
@@ -35,7 +38,15 @@ const VinylCutModal = ({
   const handleClose = () => setOpen(false);
   return (
     <div>
-      <OpenModalBtn text={"Corte en vinilo"} onClick={handleOpen} />
+      <ModalCard
+        title={"Corte en Vinilo"}
+        onClick={handleOpen}
+        children={
+          <GiBoxCutter
+            style={{ color: customTheme.palette.primary.main, fontSize: 70 }}
+          />
+        }
+      />
       <Modal
         open={open}
         onClose={handleClose}

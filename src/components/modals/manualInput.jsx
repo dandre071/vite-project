@@ -7,11 +7,10 @@ import Modal from "@mui/material/Modal";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "../ModalHeader";
 
-import AddBtn from "../AddBtn";
+import AddBtn from "../Buttons/AddBtn.jsx";
 import OpenModalBtn from "../OpenModalBtn";
 import { useState } from "react";
-import { acabados } from "../lists";
-import { FormInputText } from "../FormInputText.jsx";
+//import { acabados } from "../lists";
 import FormSelect2 from "../Forms/FormSelect2.jsx";
 
 import {

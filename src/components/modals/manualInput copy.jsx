@@ -1,235 +1,299 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
-
-import { ListItem, TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import Modal from "@mui/material/Modal";
-
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "../ModalHeader";
-
-import AddBtn from "../AddBtn";
-import OpenModalBtn from "../OpenModalBtn";
 import { useState } from "react";
-import { acabados } from "../lists";
-import { FormInputText } from "../FormInputText.jsx";
 import FormSelect2 from "../Forms/FormSelect2.jsx";
-
-import {
-  styleConf,
-  themeColors,
-  inputPropsConf,
-  textStyles,
-} from "../utils/configs.js";
-/* import {
-  useHandleInputChange,
-  useLocalStorage,
-} from "../Hooks/custom-Hooks.js"; */
-import { useEffect } from "react";
-import { useLocalStorage } from "../../Hooks/hooks.js";
+import { styleConf, themeColors } from "../utils/configs.js";
+import Alert from "@mui/material/Alert";
 import { useShoppingCart } from "../../store/shoppingCart.js";
+import { colPesos } from "../utils/configs.js";
+import PriceCalc from "../PriceCalc.jsx";
+import { v4 as uuidv4 } from "uuid";
+import { productSchema } from "../Validations.js";
+import { useFormik } from "formik";
+import { ThemeProvider } from "styled-components";
+import { customTheme } from "../../Hooks/useCustomTheme.jsx";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { AddBoxOutlined, ShoppingBag } from "@mui/icons-material";
+import ModalCard from "../Cards/ModalCard.jsx";
+import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 
-const ManualInput2 = ({ text }) => {
+const module = "ManualInput";
+
+const ManualInput2 = ({ text, acabado }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
-    return setOpen(false);
+    //resetForm();
+    formik.resetForm();
+    setOpen(false);
   };
 
-  /*  const [product, setProduct] = useState("");
-  const handleChange = (e) => {
-    setInitialValues(() => ({
-      ...initialValues,
-      [e.target.name]: e.target.value,
-    }));
-  }; */
+  const handlerAdd = (e) => {
+    addItem({
+      ...formik.values,
+      id: uuidv4(),
+    });
+    formik.resetForm();
+    setOpen(false);
+  };
+  //const [disabled, setDisabled] = useState(!formik.errors);
 
-  const styleParams = { radius: 20, padd: 6 };
-
-  const items = useShoppingCart((state) => state.items);
-  const item = [];
-  //using zustand implementation
-  const [products, setProduct] = useState({
+  const initialState = {
     id: "",
+    module: "ManualInput",
     name: "",
-    price: "",
-    quantity: null,
+    price: null,
+    quantity: 1,
     description: "",
-    height: null,
-    width: null,
-    matWidth: null,
-    finish: "",
+    height: 0,
+    width: 0,
+    matWidth: 0,
+    finish: "Sin acabado",
+    finishQ: 1,
     material: "",
     descolillado: "",
     transfer: false,
-  });
-  const handleInputChange = (e) => {
-    setProduct({ ...products, [e.target.name]: e.target.value });
-    console.log(products);
+    itemTotalPrice: 0,
   };
+  const styleParams = { radius: 20, padd: 6 };
+  //use Zustand store
   const addItem = useShoppingCart((state) => state.addItem);
-
-  const handlerAdd = (e) => {
-    e.preventDefault();
-    addItem(products);
+  //use product hook
+  const disable = () => {
+    if (formik.errors) {
+      return true;
+    }
+    return;
   };
-  console.log(items);
-  return (
-    <Box style={{ bg: "red", BorderColor: "black" }}>
-      <OpenModalBtn text={text} onClick={handleOpen} />
+  const formik = useFormik({
+    initialValues: {
+      id: "",
+      module: "ManualInput",
+      name: "",
+      price: null,
+      quantity: 1,
+      description: "",
+      height: 0,
+      width: 0,
+      matWidth: 0,
+      finish: [],
+      finishQ: 1,
+      material: "",
+      descolillado: "",
+      transfer: false,
+      itemTotalPrice: 0,
+    },
+    validationSchema: productSchema,
 
+    onSubmit: handlerAdd,
+  });
+  const errors = formik.errors;
+  const totalCalc = () => {
+    formik.setValues({
+      ...formik.values,
+      itemTotalPrice: formik.values.quantity * formik.values.price,
+    });
+  };
+
+  return (
+    <Box>
+      <ModalCard
+        title={"Producto Directo"}
+        onClick={handleOpen}
+        children={
+          <EditNoteOutlinedIcon sx={{ fontSize: 50, color: "primary.light" }} />
+        }
+      />
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box borderRadius="10px" sx={styleConf}>
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Box
-            borderRadius="10px"
             sx={{
-              pt: 0,
-              pr: 6,
-              pl: 6,
-              pb: 3,
-
-              borderTopRightRadius: styleParams.radius,
-              borderTopLeftRadius: styleParams.radius,
+              ...styleConf,
+              width: "auto",
               bgcolor: "white",
+              display: "flex",
+              flexDirection: "column",
+              flexGrow: 1,
+              flexWrap: "wrap",
+              alignContent: "center",
+              justifyContent: "center",
+              pt: 1,
+              pb: 1,
+              borderRadius: customTheme.shape.borderRadius,
             }}
           >
-            <ModalHeader title={"Configuración Manual"} style={{ pb: 20 }} />
-            <form
-              /* onSubmit={handleSubmit(onSubmit)}  onSubmit={submitForm}*/
-              /* onClick={handlerAdd} */
-              onSubmit={handlerAdd}
-              noValidate
-              onChange={handleInputChange}
+            <ModalHeader title={"Configuración Manual"} />
+
+            <Box
+              sx={{
+                p: customTheme.p[5],
+                pt: customTheme.p[0],
+                pb: customTheme.p[1],
+                width: customTheme.width[6],
+                borderRadius: 3,
+                bgcolor: "white",
+              }}
             >
-              <Grid container spacing={1.5} sx={{ flexGrow: 1, p: 0, m: 0 }}>
-                <Grid item sm={12}></Grid>
-
-                <Grid item sm={12} xs={12}>
-                  <TextField
-                    //onChange={handleChange}
-                    name="name"
-                    value={products.name}
-                    fullWidth
-                    label={"Producto"}
-                    type="text"
-                    InputProps={{
-                      style: { ...inputPropsConf },
-                    }}
-                    sx={{ ...textStyles }}
-                    onChange={handleInputChange}
-                  />
-                </Grid>
-                <Grid item sm={8} xs={8}>
-                  <TextField
-                    //onChange={handleChange}
-                    name="price"
-                    fullWidth
-                    label={"Precio"}
-                    type="number"
-                    value={products.price}
-                    InputProps={{
-                      style: inputPropsConf,
-                    }}
-                    sx={textStyles}
-                  />
-                </Grid>
-
-                <Grid item sm={4} xs={4}>
-                  <TextField
-                    value={products.quantity}
-                    name="quantity"
-                    fullWidth
-                    /*  defaultValue={1} */
-                    label={"Cantidad"}
-                    type="number"
-                    InputProps={{
-                      style: inputPropsConf,
-                    }}
-                    sx={textStyles}
-                  />
-                </Grid>
-
-                <Grid item sm={12} xs={12}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      gap: 1.2,
-                      justifyContent: "center",
-                      alignItems: "center",
-                      m: 0,
-                    }}
-                  >
-                    <FormSelect2
-                      fullWidth
-                      name="finish"
-                      options={acabados}
-                      label={"Acabado"}
-                      /*  value={formData.acabado} */
-                      theme={themeColors}
-                      style={{ textStyles }}
-                      sx={{ borderRadius: 20 }}
-                      defaultValue={"Sin acabado"}
-                      onChange={handleInputChange}
-                    />
-                    {/* renders 'cantidad acabado' if 'acabado' equals to 'ojales | bolsillos */}
-                    {/*{(formValues.acabado == "Ojales" ||
-                      formValues.acabado == "Bolsillos") && (
+              <ThemeProvider theme={customTheme}>
+                <form onSubmit={formik.handleSubmit}>
+                  <Grid container spacing={1.5} sx={{ flexGrow: 1 }}>
+                    <Grid item sm={12} xs={12}>
                       <TextField
-                        sx={{
-                          ...inputPropsConf,
-                          color: themeColors.darkText,
-                          width: "49%",
-                          borderRadius: 2,
-                        }}
+                        onBlur={formik.handleBlur}
+                        error={formik.errors.name}
+                        helperText={formik.errors.name}
+                        value={formik.values.name}
+                        name="name"
+                        onChange={formik.handleChange}
                         fullWidth
-                        type={"number"}
+                        label={"Producto"}
+                        type="text"
+                      />
+                    </Grid>
+                    <Grid item sm={8} xs={8}>
+                      <TextField
+                        error={formik.errors.price}
+                        helperText={formik.errors.price}
+                        value={formik.values.price}
+                        onChange={formik.handleChange}
+                        name="price"
+                        fullWidth
+                        label={"Precio"}
+                        type="number"
+                      />
+                    </Grid>
+                    <Grid item sm={4} xs={4}>
+                      <TextField
+                        error={formik.errors.quantity}
+                        helperText={formik.errors.quantity}
+                        value={formik.values.quantity}
+                        name="quantity"
+                        fullWidth
                         label={"Cantidad"}
-                        defaultValue={1}
-                        variant={"outlined"}
-                        value={formValues.cantAcabado} 
-                        name="cantAcabado"
-                        InputProps={{
-                          style: inputPropsConf,
+                        type="number"
+                        onChange={formik.handleChange}
+                      />
+                    </Grid>
+
+                    {formik.values.price > 0 && (
+                      <Grid item sm={12} xs={12}>
+                        <PriceCalc
+                          disabled={
+                            formik.errors.price ||
+                            formik.errors.quantity ||
+                            !formik.values.price
+                              ? true
+                              : false
+                          }
+                          value={formik.values.itemTotalPrice}
+                          name={"itemTotalPrice"}
+                          text={`${colPesos.format(
+                            formik.values.itemTotalPrice
+                          )}`}
+                          onClick={totalCalc}
+                        />
+                      </Grid>
+                    )}
+
+                    <Grid item sm={12} xs={12}>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          gap: 1.2,
+                          justifyContent: "center",
+                          alignItems: "center",
+                          m: 0,
                         }}
-                      
-                    )}/>*/}
-                  </Box>
-                </Grid>
+                      >
+                        <FormSelect2
+                          value={formik.values.finish}
+                          multiple={true}
+                          error={formik.errors.finish}
+                          helperText={formik.errors.finish}
+                          fullWidth
+                          name="finish"
+                          onChange={formik.handleChange}
+                          options={acabado}
+                          label={"Acabado"}
+                          defaultValue={"Sin acabado"}
+                          renderValue={(selected) => selected.join(", ")}
+                        />
 
-                <Grid item sm={12} xs={12}>
-                  <FormInputText
-                    disabled={false}
-                    name={"description"}
-                    variant={"outlined"}
-                    defaultValue={""}
-                    label={"Descripción del trabajo"}
-                    type="text"
-                    required={false}
-                    multiline={true}
-                    autofocus={false}
-                    value={products.description}
-                    rows={5}
-                  />
-                </Grid>
-
-                <Grid
-                  item
-                  sm={12}
-                  xs={12}
-                  sx={{ display: "flex", justifyContent: "center", pt: 2 }}
-                >
-                  <AddBtn />
-                </Grid>
-              </Grid>
-            </form>
-
-            {/* <h3>{`${formValues.producto}  ${isAcabado()} ${
-              formValues.precio * formValues.cantidad
-            }`}</h3> */}
+                        {(formik.values.finish == "Ojales" ||
+                          formik.values.finish == "Bolsillos") && (
+                          <TextField
+                            sx={{
+                              color: themeColors.darkText,
+                              width: "49%",
+                              borderRadius: 2,
+                            }}
+                            fullWidth
+                            type={"number"}
+                            label={"Cantidad"}
+                            defaultValue={1}
+                            value={formik.values.finishQ}
+                            name="finishQ"
+                            onChange={formik.handleChange}
+                          />
+                        )}
+                      </Box>
+                    </Grid>
+                    {/*Total price module*/}
+                    <Grid
+                      item
+                      sm={12}
+                      xs={12}
+                      sx={{ pr: 1, pl: 1, pt: 0, pb: 0 }}
+                    >
+                      <TextField
+                        error={formik.errors.description}
+                        helperText={formik.errors.description}
+                        value={formik.values.description}
+                        name="description"
+                        fullWidth
+                        label={"Descripción"}
+                        type="text"
+                        onChange={formik.handleChange}
+                        minRows={2}
+                        multiline
+                        sx={{ pb: 3 }}
+                      />
+                    </Grid>
+                  </Grid>{" "}
+                </form>{" "}
+              </ThemeProvider>
+            </Box>
+            <Grid
+              sm={12}
+              xs={12}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                borderTop: `2px solid ${customTheme.palette.background.dark}`,
+                pt: 2,
+                pb: 3,
+              }}
+            >
+              <Button
+                sx={{ width: "80%" }}
+                disabled={!formik.values.itemTotalPrice ? true : false}
+                title={"Agregar"}
+                variant="prime"
+                type="submit"
+                onClick={formik.handleSubmit}
+                startIcon={<AddShoppingCartIcon />}
+              >
+                Agregar
+              </Button>
+            </Grid>
           </Box>
         </Box>
       </Modal>
