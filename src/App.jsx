@@ -28,7 +28,7 @@ function Print() {
     async function getTodos() {
       const { data } = await supabase.from("todos").select();
 
-      if (products.length > 1) {
+      if (data.length > 1) {
         setProducts(data);
       }
     }
