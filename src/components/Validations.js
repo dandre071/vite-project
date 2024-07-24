@@ -26,20 +26,15 @@ export const productSchema = object().shape({
 });
 
 export const PersonSchema = object().shape({
-  billType: string("Por favor elige una opción.").required(
-    "Este campo es obligatorio."
-  ),
+  billType: string().required("Este campo es obligatorio."),
   clientType: string(),
-  name: string("Por favor ingrese un nombre.").required(
-    "Este campo es obligatorio."
-  ),
+  name: string()
+    .min(5, "Mínimo 5 caracteres")
+    .required("Este campo es obligatorio."),
   email: string()
     .email("Por favor ingrese un correo válido.")
     .required("Este campo es obligatorio."),
-  phone: number()
-    .integer()
-
-    .required(),
-  nit: number().integer(),
+  phone: number().integer().required("Este campo es obligatorio."),
+  nit: string().required("Este campo es obligatorio."),
   // receives: string(),
 });

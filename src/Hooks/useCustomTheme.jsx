@@ -84,19 +84,34 @@ export const customTheme = createTheme({
     borderRadius: 4,
   },
 
-  overrides: {},
-  props: {
-    MuiInputBase: { disableUnderline: true },
-    MuiAppBar: {
-      color: "inherit",
-    },
-
-    /*  MuiButton: {
-      defaultProps: {
-        root: {
-          color: "primary.main",
+  overrides: {
+    MuiFilledInput: {
+      overrides: {
+        multiline: true,
+        disableUnderline: true,
+        sx: {
+          borderRadius: 2,
+          bgcolor: "#f3f3f3",
+          color: "text.main",
+          fontWeight: 600,
+          fontSize: 19,
+          "&:hover": {
+            backgroundColor: "#f3f3f3",
+          },
+          "&:notched": {
+            backgroundColor: "#f3f3f3",
+          },
+          "& .MuiInputLabel-shrink": {
+            color: "blue",
+          },
         },
       },
+    },
+  },
+  props: {
+    /* MuiInputBase: { disableUnderline: true },
+    MuiAppBar: {
+      color: "inherit",
     }, */
   },
 
@@ -240,7 +255,7 @@ export const customTheme = createTheme({
       ],
     },
     MuiSvgIcon: { defaultProps: { sx: { width: 35, height: 35 } } },
-
+    /* 
     MuiInputLabel: {
       defaultProps: {
         multiline: true,
@@ -248,7 +263,7 @@ export const customTheme = createTheme({
 
         sx: {
           // bgcolor: "yellow",
-          color: "blue",
+          color: "primary.main",
           //color: "primary.main",
           textAlign: "left",
           height: 0,
@@ -256,20 +271,15 @@ export const customTheme = createTheme({
           fontWeight: 500,
         },
       },
-    },
+    }, */
 
     MuiTextField: {
       defaultProps: {
         variant: variantType,
         minRows: 2,
         fullWidth: true,
-      },
-    },
-    MuiFormLabel: {
-      defaultProps: {
-        style: {
-          color: "pink",
-          fontSize: 18,
+        sx: {
+          color: "green",
         },
       },
     },
@@ -277,31 +287,32 @@ export const customTheme = createTheme({
     MuiInputBase: {
       defaultProps: {
         multiline: true,
-        disableUnderline: true,
+        disableUnderline: false,
         sx: {
           borderRadius: 2,
-          bgcolor: "primary.lighter",
-          color: "text.main",
+          bgcolor: "red",
+          color: "green",
           fontWeight: 600,
           fontSize: 19,
           "&:hover": {
-            backgroundColor: "primary.light",
+            backgroundColor: "red",
           },
           "&.Mui-focused": {
             "&:hover:not(.Mui-focused)": {
               "& .MuiFilledInput-notchedFilled": {
-                color: "danger",
+                color: "orange",
               },
             },
             "&.error": {
-              color: "red",
+              color: "purple",
             },
           },
           "& .MuiInputLabel-filled": {
-            color: "primary.main",
+            color: "red",
             fontWeight: "bold",
+            bgcolor: "red",
             "&.Mui-focused": {
-              color: "primary.main",
+              color: "red",
               fontWeight: 400,
               fontSize: 20,
             },
@@ -313,14 +324,22 @@ export const customTheme = createTheme({
       defaultProps: {
         multiline: true,
         disableUnderline: true,
+
         sx: {
           borderRadius: 2,
-          bgcolor: "primary.lighter",
+          bgcolor: "#f3f3f3",
           color: "text.main",
           fontWeight: 600,
           fontSize: 19,
           "&:hover": {
-            backgroundColor: "primary.light",
+            backgroundColor: "#f3f3f3",
+          },
+          "&:notched": {
+            backgroundColor: "#f3f3f3",
+          },
+
+          "& .MuiFilledInputLabel": {
+            color: "blue",
           },
         },
       },
@@ -328,6 +347,7 @@ export const customTheme = createTheme({
     MuiFormControl: {
       defaultProps: {
         variant: variantType,
+        "& .MuiInputLabel-shrink": { color: "blue" },
       },
     },
     MuiGrid2: {

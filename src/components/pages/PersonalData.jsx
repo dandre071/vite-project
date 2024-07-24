@@ -1,4 +1,11 @@
-import { Autocomplete, Box, Button, Grid, TextField } from "@mui/material";
+import {
+  Autocomplete,
+  Box,
+  Button,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import FormSelect2 from "../Forms/FormSelect2";
 import { Form, useFormik } from "formik";
@@ -9,6 +16,8 @@ import { usePersonalData, useShoppingCart } from "../../store/shoppingCart";
 import { ArrowForward } from "@mui/icons-material";
 import { fakeUsers } from "../utils/test";
 import { colPesos } from "../utils/configs";
+import { formatPhoneNumber } from "../utils/helpers";
+
 const PersonalData = () => {
   /* getLocalStorage("personal-data");
   console.log(getLocalStorage("personal-data"));
@@ -47,7 +56,7 @@ const PersonalData = () => {
     initialValues: {
       billType: "Recibo",
       clientType: "Particular",
-      name: "dffdfd",
+      name: "",
       email: "",
       phone: "",
       nit: "",
@@ -95,11 +104,13 @@ const PersonalData = () => {
       : formik.setValues(formik.initialValues);
   }, []);
   /* */
-  let selectedUser;
-  let userFound;
+  const errors = formik.errors;
+  console.log(errors);
+  const foundName = users.filter((user) => user == formik.values.name);
+  console.log(foundName);
   const checkUser = () => {
-    selectedUser = formik.values.name;
-    userFound = users.indexOf(selectedUser);
+    const selectedUser = formik.values.name;
+    const userFound = users.indexOf(selectedUser);
     formik.setValues({
       ...formik.values,
       email: fakeUsers[userFound].email,
@@ -107,6 +118,7 @@ const PersonalData = () => {
       nit: fakeUsers[userFound].nit,
     });
   };
+  console.log(users);
 
   return (
     <Box>
@@ -155,6 +167,10 @@ const PersonalData = () => {
               type="text"
             /> */}
             <Autocomplete
+              //className={formik.errors.name ? "error" : ""}
+              // helperText={formik.errors.name}
+
+              fullWidth
               defaultValue={() => localStore[0].name || ""}
               freeSolo={true}
               autoHighlight
@@ -162,17 +178,16 @@ const PersonalData = () => {
               options={users}
               sx={{
                 textTransform: "capitalize",
-                width: "90%",
               }}
-              required
               onBlur={formik.handleBlur}
-              error={formik.errors.name}
-              helperText={formik.errors.name}
               name="name"
               onChange={handleAutoChange}
               //autoCapitalize="initial"
               renderInput={(params) => (
                 <TextField
+                  //error={() => formik.errors.name}
+                  helperText={formik.touched.contact && formik.errors.contact}
+                  error={formik.touched.contact && formik.errors.contact}
                   fullWidth
                   {...params}
                   label="Nombre / Razón Social"
@@ -182,7 +197,14 @@ const PersonalData = () => {
                 />
               )}
             />
-            {{ ...userFound } && (
+            {/* {formik.errors.name && (
+              <Box sx={{ bgcolor: "red" }}>
+                <Typography sx={{ color: "white" }}>
+                  {formik.errors.name}
+                </Typography>
+              </Box>
+            )} */}
+            {!formik.values.name == "" && (
               <Button
                 onClick={checkUser}
                 variant="success"
@@ -246,7 +268,7 @@ const PersonalData = () => {
             />
           </Grid> */}
         </Grid>
-        {formik.errors && (
+        {errors === 0 && (
           <Button onClick={formik.handleSubmit} endIcon={<ArrowForwardIcon />}>
             Siguiente
           </Button>
