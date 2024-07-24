@@ -16,37 +16,10 @@ import { useEffect, useState } from "react";
 import ManualInput from "./components/modals/manualInput";
 import ListItem from "./components/ListItem";
 import Factura from "./components/pages/Factura";
-import supabase from "./config/supabaseClient";
+import { data, error } from "..src/config/supabaseClient";
 
 function Print() {
-  /* const { products } = useLocalStorage(); */
-  console.log(supabase);
-  const [product, setProduct] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function getProducts() {
-      let { data, error } = await supabase.from("products").select("*");
-
-      if (data != null) {
-        setProduct(data);
-      }
-    }
-
-    getProducts();
-  }, []);
-  console.log(product[1]["product_name"]);
-
-  /*  useEffect(() => {
-    getProducts();
-  }, []);
-
-  async function getProducts() {
-    const { data } = await supabase.from("products").select();
-    setProducts(data);
-  } */
-
-  //console.log(fetchProducts());
+  console.log(data);
   return (
     <Box>
       <ThemeProvider theme={customTheme}>
@@ -58,7 +31,6 @@ function Print() {
             gap: 10,
           }}
         >
-          {product.map((x) => console.log(x["product_name"]))}
           <GetDataForm />
           {/*  <ListItem /> */}
           {/* <Picker /> */}
