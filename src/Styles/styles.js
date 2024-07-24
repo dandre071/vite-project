@@ -146,3 +146,18 @@ export const modal = {
   borderRadius: customTheme.shape.borderRadius,
   boxShadow: 4,
 };
+
+export const title = {
+  width: 140,
+
+  bgcolor: "primary.light",
+  borderRadius: 1.2,
+  display: "flex",
+  boxSizing: "content-box",
+  fontSize: 12,
+  justifyContent: "start",
+  pl: 0.5,
+  alignItems: "center",
+};
+
+export const center = { justifySelf: "center", alignSelf: "center" };

@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { Button, TextField } from "@mui/material";
+import { Button, InputAdornment, TextField, Tooltip } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "../ModalHeader";
@@ -19,6 +19,8 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { AddBoxOutlined, ShoppingBag } from "@mui/icons-material";
 import ModalCard from "../Cards/ModalCard.jsx";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
+import InfoIcon from "@mui/icons-material/Info";
+import { formatNumber } from "../utils/helpers.js";
 
 const module = "ManualInput";
 
@@ -98,6 +100,8 @@ const ManualInput2 = ({ text, acabado }) => {
     });
   };
 
+  // formatNumber(formik.values.price);
+
   return (
     <Box>
       <ModalCard
@@ -157,9 +161,30 @@ const ManualInput2 = ({ text, acabado }) => {
                         label={"Producto"}
                         type="text"
                       />
+                      {/* {formik.errors.name && (
+                        <Tooltip
+                          title={formik.errors.name}
+                          arrow
+                          sx={{ position: "absolute", top: -100 }}
+                        >
+                          <InfoIcon
+                            sx={{ fontSize: 25, color: "error.main" }}
+                          />
+                        </Tooltip>
+                      )} */}
                     </Grid>
                     <Grid item sm={8} xs={8}>
                       <TextField
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment
+                              position="start"
+                              InputProps={{ fontSize: 40 }}
+                            >
+                              $
+                            </InputAdornment>
+                          ),
+                        }}
                         error={formik.errors.price}
                         helperText={formik.errors.price}
                         value={formik.values.price}
