@@ -17,11 +17,12 @@ import ManualInput from "./components/modals/manualInput";
 import ListItem from "./components/ListItem";
 import Factura from "./components/pages/Factura";
 import supabase from "./config/supabaseClient";
+import { uppercasing } from "./components/utils/helpers";
 
 function Print() {
   /* const { products } = useLocalStorage(); */
   console.log(supabase);
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -35,8 +36,8 @@ function Print() {
 
     getProducts();
   }, []);
-  console.log(product[1]["product_name"]);
-
+  /* console.log(product && product[1]["product_name"]);
+   */
   /*  useEffect(() => {
     getProducts();
   }, []);
@@ -45,7 +46,8 @@ function Print() {
     const { data } = await supabase.from("products").select();
     setProducts(data);
   } */
-
+  const db = product.map((x) => x["product_name"]);
+  console.log(db);
   //console.log(fetchProducts());
   return (
     <Box>
@@ -58,7 +60,9 @@ function Print() {
             gap: 10,
           }}
         >
-          {product.map((x) => console.log(x["product_name"]))}
+          {db.map((x) => {
+            console.log(uppercasing(x));
+          })}
           <GetDataForm />
           {/*  <ListItem /> */}
           {/* <Picker /> */}

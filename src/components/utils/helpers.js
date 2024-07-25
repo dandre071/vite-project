@@ -22,3 +22,7 @@ export const formatNumber = (num) => {
   const formmated = colPesos.format(num);
   return formmated;
 };
+
+export const uppercasing = (string) => {
+  return string.slice(0, 1).toUpperCase() + string.slice(1, string.length);
+};
