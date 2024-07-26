@@ -167,9 +167,6 @@ const PersonalData = () => {
               type="text"
             /> */}
             <Autocomplete
-              //className={formik.errors.name ? "error" : ""}
-              // helperText={formik.errors.name}
-
               fullWidth
               defaultValue={() => localStore[0].name || ""}
               freeSolo={true}
