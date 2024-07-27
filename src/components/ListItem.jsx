@@ -1,4 +1,4 @@
-import { Box, Divider, Grid, Typography } from "@mui/material";
+import { Box, Divider, Grid, Stack, Typography } from "@mui/material";
 import DeleteBtn from "./Buttons/DeleteBtn";
 import { colPesos } from "./utils/configs";
 import { themeColors } from "./utils/configs";
@@ -28,180 +28,148 @@ const ListItem = ({
   return (
     <Box
       sx={{
-        display: "flex",
+        display: "grid",
         p: 0,
-        height: 100,
+
+        borderBottomStyle: "solid",
+        borderBottomWidth: 2,
+
         // bgcolor: "red",
         // alignItems: "center",
       }}
     >
-      <Box sx={{}}>
-        <Box
-          sx={{
-            // bgcolor: "primary.light",
-            position: "relative",
-            display: "flex",
+      <Box
+        sx={{
+          // bgcolor: "primary.light",
 
-            // width: 600,
-          }}
-        >
-          <Grid borderRadius={2} container sx={listItemStyle}>
-            <Grid
-              item
-              sm={7.5}
-              sx={{
-                display: "grid",
-                // bgcolor: "red",
-                // height: " 100%",
-                p: 2,
-                gap: 0.5,
-              }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "end",
-                }}
-              >
-                <Typography
-                  style={{
-                    whiteSpace: "pre-wrap",
-                    lineHeight: 1,
-                    display: "flex",
-                    color: "text.main",
-                    fontSize: 20,
-                    fontWeight: 800,
-                  }}
-                >
-                  {text}
-                </Typography>
-              </Box>
-              <Box
-                sx={
-                  {
-                    /* display: "flex", alignItems: "end" */
-                  }
-                }
-              >
-                <Typography
-                  style={{
-                    whiteSpace: "pre-wrap",
-                    lineHeight: 1,
+          position: "relative",
+          display: "grid",
+          gridTemplateColumns: "630px 1fr",
+          //gridTemplateRows: "1fr 1fr",
 
-                    color: customTheme.palette.text.light,
-                    fontSize: 14,
-                    fontWeight: 500,
-                  }}
-                >
-                  {text}
-                </Typography>
-              </Box>
-            </Grid>
+          // width: 600,
+        }}
+      >
+        <Stack borderRadius={2} sx={listItemStyle}>
+          <Stack
+            display={"grid"}
+            gridTemplateColumns={"330px 100px 60px 120px"}
+            direction={"row"}
+            sx={{
+              justifyContent: "start",
+              alignItems: "end",
+            }}
+          >
             <Typography
-              sx={{
-                position: "absolute",
-                //top: 10,
-                right: 15,
-                bottom: -10,
-                bgcolor: "success.main",
-                fontWeight: 500,
-                color: "white",
-                fontSize: 14,
-                borderRadius: customTheme.shape.borderRadius - 2.5,
-                // borderRadius: 2,
-                p: 1,
-                pt: 0,
-                pb: 0,
+              style={{
+                whiteSpace: "pre-wrap",
+
+                color: "text.main",
+                fontSize: 18,
+                fontWeight: 700,
+                textAlign: "left",
               }}
             >
-              {typeof finish === "string"
-                ? finish
-                : Array.from(finish).join(" - ")}
+              {text}
             </Typography>
-            <Grid
-              item
-              sm={1.5}
+            <Typography
+              variant="p"
               sx={{
-                // bgcolor: "green",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                fontSize: 18,
+                fontWeight: 700,
+                color: "text.main",
+                textAlign: "center",
               }}
             >
-              <Box
-                sx={{
-                  //borderStyle: "solid",
-                  borderWidth: 3,
-                  //borderColor: "solid",
-                  bgcolor: "primary.light",
-                  width: "80%",
-                  height: 40,
-                  borderRadius: 2,
-                  alignContent: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    color: "primary.main",
-                    textAlign: "center",
-                    fontSize: 18,
-                    fontWeight: 900,
-                    p: 0,
-                  }}
-                >
-                  {q}
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid
-              item
-              sm={3}
+              {`${colPesos.format(total)}`}
+            </Typography>
+            <Typography
+              variant="h6"
+              sx={{
+                color: customTheme.palette.text.main,
+                textAlign: "center",
+                fontSize: 18,
+                fontWeight: 700,
+                p: 0,
+              }}
+            >
+              {q}
+            </Typography>
+            <Typography
+              variant="p"
+              sx={{
+                fontSize: 18,
+                fontWeight: 700,
+                color: "text.main",
+                textAlign: "center",
+              }}
+            >
+              {`${colPesos.format(total)}`}
+            </Typography>{" "}
+          </Stack>
+          <Stack
+            sx={{
+              //bgcolor: "blue",
+              p: 0,
+              display: "grid",
+              gridTemplateColumns: "490px 120px",
+            }}
+          >
+            <Typography
+              style={{
+                whiteSpace: "pre-wrap",
+
+                pl: 2,
+                color: customTheme.palette.text.light,
+                fontSize: 14,
+                fontWeight: 300,
+              }}
+            >
+              {text}
+            </Typography>
+            <Box
               sx={{
                 display: "flex",
-                justifyContent: "end",
-                //  bgcolor: "orange",
-                pr: 2,
-                //background: "palette.secondary.main",
+                justifyContent: "center",
                 alignItems: "center",
               }}
             >
               <Typography
-                variant="p"
                 sx={{
-                  fontSize: 21,
-                  fontWeight: 700,
-                  color: "text.main",
-                  textAlign: "right",
+                  fontWeight: 300,
+                  color: customTheme.palette.text.light,
+                  fontSize: 14,
+                  lineHeight: 1,
+                  borderRadius: customTheme.shape.borderRadius - 2.5,
+                  // borderRadius: 2,
                 }}
               >
-                {`${colPesos.format(total)}`}
+                {typeof finish === "string"
+                  ? finish
+                  : Array.from(finish).join(" + ")}
               </Typography>
-            </Grid>
-          </Grid>
-        </Box>{" "}
-        <DeleteBtn
-          onClick={onClick}
-          sx={{
-            position: "relative",
+            </Box>{" "}
+          </Stack>{" "}
+        </Stack>
+        <Box>
+          <DeleteBtn
+            onClick={onClick}
+            sx={{
+              fontSize: 30,
+              // color: "secondary.main",
 
-            top: -95,
+              color: "white",
+              bgcolor: "background.dark",
+              borderRadius: "50%",
 
-            right: -480,
-            fontSize: 30,
-            // color: "secondary.main",
-            color: "white",
-            bgcolor: "secondary.main",
-            borderRadius: "50%",
-
-            "&:hover": {
-              cursor: "pointer",
-              bgcolor: "secondary.dark",
-            },
-          }}
-        />
-      </Box>
+              "&:hover": {
+                cursor: "pointer",
+                bgcolor: "secondary.main",
+              },
+            }}
+          />
+        </Box>
+      </Box>{" "}
     </Box>
   );
 };

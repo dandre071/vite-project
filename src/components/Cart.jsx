@@ -31,23 +31,52 @@ const Cart = () => {
 
   return (
     <>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-        <Box sx={modal}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 1,
+        }}
+      >
+        <Box sx={{ ...modal, width: 650, alignItems: "start" }}>
           <ModalHeader title={"Compras"} />
-
-          <Stack spacing={1} sx={{ alignItems: "center" }}>
+          {items.length && (
+            <Stack
+              sx={{
+                bgcolor: "black",
+                display: "grid",
+                alignItems: "end",
+                height: 40,
+                color: "white",
+                borderRadius: 1.75,
+                gridTemplateColumns: "330px 100px 60px 120px 1fr",
+              }}
+            >
+              <Typography sx={{ fontWeight: 600 }}>Producto</Typography>
+              <Typography sx={{ fontWeight: 600, justifySelf: "center" }}>
+                Precio
+              </Typography>
+              <Typography sx={{ fontWeight: 600, justifySelf: "center" }}>
+                Cant
+              </Typography>
+              <Typography sx={{ fontWeight: 600, justifySelf: "center" }}>
+                Total
+              </Typography>
+            </Stack>
+          )}
+          <Stack spacing={1} sx={{ alignItems: "start" }}>
             <Box
               sx={{
                 //border: `2px solid #f3f3f3`,
-                width: 530,
+
                 minHeight: 200,
                 //bgcolor: "#f7f7f7",
                 //bgcolor: "white",
                 display: "flex",
                 /*  bgcolor: "primary.lighter", */
-                // bgcolor: "#f3f3f3",
+                //bgcolor: "red",
                 flexDirection: "column",
-                justifyContent: "center",
+                justifyContent: "start",
                 alignItems: "center",
                 borderRadius: 4,
                 pt: 1,

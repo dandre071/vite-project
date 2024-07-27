@@ -1,6 +1,7 @@
 import { createTheme } from "@mui/material";
 import { themeColors } from "../components/utils/configs";
 import { customTheme } from "../Hooks/useCustomTheme";
+import { BorderBottom } from "@mui/icons-material";
 
 export const theme = createTheme({
   palette: {
@@ -47,16 +48,19 @@ export const theme = createTheme({
 });
 
 export const listItemStyle = {
-  width: 500,
-  height: 90,
+  width: 650,
+  height: 100,
   borderRadius: 3,
+  display: "grid",
+  justifyContent: "start",
+
   //bgcolor: "background.light",
-  bgcolor: "white",
+  // bgcolor: "#f5f5f5",
   // alignContent: "center",
   //boxShadow: 3,
-  borderStyle: "solid",
+  /* borderStyle: "solid",
   borderWidth: 3,
-  borderColor: "background.light",
+  borderColor: "background.light", */
   /* "&:hover": {
     bgcolor: "primary.lighter",
     borderStyle: "none",
