@@ -93,6 +93,12 @@ const ManualInput2 = ({ text, acabado }) => {
     onSubmit: handlerAdd,
   });
   const errors = formik.errors;
+  /* const totalCalc = () => {
+    formik.setValues({
+      ...formik.values,
+      itemTotalPrice: formik.values.quantity * formik.values.price,
+    });
+  }; */
   const totalCalc = () => {
     formik.setValues({
       ...formik.values,
@@ -210,7 +216,7 @@ const ManualInput2 = ({ text, acabado }) => {
 
                     {formik.values.price > 0 && (
                       <Grid item sm={12} xs={12}>
-                        <PriceCalc
+                        {/* <PriceCalc
                           disabled={
                             formik.errors.price ||
                             formik.errors.quantity ||
@@ -222,6 +228,22 @@ const ManualInput2 = ({ text, acabado }) => {
                           name={"itemTotalPrice"}
                           text={`${colPesos.format(
                             formik.values.itemTotalPrice
+                          )}`}
+                          onClick={totalCalc}
+                        /> */}
+
+                        <PriceCalc
+                          disabled={
+                            formik.errors.price ||
+                            formik.errors.quantity ||
+                            !formik.values.price
+                              ? true
+                              : false
+                          }
+                          value={formik.values.itemTotalPrice}
+                          name={"itemTotalPrice"}
+                          text={`${colPesos.format(
+                            formik.values.quantity * formik.values.price
                           )}`}
                           onClick={totalCalc}
                         />

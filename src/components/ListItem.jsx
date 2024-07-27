@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import ModalHeader from "./ModalHeader";
 import { customTheme } from "../Hooks/useCustomTheme";
 import { object } from "yup";
+import { uppercasing } from "./utils/helpers";
 motion;
 const ListItem = ({
   price,
@@ -31,8 +32,7 @@ const ListItem = ({
         display: "grid",
         p: 0,
 
-        borderBottomStyle: "solid",
-        borderBottomWidth: 2,
+        borderBottom: `2px solid ${customTheme.palette.background.dark}`,
 
         // bgcolor: "red",
         // alignItems: "center",
@@ -44,7 +44,7 @@ const ListItem = ({
 
           position: "relative",
           display: "grid",
-          gridTemplateColumns: "630px 1fr",
+          gridTemplateColumns: "610px 1fr",
           //gridTemplateRows: "1fr 1fr",
 
           // width: 600,
@@ -70,7 +70,7 @@ const ListItem = ({
                 textAlign: "left",
               }}
             >
-              {text}
+              {uppercasing(text)}
             </Typography>
             <Typography
               variant="p"
@@ -81,7 +81,7 @@ const ListItem = ({
                 textAlign: "center",
               }}
             >
-              {`${colPesos.format(total)}`}
+              {`${colPesos.format(price)}`}
             </Typography>
             <Typography
               variant="h6"
@@ -125,7 +125,7 @@ const ListItem = ({
                 fontWeight: 300,
               }}
             >
-              {text}
+              {uppercasing(description)}
             </Typography>
             <Box
               sx={{
@@ -136,12 +136,17 @@ const ListItem = ({
             >
               <Typography
                 sx={{
-                  fontWeight: 300,
-                  color: customTheme.palette.text.light,
+                  fontWeight: 400,
+                  color: "white",
                   fontSize: 14,
                   lineHeight: 1,
-                  borderRadius: customTheme.shape.borderRadius - 2.5,
+                  borderRadius: customTheme.shape.borderRadius - 2,
                   // borderRadius: 2,
+                  bgcolor: "success.main",
+                  p: 0.5,
+                  pl: 1,
+                  pr: 1,
+                  boxSizing: "content-box",
                 }}
               >
                 {typeof finish === "string"
@@ -151,7 +156,13 @@ const ListItem = ({
             </Box>{" "}
           </Stack>{" "}
         </Stack>
-        <Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <DeleteBtn
             onClick={onClick}
             sx={{

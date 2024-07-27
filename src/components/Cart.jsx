@@ -64,7 +64,14 @@ const Cart = () => {
               </Typography>
             </Stack>
           )}
-          <Stack spacing={1} sx={{ alignItems: "start" }}>
+          <Stack
+            spacing={1}
+            sx={
+              {
+                /* alignItems: "start" */
+              }
+            }
+          >
             <Box
               sx={{
                 //border: `2px solid #f3f3f3`,
@@ -116,6 +123,7 @@ const Cart = () => {
               <Stack display={"flex"} spacing={1} sx={{}}>
                 {items.map((item) => (
                   <ListItem
+                    price={item.price}
                     key={item.id}
                     text={item.name}
                     total={item.itemTotalPrice}
@@ -131,22 +139,20 @@ const Cart = () => {
               </Stack>{" "}
               {/********** */}
             </Box>
-            {/* {items.length !== 0 && (
-         >
-          </Box>
-        )} */}
           </Stack>
           {/********** */}
+          <Box sx={{ width: "100%", height: 60, bgcolor: "red" }}></Box>
         </Box>
 
-        {items.length && (
+        {items.length == 0 && (
           <Stack
             sx={{
               display: "flex",
-
+              alignSelf: "center",
               borderRadius: 3,
               bgcolor: "white",
               alignItems: "center",
+              justifySelf: "center",
               justifyContent: "center",
 
               width: "100%",
