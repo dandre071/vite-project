@@ -17,17 +17,27 @@ import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { BorderBottom } from "@mui/icons-material";
 import { modal } from "../Styles/styles";
 import supabase from "../config/supabaseClient";
+import useProducts from "../Hooks/useProducts";
+import { useUsersList } from "../store/lists";
+
 //import { v4 as uuidv4 } from "uuid";
 const Cart = () => {
-  const supa = supabase;
-  console.log(supa);
+  const usersList = useUsersList((state) => state.users);
+  //const usersList = users.map((x) => x["users"]);
+
   const items = useShoppingCart((state) => state.items);
+
+  console.log(usersList);
+  console.log(items);
   const clearCart = useShoppingCart((state) => state.clearCart);
   const [list, setList] = useState(items);
 
   const { removeItem } = useShoppingCart();
   const totalPrice = useGetCartTotalPrice();
   //console.log(totalPrice);
+
+  const db = useProducts();
+  console.log(db);
 
   return (
     <>

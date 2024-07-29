@@ -30,8 +30,13 @@ import supabase from "./config/supabaseClient";
 import { formatNumber, uppercasing } from "./components/utils/helpers";
 import { options } from "./components/utils/options";
 import { Form, useFormik } from "formik";
+import { useProduct } from "./Hooks/hooks";
+import CreateProduct from "./components/Forms/CreateProduct";
+import useUsers from "./Hooks/useUsers";
 
 function Print() {
+  const users = useUsers();
+  console.log(users);
   const formik = useFormik({
     initialValues: { productName: "", info: "" },
   });
@@ -135,6 +140,7 @@ function Print() {
         </h1> */}
           {/*  <ProductList /> */}
           <Cart />
+          <CreateProduct />
           <Factura />
         </Stack>
       </ThemeProvider>

@@ -21,6 +21,7 @@ import ModalCard from "../Cards/ModalCard.jsx";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import InfoIcon from "@mui/icons-material/Info";
 import { formatNumber } from "../utils/helpers.js";
+import { useUsersList } from "../../store/lists.js";
 
 const module = "ManualInput";
 
