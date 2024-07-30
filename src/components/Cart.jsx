@@ -19,13 +19,44 @@ import { modal } from "../Styles/styles";
 import supabase from "../config/supabaseClient";
 import useProducts from "../Hooks/useProducts";
 import { useUsersList } from "../store/lists";
-
+import { useFormik } from "formik";
 //import { v4 as uuidv4 } from "uuid";
 const Cart = () => {
   const usersList = useUsersList((state) => state.users);
   //const usersList = users.map((x) => x["users"]);
+  const formik = useFormik({
+    initialValues: {
+      id: "",
+      module: "ManualInput",
+      name: "",
+      price: null,
+      quantity: 1,
+      description: "",
+      height: 0,
+      width: 0,
+      matWidth: 0,
+      finish: [],
+      finishQ: 1,
+      material: "",
+      descolillado: "",
+      transfer: false,
+      itemTotalPrice: 0,
+    },
+    //validationSchema: productSchema,
 
+    //onSubmit: handlerAdd,
+  });
   const items = useShoppingCart((state) => state.items);
+  const handleChange = () => {
+    items: [...state.items, (state.items.price = 1222)];
+  };
+
+  const totalCalc = () => {
+    formik.setValues({
+      ...formik.values,
+      itemTotalPrice: formik.values.quantity * formik.values.price,
+    });
+  };
 
   console.log(usersList);
   console.log(items);
@@ -138,6 +169,7 @@ const Cart = () => {
                     text={item.name}
                     total={item.itemTotalPrice}
                     q={item.quantity}
+                    handleChange={handleChange}
                     description={item.description}
                     qFinish={item.qFinish}
                     finish={item.finish}

@@ -1,4 +1,12 @@
-import { Box, Divider, Grid, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Divider,
+  Grid,
+  Input,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import DeleteBtn from "./Buttons/DeleteBtn";
 import { colPesos } from "./utils/configs";
 import { themeColors } from "./utils/configs";
@@ -21,6 +29,7 @@ const ListItem = ({
   onClick,
   finish,
   qFinish,
+  handleChange,
 }) => {
   const items = useShoppingCart((state) => state.items);
   //const fin = finish.join(", ");
@@ -83,7 +92,7 @@ const ListItem = ({
             >
               {`${colPesos.format(price)}`}
             </Typography>
-            <Typography
+            {/* <Typography
               variant="h6"
               sx={{
                 color: customTheme.palette.text.main,
@@ -94,7 +103,28 @@ const ListItem = ({
               }}
             >
               {q}
-            </Typography>
+            </Typography> */}
+            <Input
+              onChange={handleChange}
+              inputProps={{
+                min: 0,
+                style: { textAlign: "right", padding: 0 },
+              }}
+              disableUnderline
+              type="number"
+              size="small"
+              value={q}
+              // onChange={}
+              sx={{
+                color: customTheme.palette.text.main,
+                textAlign: "right",
+                fontSize: 18,
+                fontWeight: 700,
+                p: 0,
+              }}
+            >
+              {q}
+            </Input>
             <Typography
               variant="p"
               sx={{
