@@ -8,6 +8,7 @@ const useUsers = () => {
   useEffect(() => {
     async function getUsers() {
       let { data, error } = await supabase.from("workers").select("*");
+      console.log(supabase);
 
       if (data != null) {
         setUser(data);
@@ -19,8 +20,6 @@ const useUsers = () => {
 
   const users = user.map((x) => x["users"]);
   return { user, setUser };
-  /*  console.log(user);
-  console.log(users); */
 };
 
 export default useUsers;
