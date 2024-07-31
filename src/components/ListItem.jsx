@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Divider,
   Grid,
   Input,
@@ -30,6 +31,7 @@ const ListItem = ({
   finish,
   qFinish,
   handleChange,
+  changeHandler,
 }) => {
   const items = useShoppingCart((state) => state.items);
   //const fin = finish.join(", ");
@@ -105,7 +107,7 @@ const ListItem = ({
               {q}
             </Typography> */}
             <Input
-              onChange={handleChange}
+              // onChange={handleChange}
               inputProps={{
                 min: 0,
                 style: { textAlign: "right", padding: 0 },
@@ -122,6 +124,7 @@ const ListItem = ({
                 fontWeight: 700,
                 p: 0,
               }}
+              onChange={changeHandler}
             >
               {q}
             </Input>
@@ -209,6 +212,7 @@ const ListItem = ({
               },
             }}
           />
+          {/*   <Button>edit</Button> */}
         </Box>
       </Box>{" "}
     </Box>

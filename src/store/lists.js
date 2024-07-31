@@ -6,19 +6,18 @@ export const useUsersList = create()(
   persist(
     (set, get) => ({
       users: [],
-      fetchUsers: async () => {
+      fetchUsers: async (values) => {
         const { data } = await supabase.from("workers").select("*");
         set((state) => ({
-          users: data,
+          users: { ...state.users, values },
         }));
-        console.log(data);
       },
 
-      subscribeToUsers: () => {
+      /* subscribeToUsers: () => {
         return supabase.from("workers").on("INSERT", (payload) => {
           set((state) => ({ users: [...state.users, payload.new] }));
         });
-      },
+      }, */
     }),
 
     {

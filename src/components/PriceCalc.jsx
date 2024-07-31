@@ -10,50 +10,55 @@ const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
       disabled={disabled}
       sx={{
         display: "flex",
+        //  flexDirection: "row",
         borderRadius: customTheme.shape.borderRadius,
-        justifyContent: "space-between",
+        justifyContent: "space-around",
         border: `2px solid ${customTheme.palette.primary.main}`,
         p: 2,
         alignItems: "center",
       }}
       item
     >
-      <Box>
+      {/* <Box>
         <CalcBtn
           onClick={onClick}
-          /* sx={secondaryBtn} */ disabled={disabled}
+         disabled={disabled}
         />
-      </Box>
+      </Box> */}
       <Box>
         <Typography
           //disabled={disabled}
           sx={{
             // width: "40%",
-            alignContent: "center",
-            justifyContent: "end",
+            color: "white",
+            bgcolor: "primary.main",
+            p: 1,
+            borderRadius: 2,
+            fontSize: 20,
             lineHeight: 1,
             textAlign: "right",
+            fontWeight: 500,
           }}
         >
           Total:
         </Typography>
-        <Typography
-          //disabled={disabled}
-          value={value}
-          name={name}
-          onChange={onChange}
-          sx={{
-            fontWeight: 700,
-            color: "text.dark",
-            display: "flex",
-            justifyContent: "right",
-            textAlign: "right",
-            fontSize: 30,
-          }}
-        >
-          {text}
-        </Typography>
-      </Box>
+      </Box>{" "}
+      <Typography
+        //disabled={disabled}
+        value={value}
+        name={name}
+        onChange={onChange}
+        sx={{
+          fontWeight: 700,
+          color: "secondary.main",
+          display: "flex",
+          justifyContent: "right",
+          textAlign: "right",
+          fontSize: 30,
+        }}
+      >
+        {text}
+      </Typography>
     </Grid>
   );
 };

@@ -21,8 +21,13 @@ import useProducts from "../Hooks/useProducts";
 import { useUsersList } from "../store/lists";
 import { useFormik } from "formik";
 //import { v4 as uuidv4 } from "uuid";
+
 const Cart = () => {
-  const usersList = useUsersList((state) => state.users);
+  const usersList = useUsersList((state) => state.usersList);
+  /* const usersList = useUsersList((state) => state.users[0]).map(
+    (user) => user.users
+  ); */
+  console.log(usersList);
   //const usersList = users.map((x) => x["users"]);
   const formik = useFormik({
     initialValues: {
@@ -47,28 +52,31 @@ const Cart = () => {
     //onSubmit: handlerAdd,
   });
   const items = useShoppingCart((state) => state.items);
+  /*   const updateItemQ = useShoppingCart((state) => state.updateItemQ); */
+
+  /* console.log(
+    items.filter((x) => x.id === "23d12472-11c4-4c35-861d-1a30867af570")
+  ); */
   const handleChange = () => {
     items: [...state.items, (state.items.price = 1222)];
   };
-
-  const totalCalc = () => {
+  const handleClick = useShoppingCart((state) => state.updateItemQ);
+  /* const totalCalc = () => {
     formik.setValues({
       ...formik.values,
       itemTotalPrice: formik.values.quantity * formik.values.price,
     });
-  };
+  }; */
 
-  console.log(usersList);
-  console.log(items);
   const clearCart = useShoppingCart((state) => state.clearCart);
-  const [list, setList] = useState(items);
 
   const { removeItem } = useShoppingCart();
   const totalPrice = useGetCartTotalPrice();
   //console.log(totalPrice);
+  const [quantity, setQuantity] = useState(0);
 
-  const db = useProducts();
-  console.log(db);
+  //const db = useProducts();
+  // console.log(db);
 
   return (
     <>

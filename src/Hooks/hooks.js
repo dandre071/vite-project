@@ -107,7 +107,7 @@ export const useProduct = (addItem, initialState) => {
     resetForm();
   };
 
-  const items = useShoppingCart((state) => state.items);
+  const items = useShoppingCart((state) => state.items) || [];
   const [list, setList] = useState(items);
 
   const handleRemove = (id) => {
@@ -139,7 +139,10 @@ export const useOpen = () => {
 
 export const useGetCartTotalPrice = () => {
   const items = useShoppingCart((state) => state.items);
-  const globalTotalPrice = items.map((item) => item.itemTotalPrice);
+  let globalTotalPrice;
+  items.length > 0
+    ? (globalTotalPrice = items.map((item) => item.itemTotalPrice))
+    : (globalTotalPrice = 0);
   let total;
   items.length > 0
     ? (total = globalTotalPrice.reduce((a, b) => a + b))

@@ -10,12 +10,14 @@ export const useShoppingCart = create()(
           items: [...state.items, values],
         }));
       },
-
-      updateItemQ: (id) => {
+      /*  updateItem: (id, index, item) => {
         set((state) => ({
-          items: [...state.items],
+          items: {
+            ...state.items,
+            item.quantity.value: 100
+          },
         }));
-      },
+      }, */
       removeItem: (id) => {
         set((state) => ({
           items: state.items.filter((item) => item.id !== id),

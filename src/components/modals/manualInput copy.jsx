@@ -22,6 +22,7 @@ import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import InfoIcon from "@mui/icons-material/Info";
 import { formatNumber } from "../utils/helpers.js";
 import { useUsersList } from "../../store/lists.js";
+import useUsers from "../../Hooks/useUsers.jsx";
 
 const module = "ManualInput";
 
@@ -69,6 +70,7 @@ const ManualInput2 = ({ text, acabado }) => {
     if (formik.errors) {
       return true;
     }
+    const onChange = () => {};
     return;
   };
   const formik = useFormik({
@@ -94,20 +96,22 @@ const ManualInput2 = ({ text, acabado }) => {
     onSubmit: handlerAdd,
   });
   const errors = formik.errors;
-  /* const totalCalc = () => {
-    formik.setValues({
-      ...formik.values,
-      itemTotalPrice: formik.values.quantity * formik.values.price,
-    });
-  }; */
   const totalCalc = () => {
     formik.setValues({
       ...formik.values,
       itemTotalPrice: formik.values.quantity * formik.values.price,
     });
   };
+  /* const totalCalc = () => {
+    formik.setValues({
+      ...formik.values,
+      itemTotalPrice: formik.values.quantity * formik.values.price,
+    });
+  }; */
 
   // formatNumber(formik.values.price);
+  const users = useUsers();
+  console.log(users);
 
   return (
     <Box>
@@ -195,7 +199,15 @@ const ManualInput2 = ({ text, acabado }) => {
                         error={formik.errors.price}
                         helperText={formik.errors.price}
                         value={formik.values.price}
-                        onChange={formik.handleChange}
+                        //onChange={formik.handleChange}
+                        onChange={(e) => {
+                          formik.setValues({
+                            ...formik.values,
+                            price: e.target.value,
+                            itemTotalPrice:
+                              e.target.value * formik.values.quantity,
+                          });
+                        }}
                         name="price"
                         fullWidth
                         label={"Precio"}
@@ -211,7 +223,14 @@ const ManualInput2 = ({ text, acabado }) => {
                         fullWidth
                         label={"Cantidad"}
                         type="number"
-                        onChange={formik.handleChange}
+                        onChange={(e) => {
+                          formik.setValues({
+                            ...formik.values,
+                            quantity: e.target.value,
+                            itemTotalPrice:
+                              e.target.value * formik.values.price,
+                          });
+                        }}
                       />
                     </Grid>
 
@@ -232,21 +251,18 @@ const ManualInput2 = ({ text, acabado }) => {
                           )}`}
                           onClick={totalCalc}
                         /> */}
-
-                        <PriceCalc
-                          disabled={
+                        {/*disabled={
                             formik.errors.price ||
                             formik.errors.quantity ||
                             !formik.values.price
                               ? true
                               : false
-                          }
+                          }*/}
+                        <PriceCalc
                           value={formik.values.itemTotalPrice}
-                          name={"itemTotalPrice"}
-                          text={`${colPesos.format(
-                            formik.values.quantity * formik.values.price
-                          )}`}
-                          onClick={totalCalc}
+                          name="itemTotalPrice"
+                          text={colPesos.format(formik.values.itemTotalPrice)}
+                          //onClick={totalCalc}
                         />
                       </Grid>
                     )}
@@ -332,7 +348,7 @@ const ManualInput2 = ({ text, acabado }) => {
             >
               <Button
                 sx={{ width: "80%" }}
-                disabled={!formik.values.itemTotalPrice ? true : false}
+                //disabled={!formik.values.itemTotalPrice ? true : false}
                 title={"Agregar"}
                 variant="prime"
                 type="submit"

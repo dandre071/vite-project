@@ -18,11 +18,9 @@ const useUsers = () => {
   }, []);
 
   const users = user.map((x) => x["users"]);
-
-  console.log(user);
-  console.log(users);
-  const createUser = async () => {};
   return { user, setUser };
+  /*  console.log(user);
+  console.log(users); */
 };
 
 export default useUsers;
