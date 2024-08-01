@@ -54,7 +54,7 @@ const Factura = () => {
                 variant="filled"
                 size="small"
                 label={"Nombre / Razón Social"}
-                InputProps={{ style: { fontSize: 16 } }}
+                InputProps={{ style: { fontSize: 14 } }}
                 sx={{ width: "98%" }}
               />
               <TextField
@@ -62,7 +62,7 @@ const Factura = () => {
                 variant="filled"
                 size="small"
                 label={"Email"}
-                InputProps={{ style: { fontSize: 16 } }}
+                InputProps={{ style: { fontSize: 14 } }}
                 sx={{ width: "98%" }}
               />
             </Stack>
@@ -72,7 +72,7 @@ const Factura = () => {
                 variant="filled"
                 size="small"
                 label={"NIT"}
-                InputProps={{ style: { fontSize: 16 } }}
+                InputProps={{ style: { fontSize: 14 } }}
                 sx={{ width: "98%" }}
               />
               <TextField
@@ -80,7 +80,7 @@ const Factura = () => {
                 variant="filled"
                 size="small"
                 label={"Teléfono"}
-                InputProps={{ style: { fontSize: 16 } }}
+                InputProps={{ style: { fontSize: 14 } }}
                 sx={{ width: "98%" }}
               />
             </Stack>
