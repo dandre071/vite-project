@@ -8,125 +8,115 @@ import { formatPhoneNumber } from "../utils/helpers";
 
 const Factura = () => {
   return (
-    <Stack
-      spacing={1}
-      sx={{
-        width: "14cm",
-        height: "21cm",
-        bgcolor: "white",
-        display: "grid",
-
-        gridTemplateRows: "15% 15% 55% 15%",
-      }}
-    >
-      {/*  <ReadOnlyText /> */}
-      <Box sx={{ bgcolor: "red", width: "95%" }}></Box>
-
-      <Box
+    <form>
+      <Stack
         sx={{
-          width: "95%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          //  bgcolor: "yellow",
-          borderRadius: 3,
-          border: "2px solid black",
-          p: 0,
+          width: "14cm",
+          height: "21cm",
+          bgcolor: "white",
+          display: "grid",
         }}
       >
-        <Box sx={{ width: "95%" }}>
-          <Box>
-            <Stack
-              sx={{ display: "grid", gridTemplateColumns: "2.5fr 1fr 1fr" }}
-            >
-              <Typography sx={title}>Nombre / Razón Social</Typography>
-              <Typography sx={{ ...title, width: 50 }}>NIT</Typography>
-              <Typography sx={{ ...title, width: 50 }}>Recibe</Typography>
-            </Stack>
-            <Stack
-              sx={{ display: "grid", gridTemplateColumns: "2.5fr 1fr 1fr" }}
-            >
-              <Typography sx={{}}>Nombre / Razón Social</Typography>
-              <Typography sx={{}}>NIT</Typography>
-              <Typography sx={{}}>Recibe</Typography>
-            </Stack>
-          </Box>
-          <Box>
-            <Stack
-              sx={{ display: "grid", gridTemplateColumns: "2.5fr 1fr 1fr" }}
-            >
-              <Typography sx={{ ...title, width: 40 }}>Email</Typography>
-              <Typography sx={{ ...title, width: 50 }}>Teléfono </Typography>
-              <Typography sx={{ ...title, width: 50 }}>Realiza</Typography>
-            </Stack>
-            <Stack
-              sx={{ display: "grid", gridTemplateColumns: "2.5fr 1fr 1fr" }}
-            >
-              <Typography sx={{}}>Nombre / Razón Social</Typography>
-              <Typography sx={{}}>{formatPhoneNumber(3206598822)}</Typography>
-              <Typography sx={{}}>Recibe</Typography>
-            </Stack>
-          </Box>
-        </Box>
-      </Box>
-      <Box
-        sx={{
-          bgcolor: "blue",
-          width: "95%",
-          heigth: "50%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "relative",
-          top: 10,
-          borderRadius: 2,
-        }}
-      >
-        <Stack
+        <Box
           sx={{
-            bgcolor: customTheme.palette.background.dark,
-            width: "95%",
-            height: 25,
-            borderRadius: 2,
-            position: "absolute",
-            top: -15,
+            width: "13.5cm",
+            height: "90%",
+            bgcolor: "purple",
             display: "grid",
-
-            gridTemplateColumns: "50px 200px 50px 100px 100px",
+            gridTemplateRows: "3cm 3cm 12cm 3.5cm",
+            gap: 0.5,
           }}
         >
-          <Typography
-            sx={{ fontSize: 14, justifySelf: "center", alignSelf: "center" }}
+          <Stack
+            sx={{
+              width: "100%",
+              height: "100%",
+              bgcolor: "red",
+              display: "grid",
+            }}
+          ></Stack>
+          <Stack
+            constainer
+            sx={{
+              display: "grid",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              height: "100%",
+              // bgcolor: "blue",
+              gridTemplateColumns: "10cm 4cm",
+              border: "1px solid black",
+              borderRadius: 2.5,
+            }}
           >
-            Item
-          </Typography>
-          <Typography
-            sx={{ fontSize: 14, justifySelf: "start", alignSelf: "center" }}
+            <Stack spacing={1} direction={"column"} sx={{ width: "100%" }}>
+              <TextField
+                fullWidth={false}
+                variant="filled"
+                size="small"
+                label={"Nombre / Razón Social"}
+                InputProps={{ style: { fontSize: 16 } }}
+                sx={{ width: "98%" }}
+              />
+              <TextField
+                fullWidth={false}
+                variant="filled"
+                size="small"
+                label={"Email"}
+                InputProps={{ style: { fontSize: 16 } }}
+                sx={{ width: "98%" }}
+              />
+            </Stack>
+            <Stack spacing={1} direction={"column"} sx={{ width: "100%" }}>
+              <TextField
+                fullWidth={false}
+                variant="filled"
+                size="small"
+                label={"NIT"}
+                InputProps={{ style: { fontSize: 16 } }}
+                sx={{ width: "98%" }}
+              />
+              <TextField
+                fullWidth={false}
+                variant="filled"
+                size="small"
+                label={"Teléfono"}
+                InputProps={{ style: { fontSize: 16 } }}
+                sx={{ width: "98%" }}
+              />
+            </Stack>
+            {/*  <Stack
+            spacing={1}
+            direction={"column"}
+            sx={{ width: "100%", bgcolor: "purple" }}
           >
-            Descripción
-          </Typography>
-          <Typography
-            sx={{ fontSize: 14, justifySelf: "center", alignSelf: "center" }}
-          >
-            Cant
-          </Typography>
-          <Typography
-            sx={{ fontSize: 14, justifySelf: "center", alignSelf: "center" }}
-          >
-            Precio
-          </Typography>
-          <Typography
-            sx={{ fontSize: 14, justifySelf: "center", alignSelf: "center" }}
-          >
-            Total
-          </Typography>
-        </Stack>
-        <Stack sx={{ width: "98%", height: "95%", bgcolor: "red" }}>
-          <InvoiceListItem />
-        </Stack>
-      </Box>
-      <Box sx={{ bgcolor: "yellow", width: "95%", heigth: "20%" }}></Box>
-    </Stack>
+            <TextField
+              fullWidth={false}
+              variant="filled"
+              size="small"
+              label={"Nombre / Razón Social"}
+              InputProps={{ style: { fontSize: 16 } }}
+              sx={{ width: "98%" }}
+            />
+            <TextField
+              fullWidth={false}
+              variant="filled"
+              size="small"
+              label={"Nombre / Razón Social"}
+              InputProps={{ style: { fontSize: 16 } }}
+              sx={{ width: "98%" }}
+            />
+          </Stack> */}
+          </Stack>
+          <Stack
+            sx={{ width: "100%", height: "100%", bgcolor: "orange" }}
+          ></Stack>
+          <Stack
+            sx={{ width: "100%", height: "100%", bgcolor: "blue" }}
+          ></Stack>
+        </Box>
+      </Stack>
+    </form>
   );
 };
 

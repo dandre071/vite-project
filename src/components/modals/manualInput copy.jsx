@@ -22,7 +22,7 @@ import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import InfoIcon from "@mui/icons-material/Info";
 import { formatNumber } from "../utils/helpers.js";
 import { useUsersList } from "../../store/lists.js";
-import useUsers from "../../Hooks/useUsers.jsx";
+import useUsers from "../../Hooks/useUsers.js";
 
 const module = "ManualInput";
 
