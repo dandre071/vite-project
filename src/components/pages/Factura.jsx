@@ -41,8 +41,7 @@ const Factura = () => {
               display: "grid",
               justifyContent: "center",
               alignItems: "center",
-              width: "100%",
-              height: "100%",
+
               // bgcolor: "blue",
               gridTemplateColumns: "10cm 4cm",
               border: "1px solid black",
@@ -109,8 +108,50 @@ const Factura = () => {
           </Stack> */}
           </Stack>
           <Stack
-            sx={{ width: "100%", height: "100%", bgcolor: "orange" }}
-          ></Stack>
+            sx={{
+              width: "100%",
+              height: "100%",
+              bgcolor: "orange",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Stack
+              sx={{
+                display: "grid",
+                gridTemplateColumns: "1cm 7cm 1cm 2.5cm 2.5cm",
+                bgcolor: "black",
+                width: "100%",
+                height: ".8cm",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Typography
+                sx={{ fontSize: 12, color: "white", justifySelf: "center" }}
+              >
+                Item
+              </Typography>
+              <Typography sx={{ fontSize: 12, color: "white" }}>
+                Concepto
+              </Typography>
+              <Typography
+                sx={{ fontSize: 12, color: "white", justifySelf: "center" }}
+              >
+                Cant
+              </Typography>
+              <Typography
+                sx={{ fontSize: 12, color: "white", justifySelf: "right" }}
+              >
+                Precio
+              </Typography>
+              <Typography
+                sx={{ fontSize: 12, color: "white", justifySelf: "right" }}
+              >
+                Total
+              </Typography>
+            </Stack>
+          </Stack>
           <Stack
             sx={{ width: "100%", height: "100%", bgcolor: "blue" }}
           ></Stack>
