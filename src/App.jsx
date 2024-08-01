@@ -93,7 +93,7 @@ function Print() {
           {db.map((x) => {
             console.log(uppercasing(x));
           })}
-          <GetDataForm />
+          {/*  <GetDataForm />
 
           <Autocomplete
             //className={formik.errors.name ? "error" : ""}
@@ -130,7 +130,7 @@ function Print() {
             )}
           />
           <Typography name={"info"}>{info}</Typography>
-          <Typography>{formatNumber(price)}</Typography>
+          <Typography>{formatNumber(price)}</Typography> */}
 
           {/*  <ListItem /> */}
           {/* <Picker /> */}
@@ -139,8 +139,8 @@ function Print() {
           {console.log(JSON.parse(localData))}
         </h1> */}
           {/*  <ProductList /> */}
-          <Cart />
-          <CreateProduct />
+          {/* <Cart />
+          <CreateProduct /> */}
           <Factura />
         </Stack>
       </ThemeProvider>

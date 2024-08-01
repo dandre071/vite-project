@@ -21,10 +21,10 @@ const Factura = () => {
           sx={{
             width: "13.5cm",
             height: "90%",
-            bgcolor: "purple",
+            // bgcolor: "purple",
             display: "grid",
-            gridTemplateRows: "3cm 3cm 12cm 3.5cm",
-            gap: 0.5,
+            gridTemplateRows: "2.5cm 2.5cm 12cm 3.5cm",
+            //gap: 0.5,
           }}
         >
           <Stack
@@ -36,13 +36,13 @@ const Factura = () => {
             }}
           ></Stack>
           <Stack
-            constainer
+            container
             sx={{
               display: "grid",
               justifyContent: "center",
               alignItems: "center",
-
-              // bgcolor: "blue",
+              // width: "90%",
+              bgcolor: "white",
               gridTemplateColumns: "10cm 4cm",
               border: "1px solid black",
               borderRadius: 2.5,
@@ -50,37 +50,81 @@ const Factura = () => {
           >
             <Stack spacing={1} direction={"column"} sx={{ width: "100%" }}>
               <TextField
+                className="invoice-input"
+                InputLabelProps={{
+                  style: {
+                    fontSize: 14,
+                    padding: 0,
+                  },
+                }}
                 fullWidth={false}
                 variant="filled"
                 size="small"
                 label={"Nombre / Razón Social"}
-                InputProps={{ style: { fontSize: 14 } }}
-                sx={{ width: "98%" }}
+                InputProps={{
+                  style: {
+                    //height: 40,
+
+                    fontSize: 9,
+                    bgcolor: "white",
+                    padding: 0,
+                  },
+                  label: {
+                    fontSize: 5,
+                    padding: 0,
+                  },
+                }}
+                sx={{ width: "98%", bgcolor: "white", p: 0 }}
               />
               <TextField
+                InputLabelProps={{
+                  style: {
+                    fontSize: 14,
+                    padding: 0,
+                  },
+                }}
+                className="invoice-input"
                 fullWidth={false}
                 variant="filled"
                 size="small"
                 label={"Email"}
-                InputProps={{ style: { fontSize: 14 } }}
+                InputProps={{ style: { fontSize: 10 } }}
                 sx={{ width: "98%" }}
               />
             </Stack>
-            <Stack spacing={1} direction={"column"} sx={{ width: "100%" }}>
+            <Stack direction={"column"} sx={{ width: "100%" }}>
               <TextField
+                InputLabelProps={{
+                  style: {
+                    fontSize: 14,
+                    padding: 0,
+                  },
+                }}
+                className="invoice-input"
                 fullWidth={false}
                 variant="filled"
                 size="small"
                 label={"NIT"}
-                InputProps={{ style: { fontSize: 14 } }}
-                sx={{ width: "98%" }}
+                InputProps={{
+                  disableUnderline: false,
+                  style: { fontSize: 10, p: 0 },
+                }}
+                sx={{ width: "98%" /* border: "1px solid black", p: 0 */ }}
               />
               <TextField
+                InputLabelProps={{
+                  style: {
+                    fontSize: 14,
+                    padding: 0,
+                    color: "red",
+                  },
+                }}
+                className="invoice-input"
                 fullWidth={false}
                 variant="filled"
                 size="small"
                 label={"Teléfono"}
-                InputProps={{ style: { fontSize: 14 } }}
+                InputProps={{ style: { fontSize: 10 } }}
                 sx={{ width: "98%" }}
               />
             </Stack>
