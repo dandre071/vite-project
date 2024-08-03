@@ -23,6 +23,7 @@ const FormSelect2 = ({
   helperText,
   multiple,
   renderValue,
+  variant,
 }) => {
   return (
     <FormControl fullWidth sx={{ my: 1 }} onChange={onChange}>
@@ -42,7 +43,7 @@ const FormSelect2 = ({
       <Box sx={{ display: "flex" }}>
         <Select
           multiple={multiple}
-          defaultValue={"Sin acabado"}
+          defaultValue={options[0]}
           name={name}
           onChange={onChange}
           fullWidth
@@ -54,6 +55,7 @@ const FormSelect2 = ({
           // renderValue={renderValue}
           // style={{ ...style, borderStyle: "none" }}
           // InputLabelProps={InputLabelProps}
+          inputProps={(variant = { variant })}
         >
           {options.map((option, index) => (
             <MenuItem error={error} value={option} key={index}>

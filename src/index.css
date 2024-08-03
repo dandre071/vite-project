@@ -92,16 +92,22 @@ body {
   font-size: 20 !important;
   padding: 0;
 }
-.invoice-input .MuiInputBase-input:empty {
-  font-size: 14px !important;
-  color: rgb(55, 0, 255) !important;
-  background-color: rgb(245, 245, 245);
-  text-transform: capitalize;
-}
-.invoice-input .MuiInputBase-input:empty {
+
+.invoice-input .MuiInputBase-input {
   font-size: 14px !important;
   color: rgb(55, 0, 255) !important;
   background-color: rgb(255, 255, 255);
   text-transform: capitalize;
-  padding: 0;
+  padding: 0.5;
+}
+.invoice-label .MuiTypography-h6 .h6 {
+  margin: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  width: 98%;
+  margin-bottom: -4px;
+  padding: 0px;
+  font-size: 18px;
 }

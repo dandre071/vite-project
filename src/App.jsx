@@ -36,7 +36,8 @@ import useUsers from "./Hooks/useUsers";
 
 function Print() {
   const users = useUsers();
-  console.log(users);
+  console.log(typeof users);
+  /* 
   const formik = useFormik({
     initialValues: { productName: "", info: "" },
   });
@@ -46,10 +47,10 @@ function Print() {
     setInfo(formik.values.productName);
     getProductPrice();
     console.log(formik.values.productName);
-  };
+  }; */
 
   // console.log(supabase);
-  const [product, setProduct] = useState([]);
+  /* const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -76,7 +77,7 @@ function Print() {
     setPrice(data[0].product_price);
     //console.log(data[0].product_price);
     console.log(productPrice);
-  };
+  }; */
 
   //console.log(fetchProducts());
   return (
@@ -90,9 +91,9 @@ function Print() {
             gap: 10,
           }}
         >
-          {db.map((x) => {
+          {/*} {db.map((x) => {
             console.log(uppercasing(x));
-          })}
+         })}*/}
           {/*  <GetDataForm />
 
           <Autocomplete

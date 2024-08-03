@@ -19,7 +19,8 @@ const useUsers = () => {
   }, []);
 
   const users = user.map((x) => x["users"]);
-  return { user, setUser };
+
+  return { user, setUser, users };
 };
 
 export default useUsers;
