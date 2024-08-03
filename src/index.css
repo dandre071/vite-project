@@ -92,3 +92,16 @@ body {
   font-size: 20 !important;
   padding: 0;
 }
+.invoice-input .MuiInputBase-input:empty {
+  font-size: 14px !important;
+  color: rgb(55, 0, 255) !important;
+  background-color: rgb(245, 245, 245);
+  text-transform: capitalize;
+}
+.invoice-input .MuiInputBase-input:empty {
+  font-size: 14px !important;
+  color: rgb(55, 0, 255) !important;
+  background-color: rgb(255, 255, 255);
+  text-transform: capitalize;
+  padding: 0;
+}

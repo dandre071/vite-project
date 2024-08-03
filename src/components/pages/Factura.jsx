@@ -14,121 +14,142 @@ const Factura = () => {
           width: "14cm",
           height: "21cm",
           bgcolor: "white",
+
           display: "grid",
+          gridTemplateRows: "2.5cm 2.5cm 12cm 3.5cm",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <Box
+        {/*  <Box
           sx={{
-            width: "13.5cm",
-            height: "90%",
-            // bgcolor: "purple",
+            width: "13cm",
+
+            bgcolor: "purple",
             display: "grid",
             gridTemplateRows: "2.5cm 2.5cm 12cm 3.5cm",
             //gap: 0.5,
           }}
+        > */}
+        <Stack
+          sx={{
+            width: "100%",
+            height: "100%",
+            bgcolor: "red",
+            display: "grid",
+          }}
+        ></Stack>
+        <Stack
+          sx={{
+            display: "grid",
+            width: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "95%",
+            bgcolor: "white",
+            justifyContent: "center",
+            alignItems: "center",
+            placeItems: "center",
+            justifySelf: "center",
+            gridTemplateColumns: "70% 30%",
+            border: "1px solid black",
+            borderRadius: 2.5,
+          }}
         >
-          <Stack
-            sx={{
-              width: "100%",
-              height: "100%",
-              bgcolor: "red",
-              display: "grid",
-            }}
-          ></Stack>
-          <Stack
-            container
-            sx={{
-              display: "grid",
-              justifyContent: "center",
-              alignItems: "center",
-              // width: "90%",
-              bgcolor: "white",
-              gridTemplateColumns: "10cm 4cm",
-              border: "1px solid black",
-              borderRadius: 2.5,
-            }}
-          >
-            <Stack spacing={1} direction={"column"} sx={{ width: "100%" }}>
-              <TextField
+          <Stack spacing={0.5} direction={"column"} sx={{ width: "90%" }}>
+            <Box>
+              <Typography
                 className="invoice-input"
-                InputLabelProps={{
-                  style: {
-                    fontSize: 14,
-                    padding: 0,
-                  },
-                }}
-                fullWidth={false}
-                variant="filled"
-                size="small"
-                label={"Nombre / Razón Social"}
-                InputProps={{
-                  style: {
-                    //height: 40,
+                sx={{
+                  width: "98%",
+                  marginBottom: -0.5,
+                  p: 0,
 
-                    fontSize: 9,
-                    bgcolor: "white",
-                    padding: 0,
-                  },
-                  label: {
-                    fontSize: 5,
-                    padding: 0,
-                  },
+                  fontSize: 11,
                 }}
-                sx={{ width: "98%", bgcolor: "white", p: 0 }}
-              />
-              <TextField
-                InputLabelProps={{
-                  style: {
-                    fontSize: 14,
-                    padding: 0,
-                  },
-                }}
+              >
+                Nombre / Razón Social:
+              </Typography>
+              <Input
+                disableUnderline
                 className="invoice-input"
-                fullWidth={false}
-                variant="filled"
-                size="small"
-                label={"Email"}
-                InputProps={{ style: { fontSize: 10 } }}
-                sx={{ width: "98%" }}
-              />
-            </Stack>
-            <Stack direction={"column"} sx={{ width: "100%" }}>
-              <TextField
-                InputLabelProps={{
-                  style: {
-                    fontSize: 14,
-                    padding: 0,
-                  },
+                fullWidth
+                sx={{
+                  height: 19,
+                  textTransform: "capitalize",
+                  // bgcolor: "grey",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  p: 0,
                 }}
+              />
+            </Box>
+
+            <Box>
+              <Typography
                 className="invoice-input"
-                fullWidth={false}
-                variant="filled"
-                size="small"
-                label={"NIT"}
-                InputProps={{
-                  disableUnderline: false,
-                  style: { fontSize: 10, p: 0 },
+                sx={{
+                  width: "98%",
+                  // bgcolor: "red",
+                  p: 0,
+
+                  fontSize: 11,
                 }}
-                sx={{ width: "98%" /* border: "1px solid black", p: 0 */ }}
-              />
-              <TextField
-                InputLabelProps={{
-                  style: {
-                    fontSize: 14,
-                    padding: 0,
-                    color: "red",
-                  },
-                }}
+              >
+                Email:
+              </Typography>
+              <Input
+                disableUnderline
                 className="invoice-input"
-                fullWidth={false}
-                variant="filled"
-                size="small"
-                label={"Teléfono"}
-                InputProps={{ style: { fontSize: 10 } }}
-                sx={{ width: "98%" }}
+                fullWidth
+                sx={{
+                  height: 20,
+                  textTransform: "capitalize",
+                  // bgcolor: "grey",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  p: 0,
+                }}
               />
-            </Stack>
-            {/*  <Stack
+            </Box>
+          </Stack>
+          <Stack direction={"column"} sx={{ width: "100%" }}>
+            <TextField
+              InputLabelProps={{
+                style: {
+                  fontSize: 14,
+                  padding: 0,
+                },
+              }}
+              className="invoice-input"
+              fullWidth={false}
+              variant="filled"
+              size="small"
+              label={"NIT"}
+              InputProps={{
+                disableUnderline: false,
+                style: { fontSize: 10, p: 0 },
+              }}
+              sx={{ width: "98%" /* border: "1px solid black", p: 0 */ }}
+            />
+            <TextField
+              InputLabelProps={{
+                style: {
+                  fontSize: 14,
+                  padding: 0,
+                  color: "red",
+                },
+              }}
+              className="invoice-input"
+              fullWidth={false}
+              variant="filled"
+              size="small"
+              label={"Teléfono"}
+              InputProps={{ style: { fontSize: 10 } }}
+              sx={{ width: "98%" }}
+            />
+          </Stack>
+          {/*  <Stack
             spacing={1}
             direction={"column"}
             sx={{ width: "100%", bgcolor: "purple" }}
@@ -150,56 +171,54 @@ const Factura = () => {
               sx={{ width: "98%" }}
             />
           </Stack> */}
-          </Stack>
+        </Stack>
+        <Stack
+          sx={{
+            width: "100%",
+            height: "100%",
+            bgcolor: "orange",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
           <Stack
             sx={{
+              display: "grid",
+              gridTemplateColumns: "1cm 7cm 1cm 2.5cm 2.5cm",
+              bgcolor: "black",
               width: "100%",
-              height: "100%",
-              bgcolor: "orange",
-              display: "flex",
+              height: ".8cm",
               alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            <Stack
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "1cm 7cm 1cm 2.5cm 2.5cm",
-                bgcolor: "black",
-                width: "100%",
-                height: ".8cm",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
+            <Typography
+              sx={{ fontSize: 12, color: "white", justifySelf: "center" }}
             >
-              <Typography
-                sx={{ fontSize: 12, color: "white", justifySelf: "center" }}
-              >
-                Item
-              </Typography>
-              <Typography sx={{ fontSize: 12, color: "white" }}>
-                Concepto
-              </Typography>
-              <Typography
-                sx={{ fontSize: 12, color: "white", justifySelf: "center" }}
-              >
-                Cant
-              </Typography>
-              <Typography
-                sx={{ fontSize: 12, color: "white", justifySelf: "right" }}
-              >
-                Precio
-              </Typography>
-              <Typography
-                sx={{ fontSize: 12, color: "white", justifySelf: "right" }}
-              >
-                Total
-              </Typography>
-            </Stack>
+              Item
+            </Typography>
+            <Typography sx={{ fontSize: 12, color: "white" }}>
+              Concepto
+            </Typography>
+            <Typography
+              sx={{ fontSize: 12, color: "white", justifySelf: "center" }}
+            >
+              Cant
+            </Typography>
+            <Typography
+              sx={{ fontSize: 12, color: "white", justifySelf: "right" }}
+            >
+              Precio
+            </Typography>
+            <Typography
+              sx={{ fontSize: 12, color: "white", justifySelf: "right" }}
+            >
+              Total
+            </Typography>
           </Stack>
-          <Stack
-            sx={{ width: "100%", height: "100%", bgcolor: "blue" }}
-          ></Stack>
-        </Box>
+        </Stack>
+        <Stack sx={{ width: "100%", height: "100%", bgcolor: "blue" }}></Stack>
+        {/*  </Box> */}
       </Stack>
     </form>
   );
