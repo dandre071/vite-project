@@ -111,3 +111,19 @@ body {
   padding: 0px;
   font-size: 18px;
 }
+.invoice-input {
+  font-size: 14px !important;
+  color: rgb(55, 0, 255) !important;
+  background-color: rgb(255, 255, 255);
+  text-transform: capitalize;
+  padding: 0.5;
+  font-weight: 600 !important;
+}
+.invoice-label {
+  font-size: 11px !important;
+  color: rgb(98, 104, 124) !important;
+  background-color: rgb(255, 255, 255);
+  text-transform: capitalize;
+  padding: 0.5;
+  font-weight: 400 !important;
+}

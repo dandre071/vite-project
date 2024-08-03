@@ -86,11 +86,68 @@ const Factura = () => {
 
             justifySelf: "center",
             gridTemplateColumns: "50% 25% 25%",
-            border: "1px solid black",
+            // border: "1px solid black",
             borderRadius: 2.5,
           }}
         >
           <Stack spacing={0.5} direction={"column"} sx={{}}>
+            <Box>
+              <Typography
+                variant="h6"
+                className="invoice-label"
+                sx={{
+                  width: "98%",
+                  marginBottom: -0.5,
+                  p: 0,
+
+                  fontSize: 11,
+                }}
+              >
+                Nombre / Razón Social:
+              </Typography>
+              <Typography
+                variant="h6"
+                className="invoice-input"
+                sx={{
+                  width: "98%",
+                  marginBottom: -0.5,
+                  p: 0,
+
+                  fontSize: 14,
+                }}
+              >
+                Nombre / Razón Social:
+              </Typography>
+            </Box>
+
+            <Box>
+              <Typography
+                className="invoice-label"
+                sx={{
+                  width: "98%",
+                  // bgcolor: "red",
+                  p: 0,
+
+                  fontSize: 11,
+                }}
+              >
+                Email:
+              </Typography>
+              <Typography
+                className="invoice-input"
+                sx={{
+                  width: "98%",
+                  // bgcolor: "red",
+                  p: 0,
+
+                  fontSize: 14,
+                }}
+              >
+                sdsdsdsdsdsd
+              </Typography>
+            </Box>
+          </Stack>
+          {/*   <Stack spacing={0.5} direction={"column"} sx={{}}>
             <Box>
               <Typography
                 variant="h6"
@@ -147,7 +204,7 @@ const Factura = () => {
                 }}
               />
             </Box>
-          </Stack>
+          </Stack> */}
           <Stack spacing={0.5} direction={"column"} sx={{ width: "90%" }}>
             <Box>
               <Typography
@@ -180,7 +237,7 @@ const Factura = () => {
 
             <Box>
               <Typography
-                className="invoice-input"
+                className="invoice-label"
                 sx={{
                   width: "98%",
                   // bgcolor: "red",
