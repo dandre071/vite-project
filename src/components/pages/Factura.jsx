@@ -1,5 +1,6 @@
 import {
   Box,
+  Divider,
   Input,
   Select,
   Stack,
@@ -18,29 +19,15 @@ import supabase from "../../config/supabaseClient";
 
 const Factura = () => {
   const users = useUsers();
-  //const userList = users.map((user) => user.users);
+  const date = new Date();
+  const fullDate = new Intl.DateTimeFormat("es-CO", {
+    dateStyle: "medium",
+    timeStyle: "short",
+    // timeZone: "Colombia/Bogotá",
+  }).format(date);
+  console.log(fullDate);
   console.log(users.users);
-  /* const users = useUsers();
-  console.log(users); */
-  /* const [user, setUser] = useState([]);
-  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    async function getUsers() {
-      let { data, error } = await supabase.from("workers").select("*");
-      console.log(data);
-
-      if (data != null) {
-        setUser(data);
-      }
-    }
-
-    getUsers();
-  }, []);
-
-  const users = user.map((x) => x["users"]);
-  console.log(users); */
-  // const users = ["Diego", "Angélica"];
   return (
     <form>
       <Stack
@@ -50,362 +37,318 @@ const Factura = () => {
           bgcolor: "white",
 
           display: "grid",
-          gridTemplateRows: "2.5cm 2.5cm 12cm 3.5cm",
+          gridTemplateRows: "2cm 2.1cm 12.5cm 3.5cm",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        {/*  <Box
-          sx={{
-            width: "13cm",
-
-            bgcolor: "purple",
-            display: "grid",
-            gridTemplateRows: "2.5cm 2.5cm 12cm 3.5cm",
-            //gap: 0.5,
-          }}
-        > */}
         <Stack
+          className="invoice-header"
           sx={{
             width: "100%",
             height: "100%",
-            bgcolor: "red",
-            display: "grid",
-          }}
-        ></Stack>
-        <Stack
-          sx={{
-            display: "grid",
-            width: "95%",
-            spacing: 1,
 
-            bgcolor: "white",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: 0,
-
-            justifySelf: "center",
-            gridTemplateColumns: "50% 25% 25%",
-            // border: "1px solid black",
-            borderRadius: 2.5,
+            display: "grid",
+            gridTemplateColumns: "50% 1fr",
           }}
         >
-          <Stack spacing={0.5} direction={"column"} sx={{}}>
-            <Box>
-              <Typography
-                variant="h6"
-                className="invoice-label"
-                sx={{
-                  width: "98%",
-                  marginBottom: -0.5,
-                  p: 0,
+          <Stack></Stack>
 
-                  fontSize: 11,
-                }}
-              >
-                Nombre / Razón Social:
-              </Typography>
-              <Typography
-                variant="h6"
-                className="invoice-input"
-                sx={{
-                  width: "98%",
-                  marginBottom: -0.5,
-                  p: 0,
-
-                  fontSize: 14,
-                }}
-              >
-                Nombre / Razón Social:
-              </Typography>
-            </Box>
-
-            <Box>
-              <Typography
-                className="invoice-label"
-                sx={{
-                  width: "98%",
-                  // bgcolor: "red",
-                  p: 0,
-
-                  fontSize: 11,
-                }}
-              >
-                Email:
-              </Typography>
-              <Typography
-                className="invoice-input"
-                sx={{
-                  width: "98%",
-                  // bgcolor: "red",
-                  p: 0,
-
-                  fontSize: 14,
-                }}
-              >
-                sdsdsdsdsdsd
-              </Typography>
-            </Box>
-          </Stack>
-          {/*   <Stack spacing={0.5} direction={"column"} sx={{}}>
-            <Box>
-              <Typography
-                variant="h6"
-                className="invoice-label"
-                sx={{
-                  width: "98%",
-                  marginBottom: -0.5,
-                  p: 0,
-
-                  fontSize: 11,
-                }}
-              >
-                Nombre / Razón Social:
-              </Typography>
-              <Input
-                disableUnderline
-                className="invoice-input"
-                fullWidth
-                sx={{
-                  height: 19,
-                  textTransform: "capitalize",
-                  // bgcolor: "grey",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  p: 0,
-                }}
-              />
-            </Box>
-
-            <Box>
-              <Typography
-                className="invoice-input"
-                sx={{
-                  width: "98%",
-                  // bgcolor: "red",
-                  p: 0,
-
-                  fontSize: 11,
-                }}
-              >
-                Email:
-              </Typography>
-              <Input
-                disableUnderline
-                className="invoice-input"
-                fullWidth
-                sx={{
-                  height: 20,
-                  textTransform: "capitalize",
-                  // bgcolor: "grey",
-                  fontSize: 14,
-                  fontWeight: 600,
-                  p: 0,
-                }}
-              />
-            </Box>
-          </Stack> */}
-          <Stack spacing={0.5} direction={"column"} sx={{ width: "90%" }}>
-            <Box>
-              <Typography
-                variant="h6"
-                className="invoice-label"
-                sx={{
-                  width: "98%",
-                  marginBottom: -0.5,
-                  p: 0,
-
-                  fontSize: 11,
-                }}
-              >
-                NIT:
-              </Typography>
-              <Input
-                disableUnderline
-                className="invoice-input"
-                fullWidth
-                sx={{
-                  height: 19,
-                  textTransform: "capitalize",
-                  // bgcolor: "grey",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  p: 0,
-                }}
-              />
-            </Box>
-
-            <Box>
-              <Typography
-                className="invoice-label"
-                sx={{
-                  width: "98%",
-                  // bgcolor: "red",
-                  p: 0,
-
-                  fontSize: 11,
-                }}
-              >
-                Teléfono:
-              </Typography>
-              <Input
-                disableUnderline
-                className="invoice-input"
-                fullWidth
-                sx={{
-                  height: 20,
-                  textTransform: "capitalize",
-                  // bgcolor: "grey",
-                  fontSize: 14,
-                  fontWeight: 600,
-                  p: 0,
-                }}
-              />
-            </Box>
-          </Stack>
-          <Stack spacing={0.5} direction={"column"} sx={{ width: "90%" }}>
-            <Box>
-              <Typography
-                variant="h6"
-                className="invoice-label"
-                sx={{
-                  width: "98%",
-                  marginBottom: -0.5,
-                  p: 0,
-
-                  fontSize: 11,
-                }}
-              >
-                Recibe:
-              </Typography>
-              {/* <Input
-                disableUnderline
-                className="invoice-input"
-                fullWidth
-                sx={{
-                  height: 19,
-                  textTransform: "capitalize",
-                  // bgcolor: "grey",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  p: 0,
-                }}
-              /> */}
-              {/* <Select
-                disableUnderline
-                variant="standard"
-                hiddenLabel
-                size="small"
-                value={"Diego"}
-                fullWidth
-                options={"asass"}
-              ></Select> */}
-              {/*  <FormSelect2
-                fullWidth
-                variant={"small"}
-                name="finish"
-              
-                options={users}
-              ></FormSelect2> */}
-            </Box>
-
-            <Box>
-              <Typography
-                className="invoice-input"
-                sx={{
-                  width: "98%",
-                  // bgcolor: "red",
-                  p: 0,
-
-                  fontSize: 11,
-                }}
-              >
-                Realiza:
-              </Typography>
-              <Input
-                disableUnderline
-                className="invoice-input"
-                fullWidth
-                sx={{
-                  height: 20,
-                  textTransform: "capitalize",
-                  // bgcolor: "grey",
-                  fontSize: 14,
-                  fontWeight: 600,
-                  p: 0,
-                }}
-              />
-            </Box>
-          </Stack>
-          {/*  <Stack
-            spacing={1}
-            direction={"column"}
-            sx={{ width: "100%", bgcolor: "purple" }}
+          <Stack
+            spacing={0}
+            sx={{
+              padding: 0,
+              display: "grid",
+              gridTemplateRows: "1fr 1fr",
+              // bgcolor: "red",
+            }}
           >
-            <TextField
-              fullWidth={false}
-              variant="filled"
-              size="small"
-              label={"Nombre / Razón Social"}
-              InputProps={{ style: { fontSize: 16 } }}
-              sx={{ width: "98%" }}
-            />
-            <TextField
-              fullWidth={false}
-              variant="filled"
-              size="small"
-              label={"Nombre / Razón Social"}
-              InputProps={{ style: { fontSize: 16 } }}
-              sx={{ width: "98%" }}
-            />
-          </Stack> */}
+            <Box>
+              <Typography variant="h6" className="invoice-label" sx={{}}>
+                RECIBO
+              </Typography>
+            </Box>
+            <Stack sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+              <Box sx={{ borderRight: "1px solid black" }}>
+                <Typography variant="h6" className="invoice-label" sx={{}}>
+                  Fecha Recepción
+                </Typography>
+                <Typography variant="h6" className="invoice-data-date " sx={{}}>
+                  {fullDate}
+                </Typography>
+              </Box>
+
+              <Box>
+                <Typography variant="h6" className="invoice-label" sx={{}}>
+                  Fecha Entrega
+                </Typography>
+                <Typography variant="h6" className="invoice-data-date" sx={{}}>
+                  {fullDate}
+                </Typography>
+              </Box>
+            </Stack>
+          </Stack>
         </Stack>
-        <Stack
+        <Box
           sx={{
+            display: "flex",
+            justifyContent: "center",
+            bgcolor: "#f0f0f0",
             width: "100%",
             height: "100%",
-            bgcolor: "orange",
+          }}
+        >
+          <Stack
+            sx={{
+              display: "grid",
+              width: "95%",
+              spacing: 1,
+
+              //bgcolor: "green",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: 0,
+
+              justifySelf: "center",
+              gridTemplateColumns: "60% 25% 15%",
+            }}
+          >
+            <Stack direction={"column"} sx={{}}>
+              <Box>
+                <Typography variant="h6" className="invoice-label" sx={{}}>
+                  Nombre / Razón Social:
+                </Typography>
+                <Typography variant="h6" className="invoice-data" sx={{}}>
+                  PINTURAS DE ARMANDO PAREDES SALAS
+                </Typography>
+              </Box>
+
+              <Box>
+                <Typography
+                  className="invoice-label"
+                  sx={{
+                    width: "98%",
+                    // bgcolor: "red",
+                    p: 0,
+
+                    fontSize: 11,
+                  }}
+                >
+                  Email:
+                </Typography>
+                <Typography className="invoice-data">sdsdsdsdsdsd</Typography>
+              </Box>
+            </Stack>
+
+            <Stack spacing={0.5} direction={"column"} sx={{ width: "90%" }}>
+              <Box>
+                <Typography variant="h6" className="invoice-label">
+                  NIT:
+                </Typography>
+                <Typography variant="h6" className="invoice-data">
+                  320 659 8822
+                </Typography>
+              </Box>
+
+              <Box>
+                <Typography className="invoice-label">Teléfono:</Typography>
+                <Typography variant="h6" className="invoice-data">
+                  320 659 8822
+                </Typography>
+              </Box>
+            </Stack>
+            <Stack spacing={0.5} direction={"column"}>
+              <Box>
+                <Typography variant="h6" className="invoice-label">
+                  Recibe:
+                </Typography>
+                <Typography className="invoice-data">Diego</Typography>
+              </Box>
+
+              <Box>
+                <Typography variant="h6" className="invoice-label">
+                  Realiza:
+                </Typography>
+                <Typography className="invoice-data">Diego</Typography>
+              </Box>
+            </Stack>
+          </Stack>
+        </Box>
+
+        <Stack
+          sx={{
+            height: "100%",
+            width: "98%",
+            // bgcolor: "orange",
             display: "flex",
             alignItems: "center",
+            justifySelf: "center",
+            borderBottom: `2px solid ${customTheme.palette.primary.main}`,
           }}
         >
           <Stack
             sx={{
               display: "grid",
               gridTemplateColumns: "1cm 7cm 1cm 2.5cm 2.5cm",
-              bgcolor: "black",
-              width: "100%",
+
+              width: "98%",
               height: ".8cm",
-              alignItems: "center",
+              alignItems: "end",
               justifyContent: "center",
+              borderBottom: `2px solid ${customTheme.palette.primary.main}`,
             }}
           >
             <Typography
-              sx={{ fontSize: 12, color: "white", justifySelf: "center" }}
+              className="invoice-title"
+              sx={{
+                justifySelf: "center",
+              }}
             >
-              Item
+              #
             </Typography>
-            <Typography sx={{ fontSize: 12, color: "white" }}>
-              Concepto
-            </Typography>
+            <Typography className="invoice-title">Concepto</Typography>
             <Typography
-              sx={{ fontSize: 12, color: "white", justifySelf: "center" }}
+              className="invoice-title"
+              sx={{ justifySelf: "center" }}
             >
               Cant
             </Typography>
-            <Typography
-              sx={{ fontSize: 12, color: "white", justifySelf: "right" }}
-            >
+            <Typography className="invoice-title" sx={{ justifySelf: "right" }}>
               Precio
             </Typography>
             <Typography
-              sx={{ fontSize: 12, color: "white", justifySelf: "right" }}
+              className="invoice-title"
+              sx={{ justifySelf: "right", pr: 1 }}
             >
               Total
             </Typography>
           </Stack>
         </Stack>
-        <Stack sx={{ width: "100%", height: "100%", bgcolor: "blue" }}></Stack>
+        <Stack
+          sx={{
+            width: "100%",
+            height: "100%",
+            // bgcolor: "blue",
+            display: "grid",
+            gridTemplateColumns: "1fr 4.5cm",
+          }}
+        >
+          <Stack
+            sx={{
+              //bgcolor: "#f1f1f1",
+              width: "90%",
+              height: "90%",
+              display: "grid",
+              gridTemplateRows: "60% 1fr",
+              justifySelf: "center",
+              alignSelf: "center",
+            }}
+          >
+            <Stack
+              sx={{
+                //bgcolor: "red",
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr 1fr",
+                height: "100%",
+                justifyContent: "center",
+
+                gap: 0,
+              }}
+            >
+              <Stack className="box">
+                <Typography className={"invoice-label-cash"}>
+                  Revisa Valores
+                </Typography>
+              </Stack>
+
+              <Stack className="box">
+                <Typography className={"invoice-label-cash"}>
+                  Entrega
+                </Typography>
+              </Stack>
+              <Stack className="box">
+                <Typography className={"invoice-label-cash"}>Cajero</Typography>
+              </Stack>
+            </Stack>
+
+            <Stack
+              sx={{
+                //  bgcolor: "green",
+                display: "grid",
+
+                height: "100%",
+              }}
+            >
+              <Stack>
+                <Box className={"box"}>
+                  <Typography className={"invoice-label-cash"}>
+                    Observaciones
+                  </Typography>
+                </Box>
+              </Stack>
+            </Stack>
+          </Stack>
+          <Stack
+            sx={{
+              //bgcolor: "cyan",
+              width: "100%",
+              display: "grid",
+              gridTemplateColumns: "2cm 1fr",
+            }}
+          >
+            <Stack
+              sx={{
+                justifySelf: "right",
+                width: "90%",
+                textAlign: "right",
+                display: "grid",
+                gridTemplateRows: "repeat(7, 1fr)",
+                alignItems: "end",
+              }}
+            >
+              <Typography className={"invoice-label"}>SubTotal</Typography>
+              <Typography className={"invoice-label"}>IVA</Typography>
+              <Typography className={"invoice-label-payment"}>Total</Typography>
+              <Typography className={"invoice-label"}>Abono 1</Typography>
+              <Typography className={"invoice-label"}>Resta</Typography>
+              <Typography
+                className={"invoice-label"}
+                sx={{
+                  borderBottom: `1px solid ${customTheme.palette.background.dark}`,
+                }}
+              >
+                Abono 2
+              </Typography>
+              <Typography className={"invoice-label"}>Resta</Typography>
+            </Stack>
+            <Stack
+              sx={{
+                textAlign: "right",
+                display: "grid",
+                gridTemplateRows: "repeat(7, 1fr)",
+                alignItems: "end",
+              }}
+            >
+              <Typography className={"invoice-title"}>$20.000</Typography>
+              <Typography className={"invoice-title"}>$10.000</Typography>
+              <Typography className={"invoice-label-payment"}>
+                $30.000.000
+              </Typography>
+              <Typography className={"invoice-title"}>$30.000.000</Typography>
+              <Typography className={"invoice-title"}>$30.000.000</Typography>
+              <Box
+                sx={{
+                  borderBottom: `1px solid ${customTheme.palette.background.dark}`,
+                }}
+              ></Box>
+              <Box
+                sx={{
+                  borderBottom: `1px solid ${customTheme.palette.background.dark}`,
+                }}
+              ></Box>
+            </Stack>
+          </Stack>
+        </Stack>
         {/*  </Box> */}
       </Stack>
     </form>

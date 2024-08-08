@@ -122,8 +122,56 @@ body {
 .invoice-label {
   font-size: 11px !important;
   color: rgb(98, 104, 124) !important;
-  background-color: rgb(255, 255, 255);
+
   text-transform: capitalize;
   padding: 0.5;
   font-weight: 400 !important;
+}
+
+.invoice-data {
+  font-size: 12px !important;
+  color: rgb(0, 0, 0) !important;
+
+  text-transform: capitalize;
+  padding: 0.5;
+  font-weight: 600 !important;
+}
+
+.invoice-title {
+  font-size: 12px !important;
+  color: #333dff !important;
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+.invoice-label-payment {
+  font-size: 12px !important;
+  color: rgb(255, 255, 255) !important;
+  background-color: #333dff;
+
+  font-weight: 500 !important;
+}
+.invoice-data-date {
+  font-size: 12px !important;
+  color: rgb(0, 0, 0) !important;
+
+  text-transform: capitalize;
+
+  font-weight: 600 !important;
+}
+
+.invoice-label-cash {
+  font-size: 11px !important;
+  color: rgb(98, 104, 124) !important;
+  padding-left: 1px;
+  text-transform: capitalize;
+  padding-left: 2px;
+  font-weight: 400 !important;
+}
+
+.box {
+  background-color: rgb(248, 248, 248);
+  height: 95%;
+  width: 92%;
+  display: grid;
+  border-radius: 5px;
 }
