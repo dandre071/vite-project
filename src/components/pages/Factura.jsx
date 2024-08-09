@@ -210,7 +210,7 @@ const Factura = () => {
             display: "flex",
             alignItems: "center",
             justifySelf: "center",
-            borderBottom: `2px solid ${customTheme.palette.primary.main}`,
+            // borderBottom: `2px solid ${customTheme.palette.primary.main}`,
           }}
         >
           <Stack
