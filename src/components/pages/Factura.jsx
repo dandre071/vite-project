@@ -37,7 +37,7 @@ const Factura = () => {
           bgcolor: "white",
 
           display: "grid",
-          gridTemplateRows: "2cm 2.1cm 12.5cm 3.5cm",
+          gridTemplateRows: "2.3cm 2.1cm 12.5cm 3.5cm",
           justifyContent: "center",
           alignItems: "center",
         }}
@@ -46,63 +46,90 @@ const Factura = () => {
           className="invoice-header"
           sx={{
             width: "100%",
-            height: "100%",
-
+            height: "90%",
+            alignItems: "end",
+            justifySelf: "center",
             display: "grid",
-            gridTemplateColumns: "50% 1fr",
+            justifyContent: "right",
+            gridTemplateColumns: "55% 30% 1fr",
           }}
         >
           <Stack></Stack>
 
-          <Stack
-            spacing={0}
-            sx={{
-              padding: 0,
-              display: "grid",
-              gridTemplateRows: "1fr 1fr",
-              // bgcolor: "red",
-            }}
-          >
+          <Stack sx={{ display: "grid", gridTemplateRows: "1fr 1fr" }}>
             <Box>
               <Typography variant="h6" className="invoice-label" sx={{}}>
+                Fecha Entrega
+              </Typography>
+              <Typography variant="h6" className="invoice-data-date" sx={{}}>
+                {fullDate}
+              </Typography>
+            </Box>
+
+            <Box>
+              <Typography variant="h6" className="invoice-label" sx={{}}>
+                Fecha Entrega
+              </Typography>
+              <Typography variant="h6" className="invoice-data-date" sx={{}}>
+                {fullDate}
+              </Typography>
+            </Box>
+          </Stack>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Box
+              sx={{
+                // bgcolor: "primary.main",
+                display: "flex",
+                justifyContent: "right",
+                alignItems: "center",
+              }}
+            >
+              <Typography
+                sx={{ fontSize: 14, fontWeight: 400, color: "text.main" }}
+              >
                 RECIBO
               </Typography>
             </Box>
-            <Stack sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-              <Box sx={{ borderRight: "1px solid black" }}>
-                <Typography variant="h6" className="invoice-label" sx={{}}>
-                  Fecha Recepción
-                </Typography>
-                <Typography variant="h6" className="invoice-data-date " sx={{}}>
-                  {fullDate}
-                </Typography>
-              </Box>
-
-              <Box>
-                <Typography variant="h6" className="invoice-label" sx={{}}>
-                  Fecha Entrega
-                </Typography>
-                <Typography variant="h6" className="invoice-data-date" sx={{}}>
-                  {fullDate}
-                </Typography>
-              </Box>
-            </Stack>
-          </Stack>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "right",
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: 16,
+                  fontWeight: 600,
+                  color: "primary.main",
+                }}
+              >
+                R00023
+              </Typography>
+            </Box>
+          </Box>
         </Stack>
         <Box
           sx={{
             display: "flex",
             justifyContent: "center",
-            bgcolor: "#f0f0f0",
+            justifySelf: "center",
+            bgcolor: "#F3F0FF",
             width: "100%",
             height: "100%",
+            borderRadius: 1.5,
           }}
         >
           <Stack
             sx={{
               display: "grid",
-              width: "95%",
-              spacing: 1,
+              width: "98%",
 
               //bgcolor: "green",
               justifyContent: "center",
@@ -178,7 +205,7 @@ const Factura = () => {
         <Stack
           sx={{
             height: "100%",
-            width: "98%",
+            width: "100%",
             // bgcolor: "orange",
             display: "flex",
             alignItems: "center",
@@ -189,9 +216,9 @@ const Factura = () => {
           <Stack
             sx={{
               display: "grid",
-              gridTemplateColumns: "8cm 1cm 2.5cm 2.5cm",
+              gridTemplateColumns: "7.3cm 1cm 2.5cm 2.5cm",
 
-              width: "98%",
+              width: "100%",
               height: ".8cm",
               alignItems: "end",
               justifyContent: "center",
@@ -208,10 +235,7 @@ const Factura = () => {
             <Typography className="invoice-title" sx={{ justifySelf: "right" }}>
               Precio
             </Typography>
-            <Typography
-              className="invoice-title"
-              sx={{ justifySelf: "right", pr: 1 }}
-            >
+            <Typography className="invoice-title" sx={{ justifySelf: "right" }}>
               Total
             </Typography>
           </Stack>
@@ -223,43 +247,52 @@ const Factura = () => {
             // bgcolor: "blue",
             display: "grid",
             gridTemplateColumns: "1fr 4.5cm",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <Stack
             sx={{
-              //bgcolor: "#f1f1f1",
-              width: "90%",
-              height: "90%",
+              //bgcolor: "#F3F0FF",
+              width: "98%",
+              height: "95%",
               display: "grid",
-              gridTemplateRows: "60% 1fr",
+              gridTemplateRows: "70% 1fr",
               justifySelf: "center",
               alignSelf: "center",
+              borderRadius: 2,
             }}
           >
             <Stack
               sx={{
                 //bgcolor: "red",
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr 1fr",
+                gridTemplateColumns: "1fr 2.5fr",
                 height: "100%",
                 justifyContent: "center",
-
-                gap: 0,
+                alignSelf: "center",
+                gap: 0.3,
               }}
             >
-              <Stack className="box">
-                <Typography className={"invoice-label-cash"}>
-                  Revisa Valores
-                </Typography>
+              <Stack
+                sx={{ display: "grid", gridTemplateRows: "1fr 1fr", gap: 0.3 }}
+              >
+                <Box className="box">
+                  <Typography className={"invoice-label-cash"}>
+                    Revisa Valores
+                  </Typography>
+                </Box>
+                <Box className="box">
+                  <Typography className={"invoice-label-cash"}>
+                    Entrega
+                  </Typography>
+                </Box>
               </Stack>
 
               <Stack className="box">
                 <Typography className={"invoice-label-cash"}>
                   Entrega
                 </Typography>
-              </Stack>
-              <Stack className="box">
-                <Typography className={"invoice-label-cash"}>Cajero</Typography>
               </Stack>
             </Stack>
 
@@ -286,20 +319,21 @@ const Factura = () => {
               width: "100%",
               display: "grid",
               gridTemplateColumns: "2cm 1fr",
+              pt: 1,
             }}
           >
             <Stack
               sx={{
                 justifySelf: "right",
-                width: "90%",
+                width: "100%",
                 textAlign: "right",
                 display: "grid",
                 gridTemplateRows: "repeat(7, 1fr)",
                 alignItems: "end",
               }}
             >
-              <Typography className={"invoice-label"}>SubTotal</Typography>
-              <Typography className={"invoice-label"}>IVA</Typography>
+              {/* <Typography className={"invoice-label"}>SubTotal</Typography>
+              <Typography className={"invoice-label"}>IVA</Typography> */}
               <Typography className={"invoice-label-payment"}>Total</Typography>
               <Typography className={"invoice-label"}>Abono 1</Typography>
               <Typography className={"invoice-label"}>Resta</Typography>
@@ -311,7 +345,8 @@ const Factura = () => {
               >
                 Abono 2
               </Typography>
-              <Typography className={"invoice-label"}>Resta</Typography>
+              <Box></Box>
+              <Typography className={"invoice-label"}>Resta 2</Typography>
             </Stack>
             <Stack
               sx={{
@@ -321,8 +356,8 @@ const Factura = () => {
                 alignItems: "end",
               }}
             >
-              <Typography className={"invoice-title"}>$20.000</Typography>
-              <Typography className={"invoice-title"}>$10.000</Typography>
+              {/*  <Typography className={"invoice-title"}>$20.000</Typography>
+              <Typography className={"invoice-title"}>$10.000</Typography> */}
               <Typography className={"invoice-label-payment"}>
                 $30.000.000
               </Typography>
@@ -333,6 +368,7 @@ const Factura = () => {
                   borderBottom: `1px solid ${customTheme.palette.background.dark}`,
                 }}
               ></Box>
+              <Box></Box>
               <Box
                 sx={{
                   borderBottom: `1px solid ${customTheme.palette.background.dark}`,
@@ -342,6 +378,7 @@ const Factura = () => {
           </Stack>
         </Stack>
         {/*  </Box> */}
+        {/*   <Box sx={{ width: "100%", height: 20, bgcolor: "primary.main" }}></Box> */}
       </Stack>
     </form>
   );

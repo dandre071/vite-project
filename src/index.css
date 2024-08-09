@@ -140,18 +140,18 @@ body {
 .invoice-title {
   font-size: 12px !important;
   color: #333dff !important;
-  color: #000000 !important;
+  color: #7b7888 !important;
   font-weight: 600 !important;
 }
 .invoice-label-payment {
-  font-size: 12px !important;
-  color: rgb(255, 255, 255) !important;
-  background-color: #333dff;
+  font-size: 14px !important;
+  color: #000000 !important;
+  background-color: #f3f0ff;
 
   font-weight: 500 !important;
 }
 .invoice-data-date {
-  font-size: 12px !important;
+  font-size: 11px !important;
   color: rgb(0, 0, 0) !important;
 
   text-transform: capitalize;
@@ -169,9 +169,9 @@ body {
 }
 
 .box {
-  background-color: rgb(248, 248, 248);
+  background-color: rgb(241, 241, 241);
   height: 95%;
-  width: 92%;
+  width: 98%;
   display: grid;
   border-radius: 5px;
 }
