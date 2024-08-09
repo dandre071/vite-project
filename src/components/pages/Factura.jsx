@@ -361,17 +361,31 @@ const Factura = () => {
                 <Typography className={"invoice-label"}>Resta:</Typography>
                 <Typography
                   className={"invoice-label-payment"}
-                  sx={{ textAlign: "right" }}
+                  sx={{ textAlign: "right", alignSelf: "center" }}
                 >
                   $1.000.000
                 </Typography>
               </Box>
-              <Box sx={box}>
+              <Box
+                sx={{
+                  ...box,
+                  border: "1px solid black",
+                  height: "100%",
+                  borderRadius: 1.5,
+                }}
+              >
                 <Typography className={"invoice-label"}>Abono 2:</Typography>
                 <Box></Box>
               </Box>
 
-              <Box sx={{ ...box, borderBottom: "none" }}>
+              <Box
+                sx={{
+                  ...box,
+                  border: "1px solid black",
+                  height: "100%",
+                  borderRadius: 1.5,
+                }}
+              >
                 <Typography className={"invoice-label"}>Resta:</Typography>
                 <Box></Box>
               </Box>
