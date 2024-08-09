@@ -116,7 +116,7 @@ body {
   color: rgb(55, 0, 255) !important;
   background-color: rgb(255, 255, 255);
   text-transform: capitalize;
-  padding: 0.5;
+
   font-weight: 600 !important;
 }
 .invoice-label {
@@ -124,7 +124,7 @@ body {
   color: rgb(98, 104, 124) !important;
 
   text-transform: capitalize;
-  padding: 0.5;
+
   font-weight: 400 !important;
 }
 
@@ -133,7 +133,7 @@ body {
   color: rgb(0, 0, 0) !important;
 
   text-transform: capitalize;
-  padding: 0.5;
+
   font-weight: 600 !important;
 }
 
@@ -144,9 +144,8 @@ body {
   font-weight: 600 !important;
 }
 .invoice-label-payment {
-  font-size: 14px !important;
+  font-size: 13px !important;
   color: #000000 !important;
-  background-color: #f3f0ff;
 
   font-weight: 500 !important;
 }
@@ -162,16 +161,54 @@ body {
 .invoice-label-cash {
   font-size: 11px !important;
   color: rgb(98, 104, 124) !important;
-  padding-left: 1px;
-  text-transform: capitalize;
-  padding-left: 2px;
+
   font-weight: 400 !important;
 }
 
 .box {
-  background-color: rgb(248, 248, 248);
+  /*background-color: #f0f4ff;*/
+  border: 0.75px solid rgb(158, 158, 158);
   height: 95%;
-  width: 98%;
+  width: 100%;
   display: grid;
+  border-radius: 5px;
+  padding: 0;
+  margin: 0;
+}
+.box h6 {
+  color: green;
+}
+.cls-1 {
+  fill: #145cc6;
+}
+
+.cls-1,
+.cls-2,
+.cls-3,
+.cls-4,
+.cls-5 {
+  stroke-width: 0px;
+}
+
+.cls-2 {
+  fill: none;
+}
+
+.cls-3 {
+  fill: #ff0031;
+}
+
+.cls-4 {
+  fill: #009ffe;
+}
+
+.cls-5 {
+  fill: #5a6e7f;
+}
+#Logo {
+  width: 120px;
+}
+
+.box .pay {
   border-radius: 5px;
 }
