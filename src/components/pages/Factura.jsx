@@ -72,6 +72,7 @@ const Factura = () => {
               display: "grid",
               gridTemplateRows: "1fr 1fr",
               transform: "scale(.9)",
+              border: `1.5px solid rgb(190, 190, 190)`,
             }}
           >
             <Box>
@@ -100,20 +101,6 @@ const Factura = () => {
               alignItems: "center",
             }}
           >
-            {/*  <Box
-              sx={{
-                // bgcolor: "primary.main",
-                display: "flex",
-                justifyContent: "right",
-                alignItems: "center",
-              }}
-            >
-              <Typography
-                sx={{ fontSize: 14, fontWeight: 400, color: "text.main" }}
-              >
-                RECIBO
-              </Typography>
-            </Box> */}
             <Box
               sx={{
                 display: "flex",
