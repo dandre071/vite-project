@@ -212,3 +212,13 @@ body {
 .box .pay {
   border-radius: 5px;
 }
+.invoice-item {
+  display: "grid";
+
+  height: 70px;
+  max-height: 70px;
+  width: 100%;
+  max-width: 100%;
+  /*background-color: #ff0031;*/
+  border-bottom: 1px solid rgb(190, 190, 190);
+}

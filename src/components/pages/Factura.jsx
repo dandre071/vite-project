@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import ReadOnlyText from "../Text/ReadOnlyText";
-import { title } from "../../Styles/styles";
+import { invoiceGrid, title } from "../../Styles/styles";
 import { customTheme } from "../../Hooks/useCustomTheme";
 import InvoiceListItem from "../InvoiceListItem";
 import { formatPhoneNumber } from "../utils/helpers";
@@ -17,6 +17,7 @@ import FormSelect2 from "../Forms/FormSelect2";
 import useUsers from "../../Hooks/useUsers";
 import supabase from "../../config/supabaseClient";
 import Logo from "../Logo";
+import InvoiceItem from "../InvoiceComps/InvoiceItem";
 
 const Factura = () => {
   const users = useUsers();
@@ -209,12 +210,12 @@ const Factura = () => {
         <Stack
           sx={{
             display: "grid",
-            gridTemplateColumns: "6cm 1cm 2.5cm 2.5cm",
+            gridTemplateColumns: invoiceGrid,
             bgcolor: "#f0f0f0",
             position: "relative",
             top: 10,
             borderRadius: 2,
-            width: "102%",
+            width: 450,
             height: ".6cm",
             alignSelf: "center",
             alignItems: "center",
@@ -237,8 +238,10 @@ const Factura = () => {
         <Stack
           sx={{
             height: "100%",
+            maxHeight: "100%",
+            maxWidth: 490,
             width: "105%",
-            //bgcolor: "orange",
+            // bgcolor: "orange",
             display: "flex",
             alignItems: "center",
             justifySelf: "center",
@@ -246,7 +249,26 @@ const Factura = () => {
 
             border: `1.5px solid rgb(190, 190, 190)`,
           }}
-        ></Stack>
+        >
+          <Stack
+            spacing={0.2}
+            sx={{
+              width: "97%",
+              height: "95%",
+              mt: 1,
+              display: "flex",
+              alignItems: "start",
+            }}
+          >
+            <InvoiceItem />
+            <InvoiceItem />
+            <InvoiceItem />
+            <InvoiceItem />
+            <InvoiceItem />
+            <InvoiceItem />
+            <InvoiceItem />
+          </Stack>
+        </Stack>
         <Stack
           sx={{
             width: "104%",
