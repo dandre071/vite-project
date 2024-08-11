@@ -5,6 +5,7 @@ export const useShoppingCart = create()(
   persist(
     (set, get) => ({
       items: [],
+
       addItem: (values) => {
         set((state) => ({
           items: [...state.items, values],
@@ -23,6 +24,12 @@ export const useShoppingCart = create()(
           items: state.items.filter((item) => item.id !== id),
         }));
       },
+      /* increaseQuantity: (id) => {
+        set((state) => ({
+          ...state.items,
+          quantity: (state.quantity += 1),
+        }));
+      }, */
       /*  increaseQuantity: (productId, quantity = 1) => {},
       decreaseQuantity: (productId, quantity = 1) => {}, */
       getTotalPrice: (items) => {
@@ -44,6 +51,7 @@ export const useShoppingCart = create()(
 const getLocalStorage = (key) => JSON.parse(window.localStorage.getItem(key));
 const setLocalStorage = (key, value) =>
   window.localStorage.setItem(key, JSON.stringify(value));
+
 export const usePersonalData = create()(
   persist(
     (set, get) => ({

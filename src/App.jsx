@@ -33,6 +33,7 @@ import { Form, useFormik } from "formik";
 import { useProduct } from "./Hooks/hooks";
 import CreateProduct from "./components/Forms/CreateProduct";
 import useUsers from "./Hooks/useUsers";
+import Counter from "./components/Forms/Counter";
 
 function Print() {
   const users = useUsers();
@@ -94,7 +95,8 @@ function Print() {
           {/*} {db.map((x) => {
             console.log(uppercasing(x));
          })}*/}
-          {/*  <GetDataForm />
+          <GetDataForm />
+          {/*  
 
           <Autocomplete
             //className={formik.errors.name ? "error" : ""}
@@ -142,6 +144,7 @@ function Print() {
           {/*  <ProductList /> */}
           {/* <Cart />
           <CreateProduct /> */}
+          {/*  <Counter /> */}
           <Factura />
         </Stack>
       </ThemeProvider>

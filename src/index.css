@@ -120,7 +120,7 @@ body {
   font-weight: 600 !important;
 }
 .invoice-label {
-  font-size: 11px !important;
+  font-size: 10px !important;
   color: rgb(98, 104, 124) !important;
 
   text-transform: capitalize;
@@ -160,14 +160,14 @@ body {
 
 .invoice-label-cash {
   font-size: 11px !important;
-  color: rgb(98, 104, 124) !important;
-
+  color: rgb(124, 104, 98) !important;
+  padding-left: 3px;
   font-weight: 400 !important;
 }
 
 .box {
   /*background-color: #f0f4ff;*/
-  border: 0.75px solid rgb(158, 158, 158);
+  border: 1px solid rgb(190, 190, 190);
   height: 95%;
   width: 100%;
   display: grid;
