@@ -265,7 +265,7 @@ const Factura = () => {
               width: "97%",
               height: "100%",
               display: "grid",
-              gridTemplateRows: ".7fr 1.1fr 1fr",
+              gridTemplateRows: ".5fr 1.1fr 1fr",
               justifySelf: "end",
               alignSelf: "center",
               borderRadius: 2,
@@ -418,6 +418,51 @@ const Factura = () => {
                 >
                   <Typography className={"invoice-label"}>Resta:</Typography>
                 </Box>
+              </Stack>
+              <Stack>
+                <Stack
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "end",
+                    alignItems: "center",
+                    gap: 1,
+                    mt: 1,
+                  }}
+                >
+                  <Typography sx={{ fontSize: 12 }}>Efectivo</Typography>
+                  <Box
+                    className={"full-border"}
+                    sx={{
+                      width: 12,
+                      height: 12,
+
+                      borderRadius: 0.8,
+                    }}
+                  ></Box>
+                </Stack>
+                <Stack>
+                  <Stack
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "end",
+                      alignItems: "center",
+                      gap: 1,
+                    }}
+                  >
+                    <Typography sx={{ fontSize: 12 }}>Transferencia</Typography>
+                    <Box
+                      className={"full-border"}
+                      sx={{
+                        width: 12,
+                        height: 12,
+
+                        borderRadius: 0.8,
+                      }}
+                    ></Box>
+                  </Stack>
+                </Stack>
               </Stack>
             </Stack>
             {/*  <Typography className={"invoice-label"}>EFECTIVO</Typography> */}

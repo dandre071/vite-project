@@ -233,3 +233,6 @@ body {
 .border-bottom {
   border-bottom: 1px solid rgb(190, 190, 190);
 }
+.full-border {
+  border: 1px solid rgb(190, 190, 190);
+}
