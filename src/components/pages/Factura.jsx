@@ -244,7 +244,7 @@ const Factura = () => {
 
         <Stack
           sx={{
-            width: "104%",
+            width: "100%",
             height: "100%",
             // bgcolor: "blue",
             display: "grid",
@@ -258,78 +258,92 @@ const Factura = () => {
           }}
         >
           <Stack
+            className="fill"
             sx={{
-              // bgcolor: "red",
-              width: "97%",
+              width: "100%",
               height: "100%",
+
               display: "grid",
-              gridTemplateRows: ".5fr 1fr 1fr",
-              justifySelf: "end",
-              alignSelf: "center",
-              borderRadius: 2,
-              gap: 0.5,
+              gridTemplateColumns: "1fr",
+              placeItems: "center",
+              p: 0,
+              borderRadius: 1.5,
             }}
           >
-            <Stack
+            <Box
               sx={{
-                display: "grid",
-                gridTemplateColumns: "repeat(4, 1fr)",
-                gap: 1,
-              }}
-            >
-              <Box>
-                <Typography variant="h6" className="invoice-label">
-                  Recibe:
-                </Typography>
-                <Typography className="invoice-data">Diego</Typography>
-              </Box>
-
-              <Box>
-                <Typography variant="h6" className="invoice-label">
-                  Realiza:
-                </Typography>
-                <Typography className="invoice-data">Diego</Typography>
-              </Box>
-              <Box className="box-bottom">
-                <Typography className="invoice-label">
-                  Revisa Valores
-                </Typography>
-                <Typography></Typography>
-              </Box>
-              <Box className="box-bottom">
-                <Typography className="invoice-label">Entrega</Typography>
-                <Typography></Typography>
-              </Box>
-            </Stack>
-            <Stack
-              sx={{
-                //bgcolor: "red",
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
+                width: "95%",
                 height: "95%",
-                justifyContent: "center",
-                alignSelf: "center",
+                display: "grid",
+                gridTemplateRows: ".5fr 1.5fr 1fr",
 
-                gap: 1,
+                borderRadius: 2,
+
+                gap: 0.5,
               }}
             >
-              <Stack className="box">
-                <Typography className={"invoice-label-cash"}>
-                  Firma y sello
-                </Typography>
+              <Stack
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(4, 1fr)",
+                  gap: 1,
+                }}
+              >
+                <Box>
+                  <Typography variant="h6" className="invoice-label">
+                    Recibe:
+                  </Typography>
+                  <Typography className="invoice-data">Diego</Typography>
+                </Box>
+
+                <Box>
+                  <Typography variant="h6" className="invoice-label">
+                    Realiza:
+                  </Typography>
+                  <Typography className="invoice-data">Diego</Typography>
+                </Box>
+                <Box className="box-bottom">
+                  <Typography className="invoice-label">
+                    Revisa Valores
+                  </Typography>
+                  <Typography></Typography>
+                </Box>
+                <Box className="box-bottom">
+                  <Typography className="invoice-label">Entrega</Typography>
+                  <Typography></Typography>
+                </Box>
               </Stack>
-              <Stack className="box">
-                <Typography className={"invoice-label-cash"}>
-                  Firma y sello
-                </Typography>
+              <Stack
+                sx={{
+                  //bgcolor: "red",
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  height: "95%",
+                  justifyContent: "center",
+                  alignSelf: "center",
+
+                  gap: 1,
+                }}
+              >
+                <Stack className="box">
+                  <Typography className={"invoice-label-cash"}>
+                    Firma y sello
+                  </Typography>
+                </Stack>
+                <Stack className="box">
+                  <Typography className={"invoice-label-cash"}>
+                    Firma y sello
+                  </Typography>
+                </Stack>
               </Stack>
-            </Stack>
-            <Box className={"box"} sx={{ height: "1cm" }}>
-              <Typography className={"invoice-label-cash"}>
-                Observaciones
-              </Typography>
+              <Box className={"box"} sx={{ height: "1cm" }}>
+                <Typography className={"invoice-label-cash"}>
+                  Observaciones
+                </Typography>
+              </Box>
             </Box>
           </Stack>
+
           <Stack
             sx={{
               //bgcolor: "#f0f4ff",
@@ -346,7 +360,7 @@ const Factura = () => {
               sx={{
                 justifySelf: "right",
                 width: "100%",
-                height: "90%",
+                height: "100%",
                 textAlign: "right",
                 display: "grid",
                 gridTemplateRows: "1fr ",
