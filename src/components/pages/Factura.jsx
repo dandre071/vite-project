@@ -47,10 +47,11 @@ const Factura = () => {
           bgcolor: "white",
 
           display: "grid",
-          gridTemplateRows: "3.2cm 0.7cm 12cm 1fr",
+          gridTemplateRows: "3.2cm 0.7cm 12cm 0.8fr .5cm",
           // gridTemplateRows: "2.3cm 2.1cm 0.7cm 12cm 3.5cm",
           justifyContent: "center",
           alignItems: "center",
+          gap: 0.6,
         }}
       >
         <Stack
@@ -184,7 +185,7 @@ const Factura = () => {
             gridTemplateColumns: invoiceGrid,
             bgcolor: "black",
             position: "relative",
-            top: 15,
+
             borderRadius: 1.4,
             width: 480,
             height: ".7cm",
@@ -207,7 +208,6 @@ const Factura = () => {
           </Typography>
         </Stack>
         <Stack
-          className="border-bottom"
           sx={{
             height: "100%",
             maxHeight: "100%",
@@ -226,8 +226,8 @@ const Factura = () => {
             sx={{
               //  bgcolor: "red",
               width: "97%",
-              height: "95%",
-              mt: 2,
+              height: "100%",
+
               display: "flex",
               alignItems: "start",
             }}
@@ -249,9 +249,7 @@ const Factura = () => {
             // bgcolor: "blue",
             display: "grid",
             p: 0,
-            pt: 1,
-            mt: 1,
-            gap: 0.5,
+
             borderRadius: 2.5,
             justifySelf: "center",
             gridTemplateColumns: "1fr 4cm",
@@ -265,7 +263,7 @@ const Factura = () => {
               width: "97%",
               height: "100%",
               display: "grid",
-              gridTemplateRows: ".5fr 1.1fr 1fr",
+              gridTemplateRows: ".5fr 1fr 1fr",
               justifySelf: "end",
               alignSelf: "center",
               borderRadius: 2,
@@ -427,7 +425,6 @@ const Factura = () => {
                     justifyContent: "end",
                     alignItems: "center",
                     gap: 1,
-                    mt: 1,
                   }}
                 >
                   <Typography sx={{ fontSize: 12 }}>Efectivo</Typography>
@@ -468,9 +465,18 @@ const Factura = () => {
             {/*  <Typography className={"invoice-label"}>EFECTIVO</Typography> */}
           </Stack>
         </Stack>
-
-        {/*  </Box> */}
-        {/*   <Box sx={{ width: "100%", height: 20, bgcolor: "primary.main" }}></Box> */}
+        <Typography
+          variant="h6"
+          className="invoice-data fill"
+          sx={{
+            display: "flex",
+            justifySelf: "center",
+            width: "100%",
+            justifyContent: "center",
+          }}
+        >
+          Carrera 16 # 102-53 - Barrio Baltazar (Turbo) / 310 417 18 14
+        </Typography>
       </Stack>
     </form>
   );
