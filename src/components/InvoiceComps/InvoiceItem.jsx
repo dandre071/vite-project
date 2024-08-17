@@ -7,7 +7,7 @@ const InvoiceItem = () => {
     <Stack className="invoice-item" sx={{}}>
       <Stack
         sx={{
-          bgcolor: "#f7f7f7",
+          // bgcolor: "#f7f7f7",
           display: "grid",
           gridTemplateColumns: invoiceGrid,
           borderRadius: 1.5,
@@ -24,12 +24,13 @@ const InvoiceItem = () => {
         <Typography sx={{ fontSize: 12, fontWeight: 500, textAlign: "right" }}>
           $35.000
         </Typography>
-        <Typography sx={{ fontSize: 12, fontWeight: 500, textAlign: "right" }}>
+        <Typography sx={{ fontSize: 12, fontWeight: 700, textAlign: "right" }}>
           $7.000.000
         </Typography>
       </Stack>
-      <Stack sx={{ display: "grid", gridTemplateColumns: "80% 1fr" }}>
+      <Stack sx={{ display: "grid", gridTemplateColumns: "70% 1fr" }}>
         <Typography
+          className="secondary-color"
           sx={{
             fontSize: 10.5,
             fontWeight: 300,
@@ -49,13 +50,14 @@ const InvoiceItem = () => {
           }}
         >
           <Typography
+            className="secondary-color"
             sx={{
               fontSize: 10,
               fontWeight: 500,
               textAlign: "center",
             }}
           >
-            Acabado: TUBOS + OJALES
+            Acabado: <br /> TUBOS + OJALES
           </Typography>
         </Box>
       </Stack>
