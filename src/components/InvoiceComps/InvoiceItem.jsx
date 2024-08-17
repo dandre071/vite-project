@@ -4,7 +4,7 @@ import { invoiceGrid } from "../../Styles/styles";
 
 const InvoiceItem = () => {
   return (
-    <Stack className="invoice-item" sx={{}}>
+    <Stack className="invoice-item border-bottom" sx={{}}>
       <Stack
         sx={{
           // bgcolor: "#f7f7f7",
