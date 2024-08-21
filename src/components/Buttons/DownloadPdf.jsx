@@ -1,7 +1,7 @@
 import React from "react";
-import { saveAs } from "file-saver";
+/* import { saveAs } from "file-saver";
 import { pdf } from "@react-pdf/renderer";
-import Factura from "../pages/Factura";
+import Factura from "../pages/Factura"; */
 
 const DownloadPdf = () => {
   const downloadPdf = async () => {

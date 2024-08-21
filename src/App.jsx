@@ -9,6 +9,7 @@ import GetDataForm from "./components/GetDataForm";
 import {
   Autocomplete,
   Box,
+  Button,
   createTheme,
   Grid,
   Select,
@@ -35,6 +36,11 @@ import CreateProduct from "./components/Forms/CreateProduct";
 import useUsers from "./Hooks/useUsers";
 import Counter from "./components/Forms/Counter";
 import DownloadPdf from "./components/Buttons/DownloadPdf";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
+import PdfInvoice from "./components/Factura/PdfInvoice";
+import FacturaPdf from "./components/FacturaPdf";
+import Test from "./components/Test";
+import InvoicePDF from "./components/pages/InvoicePDF";
 
 function Print() {
   const users = useUsers();
@@ -146,8 +152,18 @@ function Print() {
           {/* <Cart />
           <CreateProduct /> */}
           {/*  <Counter /> */}
-          <Factura />
-          <DownloadPdf />
+          {/* <Factura /> */}
+          <InvoicePDF />
+          {/*  <DownloadPdf /> */}
+          {/* <PdfInvoice />
+          <PDFViewer style={{ width: "100vh", height: "90vw" }}>
+            <PdfInvoice />
+          <FacturaPdf /> 
+          </PDFViewer>
+          <PDFDownloadLink document={<PdfInvoice />} fileName="invoice.pdf">
+            <Button>Descargar PDF</Button>
+          </PDFDownloadLink>
+          <Test /> */}
         </Stack>
       </ThemeProvider>
     </Box>
