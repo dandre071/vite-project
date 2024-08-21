@@ -12,7 +12,7 @@ import { Form, useFormik } from "formik";
 import { options } from "../utils/options";
 import { PersonSchema } from "../Validations";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { usePersonalData } from "../../store/shoppingCart";
+import { usePersonalData, useShoppingCart } from "../../store/shoppingCart";
 import { ArrowForward } from "@mui/icons-material";
 import { fakeUsers } from "../utils/test";
 import { colPesos } from "../utils/configs";
@@ -67,8 +67,8 @@ const PersonalData = () => {
     onSubmit: handleSubmit,
   });
   // console.log(formik.values);
-  // const addData = usePersonalData((state) => state.addData);
   const addData = usePersonalData((state) => state.addData);
+
   console.log(localStore);
 
   const handleAutoChange = (event, value) => {
@@ -91,7 +91,7 @@ const PersonalData = () => {
       : formik.setValues(formik.initialValues);
   }, []); */
 
-  /*  useEffect(() => {
+  useEffect(() => {
     localStore
       ? formik.setValues({
           billType: localStore[0].billType,
@@ -102,7 +102,7 @@ const PersonalData = () => {
           nit: localStore[0].nit,
         })
       : formik.setValues(formik.initialValues);
-  }, []); */
+  }, []);
   /* */
   const errors = formik.errors;
   console.log(errors);
@@ -154,10 +154,20 @@ const PersonalData = () => {
             sm={12}
             sx={{ display: "flex", justifyContent: "space-between", gap: 1 }}
           >
+            {/*  <TextField
+              required
+              onBlur={formik.handleBlur}
+              error={formik.errors.name}
+              helperText={formik.errors.name}
+              value={formik.values.name}
+              name="name"
+              onChange={formik.handleChange}
+              fullWidth
+              label={"Nombre / Razón Social"}
+              type="text"
+            /> */}
             <Autocomplete
               fullWidth
-              helperText={formik.errors.name}
-              error={formik.errors.name}
               defaultValue={() => localStore[0].name || ""}
               freeSolo={true}
               autoHighlight
@@ -167,17 +177,15 @@ const PersonalData = () => {
                 textTransform: "capitalize",
               }}
               onBlur={formik.handleBlur}
-              //onChange={handleAutoChange}
-
+              name="name"
+              onChange={handleAutoChange}
               //autoCapitalize="initial"
               renderInput={(params) => (
                 <TextField
                   //error={() => formik.errors.name}
-                  //helperText={formik.errors.name}
-                  //error={formik.errors.name}
-                  name="name"
+                  helperText={formik.touched.contact && formik.errors.contact}
+                  error={formik.touched.contact && formik.errors.contact}
                   fullWidth
-                  onChange={formik.handleChange}
                   {...params}
                   label="Nombre / Razón Social"
                   InputProps={{
@@ -186,8 +194,14 @@ const PersonalData = () => {
                 />
               )}
             />
-
-            {/* {!formik.values.name == "" && (
+            {/* {formik.errors.name && (
+              <Box sx={{ bgcolor: "red" }}>
+                <Typography sx={{ color: "white" }}>
+                  {formik.errors.name}
+                </Typography>
+              </Box>
+            )} */}
+            {!formik.values.name == "" && (
               <Button
                 onClick={checkUser}
                 variant="success"
@@ -195,10 +209,10 @@ const PersonalData = () => {
               >
                 <ArrowForwardIcon sx={{ color: "white", fontSize: 40 }} />
               </Button>
-            )} */}
+            )}
           </Grid>
 
-          <Grid item sm={8}>
+          <Grid item sm={12}>
             <TextField
               onBlur={formik.handleBlur}
               error={formik.errors.email}
@@ -211,8 +225,20 @@ const PersonalData = () => {
               type="email"
             />
           </Grid>
-
-          <Grid item sm={4}>
+          <Grid item sm={5}>
+            <TextField
+              onBlur={formik.handleBlur}
+              error={formik.errors.nit}
+              helperText={formik.errors.nit}
+              value={formik.values.nit}
+              name="nit"
+              onChange={formik.handleChange}
+              fullWidth
+              label={"NIT"}
+              type="text"
+            />
+          </Grid>
+          <Grid item sm={7}>
             <TextField
               onBlur={formik.handleBlur}
               error={formik.errors.phone}
@@ -239,28 +265,11 @@ const PersonalData = () => {
             />
           </Grid> */}
         </Grid>
-
-        {/* <Button onClick={formik.handleSubmit} endIcon={<ArrowForwardIcon />}>
-          Siguiente
-        </Button> */}
-        <Grid
-          item
-          sx={{
-            height: 70,
-            display: "flex",
-            justifyContent: "end",
-            alignItems: "center",
-          }}
-        >
-          {" "}
-          <Button
-            sx={{ height: "80%" }}
-            onClick={handleSubmit}
-            endIcon={<ArrowForwardIcon />}
-          >
+        {errors === 0 && (
+          <Button onClick={formik.handleSubmit} endIcon={<ArrowForwardIcon />}>
             Siguiente
           </Button>
-        </Grid>
+        )}
       </form>
     </Box>
   );

@@ -94,7 +94,7 @@ export const customTheme = createTheme({
           bgcolor: "#f3f3f3",
           color: "text.main",
           fontWeight: 600,
-          fontSize: 19,
+          fontSize: 16,
           "&:hover": {
             backgroundColor: "#f3f3f3",
           },
@@ -293,7 +293,7 @@ export const customTheme = createTheme({
           bgcolor: "red",
           color: "green",
           fontWeight: 600,
-          fontSize: 19,
+          fontSize: 16,
           "&:hover": {
             backgroundColor: "red",
           },
@@ -314,7 +314,7 @@ export const customTheme = createTheme({
             "&.Mui-focused": {
               color: "red",
               fontWeight: 400,
-              fontSize: 20,
+              fontSize: 16,
             },
           },
         },
@@ -330,7 +330,7 @@ export const customTheme = createTheme({
           bgcolor: "#f3f3f3",
           color: "text.main",
           fontWeight: 600,
-          fontSize: 19,
+          fontSize: 15,
           "&:hover": {
             backgroundColor: "#f3f3f3",
           },

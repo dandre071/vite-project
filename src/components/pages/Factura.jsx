@@ -101,8 +101,12 @@ const Factura = () => {
                 }}
               >
                 <Box sx={{ justifySelf: "end" }}>
-                  <Typography variant="h6" className="invoice-label">
-                    Recepción:
+                  <Typography
+                    variant="h6"
+                    className="invoice-label"
+                    sx={{ textAlign: "right" }}
+                  >
+                    Recepción
                   </Typography>
                   <Typography
                     variant="h6"
@@ -114,8 +118,12 @@ const Factura = () => {
                 </Box>
 
                 <Box sx={{ justifySelf: "end" }}>
-                  <Typography variant="h6" className="invoice-label" sx={{}}>
-                    Entrega:
+                  <Typography
+                    variant="h6"
+                    className="invoice-label"
+                    sx={{ textAlign: "right" }}
+                  >
+                    Entrega
                   </Typography>
                   <Typography
                     variant="h6"
@@ -234,11 +242,10 @@ const Factura = () => {
           >
             <InvoiceItem />
             <InvoiceItem />
+            {/* <InvoiceItem />
             <InvoiceItem />
             <InvoiceItem />
-            <InvoiceItem />
-            <InvoiceItem />
-            <InvoiceItem />
+            <InvoiceItem /> */}
           </Stack>
         </Stack>
 
@@ -326,18 +333,18 @@ const Factura = () => {
                 }}
               >
                 <Stack className="box">
-                  <Typography className={"invoice-label-cash"}>
+                  <Typography className={"invoice-label"}>
                     Firma y sello
                   </Typography>
                 </Stack>
                 <Stack className="box">
-                  <Typography className={"invoice-label-cash"}>
+                  <Typography className={"invoice-label"}>
                     Firma y sello
                   </Typography>
                 </Stack>
               </Stack>
               <Box className={"box"} sx={{ height: "1cm" }}>
-                <Typography className={"invoice-label-cash"}>
+                <Typography className={"invoice-label"}>
                   Observaciones
                 </Typography>
               </Box>
@@ -354,24 +361,25 @@ const Factura = () => {
               // border: `1.5px solid rgb(190, 190, 190)`,
               alignItems: "start",
               borderRadius: 2,
+              gridTemplateColumns: "1fr",
             }}
           >
             <Stack
               sx={{
                 justifySelf: "right",
-                width: "100%",
+                width: "95%",
                 height: "100%",
                 textAlign: "right",
                 display: "grid",
                 gridTemplateRows: "1fr ",
                 alignItems: "end",
+                // bgcolor: "cyan",
               }}
             >
               <Box
                 sx={{
                   ...box,
                   bgcolor: "primary.main",
-                  width: "100%",
                   height: "100%",
                   borderRadius: 1,
 
@@ -431,22 +439,29 @@ const Factura = () => {
                   <Typography className={"invoice-label"}>Resta:</Typography>
                 </Box>
               </Stack>
-              <Stack>
+              <Stack
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-around",
+                  flexDirection: "row",
+                  mt: 1,
+                }}
+              >
                 <Stack
                   sx={{
                     display: "flex",
                     flexDirection: "row",
-                    justifyContent: "end",
+                    justifyContent: "start",
                     alignItems: "center",
-                    gap: 1,
+                    gap: 0.5,
                   }}
                 >
-                  <Typography sx={{ fontSize: 12 }}>Efectivo</Typography>
+                  <Typography sx={{ fontSize: 10 }}>Efectivo</Typography>
                   <Box
                     className={"full-border"}
                     sx={{
-                      width: 12,
-                      height: 12,
+                      width: 10,
+                      height: 10,
 
                       borderRadius: 0.8,
                     }}
@@ -459,15 +474,16 @@ const Factura = () => {
                       flexDirection: "row",
                       justifyContent: "end",
                       alignItems: "center",
-                      gap: 1,
+                      gap: 0.5,
+                      width: "100%",
                     }}
                   >
-                    <Typography sx={{ fontSize: 12 }}>Transferencia</Typography>
+                    <Typography sx={{ fontSize: 10 }}>Transferencia</Typography>
                     <Box
                       className={"full-border"}
                       sx={{
-                        width: 12,
-                        height: 12,
+                        width: 10,
+                        height: 10,
 
                         borderRadius: 0.8,
                       }}
@@ -481,12 +497,13 @@ const Factura = () => {
         </Stack>
         <Typography
           variant="h6"
-          className="invoice-data fill"
+          //className="invoice-data fill"
           sx={{
             display: "flex",
             justifySelf: "center",
             width: "100%",
             justifyContent: "center",
+            fontSize: 10,
           }}
         >
           Carrera 16 # 102-53 - Barrio Baltazar (Turbo) / 310 417 18 14

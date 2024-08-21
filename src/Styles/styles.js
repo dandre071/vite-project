@@ -144,7 +144,7 @@ export const ModalCardStyle = {
 export const modal = {
   flexGrow: 1,
   //minWidth: 160,
-  width: 500,
+  width: 450,
   bgcolor: "white",
   p: 3,
   borderRadius: customTheme.shape.borderRadius,

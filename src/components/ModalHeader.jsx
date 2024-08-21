@@ -20,7 +20,7 @@ const ModalHeader = ({ title }) => {
         }}
       >
         <Typography
-          variant="h4"
+          variant="h5"
           sx={{ fontWeight: 900, color: "primary.main" }}
         >
           {title}
