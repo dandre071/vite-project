@@ -19,27 +19,8 @@ import { colPesos } from "../utils/configs";
 import { formatPhoneNumber } from "../utils/helpers";
 
 const PersonalData = () => {
-  /* getLocalStorage("personal-data");
-  console.log(getLocalStorage("personal-data"));
- */
-
-  //const localStore = usePersonalData((state) => state.getData());
   const users = fakeUsers.map((user) => user.name);
 
-  /* const getLocalStorage = (key) => JSON.parse(window.localStorage.getItem(key)); */
-
-  /*   localStore
-    ? formik.setValues({
-        ...formik.values,
-        email: fakeUsers[userFound].email,
-        phone: fakeUsers[userFound].phone,
-        nit: fakeUsers[userFound].nit,
-      })
-    : console.log("nothing");
-
-  console.log(localStore); */
-
-  //use product hook
   const disable = () => {
     if (formik.errors) {
       return true;
@@ -66,8 +47,7 @@ const PersonalData = () => {
 
     onSubmit: handleSubmit,
   });
-  // console.log(formik.values);
-  // const addData = usePersonalData((state) => state.addData);
+
   const addData = usePersonalData((state) => state.addData);
   console.log(localStore);
 
@@ -78,32 +58,7 @@ const PersonalData = () => {
   };
 
   const user = "diego";
-  /* useEffect(() => {
-    localStore
-      ? formik.setValues({
-          billType: localStore[0].billType,
-          clientType: localStore[0].clientType,
-          name: localStore[0].name,
-          email: localStore[0].email,
-          phone: localStore[0].phone,
-          nit: localStore[0].nit,
-        })
-      : formik.setValues(formik.initialValues);
-  }, []); */
 
-  /*  useEffect(() => {
-    localStore
-      ? formik.setValues({
-          billType: localStore[0].billType,
-          clientType: localStore[0].clientType,
-          name: localStore[0].name,
-          email: localStore[0].email,
-          phone: localStore[0].phone,
-          nit: localStore[0].nit,
-        })
-      : formik.setValues(formik.initialValues);
-  }, []); */
-  /* */
   const errors = formik.errors;
   console.log(errors);
   const foundName = users.filter((user) => user == formik.values.name);

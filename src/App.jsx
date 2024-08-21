@@ -34,6 +34,7 @@ import { useProduct } from "./Hooks/hooks";
 import CreateProduct from "./components/Forms/CreateProduct";
 import useUsers from "./Hooks/useUsers";
 import Counter from "./components/Forms/Counter";
+import DownloadPdf from "./components/Buttons/DownloadPdf";
 
 function Print() {
   const users = useUsers();
@@ -146,6 +147,7 @@ function Print() {
           <CreateProduct /> */}
           {/*  <Counter /> */}
           <Factura />
+          <DownloadPdf />
         </Stack>
       </ThemeProvider>
     </Box>
