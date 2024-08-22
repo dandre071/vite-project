@@ -110,7 +110,7 @@ const Factura = () => {
         <Stack
           sx={{
             width: "14cm",
-            height: "21cm",
+            height: "22cm",
             bgcolor: "white",
 
             display: "grid",
@@ -294,7 +294,7 @@ const Factura = () => {
             sx={{
               display: "grid",
               gridTemplateColumns: invoiceGrid,
-              bgcolor: "black",
+              bgcolor: "primary.main",
               position: "relative",
 
               width: 480,
@@ -303,7 +303,7 @@ const Factura = () => {
               alignItems: "end",
               justifyContent: "center",
 
-              borderBottom: `2px solid black`,
+              //borderBottom: `2px solid black`,
             }}
           >
             <Typography className="invoice-title">Concepto</Typography>
