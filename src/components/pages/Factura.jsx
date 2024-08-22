@@ -129,7 +129,7 @@ const Factura = () => {
               alignItems: "end",
               justifySelf: "center",
               display: "grid",
-              justifyContent: "right",
+              justifyContent: "center",
               alignItems: "start",
 
               gridTemplateColumns: "40% 1fr ",
@@ -137,7 +137,13 @@ const Factura = () => {
             }}
           >
             <Stack>
-              <Stack sx={{ justifySelf: "start" }}>
+              <Stack
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
                 <Logo className="logo" />
               </Stack>
               <Typography
@@ -147,8 +153,9 @@ const Factura = () => {
                   display: "flex",
                   justifySelf: "start",
                   lineHeight: 1.2,
-                  justifyContent: "start",
+                  justifyContent: "center",
                   fontSize: 10,
+                  textAlign: "center",
                 }}
               >
                 310 417 18 14 <br /> Carrera 16 # 102-53 <br />
