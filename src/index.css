@@ -122,7 +122,7 @@ body {
 .invoice-label {
   font-size: 10px !important;
   color: rgb(98, 104, 124) !important;
-
+  padding-left: 2px;
   text-transform: capitalize;
   width: 100%;
   font-weight: 400 !important;
@@ -143,6 +143,8 @@ body {
   color: #7b7888 !important;
   color: #ffffff !important;
   font-weight: 600 !important;
+  display: flex;
+  align-items: end;
 }
 .invoice-label-payment {
   font-size: 13px !important;
@@ -179,7 +181,8 @@ body {
 
 .box-bottom {
   background-color: #f9f9f9;
-  /*  border-bottom: 1px solid rgb(190, 190, 190); */
+  border: 1px solid rgb(190, 190, 190);
+  border-radius: 4px;
 }
 
 .cls-1 {
@@ -209,9 +212,6 @@ body {
 .cls-5 {
   fill: #5a6e7f;
 }
-#Logo {
-  width: 150px;
-}
 
 .box .pay {
   border-radius: 5px;
@@ -233,9 +233,46 @@ body {
 .border-bottom {
   border-bottom: 1px solid rgb(190, 190, 190);
 }
+.border-bottom-heavy {
+  border-bottom: 1.5px solid rgb(190, 190, 190);
+}
 .full-border {
   border: 1px solid rgb(190, 190, 190);
 }
 .fill {
   background-color: #f9f9f9;
+}
+#recepcion {
+  background-color: #ff0031;
+}
+#pdf {
+  background-color: #ffffff;
+}
+
+#pdf-container {
+  width: 530px;
+  height: 790px;
+  display: grid;
+  grid-template-rows: 120px 26px 453px 141px 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6;
+}
+#invoice-header {
+  width: 100%;
+  height: 100%;
+  align-items: end;
+  justify-self: center;
+  display: grid;
+  justify-content: right;
+  grid-template-columns: 40% 1fr;
+}
+#div1 {
+  width: 100%;
+  height: 100%;
+  background-color: red;
+}
+.logo {
+  width: 130px;
+  margin-top: 20px;
 }

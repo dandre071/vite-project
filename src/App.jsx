@@ -152,8 +152,8 @@ function Print() {
           {/* <Cart />
           <CreateProduct /> */}
           {/*  <Counter /> */}
-          {/* <Factura /> */}
-          <InvoicePDF />
+          <Factura />
+
           {/*  <DownloadPdf /> */}
           {/* <PdfInvoice />
           <PDFViewer style={{ width: "100vh", height: "90vw" }}>

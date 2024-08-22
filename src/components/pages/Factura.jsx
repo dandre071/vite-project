@@ -20,35 +20,33 @@ import Logo from "../Logo";
 import InvoiceItem from "../InvoiceComps/InvoiceItem";
 import { jsPDF } from "jspdf";
 
-/* import { usePDF } from "react-to-pdf";
-import generatePDF from "react-to-pdf"; */
-
+import { usePDF } from "react-to-pdf";
 import generatePDF from "react-to-pdf";
 
 const Factura = () => {
   const targetRef = useRef();
-  /* const printRef = React.useRef();
-  const handleDownloadPdf = async () => {
+  const printRef = React.useRef();
+
+  /*   const handleDownloadPdf = async () => {
     const element = printRef.current;
     const canvas = await html2canvas(element);
     const data = canvas.toDataURL("image/png");
+  }; */
+  /* const pdf = new jsPDF();
+  const imgProperties = pdf.getImageProperties(data);
+  const pdfWidth = pdf.internal.pageSize.getWidth();
+  const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
 
-    const pdf = new jsPDF();
-    const imgProperties = pdf.getImageProperties(data);
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
-
-    pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
-    pdf.save("print.pdf");
-  };
- */
-  const createPDF = () => {
+  pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
+  pdf.save("print.pdf"); */
+  /* const createPDF = () => {
     const pdf = new jsPDF("portrait", "px", [529, 793]);
     const data = document.querySelector("#pdf");
     pdf.html(data).then(() => {
       pdf.save("shipping_label.pdf");
     });
-  };
+  }; */
+  const clientName = "ARMANDO PAREDES SALAS";
   const users = useUsers();
   const date = new Date();
   const fullDate = new Intl.DateTimeFormat("es-CO", {
@@ -69,8 +67,9 @@ const Factura = () => {
   };
 
   /* const targetRef = useRef(); */
-  /* const options = {
+  const options = {
     // default is `save`
+    filename: `${clientName}.pdf`,
     method: "save",
     // default is Resolution.MEDIUM = 3, which should be enough, higher values
     // increases the image quality but also the size of the PDF, so be careful
@@ -81,7 +80,7 @@ const Factura = () => {
       // margin is in MM, default is Margin.NONE = 0
       //margin: Margin.SMALL,
       // default is 'A4'
-      format: [529, 793],
+      format: [140, 210],
       // default is 'portrait'
       // orientation: "portrait",
     },
@@ -96,18 +95,18 @@ const Factura = () => {
     overrides: {
       // see https://artskydj.github.io/jsPDF/docs/jsPDF.html for more options
       pdf: {
-        compress: false,
+        compress: true,
       },
       // see https://html2canvas.hertzen.com/configuration for more options
       canvas: {
         useCORS: true,
       },
     },
-  }; */
+  };
   /* const { toPDF, targetRef } = usePDF(options); */
   return (
     <div id="pdf">
-      <form>
+      <form ref={targetRef}>
         <Stack
           sx={{
             width: "14cm",
@@ -119,7 +118,7 @@ const Factura = () => {
             // gridTemplateRows: "2.3cm 2.1cm 0.7cm 12cm 3.5cm",
             justifyContent: "center",
             alignItems: "center",
-            gap: 0.6,
+            gap: 1,
           }}
         >
           <Stack
@@ -131,13 +130,32 @@ const Factura = () => {
               justifySelf: "center",
               display: "grid",
               justifyContent: "right",
+              alignItems: "start",
+
               gridTemplateColumns: "40% 1fr ",
               // bgcolor: "red",
             }}
           >
             <Stack>
-              <Logo className="logo" />
+              <Stack sx={{ justifySelf: "start" }}>
+                <Logo className="logo" />
+              </Stack>
+              <Typography
+                variant="h6"
+                //className="invoice-data fill"
+                sx={{
+                  display: "flex",
+                  justifySelf: "start",
+                  lineHeight: 1.2,
+                  justifyContent: "start",
+                  fontSize: 10,
+                }}
+              >
+                310 417 18 14 <br /> Carrera 16 # 102-53 <br />
+                Barrio Baltazar (Turbo)
+              </Typography>
             </Stack>
+
             <Box
               sx={{
                 display: "grid",
@@ -153,6 +171,7 @@ const Factura = () => {
 
                   padding: 0,
                   width: "100%",
+                  justifySelf: "end",
 
                   gridTemplateRows: "40% 60%",
                 }}
@@ -161,18 +180,21 @@ const Factura = () => {
                   sx={{
                     display: "grid",
                     gridTemplateColumns: "1fr 1fr",
-                    transform: "scale(.9)",
+
+                    //bgcolor: "green",
+                    width: "85%",
                     justifyContent: "end",
+                    justifySelf: "end",
                     alignItems: "end",
 
                     //border: `1.5px solid rgb(190, 190, 190)`,
                   }}
                 >
-                  <Box sx={{ justifySelf: "end" }}>
+                  <Box sx={{ justifySelf: "end", transform: "scale(.9)" }}>
                     <Typography
                       variant="h6"
                       className="invoice-label"
-                      sx={{ textAlign: "right" }}
+                      sx={{ textAlign: "right", justifySelf: "end" }}
                     >
                       Recepción
                     </Typography>
@@ -185,7 +207,7 @@ const Factura = () => {
                     </Typography>
                   </Box>
 
-                  <Box sx={{ justifySelf: "end" }}>
+                  <Box sx={{ justifySelf: "end", transform: "scale(.9)" }}>
                     <Typography
                       variant="h6"
                       className="invoice-label"
@@ -207,9 +229,9 @@ const Factura = () => {
                   sx={{
                     display: "flex",
                     justifyContent: "center",
-                    width: "100%",
+                    width: "95%",
                     bgcolor: "#f9f9f9",
-
+                    justifySelf: "end",
                     borderRadius: 1.8,
                   }}
                 >
@@ -223,7 +245,7 @@ const Factura = () => {
                         Cliente:
                       </Typography>
                       <Typography variant="h6" className="invoice-data" sx={{}}>
-                        PINTURAS DE ARMANDO PAREDES SALAS dsdsds
+                        {clientName}
                       </Typography>
                     </Box>
 
@@ -268,14 +290,13 @@ const Factura = () => {
               bgcolor: "black",
               position: "relative",
 
-              borderRadius: 1.4,
               width: 480,
               height: ".7cm",
               alignSelf: "center",
-              alignItems: "center",
+              alignItems: "end",
               justifyContent: "center",
 
-              //border: `2px solid black`,
+              borderBottom: `2px solid black`,
             }}
           >
             <Typography className="invoice-title">Concepto</Typography>
@@ -307,6 +328,7 @@ const Factura = () => {
             }}
           >
             <Stack
+              className="border-bottom-heavy "
               spacing={0.2}
               sx={{
                 //  bgcolor: "red",
@@ -342,7 +364,7 @@ const Factura = () => {
             }}
           >
             <Stack
-              className="fill"
+              /*  className="fill" */
               sx={{
                 width: "100%",
                 height: "100%",
@@ -457,8 +479,8 @@ const Factura = () => {
                   sx={{
                     ...box,
                     bgcolor: "primary.main",
-                    height: "100%",
-                    borderRadius: 1,
+                    height: 30,
+                    /* borderRadius: 1, */
 
                     color: "white",
                   }}
@@ -578,7 +600,7 @@ const Factura = () => {
               {/*  <Typography className={"invoice-label"}>EFECTIVO</Typography> */}
             </Stack>
           </Stack>
-          <Typography
+          {/* <Typography
             variant="h6"
             //className="invoice-data fill"
             sx={{
@@ -590,17 +612,22 @@ const Factura = () => {
             }}
           >
             Carrera 16 # 102-53 - Barrio Baltazar (Turbo) / 310 417 18 14
-          </Typography>
+          </Typography> */}
         </Stack>
       </form>
       {/* <button type="button" onClick={handleDownloadPdf}>
         Download as PDF
       </button> */}
       {/* <button onClick={() => toPDF()}>Download PDF</button> */}
-      <button onClick={() => createPDF()}>Download PDF</button>
-      {/* <button onClick={() => generatePDF(targetRef, options)}>
+      {/* <button onClick={() => createPDF()}>Download PDF</button> */}
+      <button
+        data-html2canvas-ignore
+        onClick={() =>
+          generatePDF(targetRef, options /* { filename: "page.pdf" } */)
+        }
+      >
         Download PDF
-      </button> */}
+      </button>
     </div>
   );
 };

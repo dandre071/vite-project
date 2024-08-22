@@ -19,7 +19,7 @@ import generatePDF from "react-to-pdf";
 
 const InvoicePDF = () => {
   const targetRef = useRef();
-  /* const printRef = React.useRef();
+  const printRef = React.useRef();
   const handleDownloadPdf = async () => {
     const element = printRef.current;
     const canvas = await html2canvas(element);
@@ -33,7 +33,7 @@ const InvoicePDF = () => {
     pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
     pdf.save("print.pdf");
   };
- */
+
   const createPDF = () => {
     const pdf = new jsPDF("portrait", "px", [529, 793], {
       putOnlyUsedFonts: true,
@@ -62,7 +62,6 @@ const InvoicePDF = () => {
     //borderBottom: "1px solid black",
   };
 
-  /* const targetRef = useRef(); */
   /* const options = {
     // default is `save`
     method: "save",
@@ -102,20 +101,7 @@ const InvoicePDF = () => {
   return (
     <div id="pdf">
       <form>
-        <div
-          style={{
-            width: "14cm",
-            height: "21cm",
-            bgcolor: "white",
-
-            display: "grid",
-            gridTemplateRows: "3.2cm 0.7cm 12cm 0.8fr .5cm",
-            // gridTemplateRows: "2.3cm 2.1cm 0.7cm 12cm 3.5cm",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: 0.6,
-          }}
-        >
+        <div id="pdf-container">
           <div
             className="invoice-header"
             style={{
@@ -606,10 +592,10 @@ const InvoicePDF = () => {
         Download as PDF
       </button> */}
       {/* <button onClick={() => toPDF()}>Download PDF</button> */}
-      <button onClick={() => createPDF()}>Download PDF</button>
-      {/* <button onClick={() => generatePDF(targetRef, options)}>
+      {/* <button onClick={() => createPDF()}>Download PDF</button> */}
+      <button onClick={() => generatePDF(targetRef, options)}>
         Download PDF
-      </button> */}
+      </button>
     </div>
   );
 };

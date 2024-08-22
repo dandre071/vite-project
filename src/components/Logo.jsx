@@ -2,14 +2,12 @@ import React from "react";
 
 const Logo = () => {
   return (
-    <div>
+    <div className="logo">
       <svg
-        id="Logo"
         data-name="Capa 1"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         viewBox="0 0 317.69 132.8"
-        class-name="logo"
       >
         <defs>
           <style></style>
