@@ -19,7 +19,7 @@ import supabase from "../../config/supabaseClient";
 import Logo from "../Logo";
 import InvoiceItem from "../InvoiceComps/InvoiceItem";
 import { jsPDF } from "jspdf";
-
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { usePDF } from "react-to-pdf";
 import generatePDF from "react-to-pdf";
 
@@ -129,7 +129,7 @@ const Factura = () => {
               alignItems: "end",
               justifySelf: "center",
               display: "grid",
-              justifyContent: "center",
+              justifyContent: "end",
               alignItems: "start",
 
               gridTemplateColumns: "40% 1fr ",
@@ -140,7 +140,7 @@ const Factura = () => {
               <Stack
                 sx={{
                   display: "flex",
-                  justifyContent: "center",
+                  justifyContent: "end",
                   alignItems: "center",
                 }}
               >
@@ -151,15 +151,40 @@ const Factura = () => {
                 //className="invoice-data fill"
                 sx={{
                   display: "flex",
+                  flexDirection: "column",
                   justifySelf: "start",
                   lineHeight: 1.2,
                   justifyContent: "center",
                   fontSize: 10,
                   textAlign: "center",
+                  gap: -5,
                 }}
               >
-                310 417 18 14 <br /> Carrera 16 # 102-53 <br />
-                Barrio Baltazar (Turbo)
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <WhatsAppIcon sx={{ fontSize: 10 }} />{" "}
+                  <Typography
+                    sx={{ fontSize: 10, fontFamily: "roboto", fontWeight: 500 }}
+                  >
+                    310 417 18 14
+                  </Typography>
+                </Box>{" "}
+                <Typography
+                  sx={{ fontSize: 10, fontFamily: "roboto", fontWeight: 500 }}
+                >
+                  Carrera 16 # 102-53
+                </Typography>
+                <Typography
+                  sx={{ fontSize: 10, fontFamily: "roboto", fontWeight: 500 }}
+                >
+                  {" "}
+                  Barrio Baltazar (Turbo)
+                </Typography>
               </Typography>
             </Stack>
 
