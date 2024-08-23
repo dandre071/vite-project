@@ -149,3 +149,8 @@ export const useGetCartTotalPrice = () => {
     : (total = 0);
   return total;
 };
+export const cart = () => {
+  const items = useShoppingCart((state) => state.items);
+
+  return items;
+};

@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 const CartCounter = () => {
   const count = useShoppingCart((state) => state.items);
-  console.log(count.length);
+  //console.log(count.length);
   return (
-    <Link to={"/cart"}>
+    <Link style={{}} to={"/cart"}>
       <Badge color="secondary" badgeContent={count.length} showZero>
         <ShoppingCartOutlinedIcon />
       </Badge>

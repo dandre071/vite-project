@@ -1,3 +1,4 @@
+import { useShoppingCart } from "../../store/shoppingCart";
 import { colPesos } from "./configs";
 
 export function sum() {

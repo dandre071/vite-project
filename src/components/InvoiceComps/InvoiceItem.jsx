@@ -2,7 +2,14 @@ import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import { invoiceGrid } from "../../Styles/styles";
 
-const InvoiceItem = () => {
+const InvoiceItem = ({
+  product,
+  q,
+  price,
+  totalPrice,
+  finish,
+  description,
+}) => {
   return (
     <Stack className="invoice-item border-bottom" sx={{}}>
       <Stack
@@ -16,16 +23,16 @@ const InvoiceItem = () => {
         }}
       >
         <Typography sx={{ fontSize: 12, fontWeight: 500 }}>
-          banner 70 x 100
+          {product}
         </Typography>
         <Typography sx={{ fontSize: 12, fontWeight: 500, textAlign: "center" }}>
-          2
+          {q}
         </Typography>
         <Typography sx={{ fontSize: 12, fontWeight: 500, textAlign: "right" }}>
-          $35.000
+          {price}
         </Typography>
         <Typography sx={{ fontSize: 12, fontWeight: 700, textAlign: "right" }}>
-          $7.000.000
+          {totalPrice}
         </Typography>
       </Stack>
       <Stack sx={{ display: "grid", gridTemplateColumns: "70% 1fr" }}>
@@ -40,7 +47,7 @@ const InvoiceItem = () => {
             pb: 0.2,
           }}
         >
-          imagen de Mickey Mouse
+          {description}
         </Typography>
         <Box
           sx={{
@@ -57,7 +64,7 @@ const InvoiceItem = () => {
               textAlign: "center",
             }}
           >
-            Acabado: <br /> TUBOS + OJALES
+            Acabado: <br /> {finish}
           </Typography>
         </Box>
       </Stack>

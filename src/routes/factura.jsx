@@ -22,11 +22,14 @@ import { jsPDF } from "jspdf";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { usePDF } from "react-to-pdf";
 import generatePDF from "react-to-pdf";
+import { usePersonalData, useShoppingCart } from "../store/shoppingCart";
+import { colPesos } from "../components/utils/configs";
 
 const Factura = () => {
   const targetRef = useRef();
   const printRef = React.useRef();
-
+  const cart = useShoppingCart((state) => state.items);
+  console.log(cart[0].name);
   /*   const handleDownloadPdf = async () => {
     const element = printRef.current;
     const canvas = await html2canvas(element);
@@ -47,6 +50,7 @@ const Factura = () => {
     });
   }; */
   const clientName = "ARMANDO PAREDES SALAS";
+  const client = usePersonalData((state) => state.personalData);
   const users = useUsers();
   const date = new Date();
   const fullDate = new Intl.DateTimeFormat("es-CO", {
@@ -238,7 +242,7 @@ const Factura = () => {
                           className="invoice-data"
                           sx={{}}
                         >
-                          {clientName}
+                          {client.name}
                         </Typography>
                       </Box>
 
@@ -258,7 +262,7 @@ const Factura = () => {
                             Email:
                           </Typography>
                           <Typography className="invoice-data">
-                            sdsdsdsdsdsd
+                            {client.email}
                           </Typography>
                         </Box>
                         <Box>
@@ -266,7 +270,7 @@ const Factura = () => {
                             Teléfono:
                           </Typography>
                           <Typography variant="h6" className="invoice-data">
-                            320 659 8822
+                            {client.phone}
                           </Typography>
                         </Box>
                       </Box>
@@ -382,12 +386,17 @@ const Factura = () => {
                 alignItems: "start",
               }}
             >
-              <InvoiceItem />
-              <InvoiceItem />
-              {/* <InvoiceItem />
-            <InvoiceItem />
-            <InvoiceItem />
-            <InvoiceItem /> */}
+              {cart.map((item) => (
+                <InvoiceItem
+                  key={item.id}
+                  product={item.name}
+                  q={item.quantity}
+                  price={colPesos.format(item.price)}
+                  totalPrice={colPesos.format(item.itemTotalPrice)}
+                  finish={item.finish}
+                  description={item.description}
+                />
+              ))}
             </Stack>
           </Stack>
 
