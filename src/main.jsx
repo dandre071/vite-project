@@ -15,6 +15,8 @@ import ClientData from "./routes/client-data.jsx";
 import ProductModule from "./routes/product-module.jsx";
 import Cart from "./routes/cart.jsx";
 import Payment from "./routes/payment.jsx";
+import { ThemeProvider } from "@mui/material";
+import { customTheme } from "./Hooks/useCustomTheme.jsx";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +58,8 @@ const router = createBrowserRouter([
 ); */
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider theme={customTheme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );

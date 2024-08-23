@@ -12,12 +12,14 @@ import {
 import { redux } from "zustand/middleware";
 
 const primary = "customTheme.primary.main";
-const variantType = "filled";
+const variantType = "outlined";
 const primaryColor = "#333dff";
 const primaryDarkColor = "#2e29ff";
 const primaryLightColor = "#f1f6ff";
 const primaryLightherColor = "#fafcff";
 const secondaryColor = "#e50037";
+const mainText = "#02172a";
+//const backgroundColor =
 export const customTheme = createTheme({
   palette: {
     mode: "light",
@@ -91,7 +93,7 @@ export const customTheme = createTheme({
         disableUnderline: true,
         sx: {
           borderRadius: 2,
-          bgcolor: "#f3f3f3",
+          //bgcolor: "green",
           color: "text.main",
           fontWeight: 600,
           fontSize: 16,
@@ -279,7 +281,7 @@ export const customTheme = createTheme({
         minRows: 2,
         fullWidth: true,
         sx: {
-          color: "green",
+          color: primaryColor,
         },
       },
     },
@@ -290,12 +292,13 @@ export const customTheme = createTheme({
         disableUnderline: false,
         sx: {
           borderRadius: 2,
-          bgcolor: "red",
-          color: "green",
+          //bgcolor: "red",
+          color: mainText,
           fontWeight: 600,
           fontSize: 16,
           "&:hover": {
-            backgroundColor: "red",
+            backgroundColor: primaryLightherColor,
+            borderStyle: "none",
           },
           "&.Mui-focused": {
             "&:hover:not(.Mui-focused)": {
@@ -320,17 +323,42 @@ export const customTheme = createTheme({
         },
       },
     },
-    MuiFilledInput: {
+    MuiOutlinedInput: {
       defaultProps: {
         multiline: true,
         disableUnderline: true,
 
         sx: {
           borderRadius: 2,
-          bgcolor: "#f3f3f3",
+          // bgcolor: primaryLightherColor,
           color: "text.main",
           fontWeight: 600,
           fontSize: 15,
+          "&:hover": {
+            backgroundColor: primaryLightherColor,
+          },
+          "&:notched": {
+            backgroundColor: primaryLightherColor,
+            borderStyle: "none",
+          },
+
+          "& .MuiFilledInputLabel": {
+            color: "blue",
+          },
+        },
+      },
+    },
+
+    MuiOutlinedInput: {
+      defaultProps: {
+        multiline: true,
+
+        sx: {
+          borderRadius: 1.5,
+          // bgcolor: "#f3f3f3",
+          color: "text.main",
+          fontWeight: 600,
+          fontSize: 17,
           "&:hover": {
             backgroundColor: "#f3f3f3",
           },
@@ -338,7 +366,7 @@ export const customTheme = createTheme({
             backgroundColor: "#f3f3f3",
           },
 
-          "& .MuiFilledInputLabel": {
+          "& .MuiOutlinedInputLabel": {
             color: "blue",
           },
         },
@@ -353,46 +381,9 @@ export const customTheme = createTheme({
     MuiGrid2: {
       defaultProps: {
         sx: {
-          padding: 0.7,
+          padding: 1,
         },
       },
     },
   },
 });
-
-/* export const inputStyle = {
-  "& .MuiOutlinedInput-root": {
-    color: "primary.main",
-    fontSize: 20,
-    fontWeight: 500,
-    borderRadius: 2,
-    "& .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#ccc",
-      borderWidth: 2,
-    },
-    "&.Mui-focused": {
-      "& .MuiOutlinedInput-notchedOutline": {
-        borderColor: "primary.main",
-        borderWidth: 2,
-      },
-    },
-    "&:hover:not(.Mui-focused)": {
-      "& .MuiOutlinedInput-notchedOutline": {
-        borderColor: "danger",
-      },
-    },
-    "&.error": {
-      color: "red",
-    },
-  },
-  "& .MuiInputLabel-outlined": {
-    color: "primary.main",
-    fontWeight: "bold",
-    "&.Mui-focused": {
-      color: "primary.main",
-      fontWeight: 400,
-      fontSize: 20,
-    },
-  },
-};
- */

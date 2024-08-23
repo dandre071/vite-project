@@ -11,6 +11,7 @@ export const useShoppingCart = create()(
           items: [...state.items, values],
         }));
       },
+      count: (state) => state.personalData,
       /*  updateItem: (id, index, item) => {
         set((state) => ({
           items: {
@@ -55,20 +56,17 @@ const setLocalStorage = (key, value) =>
 export const usePersonalData = create()(
   persist(
     (set, get) => ({
-      personalData: [
-        {
-          billType: "Recibo",
-          clientType: "Particular",
-          name: "",
-          email: "",
-          phone: "",
-          nit: "",
-          //receives: "",
-        },
-      ],
+      personalData: {
+        billType: "Recibo",
+        clientType: "Particular",
+        name: "",
+        email: "",
+        phone: "",
+      },
+
       addData: (values) => {
         set((state) => ({
-          personalData: [values],
+          personalData: { ...values, values },
         }));
       },
 

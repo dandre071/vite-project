@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Grid,
+  Stack,
   TextField,
   Typography,
 } from "@mui/material";
@@ -17,22 +18,25 @@ import { ArrowForward } from "@mui/icons-material";
 import { fakeUsers } from "../utils/test";
 import { colPesos } from "../utils/configs";
 import { formatPhoneNumber } from "../utils/helpers";
+import { Link } from "react-router-dom";
+import * as Yup from "yup";
 
 const PersonalData = () => {
+  const localStore = usePersonalData((state) => state.personalData);
+
   const users = fakeUsers.map((user) => user.name);
 
-  const disable = () => {
+  /* const disable = () => {
     if (formik.errors) {
       return true;
     }
     return;
-  };
+  }; */
   const handleSubmit = () => {
     addData(formik.values);
     console.log(formik.values);
   };
-  const localData = usePersonalData((state) => state.personalData);
-  const localStore = usePersonalData((state) => state.personalData);
+
   const formik = useFormik({
     initialValues: {
       billType: "Recibo",
@@ -48,6 +52,19 @@ const PersonalData = () => {
     onSubmit: handleSubmit,
   });
 
+  useEffect(() => {
+    const updateState = () => {
+      formik.setValues({
+        billType: localStore.billType,
+        clientType: localStore.clientType,
+        name: localStore.name,
+        email: localStore.email,
+        phone: localStore.phone,
+      });
+    };
+    updateState();
+  }, []);
+
   const addData = usePersonalData((state) => state.addData);
   console.log(localStore);
 
@@ -57,13 +74,14 @@ const PersonalData = () => {
     console.log(found);
   };
 
-  const user = "diego";
+  /*  const user = "diego";
 
-  const errors = formik.errors;
-  console.log(errors);
+  const errors = formik.errors.name;
+  console.log({ ...formik });
+  console.log(formik.errors.toString());
   const foundName = users.filter((user) => user == formik.values.name);
-  console.log(foundName);
-  const checkUser = () => {
+  console.log(foundName); */
+  /* const checkUser = () => {
     const selectedUser = formik.values.name;
     const userFound = users.indexOf(selectedUser);
     formik.setValues({
@@ -73,12 +91,15 @@ const PersonalData = () => {
       nit: fakeUsers[userFound].nit,
     });
   };
-  console.log(users);
+  const clientName = localStore.name;
+
+  console.log(clientName); */
+  // console.log(users);
 
   return (
     <Box>
       <form onSubmit={formik.handleSubmit}>
-        <Grid container flexGrow={1} spacing={1}>
+        <Grid container flexGrow={1} spacing={1.5}>
           <Grid item sm={8}>
             <FormSelect2
               required
@@ -107,13 +128,12 @@ const PersonalData = () => {
           <Grid
             item
             sm={12}
-            sx={{ display: "flex", justifyContent: "space-between", gap: 1 }}
+            sx={{ display: "flex", justifyContent: "space-between" }}
           >
             <Autocomplete
               fullWidth
-              helperText={formik.errors.name}
+              //helperText={formik.errors.name}
               error={formik.errors.name}
-              defaultValue={() => localStore[0].name || ""}
               freeSolo={true}
               autoHighlight
               id="combo-box-demo"
@@ -121,6 +141,7 @@ const PersonalData = () => {
               sx={{
                 textTransform: "capitalize",
               }}
+              defaultValue={localStore.name}
               onBlur={formik.handleBlur}
               //onChange={handleAutoChange}
 
@@ -128,8 +149,7 @@ const PersonalData = () => {
               renderInput={(params) => (
                 <TextField
                   //error={() => formik.errors.name}
-                  //helperText={formik.errors.name}
-                  //error={formik.errors.name}
+                  helperText={formik.errors.name}
                   name="name"
                   fullWidth
                   onChange={formik.handleChange}
@@ -158,10 +178,11 @@ const PersonalData = () => {
               onBlur={formik.handleBlur}
               error={formik.errors.email}
               helperText={formik.errors.email}
-              value={formik.values.email}
+              /* value={formik.values.email} */
               name="email"
               onChange={formik.handleChange}
               fullWidth
+              defaultValue={localStore.email}
               label={"Email"}
               type="email"
             />
@@ -173,31 +194,29 @@ const PersonalData = () => {
               error={formik.errors.phone}
               helperText={formik.errors.phone}
               //value={colPesos.format(formik.values.phone)}
-              value={formik.values.phone}
+              // value={formik.values.phone}
+              defaultValue={localStore.phone}
               name="phone"
               onChange={formik.handleChange}
               fullWidth
               label={"Teléfono"}
-              type="tel"
+              type="text"
             />
           </Grid>
-          {/* <Grid item sm={4}>
-            <FormSelect2
-              value={formik.values.receives}
-              error={formik.errors.receives}
-              helperText={formik.errors.receives}
-              fullWidth
-              name="receives"
-              onChange={formik.handleChange}
-              options={options.users}
-              label={"Recibe"}
-            />
-          </Grid> */}
         </Grid>
-
-        {/* <Button onClick={formik.handleSubmit} endIcon={<ArrowForwardIcon />}>
-          Siguiente
-        </Button> */}
+        {/*    <Grid>
+          <Stack>
+            {formik.errors.name && (
+              <Typography>{formik.errors.name}</Typography>
+            )}
+            {formik.errors.email && (
+              <Typography>{formik.errors.email}</Typography>
+            )}
+            {formik.errors.phone && (
+              <Typography>{formik.errors.phone}</Typography>
+            )}
+          </Stack>
+        </Grid> */}
         <Grid
           item
           sx={{
@@ -207,14 +226,19 @@ const PersonalData = () => {
             alignItems: "center",
           }}
         >
-          {" "}
-          <Button
-            sx={{ height: "80%" }}
-            onClick={handleSubmit}
-            endIcon={<ArrowForwardIcon />}
-          >
-            Siguiente
-          </Button>
+          <Link to={"/product-module"}>
+            <Button
+              disabled={
+                formik.errors.email || formik.errors.phone ? true : false
+              }
+              variant="primary"
+              sx={{ height: "80%" }}
+              onClick={handleSubmit}
+              endIcon={<ArrowForwardIcon />}
+            >
+              Siguiente
+            </Button>
+          </Link>
         </Grid>
       </form>
     </Box>

@@ -1,8 +1,12 @@
 import { object, string, number, date, boolean, array } from "yup";
-
+const phoneRegExp =
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+const mailRegExp =
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 export const productSchema = object().shape({
   name: string()
     .min(5, "Minimo 5 caracteres")
+    .max(27, "too long!")
     .required("Este campo es requerido."),
   //.min(1, "El nombre tiene que tener al menos un carácter")
   // .max(10, "El nombre no puede superar los 10 carácteres"),
@@ -28,16 +32,18 @@ export const productSchema = object().shape({
 export const PersonSchema = object().shape({
   billType: string(),
   clientType: string(),
-  name: string().test(
-    "len",
-    "Must be exactly 5 characters",
-    (val) => val.length <= 25
-  ),
+  name: string(),
+
+  // .min(5, "too short"),
   /* .min(5, "Mínimo 5 caracteres") */
   /* .required("Este campo es obligatorio."), */
-  email: string().email("Por favor ingrese un correo válido."),
+  email: string().matches(mailRegExp, "Email no válido"),
 
-  phone: number().integer().required("Este campo es obligatorio."),
+  phone: string()
+    .required("required")
+    .matches(phoneRegExp, "Número no válido")
+    .min(10, "Número muy corto")
+    .max(10, "Número muy largo"),
   //nit: string().required("Este campo es obligatorio."),
   // receives: string(),
 });

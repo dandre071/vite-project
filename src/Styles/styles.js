@@ -148,7 +148,7 @@ export const modal = {
   bgcolor: "white",
   p: 3,
   borderRadius: customTheme.shape.borderRadius,
-  boxShadow: 4,
+  //boxShadow: 4,
 };
 
 export const title = {

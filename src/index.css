@@ -287,3 +287,8 @@ body {
   width: 130px;
   margin-top: 15px;
 }
+#root-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
