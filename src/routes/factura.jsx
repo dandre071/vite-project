@@ -8,16 +8,16 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
-import ReadOnlyText from "../Text/ReadOnlyText";
-import { invoiceGrid, title } from "../../Styles/styles";
-import { customTheme } from "../../Hooks/useCustomTheme";
-import InvoiceListItem from "../InvoiceListItem";
-import { formatPhoneNumber } from "../utils/helpers";
-import FormSelect2 from "../Forms/FormSelect2";
-import useUsers from "../../Hooks/useUsers";
-import supabase from "../../config/supabaseClient";
-import Logo from "../Logo";
-import InvoiceItem from "../InvoiceComps/InvoiceItem";
+import ReadOnlyText from "../components/Text/ReadOnlyText";
+import { invoiceGrid, title } from "../Styles/styles";
+import { customTheme } from "../Hooks/useCustomTheme";
+import InvoiceListItem from "../components/InvoiceListItem";
+import { formatPhoneNumber } from "../components/utils/helpers";
+import FormSelect2 from "../components/Forms/FormSelect2";
+import useUsers from "../Hooks/useUsers";
+import supabase from "../config/supabaseClient";
+import Logo from "../components/Logo";
+import InvoiceItem from "../components/InvoiceComps/InvoiceItem";
 import { jsPDF } from "jspdf";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { usePDF } from "react-to-pdf";
@@ -126,7 +126,7 @@ const Factura = () => {
             sx={{
               width: "100%",
               height: "100%",
-              alignItems: "end",
+              //alignItems: "end",
               justifySelf: "center",
               display: "grid",
               justifyContent: "end",
@@ -203,11 +203,76 @@ const Factura = () => {
 
                   padding: 0,
                   width: "100%",
-                  justifySelf: "end",
+                  height: "100%",
 
-                  gridTemplateRows: "40% 60%",
+                  justifySelf: "end",
+                  mt: 2,
+                  gridTemplateRows: "60% 40%",
                 }}
               >
+                <Stack
+                  direction={"column"}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                    height: "100%",
+                    bgcolor: "background.default",
+                    justifySelf: "end",
+                    //borderRadius: 1.8,
+                  }}
+                >
+                  <Box sx={{ width: "95%", height: "95%" }}>
+                    <Box>
+                      <Box>
+                        <Typography
+                          variant="h6"
+                          className="invoice-label"
+                          sx={{}}
+                        >
+                          Cliente:
+                        </Typography>
+                        <Typography
+                          variant="h6"
+                          className="invoice-data"
+                          sx={{}}
+                        >
+                          {clientName}
+                        </Typography>
+                      </Box>
+
+                      <Box
+                        sx={{ display: "grid", gridTemplateColumns: "70% 30%" }}
+                      >
+                        <Box>
+                          <Typography
+                            className="invoice-label"
+                            sx={{
+                              // bgcolor: "red",
+                              p: 0,
+
+                              fontSize: 11,
+                            }}
+                          >
+                            Email:
+                          </Typography>
+                          <Typography className="invoice-data">
+                            sdsdsdsdsdsd
+                          </Typography>
+                        </Box>
+                        <Box>
+                          <Typography className="invoice-label">
+                            Teléfono:
+                          </Typography>
+                          <Typography variant="h6" className="invoice-data">
+                            320 659 8822
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Stack>
                 <Stack
                   sx={{
                     display: "grid",
@@ -217,7 +282,7 @@ const Factura = () => {
                     width: "85%",
                     justifyContent: "end",
                     justifySelf: "end",
-                    alignItems: "end",
+                    alignItems: "start",
 
                     //border: `1.5px solid rgb(190, 190, 190)`,
                   }}
@@ -256,70 +321,16 @@ const Factura = () => {
                     </Typography>
                   </Box>
                 </Stack>
-                <Stack
-                  direction={"column"}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    width: "95%",
-                    bgcolor: "#f9f9f9",
-                    justifySelf: "end",
-                    borderRadius: 1.8,
-                  }}
-                >
-                  <Box sx={{ ml: 0.5, mr: 0.5 }}>
-                    <Box>
-                      <Typography
-                        variant="h6"
-                        className="invoice-label"
-                        sx={{}}
-                      >
-                        Cliente:
-                      </Typography>
-                      <Typography variant="h6" className="invoice-data" sx={{}}>
-                        {clientName}
-                      </Typography>
-                    </Box>
-
-                    <Box
-                      sx={{ display: "grid", gridTemplateColumns: "70% 30%" }}
-                    >
-                      <Box>
-                        <Typography
-                          className="invoice-label"
-                          sx={{
-                            // bgcolor: "red",
-                            p: 0,
-
-                            fontSize: 11,
-                          }}
-                        >
-                          Email:
-                        </Typography>
-                        <Typography className="invoice-data">
-                          sdsdsdsdsdsd
-                        </Typography>
-                      </Box>
-                      <Box>
-                        <Typography className="invoice-label">
-                          Teléfono:
-                        </Typography>
-                        <Typography variant="h6" className="invoice-data">
-                          320 659 8822
-                        </Typography>
-                      </Box>
-                    </Box>
-                  </Box>
-                </Stack>
               </Stack>
             </Box>
           </Stack>
 
           <Stack
+            className="invoice-title-box"
             sx={{
               display: "grid",
               gridTemplateColumns: invoiceGrid,
-              bgcolor: "primary.main",
+              // bgcolor: "primary.main",
               position: "relative",
 
               width: 480,
@@ -463,18 +474,18 @@ const Factura = () => {
                     gap: 1,
                   }}
                 >
-                  <Stack className="box">
+                  <Stack className="box-bottom">
                     <Typography className={"invoice-label"}>
                       Firma y sello
                     </Typography>
                   </Stack>
-                  <Stack className="box">
+                  <Stack className="box-bottom">
                     <Typography className={"invoice-label"}>
                       Firma y sello
                     </Typography>
                   </Stack>
                 </Stack>
-                <Box className={"box"} sx={{ height: "1cm" }}>
+                <Box className={"box-bottom"} sx={{ height: "1cm" }}>
                   <Typography className={"invoice-label"}>
                     Observaciones
                   </Typography>

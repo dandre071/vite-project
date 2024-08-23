@@ -5,7 +5,7 @@ import "@fontsource/roboto/700.css";
 import ProductSearchInput from "./components/ProductSearchInput";
 import ProductPriceModal from "./components/ProductPriceModal";
 import Text from "./components/TextField";
-import GetDataForm from "./components/GetDataForm";
+/* import GetDataForm from "./routes/client-data"; */
 import {
   Autocomplete,
   Box,
@@ -18,7 +18,7 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-
+import DownloadIcon from "@mui/icons-material/Download";
 //import { theme } from "./Styles/styles";
 import Cart from "./components/Cart";
 import { customTheme } from "./Hooks/useCustomTheme";
@@ -26,7 +26,7 @@ import useLocalStorage from "./Hooks/useLocalState";
 import { useEffect, useState } from "react";
 import ManualInput from "./components/modals/manualInput";
 import ListItem from "./components/ListItem";
-import Factura from "./components/pages/Factura";
+import Factura from "./routes/factura";
 import supabase from "./config/supabaseClient";
 import { formatNumber, uppercasing } from "./components/utils/helpers";
 import { options } from "./components/utils/options";
@@ -38,10 +38,12 @@ import Counter from "./components/Forms/Counter";
 import DownloadPdf from "./components/Buttons/DownloadPdf";
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import PdfInvoice from "./components/Factura/PdfInvoice";
-import FacturaPdf from "./components/FacturaPdf";
-import Test from "./components/Test";
+/* import FacturaPdf from "./components/FacturaPdf";
+ */
 import InvoicePDF from "./components/pages/InvoicePDF";
-
+import CreatePdf from "./components/Buttons/CreatePdf";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Root from "./routes/Root";
 function Print() {
   const users = useUsers();
   console.log(typeof users);
@@ -88,6 +90,12 @@ function Print() {
   }; */
 
   //console.log(fetchProducts());
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Root />,
+    },
+  ]);
   return (
     <Box>
       <ThemeProvider theme={customTheme}>
@@ -102,7 +110,8 @@ function Print() {
           {/*} {db.map((x) => {
             console.log(uppercasing(x));
          })}*/}
-          <GetDataForm />
+          {/*  <GetDataForm /> */}
+
           {/*  
 
           <Autocomplete
@@ -152,8 +161,12 @@ function Print() {
           {/* <Cart />
           <CreateProduct /> */}
           {/*  <Counter /> */}
-          <Factura />
-
+          {/* <Factura />
+          <CreatePdf
+            startIcon={DownloadIcon}
+            variant={"prime"}
+            title={"Descargar Recibo"}
+          /> */}
           {/*  <DownloadPdf /> */}
           {/* <PdfInvoice />
           <PDFViewer style={{ width: "100vh", height: "90vw" }}>

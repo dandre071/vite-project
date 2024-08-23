@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 
-import Text from "./TextField";
-import DatePickerComp from "./DatePicker";
-import SelectField from "./SelectField";
+import Text from "../components/TextField";
+import DatePickerComp from "../components/DatePicker";
+import SelectField from "../components/SelectField";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import { ListItem, Stack } from "@mui/material";
 
-import ProductPriceModal from "./ProductPriceModal";
+import ProductPriceModal from "../components/ProductPriceModal";
 
-import AutoProductModal from "./AutoProductModal";
-import VinylCutModal from "./VinylCutModal";
+import AutoProductModal from "../components/AutoProductModal";
+import VinylCutModal from "../components/VinylCutModal";
 import { ThemeProvider } from "styled-components";
-import { FormInputDate } from "./Forms/FormInputDate";
-import ManualInput from "./modals/manualInput";
+import { FormInputDate } from "../components/Forms/FormInputDate";
+import ManualInput from "../components/modals/manualInput";
 /* import {
   materialWidth,
   users,
@@ -25,11 +25,11 @@ import ManualInput from "./modals/manualInput";
   descolillado,
 } from "./lists"; */
 
-import ManualInput2 from "./modals/manualInput copy";
+import ManualInput2 from "../components/modals/manualInput copy";
 import { customTheme } from "../Hooks/useCustomTheme";
-import { options } from "./utils/options";
-import PersonalData from "./pages/PersonalData";
-import ModalHeader from "./ModalHeader";
+import { options } from "../components/utils/options";
+import PersonalData from "../components/pages/PersonalData";
+import ModalHeader from "../components/ModalHeader";
 import { usePersonalData } from "../store/shoppingCart";
 import { modal } from "../Styles/styles";
 const colors = {
@@ -41,7 +41,7 @@ const colors = {
   info: "#260987",
 };
 
-const GetDataForm = () => {
+const ClientData = () => {
   const personalData = usePersonalData((state) => state.personalData);
   // console.log(personalData[0].billType);
   return (
@@ -95,4 +95,4 @@ const GetDataForm = () => {
   );
 };
 
-export default GetDataForm;
+export default ClientData;
