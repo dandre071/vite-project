@@ -12,6 +12,7 @@ import Root from "./routes/Root";
 import ErrorPage from "./routes/ErrorPage.jsx";
 import Factura from "./routes/factura.jsx";
 import ClientData from "./routes/client-data.jsx";
+import ProductModule from "./routes/product-module.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/client-data",
         element: <ClientData />,
+      },
+      {
+        path: "/product-module",
+        element: <ProductModule />,
       },
     ],
   },

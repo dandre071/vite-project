@@ -4,10 +4,13 @@ const Root = () => {
     <div style={{ width: "100vh", height: "100vh", backgroundColor: "red" }}>
       <ul>
         <li>
-          <Link to={"/factura"}>Your Name</Link>
+          <Link to={"/factura"}>Factura</Link>
         </li>
         <li>
-          <Link to={"/client-data"}>Your Name</Link>
+          <Link to={"/client-data"}>Cliente</Link>
+        </li>
+        <li>
+          <Link to={"/product-module"}>Producto</Link>
         </li>
       </ul>
       <div id="detail">
