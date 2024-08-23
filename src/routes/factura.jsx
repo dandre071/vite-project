@@ -49,7 +49,9 @@ const Factura = () => {
       pdf.save("shipping_label.pdf");
     });
   }; */
-  const clientName = "ARMANDO PAREDES SALAS";
+  const totalInvoice = cart
+    .map((item) => item.itemTotalPrice)
+    .reduce((a, b) => a + b);
   const client = usePersonalData((state) => state.personalData);
   const users = useUsers();
   const date = new Date();
@@ -73,7 +75,7 @@ const Factura = () => {
   /* const targetRef = useRef(); */
   const options = {
     // default is `save`
-    filename: `${clientName}.pdf`,
+    filename: `${client.name}.pdf`,
     method: "save",
     // default is Resolution.MEDIUM = 3, which should be enough, higher values
     // increases the image quality but also the size of the PDF, so be careful
@@ -542,7 +544,7 @@ const Factura = () => {
                   </Typography>
 
                   <Typography sx={{ fontSize: 14, fontWeight: 600, pr: 0.5 }}>
-                    $3.000.000
+                    {colPesos.format(totalInvoice)}
                   </Typography>
                 </Box>
                 <Stack>
