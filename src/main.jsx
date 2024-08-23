@@ -14,6 +14,7 @@ import Factura from "./routes/factura.jsx";
 import ClientData from "./routes/client-data.jsx";
 import ProductModule from "./routes/product-module.jsx";
 import Cart from "./routes/cart.jsx";
+import Payment from "./routes/payment.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/payment",
+        element: <Payment />,
       },
     ],
   },

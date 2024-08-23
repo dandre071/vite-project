@@ -15,6 +15,9 @@ const Root = () => {
         <li>
           <Link to={"/cart"}>Cart</Link>
         </li>
+        <li>
+          <Link to={"/payment"}>Pay</Link>
+        </li>
       </ul>
       <div id="detail">
         <Outlet />
