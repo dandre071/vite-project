@@ -2,13 +2,13 @@ import { Box, Button, Divider, Grid, Stack, Typography } from "@mui/material";
 import useLocalStorage from "../Hooks/useLocalState";
 import { useRef, useState } from "react";
 import { useEffect } from "react";
-import ListItem from "./ListItem";
+import ListItem from "../components/ListItem";
 import { useShoppingCart } from "../store/shoppingCart";
 
 import { useGetCartTotalPrice } from "../Hooks/hooks";
-import { colPesos } from "./utils/configs";
-import AddBtn from "./Buttons/AddBtn";
-import ModalHeader from "./ModalHeader";
+import { colPesos } from "../components/utils/configs";
+import AddBtn from "../components/Buttons/AddBtn";
+import ModalHeader from "../components/ModalHeader";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import Badge from "@mui/material/Badge";

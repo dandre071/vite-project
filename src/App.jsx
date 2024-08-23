@@ -20,7 +20,7 @@ import {
 } from "@mui/material";
 import DownloadIcon from "@mui/icons-material/Download";
 //import { theme } from "./Styles/styles";
-import Cart from "./components/Cart";
+import Cart from "./routes/cart";
 import { customTheme } from "./Hooks/useCustomTheme";
 import useLocalStorage from "./Hooks/useLocalState";
 import { useEffect, useState } from "react";

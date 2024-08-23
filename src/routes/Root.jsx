@@ -12,6 +12,9 @@ const Root = () => {
         <li>
           <Link to={"/product-module"}>Producto</Link>
         </li>
+        <li>
+          <Link to={"/cart"}>Cart</Link>
+        </li>
       </ul>
       <div id="detail">
         <Outlet />

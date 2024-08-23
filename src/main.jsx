@@ -13,6 +13,7 @@ import ErrorPage from "./routes/ErrorPage.jsx";
 import Factura from "./routes/factura.jsx";
 import ClientData from "./routes/client-data.jsx";
 import ProductModule from "./routes/product-module.jsx";
+import Cart from "./routes/cart.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/product-module",
         element: <ProductModule />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },
