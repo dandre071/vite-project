@@ -382,11 +382,9 @@ body {
 .delete-btn {
   color: var(--secondary-main);
   border-radius: 50%;
-  transition: all 1s ease;
+  transition: scale 1s ease;
   cursor: pointer;
 }
 .delete-btn:hover {
-  color: white;
   transform: scale(1.2);
-  background-color: var(--secondary-main);
 }
