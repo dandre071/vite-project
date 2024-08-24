@@ -13,6 +13,8 @@ import ModalCard from "./Cards/ModalCard";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import { GiBoxCutter } from "react-icons/gi";
 import { customTheme } from "../Hooks/useCustomTheme";
+import { Slice } from "lucide-react";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -20,9 +22,9 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
-  border: "0px transparent #000 5px",
+  // border: "0px transparent #000 5px",
 
-  boxShadow: 24,
+  // boxShadow: 24,
   p: 4,
 };
 const VinylCutModal = ({
@@ -40,13 +42,10 @@ const VinylCutModal = ({
     <div>
       <ModalCard
         title={"Corte en Vinilo"}
+        icon={<Slice className="icon" />}
         onClick={handleOpen}
-        children={
-          <GiBoxCutter
-            style={{ color: customTheme.palette.primary.main, fontSize: 70 }}
-          />
-        }
       />
+
       <Modal
         open={open}
         onClose={handleClose}
@@ -56,6 +55,7 @@ const VinylCutModal = ({
         <Box borderRadius="10px" sx={style}>
           <Grid container spacing={2} sx={{ flexGrow: 1 }}>
             <Grid item sm={12}>
+              {/* <Slice /> */}
               <ModalHeader title={"Corte en vinilo"} />
             </Grid>
 

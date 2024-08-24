@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import ModalHeader from "../components/ModalHeader";
 
 const colors = {
   main: "#0303b3",
@@ -23,9 +24,10 @@ const ProductModule = () => {
   return (
     <div>
       {" "}
-      <Box sx={{ ...modal, height: 450 }}>
+      <Box sx={{ ...modal, height: "auto" }}>
+        <ModalHeader title={"Elegir producto"} />
         <Stack
-          spacing={2}
+          spacing={3}
           sx={{ display: "grid", gridTemplateRows: "400px 1fr" }}
           // direction="column"
         >

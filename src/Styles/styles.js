@@ -133,10 +133,10 @@ export const ModalCardStyle = {
   bgcolor: "primary.main",
   borderRadius: customTheme.shape.borderRadius - 2,
   border: `2px solid ${customTheme.palette.primary.light}`,
-  height: 90,
-  width: 120,
-  display: "flex",
-
+  height: 120,
+  width: "100%",
+  display: "grid",
+  gridTemplateColumns: "30% 70%",
   justifyContent: "center",
   alignItems: "center",
 };
