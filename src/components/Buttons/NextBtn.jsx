@@ -1,11 +1,11 @@
 import { Box } from "@mui/material";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
-const NextBtn = ({ disabled }) => {
+const NextBtn = ({ disabled, className }) => {
   return (
     <NavigateNextIcon
-      disabled={disabled}
-      className="arrow-btn"
+      /*  className="arrow-btn" */
+      className={className}
       sx={{ fontSize: 40 }}
     />
   );

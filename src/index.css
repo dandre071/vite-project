@@ -393,3 +393,11 @@ body {
   padding: 5px;
   border-radius: 10px;
 }
+.disabled-btn {
+  color: white;
+  cursor: not-allowed;
+}
+.disabled-btn:hover {
+  color: white;
+  cursor: not-allowed;
+}

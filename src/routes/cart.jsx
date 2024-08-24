@@ -27,6 +27,8 @@ import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 
 import NextBtn from "../components/Buttons/NextBtn";
 const Cart = () => {
+  const [btnState, setBtnState] = useState();
+
   const usersList = useUsersList((state) => state.usersList);
   /* const usersList = useUsersList((state) => state.users[0]).map(
     (user) => user.users
@@ -214,7 +216,9 @@ const Cart = () => {
                 </Button>
               </Link>
               <Link to={"/payment"}>
-                <NextBtn disabled={true} />
+                <NextBtn
+                  className={items.length > 0 ? "arrow-btn" : "disableb-btn"}
+                />
                 {/* <Button
                   variant="primary"
                   sx={{ height: "80%" }}
