@@ -228,6 +228,8 @@ const PersonalData = () => {
         >
           <Link to={"/product-module"}>
             <Button
+              disableRipple
+              className="nav-btn"
               disabled={
                 formik.errors.email || formik.errors.phone ? true : false
               }

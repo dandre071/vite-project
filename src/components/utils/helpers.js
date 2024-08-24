@@ -1,6 +1,7 @@
-import { useShoppingCart } from "../../store/shoppingCart";
+import { useRef } from "react";
+import { usePersonalData, useShoppingCart } from "../../store/shoppingCart";
 import { colPesos } from "./configs";
-
+import generatePDF from "react-to-pdf";
 export function sum() {
   console.log(2 + 1);
 }
@@ -29,4 +30,8 @@ export const uppercasing = (string) => {
     string.slice(0, 1).toUpperCase() +
     string.slice(1, string.length).toLowerCase()
   );
+};
+
+export const finishOperation = (targetRef, options) => {
+  generatePDF(targetRef, { filename: "page.pdf" });
 };

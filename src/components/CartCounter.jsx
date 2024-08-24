@@ -7,7 +7,7 @@ const CartCounter = () => {
   const count = useShoppingCart((state) => state.items);
   //console.log(count.length);
   return (
-    <Link style={{}} to={"/cart"}>
+    <Link id="cart-counter" style={{}} to={"/cart"}>
       <Badge color="secondary" badgeContent={count.length} showZero>
         <ShoppingCartOutlinedIcon />
       </Badge>

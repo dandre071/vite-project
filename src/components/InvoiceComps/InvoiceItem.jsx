@@ -9,6 +9,7 @@ const InvoiceItem = ({
   totalPrice,
   finish,
   description,
+  finishQ,
 }) => {
   return (
     <Stack className="invoice-item border-bottom" sx={{}}>
@@ -22,29 +23,33 @@ const InvoiceItem = ({
           alignItems: "center",
         }}
       >
-        <Typography sx={{ fontSize: 12, fontWeight: 500 }}>
+        <Typography
+          className="invoice-content-data-l"
+          sx={{ fontWeight: 600, fontSize: 13 }}
+        >
           {product}
         </Typography>
-        <Typography sx={{ fontSize: 12, fontWeight: 500, textAlign: "center" }}>
+        <Typography sx={{ fontSize: 13, fontWeight: 600, textAlign: "center" }}>
           {q}
         </Typography>
-        <Typography sx={{ fontSize: 12, fontWeight: 500, textAlign: "right" }}>
+        <Typography sx={{ fontSize: 13, fontWeight: 600, textAlign: "right" }}>
           {price}
         </Typography>
-        <Typography sx={{ fontSize: 12, fontWeight: 700, textAlign: "right" }}>
+        <Typography sx={{ fontSize: 13, fontWeight: 600, textAlign: "right" }}>
           {totalPrice}
         </Typography>
       </Stack>
       <Stack sx={{ display: "grid", gridTemplateColumns: "70% 1fr" }}>
         <Typography
-          className="secondary-color"
+          className="secondary-color capitalize"
           sx={{
-            fontSize: 10.5,
-            fontWeight: 300,
+            fontSize: 11.5,
+            fontWeight: 400,
             textAlign: "left",
             lineHeight: 1.2,
             pt: 0.2,
             pb: 0.2,
+            alignContent: "start",
           }}
         >
           {description}
@@ -59,12 +64,13 @@ const InvoiceItem = ({
           <Typography
             className="secondary-color"
             sx={{
-              fontSize: 10,
+              fontSize: 11,
               fontWeight: 500,
               textAlign: "center",
+              lineHeight: 1.2,
             }}
           >
-            Acabado: <br /> {finish}
+            Acabado: <br /> {`${finishQ} ${finish}`}
           </Typography>
         </Box>
       </Stack>

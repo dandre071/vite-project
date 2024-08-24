@@ -7,7 +7,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, forwardRef } from "react";
 import ReadOnlyText from "../components/Text/ReadOnlyText";
 import { invoiceGrid, title } from "../Styles/styles";
 import { customTheme } from "../Hooks/useCustomTheme";
@@ -25,9 +25,7 @@ import generatePDF from "react-to-pdf";
 import { usePersonalData, useShoppingCart } from "../store/shoppingCart";
 import { colPesos } from "../components/utils/configs";
 
-const Factura = () => {
-  const targetRef = useRef();
-  const printRef = React.useRef();
+const Factura = ({ targetRef, display }) => {
   const cart = useShoppingCart((state) => state.items);
   console.log(cart[0].name);
   /*   const handleDownloadPdf = async () => {
@@ -136,7 +134,7 @@ const Factura = () => {
               justifySelf: "center",
               display: "grid",
               justifyContent: "end",
-              alignItems: "start",
+              alignItems: "center",
 
               gridTemplateColumns: "40% 1fr ",
               // bgcolor: "red",
@@ -163,7 +161,6 @@ const Factura = () => {
                   justifyContent: "center",
                   fontSize: 10,
                   textAlign: "center",
-                  gap: -5,
                 }}
               >
                 <Box
@@ -197,7 +194,7 @@ const Factura = () => {
             <Box
               sx={{
                 display: "grid",
-
+                alignItems: "center",
                 height: "100%",
               }}
             >
@@ -206,13 +203,13 @@ const Factura = () => {
                   display: "grid",
 
                   //bgcolor: "green",
-
+                  bgcolor: "primary.light",
                   padding: 0,
                   width: "100%",
-                  height: "100%",
-
+                  height: "90%",
+                  borderRadius: 1.8,
                   justifySelf: "end",
-                  mt: 2,
+
                   gridTemplateRows: "60% 40%",
                 }}
               >
@@ -223,25 +220,25 @@ const Factura = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     width: "100%",
-                    height: "100%",
-                    bgcolor: "background.default",
+                    height: "90%",
+                    p: 0,
+                    // bgcolor: "background.default",
                     justifySelf: "end",
-                    //borderRadius: 1.8,
                   }}
                 >
-                  <Box sx={{ width: "95%", height: "95%" }}>
+                  <Box sx={{ width: "95%", height: "90%" }}>
                     <Box>
                       <Box>
                         <Typography
                           variant="h6"
-                          className="invoice-label"
+                          className="invoice-label-client"
                           sx={{}}
                         >
-                          Cliente:
+                          Cliente
                         </Typography>
                         <Typography
                           variant="h6"
-                          className="invoice-data"
+                          className="invoice-data-client"
                           sx={{}}
                         >
                           {client.name}
@@ -253,25 +250,28 @@ const Factura = () => {
                       >
                         <Box>
                           <Typography
-                            className="invoice-label"
+                            className="invoice-label-client"
                             sx={{
                               // bgcolor: "red",
                               p: 0,
-
+                              textTransform: "none",
                               fontSize: 11,
                             }}
                           >
-                            Email:
+                            Email
                           </Typography>
-                          <Typography className="invoice-data">
+                          <Typography className="invoice-data-client">
                             {client.email}
                           </Typography>
                         </Box>
                         <Box>
-                          <Typography className="invoice-label">
-                            Teléfono:
+                          <Typography className="invoice-label-client">
+                            Teléfono
                           </Typography>
-                          <Typography variant="h6" className="invoice-data">
+                          <Typography
+                            variant="h6"
+                            className="invoice-data-client"
+                          >
                             {client.phone}
                           </Typography>
                         </Box>
@@ -285,11 +285,12 @@ const Factura = () => {
                     gridTemplateColumns: "1fr 1fr",
 
                     //bgcolor: "green",
-                    width: "85%",
+                    width: "100%",
+                    height: "80%",
                     justifyContent: "end",
                     justifySelf: "end",
                     alignItems: "start",
-
+                    alignSelf: "end",
                     //border: `1.5px solid rgb(190, 190, 190)`,
                   }}
                 >
@@ -397,6 +398,7 @@ const Factura = () => {
                   totalPrice={colPesos.format(item.itemTotalPrice)}
                   finish={item.finish}
                   description={item.description}
+                  finishQ={item.finishQ > 1 ? item.finishQ : ""}
                 />
               ))}
             </Stack>

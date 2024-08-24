@@ -130,11 +130,12 @@ export const header = {
 };
 
 export const ModalCardStyle = {
-  bgcolor: "primary.main",
+  //bgcolor: "white",
   borderRadius: customTheme.shape.borderRadius - 2,
-  border: `2px solid ${customTheme.palette.primary.light}`,
-  height: 120,
-  width: "100%",
+  //border: `2px solid ${customTheme.palette.primary.light}`,
+
+  width: "97%",
+  height: "85%",
   display: "grid",
   gridTemplateColumns: "30% 70%",
   justifyContent: "center",

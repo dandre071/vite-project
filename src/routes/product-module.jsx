@@ -27,7 +27,6 @@ const ProductModule = () => {
       <Box sx={{ ...modal, height: "auto" }}>
         <ModalHeader title={"Elegir producto"} />
         <Stack
-          spacing={3}
           sx={{ display: "grid", gridTemplateRows: "400px 1fr" }}
           // direction="column"
         >
@@ -36,7 +35,7 @@ const ProductModule = () => {
         text={"Producto"}
         acabado={acabados}
       /> */}
-          <Stack sx={{ display: "flex", flexDirection: "column" }}>
+          <Stack sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
             <AutoProductModal
               text={"Auto"}
               matSize={options.materialWidth}

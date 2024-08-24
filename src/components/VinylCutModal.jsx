@@ -42,7 +42,7 @@ const VinylCutModal = ({
     <div>
       <ModalCard
         title={"Corte en Vinilo"}
-        icon={<Slice className="icon" />}
+        icon={<Slice id="icon" sx={{ fontSize: 20 }} />}
         onClick={handleOpen}
       />
 

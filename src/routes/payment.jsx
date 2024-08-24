@@ -1,12 +1,23 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import { colPesos } from "../components/utils/configs";
 import { useGetCartTotalPrice } from "../Hooks/hooks";
-import { useShoppingCart } from "../store/shoppingCart";
+import { usePersonalData, useShoppingCart } from "../store/shoppingCart";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { Link } from "react-router-dom";
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { finishOperation } from "../components/utils/helpers";
+import { useRef } from "react";
+import generatePDF from "react-to-pdf";
+import Factura from "./factura";
+
 const Payment = () => {
+  const client = usePersonalData((state) => state.personalData);
   const totalPrice = useGetCartTotalPrice();
   const clearCart = useShoppingCart((state) => state.clearCart);
+  const targetRef = useRef();
+  const show = false;
   return (
     <div>
       <Stack
@@ -101,14 +112,46 @@ const Payment = () => {
             {/* Cancelar */}
           </Button>
           <Button
+            onClick={() => generatePDF(targetRef, { filename: "page.pdf" })}
             startIcon={<ShoppingCartOutlinedIcon />}
             sx={{ color: "white", width: 400, height: 55 }}
             variant="prime"
           >
             Finalizar
           </Button>
+          <Grid
+            item
+            sx={{
+              height: 70,
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Link to={"/cart"}>
+              <Button
+                variant="primary"
+                sx={{ height: "80%" }}
+                //onClick={handleSubmit}
+                startIcon={<NavigateBeforeIcon />}
+              >
+                Compras
+              </Button>
+            </Link>
+            {/* <Link to={"/payment"}>
+              <Button
+                variant="primary"
+                sx={{ height: "80%" }}
+                //onClick={handleSubmit}
+                endIcon={<NavigateNextIcon />}
+              >
+                Pagar
+              </Button>
+            </Link> */}
+          </Grid>
         </Stack>
-      </Stack>
+      </Stack>{" "}
+      <Factura targetRef={targetRef} display={"none"} />
     </div>
   );
 };

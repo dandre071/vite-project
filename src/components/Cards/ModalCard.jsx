@@ -4,27 +4,28 @@ import { customTheme } from "../../Hooks/useCustomTheme";
 import { ModalCardStyle } from "../../Styles/styles";
 const ModalCard = ({ children, title, onClick, icon }) => {
   return (
-    <Box sx={{ width: 450 }}>
-      {/*  <Box
-        sx={{
-          width: 40,
-          height: 40,
-          bgcolor: "red",
-          position: "relative",
-          top: 55,
-          left: -20,
-          borderRadius: "50%",
-        }}
-      ></Box> */}
+    <Box id="modal-box">
       <Stack onClick={onClick} sx={ModalCardStyle}>
-        <Box sx={{ display: "flex", justifyContent: "center" }}>{icon}</Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            height: "100%",
+            borderRight: `2px solid ${customTheme.palette.primary.light}`,
+          }}
+        >
+          {icon}
+        </Box>
         <Typography
           variant="h6"
           sx={{
-            fontWeight: 800,
-            color: "primary.light",
+            fontWeight: 700,
+            color: "text.main",
             lineHeight: 1,
-            textAlign: "center",
+            textAlign: "left",
+            ml: 3,
           }}
           style={{ cursor: "pointer" }}
         >
