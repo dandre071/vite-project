@@ -214,7 +214,7 @@ const Cart = () => {
                 </Button>
               </Link>
               <Link to={"/payment"}>
-                <NextBtn />
+                <NextBtn disabled={true} />
                 {/* <Button
                   variant="primary"
                   sx={{ height: "80%" }}
