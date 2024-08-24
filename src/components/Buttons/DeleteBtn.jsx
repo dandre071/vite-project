@@ -5,7 +5,11 @@ const DeleteBtn = ({ sx, onClick }) => {
   return (
     <>
       {/* <HighlightOffIcon sx={sx} onClick={onClick} />; */}
-      <ClearIcon className="delete-btn" sx={sx} onClick={onClick} />
+      <ClearIcon
+        className="delete-btn"
+        sx={{ fontSize: 25, fontWeight: 800 }}
+        onClick={onClick}
+      />
     </>
   );
 };
