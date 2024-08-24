@@ -388,3 +388,8 @@ body {
 .delete-btn:hover {
   transform: scale(1.2);
 }
+.list-item {
+  border: 1.8px solid var(--background-dark);
+  padding: 5px;
+  border-radius: 10px;
+}

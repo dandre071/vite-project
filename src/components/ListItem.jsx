@@ -38,17 +38,7 @@ const ListItem = ({
   // console.log(fin);
   //const finishText =
   return (
-    <Box
-      sx={{
-        display: "grid",
-        p: 0,
-
-        borderBottom: `2px solid ${customTheme.palette.background.dark}`,
-
-        // bgcolor: "red",
-        // alignItems: "center",
-      }}
-    >
+    <Box className={"list-item"}>
       <Box
         sx={{
           // bgcolor: "primary.light",
