@@ -19,7 +19,7 @@ const Payment = () => {
   const targetRef = useRef();
   const show = false;
   return (
-    <div>
+    <div style={{ display: "grid" }}>
       <Stack
         sx={{
           display: "flex",
@@ -111,14 +111,7 @@ const Payment = () => {
             <ClearOutlinedIcon />
             {/* Cancelar */}
           </Button>
-          <Button
-            onClick={() => generatePDF(targetRef, { filename: "page.pdf" })}
-            startIcon={<ShoppingCartOutlinedIcon />}
-            sx={{ color: "white", width: 400, height: 55 }}
-            variant="prime"
-          >
-            Finalizar
-          </Button>
+
           <Grid
             item
             sx={{
@@ -128,14 +121,14 @@ const Payment = () => {
               alignItems: "center",
             }}
           >
-            <Link to={"/cart"}>
+            <Link to={"/factura"}>
               <Button
-                variant="primary"
-                sx={{ height: "80%" }}
-                //onClick={handleSubmit}
-                startIcon={<NavigateBeforeIcon />}
+                //onClick={() => generatePDF(targetRef, { filename: "page.pdf" })}
+                startIcon={<ShoppingCartOutlinedIcon />}
+                sx={{ color: "white", width: 400, height: 55 }}
+                variant="prime"
               >
-                Compras
+                Finalizar
               </Button>
             </Link>
             {/* <Link to={"/payment"}>
@@ -151,7 +144,7 @@ const Payment = () => {
           </Grid>
         </Stack>
       </Stack>{" "}
-      <Factura targetRef={targetRef} display={"none"} />
+      {/*  <Factura targetRef={targetRef} /> */}
     </div>
   );
 };

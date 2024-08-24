@@ -358,3 +358,26 @@ body {
 .capitalize {
   text-transform: capitalize;
 }
+.arrow-btn {
+  display: grid;
+  place-items: center;
+  transform: scale(1);
+  border-radius: 50%;
+  color: var(--primary-main);
+  transition: all 1s ease;
+
+  /* background-color: var(--primary-light); */
+}
+.arrow-btn:hover {
+  transform-origin: center;
+
+  transform: scale(1.2);
+
+  background-color: var(--primary-light);
+}
+.arrow-btn:visited {
+  color: var(--primary-main);
+}
+.delete-btn {
+  color: red;
+}

@@ -24,8 +24,10 @@ import { usePDF } from "react-to-pdf";
 import generatePDF from "react-to-pdf";
 import { usePersonalData, useShoppingCart } from "../store/shoppingCart";
 import { colPesos } from "../components/utils/configs";
+import { Link } from "react-router-dom";
 
-const Factura = ({ targetRef, display }) => {
+const Factura = () => {
+  const targetRef = useRef();
   const cart = useShoppingCart((state) => state.items);
   console.log(cart[0].name);
   /*   const handleDownloadPdf = async () => {
@@ -676,14 +678,16 @@ const Factura = ({ targetRef, display }) => {
       </button> */}
       {/* <button onClick={() => toPDF()}>Download PDF</button> */}
       {/* <button onClick={() => createPDF()}>Download PDF</button> */}
-      <button
-        data-html2canvas-ignore
-        onClick={() =>
-          generatePDF(targetRef, options /* { filename: "page.pdf" } */)
-        }
-      >
-        Download PDF
-      </button>
+      <Link to={"/"}>
+        <button
+          data-html2canvas-ignore
+          onClick={() =>
+            generatePDF(targetRef, options /* { filename: "page.pdf" } */)
+          }
+        >
+          Download PDF
+        </button>
+      </Link>
     </div>
   );
 };

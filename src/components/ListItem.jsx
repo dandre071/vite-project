@@ -198,7 +198,7 @@ const ListItem = ({
         >
           <DeleteBtn
             onClick={onClick}
-            sx={{
+            /* sx={{
               fontSize: 30,
               // color: "secondary.main",
 
@@ -210,7 +210,7 @@ const ListItem = ({
                 cursor: "pointer",
                 bgcolor: "secondary.main",
               },
-            }}
+            }} */
           />
           {/*   <Button>edit</Button> */}
         </Box>

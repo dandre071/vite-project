@@ -24,7 +24,8 @@ import Counter from "../components/Forms/Counter";
 import { Link } from "react-router-dom";
 //import { v4 as uuidv4 } from "uuid";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+
+import NextBtn from "../components/Buttons/NextBtn";
 const Cart = () => {
   const usersList = useUsersList((state) => state.usersList);
   /* const usersList = useUsersList((state) => state.users[0]).map(
@@ -192,7 +193,7 @@ const Cart = () => {
             </Box>
           </Stack>
           {/********** */}
-          <Box sx={{ width: "100%", height: 60, bgcolor: "red" }}>
+          <Box sx={{ width: "100%", height: 60 /* bgcolor: "red" */ }}>
             <Grid
               item
               sx={{
@@ -213,14 +214,15 @@ const Cart = () => {
                 </Button>
               </Link>
               <Link to={"/payment"}>
-                <Button
+                <NextBtn />
+                {/* <Button
                   variant="primary"
                   sx={{ height: "80%" }}
                   //onClick={handleSubmit}
                   endIcon={<NavigateNextIcon />}
                 >
                   Pagar
-                </Button>
+                </Button> */}
               </Link>
             </Grid>
           </Box>
