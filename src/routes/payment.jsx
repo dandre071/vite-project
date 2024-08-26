@@ -26,7 +26,10 @@ import { Form, useFormik } from "formik";
 import { PersonSchema } from "../components/Validations";
 import ModalHeader from "../components/ModalHeader";
 import { FormInputDate } from "../components/Forms/FormInputDate";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import {
+  LocalizationProvider,
+  MuiPickersAdapterContext,
+} from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateField, DateTimePicker } from "@mui/x-date-pickers";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
@@ -49,6 +52,7 @@ const Payment = () => {
   const totalPayment = colPesos.format(totalPrice);
   const [date, setDate] = useState();
   const [value, setValue] = useState();
+
   const newDate = new Intl.DateTimeFormat("es-CO", {
     dateStyle: "short",
     timeStyle: "short",
@@ -62,7 +66,7 @@ const Payment = () => {
     initialValues: {
       receives: "",
       do: "",
-      delivery: "",
+      delivery: new Date(),
       payment: null,
       comments: "",
       pending: null,
@@ -225,6 +229,7 @@ const Payment = () => {
             value={value}
             name={"delivery"}
           /> */}
+
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer components={["DateTimePicker"]}>
               <DateTimePicker
