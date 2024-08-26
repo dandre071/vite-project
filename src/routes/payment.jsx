@@ -34,6 +34,7 @@ import dayjs, { Dayjs } from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import { useState } from "react";
+import DatePicker from "../components/Forms/DatePicker";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -47,13 +48,15 @@ const Payment = () => {
   const items = useShoppingCart((state) => state.items);
   const totalPayment = colPesos.format(totalPrice);
   const [date, setDate] = useState();
-
+  const [value, setValue] = useState();
   const newDate = new Intl.DateTimeFormat("es-CO", {
     dateStyle: "short",
     timeStyle: "short",
     timeZone: "America/Bogota",
-  }).format(date);
-  console.log(newDate.toString());
+  }).format(value);
+
+  const dateString = newDate.toString();
+  console.log(dateString);
 
   const formik = useFormik({
     initialValues: {
@@ -61,7 +64,7 @@ const Payment = () => {
       do: "",
       delivery: "",
       payment: null,
-      description: "",
+      comments: "",
       pending: null,
     },
     validationSchema: PersonSchema,
@@ -70,7 +73,7 @@ const Payment = () => {
   });
   const handleDate = () => {
     (newValue) => setDate(newValue);
-    formik.setValues({ ...formik.values, delivery: newDate.toString() });
+    formik.setValues({ ...formik.values, delivery: newDate });
   };
   console.log(formik.values);
   /*  console.log(
@@ -114,7 +117,7 @@ const Payment = () => {
     >
       {" "}
       <ModalHeader title={"Resumen de compra"} />
-      <Stack sx={{}}>
+      <Stack sx={{ width: "95%" }}>
         <Box
           sx={{
             bgcolor: "primary.light",
@@ -217,15 +220,18 @@ const Payment = () => {
             label={"Fecha Entrega"}
             
           /> */}
-
+          {/* <DatePicker
+            onChange={(newValue) => setValue(newValue)}
+            value={value}
+            name={"delivery"}
+          /> */}
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            {/* Use the appropriate adapter */}
-            <DemoContainer components={["DateTimePicker", "Input"]} sx={{}}>
+            <DemoContainer components={["DateTimePicker"]}>
               <DateTimePicker
-                value={formik.values.delivery || null}
-                onChange={(newValue) => setDate(newValue)}
+                value={value}
+                onChange={(newValue) => setValue(newValue)}
                 timezone="America/Bogota"
-                label={"label"}
+                label={"Fecha Entrega"}
                 name={"delivery"}
                 format="DD/MM/YYYY, h:mma"
                 sx={{
@@ -233,7 +239,7 @@ const Payment = () => {
                   input: {
                     size: "small",
                     color: "text.main",
-                    width: "70%",
+                    width: "95%",
                     pr: 0,
                     m: 0,
                     textAlign: "right",
@@ -251,6 +257,20 @@ const Payment = () => {
             </DemoContainer>
           </LocalizationProvider>
         </Box>
+
+        <TextField
+          //onBlur={formik.handleBlur}
+          //error={formik.errors.email}
+          // helperText={formik.errors.email}
+          /* value={formik.values.email} */
+          name="comments"
+          multiline
+          onChange={formik.handleChange}
+          fullWidth
+          //defaultValue={localStore.email}
+          label={"Observaciones"}
+          type="text"
+        />
       </Stack>
       <Stack
         spacing={1}
