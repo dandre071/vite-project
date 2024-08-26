@@ -255,24 +255,23 @@ const Payment = () => {
               label={"Fecha Entrega"}
               name={"delivery"}
               format="DD/MM/YYYY, h:mma"
+              slotProps={{ textField: { size: "small", m: 0 } }}
               sx={{
-                textField: { size: "small" },
+                textField: { size: "small", width: 200 },
                 input: {
-                  size: "small",
                   color: "text.main",
-                  width: "95%",
+
                   pr: 0,
                   m: 0,
                   textAlign: "right",
                 },
-                button: { color: "primary.main", p: 1, m: 0 },
+                button: { color: "primary.main", p: 0.5, m: 0, left: 40 },
                 div: {
-                  // bgcolor: "red",
-
-                  pl: 1,
+                  width: 200,
+                  pl: 0.5,
                   m: 0,
                 },
-                svg: { transform: "scale(0.8)" },
+                svg: { transform: "scale(0.6)" },
               }}
             />
           </DemoContainer>
