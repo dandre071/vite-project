@@ -3,6 +3,8 @@ import { useOpen } from "../../Hooks/hooks";
 import { ThemeProvider } from "styled-components";
 import { customTheme } from "../../Hooks/useCustomTheme";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { useShoppingCart } from "../../store/shoppingCart";
+
 const AddBtn = ({
   onClick,
   onSubmit,

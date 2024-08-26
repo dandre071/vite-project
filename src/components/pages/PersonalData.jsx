@@ -20,6 +20,7 @@ import { colPesos } from "../utils/configs";
 import { formatPhoneNumber } from "../utils/helpers";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
+import NextBtn from "../Buttons/NextBtn";
 
 const PersonalData = () => {
   const localStore = usePersonalData((state) => state.personalData);
@@ -227,19 +228,7 @@ const PersonalData = () => {
           }}
         >
           <Link to={"/product-module"}>
-            <Button
-              disableRipple
-              className="nav-btn"
-              disabled={
-                formik.errors.email || formik.errors.phone ? true : false
-              }
-              variant="primary"
-              sx={{ height: "80%" }}
-              onClick={handleSubmit}
-              endIcon={<ArrowForwardIcon />}
-            >
-              Siguiente
-            </Button>
+            <NextBtn className="arrow-btn" />
           </Link>
         </Grid>
       </form>

@@ -143,7 +143,7 @@ export const ModalCardStyle = {
 };
 
 export const modal = {
-  flexGrow: 1,
+  //flexGrow: 1,
   //minWidth: 160,
   width: 450,
   bgcolor: "white",

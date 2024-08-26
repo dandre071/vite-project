@@ -14,6 +14,7 @@
   --border-bottom: 2px solid var(--primary-main);
   --background-light: #eef2ff;
   --secondary-main: #e50037;
+  --text-main: #02172a;
 }
 
 body {
@@ -366,14 +367,15 @@ body {
   border-radius: 50%;
   color: var(--primary-main);
   transition: all 1s ease;
+  padding: 5px;
 
   /* background-color: var(--primary-light); */
 }
 .arrow-btn:hover {
   transform-origin: center;
 
-  transform: scale(1.2);
-
+  transform: scale(1.1);
+  /*   transform: translateX(10px); */
   background-color: var(--primary-light);
 }
 .arrow-btn:visited {
@@ -394,10 +396,17 @@ body {
   border-radius: 10px;
 }
 .disabled-btn {
-  color: white;
+  color: rgb(182, 182, 182);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+/* .disabled-btn:hover {
+  color: rgb(175, 175, 175);
   cursor: not-allowed;
 }
-.disabled-btn:hover {
-  color: white;
-  cursor: not-allowed;
+ */
+.payment-total {
+  font-weight: 800;
+  color: var(--text-main);
+  font-size: 18;
 }

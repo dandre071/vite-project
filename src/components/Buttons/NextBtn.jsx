@@ -1,12 +1,11 @@
-import { Box } from "@mui/material";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 
-const NextBtn = ({ disabled, className }) => {
+const NextBtn = ({ className }) => {
   return (
-    <NavigateNextIcon
+    <ArrowForwardIosRoundedIcon
       /*  className="arrow-btn" */
       className={className}
-      sx={{ fontSize: 40 }}
+      sx={{ fontSize: 30 }}
     />
   );
 };

@@ -9,20 +9,17 @@ const ModalHeader = ({ title }) => {
     <>
       <Box
         sx={{
-          height: 100,
+          height: 80,
           display: "flex",
           justifyContent: "center",
           alignItems: "end",
-          pt: 1,
           pb: 2,
-          // borderBottom: `2px solid ${customTheme.palette.background.dark}`,
+          mb: 2,
+          borderBottom: `1px solid ${customTheme.palette.background.dark}`,
           // bgcolor: "primary.main",
         }}
       >
-        <Typography
-          variant="h5"
-          sx={{ fontWeight: 900, color: "primary.main" }}
-        >
+        <Typography variant="h5" sx={{ fontWeight: 900, color: "text.main" }}>
           {title}
         </Typography>
       </Box>

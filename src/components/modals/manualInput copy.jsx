@@ -1,5 +1,11 @@
 import Box from "@mui/material/Box";
-import { Button, InputAdornment, TextField, Tooltip } from "@mui/material";
+import {
+  Button,
+  InputAdornment,
+  TextField,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "../ModalHeader";
@@ -23,6 +29,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import { formatNumber } from "../utils/helpers.js";
 import { useUsersList } from "../../store/lists.js";
 import useUsers from "../../Hooks/useUsers.js";
+import { ShoppingCart } from "lucide-react";
 
 const module = "ManualInput";
 
@@ -112,15 +119,13 @@ const ManualInput2 = ({ text, acabado }) => {
   // formatNumber(formik.values.price);
   const users = useUsers();
   console.log(users);
-
+  const items = useShoppingCart((state) => state.items);
   return (
     <Box>
       <ModalCard
         title={"Producto Directo"}
         onClick={handleOpen}
-        children={
-          <EditNoteOutlinedIcon sx={{ fontSize: 50, color: "primary.light" }} />
-        }
+        icon={<ShoppingCart id="icon" sx={{ fontSize: 20 }} />}
       />
       <Modal
         open={open}
@@ -343,17 +348,21 @@ const ManualInput2 = ({ text, acabado }) => {
                 pb: 3,
               }}
             >
-              <Button
-                sx={{ width: "80%" }}
-                //disabled={!formik.values.itemTotalPrice ? true : false}
-                title={"Agregar"}
-                variant="prime"
-                type="submit"
-                onClick={formik.handleSubmit}
-                startIcon={<AddShoppingCartIcon />}
-              >
-                Agregar
-              </Button>
+              {items.length < 7 ? (
+                <Button
+                  sx={{ width: "80%" }}
+                  //disabled={!formik.values.itemTotalPrice ? true : false}
+                  title={"Agregar"}
+                  variant="prime"
+                  type="submit"
+                  onClick={formik.handleSubmit}
+                  startIcon={<AddShoppingCartIcon />}
+                >
+                  Agregar
+                </Button>
+              ) : (
+                <Typography>Límite de productos alcanzado!</Typography>
+              )}
             </Grid>
           </Box>
         </Box>

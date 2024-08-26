@@ -1,4 +1,12 @@
-import { Box, Button, Grid, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  InputAdornment,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { colPesos } from "../components/utils/configs";
 import { useGetCartTotalPrice } from "../Hooks/hooks";
 import { usePersonalData, useShoppingCart } from "../store/shoppingCart";
@@ -11,127 +19,285 @@ import { finishOperation } from "../components/utils/helpers";
 import { useRef } from "react";
 import generatePDF from "react-to-pdf";
 import Factura from "./factura";
+import NavBtn from "../Hooks/useCartItems";
+import { modal } from "../Styles/styles";
+import FormSelect2 from "../components/Forms/FormSelect2";
+import { Form, useFormik } from "formik";
+import { PersonSchema } from "../components/Validations";
+import ModalHeader from "../components/ModalHeader";
+import { FormInputDate } from "../components/Forms/FormInputDate";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateField, DateTimePicker } from "@mui/x-date-pickers";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import dayjs, { Dayjs } from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+import { useState } from "react";
 
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.tz.setDefault("America/Bogota");
 const Payment = () => {
   const client = usePersonalData((state) => state.personalData);
   const totalPrice = useGetCartTotalPrice();
   const clearCart = useShoppingCart((state) => state.clearCart);
   const targetRef = useRef();
   const show = false;
+  const items = useShoppingCart((state) => state.items);
+  const totalPayment = colPesos.format(totalPrice);
+  const [date, setDate] = useState();
+
+  const newDate = new Intl.DateTimeFormat("es-CO", {
+    dateStyle: "short",
+    timeStyle: "short",
+    timeZone: "America/Bogota",
+  }).format(date);
+  console.log(newDate.toString());
+
+  const formik = useFormik({
+    initialValues: {
+      receives: "",
+      do: "",
+      delivery: "",
+      payment: null,
+      description: "",
+      pending: null,
+    },
+    validationSchema: PersonSchema,
+
+    // onSubmit: handleSubmit,
+  });
+  const handleDate = () => {
+    (newValue) => setDate(newValue);
+    formik.setValues({ ...formik.values, delivery: newDate.toString() });
+  };
+  console.log(formik.values);
+  /*  console.log(
+    new Intl.DateTimeFormat("es-CO", {
+      dateStyle: "short",
+      timeStyle: "short",
+      timeZone: "America/Bogota",
+    }).format(formik.values.delivery)
+  ); */
+  //console.log(formik.values);
+  const styles = {
+    payment: {
+      fontWeight: 800,
+      color: "text.main",
+      fontSize: 18,
+    },
+    paymentAmount: {
+      fontWeight: 500,
+      color: "grey",
+      fontSize: 16,
+    },
+    paymentBox: {
+      display: "grid",
+      gridTemplateColumns: "1fr 1fr",
+      alignItems: "end",
+      mb: 2,
+      borderBottom: `1.5px solid background.dark`,
+    },
+  };
   return (
-    <div style={{ display: "grid" }}>
+    <Stack
+      sx={{
+        ...modal,
+        height: 400,
+        width: "100%",
+        display: "grid",
+        gridTemplateRows: "repeat(4, 1fr)",
+        justifyContent: "center",
+        // overflow: 'auto',
+      }}
+    >
+      {" "}
+      <ModalHeader title={"Resumen de compra"} />
+      <Stack sx={{}}>
+        <Box
+          sx={{
+            bgcolor: "primary.light",
+            m: 0,
+            //borderRadius: 2,
+            display: "grid",
+            gridTemplateRows: "1fr 1fr 1fr",
+            width: "100%",
+          }}
+        >
+          <Box sx={styles.paymentBox}>
+            <Typography
+              sx={styles.payment}
+            >{`Productos: (${items.length})`}</Typography>
+            <Typography sx={{ ...styles.payment, textAlign: "right" }}>
+              {totalPayment}
+            </Typography>
+          </Box>
+
+          <Box sx={{ ...styles.paymentBox }}>
+            <Typography sx={styles.paymentAmount}>{`Pago: `}</Typography>
+
+            <TextField
+              variant="standard"
+              sx={{ width: "30%", justifySelf: "end", textAlign: "right" }}
+              error={formik.errors.payment}
+              helperText={formik.errors.payment}
+              /* value={formik.values.email} */
+              size="small"
+              name="payment"
+              onChange={formik.handleChange}
+              fullWidth={false}
+              // defaultValue={localStore.email}
+              // label={"Email"}
+              value={formik.values.payment}
+              inputProps={{ style: { textAlign: "right" } }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment
+                    position="start"
+                    component="div"
+                    style={{ paddingLeft: "-14px" }}
+                    disablePointerEvents
+                  >
+                    <Typography sx={{ fontWeight: 600 }}>$</Typography>
+                  </InputAdornment>
+                ),
+              }}
+              type="tel"
+            />
+          </Box>
+          <Box
+            className="border-bottom-heavy"
+            sx={{ ...styles.paymentBox, mb: 2, pb: 1 }}
+          >
+            <Typography sx={styles.paymentAmount}>{`Pendiente: `}</Typography>
+            <Typography
+              name={"pending"}
+              onChange={formik.handleChange}
+              sx={{ ...styles.paymentAmount, textAlign: "right" }}
+            >
+              {colPesos.format(totalPrice - formik.values.payment)}
+            </Typography>
+          </Box>
+        </Box>
+
+        <Box
+          sx={{
+            bgcolor: "pink",
+            gap: 1,
+            display: "grid",
+            width: "100%",
+            gridTemplateColumns: "repeat(2, 1fr) 2fr",
+          }}
+        >
+          <FormSelect2
+            value={formik.values.clientType}
+            error={formik.errors.clientType}
+            helperText={formik.errors.clientType}
+            fullWidth
+            name="clientType"
+            onChange={formik.handleChange}
+            options={["a", "b", "c"]}
+            label={"Recibe"}
+          />
+          <FormSelect2
+            value={formik.values.clientType}
+            error={formik.errors.clientType}
+            helperText={formik.errors.clientType}
+            fullWidth
+            name="clientType"
+            onChange={formik.handleChange}
+            options={["a", "b", "c"]}
+            label={"Realiza"}
+          />
+          {/* <FormInputDate
+            value={formik.values.delivery}
+            name="delivery"
+            onChange={formik.handleChange}
+            label={"Fecha Entrega"}
+            
+          /> */}
+
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            {/* Use the appropriate adapter */}
+            <DemoContainer components={["DateTimePicker", "Input"]} sx={{}}>
+              <DateTimePicker
+                value={formik.values.delivery || null}
+                onChange={(newValue) => setDate(newValue)}
+                timezone="America/Bogota"
+                label={"label"}
+                name={"delivery"}
+                format="DD/MM/YYYY, h:mma"
+                sx={{
+                  textField: {},
+                  input: {
+                    size: "small",
+                    color: "text.main",
+                    width: "70%",
+                    pr: 0,
+                    m: 0,
+                    textAlign: "right",
+                  },
+                  button: { color: "primary.main", p: 1, m: 0 },
+                  div: {
+                    // bgcolor: "red",
+
+                    pl: 1,
+                    m: 0,
+                  },
+                  svg: { transform: "scale(0.8)" },
+                }}
+              />
+            </DemoContainer>
+          </LocalizationProvider>
+        </Box>
+      </Stack>
       <Stack
+        spacing={1}
+        direction={"row"}
         sx={{
+          // borderTop: "1px solid grey",
+          width: 550,
+          pt: 1,
+          pb: 2,
+
           display: "flex",
-          alignSelf: "center",
-          borderRadius: 3,
-          bgcolor: "white",
-          alignItems: "center",
-          justifySelf: "center",
+          //bgcolor: "yellow",
+          // alignItems: "end",
           justifyContent: "center",
-
-          width: "100%",
-          height: 150,
-
-          boxShadow: 4,
         }}
       >
-        <Stack
-          direction={"row"}
+        <Button
+          onClick={clearCart}
+          //startIcon={<ClearOutlinedIcon />}
+          sx={{ width: 30, height: 55 }}
+          // variant="secondary"
+          variant="secondary-outlined"
+        >
+          <ClearOutlinedIcon />
+          {/* Cancelar */}
+        </Button>
+
+        <Grid
+          item
           sx={{
+            height: 70,
             display: "flex",
-            // flexDirection: "row",
-            // bgcolor: "green",
-            justifyContent: "center",
-            width: 480,
+            justifyContent: "space-between",
+            alignItems: "center",
           }}
         >
-          {/* <Badge
-            badgeContent={items.length}
-            color="secondary"
-            sx={{ justifySelf: "center", alignSelf: "center" }}
-          >
-            <ShoppingCartOutlinedIcon
-              sx={{ fontSize: 45, color: "primary.main" }}
-            />
-          </Badge> */}
-          <Box
-            sx={{
-              //  bgcolor: "primary.light",
-              height: 80,
-              borderRadius: 2,
-              display: "flex",
-              width: "100%",
-              justifyContent: "space-between",
-              alignItems: "end",
-            }}
-          >
-            {/* <Typography>{`Artículos: ${items.length}`}</Typography> */}
-            <Typography
-              variant="h5"
-              sx={{
-                fontWeight: 800,
-                color: "text.main",
-                fontSize: 20,
-              }}
-            >{`Total:`}</Typography>
-            <Typography
-              variant="h5"
-              sx={{
-                fontWeight: 800,
-                color: "text.main",
-                fontSize: 20,
-              }}
-            >{`${colPesos.format(totalPrice)}`}</Typography>
-          </Box>
-        </Stack>
-
-        <Stack
-          spacing={1}
-          direction={"row"}
-          sx={{
-            // borderTop: "1px solid grey",
-            width: 550,
-            pt: 1,
-            pb: 2,
-
-            display: "flex",
-            //bgcolor: "yellow",
-            // alignItems: "end",
-            justifyContent: "center",
-          }}
-        >
-          <Button
-            onClick={clearCart}
-            //startIcon={<ClearOutlinedIcon />}
-            sx={{ width: 30, height: 55 }}
-            // variant="secondary"
-            variant="secondary-outlined"
-          >
-            <ClearOutlinedIcon />
-            {/* Cancelar */}
-          </Button>
-
-          <Grid
-            item
-            sx={{
-              height: 70,
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <Link to={"/factura"}>
-              <Button
-                //onClick={() => generatePDF(targetRef, { filename: "page.pdf" })}
-                startIcon={<ShoppingCartOutlinedIcon />}
-                sx={{ color: "white", width: 400, height: 55 }}
-                variant="prime"
-              >
-                Finalizar
-              </Button>
-            </Link>
-            {/* <Link to={"/payment"}>
+          <Link to={"/factura"}>
+            <Button
+              //onClick={() => generatePDF(targetRef, { filename: "page.pdf" })}
+              startIcon={<ShoppingCartOutlinedIcon />}
+              sx={{ color: "white", width: 400, height: 55 }}
+              variant="prime"
+            >
+              Finalizar
+            </Button>
+          </Link>
+          {/* <Link to={"/payment"}>
               <Button
                 variant="primary"
                 sx={{ height: "80%" }}
@@ -141,11 +307,11 @@ const Payment = () => {
                 Pagar
               </Button>
             </Link> */}
-          </Grid>
-        </Stack>
-      </Stack>{" "}
+        </Grid>
+      </Stack>
+      <NavBtn pathBack={"/cart"} pathNext={""} display={"none"} />
       {/*  <Factura targetRef={targetRef} /> */}
-    </div>
+    </Stack>
   );
 };
 

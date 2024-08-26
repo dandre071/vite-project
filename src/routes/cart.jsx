@@ -26,6 +26,7 @@ import { Link } from "react-router-dom";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 
 import NextBtn from "../components/Buttons/NextBtn";
+import NavBtn from "../Hooks/useCartItems";
 const Cart = () => {
   const [btnState, setBtnState] = useState();
 
@@ -89,9 +90,17 @@ const Cart = () => {
           display: "flex",
           flexDirection: "column",
           gap: 1,
+          alignSelf: "start",
         }}
       >
-        <Box sx={{ ...modal, width: 650, alignItems: "start" }}>
+        <Box
+          sx={{
+            ...modal,
+            width: 650,
+            alignItems: "start",
+            transform: "scale(0.9)",
+          }}
+        >
           <ModalHeader title={"Compras"} />
           {items.length && (
             <Stack
@@ -173,7 +182,11 @@ const Cart = () => {
                   </Stack>
                 </Box>
               )}
-              <Stack display={"flex"} spacing={1} sx={{}}>
+              <Stack
+                display={"flex"}
+                spacing={1}
+                sx={{ display: "flex", alignItems: "start" }}
+              >
                 {items.map((item) => (
                   <ListItem
                     price={item.price}
@@ -195,8 +208,15 @@ const Cart = () => {
             </Box>
           </Stack>
           {/********** */}
-          <Box sx={{ width: "100%", height: 60 /* bgcolor: "red" */ }}>
-            <Grid
+          <Box
+            sx={{
+              width: "100%",
+              height: 60,
+              display: " flex",
+              justifyContent: "center",
+            }}
+          >
+            {/* <Grid
               item
               sx={{
                 height: 70,
@@ -215,20 +235,21 @@ const Cart = () => {
                   Producto
                 </Button>
               </Link>
-              <Link to={"/payment"}>
-                <NextBtn
-                  className={items.length > 0 ? "arrow-btn" : "disableb-btn"}
-                />
-                {/* <Button
-                  variant="primary"
-                  sx={{ height: "80%" }}
-                  //onClick={handleSubmit}
-                  endIcon={<NavigateNextIcon />}
-                >
-                  Pagar
-                </Button> */}
-              </Link>
-            </Grid>
+              {items.length > 0 ? (
+                <Link to={"/payment"}>
+                  <NextBtn
+                    className={items.length > 0 ? "arrow-btn" : "disabled-btn"}
+                  />
+                </Link>
+              ) : (
+                <NextBtn className={"disabled-btn"} />
+              )}
+            </Grid> */}
+            <NavBtn
+              pathBack={"/product-module"}
+              pathNext={"/payment"}
+              style={{ display: "flex", justifySelf: "center" }}
+            />
           </Box>
         </Box>
       </Box>

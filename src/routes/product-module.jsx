@@ -6,12 +6,15 @@ import ManualInput2 from "../components/modals/manualInput copy";
 import PersonalData from "../components/pages/PersonalData";
 import { options } from "../components/utils/options";
 import { modal } from "../Styles/styles";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import ModalHeader from "../components/ModalHeader";
-
+import NextBtn from "../components/Buttons/NextBtn";
+import { useShoppingCart } from "../store/shoppingCart";
+import NavBtn from "../Hooks/useCartItems";
+import { redirect } from "react-router-dom";
 const colors = {
   main: "#0303b3",
   light: "#597fff",
@@ -21,76 +24,59 @@ const colors = {
   info: "#260987",
 };
 const ProductModule = () => {
+  const items = useShoppingCart((state) => state.items);
   return (
     <div>
-      {" "}
-      <Box sx={{ ...modal, height: "auto" }}>
+      <Box sx={{ ...modal, height: 510 }}>
         <ModalHeader title={"Elegir producto"} />
-        <Stack
-          sx={{ display: "grid", gridTemplateRows: "400px 1fr" }}
-          // direction="column"
-        >
-          {/* <ProductPriceModal
+        {items.length < 6 ? (
+          <Stack
+            sx={{ display: "grid", gridTemplateRows: "400px 1fr" }}
+            // direction="column"
+          >
+            {/* <ProductPriceModal
         colors={colors}
         text={"Producto"}
         acabado={acabados}
       /> */}
-          <Stack sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-            <AutoProductModal
-              text={"Auto"}
-              matSize={options.materialWidth}
-              material={options.materials}
-              choice={options.choice}
-              colors={colors}
-              options={options.acabados}
-            />
+            <Stack
+              sx={{
+                display: "grid",
+                gridTemplateRows: "repeat(4,1fr)",
+                gap: 0.5,
+              }}
+            >
+              <AutoProductModal
+                text={"Auto"}
+                matSize={options.materialWidth}
+                material={options.materials}
+                choice={options.choice}
+                colors={colors}
+                options={options.acabados}
+              />
 
-            <VinylCutModal
-              text={"Corte en vinilo"}
-              materials={options.vinyls}
-              choice={options.choice}
-              descolillado={options.descolillado}
-              colors={{ colors }}
-            />
+              <VinylCutModal
+                text={"Corte en vinilo"}
+                materials={options.vinyls}
+                choice={options.choice}
+                descolillado={options.descolillado}
+                colors={{ colors }}
+              />
 
-            <ManualInput2
-              // onSubmit={handleChangeData}
-              choice={options.choice}
-              text={"Manual input"}
-              acabado={options.acabados}
-            />
+              <ManualInput2
+                // onSubmit={handleChangeData}
+                choice={options.choice}
+                text={"Manual input"}
+                acabado={options.acabados}
+              />
+              <Box sx={{ display: " flex", justifyContent: "center", pb: 10 }}>
+                <NavBtn pathBack={"/client-data"} pathNext={"/cart"} />
+              </Box>
+            </Stack>{" "}
           </Stack>
-        </Stack>
-        <Grid
-          item
-          sx={{
-            height: 70,
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Link to={"/client-data"}>
-            <Button
-              variant="primary"
-              sx={{ height: "80%" }}
-              //onClick={handleSubmit}
-              startIcon={<NavigateBeforeIcon />}
-            >
-              Cliente
-            </Button>
-          </Link>
-          <Link to={"/cart"}>
-            <Button
-              variant="primary"
-              sx={{ height: "80%" }}
-              //onClick={handleSubmit}
-              endIcon={<NavigateNextIcon />}
-            >
-              Compras
-            </Button>
-          </Link>
-        </Grid>
+        ) : (
+          <Navigate to="/cart" replace={true} />
+        )}
       </Box>
     </div>
   );
