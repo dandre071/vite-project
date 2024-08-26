@@ -256,7 +256,7 @@ const Payment = () => {
               name={"delivery"}
               format="DD/MM/YYYY, h:mma"
               sx={{
-                textField: {},
+                textField: { size: "small" },
                 input: {
                   size: "small",
                   color: "text.main",
