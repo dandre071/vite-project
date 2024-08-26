@@ -53,14 +53,8 @@ const Payment = () => {
   const [date, setDate] = useState();
   const [value, setValue] = useState();
 
-  const newDate = new Intl.DateTimeFormat("es-CO", {
-    dateStyle: "short",
-    timeStyle: "short",
-    timeZone: "America/Bogota",
-  }).format(value);
-
-  const dateString = newDate.toString();
-  console.log(dateString);
+  //const dateString = newDate.toString();
+  //console.log(dateString);
 
   const formik = useFormik({
     initialValues: {
@@ -87,7 +81,15 @@ const Payment = () => {
       timeZone: "America/Bogota",
     }).format(formik.values.delivery)
   ); */
-  //console.log(formik.values);
+  const deliveryDate = formik.values.delivery["$d"] || new Date();
+  console.log(deliveryDate);
+
+  const newDateFormat = new Intl.DateTimeFormat("es-CO", {
+    dateStyle: "short",
+    timeStyle: "short",
+    timeZone: "America/Bogota",
+  }).format(deliveryDate);
+  console.log(newDateFormat);
   const styles = {
     payment: {
       fontWeight: 800,
@@ -234,7 +236,8 @@ const Payment = () => {
             <DemoContainer components={["DateTimePicker"]}>
               <DateTimePicker
                 value={value}
-                onChange={(newValue) => setValue(newValue)}
+                //onChange={(newValue) => setfield (newValue)}
+                onChange={(e) => formik.setFieldValue("delivery", e)}
                 timezone="America/Bogota"
                 label={"Fecha Entrega"}
                 name={"delivery"}
