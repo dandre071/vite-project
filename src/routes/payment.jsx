@@ -136,7 +136,7 @@ const Payment = () => {
             width: "500px",
           }}
         >
-          <Box sx={styles.paymentBox}>
+          <Box sx={{ ...styles.paymentBox, width: 500 }}>
             <Typography
               sx={styles.payment}
             >{`Productos: (${items.length})`}</Typography>
@@ -150,7 +150,13 @@ const Payment = () => {
 
             <TextField
               variant="standard"
-              sx={{ width: "30%", justifySelf: "end", textAlign: "right" }}
+              sx={{
+                width: "80px",
+                maxWidth: "100px",
+                display: "flex",
+                justifySelf: "end",
+                textAlign: "right",
+              }}
               error={formik.errors.payment}
               helperText={formik.errors.payment}
               /* value={formik.values.email} */
@@ -161,7 +167,9 @@ const Payment = () => {
               // defaultValue={localStore.email}
               // label={"Email"}
               value={formik.values.payment}
-              inputProps={{ style: { textAlign: "right" } }}
+              inputProps={{
+                style: { textAlign: "right", textJustify: "inter-word" },
+              }}
               InputProps={{
                 startAdornment: (
                   <InputAdornment
@@ -202,6 +210,7 @@ const Payment = () => {
         }}
       >
         <FormSelect2
+          size="small"
           value={formik.values.clientType}
           error={formik.errors.clientType}
           helperText={formik.errors.clientType}
@@ -212,6 +221,7 @@ const Payment = () => {
           label={"Recibe"}
         />
         <FormSelect2
+          size="small"
           value={formik.values.clientType}
           error={formik.errors.clientType}
           helperText={formik.errors.clientType}
@@ -237,6 +247,7 @@ const Payment = () => {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DemoContainer components={["DateTimePicker"]}>
             <DateTimePicker
+              size="small"
               value={value}
               //onChange={(newValue) => setfield (newValue)}
               onChange={(e) => formik.setFieldValue("delivery", e)}

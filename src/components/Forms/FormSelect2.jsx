@@ -24,6 +24,7 @@ const FormSelect2 = ({
   multiple,
   renderValue,
   variant,
+  size,
 }) => {
   return (
     <FormControl fullWidth sx={{ my: 1 }} onChange={onChange}>
@@ -42,6 +43,7 @@ const FormSelect2 = ({
 
       <Box sx={{ display: "flex" }}>
         <Select
+          size={size}
           multiple={multiple}
           defaultValue={options[0]}
           name={name}
