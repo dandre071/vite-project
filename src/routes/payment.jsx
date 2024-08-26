@@ -113,25 +113,27 @@ const Payment = () => {
     <Stack
       sx={{
         ...modal,
-        height: 400,
-        width: "100%",
+        height: "550px",
+        width: "500px",
         display: "grid",
-        gridTemplateRows: "repeat(4, 1fr)",
+        gridTemplateRows: "repeat(6, auto)",
         justifyContent: "center",
         // overflow: 'auto',
       }}
     >
       {" "}
       <ModalHeader title={"Resumen de compra"} />
-      <Stack sx={{ width: "95%" }}>
+      <Stack sx={{ width: "500px", display: "flex", justifyContent: "center" }}>
         <Box
+          id="pay"
           sx={{
             bgcolor: "primary.light",
             m: 0,
             //borderRadius: 2,
             display: "grid",
             gridTemplateRows: "1fr 1fr 1fr",
-            width: "100%",
+            justifyContent: "center",
+            width: "500px",
           }}
         >
           <Box sx={styles.paymentBox}>
@@ -189,97 +191,95 @@ const Payment = () => {
             </Typography>
           </Box>
         </Box>
-
-        <Box
-          sx={{
-            bgcolor: "pink",
-            gap: 1,
-            display: "grid",
-            width: "100%",
-            gridTemplateColumns: "repeat(2, 1fr) 2fr",
-          }}
-        >
-          <FormSelect2
-            value={formik.values.clientType}
-            error={formik.errors.clientType}
-            helperText={formik.errors.clientType}
-            fullWidth
-            name="clientType"
-            onChange={formik.handleChange}
-            options={["a", "b", "c"]}
-            label={"Recibe"}
-          />
-          <FormSelect2
-            value={formik.values.clientType}
-            error={formik.errors.clientType}
-            helperText={formik.errors.clientType}
-            fullWidth
-            name="clientType"
-            onChange={formik.handleChange}
-            options={["a", "b", "c"]}
-            label={"Realiza"}
-          />
-          {/* <FormInputDate
+      </Stack>
+      <Box
+        sx={{
+          bgcolor: "pink",
+          gap: 1,
+          display: "grid",
+          width: "100%",
+          gridTemplateColumns: "repeat(2, 1fr) 2fr",
+        }}
+      >
+        <FormSelect2
+          value={formik.values.clientType}
+          error={formik.errors.clientType}
+          helperText={formik.errors.clientType}
+          fullWidth
+          name="clientType"
+          onChange={formik.handleChange}
+          options={["a", "b", "c"]}
+          label={"Recibe"}
+        />
+        <FormSelect2
+          value={formik.values.clientType}
+          error={formik.errors.clientType}
+          helperText={formik.errors.clientType}
+          fullWidth
+          name="clientType"
+          onChange={formik.handleChange}
+          options={["a", "b", "c"]}
+          label={"Realiza"}
+        />
+        {/* <FormInputDate
             value={formik.values.delivery}
             name="delivery"
             onChange={formik.handleChange}
             label={"Fecha Entrega"}
             
           /> */}
-          {/* <DatePicker
+        {/* <DatePicker
             onChange={(newValue) => setValue(newValue)}
             value={value}
             name={"delivery"}
           /> */}
 
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={["DateTimePicker"]}>
-              <DateTimePicker
-                value={value}
-                //onChange={(newValue) => setfield (newValue)}
-                onChange={(e) => formik.setFieldValue("delivery", e)}
-                timezone="America/Bogota"
-                label={"Fecha Entrega"}
-                name={"delivery"}
-                format="DD/MM/YYYY, h:mma"
-                sx={{
-                  textField: {},
-                  input: {
-                    size: "small",
-                    color: "text.main",
-                    width: "95%",
-                    pr: 0,
-                    m: 0,
-                    textAlign: "right",
-                  },
-                  button: { color: "primary.main", p: 1, m: 0 },
-                  div: {
-                    // bgcolor: "red",
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DemoContainer components={["DateTimePicker"]}>
+            <DateTimePicker
+              value={value}
+              //onChange={(newValue) => setfield (newValue)}
+              onChange={(e) => formik.setFieldValue("delivery", e)}
+              timezone="America/Bogota"
+              label={"Fecha Entrega"}
+              name={"delivery"}
+              format="DD/MM/YYYY, h:mma"
+              sx={{
+                textField: {},
+                input: {
+                  size: "small",
+                  color: "text.main",
+                  width: "95%",
+                  pr: 0,
+                  m: 0,
+                  textAlign: "right",
+                },
+                button: { color: "primary.main", p: 1, m: 0 },
+                div: {
+                  // bgcolor: "red",
 
-                    pl: 1,
-                    m: 0,
-                  },
-                  svg: { transform: "scale(0.8)" },
-                }}
-              />
-            </DemoContainer>
-          </LocalizationProvider>
-        </Box>
-
-        <TextField
-          //onBlur={formik.handleBlur}
-          //error={formik.errors.email}
-          // helperText={formik.errors.email}
-          /* value={formik.values.email} */
-          name="comments"
-          multiline
-          onChange={formik.handleChange}
-          fullWidth
-          //defaultValue={localStore.email}
-          label={"Observaciones"}
-          type="text"
-        />
-      </Stack>
+                  pl: 1,
+                  m: 0,
+                },
+                svg: { transform: "scale(0.8)" },
+              }}
+            />
+          </DemoContainer>
+        </LocalizationProvider>
+      </Box>
+      <TextField
+        //onBlur={formik.handleBlur}
+        //error={formik.errors.email}
+        // helperText={formik.errors.email}
+        /* value={formik.values.email} */
+        name="comments"
+        multiline
+        onChange={formik.handleChange}
+        fullWidth
+        //defaultValue={localStore.email}
+        label={"Observaciones"}
+        type="text"
+      />
       <Stack
         spacing={1}
         direction={"row"}
