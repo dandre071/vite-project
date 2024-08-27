@@ -243,39 +243,51 @@ const Payment = () => {
             value={value}
             name={"delivery"}
           /> */}
+        <Box sx={{}}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DemoContainer components={["DateTimePicker"]}>
+              <DateTimePicker
+                size="small"
+                value={value}
+                //onChange={(newValue) => setfield (newValue)}
+                onChange={(e) => formik.setFieldValue("delivery", e)}
+                timezone="America/Bogota"
+                label={"Fecha Entrega"}
+                name={"delivery"}
+                format="DD/MM/YYYY, h:mma"
+                slotProps={{ textField: { size: "small", m: 0, width: 200 } }}
+                sx={{
+                  textField: {},
+                  input: {
+                    color: "text.main",
 
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DemoContainer components={["DateTimePicker"]}>
-            <DateTimePicker
-              size="small"
-              value={value}
-              //onChange={(newValue) => setfield (newValue)}
-              onChange={(e) => formik.setFieldValue("delivery", e)}
-              timezone="America/Bogota"
-              label={"Fecha Entrega"}
-              name={"delivery"}
-              format="DD/MM/YYYY, h:mma"
-              slotProps={{ textField: { size: "small", m: 0 } }}
-              sx={{
-                textField: { size: "small", width: 200 },
-                input: {
-                  color: "text.main",
+                    pr: 0,
+                    m: 0,
+                    textAlign: "right",
+                  },
+                  button: {
+                    color: "primary.main",
+                    p: 1,
+                    m: 0,
+                    borderRadius: "50%",
+                    left: 190,
+                    bottom: 30,
+                    width: 20,
+                    height: 20,
+                  },
+                  div: {
+                    display: "grid",
+                    gridTemplateColumns: "170px",
+                    width: 220,
 
-                  pr: 0,
-                  m: 0,
-                  textAlign: "right",
-                },
-                button: { color: "primary.main", p: 0.5, m: 0, left: 40 },
-                div: {
-                  width: 200,
-                  pl: 0.5,
-                  m: 0,
-                },
-                svg: { transform: "scale(0.6)" },
-              }}
-            />
-          </DemoContainer>
-        </LocalizationProvider>
+                    m: 0,
+                  },
+                  svg: { transform: "scale(0.6)" },
+                }}
+              />
+            </DemoContainer>
+          </LocalizationProvider>
+        </Box>
       </Box>
       <TextField
         //onBlur={formik.handleBlur}
