@@ -31,7 +31,7 @@ const Factura = () => {
   const targetRef = useRef();
   const cart = useShoppingCart((state) => state.items);
   const paymentData = usePaymentData((state) => state.paymentData);
-
+  console.log(paymentData);
   /* const deliveryDate = paymentData.delivery || new Date();
   const newDateFormat = new Intl.DateTimeFormat("es-CO", {
     dateStyle: "short",

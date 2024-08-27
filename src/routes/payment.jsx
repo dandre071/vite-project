@@ -62,7 +62,7 @@ const Payment = () => {
 
   const addItem = usePaymentData((state) => state.addData);
   const handleAddData = () => {
-    addItem(formik.values);
+    addItem({ ...formik.values, delivery: newDateFormat });
     /* formik.resetForm();
     setOpen(false); */
   };
@@ -71,7 +71,7 @@ const Payment = () => {
     initialValues: {
       receives: "",
       do: "",
-      delivery: new Date(),
+      delivery: "",
       payment: null,
       comments: "",
       pending: null,
@@ -91,7 +91,12 @@ const Payment = () => {
     dateStyle: "short",
     timeStyle: "short",
     timeZone: "America/Bogota",
-  }).format(deliveryDate);
+  }).format(date);
+  console.log(newDateFormat);
+  const handleDeliveryDate = () => {
+    formik.setValues();
+  };
+
   console.log(formik.values);
 
   const handleChange = (e) => {
