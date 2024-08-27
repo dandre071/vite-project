@@ -38,6 +38,7 @@ import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import { useState } from "react";
 import DatePicker from "../components/Forms/DatePicker";
+import { users } from "../db";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -52,7 +53,7 @@ const Payment = () => {
   const totalPayment = colPesos.format(totalPrice);
   const [date, setDate] = useState();
   const [value, setValue] = useState();
-
+  //console.log(users);
   //const dateString = newDate.toString();
   //console.log(dateString);
 
@@ -74,22 +75,22 @@ const Payment = () => {
     formik.setValues({ ...formik.values, delivery: newDate });
   };
   console.log(formik.values);
-  /*  console.log(
-    new Intl.DateTimeFormat("es-CO", {
-      dateStyle: "short",
-      timeStyle: "short",
-      timeZone: "America/Bogota",
-    }).format(formik.values.delivery)
-  ); */
+  const handleChange = (e) => {
+    formik.setValues({
+      ...formik.values,
+      payment: e.target.value,
+      pending: totalPrice - formik.values.payment,
+    });
+  };
   const deliveryDate = formik.values.delivery["$d"] || new Date();
-  console.log(deliveryDate);
+  // console.log(deliveryDate);
 
   const newDateFormat = new Intl.DateTimeFormat("es-CO", {
     dateStyle: "short",
     timeStyle: "short",
     timeZone: "America/Bogota",
   }).format(deliveryDate);
-  console.log(newDateFormat);
+  // console.log(newDateFormat);
   const styles = {
     payment: {
       fontWeight: 800,
@@ -110,34 +111,36 @@ const Payment = () => {
     },
   };
   return (
-    <Stack
-      sx={{
-        ...modal,
-        height: "550px",
-        width: "500px",
-        display: "grid",
-        gridTemplateRows: "repeat(6, auto)",
-        justifyContent: "center",
-        // overflow: 'auto',
-      }}
-    >
-      {" "}
-      <ModalHeader title={"Resumen de compra"} />
-      <Stack sx={{ width: "500px", display: "flex", justifyContent: "center" }}>
-        <Box
-          id="pay"
+    <Stack sx={{}}>
+      <Stack
+        spacing={0}
+        sx={{
+          ...modal,
+          height: "550px",
+          width: "500px",
+          display: "grid",
+          gridTemplateRows: "50px 60px 20px 40px 30px 20px)",
+          justifyContent: "center",
+          alignItems: "center",
+          transform: "scale(.95)",
+
+          // overflow: 'auto',
+        }}
+      >
+        <ModalHeader title={"Resumen de compra"} />
+        <Stack
+          className="border-bottom-heavy"
           sx={{
-            bgcolor: "green",
-            m: 0,
-            //borderRadius: 2,
+            width: "100%",
             display: "grid",
-            gridTemplateRows: "1fr 1fr 1fr",
+            gridTemplateRows: "repeat(3, 30px)",
             justifyContent: "center",
-            width: "500px",
-            justifySelf: "center",
+            p: 0,
+            //bgcolor: "green",
           }}
         >
-          <Box sx={{ ...styles.paymentBox, width: 500 }}>
+          {/* first item */}
+          <Box sx={{ ...styles.paymentBox, width: 500, p: 0 }}>
             <Typography
               sx={styles.payment}
             >{`Productos: (${items.length})`}</Typography>
@@ -145,7 +148,8 @@ const Payment = () => {
               {totalPayment}
             </Typography>
           </Box>
-
+          {/* end first item */}
+          {/* second item */}
           <Box sx={{ ...styles.paymentBox }}>
             <Typography sx={styles.paymentAmount}>{`Pago: `}</Typography>
 
@@ -163,7 +167,7 @@ const Payment = () => {
               /* value={formik.values.email} */
               size="small"
               name="payment"
-              onChange={formik.handleChange}
+              onChange={handleChange}
               fullWidth={false}
               // defaultValue={localStore.email}
               // label={"Email"}
@@ -186,180 +190,190 @@ const Payment = () => {
               type="tel"
             />
           </Box>
+          {/* end second item */}
+          {/* third item */}
           <Box
-            className="border-bottom-heavy"
-            sx={{ ...styles.paymentBox, mb: 2, pb: 1 }}
+            //className="border-bottom-heavy"
+            sx={{
+              ...styles.paymentBox,
+              /*  mb: 2,
+              pb: 1, */
+            }}
           >
-            <Typography sx={styles.paymentAmount}>{`Pendiente: `}</Typography>
+            <Typography
+              name="pending"
+              sx={styles.paymentAmount}
+            >{`Pendiente: `}</Typography>
             <Typography
               name={"pending"}
-              onChange={formik.handleChange}
               sx={{ ...styles.paymentAmount, textAlign: "right" }}
             >
               {colPesos.format(totalPrice - formik.values.payment)}
             </Typography>
           </Box>
-        </Box>
-      </Stack>
-      <Box
-        sx={{
-          bgcolor: "pink",
-          gap: 1,
-          display: "grid",
-          width: "100%",
-          height: "60px",
-          gridTemplateColumns: "repeat(2, 130px) 220px",
-          justifyContent: "center",
-          pt: 1,
-        }}
-      >
-        <FormSelect2
-          size="small"
-          value={formik.values.clientType}
+          {/* end third item */}
+        </Stack>
+        {/* END */}
+        <Box
+          sx={{
+            //bgcolor: "pink",
+            gap: 1,
+            display: "grid",
+            width: "100%",
+            height: "60px",
+            gridTemplateColumns: "repeat(2, 130px) 220px",
+            justifyContent: "center",
+            pt: 1,
+          }}
+        >
+          <FormSelect2
+            size="normal"
+            /* value={formik.values.clientType}
           error={formik.errors.clientType}
-          helperText={formik.errors.clientType}
-          fullWidth
-          name="clientType"
-          onChange={formik.handleChange}
-          options={["a", "b", "c"]}
-          label={"Recibe"}
-        />
-        <FormSelect2
-          size="small"
-          value={formik.values.clientType}
+          helperText={formik.errors.clientType} */
+            fullWidth
+            name="receives"
+            onChange={formik.handleChange}
+            options={users}
+            label={"Recibe"}
+          />
+          <FormSelect2
+            size="normal"
+            /* value={formik.values.clientType}
           error={formik.errors.clientType}
-          helperText={formik.errors.clientType}
-          fullWidth
-          name="clientType"
-          onChange={formik.handleChange}
-          options={["a", "b", "c"]}
-          label={"Realiza"}
-        />
-        {/* <FormInputDate
+          helperText={formik.errors.clientType} */
+            fullWidth
+            name="do"
+            onChange={formik.handleChange}
+            options={users}
+            label={"Realiza"}
+          />
+          {/* <FormInputDate
             value={formik.values.delivery}
             name="delivery"
             onChange={formik.handleChange}
             label={"Fecha Entrega"}
             
           /> */}
-        {/* <DatePicker
+          {/* <DatePicker
             onChange={(newValue) => setValue(newValue)}
             value={value}
             name={"delivery"}
           /> */}
-        <Box sx={{}}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={["DateTimePicker"]}>
-              <DateTimePicker
-                size="small"
-                value={value}
-                //onChange={(newValue) => setfield (newValue)}
-                onChange={(e) => formik.setFieldValue("delivery", e)}
-                timezone="America/Bogota"
-                label={"Fecha Entrega"}
-                name={"delivery"}
-                format="DD/MM/YYYY, h:mma"
-                slotProps={{
-                  textField: {
-                    size: "small",
-                    m: 0,
-                    width: 200,
-                  },
-                }}
-                sx={{
-                  stack: { overflow: "hidden" },
-                  textField: {},
-                  input: {
-                    color: "text.main",
+          <Box sx={{}}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DemoContainer
+                components={["DateTimePicker"]}
+                sx={{ display: "grid", width: 300 }}
+              >
+                <DateTimePicker
+                  size="normal"
+                  value={value}
+                  //onChange={(newValue) => setfield (newValue)}
+                  onChange={(e) => formik.setFieldValue("delivery", e)}
+                  timezone="America/Bogota"
+                  label={"Fecha Entrega"}
+                  name={"delivery"}
+                  format="DD/MM/YYYY, h:mma"
+                  slotProps={{
+                    textField: {
+                      size: "normal",
+                      m: 0,
+                      width: 200,
+                    },
+                  }}
+                  sx={{
+                    stack: {},
+                    textField: {},
+                    input: {
+                      color: "text.main",
 
-                    pr: 0,
-                    m: 0,
-                    textAlign: "right",
-                  },
-                  button: {
-                    color: "primary.main",
-                    p: 1,
-                    m: 0,
-                    borderRadius: "50%",
-                    left: 190,
-                    bottom: 30,
-                    width: 20,
-                    height: 20,
-                  },
+                      pr: 0,
+                      m: 0,
+                      textAlign: "right",
+                    },
+                    button: {
+                      color: "primary.main",
+                      p: 1,
+                      m: 0,
+                      borderRadius: "50%",
+                      left: 190,
+                      bottom: 40,
+                      width: 20,
+                      height: 20,
+                    },
 
-                  div: {
-                    display: "grid",
-                    gridTemplateColumns: "170px",
-                    width: 220,
+                    div: {
+                      display: "grid",
+                      gridTemplateColumns: "170px",
+                      width: 220,
 
-                    m: 0,
-                  },
-                  svg: { transform: "scale(0.6)" },
-                }}
-              />
-            </DemoContainer>
-          </LocalizationProvider>
+                      m: 0,
+                    },
+                    svg: { transform: "scale(0.6)" },
+                  }}
+                />
+              </DemoContainer>
+            </LocalizationProvider>
+          </Box>
         </Box>
-      </Box>
-      <TextField
-        //onBlur={formik.handleBlur}
-        //error={formik.errors.email}
-        // helperText={formik.errors.email}
-        /* value={formik.values.email} */
-        name="comments"
-        multiline
-        onChange={formik.handleChange}
-        fullWidth
-        //defaultValue={localStore.email}
-        label={"Observaciones"}
-        type="text"
-      />
-      <Stack
-        spacing={1}
-        direction={"row"}
-        sx={{
-          // borderTop: "1px solid grey",
-          width: 550,
-          pt: 1,
-          pb: 2,
-
-          display: "flex",
-          //bgcolor: "yellow",
-          // alignItems: "end",
-          justifyContent: "center",
-        }}
-      >
-        <Button
-          onClick={clearCart}
-          //startIcon={<ClearOutlinedIcon />}
-          sx={{ width: 30, height: 55 }}
-          // variant="secondary"
-          variant="secondary-outlined"
-        >
-          <ClearOutlinedIcon />
-          {/* Cancelar */}
-        </Button>
-
-        <Grid
-          item
+        <TextField
+          //onBlur={formik.handleBlur}
+          //error={formik.errors.email}
+          // helperText={formik.errors.email}
+          /* value={formik.values.email} */
+          name="comments"
+          multiline
+          onChange={formik.handleChange}
+          fullWidth
+          //defaultValue={localStore.email}
+          label={"Observaciones"}
+          type="text"
+        />
+        <Stack
+          spacing={1}
+          direction={"row"}
           sx={{
-            height: 70,
-            display: "flex",
-            justifyContent: "space-between",
+            // borderTop: "1px solid grey",
+            width: "100%",
             alignItems: "center",
+            display: "flex",
+            //bgcolor: "yellow",
+            // alignItems: "end",
+            justifyContent: "space-between",
+            m: 0,
           }}
         >
-          <Link to={"/factura"}>
-            <Button
-              //onClick={() => generatePDF(targetRef, { filename: "page.pdf" })}
-              startIcon={<ShoppingCartOutlinedIcon />}
-              sx={{ color: "white", width: 400, height: 55 }}
-              variant="prime"
-            >
-              Finalizar
-            </Button>
-          </Link>
-          {/* <Link to={"/payment"}>
+          <Button
+            onClick={clearCart}
+            //startIcon={<ClearOutlinedIcon />}
+            sx={{ width: 40, height: 55, m: 0 }}
+            // variant="secondary"
+            variant="secondary-outlined"
+          >
+            <ClearOutlinedIcon />
+            {/* Cancelar */}
+          </Button>
+
+          <Grid
+            item
+            sx={{
+              display: "flex",
+              justifyContent: "space-evenly",
+              alignItems: "center",
+            }}
+          >
+            <Link to={"/factura"}>
+              <Button
+                //onClick={() => generatePDF(targetRef, { filename: "page.pdf" })}
+                startIcon={<ShoppingCartOutlinedIcon />}
+                sx={{ color: "white", width: 400, height: 55 }}
+                variant="prime"
+              >
+                Finalizar
+              </Button>
+            </Link>
+            {/* <Link to={"/payment"}>
               <Button
                 variant="primary"
                 sx={{ height: "80%" }}
@@ -369,10 +383,11 @@ const Payment = () => {
                 Pagar
               </Button>
             </Link> */}
-        </Grid>
+          </Grid>
+        </Stack>
+        <NavBtn pathBack={"/cart"} pathNext={""} display={"none"} />
+        {/*  <Factura targetRef={targetRef} /> */}
       </Stack>
-      <NavBtn pathBack={"/cart"} pathNext={""} display={"none"} />
-      {/*  <Factura targetRef={targetRef} /> */}
     </Stack>
   );
 };
