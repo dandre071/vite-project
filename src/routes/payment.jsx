@@ -127,13 +127,14 @@ const Payment = () => {
         <Box
           id="pay"
           sx={{
-            bgcolor: "primary.light",
+            bgcolor: "green",
             m: 0,
             //borderRadius: 2,
             display: "grid",
             gridTemplateRows: "1fr 1fr 1fr",
             justifyContent: "center",
             width: "500px",
+            justifySelf: "center",
           }}
         >
           <Box sx={{ ...styles.paymentBox, width: 500 }}>
@@ -206,7 +207,10 @@ const Payment = () => {
           gap: 1,
           display: "grid",
           width: "100%",
-          gridTemplateColumns: "repeat(2, 1fr) 2fr",
+          height: "60px",
+          gridTemplateColumns: "repeat(2, 130px) 220px",
+          justifyContent: "center",
+          pt: 1,
         }}
       >
         <FormSelect2
@@ -255,8 +259,15 @@ const Payment = () => {
                 label={"Fecha Entrega"}
                 name={"delivery"}
                 format="DD/MM/YYYY, h:mma"
-                slotProps={{ textField: { size: "small", m: 0, width: 200 } }}
+                slotProps={{
+                  textField: {
+                    size: "small",
+                    m: 0,
+                    width: 200,
+                  },
+                }}
                 sx={{
+                  stack: { overflow: "hidden" },
                   textField: {},
                   input: {
                     color: "text.main",
@@ -275,6 +286,7 @@ const Payment = () => {
                     width: 20,
                     height: 20,
                   },
+
                   div: {
                     display: "grid",
                     gridTemplateColumns: "170px",
