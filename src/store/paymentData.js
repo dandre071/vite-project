@@ -1,16 +1,10 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export const usePersonalData = create()(
+export const usePaymentData = create()(
   persist(
     (set, get) => ({
-      paymentData: {
-        billType: "Recibo",
-        clientType: "Particular",
-        name: "",
-        email: "",
-        phone: "",
-      },
+      paymentData: {},
 
       addData: (values) => {
         set((state) => ({

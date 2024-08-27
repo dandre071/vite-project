@@ -39,6 +39,7 @@ import timezone from "dayjs/plugin/timezone";
 import { useState } from "react";
 import DatePicker from "../components/Forms/DatePicker";
 import { users } from "../db";
+import { usePaymentData } from "../store/paymentData";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -57,6 +58,15 @@ const Payment = () => {
   //const dateString = newDate.toString();
   //console.log(dateString);
 
+  const paymentData = usePaymentData((state) => state.paymentData);
+
+  const addItem = usePaymentData((state) => state.addData);
+  const handleAddData = () => {
+    addItem(formik.values);
+    /* formik.resetForm();
+    setOpen(false); */
+  };
+
   const formik = useFormik({
     initialValues: {
       receives: "",
@@ -74,14 +84,6 @@ const Payment = () => {
     (newValue) => setDate(newValue);
     formik.setValues({ ...formik.values, delivery: newDate });
   };
-  console.log(formik.values);
-  const handleChange = (e) => {
-    formik.setValues({
-      ...formik.values,
-      payment: e.target.value,
-      pending: totalPrice - formik.values.payment,
-    });
-  };
   const deliveryDate = formik.values.delivery["$d"] || new Date();
   // console.log(deliveryDate);
 
@@ -90,6 +92,16 @@ const Payment = () => {
     timeStyle: "short",
     timeZone: "America/Bogota",
   }).format(deliveryDate);
+  console.log(formik.values);
+
+  const handleChange = (e) => {
+    formik.setValues({
+      ...formik.values,
+      payment: e.target.value,
+      pending: totalPrice - formik.values.payment,
+    });
+  };
+
   // console.log(newDateFormat);
   const styles = {
     payment: {
@@ -363,9 +375,20 @@ const Payment = () => {
               alignItems: "center",
             }}
           >
+            {/*  <Link to={"/factura"}>
+              <Button
+                onClick={() => generatePDF(targetRef, { filename: "page.pdf" })}
+                startIcon={<ShoppingCartOutlinedIcon />}
+                sx={{ color: "white", width: 400, height: 55 }}
+                variant="prime"
+              >
+                Finalizar
+              </Button>
+            </Link> */}
+
             <Link to={"/factura"}>
               <Button
-                //onClick={() => generatePDF(targetRef, { filename: "page.pdf" })}
+                onClick={handleAddData}
                 startIcon={<ShoppingCartOutlinedIcon />}
                 sx={{ color: "white", width: 400, height: 55 }}
                 variant="prime"

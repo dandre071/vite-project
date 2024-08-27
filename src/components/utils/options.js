@@ -35,7 +35,6 @@ export const options = {
   materialWidth: [60, 70, 105, 125, 150, 160],
   users: [
     " ",
-    "Alejandra",
     "Angélica",
     "Angi",
     "Dayana",

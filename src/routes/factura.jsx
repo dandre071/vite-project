@@ -25,11 +25,20 @@ import generatePDF from "react-to-pdf";
 import { usePersonalData, useShoppingCart } from "../store/shoppingCart";
 import { colPesos } from "../components/utils/configs";
 import { Link } from "react-router-dom";
+import { usePaymentData } from "../store/paymentData";
 
 const Factura = () => {
   const targetRef = useRef();
   const cart = useShoppingCart((state) => state.items);
-  console.log(cart[0].name);
+  const paymentData = usePaymentData((state) => state.paymentData);
+
+  /* const deliveryDate = paymentData.delivery || new Date();
+  const newDateFormat = new Intl.DateTimeFormat("es-CO", {
+    dateStyle: "short",
+    timeStyle: "short",
+    timeZone: "America/Bogota",
+  }).format(deliveryDate); */
+  //console.log(cart[0].name);
   /*   const handleDownloadPdf = async () => {
     const element = printRef.current;
     const canvas = await html2canvas(element);
@@ -326,7 +335,7 @@ const Factura = () => {
                       className="invoice-data-date"
                       sx={{}}
                     >
-                      {fullDate}
+                      {paymentData.delivery}
                     </Typography>
                   </Box>
                 </Stack>
