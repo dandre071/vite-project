@@ -57,16 +57,6 @@ const Payment = () => {
   //console.log(users);
   //const dateString = newDate.toString();
   //console.log(dateString);
-
-  const paymentData = usePaymentData((state) => state.paymentData);
-
-  const addItem = usePaymentData((state) => state.addData);
-  const handleAddData = () => {
-    addItem({ ...formik.values, delivery: newDateFormat });
-    /* formik.resetForm();
-    setOpen(false); */
-  };
-
   const formik = useFormik({
     initialValues: {
       receives: "",
@@ -80,18 +70,30 @@ const Payment = () => {
 
     // onSubmit: handleSubmit,
   });
-  const handleDate = () => {
-    (newValue) => setDate(newValue);
-    formik.setValues({ ...formik.values, delivery: newDate });
-  };
-  const deliveryDate = formik.values.delivery["$d"] || new Date();
-  // console.log(deliveryDate);
+  const paymentData = usePaymentData((state) => state.paymentData);
 
+  const addData = usePaymentData((state) => state.addData);
+  const deliveryDate = formik.values.delivery["$d"];
   const newDateFormat = new Intl.DateTimeFormat("es-CO", {
     dateStyle: "short",
     timeStyle: "short",
     timeZone: "America/Bogota",
-  }).format(date);
+  }).format(deliveryDate);
+
+  const handleAddData = () => {
+    addData({ ...formik.values, delivery: newDateFormat });
+    /* formik.resetForm();
+    setOpen(false); */
+  };
+
+  console.log(paymentData);
+
+  const handleDate = () => {
+    formik.setValues({ ...formik.values, delivery: newDateFormat });
+  };
+
+  // console.log(deliveryDate);
+
   console.log(newDateFormat);
   const handleDeliveryDate = () => {
     formik.setValues();

@@ -4,11 +4,18 @@ import { persist } from "zustand/middleware";
 export const usePaymentData = create()(
   persist(
     (set, get) => ({
-      paymentData: {},
+      paymentData: {
+        receives: "",
+        do: "",
+        delivery: "",
+        payment: null,
+        comments: "",
+        pending: null,
+      },
 
       addData: (values) => {
-        set((state) => ({
-          paymentData: { ...values, values },
+        set(() => ({
+          paymentData: { values },
         }));
       },
 

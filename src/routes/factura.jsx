@@ -335,7 +335,7 @@ const Factura = () => {
                       className="invoice-data-date"
                       sx={{}}
                     >
-                      {paymentData.delivery}
+                      {paymentData.values.delivery}
                     </Typography>
                   </Box>
                 </Stack>
