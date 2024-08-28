@@ -58,6 +58,7 @@ const Factura = () => {
       pdf.save("shipping_label.pdf");
     });
   }; */
+
   const totalInvoice = cart
     .map((item) => item.itemTotalPrice)
     .reduce((a, b) => a + b);
@@ -69,8 +70,7 @@ const Factura = () => {
     timeStyle: "short",
     // timeZone: "Colombia/Bogotá",
   }).format(date);
-  //console.log(fullDate);
-  //console.log(users.users);
+
   const phoneNumber = client.phone;
 
   const formatNum =
