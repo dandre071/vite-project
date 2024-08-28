@@ -141,11 +141,11 @@ body {
 .invoice-label-client {
   font-size: 10px !important;
   color: rgb(98, 104, 124) !important;
-  padding-left: 2px;
+  padding-left: 0px;
 
   width: 100%;
   font-weight: 400 !important;
-  text-align: right;
+  text-align: left;
 }
 
 .invoice-data {
@@ -164,7 +164,7 @@ body {
   text-transform: capitalize;
   padding: 0;
   font-weight: 600 !important;
-  text-align: right;
+  text-align: left;
 }
 
 .invoice-title {
@@ -189,7 +189,7 @@ body {
   font-size: 11px !important;
   color: rgb(0, 0, 0) !important;
   width: 100%;
-  text-align: right;
+  text-align: left;
   font-weight: 700 !important;
 }
 
@@ -397,14 +397,15 @@ body {
 }
 .disabled-btn {
   color: rgb(182, 182, 182);
-  cursor: not-allowed;
+
   pointer-events: none;
+  cursor: not-allowed;
 }
-/* .disabled-btn:hover {
+.disabled-btn:hover {
   color: rgb(175, 175, 175);
   cursor: not-allowed;
 }
- */
+
 .payment-total {
   font-weight: 800;
   color: var(--text-main);

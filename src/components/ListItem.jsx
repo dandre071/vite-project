@@ -84,20 +84,7 @@ const ListItem = ({
             >
               {`${colPesos.format(price)}`}
             </Typography>
-            {/* <Typography
-              variant="h6"
-              sx={{
-                color: customTheme.palette.text.main,
-                textAlign: "center",
-                fontSize: 18,
-                fontWeight: 700,
-                p: 0,
-              }}
-            >
-              {q}
-            </Typography> */}
             <Input
-              // onChange={handleChange}
               inputProps={{
                 min: 0,
                 style: { textAlign: "right", padding: 0 },
@@ -106,7 +93,6 @@ const ListItem = ({
               type="number"
               size="small"
               value={q}
-              // onChange={}
               sx={{
                 color: customTheme.palette.text.main,
                 textAlign: "right",
@@ -132,7 +118,6 @@ const ListItem = ({
           </Stack>
           <Stack
             sx={{
-              //bgcolor: "blue",
               p: 0,
               display: "grid",
               gridTemplateColumns: "490px 120px",
@@ -186,23 +171,7 @@ const ListItem = ({
             alignItems: "center",
           }}
         >
-          <DeleteBtn
-            onClick={onClick}
-            /* sx={{
-              fontSize: 30,
-              // color: "secondary.main",
-
-              color: "white",
-              bgcolor: "background.dark",
-              borderRadius: "50%",
-
-              "&:hover": {
-                cursor: "pointer",
-                bgcolor: "secondary.main",
-              },
-            }} */
-          />
-          {/*   <Button>edit</Button> */}
+          <DeleteBtn onClick={onClick} />
         </Box>
       </Box>{" "}
     </Box>

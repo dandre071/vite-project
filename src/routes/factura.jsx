@@ -232,9 +232,58 @@ const Factura = () => {
                   borderRadius: 1.8,
                   justifySelf: "end",
 
-                  gridTemplateRows: "60% 40%",
+                  gridTemplateRows: "40% 60%",
                 }}
               >
+                <Stack
+                  sx={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+
+                    //bgcolor: "green",
+                    width: "100%",
+                    height: "80%",
+                    justifyContent: "end",
+                    justifySelf: "end",
+                    alignItems: "start",
+                    alignSelf: "start",
+                    //border: `1.5px solid rgb(190, 190, 190)`,
+                  }}
+                >
+                  <Box sx={{ justifySelf: "end", transform: "scale(.9)" }}>
+                    <Typography
+                      variant="h6"
+                      className="invoice-label"
+                      sx={{ textAlign: "lef", justifySelf: "start" }}
+                    >
+                      Recepción
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      className="invoice-data-date"
+                      sx={{}}
+                    >
+                      {fullDate}
+                    </Typography>
+                  </Box>
+
+                  <Box sx={{ justifySelf: "end", transform: "scale(.9)" }}>
+                    <Typography
+                      variant="h6"
+                      className="invoice-label"
+                      sx={{ textAlign: "right" }}
+                    >
+                      Entrega
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      className="invoice-data-date"
+                      sx={{}}
+                    >
+                      {paymentData.values.delivery}
+                    </Typography>
+                  </Box>
+                </Stack>
                 <Stack
                   direction={"column"}
                   sx={{
@@ -302,55 +351,6 @@ const Factura = () => {
                         </Box>
                       </Box>
                     </Box>
-                  </Box>
-                </Stack>
-                <Stack
-                  sx={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-
-                    //bgcolor: "green",
-                    width: "100%",
-                    height: "80%",
-                    justifyContent: "end",
-                    justifySelf: "end",
-                    alignItems: "start",
-                    alignSelf: "end",
-                    //border: `1.5px solid rgb(190, 190, 190)`,
-                  }}
-                >
-                  <Box sx={{ justifySelf: "end", transform: "scale(.9)" }}>
-                    <Typography
-                      variant="h6"
-                      className="invoice-label"
-                      sx={{ textAlign: "right", justifySelf: "end" }}
-                    >
-                      Recepción
-                    </Typography>
-                    <Typography
-                      variant="h6"
-                      className="invoice-data-date"
-                      sx={{}}
-                    >
-                      {fullDate}
-                    </Typography>
-                  </Box>
-
-                  <Box sx={{ justifySelf: "end", transform: "scale(.9)" }}>
-                    <Typography
-                      variant="h6"
-                      className="invoice-label"
-                      sx={{ textAlign: "right" }}
-                    >
-                      Entrega
-                    </Typography>
-                    <Typography
-                      variant="h6"
-                      className="invoice-data-date"
-                      sx={{}}
-                    >
-                      {paymentData.values.delivery}
-                    </Typography>
                   </Box>
                 </Stack>
               </Stack>

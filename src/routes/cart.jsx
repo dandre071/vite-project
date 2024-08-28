@@ -4,38 +4,15 @@ import { useRef, useState } from "react";
 import { useEffect } from "react";
 import ListItem from "../components/ListItem";
 import { useShoppingCart } from "../store/shoppingCart";
-
-import { useGetCartTotalPrice } from "../Hooks/hooks";
-import { colPesos } from "../components/utils/configs";
-import AddBtn from "../components/Buttons/AddBtn";
 import ModalHeader from "../components/ModalHeader";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
-import Badge from "@mui/material/Badge";
-import { customTheme } from "../Hooks/useCustomTheme";
-import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
-import { BorderBottom } from "@mui/icons-material";
 import { modal } from "../Styles/styles";
-import supabase from "../config/supabaseClient";
-import useProducts from "../Hooks/useProducts";
 import { useUsersList } from "../store/lists";
 import { useFormik } from "formik";
-import Counter from "../components/Forms/Counter";
-import { Link } from "react-router-dom";
-//import { v4 as uuidv4 } from "uuid";
-import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-
-import NextBtn from "../components/Buttons/NextBtn";
 import NavBtn from "../Hooks/useCartItems";
 const Cart = () => {
-  const [btnState, setBtnState] = useState();
-
   const usersList = useUsersList((state) => state.usersList);
-  /* const usersList = useUsersList((state) => state.users[0]).map(
-    (user) => user.users
-  ); */
-  console.log(usersList);
-  //const usersList = users.map((x) => x["users"]);
+
   const formik = useFormik({
     initialValues: {
       id: "",
@@ -59,29 +36,13 @@ const Cart = () => {
     //onSubmit: handlerAdd,
   });
   const items = useShoppingCart((state) => state.items);
-  /*   const updateItemQ = useShoppingCart((state) => state.updateItemQ); */
 
-  /* console.log(
-    items.filter((x) => x.id === "23d12472-11c4-4c35-861d-1a30867af570")
-  ); */
   const handleChange = () => {
-    items: [...state.items, (state.items.price = 1222)];
+    items: [...state.items];
   };
   const handleClick = useShoppingCart((state) => state.updateItemQ);
-  /* const totalCalc = () => {
-    formik.setValues({
-      ...formik.values,
-      itemTotalPrice: formik.values.quantity * formik.values.price,
-    });
-  }; */
 
   const { removeItem } = useShoppingCart();
-
-  //console.log(totalPrice);
-  const [quantity, setQuantity] = useState(0);
-
-  //const db = useProducts();
-  // console.log(db);
 
   return (
     <>
@@ -102,7 +63,7 @@ const Cart = () => {
           }}
         >
           <ModalHeader title={"Compras"} />
-          {items.length && (
+          {items.length > 0 && (
             <Stack
               sx={{
                 bgcolor: "black",
@@ -126,24 +87,13 @@ const Cart = () => {
               </Typography>
             </Stack>
           )}
-          <Stack
-            spacing={1}
-            sx={
-              {
-                /* alignItems: "start" */
-              }
-            }
-          >
+          <Stack spacing={1}>
             <Box
               sx={{
-                //border: `2px solid #f3f3f3`,
-
                 minHeight: 200,
-                //bgcolor: "#f7f7f7",
-                //bgcolor: "white",
+
                 display: "flex",
-                /*  bgcolor: "primary.lighter", */
-                //bgcolor: "red",
+
                 flexDirection: "column",
                 justifyContent: "start",
                 alignItems: "center",
@@ -156,7 +106,7 @@ const Cart = () => {
                 <Box
                   sx={{
                     position: "relative",
-                    //top: 50,
+
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "end",
@@ -204,10 +154,9 @@ const Cart = () => {
                   />
                 ))}
               </Stack>{" "}
-              {/********** */}
             </Box>
           </Stack>
-          {/********** */}
+
           <Box
             sx={{
               width: "100%",
@@ -216,38 +165,11 @@ const Cart = () => {
               justifyContent: "center",
             }}
           >
-            {/* <Grid
-              item
-              sx={{
-                height: 70,
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <Link to={"/product-module"}>
-                <Button
-                  variant="primary"
-                  sx={{ height: "80%" }}
-                  //onClick={handleSubmit}
-                  startIcon={<NavigateBeforeIcon />}
-                >
-                  Producto
-                </Button>
-              </Link>
-              {items.length > 0 ? (
-                <Link to={"/payment"}>
-                  <NextBtn
-                    className={items.length > 0 ? "arrow-btn" : "disabled-btn"}
-                  />
-                </Link>
-              ) : (
-                <NextBtn className={"disabled-btn"} />
-              )}
-            </Grid> */}
             <NavBtn
+              pointer={items.length === 0 ? "none" : ""}
               pathBack={"/product-module"}
               pathNext={"/payment"}
+              classname={items.length > 0 ? "arrow-btn" : "disabled-btn"}
               style={{ display: "flex", justifySelf: "center" }}
             />
           </Box>

@@ -5,8 +5,10 @@ import NextBtn from "../components/Buttons/NextBtn";
 import { useShoppingCart } from "../store/shoppingCart";
 import { BackBtn } from "../components/Buttons/BackBtn";
 
-const NavBtn = ({ pathNext, pathBack, display }) => {
+const NavBtn = ({ pathNext, pathBack, display, classname, pointer }) => {
   const items = useShoppingCart((state) => state.items);
+
+  pointer = pointer;
   return (
     <Grid
       item
@@ -19,29 +21,20 @@ const NavBtn = ({ pathNext, pathBack, display }) => {
         // borderTop: "1px solid black",
       }}
     >
-      {/* <Link to={"/product-module"}>
-        <Button
-          variant="primary"
-          sx={{ height: "80%" }}
-          //onClick={handleSubmit}
-          startIcon={<NavigateBeforeIcon />}
-        >
-          Producto
-        </Button>
-      </Link> */}
       <Box>
         <Link to={pathBack}>
           <BackBtn className={"arrow-btn"} />
         </Link>
       </Box>
-      <Box sx={{ display: display }}>
-        {items.length > 0 ? (
-          <Link to={pathNext}>
+      <Box sx={{ display: display, pointerEvents: pointer }}>
+        <Link to={pathNext}>
+          <NextBtn style={{ pointerEvents: pointer }} className={classname} />
+        </Link>
+        {/* {items.length > 0 && (
+          
             <NextBtn className={"arrow-btn"} />
-          </Link>
-        ) : (
-          <NextBtn className={"disabled-btn"} />
-        )}
+         
+        )} */}
       </Box>
     </Grid>
   );
