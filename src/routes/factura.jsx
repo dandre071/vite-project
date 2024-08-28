@@ -69,8 +69,19 @@ const Factura = () => {
     timeStyle: "short",
     // timeZone: "Colombia/Bogotá",
   }).format(date);
-  console.log(fullDate);
-  console.log(users.users);
+  //console.log(fullDate);
+  //console.log(users.users);
+  const phoneNumber = client.phone;
+
+  const formatNum =
+    phoneNumber.substr(0, 3) +
+    " " +
+    phoneNumber.substr(3, 3) +
+    " " +
+    phoneNumber.substr(6, 4);
+
+  console.log(formatNum);
+
   const box = {
     display: "grid",
     width: "100%",
@@ -271,7 +282,10 @@ const Factura = () => {
                           >
                             Email
                           </Typography>
-                          <Typography className="invoice-data-client">
+                          <Typography
+                            style={{ textTransform: "none" }}
+                            className="invoice-data-client"
+                          >
                             {client.email}
                           </Typography>
                         </Box>
@@ -283,7 +297,7 @@ const Factura = () => {
                             variant="h6"
                             className="invoice-data-client"
                           >
-                            {client.phone}
+                            {formatNum}
                           </Typography>
                         </Box>
                       </Box>
@@ -466,14 +480,18 @@ const Factura = () => {
                     <Typography variant="h6" className="invoice-label">
                       Recibe:
                     </Typography>
-                    <Typography className="invoice-data">Diego</Typography>
+                    <Typography className="invoice-data">
+                      {paymentData.values.receives}
+                    </Typography>
                   </Box>
 
                   <Box>
                     <Typography variant="h6" className="invoice-label">
                       Realiza:
                     </Typography>
-                    <Typography className="invoice-data">Diego</Typography>
+                    <Typography className="invoice-data">
+                      {paymentData.values.do}
+                    </Typography>
                   </Box>
                   <Box className="box-bottom">
                     <Typography className="invoice-label">
@@ -511,7 +529,8 @@ const Factura = () => {
                 </Stack>
                 <Box className={"box-bottom"} sx={{ height: "1cm" }}>
                   <Typography className={"invoice-label"}>
-                    Observaciones
+                    Observaciones: <br />
+                    {paymentData.values.comments}
                   </Typography>
                 </Box>
               </Box>
@@ -569,7 +588,7 @@ const Factura = () => {
                       className={"invoice-label-payment"}
                       sx={{ pr: 0.5 }}
                     >
-                      $2.000.000
+                      {colPesos.format(paymentData.values.payment)}
                     </Typography>
                   </Box>
                   <Box sx={{ ...box }} className="border-bottom">
@@ -582,7 +601,9 @@ const Factura = () => {
                         pr: 0.5,
                       }}
                     >
-                      $1.000.000
+                      {colPesos.format(
+                        totalInvoice - paymentData.values.payment
+                      )}
                     </Typography>
                   </Box>
                   <Box
