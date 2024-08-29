@@ -1,37 +1,34 @@
-import {
-  Box,
-  Divider,
-  Input,
-  Select,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
-import React, { useEffect, useRef, useState, forwardRef } from "react";
-import ReadOnlyText from "../components/Text/ReadOnlyText";
-import { invoiceGrid, title } from "../Styles/styles";
-import { customTheme } from "../Hooks/useCustomTheme";
-import InvoiceListItem from "../components/InvoiceListItem";
-import { formatPhoneNumber } from "../components/utils/helpers";
-import FormSelect2 from "../components/Forms/FormSelect2";
+import { Alert, Box, Button, Stack, Typography } from "@mui/material";
+import React, { useRef } from "react";
+import { invoiceGrid } from "../Styles/styles";
 import useUsers from "../Hooks/useUsers";
-import supabase from "../config/supabaseClient";
 import Logo from "../components/Logo";
 import InvoiceItem from "../components/InvoiceComps/InvoiceItem";
-import { jsPDF } from "jspdf";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import { usePDF } from "react-to-pdf";
 import generatePDF from "react-to-pdf";
 import { usePersonalData, useShoppingCart } from "../store/shoppingCart";
 import { colPesos } from "../components/utils/configs";
 import { Link } from "react-router-dom";
 import { usePaymentData } from "../store/paymentData";
 
+import { useReactToPrint } from "react-to-print";
+import { PDFDownloadLink, Document, Page } from "@react-pdf/renderer";
+import { saveAs } from "file-saver";
+
 const Factura = () => {
   const targetRef = useRef();
   const cart = useShoppingCart((state) => state.items);
   const paymentData = usePaymentData((state) => state.paymentData);
   console.log(paymentData);
+
+  /*  const handlePrint = useReactToPrint({
+    content: () => targetRef.current,
+  }); */
+
+  /* const handlePrint = useReactToPrint({
+    content: () => targetRef.current,
+  }); */
+
   /* const deliveryDate = paymentData.delivery || new Date();
   const newDateFormat = new Intl.DateTimeFormat("es-CO", {
     dateStyle: "short",
@@ -58,10 +55,35 @@ const Factura = () => {
       pdf.save("shipping_label.pdf");
     });
   }; */
+  /* const onButtonClick = () => {
+    const pdfUrl = "Sample.pdf";
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    link.download = "document.pdf"; // specify the filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }; */
+  /* const onButtonClick = () => {
+    // using Java Script method to get PDF file
+    fetch("SamplePDF.pdf").then((response) => {
+      response.blob().then((blob) => {
+        // Creating new object of PDF file
+        const fileURL = window.URL.createObjectURL(blob);
 
-  const totalInvoice = cart
-    .map((item) => item.itemTotalPrice)
-    .reduce((a, b) => a + b);
+        // Setting various property values
+        let alink = document.createElement("a");
+        alink.href = fileURL;
+        alink.download = "SamplePDF.pdf";
+        alink.click();
+      });
+    });
+  }; */
+
+  const totalInvoice =
+    cart.lenght > 0
+      ? cart.map((item) => item.itemTotalPrice).reduce((a, b) => a + b)
+      : 0;
   const client = usePersonalData((state) => state.personalData);
   const users = useUsers();
   const date = new Date();
@@ -70,7 +92,20 @@ const Factura = () => {
     timeStyle: "short",
     // timeZone: "Colombia/Bogotá",
   }).format(date);
-
+  const handlePrint = useReactToPrint({
+    content: () => targetRef.current,
+    documentTitle: `${client.name}.pdf`,
+    copyStyles: true,
+    onAfterPrint: <Alert>jgfkgfkgfg</Alert>,
+    /*  print: async (printIframe) => {
+      const document = printIframe.contentDocument;
+      if (document) {
+        const html = document.getElementsByTagName("html")[0];
+        console.log(html);
+        await html2pdf().from(html).save();
+      }
+    }, */
+  });
   const phoneNumber = client.phone;
 
   const formatNum =
@@ -131,7 +166,7 @@ const Factura = () => {
   };
   /* const { toPDF, targetRef } = usePDF(options); */
   return (
-    <div id="pdf">
+    <div id="pdf" /* style={{ display: "none" }} */>
       <form ref={targetRef}>
         <Stack
           sx={{
@@ -196,20 +231,18 @@ const Factura = () => {
                   <Typography
                     sx={{ fontSize: 10, fontFamily: "roboto", fontWeight: 500 }}
                   >
-                    310 417 18 14
+                    310 417 18 14 / Carrera 16 # 102-53
                   </Typography>
                 </Box>{" "}
-                <Typography
-                  sx={{ fontSize: 10, fontFamily: "roboto", fontWeight: 500 }}
-                >
-                  Carrera 16 # 102-53
-                </Typography>
                 <Typography
                   sx={{ fontSize: 10, fontFamily: "roboto", fontWeight: 500 }}
                 >
                   {" "}
                   Barrio Baltazar (Turbo)
                 </Typography>
+              </Typography>
+              <Typography sx={{ justifyelf: "end", fontSize: 14 }}>
+                RECIBO
               </Typography>
             </Stack>
 
@@ -718,6 +751,8 @@ const Factura = () => {
           Download PDF
         </button>
       </Link>
+
+      <Button onClick={handlePrint}>pdf</Button>
     </div>
   );
 };

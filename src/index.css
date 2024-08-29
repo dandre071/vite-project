@@ -305,8 +305,8 @@ body {
   background-color: red;
 }
 .logo {
-  width: 130px;
-  margin-top: 15px;
+  width: 100px;
+  justify-self: start;
 }
 #root-container {
   display: flex;
@@ -410,4 +410,9 @@ body {
   font-weight: 800;
   color: var(--text-main);
   font-size: 18;
+}
+@media print {
+  @page {
+    size: 140mm 216mm;
+  }
 }
