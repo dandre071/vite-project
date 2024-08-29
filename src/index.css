@@ -133,7 +133,7 @@ body {
 .invoice-label {
   font-size: 10px !important;
   color: rgb(98, 104, 124) !important;
-  margin-left: 2px;
+  /* margin-left: 2px; */
   text-transform: capitalize;
   width: 100%;
   font-weight: 400 !important;
@@ -305,7 +305,7 @@ body {
   background-color: red;
 }
 .logo {
-  width: 100px;
+  width: 120px;
   justify-self: start;
 }
 #root-container {

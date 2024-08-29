@@ -190,6 +190,7 @@ const Factura = () => {
               //alignItems: "end",
               justifySelf: "center",
               display: "grid",
+
               justifyContent: "end",
               alignItems: "center",
 
@@ -197,12 +198,18 @@ const Factura = () => {
               // bgcolor: "red",
             }}
           >
-            <Stack>
+            <Stack
+              sx={{
+                bgcolor: "red",
+                display: "grid",
+                height: "100%",
+              }}
+            >
               <Stack
                 sx={{
                   display: "flex",
                   justifyContent: "end",
-                  alignItems: "center",
+                  alignItems: "start",
                 }}
               >
                 <Logo className="logo" />
@@ -224,7 +231,7 @@ const Factura = () => {
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
+                    justifyContent: "start",
                   }}
                 >
                   <WhatsAppIcon sx={{ fontSize: 10 }} />{" "}
@@ -241,9 +248,6 @@ const Factura = () => {
                   Barrio Baltazar (Turbo)
                 </Typography>
               </Typography>
-              <Typography sx={{ justifyelf: "end", fontSize: 14 }}>
-                RECIBO
-              </Typography>
             </Stack>
 
             <Box
@@ -258,7 +262,7 @@ const Factura = () => {
                   display: "grid",
 
                   //bgcolor: "green",
-                  bgcolor: "primary.light",
+
                   padding: 0,
                   width: "100%",
                   height: "90%",
@@ -271,11 +275,11 @@ const Factura = () => {
                 <Stack
                   sx={{
                     display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
+                    gridTemplateColumns: "80% 20%",
 
                     //bgcolor: "green",
-                    width: "100%",
-                    height: "80%",
+                    width: "97%",
+                    height: "90%",
                     justifyContent: "end",
                     justifySelf: "end",
                     alignItems: "start",
@@ -283,39 +287,57 @@ const Factura = () => {
                     //border: `1.5px solid rgb(190, 190, 190)`,
                   }}
                 >
-                  <Box sx={{ justifySelf: "end", transform: "scale(.9)" }}>
-                    <Typography
-                      variant="h6"
-                      className="invoice-label"
-                      sx={{ textAlign: "lef", justifySelf: "start" }}
-                    >
-                      Recepción
-                    </Typography>
-                    <Typography
-                      variant="h6"
-                      className="invoice-data-date"
-                      sx={{}}
-                    >
-                      {fullDate}
-                    </Typography>
+                  <Box
+                    sx={{
+                      justifySelf: "end",
+                      transform: "scale(.9)",
+                      display: "flex",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <Box>
+                      <Typography
+                        variant="h6"
+                        className="invoice-label"
+                        sx={{ textAlign: "left" }}
+                      >
+                        Recepción
+                      </Typography>
+                      <Typography
+                        variant="h6"
+                        className="invoice-data-date"
+                        sx={{}}
+                      >
+                        {fullDate}
+                      </Typography>
+                    </Box>
+                    <Box>
+                      <Typography variant="h6" className="invoice-label">
+                        Entrega
+                      </Typography>
+                      <Typography
+                        variant="h6"
+                        className="invoice-data-date"
+                        sx={{}}
+                      >
+                        {paymentData.values.delivery}
+                      </Typography>
+                    </Box>
                   </Box>
 
-                  <Box sx={{ justifySelf: "end", transform: "scale(.9)" }}>
-                    <Typography
-                      variant="h6"
-                      className="invoice-label"
-                      sx={{ textAlign: "right" }}
-                    >
-                      Entrega
-                    </Typography>
-                    <Typography
-                      variant="h6"
-                      className="invoice-data-date"
-                      sx={{}}
-                    >
-                      {paymentData.values.delivery}
-                    </Typography>
-                  </Box>
+                  <Typography
+                    sx={{
+                      alignSelf: "center",
+                      justifySelf: "end",
+                      fontSize: 12,
+                      fontWeight: 800,
+                      textAlign: "right",
+                      //bgcolor: "red",
+                      width: "90%",
+                    }}
+                  >
+                    RECIBO
+                  </Typography>
                 </Stack>
                 <Stack
                   direction={"column"}
@@ -323,9 +345,11 @@ const Factura = () => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    width: "100%",
-                    height: "90%",
-                    p: 0,
+                    width: "97%",
+                    height: "100%",
+                    pb: 0.5,
+                    borderRadius: 1.5,
+                    bgcolor: "primary.light",
                     // bgcolor: "background.default",
                     justifySelf: "end",
                   }}
