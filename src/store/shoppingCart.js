@@ -57,8 +57,8 @@ export const usePersonalData = create()(
   persist(
     (set, get) => ({
       personalData: {
-        billType: "Recibo",
-        clientType: "Particular",
+        billType: "",
+        clientType: "",
         name: "",
         email: "",
         phone: "",

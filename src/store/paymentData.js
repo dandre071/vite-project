@@ -15,7 +15,7 @@ export const usePaymentData = create()(
 
       addData: (values) => {
         set(() => ({
-          paymentData: { values },
+          paymentData: { ...values, values },
         }));
       },
 

@@ -42,7 +42,7 @@ const Root = () => {
         <div
           style={{
             width: "90vw",
-            height: "auto",
+            height: "100vh",
             display: "flex",
             justifyContent: "center",
             alignItems: "start",

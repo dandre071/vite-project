@@ -81,7 +81,7 @@ const Factura = () => {
   }; */
 
   const totalInvoice =
-    cart.lenght > 0
+    cart.length > 0
       ? cart.map((item) => item.itemTotalPrice).reduce((a, b) => a + b)
       : 0;
   const client = usePersonalData((state) => state.personalData);
@@ -164,7 +164,7 @@ const Factura = () => {
       },
     },
   };
-  /* const { toPDF, targetRef } = usePDF(options); */
+
   return (
     <div
       style={{ justifySelf: "start" }}
@@ -179,7 +179,7 @@ const Factura = () => {
 
             display: "grid",
             gridTemplateRows: "3.2cm 0.7cm 12cm 0.8fr .5cm",
-            // gridTemplateRows: "2.3cm 2.1cm 0.7cm 12cm 3.5cm",
+
             justifyContent: "center",
             alignItems: "center",
             gap: 0.5,
@@ -197,7 +197,7 @@ const Factura = () => {
               justifyContent: "end",
               alignItems: "center",
 
-              gridTemplateColumns: "40% 1fr ",
+              gridTemplateColumns: "35% 1fr ",
               // bgcolor: "red",
             }}
           >
@@ -241,7 +241,7 @@ const Factura = () => {
                   <Typography
                     sx={{ fontSize: 10, fontFamily: "roboto", fontWeight: 500 }}
                   >
-                    310 417 18 14 / Carrera 16 # 102-53
+                    310 417 18 14 / Cra 16 # 102-53
                   </Typography>
                 </Box>{" "}
                 <Typography
@@ -278,7 +278,7 @@ const Factura = () => {
                 <Stack
                   sx={{
                     display: "grid",
-                    gridTemplateColumns: "80% 20%",
+                    gridTemplateColumns: "75% 1fr",
 
                     //bgcolor: "green",
                     width: "100%",
@@ -322,7 +322,7 @@ const Factura = () => {
                         className="invoice-data-date"
                         sx={{}}
                       >
-                        {paymentData.values.delivery}
+                        {paymentData.delivery}
                       </Typography>
                     </Box>
                   </Box>
@@ -544,7 +544,7 @@ const Factura = () => {
                       Recibe:
                     </Typography>
                     <Typography className="invoice-data">
-                      {paymentData.values.receives}
+                      {paymentData.receives}
                     </Typography>
                   </Box>
 
@@ -553,7 +553,7 @@ const Factura = () => {
                       Realiza:
                     </Typography>
                     <Typography className="invoice-data">
-                      {paymentData.values.do}
+                      {paymentData.do}
                     </Typography>
                   </Box>
                   <Box className="box-bottom">
@@ -593,7 +593,7 @@ const Factura = () => {
                 <Box className={"box-bottom"} sx={{ height: "1cm" }}>
                   <Typography className={"invoice-label"}>
                     Observaciones: <br />
-                    {paymentData.values.comments}
+                    {paymentData.comments}
                   </Typography>
                 </Box>
               </Box>
@@ -651,7 +651,7 @@ const Factura = () => {
                       className={"invoice-label-payment"}
                       sx={{ pr: 0.5 }}
                     >
-                      {colPesos.format(paymentData.values.payment)}
+                      {colPesos.format(parseInt(paymentData.payment))}
                     </Typography>
                   </Box>
                   <Box sx={{ ...box }} className="border-bottom">
@@ -664,9 +664,7 @@ const Factura = () => {
                         pr: 0.5,
                       }}
                     >
-                      {colPesos.format(
-                        totalInvoice - paymentData.values.payment
-                      )}
+                      {colPesos.format(totalInvoice - paymentData.payment)}
                     </Typography>
                   </Box>
                   <Box

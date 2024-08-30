@@ -24,7 +24,7 @@ import NextBtn from "../Buttons/NextBtn";
 
 const PersonalData = () => {
   const localStore = usePersonalData((state) => state.personalData);
-
+  const addData = usePersonalData((state) => state.addData);
   const users = fakeUsers.map((user) => user.name);
 
   /* const disable = () => {
@@ -40,8 +40,8 @@ const PersonalData = () => {
 
   const formik = useFormik({
     initialValues: {
-      billType: "Recibo",
-      clientType: "Particular",
+      billType: "",
+      clientType: "",
       name: "",
       email: "",
       phone: "",
@@ -66,7 +66,6 @@ const PersonalData = () => {
     updateState();
   }, []);
 
-  const addData = usePersonalData((state) => state.addData);
   console.log(localStore);
 
   const handleAutoChange = (event, value) => {
@@ -136,6 +135,7 @@ const PersonalData = () => {
               //helperText={formik.errors.name}
               error={formik.errors.name}
               freeSolo={true}
+              name="name"
               autoHighlight
               id="combo-box-demo"
               options={users}
@@ -179,11 +179,11 @@ const PersonalData = () => {
               onBlur={formik.handleBlur}
               error={formik.errors.email}
               helperText={formik.errors.email}
-              /* value={formik.values.email} */
+              value={formik.values.email}
               name="email"
               onChange={formik.handleChange}
               fullWidth
-              defaultValue={localStore.email}
+              //defaultValue={localStore.email}
               label={"Email"}
               type="email"
             />
@@ -195,8 +195,8 @@ const PersonalData = () => {
               error={formik.errors.phone}
               helperText={formik.errors.phone}
               //value={colPesos.format(formik.values.phone)}
-              // value={formik.values.phone}
-              defaultValue={localStore.phone}
+              value={formik.values.phone}
+              //defaultValue={localStore.phone}
               name="phone"
               onChange={formik.handleChange}
               fullWidth
@@ -228,7 +228,7 @@ const PersonalData = () => {
           }}
         >
           <Link to={"/product-module"}>
-            <NextBtn className="arrow-btn" />
+            <NextBtn onClick={handleSubmit} className="arrow-btn" />
           </Link>
         </Grid>
       </form>
