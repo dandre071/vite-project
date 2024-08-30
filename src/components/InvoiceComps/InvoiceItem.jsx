@@ -19,7 +19,7 @@ const InvoiceItem = ({
           display: "grid",
           gridTemplateColumns: invoiceGrid,
           borderRadius: 1.5,
-          height: "100%",
+          height: 80,
           alignItems: "center",
         }}
       >
@@ -43,6 +43,8 @@ const InvoiceItem = ({
         <Typography
           className="secondary-color capitalize"
           sx={{
+            display: "flex",
+            height: "auto",
             fontSize: 11.5,
             fontWeight: 400,
             textAlign: "left",
@@ -57,7 +59,7 @@ const InvoiceItem = ({
         <Box
           sx={{
             display: "flex",
-            alignItems: "center",
+            alignItems: "start",
             justifyContent: "center",
           }}
         >

@@ -169,7 +169,7 @@ body {
 
 .invoice-title {
   font-size: 14px !important;
-  color: var(--primary-main) !important;
+  color: var(--text-main) !important;
 
   font-weight: 600 !important;
   display: flex;
@@ -177,7 +177,7 @@ body {
 }
 
 .invoice-title-box {
-  border-bottom: 2px solid var(--primary-main);
+  border-bottom: 2px solid var(--text-main);
 }
 .invoice-label-payment {
   font-size: 13px !important;
@@ -305,8 +305,8 @@ body {
   background-color: red;
 }
 .logo {
-  width: 120px;
-  justify-self: start;
+  width: 140px;
+  justify-self: center;
 }
 #root-container {
   display: flex;
@@ -415,4 +415,8 @@ body {
   @page {
     size: 140mm 216mm;
   }
+}
+.grid-rows-2-1fr {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
 }

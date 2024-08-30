@@ -171,7 +171,7 @@ const Factura = () => {
         <Stack
           sx={{
             width: "14cm",
-            height: "22cm",
+            height: "21,6cm",
             bgcolor: "white",
 
             display: "grid",
@@ -200,7 +200,7 @@ const Factura = () => {
           >
             <Stack
               sx={{
-                bgcolor: "red",
+                //bgcolor: "red",
                 display: "grid",
                 height: "100%",
               }}
@@ -278,18 +278,17 @@ const Factura = () => {
                     gridTemplateColumns: "80% 20%",
 
                     //bgcolor: "green",
-                    width: "97%",
+                    width: "100%",
                     height: "90%",
                     justifyContent: "end",
                     justifySelf: "end",
-                    alignItems: "start",
+                    alignItems: "end",
                     alignSelf: "start",
                     //border: `1.5px solid rgb(190, 190, 190)`,
                   }}
                 >
                   <Box
                     sx={{
-                      justifySelf: "end",
                       transform: "scale(.9)",
                       display: "flex",
                       justifyContent: "space-between",
@@ -324,20 +323,22 @@ const Factura = () => {
                       </Typography>
                     </Box>
                   </Box>
+                  <Box className="grid-rows-2-1fr" sx={{}}>
+                    <Typography
+                      sx={{
+                        alignSelf: "end",
 
-                  <Typography
-                    sx={{
-                      alignSelf: "center",
-                      justifySelf: "end",
-                      fontSize: 12,
-                      fontWeight: 800,
-                      textAlign: "right",
-                      //bgcolor: "red",
-                      width: "90%",
-                    }}
-                  >
-                    RECIBO
-                  </Typography>
+                        fontSize: 14,
+                        fontWeight: 800,
+                        textAlign: "right",
+                        //bgcolor: "red",
+                        width: "100%",
+                        color: "primary.dark",
+                      }}
+                    >
+                      RECIBO
+                    </Typography>
+                  </Box>
                 </Stack>
                 <Stack
                   direction={"column"}
@@ -349,7 +350,7 @@ const Factura = () => {
                     height: "100%",
                     pb: 0.5,
                     borderRadius: 1.5,
-                    bgcolor: "primary.light",
+                    bgcolor: "background.default",
                     // bgcolor: "background.default",
                     justifySelf: "end",
                   }}
@@ -419,7 +420,7 @@ const Factura = () => {
             sx={{
               display: "grid",
               gridTemplateColumns: invoiceGrid,
-              // bgcolor: "primary.main",
+              bgcolor: "background.default",
               position: "relative",
 
               width: 480,
@@ -621,11 +622,11 @@ const Factura = () => {
                 <Box
                   sx={{
                     ...box,
-                    bgcolor: "primary.main",
+                    bgcolor: "background.dark",
                     height: 30,
                     /* borderRadius: 1, */
 
-                    color: "white",
+                    color: "text.main",
                   }}
                 >
                   <Typography sx={{ fontSize: 13, fontWeight: 600 }}>
