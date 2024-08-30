@@ -50,113 +50,116 @@ const Cart = () => {
         sx={{
           gap: 1,
           alignSelf: "start",
+          display: "flex",
+
+          height: "auto",
+          justifySelf: "center",
         }}
       >
         <Box
           sx={{
             ...modal,
             width: 650,
-            minHeight: 500,
+            justifySelf: "center",
             display: "grid",
-            gridTemplateRows: "auto auto 30px",
+
             alignItems: "start",
             /*  transform: "scale(0.9)", */
           }}
         >
-          <ModalHeader title={"Compras"} />
-          <Box>
-            {items.length > 0 && (
-              <Box>
-                <Stack
-                  sx={{
-                    bgcolor: "black",
-                    display: "grid",
-                    alignItems: "end",
+          <Box sx={{}}>
+            <ModalHeader title={"Compras"} />
+          </Box>
 
-                    color: "white",
-                    borderRadius: 1.75,
-                    gridTemplateColumns: "330px 100px 60px 120px 1fr",
-                  }}
-                >
-                  <Typography sx={{ fontWeight: 600 }}>Producto</Typography>
-                  <Typography sx={{ fontWeight: 600, justifySelf: "center" }}>
-                    Precio
-                  </Typography>
-                  <Typography sx={{ fontWeight: 600, justifySelf: "center" }}>
-                    Cant
-                  </Typography>
-                  <Typography sx={{ fontWeight: 600, justifySelf: "center" }}>
-                    Total
-                  </Typography>
-                </Stack>
-                <Stack spacing={1}>
-                  <Box
-                    sx={{
-                      display: "flex",
-
-                      flexDirection: "column",
-                      justifyContent: "start",
-                      alignItems: "center",
-                      height: 500,
-                      pt: 1,
-                      pb: 1,
-                    }}
-                  >
-                    <Stack
-                      display={"flex"}
-                      spacing={1}
-                      sx={{ display: "flex", alignItems: "start" }}
-                    >
-                      {items.map((item) => (
-                        <ListItem
-                          price={item.price}
-                          key={item.id}
-                          text={item.name}
-                          total={item.itemTotalPrice}
-                          q={item.quantity}
-                          handleChange={handleChange}
-                          description={item.description}
-                          qFinish={item.qFinish}
-                          finish={item.finish}
-                          onClick={() => {
-                            removeItem(item.id);
-                          }}
-                        />
-                      ))}
-                    </Stack>{" "}
-                  </Box>
-                </Stack>
-              </Box>
-            )}
-            {items.length === 0 && (
-              <Box
+          {items.length > 0 && (
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
+              <Stack
                 sx={{
-                  display: "flex",
-                  flexDirection: "column",
+                  bgcolor: "black",
+                  display: "grid",
                   alignItems: "end",
+                  height: 40,
+                  color: "white",
+                  borderRadius: 1.75,
+                  gridTemplateColumns: "330px 100px 60px 120px 1fr",
                 }}
               >
-                <Stack
+                <Typography sx={{ fontWeight: 600 }}>Producto</Typography>
+                <Typography sx={{ fontWeight: 600, justifySelf: "center" }}>
+                  Precio
+                </Typography>
+                <Typography sx={{ fontWeight: 600, justifySelf: "center" }}>
+                  Cant
+                </Typography>
+                <Typography sx={{ fontWeight: 600, justifySelf: "center" }}>
+                  Total
+                </Typography>
+              </Stack>
+              <Stack spacing={1}>
+                <Box
                   sx={{
+                    display: "flex",
+
+                    flexDirection: "column",
+                    justifyContent: "start",
                     alignItems: "center",
-                    alignSelf: "center",
+                    height: "auto",
+                    pt: 1,
+                    pb: 1,
                   }}
                 >
-                  <ShoppingBagOutlinedIcon
-                    sx={{ fontSize: 80, color: "grey" }}
-                  />
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      color: "grey",
-                    }}
+                  <Stack
+                    display={"flex"}
+                    spacing={1}
+                    sx={{ display: "flex", alignItems: "start" }}
                   >
-                    Aún no se han agregado productos.
-                  </Typography>
-                </Stack>
-              </Box>
-            )}
-          </Box>
+                    {items.map((item) => (
+                      <ListItem
+                        price={item.price}
+                        key={item.id}
+                        text={item.name}
+                        total={item.itemTotalPrice}
+                        q={item.quantity}
+                        handleChange={handleChange}
+                        description={item.description}
+                        qFinish={item.qFinish}
+                        finish={item.finish}
+                        onClick={() => {
+                          removeItem(item.id);
+                        }}
+                      />
+                    ))}
+                  </Stack>{" "}
+                </Box>
+              </Stack>
+            </Box>
+          )}
+          {items.length === 0 && (
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "end",
+              }}
+            >
+              <Stack
+                sx={{
+                  alignItems: "center",
+                  alignSelf: "center",
+                }}
+              >
+                <ShoppingBagOutlinedIcon sx={{ fontSize: 80, color: "grey" }} />
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "grey",
+                  }}
+                >
+                  Aún no se han agregado productos.
+                </Typography>
+              </Stack>
+            </Box>
+          )}
 
           <Box
             sx={{

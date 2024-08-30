@@ -327,7 +327,7 @@ const Factura = () => {
                     <Typography
                       sx={{
                         alignSelf: "end",
-
+                        textTransform: "uppercase",
                         fontSize: 14,
                         fontWeight: 800,
                         textAlign: "right",
@@ -336,7 +336,7 @@ const Factura = () => {
                         color: "primary.dark",
                       }}
                     >
-                      RECIBO
+                      {client.billType}
                     </Typography>
                   </Box>
                 </Stack>
@@ -420,7 +420,7 @@ const Factura = () => {
             sx={{
               display: "grid",
               gridTemplateColumns: invoiceGrid,
-              bgcolor: "background.default",
+              //bgcolor: "background.default",
               position: "relative",
 
               width: 480,
@@ -468,7 +468,9 @@ const Factura = () => {
                 width: "97%",
                 height: "100%",
 
-                display: "flex",
+                display: "grid",
+                gridTemplateRows: "repeat(6,1fr)",
+                flexFlow: "wrap",
                 alignItems: "start",
               }}
             >
@@ -518,7 +520,7 @@ const Factura = () => {
               <Box
                 sx={{
                   width: "95%",
-                  height: "95%",
+                  height: "100%",
                   display: "grid",
                   gridTemplateRows: ".5fr 1.5fr 1fr",
 
@@ -531,7 +533,7 @@ const Factura = () => {
                   sx={{
                     display: "grid",
                     gridTemplateColumns: "repeat(4, 1fr)",
-                    gap: 1,
+                    gap: 0.5,
                   }}
                 >
                   <Box>

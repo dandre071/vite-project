@@ -19,7 +19,7 @@ const InvoiceItem = ({
           display: "grid",
           gridTemplateColumns: invoiceGrid,
           borderRadius: 1.5,
-          height: 80,
+
           alignItems: "center",
         }}
       >
