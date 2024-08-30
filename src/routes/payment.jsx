@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { finishOperation } from "../components/utils/helpers";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import generatePDF from "react-to-pdf";
 import Factura from "./factura";
 import NavBtn from "../Hooks/useCartItems";
@@ -46,6 +46,21 @@ dayjs.extend(timezone);
 dayjs.tz.setDefault("America/Bogota");
 const Payment = () => {
   const client = usePersonalData((state) => state.personalData);
+  const payment = usePaymentData((state) => state.paymentData);
+  useEffect(() => {
+    const updateState = () => {
+      formik.setValues({
+        receives: payment.receives,
+        do: payment.do,
+        delivery: payment.delivery,
+        payment: payment.payment,
+        comments: payment.comments,
+        pending: payment.pending,
+      });
+    };
+    updateState();
+  }, []);
+
   const totalPrice = useGetCartTotalPrice();
   const clearCart = useShoppingCart((state) => state.clearCart);
   const targetRef = useRef();
@@ -91,9 +106,6 @@ const Payment = () => {
   const handleDate = () => {
     formik.setValues({ ...formik.values, delivery: newDateFormat });
   };
-
-  // console.log(deliveryDate);
-
   console.log(newDateFormat);
   const handleDeliveryDate = () => {
     formik.setValues();
@@ -186,7 +198,7 @@ const Payment = () => {
               /* value={formik.values.email} */
               size="small"
               name="payment"
-              onChange={handleChange}
+              onChange={formik.handleChange}
               fullWidth={false}
               // defaultValue={localStore.email}
               // label={"Email"}
@@ -247,7 +259,9 @@ const Payment = () => {
         >
           <FormSelect2
             size="normal"
-            /* value={formik.values.clientType}
+            value={formik.values.receives}
+            defaultValue={payment.receives}
+            /* 
           error={formik.errors.clientType}
           helperText={formik.errors.clientType} */
             fullWidth
@@ -258,6 +272,7 @@ const Payment = () => {
           />
           <FormSelect2
             size="normal"
+            value={formik.values.do}
             /* value={formik.values.clientType}
           error={formik.errors.clientType}
           helperText={formik.errors.clientType} */
@@ -343,6 +358,7 @@ const Payment = () => {
           /* value={formik.values.email} */
           name="comments"
           multiline
+          value={formik.values.comments}
           onChange={formik.handleChange}
           fullWidth
           //defaultValue={localStore.email}
