@@ -19,7 +19,7 @@ const InvoiceItem = ({
           display: "grid",
           gridTemplateColumns: invoiceGrid,
           borderRadius: 1.5,
-          height: "100%",
+          height: 40,
           alignItems: "center",
         }}
       >
@@ -39,7 +39,9 @@ const InvoiceItem = ({
           {totalPrice}
         </Typography>
       </Stack>
-      <Stack sx={{ display: "grid", gridTemplateColumns: "70% 1fr" }}>
+      <Stack
+        sx={{ display: "grid", gridTemplateColumns: "70% 1fr", height: 30 }}
+      >
         <Typography
           className="secondary-color capitalize"
           sx={{
@@ -61,17 +63,30 @@ const InvoiceItem = ({
             justifyContent: "center",
           }}
         >
-          <Typography
-            className="secondary-color"
+          <Box
             sx={{
-              fontSize: 11,
-              fontWeight: 500,
-              textAlign: "center",
               lineHeight: 1.2,
+              display: "flex",
+              justifyContent: "center",
+              bgcolor: "#f7f7f7",
+              width: "100%",
+              height: "90%",
+              borderRadius: 1,
+              alignItems: "center",
+              p: 0.02,
             }}
           >
-            Acabado: <br /> {`${finishQ} ${finish}`}
-          </Typography>
+            <Typography
+              className="secondary-color"
+              sx={{
+                fontSize: 11,
+                fontWeight: 500,
+                textAlign: "center",
+              }}
+            >
+              Acabado: {`${finishQ} ${finish}`}
+            </Typography>
+          </Box>
         </Box>
       </Stack>
     </Stack>

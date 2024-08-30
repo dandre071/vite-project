@@ -250,10 +250,9 @@ body {
   border-radius: 5px;
 }
 .invoice-item {
-  display: "grid";
-
+  display: grid;
+  grid-template-rows: 40px 30px;
   height: 70px;
-  max-height: 70px;
 
   /*background-color: #ff0031;*/
   /* border-bottom: 1px solid rgb(190, 190, 190); */
