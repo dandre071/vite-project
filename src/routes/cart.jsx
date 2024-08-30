@@ -51,18 +51,18 @@ const Cart = () => {
           gap: 1,
           alignSelf: "start",
           display: "flex",
+          minHeight: 500,
 
-          height: "auto",
           justifySelf: "center",
         }}
       >
         <Box
           sx={{
             ...modal,
-            width: 650,
+            width: "100%",
             justifySelf: "center",
             display: "grid",
-
+            gridTemplateRows: "100px auto 50px",
             alignItems: "start",
             /*  transform: "scale(0.9)", */
           }}
@@ -72,7 +72,10 @@ const Cart = () => {
           </Box>
 
           {items.length > 0 && (
-            <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Box
+              style={{ transform: "scale(.90)" }}
+              sx={{ display: "flex", flexDirection: "column", height: "auto" }}
+            >
               <Stack
                 sx={{
                   bgcolor: "black",

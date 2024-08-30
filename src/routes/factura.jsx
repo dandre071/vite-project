@@ -166,7 +166,10 @@ const Factura = () => {
   };
   /* const { toPDF, targetRef } = usePDF(options); */
   return (
-    <div id="pdf" /* style={{ display: "none" }} */>
+    <div
+      style={{ justifySelf: "start" }}
+      id="pdf" /* style={{ display: "none" }} */
+    >
       <form ref={targetRef}>
         <Stack
           sx={{
@@ -179,7 +182,7 @@ const Factura = () => {
             // gridTemplateRows: "2.3cm 2.1cm 0.7cm 12cm 3.5cm",
             justifyContent: "center",
             alignItems: "center",
-            gap: 1,
+            gap: 0.5,
           }}
         >
           <Stack

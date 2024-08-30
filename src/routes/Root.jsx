@@ -41,11 +41,12 @@ const Root = () => {
       >
         <div
           style={{
-            width: "60vw",
-            height: "90vh",
+            width: "90vw",
+            height: "auto",
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",
+            alignItems: "start",
+            alignSelf: "start",
           }}
         >
           <ThemeProvider theme={customTheme}>
