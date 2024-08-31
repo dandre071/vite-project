@@ -8,7 +8,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import generatePDF from "react-to-pdf";
 import { usePersonalData, useShoppingCart } from "../store/shoppingCart";
 import { colPesos } from "../components/utils/configs";
-import { Link, redirect } from "react-router-dom";
+import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
 import { usePaymentData } from "../store/paymentData";
 
 import { useReactToPrint } from "react-to-print";
@@ -18,6 +18,8 @@ import { useState } from "react";
 import SuccessModal from "../components/modals/SuccessModal";
 
 const Factura = () => {
+  const navigate = useNavigate();
+
   const targetRef = useRef();
   const cart = useShoppingCart((state) => state.items);
   const paymentData = usePaymentData((state) => state.paymentData);
@@ -58,7 +60,10 @@ const Factura = () => {
     clientData();
     cartReset();
     setOpen(false);
-    //redirect("/");
+    navigate("/");
+    {
+      /* <Navigate to="/cart" replace={true} />; */
+    }
   };
   const handlePrint = useReactToPrint({
     content: () => targetRef.current,
@@ -67,6 +72,7 @@ const Factura = () => {
     //onAfterPrint: () => setOpen(true),
     onAfterPrint: () => clear(),
     onAfterPrint: () => setOpen(true),
+    //onAfterPrint: () => navigate("/cart"),
   });
 
   const printFn = () => {
@@ -94,7 +100,10 @@ const Factura = () => {
   };
 
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    redirect("/");
+  };
   return (
     <div
       style={{ justifySelf: "start" }}
@@ -765,7 +774,9 @@ const Factura = () => {
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
             </Typography>
-            <Button onClick={clear}>clear</Button>
+            <Link>
+              <Button onClick={clear}>clear</Button>
+            </Link>
           </Box>
         </Modal>
       </div>
