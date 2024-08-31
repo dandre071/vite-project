@@ -23,7 +23,7 @@ import NavBtn from "../Hooks/useCartItems";
 import { modal } from "../Styles/styles";
 import FormSelect2 from "../components/Forms/FormSelect2";
 import { Form, useFormik } from "formik";
-import { PersonSchema } from "../components/Validations";
+import { PaymentSchema, PersonSchema } from "../components/Validations";
 import ModalHeader from "../components/ModalHeader";
 import { FormInputDate } from "../components/Forms/FormInputDate";
 import {
@@ -76,17 +76,17 @@ const Payment = () => {
     initialValues: {
       receives: "",
       do: "",
-      delivery: "",
+      delivery: new Date(),
       payment: null,
       comments: "",
       pending: null,
     },
-    validationSchema: PersonSchema,
+    validationSchema: PaymentSchema,
 
     // onSubmit: handleSubmit,
   });
   const paymentData = usePaymentData((state) => state.paymentData);
-
+  const personalData = usePersonalData((state) => state.personalData);
   const addData = usePaymentData((state) => state.addData);
   const deliveryDate = formik.values.delivery["$d"];
   const newDateFormat = new Intl.DateTimeFormat("es-CO", {
@@ -193,8 +193,12 @@ const Payment = () => {
                 justifySelf: "end",
                 textAlign: "right",
               }}
-              error={formik.errors.payment}
-              helperText={formik.errors.payment}
+              error={
+                personalData.billType === "Recibo" ? formik.errors.payment : ""
+              }
+              helperText={
+                personalData.billType === "Recibo" && formik.errors.payment
+              }
               /* value={formik.values.email} */
               size="small"
               name="payment"
@@ -261,9 +265,8 @@ const Payment = () => {
             size="normal"
             value={formik.values.receives}
             defaultValue={payment.receives}
-            /* 
-          error={formik.errors.clientType}
-          helperText={formik.errors.clientType} */
+            error={formik.errors.receives}
+            helperText={formik.errors.receives}
             fullWidth
             name="receives"
             onChange={formik.handleChange}
@@ -303,6 +306,8 @@ const Payment = () => {
                 <DateTimePicker
                   size="normal"
                   value={value}
+                  error={formik.errors.delivery}
+                  helperText={formik.errors.delivery}
                   //onChange={(newValue) => setfield (newValue)}
                   onChange={(e) => formik.setFieldValue("delivery", e)}
                   timezone="America/Bogota"
@@ -409,8 +414,17 @@ const Payment = () => {
               </Button>
             </Link> */}
 
-            <Link to={"/factura"}>
+            <Link
+              to={
+                formik.errors.payment ||
+                formik.errors.receives ||
+                formik.errors.delivery
+                  ? ""
+                  : "/factura"
+              }
+            >
               <Button
+                disabled={formik.errors.payment}
                 onClick={handleAddData}
                 startIcon={<ShoppingCartOutlinedIcon />}
                 sx={{ color: "white", width: 400, height: 55 }}

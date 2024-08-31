@@ -40,7 +40,7 @@ const PersonalData = () => {
 
   const formik = useFormik({
     initialValues: {
-      billType: "",
+      billType: "Recibo",
       clientType: "",
       name: "",
       email: "",

@@ -6,7 +6,7 @@ const mailRegExp =
 export const productSchema = object().shape({
   name: string()
     .min(5, "Minimo 5 caracteres")
-    .max(27, "too long!")
+    .max(40, "Se ha superado el máximo de caracteres!")
     .required("Este campo es requerido."),
   //.min(1, "El nombre tiene que tener al menos un carácter")
   // .max(10, "El nombre no puede superar los 10 carácteres"),
@@ -22,7 +22,7 @@ export const productSchema = object().shape({
   //height: number().required().positive(),
   //width: number().required().positive(),
   //matWidth: number().required().positive(),
-  finish: array().of(string()).required(),
+  finish: /* array().of(string()) */ string().required(),
   finishQ: number()?.required().positive(),
   //material: string().required(),
   //descolillado: string().required(),
@@ -30,7 +30,7 @@ export const productSchema = object().shape({
 });
 
 export const PersonSchema = object().shape({
-  billType: string(),
+  billType: string().required(),
   clientType: string(),
   name: string(),
 
@@ -46,4 +46,9 @@ export const PersonSchema = object().shape({
     .max(10, "Número muy largo"),
   //nit: string().required("Este campo es obligatorio."),
   // receives: string(),
+});
+export const PaymentSchema = object().shape({
+  payment: number().required(),
+  receives: string().required(),
+  delivery: string().required(),
 });
