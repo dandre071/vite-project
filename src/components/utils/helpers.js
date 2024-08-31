@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { usePersonalData, useShoppingCart } from "../../store/shoppingCart";
 import { colPesos } from "./configs";
 import generatePDF from "react-to-pdf";
+import { usePaymentData } from "../../store/paymentData";
 export function sum() {
   console.log(2 + 1);
 }

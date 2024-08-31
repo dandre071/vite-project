@@ -393,6 +393,7 @@ body {
   border: 1.8px solid var(--background-dark);
   padding: 5px;
   border-radius: 10px;
+  width: 650px;
 }
 .disabled-btn {
   color: rgb(182, 182, 182);

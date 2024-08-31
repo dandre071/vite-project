@@ -66,14 +66,14 @@ const PersonalData = () => {
     updateState();
   }, []);
 
-  console.log(localStore);
+  //console.log(localStore);
 
   const handleAutoChange = (event, value) => {
     formik.values.name = value;
     const found = users.filter((user) => user == formik.values.name);
     console.log(found);
   };
-
+  console.log(!!formik.errors);
   /*  const user = "diego";
 
   const errors = formik.errors.name;
@@ -96,6 +96,9 @@ const PersonalData = () => {
   console.log(clientName); */
   // console.log(users);
 
+  const errors =
+    !!formik.errors.phone || !!formik.errors.name || !!formik.errors.email;
+
   return (
     <Box>
       <form onSubmit={formik.handleSubmit}>
@@ -116,7 +119,7 @@ const PersonalData = () => {
           <Grid item sm={4}>
             <FormSelect2
               value={formik.values.clientType}
-              error={formik.errors.clientType}
+              error={formik.touched.error && formik.errors.clientType}
               helperText={formik.errors.clientType}
               fullWidth
               name="clientType"
@@ -177,7 +180,7 @@ const PersonalData = () => {
           <Grid item sm={8}>
             <TextField
               onBlur={formik.handleBlur}
-              error={formik.errors.email}
+              error={formik.touched.email && formik.errors.email}
               helperText={formik.errors.email}
               value={formik.values.email}
               name="email"
@@ -227,8 +230,27 @@ const PersonalData = () => {
             alignItems: "center",
           }}
         >
-          <Link to={"/product-module"}>
-            <NextBtn onClick={handleSubmit} className="arrow-btn" />
+          <Link to={!errors && "/product-module"}>
+            {/*  <Button
+              disabled
+              variant="contained"
+              disableRipple
+              disableFocusRipple
+              disableTouchRipple
+              disableElevation
+              sx={{
+                bgcolor: "transparent",
+                "&:hover": { bgcolor: "transparent" },
+              }}
+            > */}
+
+            <NextBtn
+              pointer={errors && "none"}
+              onClick={handleSubmit}
+              className={errors ? "disabled-btn" : "arrow-btn"}
+            />
+
+            {/*  </Button> */}
           </Link>
         </Grid>
       </form>

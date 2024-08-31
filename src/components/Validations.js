@@ -3,6 +3,8 @@ const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const mailRegExp =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+const requiredMessage = "Campo obligatorio.";
 export const productSchema = object().shape({
   name: string()
     .min(5, "Minimo 5 caracteres")
@@ -32,7 +34,7 @@ export const productSchema = object().shape({
 export const PersonSchema = object().shape({
   billType: string().required(),
   clientType: string(),
-  name: string(),
+  name: string().required("Por favor ingrese un nombre."),
 
   // .min(5, "too short"),
   /* .min(5, "Mínimo 5 caracteres") */
@@ -40,7 +42,7 @@ export const PersonSchema = object().shape({
   email: string().matches(mailRegExp, "Email no válido"),
 
   phone: string()
-    .required("required")
+    .required(requiredMessage)
     .matches(phoneRegExp, "Número no válido")
     .min(10, "Número muy corto")
     .max(10, "Número muy largo"),
@@ -48,7 +50,7 @@ export const PersonSchema = object().shape({
   // receives: string(),
 });
 export const PaymentSchema = object().shape({
-  payment: number().required(),
-  receives: string().required(),
-  delivery: string().required(),
+  payment: number().required(requiredMessage),
+  receives: string().required(requiredMessage),
+  delivery: string().required(requiredMessage),
 });

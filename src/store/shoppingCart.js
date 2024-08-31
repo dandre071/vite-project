@@ -87,7 +87,7 @@ export const usePersonalData = create()(
       /*  increaseQuantity: (productId, quantity = 1) => {},
       decreaseQuantity: (productId, quantity = 1) => {}, */
 
-      clearCart: () => {
+      clearData: () => {
         set((state) => ({
           personalData: (state.personalData = []),
         }));

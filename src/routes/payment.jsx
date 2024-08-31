@@ -88,7 +88,7 @@ const Payment = () => {
   const paymentData = usePaymentData((state) => state.paymentData);
   const personalData = usePersonalData((state) => state.personalData);
   const addData = usePaymentData((state) => state.addData);
-  const deliveryDate = formik.values.delivery["$d"];
+  const deliveryDate = formik.values.delivery && formik.values.delivery["$d"];
   const newDateFormat = new Intl.DateTimeFormat("es-CO", {
     dateStyle: "short",
     timeStyle: "short",
@@ -326,7 +326,7 @@ const Payment = () => {
                     textField: {},
                     input: {
                       color: "text.main",
-
+                      // bgcolor: "green",
                       pr: 0,
                       m: 0,
                       textAlign: "right",
@@ -346,6 +346,7 @@ const Payment = () => {
                       display: "grid",
                       gridTemplateColumns: "170px",
                       width: 220,
+                      //bgcolor: "green",
 
                       m: 0,
                     },

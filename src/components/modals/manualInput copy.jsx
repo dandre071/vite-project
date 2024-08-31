@@ -118,7 +118,7 @@ const ManualInput2 = ({ text, acabado }) => {
 
   // formatNumber(formik.values.price);
   const users = useUsers();
-  console.log(users);
+  // console.log(users);
   const items = useShoppingCart((state) => state.items);
   return (
     <Box>
@@ -355,7 +355,7 @@ const ManualInput2 = ({ text, acabado }) => {
                   title={"Agregar"}
                   variant="prime"
                   type="submit"
-                  onClick={formik.handleSubmit}
+                  onClick={handlerAdd}
                   startIcon={<AddShoppingCartIcon />}
                 >
                   Agregar

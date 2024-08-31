@@ -8,7 +8,7 @@ const useUsers = () => {
   useEffect(() => {
     async function getUsers() {
       let { data, error } = await supabase.from("workers").select("*");
-      console.log(supabase);
+      // console.log(supabase);
 
       if (data != null) {
         setUser(data);

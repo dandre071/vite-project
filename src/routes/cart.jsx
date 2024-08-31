@@ -52,7 +52,7 @@ const Cart = () => {
           alignSelf: "start",
           display: "flex",
           minHeight: 500,
-
+          width: 650,
           justifySelf: "center",
         }}
       >
@@ -62,6 +62,7 @@ const Cart = () => {
             width: "100%",
             justifySelf: "center",
             display: "grid",
+            width: 650,
             gridTemplateRows: "100px auto 50px",
             alignItems: "start",
             /*  transform: "scale(0.9)", */

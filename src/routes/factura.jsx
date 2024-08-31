@@ -1,4 +1,4 @@
-import { Alert, Box, Button, Stack, Typography } from "@mui/material";
+import { Alert, Box, Button, Modal, Stack, Typography } from "@mui/material";
 import React, { useRef } from "react";
 import { invoiceGrid } from "../Styles/styles";
 import useUsers from "../Hooks/useUsers";
@@ -8,78 +8,34 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import generatePDF from "react-to-pdf";
 import { usePersonalData, useShoppingCart } from "../store/shoppingCart";
 import { colPesos } from "../components/utils/configs";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import { usePaymentData } from "../store/paymentData";
 
 import { useReactToPrint } from "react-to-print";
 import { PDFDownloadLink, Document, Page } from "@react-pdf/renderer";
 import { saveAs } from "file-saver";
+import { useState } from "react";
+import SuccessModal from "../components/modals/SuccessModal";
 
 const Factura = () => {
   const targetRef = useRef();
   const cart = useShoppingCart((state) => state.items);
   const paymentData = usePaymentData((state) => state.paymentData);
-  console.log(paymentData);
+  const paymentDataReset = usePaymentData((state) => state.clearData);
+  const clientData = usePersonalData((state) => state.clearData);
+  const cartReset = useShoppingCart((state) => state.clearCart);
 
-  /*  const handlePrint = useReactToPrint({
-    content: () => targetRef.current,
-  }); */
-
-  /* const handlePrint = useReactToPrint({
-    content: () => targetRef.current,
-  }); */
-
-  /* const deliveryDate = paymentData.delivery || new Date();
-  const newDateFormat = new Intl.DateTimeFormat("es-CO", {
-    dateStyle: "short",
-    timeStyle: "short",
-    timeZone: "America/Bogota",
-  }).format(deliveryDate); */
-  //console.log(cart[0].name);
-  /*   const handleDownloadPdf = async () => {
-    const element = printRef.current;
-    const canvas = await html2canvas(element);
-    const data = canvas.toDataURL("image/png");
-  }; */
-  /* const pdf = new jsPDF();
-  const imgProperties = pdf.getImageProperties(data);
-  const pdfWidth = pdf.internal.pageSize.getWidth();
-  const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
-
-  pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
-  pdf.save("print.pdf"); */
-  /* const createPDF = () => {
-    const pdf = new jsPDF("portrait", "px", [529, 793]);
-    const data = document.querySelector("#pdf");
-    pdf.html(data).then(() => {
-      pdf.save("shipping_label.pdf");
-    });
-  }; */
-  /* const onButtonClick = () => {
-    const pdfUrl = "Sample.pdf";
-    const link = document.createElement("a");
-    link.href = pdfUrl;
-    link.download = "document.pdf"; // specify the filename
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }; */
-  /* const onButtonClick = () => {
-    // using Java Script method to get PDF file
-    fetch("SamplePDF.pdf").then((response) => {
-      response.blob().then((blob) => {
-        // Creating new object of PDF file
-        const fileURL = window.URL.createObjectURL(blob);
-
-        // Setting various property values
-        let alink = document.createElement("a");
-        alink.href = fileURL;
-        alink.download = "SamplePDF.pdf";
-        alink.click();
-      });
-    });
-  }; */
-
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
   const totalInvoice =
     cart.length > 0
       ? cart.map((item) => item.itemTotalPrice).reduce((a, b) => a + b)
@@ -92,30 +48,41 @@ const Factura = () => {
     timeStyle: "short",
     // timeZone: "Colombia/Bogotá",
   }).format(date);
+
+  const [open, setOpen] = useState(false);
+  function showModalHandler() {
+    setShowModal(!showModal);
+  }
+  const clear = () => {
+    paymentDataReset();
+    clientData();
+    cartReset();
+    setOpen(false);
+    //redirect("/");
+  };
   const handlePrint = useReactToPrint({
     content: () => targetRef.current,
     documentTitle: `${client.name}.pdf`,
     copyStyles: true,
-    onAfterPrint: <Alert>jgfkgfkgfg</Alert>,
-    /*  print: async (printIframe) => {
-      const document = printIframe.contentDocument;
-      if (document) {
-        const html = document.getElementsByTagName("html")[0];
-        console.log(html);
-        await html2pdf().from(html).save();
-      }
-    }, */
+    //onAfterPrint: () => setOpen(true),
+    onAfterPrint: () => clear(),
+    onAfterPrint: () => setOpen(true),
   });
+
+  const printFn = () => {
+    handlePrint();
+    //setShowModal(true);
+  };
+
   const phoneNumber = client.phone;
 
-  const formatNum =
-    phoneNumber.substr(0, 3) +
-    " " +
-    phoneNumber.substr(3, 3) +
-    " " +
-    phoneNumber.substr(6, 4);
-
-  console.log(formatNum);
+  const formatNum = phoneNumber
+    ? phoneNumber.substr(0, 3) +
+      " " +
+      phoneNumber.substr(3, 3) +
+      " " +
+      phoneNumber.substr(6, 4)
+    : "";
 
   const box = {
     display: "grid",
@@ -124,47 +91,10 @@ const Factura = () => {
 
     justifyContent: "center",
     alignItems: "center",
-    //borderBottom: "1px solid black",
   };
 
-  /* const targetRef = useRef(); */
-  const options = {
-    // default is `save`
-    filename: `${client.name}.pdf`,
-    method: "save",
-    // default is Resolution.MEDIUM = 3, which should be enough, higher values
-    // increases the image quality but also the size of the PDF, so be careful
-    // using values higher than 10 when having multiple pages generated, it
-    // might cause the page to crash or hang.
-    //resolution: Resolution.HIGH,
-    page: {
-      // margin is in MM, default is Margin.NONE = 0
-      //margin: Margin.SMALL,
-      // default is 'A4'
-      format: [140, 210],
-      // default is 'portrait'
-      // orientation: "portrait",
-    },
-    canvas: {
-      // default is 'image/jpeg' for better size performance
-      mimeType: "pdf",
-      qualityRatio: 1,
-    },
-    // Customize any value passed to the jsPDF instance and html2canvas
-    // function. You probably will not need this and things can break,
-    // so use with caution.
-    overrides: {
-      // see https://artskydj.github.io/jsPDF/docs/jsPDF.html for more options
-      pdf: {
-        compress: true,
-      },
-      // see https://html2canvas.hertzen.com/configuration for more options
-      canvas: {
-        useCORS: true,
-      },
-    },
-  };
-
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <div
       style={{ justifySelf: "start" }}
@@ -322,7 +252,9 @@ const Factura = () => {
                         className="invoice-data-date"
                         sx={{}}
                       >
-                        {paymentData.delivery}
+                        {typeof paymentData.delivery != "object"
+                          ? paymentData.delivery
+                          : ""}
                       </Typography>
                     </Box>
                   </Box>
@@ -769,18 +701,74 @@ const Factura = () => {
       </button> */}
       {/* <button onClick={() => toPDF()}>Download PDF</button> */}
       {/* <button onClick={() => createPDF()}>Download PDF</button> */}
-      <Link to={"/"}>
-        <button
+      {/*  <Link to={"/"}> */}
+      {/*  <button
           data-html2canvas-ignore
           onClick={() =>
-            generatePDF(targetRef, options /* { filename: "page.pdf" } */)
+            generatePDF(targetRef, options )
           }
         >
           Download PDF
         </button>
-      </Link>
-
+      </Link> */}
+      {/*  <Link to={"/"}> */}
       <Button onClick={handlePrint}>pdf</Button>
+      {/*   </Link> */}
+      {/* <SuccessModal
+        handlePrint={handlePrint}
+        onClick={printFn}
+        open={open}
+        close={clear}
+      /> */}
+
+      {/* <div>
+        <Modal
+          
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Button onClick={printFn}>Open modal</Button>
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Text in a modal
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            </Typography>
+            <Button onClick={clear}>clear</Button>
+          </Box>
+        </Modal>
+      </div> */}
+      {/*  {showModal && (
+        <Modal
+          open={showModal}
+          // onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          fdfdf
+        </Modal>
+      )} */}
+      <div>
+        <Button onClick={handleOpen}>Open modal</Button>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Text in a modal
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            </Typography>
+            <Button onClick={clear}>clear</Button>
+          </Box>
+        </Modal>
+      </div>
     </div>
   );
 };

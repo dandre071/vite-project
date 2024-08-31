@@ -1,6 +1,6 @@
 import supabase from "./config/supabaseClient";
 
-const supabaseApi = () => {
+const useFetch = () => {
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
 
@@ -20,4 +20,4 @@ const supabaseApi = () => {
   return <div>supabaseApi</div>;
 };
 
-export default supabaseApi;
+export default useFetch;

@@ -36,9 +36,16 @@ export const usePaymentData = create()(
       /*  increaseQuantity: (productId, quantity = 1) => {},
         decreaseQuantity: (productId, quantity = 1) => {}, */
 
-      clearCart: () => {
+      clearData: () => {
         set((state) => ({
-          paymentData: (state.paymentData = []),
+          paymentData: (state.paymentData = {
+            receives: "",
+            do: "",
+            delivery: new Date(),
+            payment: null,
+            comments: "",
+            pending: null,
+          }),
         }));
       },
     }),
