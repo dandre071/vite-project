@@ -759,8 +759,9 @@ const Factura = () => {
           fdfdf
         </Modal>
       )} */}
+      {/*  <SuccessModal onClick={handleOpen} open={open} /> */}
       <div>
-        <Button onClick={handleOpen}>Open modal</Button>
+        {/*  <Button onClick={handleOpen}>Open modal</Button> */}
         <Modal
           open={open}
           onClose={handleClose}

@@ -30,8 +30,7 @@ const style = {
 const SuccessModal = ({ text, onClick, handlePrint }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
-    onClick();
-    //setOpen(true);
+    setOpen(true);
   };
   const handleClose = () => {
     close();
