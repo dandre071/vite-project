@@ -19,16 +19,7 @@ function Print() {
 
   return (
     <div>
-      <ThemeProvider theme={theme}>
-        <GetDataForm theme={{ theme }} />
-        {/* <Picker /> */}
-        {/*  <h1>
-          {(localData = localStorage.getItem("Manual-Products"))}
-          {console.log(JSON.parse(localData))}
-        </h1> */}
-        {/*  <ProductList /> */}
-        <Cart />
-      </ThemeProvider>
+      <ThemeProvider theme={theme}></ThemeProvider>
     </div>
   );
 }

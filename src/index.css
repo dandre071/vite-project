@@ -4,6 +4,12 @@
   font-family: Roboto;
   line-height: 1.5;
   font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 900px;
+
   --primary-main: #333dff;
   --primary-dark: #2e29ff;
   --primary-light: #f1f6ff;
@@ -17,7 +23,9 @@
   --text-main: #02172a;
   --text-light: #868686;
 }
-
+#logo {
+  width: 100px;
+}
 body {
   margin: 0;
   display: flex;

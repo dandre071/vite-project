@@ -2,59 +2,66 @@ import { Outlet, Link } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { customTheme } from "../Hooks/useCustomTheme";
 import CartCounter from "../components/CartCounter";
+import Logo from "../components/Logo";
 const Root = () => {
   return (
     <ThemeProvider theme={customTheme}>
-      <div style={{}}>
-        <div
+      <div
+        style={{
+          backgroundColor: "white",
+          width: "100vw",
+          top: 0,
+          left: 0,
+          position: "fixed",
+          zIndex: 1000,
+          justifyContent: "center",
+        }}
+      >
+        <ul
           style={{
-            backgroundColor: "red",
-            width: "70vw",
-            top: 0,
-            position: "fixed",
-          }}
-        >
-          <ul
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-            }}
-          >
-            <CartCounter />
-            <li>
-              <Link to={"/client-data"}>Cliente</Link>
-            </li>
-            <li>
-              <Link to={"/factura"}>Factura</Link>
-            </li>
-
-            <li>
-              <Link to={"/product-module"}>Producto</Link>
-            </li>
-            <li>
-              <Link to={"/cart"}>Cart</Link>
-            </li>
-            <li>
-              <Link to={"/payment"}>Pay</Link>
-            </li>
-          </ul>
-        </div>
-
-        <div
-          style={{
-            width: "70vw",
-            height: 700,
+            width: "70%",
+            height: 20,
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
+            flexDirection: "row",
+            justifyContent: "space-evenly",
           }}
         >
-          <ThemeProvider theme={customTheme} style={{ display: "flex" }}>
-            <Outlet />
-          </ThemeProvider>
-        </div>
+          <Link to={"/"}>
+            <Logo className="logo" width={50} />
+          </Link>
+          <CartCounter />
+          <li>
+            <Link to={"/client-data"}>Cliente</Link>
+          </li>
+          <li>
+            <Link to={"/factura"}>Factura</Link>
+          </li>
+
+          <li>
+            <Link to={"/product-module"}>Producto</Link>
+          </li>
+          <li>
+            <Link to={"/cart"}>Cart</Link>
+          </li>
+          <li>
+            <Link to={"/payment"}>Pay</Link>
+          </li>
+        </ul>
+      </div>
+
+      <div
+        style={{
+          width: "70vw",
+          height: 700,
+          display: "grid",
+
+          justifyContent: "center",
+          alignItems: "start",
+        }}
+      >
+        <ThemeProvider theme={customTheme}>
+          <Outlet />
+        </ThemeProvider>
       </div>
     </ThemeProvider>
   );

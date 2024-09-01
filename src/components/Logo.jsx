@@ -2,7 +2,7 @@ import React from "react";
 
 const Logo = () => {
   return (
-    <div className="logo">
+    <div id="logo" className="logo">
       <svg
         data-name="Capa 1"
         xmlns="http://www.w3.org/2000/svg"
