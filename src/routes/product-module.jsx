@@ -27,7 +27,7 @@ const ProductModule = () => {
   const items = useShoppingCart((state) => state.items);
   return (
     <div>
-      <Box sx={{ ...modal, height: 510 }}>
+      <Box sx={{ ...modal, height: 500 }}>
         <ModalHeader title={"Elegir producto"} />
         {items.length < 6 ? (
           <Stack

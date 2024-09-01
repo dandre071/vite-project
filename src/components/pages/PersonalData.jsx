@@ -101,7 +101,7 @@ const PersonalData = () => {
 
   return (
     <Box>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} style={{ alignSelf: "center" }}>
         <Grid container flexGrow={1} spacing={1.5}>
           <Grid item sm={8}>
             <FormSelect2

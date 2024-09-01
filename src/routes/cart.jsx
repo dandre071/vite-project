@@ -49,7 +49,7 @@ const Cart = () => {
       <Box
         sx={{
           gap: 1,
-          alignSelf: "start",
+          // alignSelf: "start",
           display: "flex",
           minHeight: 500,
           width: 650,
@@ -59,7 +59,7 @@ const Cart = () => {
         <Box
           sx={{
             ...modal,
-            width: "100%",
+
             justifySelf: "center",
             display: "grid",
             width: 650,

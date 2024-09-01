@@ -1,6 +1,6 @@
 import { Alert, Box, Button, Modal, Stack, Typography } from "@mui/material";
 import React, { useRef } from "react";
-import { invoiceGrid } from "../Styles/styles";
+import { invoiceGrid, modal } from "../Styles/styles";
 import useUsers from "../Hooks/useUsers";
 import Logo from "../components/Logo";
 import InvoiceItem from "../components/InvoiceComps/InvoiceItem";
@@ -16,7 +16,7 @@ import { PDFDownloadLink, Document, Page } from "@react-pdf/renderer";
 import { saveAs } from "file-saver";
 import { useState } from "react";
 import SuccessModal from "../components/modals/SuccessModal";
-
+import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 const Factura = () => {
   const navigate = useNavigate();
 
@@ -106,7 +106,7 @@ const Factura = () => {
   };
   return (
     <div
-      style={{ justifySelf: "start" }}
+      style={{ alignSelf: "start" }}
       id="pdf" /* style={{ display: "none" }} */
     >
       <form ref={targetRef}>
@@ -705,61 +705,9 @@ const Factura = () => {
           </Typography> */}
         </Stack>
       </form>
-      {/* <button type="button" onClick={handleDownloadPdf}>
-        Download as PDF
-      </button> */}
-      {/* <button onClick={() => toPDF()}>Download PDF</button> */}
-      {/* <button onClick={() => createPDF()}>Download PDF</button> */}
-      {/*  <Link to={"/"}> */}
-      {/*  <button
-          data-html2canvas-ignore
-          onClick={() =>
-            generatePDF(targetRef, options )
-          }
-        >
-          Download PDF
-        </button>
-      </Link> */}
-      {/*  <Link to={"/"}> */}
-      <Button onClick={handlePrint}>pdf</Button>
-      {/*   </Link> */}
-      {/* <SuccessModal
-        handlePrint={handlePrint}
-        onClick={printFn}
-        open={open}
-        close={clear}
-      /> */}
 
-      {/* <div>
-        <Modal
-          
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Button onClick={printFn}>Open modal</Button>
-          <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              Text in a modal
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
-            <Button onClick={clear}>clear</Button>
-          </Box>
-        </Modal>
-      </div> */}
-      {/*  {showModal && (
-        <Modal
-          open={showModal}
-          // onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          fdfdf
-        </Modal>
-      )} */}
-      {/*  <SuccessModal onClick={handleOpen} open={open} /> */}
+      <Button onClick={handlePrint}>pdf</Button>
+
       <div>
         {/*  <Button onClick={handleOpen}>Open modal</Button> */}
         <Modal
@@ -768,15 +716,50 @@ const Factura = () => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              Text in a modal
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
+          <Box className="status-modal">
+            <Box className="status-modal-box">
+              <CheckCircleRoundedIcon
+                className="status-modal-icon"
+                sx={{ fontSize: 150 }}
+              />
+            </Box>
+            <Box className="status-modal-box">
+              <Typography
+                sx={{ fontSize: 40, fontWeight: 800 }}
+                className="status-modal-title"
+              >
+                Éxito!
+              </Typography>
+              <Typography
+                sx={{ fontSize: 16, fontWeight: 400, textAlign: "center" }}
+                className="status-modal-title"
+              >
+                Todo salió bien y la información se agregó con normalidad.
+              </Typography>
+            </Box>
             <Link>
-              <Button onClick={clear}>clear</Button>
+              <Button
+                variant="outlined"
+                sx={{
+                  color: "greenyellow",
+                  border: `2px solid greenyellow`,
+                  textTransform: "capitalize",
+                  borderRadius: 2,
+                  height: 50,
+                  width: 200,
+                  fontSize: 20,
+                  transform: "scale(1)",
+                  "&:hover": {
+                    border: `2px solid greenyellow`,
+                    bgcolor: `greenyellow`,
+                    color: "white",
+                    transform: "scale(1.05)",
+                  },
+                }}
+                onClick={clear}
+              >
+                Finalizar
+              </Button>
             </Link>
           </Box>
         </Modal>

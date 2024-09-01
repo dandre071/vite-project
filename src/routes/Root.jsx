@@ -5,56 +5,57 @@ import CartCounter from "../components/CartCounter";
 const Root = () => {
   return (
     <ThemeProvider theme={customTheme}>
-      {/* <div style={{ display: "grid", gridTemplateRows: "50px 1fr" }}> */}
-      <div style={{ backgroundColor: "red" }}>
-        <ul
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-evenly",
-          }}
-        >
-          <CartCounter />
-          <li>
-            <Link to={"/client-data"}>Cliente</Link>
-          </li>
-          <li>
-            <Link to={"/factura"}>Factura</Link>
-          </li>
-
-          <li>
-            <Link to={"/product-module"}>Producto</Link>
-          </li>
-          <li>
-            <Link to={"/cart"}>Cart</Link>
-          </li>
-          <li>
-            <Link to={"/payment"}>Pay</Link>
-          </li>
-        </ul>
-      </div>
-      <div
-        //id="root-container"
-        style={{
-          backgroundColor: "#f2f2f2",
-        }}
-      >
+      <div style={{}}>
         <div
           style={{
-            width: "90vw",
-            height: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "start",
-            alignSelf: "start",
+            backgroundColor: "red",
+            width: "70vw",
+            top: 0,
+            position: "fixed",
           }}
         >
-          <ThemeProvider theme={customTheme}>
+          <ul
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-evenly",
+            }}
+          >
+            <CartCounter />
+            <li>
+              <Link to={"/client-data"}>Cliente</Link>
+            </li>
+            <li>
+              <Link to={"/factura"}>Factura</Link>
+            </li>
+
+            <li>
+              <Link to={"/product-module"}>Producto</Link>
+            </li>
+            <li>
+              <Link to={"/cart"}>Cart</Link>
+            </li>
+            <li>
+              <Link to={"/payment"}>Pay</Link>
+            </li>
+          </ul>
+        </div>
+
+        <div
+          style={{
+            width: "70vw",
+            height: 700,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <ThemeProvider theme={customTheme} style={{ display: "flex" }}>
             <Outlet />
           </ThemeProvider>
         </div>
       </div>
-      {/*    </div> */}
     </ThemeProvider>
   );
 };

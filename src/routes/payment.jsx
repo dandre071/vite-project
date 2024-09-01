@@ -101,17 +101,17 @@ const Payment = () => {
     setOpen(false); */
   };
 
-  console.log(paymentData);
+  //console.log(paymentData);
 
   const handleDate = () => {
     formik.setValues({ ...formik.values, delivery: newDateFormat });
   };
-  console.log(newDateFormat);
+  // console.log(newDateFormat);
   const handleDeliveryDate = () => {
     formik.setValues();
   };
 
-  console.log(formik.values);
+  //console.log(formik.values);
 
   const handleChange = (e) => {
     formik.setValues({
@@ -147,13 +147,15 @@ const Payment = () => {
         spacing={0}
         sx={{
           ...modal,
-          height: "550px",
+          height: "450px",
           width: "500px",
           display: "grid",
-          gridTemplateRows: "50px 60px 20px 40px 30px 20px)",
+          gridTemplateRows: "50px 60px 20px 40px)",
           justifyContent: "center",
           alignItems: "center",
-          transform: "scale(.95)",
+
+          pr: 5,
+          pl: 5,
 
           // overflow: 'auto',
         }}
@@ -258,7 +260,7 @@ const Payment = () => {
             height: "60px",
             gridTemplateColumns: "repeat(2, 130px) 220px",
             justifyContent: "center",
-            pt: 1,
+            alignContent: "center",
           }}
         >
           <FormSelect2
@@ -285,18 +287,7 @@ const Payment = () => {
             options={users}
             label={"Realiza"}
           />
-          {/* <FormInputDate
-            value={formik.values.delivery}
-            name="delivery"
-            onChange={formik.handleChange}
-            label={"Fecha Entrega"}
-            
-          /> */}
-          {/* <DatePicker
-            onChange={(newValue) => setValue(newValue)}
-            value={value}
-            name={"delivery"}
-          /> */}
+
           <Box sx={{}}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DemoContainer
@@ -371,6 +362,7 @@ const Payment = () => {
           label={"Observaciones"}
           type="text"
         />
+
         <Stack
           spacing={1}
           direction={"row"}
@@ -385,36 +377,26 @@ const Payment = () => {
             m: 0,
           }}
         >
-          <Button
-            onClick={clearCart}
-            //startIcon={<ClearOutlinedIcon />}
-            sx={{ width: 40, height: 55, m: 0 }}
-            // variant="secondary"
-            variant="secondary-outlined"
-          >
-            <ClearOutlinedIcon />
-            {/* Cancelar */}
-          </Button>
-
+          <NavBtn pathBack={"/cart"} pathNext={""} display={"none"} />
           <Grid
             item
             sx={{
+              gap: 2,
               display: "flex",
               justifyContent: "space-evenly",
               alignItems: "center",
             }}
           >
-            {/*  <Link to={"/factura"}>
-              <Button
-                onClick={() => generatePDF(targetRef, { filename: "page.pdf" })}
-                startIcon={<ShoppingCartOutlinedIcon />}
-                sx={{ color: "white", width: 400, height: 55 }}
-                variant="prime"
-              >
-                Finalizar
-              </Button>
-            </Link> */}
-
+            <Button
+              onClick={clearCart}
+              //startIcon={<ClearOutlinedIcon />}
+              sx={{ width: 40, height: 55, m: 0 }}
+              // variant="secondary"
+              variant="secondary-outlined"
+            >
+              <ClearOutlinedIcon />
+              {/* Cancelar */}
+            </Button>
             <Link
               to={
                 formik.errors.payment ||
@@ -428,25 +410,15 @@ const Payment = () => {
                 disabled={formik.errors.payment}
                 onClick={handleAddData}
                 startIcon={<ShoppingCartOutlinedIcon />}
-                sx={{ color: "white", width: 400, height: 55 }}
+                sx={{ color: "white", width: 250, height: 55 }}
                 variant="prime"
               >
                 Finalizar
               </Button>
             </Link>
-            {/* <Link to={"/payment"}>
-              <Button
-                variant="primary"
-                sx={{ height: "80%" }}
-                //onClick={handleSubmit}
-                endIcon={<NavigateNextIcon />}
-              >
-                Pagar
-              </Button>
-            </Link> */}
           </Grid>
         </Stack>
-        <NavBtn pathBack={"/cart"} pathNext={""} display={"none"} />
+
         {/*  <Factura targetRef={targetRef} /> */}
       </Stack>
     </Stack>
