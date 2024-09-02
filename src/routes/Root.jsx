@@ -49,19 +49,8 @@ const Root = () => {
         </ul>
       </div>
 
-      <div
-        style={{
-          width: "70vw",
-          height: 700,
-          display: "grid",
-
-          justifyContent: "center",
-          alignItems: "start",
-        }}
-      >
-        <ThemeProvider theme={customTheme}>
-          <Outlet />
-        </ThemeProvider>
+      <div style={{ position: "relative" }}>
+        <Outlet />
       </div>
     </ThemeProvider>
   );

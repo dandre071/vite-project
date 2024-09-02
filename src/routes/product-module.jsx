@@ -26,7 +26,7 @@ const colors = {
 const ProductModule = () => {
   const items = useShoppingCart((state) => state.items);
   return (
-    <div>
+    <div style={{ transform: "translateY(5%)" }}>
       <Box sx={{ ...modal, height: 500 }}>
         <ModalHeader title={"Elegir producto"} />
         {items.length < 6 ? (

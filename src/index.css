@@ -4,11 +4,6 @@
   font-family: Roboto;
   line-height: 1.5;
   font-weight: 400;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 900px;
 
   --primary-main: #333dff;
   --primary-dark: #2e29ff;
@@ -26,16 +21,16 @@
 #logo {
   width: 100px;
 }
-body {
-  margin: 0;
+html {
   display: flex;
-  place-items: center;
-  min-width: 320px;
   min-height: 100vh;
-  justify-content: center;
+}
+body {
   /*  background-color: #eaeaf3; */
+  margin: auto;
   background: rgb(247, 247, 247);
   background-color: #2f0491;
+
   /* background: linear-gradient(
     172deg,
     rgba(236, 243, 254, 1) 0%,
@@ -51,34 +46,7 @@ body {
 .test {
   background-color: red;
 }
-/* .MuiInputLabel-root {
-  font-size: 18px !important;
-  padding-bottom: 20px !important;
-  color: blue;
-}
-.MuiInputLabel {
-  font-size: 18px !important;
-  padding-bottom: 20px !important;
-  color: rgb(255, 0, 85);
-}
-.MuiInputLabel-shrink {
-  color: blue !important;
-}
-.MuiFormLabel-root {
-  font-size: 18px !important;
-  color: blue !important;
-} */
-/* 
 
-
-
-.MuiInputLabel-notched {
-  color: green !important;
-} */
-/* .MuiFilledInput-input {
-  font-size: 18px !important;
-  color: rgb(55, 0, 255) !important;
-} */
 .title {
   font-size: 2px;
 }
@@ -289,15 +257,6 @@ body {
   background-color: #ffffff;
 }
 
-#pdf-container {
-  width: 530px;
-  height: 790px;
-  display: grid;
-  grid-template-rows: 120px 26px 453px 141px 1fr;
-  justify-content: center;
-  align-items: center;
-  gap: 0.6;
-}
 #invoice-header {
   width: 100%;
   height: 100%;
@@ -488,4 +447,9 @@ body {
     opacity: 0;
     transform: scale(1.3);
   }
+}
+
+.margin-top {
+  margin: 50vh auto 0;
+  transform: translateY(-30%);
 }

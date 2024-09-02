@@ -105,10 +105,7 @@ const Factura = () => {
     redirect("/");
   };
   return (
-    <div
-      style={{ alignSelf: "start" }}
-      id="pdf" /* style={{ display: "none" }} */
-    >
+    <div className="margin-top" id="pdf" /* style={{ display: "none" }} */>
       <form ref={targetRef}>
         <Stack
           sx={{

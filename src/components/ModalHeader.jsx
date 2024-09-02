@@ -9,7 +9,7 @@ const ModalHeader = ({ title }) => {
     <>
       <Box
         sx={{
-          height: 80,
+          height: 70,
           display: "flex",
           justifyContent: "center",
           alignItems: "end",
