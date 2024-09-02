@@ -8,7 +8,7 @@ const Root = () => {
     <ThemeProvider theme={customTheme}>
       <div
         style={{
-          backgroundColor: "white",
+          backgroundColor: "black",
           width: "100vw",
           top: 0,
           left: 0,
@@ -49,7 +49,7 @@ const Root = () => {
         </ul>
       </div>
 
-      <div style={{ position: "relative" }}>
+      <div style={{ display: "flex", height: "auto" }}>
         <Outlet />
       </div>
     </ThemeProvider>

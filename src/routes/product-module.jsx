@@ -1,20 +1,18 @@
 import { Box, Button, Grid, Stack } from "@mui/material";
-import { customTheme } from "../Hooks/useCustomTheme";
+
 import AutoProductModal from "../components/AutoProductModal";
 import VinylCutModal from "../components/VinylCutModal";
 import ManualInput2 from "../components/modals/manualInput copy";
-import PersonalData from "../components/pages/PersonalData";
+
 import { options } from "../components/utils/options";
 import { modal } from "../Styles/styles";
 import { Link, Navigate } from "react-router-dom";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+
 import ModalHeader from "../components/ModalHeader";
-import NextBtn from "../components/Buttons/NextBtn";
+
 import { useShoppingCart } from "../store/shoppingCart";
 import NavBtn from "../Hooks/useCartItems";
-import { redirect } from "react-router-dom";
+
 const colors = {
   main: "#0303b3",
   light: "#597fff",
@@ -27,7 +25,7 @@ const ProductModule = () => {
   const items = useShoppingCart((state) => state.items);
   return (
     <div style={{ transform: "translateY(5%)" }}>
-      <Box sx={{ ...modal, height: 500 }}>
+      <Box sx={{ ...modal }}>
         <ModalHeader title={"Elegir producto"} />
         {items.length < 6 ? (
           <Stack

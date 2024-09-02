@@ -17,6 +17,9 @@ import { saveAs } from "file-saver";
 import { useState } from "react";
 import SuccessModal from "../components/modals/SuccessModal";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+import { Printer } from "lucide-react";
+import PrintBtn from "../components/Buttons/PrintBtn";
+
 const Factura = () => {
   const navigate = useNavigate();
 
@@ -105,572 +108,583 @@ const Factura = () => {
     redirect("/");
   };
   return (
-    <div className="margin-top" id="pdf" /* style={{ display: "none" }} */>
-      <form ref={targetRef}>
-        <Stack
+    <>
+      <div className="margin-top" style={{ display: "flex", height: 1000 }}>
+        {/* <Box
+          className="circle center p-fixed"
           sx={{
-            width: "14cm",
-            height: "21,6cm",
-            bgcolor: "white",
-
-            display: "grid",
-            gridTemplateRows: "3.2cm 0.7cm 12cm 0.8fr .5cm",
-
-            justifyContent: "center",
-            alignItems: "center",
-            gap: 0.5,
+            bgcolor: "secondary.main",
+            width: 40,
+            height: 40,
           }}
         >
+          <Printer
+            onClick={handlePrint}
+            size={30}
+            strokeWidth={1.5}
+            absoluteStrokeWidth
+            style={{ color: "white" }}
+          />
+        </Box> */}
+
+        <form ref={targetRef}>
           <Stack
-            className="invoice-header"
             sx={{
-              width: "100%",
-              height: "100%",
-              //alignItems: "end",
-              justifySelf: "center",
+              width: "14cm",
+              height: "21,6cm",
+              bgcolor: "white",
+
               display: "grid",
+              gridTemplateRows: "3.2cm 0.7cm 12cm 0.8fr .5cm",
 
-              justifyContent: "end",
+              justifyContent: "center",
               alignItems: "center",
-
-              gridTemplateColumns: "35% 1fr ",
-              // bgcolor: "red",
+              gap: 0.5,
             }}
           >
             <Stack
+              className="invoice-header"
               sx={{
-                //bgcolor: "red",
-                display: "grid",
+                width: "100%",
                 height: "100%",
+                //alignItems: "end",
+                justifySelf: "center",
+                display: "grid",
+
+                justifyContent: "end",
+                alignItems: "center",
+
+                gridTemplateColumns: "35% 1fr ",
+                // bgcolor: "red",
               }}
             >
               <Stack
                 sx={{
-                  display: "flex",
-                  justifyContent: "end",
-                  alignItems: "start",
+                  //bgcolor: "red",
+                  display: "grid",
+                  height: "100%",
                 }}
               >
-                <Logo className="logo" />
-              </Stack>
-              <Typography
-                variant="h6"
-                //className="invoice-data fill"
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifySelf: "start",
-                  lineHeight: 1.2,
-                  justifyContent: "center",
-                  fontSize: 10,
-                  textAlign: "center",
-                }}
-              >
-                <Box
+                <Stack
                   sx={{
                     display: "flex",
-                    alignItems: "center",
-                    justifyContent: "start",
+                    justifyContent: "end",
+                    alignItems: "start",
                   }}
                 >
-                  <WhatsAppIcon sx={{ fontSize: 10 }} />{" "}
+                  <Logo className="logo" />
+                </Stack>
+                <Typography
+                  variant="h6"
+                  //className="invoice-data fill"
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifySelf: "start",
+                    lineHeight: 1.2,
+                    justifyContent: "center",
+                    fontSize: 10,
+                    textAlign: "center",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "start",
+                    }}
+                  >
+                    <WhatsAppIcon sx={{ fontSize: 10 }} />{" "}
+                    <Typography
+                      sx={{
+                        fontSize: 10,
+                        fontFamily: "roboto",
+                        fontWeight: 500,
+                      }}
+                    >
+                      310 417 18 14 / Cra 16 # 102-53
+                    </Typography>
+                  </Box>{" "}
                   <Typography
                     sx={{ fontSize: 10, fontFamily: "roboto", fontWeight: 500 }}
                   >
-                    310 417 18 14 / Cra 16 # 102-53
+                    {" "}
+                    Barrio Baltazar (Turbo)
                   </Typography>
-                </Box>{" "}
-                <Typography
-                  sx={{ fontSize: 10, fontFamily: "roboto", fontWeight: 500 }}
-                >
-                  {" "}
-                  Barrio Baltazar (Turbo)
                 </Typography>
-              </Typography>
-            </Stack>
-
-            <Box
-              sx={{
-                display: "grid",
-                alignItems: "center",
-                height: "100%",
-              }}
-            >
-              <Stack
-                sx={{
-                  display: "grid",
-
-                  //bgcolor: "green",
-
-                  padding: 0,
-                  width: "100%",
-                  height: "90%",
-                  borderRadius: 1.8,
-                  justifySelf: "end",
-
-                  gridTemplateRows: "40% 60%",
-                }}
-              >
-                <Stack
-                  sx={{
-                    display: "grid",
-                    gridTemplateColumns: "75% 1fr",
-
-                    //bgcolor: "green",
-                    width: "100%",
-                    height: "90%",
-                    justifyContent: "end",
-                    justifySelf: "end",
-                    alignItems: "end",
-                    alignSelf: "start",
-                    //border: `1.5px solid rgb(190, 190, 190)`,
-                  }}
-                >
-                  <Box
-                    sx={{
-                      transform: "scale(.9)",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Box>
-                      <Typography
-                        variant="h6"
-                        className="invoice-label"
-                        sx={{ textAlign: "left" }}
-                      >
-                        Recepción
-                      </Typography>
-                      <Typography
-                        variant="h6"
-                        className="invoice-data-date"
-                        sx={{}}
-                      >
-                        {fullDate}
-                      </Typography>
-                    </Box>
-                    <Box>
-                      <Typography variant="h6" className="invoice-label">
-                        Entrega
-                      </Typography>
-                      <Typography
-                        variant="h6"
-                        className="invoice-data-date"
-                        sx={{}}
-                      >
-                        {typeof paymentData.delivery != "object"
-                          ? paymentData.delivery
-                          : ""}
-                      </Typography>
-                    </Box>
-                  </Box>
-                  <Box className="grid-rows-2-1fr" sx={{}}>
-                    <Typography
-                      sx={{
-                        alignSelf: "end",
-                        textTransform: "uppercase",
-                        fontSize: 14,
-                        fontWeight: 800,
-                        textAlign: "right",
-                        //bgcolor: "red",
-                        width: "100%",
-                        color: "primary.dark",
-                      }}
-                    >
-                      {client.billType}
-                    </Typography>
-                  </Box>
-                </Stack>
-                <Stack
-                  direction={"column"}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width: "97%",
-                    height: "100%",
-                    pb: 0.5,
-                    borderRadius: 1.5,
-                    bgcolor: "background.default",
-                    // bgcolor: "background.default",
-                    justifySelf: "end",
-                  }}
-                >
-                  <Box sx={{ width: "95%", height: "90%" }}>
-                    <Box>
-                      <Box>
-                        <Typography
-                          variant="h6"
-                          className="invoice-label-client"
-                          sx={{}}
-                        >
-                          Cliente
-                        </Typography>
-                        <Typography
-                          variant="h6"
-                          className="invoice-data-client"
-                          sx={{}}
-                        >
-                          {client.name}
-                        </Typography>
-                      </Box>
-
-                      <Box
-                        sx={{ display: "grid", gridTemplateColumns: "70% 30%" }}
-                      >
-                        <Box>
-                          <Typography
-                            className="invoice-label-client"
-                            sx={{
-                              // bgcolor: "red",
-                              p: 0,
-                              textTransform: "none",
-                              fontSize: 11,
-                            }}
-                          >
-                            Email
-                          </Typography>
-                          <Typography
-                            style={{ textTransform: "none" }}
-                            className="invoice-data-client"
-                          >
-                            {client.email}
-                          </Typography>
-                        </Box>
-                        <Box>
-                          <Typography className="invoice-label-client">
-                            Teléfono
-                          </Typography>
-                          <Typography
-                            variant="h6"
-                            className="invoice-data-client"
-                          >
-                            {formatNum}
-                          </Typography>
-                        </Box>
-                      </Box>
-                    </Box>
-                  </Box>
-                </Stack>
               </Stack>
-            </Box>
-          </Stack>
 
-          <Stack
-            className="invoice-title-box"
-            sx={{
-              display: "grid",
-              gridTemplateColumns: invoiceGrid,
-              //bgcolor: "background.default",
-              position: "relative",
-
-              width: 480,
-              height: ".7cm",
-              alignSelf: "center",
-              alignItems: "end",
-              justifyContent: "center",
-
-              //borderBottom: `2px solid black`,
-            }}
-          >
-            <Typography className="invoice-title">Concepto</Typography>
-            <Typography
-              className="invoice-title"
-              sx={{ justifySelf: "center" }}
-            >
-              Cant
-            </Typography>
-            <Typography className="invoice-title" sx={{ justifySelf: "right" }}>
-              Precio
-            </Typography>
-            <Typography className="invoice-title" sx={{ justifySelf: "right" }}>
-              Total
-            </Typography>
-          </Stack>
-          <Stack
-            sx={{
-              height: "100%",
-              maxHeight: "100%",
-              maxWidth: 490,
-              width: "105%",
-              // bgcolor: "orange",
-              display: "flex",
-              alignItems: "center",
-              justifySelf: "center",
-
-              //border: `1.5px solid rgb(190, 190, 190)`,
-            }}
-          >
-            <Stack
-              className="border-bottom-heavy "
-              spacing={0.2}
-              sx={{
-                //  bgcolor: "red",
-                width: "97%",
-                height: "100%",
-
-                display: "grid",
-                gridTemplateRows: "repeat(6,1fr)",
-                flexFlow: "wrap",
-                alignItems: "start",
-              }}
-            >
-              {cart.map((item) => (
-                <InvoiceItem
-                  key={item.id}
-                  product={item.name}
-                  q={item.quantity}
-                  price={colPesos.format(item.price)}
-                  totalPrice={colPesos.format(item.itemTotalPrice)}
-                  finish={item.finish}
-                  description={item.description}
-                  finishQ={item.finishQ > 1 ? item.finishQ : ""}
-                />
-              ))}
-            </Stack>
-          </Stack>
-
-          <Stack
-            sx={{
-              width: "100%",
-              height: "100%",
-              // bgcolor: "blue",
-              display: "grid",
-              p: 0,
-
-              borderRadius: 2.5,
-              justifySelf: "center",
-              gridTemplateColumns: "1fr 4cm",
-              justifyContent: "end",
-              alignItems: "start",
-            }}
-          >
-            <Stack
-              /*  className="fill" */
-              sx={{
-                width: "100%",
-                height: "100%",
-
-                display: "grid",
-                gridTemplateColumns: "1fr",
-                placeItems: "center",
-                p: 0,
-                borderRadius: 1.5,
-              }}
-            >
               <Box
                 sx={{
-                  width: "95%",
-                  height: "100%",
                   display: "grid",
-                  gridTemplateRows: ".5fr 1.5fr 1fr",
-
-                  borderRadius: 2,
-
-                  gap: 0.5,
+                  alignItems: "center",
+                  height: "100%",
                 }}
               >
                 <Stack
                   sx={{
                     display: "grid",
-                    gridTemplateColumns: "repeat(4, 1fr)",
-                    gap: 0.5,
-                  }}
-                >
-                  <Box>
-                    <Typography variant="h6" className="invoice-label">
-                      Recibe:
-                    </Typography>
-                    <Typography className="invoice-data">
-                      {paymentData.receives}
-                    </Typography>
-                  </Box>
 
-                  <Box>
-                    <Typography variant="h6" className="invoice-label">
-                      Realiza:
-                    </Typography>
-                    <Typography className="invoice-data">
-                      {paymentData.do}
-                    </Typography>
-                  </Box>
-                  <Box className="box-bottom">
-                    <Typography className="invoice-label">
-                      Revisa Valores
-                    </Typography>
-                    <Typography></Typography>
-                  </Box>
-                  <Box className="box-bottom">
-                    <Typography className="invoice-label">Entrega</Typography>
-                    <Typography></Typography>
-                  </Box>
-                </Stack>
-                <Stack
-                  sx={{
-                    //bgcolor: "red",
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    height: "95%",
-                    justifyContent: "center",
-                    alignSelf: "center",
+                    //bgcolor: "green",
 
-                    gap: 1,
-                  }}
-                >
-                  <Stack className="box-bottom">
-                    <Typography className={"invoice-label"}>
-                      Firma y sello
-                    </Typography>
-                  </Stack>
-                  <Stack className="box-bottom">
-                    <Typography className={"invoice-label"}>
-                      Firma y sello
-                    </Typography>
-                  </Stack>
-                </Stack>
-                <Box className={"box-bottom"} sx={{ height: "1cm" }}>
-                  <Typography className={"invoice-label"}>
-                    Observaciones: <br />
-                    {paymentData.comments}
-                  </Typography>
-                </Box>
-              </Box>
-            </Stack>
+                    padding: 0,
+                    width: "100%",
+                    height: "90%",
+                    borderRadius: 1.8,
+                    justifySelf: "end",
 
-            <Stack
-              sx={{
-                //bgcolor: "#f0f4ff",
-                width: "100%",
-
-                display: "grid",
-                justifyContent: "center",
-                // border: `1.5px solid rgb(190, 190, 190)`,
-                alignItems: "start",
-                borderRadius: 2,
-                gridTemplateColumns: "1fr",
-              }}
-            >
-              <Stack
-                sx={{
-                  justifySelf: "right",
-                  width: "95%",
-                  height: "100%",
-                  textAlign: "right",
-                  display: "grid",
-                  gridTemplateRows: "1fr ",
-                  alignItems: "end",
-                  // bgcolor: "cyan",
-                }}
-              >
-                <Box
-                  sx={{
-                    ...box,
-                    bgcolor: "background.dark",
-                    height: 30,
-                    /* borderRadius: 1, */
-
-                    color: "text.main",
-                  }}
-                >
-                  <Typography sx={{ fontSize: 13, fontWeight: 600 }}>
-                    Total:
-                  </Typography>
-
-                  <Typography sx={{ fontSize: 14, fontWeight: 600, pr: 0.5 }}>
-                    {colPesos.format(totalInvoice)}
-                  </Typography>
-                </Box>
-                <Stack>
-                  <Box sx={box}>
-                    <Typography className={"invoice-label"}>
-                      Abono 1:
-                    </Typography>
-                    <Typography
-                      className={"invoice-label-payment"}
-                      sx={{ pr: 0.5 }}
-                    >
-                      {colPesos.format(parseInt(paymentData.payment))}
-                    </Typography>
-                  </Box>
-                  <Box sx={{ ...box }} className="border-bottom">
-                    <Typography className={"invoice-label"}>Resta:</Typography>
-                    <Typography
-                      className={"invoice-label-payment"}
-                      sx={{
-                        textAlign: "right",
-                        alignSelf: "center",
-                        pr: 0.5,
-                      }}
-                    >
-                      {colPesos.format(totalInvoice - paymentData.payment)}
-                    </Typography>
-                  </Box>
-                  <Box
-                    //className="border-bottom"
-                    sx={{
-                      ...box,
-                      bgcolor: "white",
-                      height: 30,
-                    }}
-                  >
-                    <Typography className={"invoice-label"}>
-                      Abono 2:
-                    </Typography>
-                  </Box>
-
-                  <Box
-                    className="border-bottom"
-                    sx={{
-                      ...box,
-                      bgcolor: "white",
-                      height: "100%",
-                    }}
-                  >
-                    <Typography className={"invoice-label"}>Resta:</Typography>
-                  </Box>
-                </Stack>
-                <Stack
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-around",
-                    flexDirection: "row",
-                    mt: 1,
+                    gridTemplateRows: "40% 60%",
                   }}
                 >
                   <Stack
                     sx={{
+                      display: "grid",
+                      gridTemplateColumns: "75% 1fr",
+
+                      //bgcolor: "green",
+                      width: "100%",
+                      height: "90%",
+                      justifyContent: "end",
+                      justifySelf: "end",
+                      alignItems: "end",
+                      alignSelf: "start",
+                      //border: `1.5px solid rgb(190, 190, 190)`,
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        transform: "scale(.9)",
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <Box>
+                        <Typography
+                          variant="h6"
+                          className="invoice-label"
+                          sx={{ textAlign: "left" }}
+                        >
+                          Recepción
+                        </Typography>
+                        <Typography
+                          variant="h6"
+                          className="invoice-data-date"
+                          sx={{}}
+                        >
+                          {fullDate}
+                        </Typography>
+                      </Box>
+                      <Box>
+                        <Typography variant="h6" className="invoice-label">
+                          Entrega
+                        </Typography>
+                        <Typography
+                          variant="h6"
+                          className="invoice-data-date"
+                          sx={{}}
+                        >
+                          {typeof paymentData.delivery != "object"
+                            ? paymentData.delivery
+                            : ""}
+                        </Typography>
+                      </Box>
+                    </Box>
+                    <Box className="grid-rows-2-1fr" sx={{}}>
+                      <Typography
+                        sx={{
+                          alignSelf: "end",
+                          textTransform: "uppercase",
+                          fontSize: 14,
+                          fontWeight: 800,
+                          textAlign: "right",
+                          //bgcolor: "red",
+                          width: "100%",
+                          color: "primary.dark",
+                        }}
+                      >
+                        {client.billType}
+                      </Typography>
+                    </Box>
+                  </Stack>
+                  <Stack
+                    direction={"column"}
+                    sx={{
                       display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "start",
+                      justifyContent: "center",
                       alignItems: "center",
+                      width: "97%",
+                      height: "100%",
+                      pb: 0.5,
+                      borderRadius: 1.5,
+                      bgcolor: "background.default",
+                      // bgcolor: "background.default",
+                      justifySelf: "end",
+                    }}
+                  >
+                    <Box sx={{ width: "95%", height: "90%" }}>
+                      <Box>
+                        <Box>
+                          <Typography
+                            variant="h6"
+                            className="invoice-label-client"
+                            sx={{}}
+                          >
+                            Cliente
+                          </Typography>
+                          <Typography
+                            variant="h6"
+                            className="invoice-data-client"
+                            sx={{}}
+                          >
+                            {client.name}
+                          </Typography>
+                        </Box>
+
+                        <Box
+                          sx={{
+                            display: "grid",
+                            gridTemplateColumns: "70% 30%",
+                          }}
+                        >
+                          <Box>
+                            <Typography
+                              className="invoice-label-client"
+                              sx={{
+                                // bgcolor: "red",
+                                p: 0,
+                                textTransform: "none",
+                                fontSize: 11,
+                              }}
+                            >
+                              Email
+                            </Typography>
+                            <Typography
+                              style={{ textTransform: "none" }}
+                              className="invoice-data-client"
+                            >
+                              {client.email}
+                            </Typography>
+                          </Box>
+                          <Box>
+                            <Typography className="invoice-label-client">
+                              Teléfono
+                            </Typography>
+                            <Typography
+                              variant="h6"
+                              className="invoice-data-client"
+                            >
+                              {formatNum}
+                            </Typography>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </Box>
+                  </Stack>
+                </Stack>
+              </Box>
+            </Stack>
+
+            <Stack
+              className="invoice-title-box"
+              sx={{
+                display: "grid",
+                gridTemplateColumns: invoiceGrid,
+                //bgcolor: "background.default",
+                position: "relative",
+
+                width: 480,
+                height: ".7cm",
+                alignSelf: "center",
+                alignItems: "end",
+                justifyContent: "center",
+
+                //borderBottom: `2px solid black`,
+              }}
+            >
+              <Typography className="invoice-title">Concepto</Typography>
+              <Typography
+                className="invoice-title"
+                sx={{ justifySelf: "center" }}
+              >
+                Cant
+              </Typography>
+              <Typography
+                className="invoice-title"
+                sx={{ justifySelf: "right" }}
+              >
+                Precio
+              </Typography>
+              <Typography
+                className="invoice-title"
+                sx={{ justifySelf: "right" }}
+              >
+                Total
+              </Typography>
+            </Stack>
+            <Stack
+              sx={{
+                height: "100%",
+                maxHeight: "100%",
+                maxWidth: 490,
+                width: "105%",
+                // bgcolor: "orange",
+                display: "flex",
+                alignItems: "center",
+                justifySelf: "center",
+
+                //border: `1.5px solid rgb(190, 190, 190)`,
+              }}
+            >
+              <Stack
+                className="border-bottom-heavy "
+                spacing={0.2}
+                sx={{
+                  //  bgcolor: "red",
+                  width: "97%",
+                  height: "100%",
+
+                  display: "grid",
+                  gridTemplateRows: "repeat(6,1fr)",
+                  flexFlow: "wrap",
+                  alignItems: "start",
+                }}
+              >
+                {cart.map((item) => (
+                  <InvoiceItem
+                    key={item.id}
+                    product={item.name}
+                    q={item.quantity}
+                    price={colPesos.format(item.price)}
+                    totalPrice={colPesos.format(item.itemTotalPrice)}
+                    finish={item.finish}
+                    description={item.description}
+                    finishQ={item.finishQ > 1 ? item.finishQ : ""}
+                  />
+                ))}
+              </Stack>
+            </Stack>
+
+            <Stack
+              sx={{
+                width: "100%",
+                height: "100%",
+                // bgcolor: "blue",
+                display: "grid",
+                p: 0,
+
+                borderRadius: 2.5,
+                justifySelf: "center",
+                gridTemplateColumns: "1fr 4cm",
+                justifyContent: "end",
+                alignItems: "start",
+              }}
+            >
+              <Stack
+                /*  className="fill" */
+                sx={{
+                  width: "100%",
+                  height: "100%",
+
+                  display: "grid",
+                  gridTemplateColumns: "1fr",
+                  placeItems: "center",
+                  p: 0,
+                  borderRadius: 1.5,
+                }}
+              >
+                <Box
+                  sx={{
+                    width: "95%",
+                    height: "100%",
+                    display: "grid",
+                    gridTemplateRows: ".5fr 1.5fr 1fr",
+
+                    borderRadius: 2,
+
+                    gap: 0.5,
+                  }}
+                >
+                  <Stack
+                    sx={{
+                      display: "grid",
+                      gridTemplateColumns: "repeat(4, 1fr)",
                       gap: 0.5,
                     }}
                   >
-                    <Typography sx={{ fontSize: 10 }}>Efectivo</Typography>
-                    <Box
-                      className={"full-border"}
-                      sx={{
-                        width: 10,
-                        height: 10,
+                    <Box>
+                      <Typography variant="h6" className="invoice-label">
+                        Recibe:
+                      </Typography>
+                      <Typography className="invoice-data">
+                        {paymentData.receives}
+                      </Typography>
+                    </Box>
 
-                        borderRadius: 0.8,
-                      }}
-                    ></Box>
+                    <Box>
+                      <Typography variant="h6" className="invoice-label">
+                        Realiza:
+                      </Typography>
+                      <Typography className="invoice-data">
+                        {paymentData.do}
+                      </Typography>
+                    </Box>
+                    <Box className="box-bottom">
+                      <Typography className="invoice-label">
+                        Revisa Valores
+                      </Typography>
+                      <Typography></Typography>
+                    </Box>
+                    <Box className="box-bottom">
+                      <Typography className="invoice-label">Entrega</Typography>
+                      <Typography></Typography>
+                    </Box>
                   </Stack>
+                  <Stack
+                    sx={{
+                      //bgcolor: "red",
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      height: "95%",
+                      justifyContent: "center",
+                      alignSelf: "center",
+
+                      gap: 1,
+                    }}
+                  >
+                    <Stack className="box-bottom">
+                      <Typography className={"invoice-label"}>
+                        Firma y sello
+                      </Typography>
+                    </Stack>
+                    <Stack className="box-bottom">
+                      <Typography className={"invoice-label"}>
+                        Firma y sello
+                      </Typography>
+                    </Stack>
+                  </Stack>
+                  <Box className={"box-bottom"} sx={{ height: "1cm" }}>
+                    <Typography className={"invoice-label"}>
+                      Observaciones: <br />
+                      {paymentData.comments}
+                    </Typography>
+                  </Box>
+                </Box>
+              </Stack>
+
+              <Stack
+                sx={{
+                  //bgcolor: "#f0f4ff",
+                  width: "100%",
+
+                  display: "grid",
+                  justifyContent: "center",
+                  // border: `1.5px solid rgb(190, 190, 190)`,
+                  alignItems: "start",
+                  borderRadius: 2,
+                  gridTemplateColumns: "1fr",
+                }}
+              >
+                <Stack
+                  sx={{
+                    justifySelf: "right",
+                    width: "95%",
+                    height: "100%",
+                    textAlign: "right",
+                    display: "grid",
+                    gridTemplateRows: "1fr ",
+                    alignItems: "end",
+                    // bgcolor: "cyan",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      ...box,
+                      bgcolor: "background.dark",
+                      height: 30,
+                      /* borderRadius: 1, */
+
+                      color: "text.main",
+                    }}
+                  >
+                    <Typography sx={{ fontSize: 13, fontWeight: 600 }}>
+                      Total:
+                    </Typography>
+
+                    <Typography sx={{ fontSize: 14, fontWeight: 600, pr: 0.5 }}>
+                      {colPesos.format(totalInvoice)}
+                    </Typography>
+                  </Box>
                   <Stack>
+                    <Box sx={box}>
+                      <Typography className={"invoice-label"}>
+                        Abono 1:
+                      </Typography>
+                      <Typography
+                        className={"invoice-label-payment"}
+                        sx={{ pr: 0.5 }}
+                      >
+                        {colPesos.format(parseInt(paymentData.payment))}
+                      </Typography>
+                    </Box>
+                    <Box sx={{ ...box }} className="border-bottom">
+                      <Typography className={"invoice-label"}>
+                        Resta:
+                      </Typography>
+                      <Typography
+                        className={"invoice-label-payment"}
+                        sx={{
+                          textAlign: "right",
+                          alignSelf: "center",
+                          pr: 0.5,
+                        }}
+                      >
+                        {colPesos.format(totalInvoice - paymentData.payment)}
+                      </Typography>
+                    </Box>
+                    <Box
+                      //className="border-bottom"
+                      sx={{
+                        ...box,
+                        bgcolor: "white",
+                        height: 30,
+                      }}
+                    >
+                      <Typography className={"invoice-label"}>
+                        Abono 2:
+                      </Typography>
+                    </Box>
+
+                    <Box
+                      className="border-bottom"
+                      sx={{
+                        ...box,
+                        bgcolor: "white",
+                        height: "100%",
+                      }}
+                    >
+                      <Typography className={"invoice-label"}>
+                        Resta:
+                      </Typography>
+                    </Box>
+                  </Stack>
+                  <Stack
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-around",
+                      flexDirection: "row",
+                      mt: 1,
+                    }}
+                  >
                     <Stack
                       sx={{
                         display: "flex",
                         flexDirection: "row",
-                        justifyContent: "end",
+                        justifyContent: "start",
                         alignItems: "center",
                         gap: 0.5,
-                        width: "100%",
                       }}
                     >
-                      <Typography sx={{ fontSize: 10 }}>
-                        Transferencia
-                      </Typography>
+                      <Typography sx={{ fontSize: 10 }}>Efectivo</Typography>
                       <Box
                         className={"full-border"}
                         sx={{
@@ -681,13 +695,37 @@ const Factura = () => {
                         }}
                       ></Box>
                     </Stack>
+                    <Stack>
+                      <Stack
+                        sx={{
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "end",
+                          alignItems: "center",
+                          gap: 0.5,
+                          width: "100%",
+                        }}
+                      >
+                        <Typography sx={{ fontSize: 10 }}>
+                          Transferencia
+                        </Typography>
+                        <Box
+                          className={"full-border"}
+                          sx={{
+                            width: 10,
+                            height: 10,
+
+                            borderRadius: 0.8,
+                          }}
+                        ></Box>
+                      </Stack>
+                    </Stack>
                   </Stack>
                 </Stack>
+                {/*  <Typography className={"invoice-label"}>EFECTIVO</Typography> */}
               </Stack>
-              {/*  <Typography className={"invoice-label"}>EFECTIVO</Typography> */}
             </Stack>
-          </Stack>
-          {/* <Typography
+            {/* <Typography
             variant="h6"
             //className="invoice-data fill"
             sx={{
@@ -700,68 +738,74 @@ const Factura = () => {
           >
             Carrera 16 # 102-53 - Barrio Baltazar (Turbo) / 310 417 18 14
           </Typography> */}
-        </Stack>
-      </form>
+          </Stack>
+        </form>
 
-      <Button onClick={handlePrint}>pdf</Button>
-
-      <div>
-        {/*  <Button onClick={handleOpen}>Open modal</Button> */}
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
+        {/*   <Button
+          style={{ position: "sticky", bottom: 0, alignSelf: "center" }}
+          onClick={handlePrint}
         >
-          <Box className="status-modal">
-            <Box className="status-modal-box">
-              <CheckCircleRoundedIcon
-                className="status-modal-icon"
-                sx={{ fontSize: 150 }}
-              />
-            </Box>
-            <Box className="status-modal-box">
-              <Typography
-                sx={{ fontSize: 40, fontWeight: 800 }}
-                className="status-modal-title"
-              >
-                Éxito!
-              </Typography>
-              <Typography
-                sx={{ fontSize: 16, fontWeight: 400, textAlign: "center" }}
-                className="status-modal-title"
-              >
-                Todo salió bien y la información se agregó con normalidad.
-              </Typography>
-            </Box>
-            <Link>
-              <Button
-                variant="outlined"
-                sx={{
-                  color: "greenyellow",
-                  border: `2px solid greenyellow`,
-                  textTransform: "capitalize",
-                  borderRadius: 2,
-                  height: 50,
-                  width: 200,
-                  fontSize: 20,
-                  transform: "scale(1)",
-                  "&:hover": {
+          pdf
+        </Button> */}
+        <div>
+          {/*  <Button onClick={handleOpen}>Open modal</Button> */}
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box className="status-modal">
+              <Box className="status-modal-box">
+                <CheckCircleRoundedIcon
+                  className="status-modal-icon"
+                  sx={{ fontSize: 150 }}
+                />
+              </Box>
+              <Box className="status-modal-box">
+                <Typography
+                  sx={{ fontSize: 40, fontWeight: 800 }}
+                  className="status-modal-title"
+                >
+                  Éxito!
+                </Typography>
+                <Typography
+                  sx={{ fontSize: 16, fontWeight: 400, textAlign: "center" }}
+                  className="status-modal-title"
+                >
+                  Todo salió bien y la información se agregó con normalidad.
+                </Typography>
+              </Box>
+              <Link>
+                <Button
+                  variant="outlined"
+                  sx={{
+                    color: "greenyellow",
                     border: `2px solid greenyellow`,
-                    bgcolor: `greenyellow`,
-                    color: "white",
-                    transform: "scale(1.05)",
-                  },
-                }}
-                onClick={clear}
-              >
-                Finalizar
-              </Button>
-            </Link>
-          </Box>
-        </Modal>
+                    textTransform: "capitalize",
+                    borderRadius: 2,
+                    height: 50,
+                    width: 200,
+                    fontSize: 20,
+                    transform: "scale(1)",
+                    "&:hover": {
+                      border: `2px solid greenyellow`,
+                      bgcolor: `greenyellow`,
+                      color: "white",
+                      transform: "scale(1.05)",
+                    },
+                  }}
+                  onClick={clear}
+                >
+                  Finalizar
+                </Button>
+              </Link>
+            </Box>
+          </Modal>
+        </div>
       </div>
-    </div>
+      <PrintBtn handlePrint={handlePrint} style={{ mt: -100 }} />
+    </>
   );
 };
 
