@@ -109,7 +109,7 @@ const Factura = () => {
   };
   return (
     <>
-      <div className="margin-top" style={{ display: "flex", height: 1000 }}>
+      <div className="margin-top" style={{ display: "flex", height: "auto" }}>
         {/* <Box
           className="circle center p-fixed"
           sx={{
@@ -127,7 +127,7 @@ const Factura = () => {
           />
         </Box> */}
 
-        <form ref={targetRef}>
+        <form ref={targetRef} style={{ height: "auto" }}>
           <Stack
             sx={{
               width: "14cm",

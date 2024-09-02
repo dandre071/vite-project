@@ -149,6 +149,9 @@ export const modal = {
   bgcolor: "white",
   p: 3,
   borderRadius: 1.7,
+  "&:after": { width: 450, height: 500, bgcolor: "red" },
+  /* backgroundColor: "rgb(247, 247, 247, 95%)",
+  backdropFilter: "blur(30px)", */
   //boxShadow: 4,
 };
 

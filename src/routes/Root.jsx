@@ -8,13 +8,14 @@ const Root = () => {
     <ThemeProvider theme={customTheme}>
       <div
         style={{
-          backgroundColor: "black",
+          backgroundColor: "rgba(47, 4, 145, .8)",
           width: "100vw",
           top: 0,
           left: 0,
           position: "fixed",
           zIndex: 1000,
           justifyContent: "center",
+          backdropFilter: "blur(20px)",
         }}
       >
         <ul
