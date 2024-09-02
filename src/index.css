@@ -29,8 +29,24 @@ body {
   /*  background-color: #eaeaf3; */
   margin: auto;
   background: rgb(247, 247, 247);
-  background-color: #2f0491;
-
+  background-color: #00179b;
+  background: linear-gradient(to right, #000428, #00179b);
+  background: linear-gradient(to right, #1e3c72, #2a5298);
+  background: linear-gradient(to right, #0575e6, #021b79);
+  background: linear-gradient(to right, #457fca, #5691c8);
+  background: linear-gradient(to right, #4b6cb7, #182848);
+  background: linear-gradient(to right, #0052d4, #4364f7, #6fb1fc);
+  background: linear-gradient(to right, #4b6cb7, #182848);
+  background: linear-gradient(to right, #de6161, #2657eb);
+  background: #feac5e;
+  background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8);
+  background: linear-gradient(to right, #9cecfb, #65c7f7, #0052d4);
+  background: linear-gradient(to right, #6190e8, #a7bfe8);
+  background: linear-gradient(to right, #56ccf2, #2f80ed);
+  background: linear-gradient(to right, #0052d4, #3254eb, #54a4ff);
+  background: linear-gradient(to bottom, #5780da, #d4e8ff);
+  background: linear-gradient(to top, #1424b9, #2f4db3);
+  background: linear-gradient(to, #243ba1, #7698ff);
   /* background: linear-gradient(
     172deg,
     rgba(236, 243, 254, 1) 0%,
@@ -452,7 +468,7 @@ body {
 
 .margin-top {
   margin: 50vh auto 0;
-  transform: translateY(-32%);
+  transform: translateY(-45%);
 }
 .circle {
   border-radius: 50%;

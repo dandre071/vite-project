@@ -3,25 +3,31 @@ import { ThemeProvider } from "styled-components";
 import { customTheme } from "../Hooks/useCustomTheme";
 import CartCounter from "../components/CartCounter";
 import Logo from "../components/Logo";
+import hexToRgba from "hex-to-rgba";
+const color = "fff";
 const Root = () => {
   return (
     <ThemeProvider theme={customTheme}>
       <div
         style={{
-          backgroundColor: "rgba(47, 4, 145, .8)",
-          width: "100vw",
+          backgroundColor: hexToRgba(color, "0.8"),
+          width: "60vw",
+          //justifySelf: "center",
           top: 0,
-          left: 0,
+          left: "50%",
+          right: "50%",
+          transform: "translate(-50%, 50%)",
           position: "fixed",
           zIndex: 1000,
           justifyContent: "center",
-          backdropFilter: "blur(20px)",
+          backdropFilter: "blur(5px)",
+          borderRadius: 10,
         }}
       >
         <ul
           style={{
             width: "70%",
-            height: 20,
+            height: 30,
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-evenly",

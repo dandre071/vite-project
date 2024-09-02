@@ -804,7 +804,7 @@ const Factura = () => {
           </Modal>
         </div>
       </div>
-      <PrintBtn handlePrint={handlePrint} style={{ mt: -100 }} />
+      <PrintBtn handlePrint={handlePrint} style={{}} />
     </>
   );
 };
