@@ -148,7 +148,7 @@ export const modal = {
   width: 450,
   bgcolor: "white",
   p: 3,
-  borderRadius: customTheme.shape.borderRadius,
+  borderRadius: 1.7,
   //boxShadow: 4,
 };
 

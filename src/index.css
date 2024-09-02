@@ -283,12 +283,12 @@ body {
 #modal-box {
   width: 450px;
   height: 105px;
-  background-color: var(--primary-lighter);
+  background-color: rgb(247, 247, 247);
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid var(--background-light);
+  /*border: 2px solid var(--background-light);*/
   transition: scale 1s ease 1s;
 }
 #icon {
@@ -296,7 +296,7 @@ body {
 }
 #modal-box:hover {
   transform: scale(1.02);
-  background-color: var(--primary-light);
+  background-color: rgb(245, 245, 245);
   cursor: pointer;
   /*border: 1.2px solid var(--primary-main);
   /* box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.12); */

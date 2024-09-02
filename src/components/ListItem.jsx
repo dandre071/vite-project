@@ -41,7 +41,7 @@ const ListItem = ({
     <Box className={"list-item"}>
       <Box
         sx={{
-          // bgcolor: "primary.light",
+          bgcolor: "primary.light",
 
           position: "relative",
           display: "grid",
