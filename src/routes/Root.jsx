@@ -33,16 +33,16 @@ const Root = () => {
           <li>
             <Link to={"/client-data"}>Cliente</Link>
           </li>
-          <li>
+          {/*  <li>
             <Link to={"/factura"}>Factura</Link>
-          </li>
+          </li> */}
 
-          <li>
+          {/*    <li>
             <Link to={"/product-module"}>Producto</Link>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <Link to={"/cart"}>Cart</Link>
-          </li>
+          </li> */}
           <li>
             <Link to={"/payment"}>Pay</Link>
           </li>

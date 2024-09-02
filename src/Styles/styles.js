@@ -50,7 +50,7 @@ export const theme = createTheme({
 export const listItemStyle = {
   width: 650,
   height: 100,
-  borderRadius: 3,
+  borderRadius: 2,
   display: "grid",
   justifyContent: "start",
 

@@ -282,9 +282,9 @@ body {
 }
 #modal-box {
   width: 450px;
-  height: 105px;
+  height: 90px;
   background-color: rgb(247, 247, 247);
-  border-radius: 10px;
+  border-radius: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
