@@ -359,7 +359,7 @@ body {
 }
 .arrow-btn:hover {
   transform-origin: center;
-
+  cursor: pointer;
   transform: scale(1.1);
   /*   transform: translateX(10px); */
   background-color: var(--primary-light);

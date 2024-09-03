@@ -128,8 +128,15 @@ const ManualInput2 = ({ text, acabado }) => {
         icon={<ShoppingCart id="icon" sx={{ fontSize: 20 }} />}
       />
       <Modal
+        disableEscapeKeyDown
+        //hideBackdrop
+
+        onClose={(event, reason) => {
+          if (reason && reason === "backdropClick") return;
+        }}
         open={open}
-        onClose={handleClose}
+        //onClose={handleClose}
+        disableBackdropClick
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

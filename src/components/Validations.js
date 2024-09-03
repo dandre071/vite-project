@@ -32,8 +32,8 @@ export const productSchema = object().shape({
 });
 
 export const PersonSchema = object().shape({
-  billType: string().required(),
-  clientType: string(),
+  billType: string().required("Por favor ingrese un nombre."),
+  clientType: string().required(),
   name: string().required("Por favor ingrese un nombre."),
 
   // .min(5, "too short"),

@@ -13,6 +13,7 @@ const FormSelect2 = ({
   required,
   name,
   defaultValue,
+  onBlur,
   options,
   label,
   onChange,
@@ -28,7 +29,7 @@ const FormSelect2 = ({
 }) => {
   //console.log(options);
   return (
-    <FormControl fullWidth sx={{ my: 1 }} onChange={onChange}>
+    <FormControl onBlur={onBlur} fullWidth sx={{ my: 1 }}>
       <InputLabel
         /* sx={{
           color: "primary.main",
@@ -44,6 +45,9 @@ const FormSelect2 = ({
 
       <Box sx={{ display: "flex" }}>
         <Select
+          error={error}
+          helperText={helperText}
+          onBlur={onBlur}
           size={size}
           multiple={multiple}
           defaultValue={options[0]}
@@ -54,14 +58,11 @@ const FormSelect2 = ({
           label={label}
           disabled={disabled}
           options={options}
-          // IconComponent={<KeyboardArrowDownIcon />}
-          // renderValue={renderValue}
-          // style={{ ...style, borderStyle: "none" }}
-          // InputLabelProps={InputLabelProps}
-          inputProps={(variant = { variant })}
+          nothingFoundMessage="No State Found..."
+          inputProps={((variant = { variant }), (helperText = { helperText }))}
         >
           {options.map((option, index) => (
-            <MenuItem error={error} value={option} key={index}>
+            <MenuItem value={option} key={index}>
               {option}
             </MenuItem>
           ))}

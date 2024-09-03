@@ -4,13 +4,13 @@ import { customTheme } from "../Hooks/useCustomTheme";
 import CartCounter from "../components/CartCounter";
 import Logo from "../components/Logo";
 import hexToRgba from "hex-to-rgba";
-const color = "000";
+const color = "fff";
 const Root = () => {
   return (
     <ThemeProvider theme={customTheme}>
       <div
         style={{
-          backgroundColor: hexToRgba(color, "0.95"),
+          backgroundColor: hexToRgba(color, "0.8"),
           width: "60vw",
           //justifySelf: "center",
           top: 0,
