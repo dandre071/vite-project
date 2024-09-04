@@ -39,7 +39,7 @@ const PersonalData = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const handleSubmit = () => {
+  /* const handleSubmit = () => {
     handleOpen();
     addData(formik.values);
 
@@ -48,7 +48,15 @@ const PersonalData = () => {
     //navigate("/product-module");
 
     console.log(formik.values);
-  };
+  }; */
+
+  /*  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    validationSchema(formik.values);
+
+    // setIsSubmitting(true);
+  }; */
 
   const formik = useFormik(
     {
@@ -61,11 +69,18 @@ const PersonalData = () => {
         nit: "",
         //receives: "",
       },
-      validateOnChange: false,
+      /*  validateOnChange: false,
       validateOnBlur: true,
-      validationSchema: PersonSchema,
+      validationSchema: PersonSchema, */
 
-      onSubmit: handleSubmit,
+      /* onSubmit: (values, { validate }) => {
+        validateYupSchema(values, PersonSchema);
+        if (Yup.ValidationError) console.log(Yup.ValidationError);
+      }, */
+      validationSchema: PersonSchema,
+      onSubmit: () => {
+        if (formik.errors) console.log(formik.errors);
+      },
       /* if (errors) {
         // Handle validation errors
         //handleOpen;
@@ -88,6 +103,8 @@ const PersonalData = () => {
     }, */
   );
 
+  console.log(formik.isValid);
+  console.log(formik);
   /* const validate = () => {
     PersonSchema.validate(formik.values, { abortEarly: false })
       .then((responseData) => {
@@ -162,7 +179,9 @@ const PersonalData = () => {
         handleClose={handleClose}
       /> */}
       <Button onClick={handleOpen}>Open modal</Button>
-      <form onSubmit={formik.handleSubmit} style={{ alignSelf: "center" }}>
+      <form
+        /* onSubmit={formik.handleSubmit} */ style={{ alignSelf: "center" }}
+      >
         {/* {formik.errors.phone && <Error />} */}
         <Modal
           open={open}
@@ -310,7 +329,7 @@ const PersonalData = () => {
           <NextBtn
             //pointer={errors && "none"}
             /* onClick={formik.handleSubmit} */
-            // onClick={formik.handleSubmit}
+            onClick={formik.handleSubmit}
             className={"arrow-btn"}
             /*   pointer={errors && "none"}
             className={errors ? "disabled-btn" : "arrow-btn"} */
