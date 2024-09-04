@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import FormSelect2 from "../Forms/FormSelect2";
-import { ErrorMessage, Form, useFormik } from "formik";
+import { ErrorMessage, Form, useFormik, validateYupSchema } from "formik";
 import { options } from "../utils/options";
 import { PersonSchema } from "../Validations";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -41,32 +41,40 @@ const PersonalData = () => {
   const handleClose = () => setOpen(false);
   const handleSubmit = () => {
     handleOpen();
-    // addData(formik.values);
+    addData(formik.values);
 
     //setShowSuccess(true);
 
-    // navigate("/product-module");
+    navigate("/product-module");
 
     console.log(formik.values);
   };
-  const isError = () => {
-    formik.errors.phone ? setOpen(true) : setOpen(false);
-  };
-  const formik = useFormik({
-    initialValues: {
-      billType: "Recibo",
-      clientType: "",
-      name: "",
-      email: "",
-      phone: "",
-      nit: "",
-      //receives: "",
-    },
-    validateOnChange: false,
-    validateOnBlur: true,
-    validationSchema: PersonSchema,
 
-    onSubmit: handleSubmit,
+  const formik = useFormik(
+    {
+      initialValues: {
+        billType: "Recibo",
+        clientType: "",
+        name: "",
+        email: "",
+        phone: "",
+        nit: "",
+        //receives: "",
+      },
+      validateOnChange: false,
+      validateOnBlur: true,
+      validationSchema: PersonSchema,
+
+      onSubmit: handleSubmit,
+      /* if (errors) {
+        // Handle validation errors
+        //handleOpen;
+        console.log(errors);
+      } else {
+        // Submit the form data to your backend
+        console.log(formik.values);
+      } */
+    }
     /*  onSubmit: () => {
       formik.errors.phone && handleOpen(); */
     //addData(formik.values);
@@ -78,7 +86,21 @@ const PersonalData = () => {
 
     /*   console.log(formik.values);
     }, */
-  });
+  );
+
+  /* const validate = () => {
+    PersonSchema.validate(formik.values, { abortEarly: false })
+      .then((responseData) => {
+        console.log("no validation errors");
+        console.log(responseData);
+        handleOpen;
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(err.name); // ValidationError
+        console.log(err.errors);
+      });
+  }; */
 
   useEffect(() => {
     const updateState = () => {
@@ -139,9 +161,9 @@ const PersonalData = () => {
        
         handleClose={handleClose}
       /> */}
-      <Button onClick={formik.handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}>Open modal</Button>
       <form style={{ alignSelf: "center" }}>
-        {formik.errors.phone && <Error />}
+        {/* {formik.errors.phone && <Error />} */}
         <Modal
           open={open}
           onClose={handleClose}
@@ -290,7 +312,7 @@ const PersonalData = () => {
           <NextBtn
             //pointer={errors && "none"}
             /* onClick={formik.handleSubmit} */
-            onClick={formik.handleSubmit}
+            // onClick={formik.handleSubmit}
             className={"arrow-btn"}
             /*   pointer={errors && "none"}
             className={errors ? "disabled-btn" : "arrow-btn"} */
