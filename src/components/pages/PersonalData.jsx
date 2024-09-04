@@ -45,7 +45,7 @@ const PersonalData = () => {
 
     //setShowSuccess(true);
 
-    navigate("/product-module");
+    //navigate("/product-module");
 
     console.log(formik.values);
   };
@@ -162,7 +162,7 @@ const PersonalData = () => {
         handleClose={handleClose}
       /> */}
       <Button onClick={handleOpen}>Open modal</Button>
-      <form style={{ alignSelf: "center" }}>
+      <form onSubmit={formik.handleSubmit} style={{ alignSelf: "center" }}>
         {/* {formik.errors.phone && <Error />} */}
         <Modal
           open={open}
@@ -170,9 +170,7 @@ const PersonalData = () => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <div
-            style={{ width: 500, height: 500, backgroundColor: "red" }}
-          ></div>
+          <Error />
         </Modal>
 
         {/* <ErrorMessage component={<Error />} /> */}
