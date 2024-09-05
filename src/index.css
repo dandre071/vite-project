@@ -511,3 +511,17 @@ body {
     size: 140mm 216mm;
   } */
 }
+.modal {
+  background: #ffffff !important;
+}
+.modal::before {
+  content: "";
+  background: #fd5959 !important;
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: auto;
+  left: 50%;
+  right: -50%;
+  z-index: -1;
+}

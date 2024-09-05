@@ -11,7 +11,7 @@ const Root = () => {
       <div
         style={{
           backgroundColor: hexToRgba(color, "0.8"),
-          width: "60vw",
+          width: "70vw",
           //justifySelf: "center",
           top: 0,
           left: "50%",
@@ -27,7 +27,7 @@ const Root = () => {
       >
         <ul
           style={{
-            width: "70%",
+            // width: "70%",
             height: 30,
             display: "flex",
             flexDirection: "row",

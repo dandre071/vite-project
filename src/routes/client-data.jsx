@@ -37,7 +37,7 @@ const ClientData = () => {
   // console.log(personalData[0].billType);
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-      <Box sx={modal}>
+      <Box className="modal" sx={modal}>
         <ModalHeader title={"Información del Cliente"} />
         <PersonalData />
       </Box>
