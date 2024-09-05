@@ -3,7 +3,7 @@ import { Box, Button } from "@mui/material";
 
 const NextBtn = ({ className, onClick, pointer }) => {
   return (
-    <Box sx={{ pointerEvents: pointer }}>
+    <Box sx={{ pointerEvents: pointer }} onClick={onClick}>
       <ArrowForwardIosRoundedIcon
         /*  className="arrow-btn" */
         className={className}
