@@ -127,7 +127,7 @@ const Factura = () => {
           />
         </Box> */}
 
-        <form ref={targetRef} style={{ height: "auto" }}>
+        <form id="pdf" ref={targetRef} style={{ height: "auto" }}>
           <Stack
             sx={{
               width: "14cm",

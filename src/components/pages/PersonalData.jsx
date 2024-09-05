@@ -39,25 +39,29 @@ const PersonalData = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  /* const handleSubmit = () => {
-    handleOpen();
+  const handleSubmit = () => {
+    //  handleOpen();
     addData(formik.values);
 
     //setShowSuccess(true);
 
-    //navigate("/product-module");
+    navigate("/product-module");
 
     console.log(formik.values);
-  }; */
+  };
 
   /*  const handleSubmit = (e) => {
     e.preventDefault();
 
-    validationSchema(formik.values);
+    
 
     // setIsSubmitting(true);
   }; */
-
+  const checkError = () => {
+    //const formError = Object.keys(formik.errors).length > 0 && console.log(formik.errors);
+    const formError = Object.keys(formik.errors);
+    console.log(formError);
+  };
   const formik = useFormik(
     {
       initialValues: {
@@ -69,18 +73,20 @@ const PersonalData = () => {
         nit: "",
         //receives: "",
       },
+      validationSchema: PersonSchema,
+      onSubmit: handleSubmit,
       /*  validateOnChange: false,
       validateOnBlur: true,
-      validationSchema: PersonSchema, */
+       */
 
       /* onSubmit: (values, { validate }) => {
         validateYupSchema(values, PersonSchema);
         if (Yup.ValidationError) console.log(Yup.ValidationError);
       }, */
-      validationSchema: PersonSchema,
-      onSubmit: () => {
-        if (formik.errors) console.log(formik.errors);
-      },
+      validateOnChange: false,
+      validateOnBlur: false,
+      // validationSchema: PersonSchema,
+
       /* if (errors) {
         // Handle validation errors
         //handleOpen;
@@ -103,8 +109,11 @@ const PersonalData = () => {
     }, */
   );
 
-  console.log(formik.isValid);
-  console.log(formik);
+  const validate = () => {};
+
+  console.log(Object.keys(formik.errors).length);
+  console.log(formik.errors);
+
   /* const validate = () => {
     PersonSchema.validate(formik.values, { abortEarly: false })
       .then((responseData) => {
@@ -139,8 +148,7 @@ const PersonalData = () => {
     const found = users.filter((user) => user == formik.values.name);
     console.log(found);
   };
-  console.log(formik.errors.billType);
-  console.log(formik.errors);
+
   /*  const user = "diego";
 
   const errors = formik.errors.name;
