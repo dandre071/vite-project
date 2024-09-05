@@ -516,12 +516,13 @@ body {
 }
 .modal::before {
   content: "";
-  background: #fd5959 !important;
+  background: #030a70 !important;
   position: absolute;
   width: 600px;
   height: 600px;
-  top: auto;
+  position: absolute;
+  top: 50%;
   left: 50%;
-  right: -50%;
+  transform: translate(-50%, -50%);
   z-index: -1;
 }
