@@ -30,7 +30,7 @@ import { formatNumber } from "../utils/helpers.js";
 import { useUsersList } from "../../store/lists.js";
 import useUsers from "../../Hooks/useUsers.js";
 import { ShoppingCart } from "lucide-react";
-
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 const module = "ManualInput";
 
 const ManualInput2 = ({ text, acabado }) => {
@@ -131,9 +131,6 @@ const ManualInput2 = ({ text, acabado }) => {
         disableEscapeKeyDown
         //hideBackdrop
 
-        onClose={(event, reason) => {
-          if (reason && reason === "backdropClick") return;
-        }}
         open={open}
         //onClose={handleClose}
         disableBackdropClick
@@ -157,6 +154,10 @@ const ManualInput2 = ({ text, acabado }) => {
               borderRadius: customTheme.shape.borderRadius,
             }}
           >
+            <CloseRoundedIcon
+              className="close-btn arrow-btn"
+              onClick={handleClose}
+            />
             <ModalHeader title={"Configuración Manual"} />
 
             <Box

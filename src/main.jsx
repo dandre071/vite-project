@@ -26,7 +26,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/factura",
-        element: <Factura />,
+        element: <Factura className="pdf" />,
       },
       {
         path: "/client-data",

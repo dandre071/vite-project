@@ -1,4 +1,6 @@
 import {
+  Alert,
+  AlertTitle,
   Autocomplete,
   Box,
   Button,
@@ -23,6 +25,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import NextBtn from "../Buttons/NextBtn";
 import Error from "../modals/Error";
+import { CheckIcon } from "lucide-react";
 
 const PersonalData = () => {
   const localStore = usePersonalData((state) => state.personalData);
@@ -83,7 +86,7 @@ const PersonalData = () => {
         validateYupSchema(values, PersonSchema);
         if (Yup.ValidationError) console.log(Yup.ValidationError);
       }, */
-      validateOnChange: false,
+      validateOnChange: true,
       validateOnBlur: false,
       // validationSchema: PersonSchema,
 
@@ -299,7 +302,7 @@ const PersonalData = () => {
           <Grid item sm={4}>
             <TextField
               onBlur={formik.handleBlur}
-              error={formik.errors.phone}
+              error={formik.touched.phone && formik.errors.phone}
               helperText={formik.errors.phone}
               //value={colPesos.format(formik.values.phone)}
               value={formik.values.phone}
@@ -346,6 +349,12 @@ const PersonalData = () => {
           {/*  </Button> */}
         </Grid>
       </form>
+      {!formik.isValid && (
+        <Alert className="alert" severity="error">
+          <AlertTitle>Error</AlertTitle>
+          Algunos campos necesitan atención.
+        </Alert>
+      )}
     </Box>
   );
 };

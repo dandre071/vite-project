@@ -513,6 +513,7 @@ body {
 }
 .modal {
   background: #ffffff !important;
+  /* backdrop-filter: blur(20px); */
 }
 .modal::before {
   content: "";
@@ -526,4 +527,21 @@ body {
   border-radius: 10px;
   transform: translate(-50%, -50%);
   z-index: -1;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+@media only screen and (max-height: 800px) {
+  .pdf {
+    margin-top: 50%;
+  }
+}
+.alert {
+  /* position: absolute; */
+  top: 10px;
+}
+.close-btn {
+  position: relative;
+  right: 20px;
+  top: 10px;
+  align-self: end;
 }
