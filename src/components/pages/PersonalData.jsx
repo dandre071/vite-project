@@ -327,13 +327,31 @@ const PersonalData = () => {
         <Grid
           item
           sx={{
+            mt: 3,
+            pt: 3,
             height: 70,
             display: "flex",
             justifyContent: "end",
             alignItems: "center",
+            // borderTop: `2px solid red`,
           }}
         >
-          <Tooltip title="Agregar productos" placement="right" arrow>
+          <Tooltip
+            componentsProps={{
+              tooltip: {
+                sx: {
+                  bgcolor: "secondary.main",
+                  "& .MuiTooltip-arrow": {
+                    /*  color: "common.black", */
+                    color: "secondary.main",
+                  },
+                },
+              },
+            }}
+            title="Agregar productos"
+            placement="bottom"
+            arrow
+          >
             <span>
               <NextBtn onClick={formik.handleSubmit} className={"arrow-btn"} />
             </span>

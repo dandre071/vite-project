@@ -15,7 +15,7 @@ const NavBtn = ({ pathNext, pathBack, display, classname, pointer }) => {
       sx={{
         height: 70,
         display: "flex",
-        width: "90%",
+        width: "100%",
         justifyContent: "space-between",
         alignItems: "center",
         // borderTop: "1px solid black",

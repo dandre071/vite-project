@@ -31,7 +31,7 @@ const ProductModule = () => {
         />
         {items.length < 6 ? (
           <Stack
-            sx={{ display: "grid", bgcolor: "red" }}
+            sx={{ display: "grid" }}
             // direction="column"
           >
             {/* <ProductPriceModal
@@ -79,7 +79,7 @@ const ProductModule = () => {
             display: " flex",
             justifyContent: "center",
             pb: 0,
-            bgcolor: "blue",
+            mt: 3,
           }}
         >
           <NavBtn pathBack={"/client-data"} pathNext={"/cart"} />
