@@ -4,7 +4,9 @@ import {
   Autocomplete,
   Box,
   Button,
+  Collapse,
   Grid,
+  IconButton,
   Modal,
   Stack,
   TextField,
@@ -26,7 +28,9 @@ import * as Yup from "yup";
 import NextBtn from "../Buttons/NextBtn";
 import Error from "../modals/Error";
 import { CheckIcon } from "lucide-react";
-
+import CloseRounded from "@mui/icons-material/CloseRounded";
+import ErrorAlert from "../Alerts/ErrorAlert";
+import CloseIcon from "@mui/icons-material/Close";
 const PersonalData = () => {
   const localStore = usePersonalData((state) => state.personalData);
   const addData = usePersonalData((state) => state.addData);
@@ -40,6 +44,10 @@ const PersonalData = () => {
   }; */
 
   const [open, setOpen] = useState(false);
+  const [alertOpen, setAlertOpen] = useState(true);
+  const handleOpenAlert = () => setAlertOpen(true);
+  const handleCloseAlert = () => setAlertOpen(false);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleSubmit = () => {
@@ -86,7 +94,7 @@ const PersonalData = () => {
         validateYupSchema(values, PersonSchema);
         if (Yup.ValidationError) console.log(Yup.ValidationError);
       }, */
-      validateOnChange: true,
+      validateOnChange: false,
       validateOnBlur: false,
       // validationSchema: PersonSchema,
 
@@ -176,7 +184,7 @@ const PersonalData = () => {
 
   const errors =
     formik.errors.phone || formik.errors.name || formik.errors.email;
-  console.log(!!errors);
+  console.log(formik);
 
   /* const openErrorModal = () => {
     formik.errors.phone && setOpen(false);
@@ -338,7 +346,7 @@ const PersonalData = () => {
           }}
         >
           <NextBtn
-            //pointer={errors && "none"}
+            pointer={!formik.isValid && "none"}
             /* onClick={formik.handleSubmit} */
             onClick={formik.handleSubmit}
             className={"arrow-btn"}
@@ -349,11 +357,26 @@ const PersonalData = () => {
           {/*  </Button> */}
         </Grid>
       </form>
+
       {!formik.isValid && (
-        <Alert className="alert" severity="error">
-          <AlertTitle>Error</AlertTitle>
-          Algunos campos necesitan atención.
-        </Alert>
+        <Collapse in={alertOpen}>
+          <Alert
+            action={
+              <CloseRounded
+                color="inherit"
+                size="small"
+                onClick={() => {
+                  // formik.setErrors({});
+                  handleCloseAlert;
+                }}
+              />
+            }
+            severity="error"
+          >
+            <AlertTitle>Error</AlertTitle>
+            This is an error Alert with a scary title.
+          </Alert>
+        </Collapse>
       )}
     </Box>
   );
