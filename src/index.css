@@ -47,10 +47,11 @@ body {
   background: linear-gradient(to bottom, #5780da, #d4e8ff);
   background: linear-gradient(to top, #1424b9, #2f4db3);
   background: linear-gradient(to, #243ba1, #7698ff);
-  background: linear-gradient(to top, #002569, #0642b3);
+  background: linear-gradient(to top, #002569, #004ec4);
   background: #f0f4f9;
   background: #004aeb;
   background: #001486;
+  background: #1841b4;
   /* background: linear-gradient(
     172deg,
     rgba(236, 243, 254, 1) 0%,
@@ -319,8 +320,12 @@ body {
   transform: scale(1.02);
   background-color: rgb(245, 245, 245);
   cursor: pointer;
+  color: red;
   /*border: 1.2px solid var(--primary-main);
   /* box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.12); */
+}
+#modal-box:hover .child {
+  color: var(--primary-dark);
 }
 #cart-counter:visited {
   color: var(--primary-main);
@@ -513,9 +518,12 @@ body {
 }
 .modal {
   background: #ffffff !important;
+  border-radius: 10px;
+  /*  border: 10px solid rgba(0, 1, 83, 0.8); */
   /* backdrop-filter: blur(20px); */
+  box-shadow: 0px 0px 30px 5px rgba(0, 8, 80, 0.6);
 }
-.modal::before {
+/* .modal::before {
   content: "";
   background: #7e82ad !important;
   position: absolute;
@@ -528,7 +536,7 @@ body {
   transform: translate(-50%, -50%);
   z-index: -1;
   background-color: rgba(255, 255, 255, 0.4);
-}
+} */
 
 @media only screen and (max-height: 800px) {
   .pdf {
@@ -544,4 +552,15 @@ body {
   right: 20px;
   top: 10px;
   align-self: end;
+}
+/*MODAL HEADER*/
+.m-header-title {
+  font-weight: 900;
+  color: var(--primary-main);
+}
+#modal-header :first-child {
+  color: var(--primary-dark);
+}
+.icon-container {
+  width: 50px;
 }

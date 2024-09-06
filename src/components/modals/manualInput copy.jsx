@@ -31,6 +31,7 @@ import { useUsersList } from "../../store/lists.js";
 import useUsers from "../../Hooks/useUsers.js";
 import { ShoppingCart } from "lucide-react";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import PersonIcon from "@mui/icons-material/Person";
 const module = "ManualInput";
 
 const ManualInput2 = ({ text, acabado }) => {
@@ -158,7 +159,10 @@ const ManualInput2 = ({ text, acabado }) => {
               className="close-btn arrow-btn"
               onClick={handleClose}
             />
-            <ModalHeader title={"Configuración Manual"} />
+            <ModalHeader
+              title={"Configuración Manual"}
+              children={<PersonIcon />}
+            />
 
             <Box
               sx={{

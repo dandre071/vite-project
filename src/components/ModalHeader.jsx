@@ -4,22 +4,29 @@ import { Box, Divider, Typography } from "@mui/material";
 import { themeColors } from "./utils/configs";
 import { header } from "../Styles/styles";
 import { customTheme } from "../Hooks/useCustomTheme";
-const ModalHeader = ({ title }) => {
+import { Children } from "react";
+
+const ModalHeader = ({ title, children }) => {
   return (
     <>
       <Box
+        id="modal-header"
         sx={{
-          height: 70,
+          height: 100,
           display: "flex",
+          flexDirection: "column",
           justifyContent: "center",
-          alignItems: "end",
+          alignItems: "center",
           pb: 2,
+          pt: 5,
           mb: 2,
           borderBottom: `1px solid ${customTheme.palette.background.dark}`,
           // bgcolor: "primary.main",
         }}
       >
-        <Typography variant="h5" sx={{ fontWeight: 900, color: "text.main" }}>
+        <Box className="icon-container"> {children}</Box>
+
+        <Typography className="m-header-title" variant="h5" fontWeight={600}>
           {title}
         </Typography>
       </Box>

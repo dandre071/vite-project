@@ -30,7 +30,7 @@ export default function Error({ open, handleClose, handleOpen }) {
         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
           Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
         </Typography>
-        <Button onClick={handleClose}>Open modal</Button>
+        <Button onClick={handleClose}>Close modal</Button>
       </Box>
     </div>
   );

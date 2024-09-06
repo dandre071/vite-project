@@ -9,6 +9,7 @@ import { customTheme } from "../../Hooks/useCustomTheme";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 const FormSelect2 = ({
   control,
+
   disabled,
   required,
   name,
@@ -29,19 +30,8 @@ const FormSelect2 = ({
 }) => {
   //console.log(options);
   return (
-    <FormControl onBlur={onBlur} fullWidth sx={{ my: 1 }}>
-      <InputLabel
-        /* sx={{
-          color: "primary.main",
-          fontSize: 20,
-          fontWeight: 500,
-          pl: 1,
-          pr: 1,
-        }}*/
-        id={`input-label-${name}`}
-      >
-        {label}
-      </InputLabel>
+    <FormControl required={required} onBlur={onBlur} fullWidth sx={{ my: 1 }}>
+      <InputLabel id={`input-label-${name}`}>{label}</InputLabel>
 
       <Box sx={{ display: "flex" }}>
         <Select

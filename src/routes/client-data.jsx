@@ -31,6 +31,7 @@ import PersonalData from "../components/pages/PersonalData";
 import ModalHeader from "../components/ModalHeader";
 import { usePersonalData } from "../store/shoppingCart";
 import { modal } from "../Styles/styles";
+import PersonIcon from "@mui/icons-material/Person";
 
 const ClientData = () => {
   const personalData = usePersonalData((state) => state.personalData);
@@ -38,7 +39,10 @@ const ClientData = () => {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
       <Box className="modal" sx={modal}>
-        <ModalHeader title={"Información del Cliente"} />
+        <ModalHeader
+          children={<PersonIcon sx={{ fontSize: 60 }} />}
+          title={"Información del Cliente"}
+        />
         <PersonalData />
       </Box>
     </Box>

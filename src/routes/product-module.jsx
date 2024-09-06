@@ -1,17 +1,15 @@
-import { Box, Button, Grid, Stack } from "@mui/material";
-
+import { Box, Stack } from "@mui/material";
 import AutoProductModal from "../components/AutoProductModal";
 import VinylCutModal from "../components/VinylCutModal";
 import ManualInput2 from "../components/modals/manualInput copy";
-
 import { options } from "../components/utils/options";
 import { modal } from "../Styles/styles";
-import { Link, Navigate } from "react-router-dom";
-
+import { Navigate } from "react-router-dom";
 import ModalHeader from "../components/ModalHeader";
-
 import { useShoppingCart } from "../store/shoppingCart";
 import NavBtn from "../Hooks/useCartItems";
+import { ShoppingCartOutlined } from "@mui/icons-material";
+import { iconSize } from "../Styles/styles";
 
 const colors = {
   main: "#0303b3",
@@ -21,15 +19,19 @@ const colors = {
   success: "#41f749",
   info: "#260987",
 };
+
 const ProductModule = () => {
   const items = useShoppingCart((state) => state.items);
   return (
     <div style={{ transform: "translateY(5%)" }}>
-      <Box sx={{ ...modal }}>
-        <ModalHeader title={"Elegir producto"} />
+      <Box sx={{ ...modal, height: "auto", gridTemplateRows: "30% 50% 20%" }}>
+        <ModalHeader
+          title={"Agregar producto"}
+          children={<ShoppingCartOutlined sx={{ fontSize: iconSize }} />}
+        />
         {items.length < 6 ? (
           <Stack
-            sx={{ display: "grid", gridTemplateRows: "400px 1fr" }}
+            sx={{ display: "grid", bgcolor: "red" }}
             // direction="column"
           >
             {/* <ProductPriceModal
@@ -40,7 +42,7 @@ const ProductModule = () => {
             <Stack
               sx={{
                 display: "grid",
-                gridTemplateRows: "repeat(4,1fr)",
+
                 gap: 0.5,
               }}
             >
@@ -67,14 +69,21 @@ const ProductModule = () => {
                 text={"Manual input"}
                 acabado={options.acabados}
               />
-              <Box sx={{ display: " flex", justifyContent: "center", pb: 10 }}>
-                <NavBtn pathBack={"/client-data"} pathNext={"/cart"} />
-              </Box>
-            </Stack>{" "}
+            </Stack>
           </Stack>
         ) : (
           <Navigate to="/cart" replace={true} />
         )}
+        <Box
+          sx={{
+            display: " flex",
+            justifyContent: "center",
+            pb: 0,
+            bgcolor: "blue",
+          }}
+        >
+          <NavBtn pathBack={"/client-data"} pathNext={"/cart"} />
+        </Box>
       </Box>
     </div>
   );

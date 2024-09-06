@@ -1,9 +1,9 @@
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import { Box, Button } from "@mui/material";
 
-const NextBtn = ({ className, onClick, pointer }) => {
+const NextBtn = ({ className, onClick, pointer, props }) => {
   return (
-    <Box sx={{ pointerEvents: pointer }} onClick={onClick}>
+    <Box {...props} sx={{ pointerEvents: pointer }} onClick={onClick}>
       <ArrowForwardIosRoundedIcon
         /*  className="arrow-btn" */
         className={className}

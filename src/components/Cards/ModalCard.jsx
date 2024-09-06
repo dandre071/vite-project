@@ -13,6 +13,7 @@ const ModalCard = ({
     <Box id="modal-box">
       <Stack onClick={onClick} sx={ModalCardStyle}>
         <Box
+          className="child"
           sx={{
             display: "flex",
             justifyContent: "center",
@@ -25,6 +26,7 @@ const ModalCard = ({
           {icon}
         </Box>
         <Typography
+          className="child"
           variant="h6"
           sx={{
             fontWeight: 700,

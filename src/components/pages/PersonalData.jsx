@@ -10,7 +10,9 @@ import {
   Modal,
   Stack,
   TextField,
+  Tooltip,
   Typography,
+  Zoom,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import FormSelect2 from "../Forms/FormSelect2";
@@ -27,7 +29,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import NextBtn from "../Buttons/NextBtn";
 import Error from "../modals/Error";
-import { CheckIcon } from "lucide-react";
+import { AlertCircleIcon, CheckIcon } from "lucide-react";
 import CloseRounded from "@mui/icons-material/CloseRounded";
 import ErrorAlert from "../Alerts/ErrorAlert";
 import CloseIcon from "@mui/icons-material/Close";
@@ -49,16 +51,43 @@ const PersonalData = () => {
   const handleCloseAlert = () => setAlertOpen(false);
 
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  /*  const handleClose = () => setOpen(false); */
+
   const handleSubmit = () => {
-    //  handleOpen();
+    formik.isValid
+      ? () => {
+          formik.setErrors({
+            billType: formik.errors.billType,
+            clientType: formik.errors.clientType,
+            name: formik.errors.name,
+            email: formik.errors.email,
+            phone: formik.errors.phone,
+          });
+          return <Modal />;
+        }
+      : formik.setErrors({
+          billType: "",
+          clientType: "",
+          name: "",
+          email: "",
+          phone: "",
+        });
     addData(formik.values);
 
     //setShowSuccess(true);
 
     navigate("/product-module");
   };
-
+  const handleClose = () => {
+    formik.setErrors({
+      billType: "",
+      clientType: "",
+      name: "",
+      email: "",
+      phone: "",
+    });
+    setOpen(false);
+  };
   const formik = useFormik(
     {
       initialValues: {
@@ -80,7 +109,7 @@ const PersonalData = () => {
         validateYupSchema(values, PersonSchema);
         if (Yup.ValidationError) console.log(Yup.ValidationError);
       }, */
-      validateOnChange: true,
+      validateOnChange: false,
       validateOnBlur: false,
       // validationSchema: PersonSchema,
 
@@ -105,9 +134,9 @@ const PersonalData = () => {
     /*   console.log(formik.values);
     }, */
   );
-
-  console.log(Object.keys(formik.errors).length);
-  console.log(formik.errors);
+  const classSwitch = !formik.isValid ? "disabled-btn" : "arrow-btn";
+  // console.log(Object.keys(formik.errors).length);
+  //console.log(formik.errors);
 
   /* const validate = () => {
     PersonSchema.validate(formik.values, { abortEarly: false })
@@ -191,7 +220,8 @@ const PersonalData = () => {
         <Grid container flexGrow={1} spacing={1.5}>
           <Grid item sm={8}>
             <FormSelect2
-              onBlur={formik.handleBlur}
+              required
+              // onBlur={formik.handleBlur}
               value={formik.values.billType}
               error={formik.touched.billType && formik.errors.billType}
               helperText={formik.errors.billType}
@@ -204,8 +234,9 @@ const PersonalData = () => {
           </Grid>
           <Grid item sm={4}>
             <FormSelect2
+              required
               value={formik.values.clientType}
-              onBlur={formik.handleBlur}
+              // onBlur={formik.handleBlur}
               error={formik.touched.clientType && formik.errors.clientType}
               helperText={formik.errors.clientType}
               fullWidth
@@ -239,7 +270,8 @@ const PersonalData = () => {
               //autoCapitalize="initial"
               renderInput={(params) => (
                 <TextField
-                  error={formik.touched.name && formik.errors.name}
+                  required
+                  error={formik.errors.name}
                   value={formik.values.name}
                   //onBlur={formik.handleBlur}
                   //error={() => formik.errors.name}
@@ -274,17 +306,15 @@ const PersonalData = () => {
 
           <Grid item sm={4}>
             <TextField
-              onInput={(e) => {
+              required
+              /* onInput={(e) => {
                 e.target.value = parseInt(
                   Math.max(0, parseInt(e.target.value)).toString().slice(0, 10)
                 );
-              }}
-              //onBlur={formik.handleBlur}
+              }} */
               error={formik.touched.phone && formik.errors.phone}
               helperText={formik.errors.phone}
-              //value={colPesos.format(formik.values.phone)}
               value={formik.values.phone}
-              //defaultValue={localStore.phone}
               name="phone"
               onChange={formik.handleChange}
               fullWidth
@@ -293,19 +323,7 @@ const PersonalData = () => {
             />
           </Grid>
         </Grid>
-        {/*    <Grid>
-          <Stack>
-            {formik.errors.name && (
-              <Typography>{formik.errors.name}</Typography>
-            )}
-            {formik.errors.email && (
-              <Typography>{formik.errors.email}</Typography>
-            )}
-            {formik.errors.phone && (
-              <Typography>{formik.errors.phone}</Typography>
-            )}
-          </Stack>
-        </Grid> */}
+
         <Grid
           item
           sx={{
@@ -315,25 +333,29 @@ const PersonalData = () => {
             alignItems: "center",
           }}
         >
-          <NextBtn
-            pointer={errors && "none"}
-            /* onClick={formik.handleSubmit} */
-            onClick={formik.handleSubmit}
-            className={errors ? "disabled-btn" : "arrow-btn"}
-            /*   pointer={errors && "none"}
-            className={errors ? "disabled-btn" : "arrow-btn"} */
-          />
-
-          {/*  </Button> */}
+          <Tooltip title="Agregar productos" placement="right" arrow>
+            <span>
+              <NextBtn onClick={formik.handleSubmit} className={"arrow-btn"} />
+            </span>
+          </Tooltip>
         </Grid>
       </form>
 
       {!formik.isValid && (
-        <Alert severity="error">
+        <Alert
+          severity="error"
+          /*   TransitionProps={{ timeout: 1000 }}
+          TransitionComponent={Zoom} */
+        >
           <AlertTitle>Error</AlertTitle>
-          This is an error Alert with a scary title.
+          Los campos con asterisco (*) son obligatorios.
         </Alert>
       )}
+      {/*   {!formik.isValid && (
+        <Modal open={open}>
+          <Error handleClose={handleClose} />
+        </Modal>
+      )} */}
     </Box>
   );
 };
