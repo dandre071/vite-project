@@ -94,7 +94,7 @@ const PersonalData = () => {
         validateYupSchema(values, PersonSchema);
         if (Yup.ValidationError) console.log(Yup.ValidationError);
       }, */
-      validateOnChange: false,
+      validateOnChange: true,
       validateOnBlur: false,
       // validationSchema: PersonSchema,
 
@@ -197,19 +197,11 @@ const PersonalData = () => {
        
         handleClose={handleClose}
       /> */}
-      <Button onClick={handleOpen}>Open modal</Button>
+
       <form
         /* onSubmit={formik.handleSubmit} */ style={{ alignSelf: "center" }}
       >
         {/* {formik.errors.phone && <Error />} */}
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Error />
-        </Modal>
 
         {/* <ErrorMessage component={<Error />} /> */}
         <Grid container flexGrow={1} spacing={1.5}>
@@ -346,10 +338,10 @@ const PersonalData = () => {
           }}
         >
           <NextBtn
-            pointer={!formik.isValid && "none"}
+            pointer={errors && "none"}
             /* onClick={formik.handleSubmit} */
             onClick={formik.handleSubmit}
-            className={"arrow-btn"}
+            className={errors ? "disabled-btn" : "arrow-btn"}
             /*   pointer={errors && "none"}
             className={errors ? "disabled-btn" : "arrow-btn"} */
           />
@@ -358,25 +350,11 @@ const PersonalData = () => {
         </Grid>
       </form>
 
-      {!formik.isValid && (
-        <Collapse in={alertOpen}>
-          <Alert
-            action={
-              <CloseRounded
-                color="inherit"
-                size="small"
-                onClick={() => {
-                  // formik.setErrors({});
-                  handleCloseAlert;
-                }}
-              />
-            }
-            severity="error"
-          >
-            <AlertTitle>Error</AlertTitle>
-            This is an error Alert with a scary title.
-          </Alert>
-        </Collapse>
+      {errors && (
+        <Alert severity="error">
+          <AlertTitle>Error</AlertTitle>
+          This is an error Alert with a scary title.
+        </Alert>
       )}
     </Box>
   );
