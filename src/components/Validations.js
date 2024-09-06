@@ -43,13 +43,14 @@ export const PersonSchema = object().shape({
 
   phone: string()
     .required(requiredMessage)
-    .matches(phoneRegExp, "Número no válido"),
-
+    .matches(phoneRegExp, "Número no válido")
+    .min(10, "Número muy corto")
+    .max(10, "Número muy largo"),
   //nit: string().required("Este campo es obligatorio."),
   // receives: string(),
 });
 export const PaymentSchema = object().shape({
   payment: number().required(requiredMessage),
   receives: string().required(requiredMessage),
-  delivery: string().length(10).required(requiredMessage),
+  delivery: string().required(requiredMessage),
 });

@@ -106,8 +106,6 @@ const PersonalData = () => {
     }, */
   );
 
-  const validate = () => {};
-
   console.log(Object.keys(formik.errors).length);
   console.log(formik.errors);
 
@@ -193,7 +191,7 @@ const PersonalData = () => {
         <Grid container flexGrow={1} spacing={1.5}>
           <Grid item sm={8}>
             <FormSelect2
-              // onBlur={formik.handleBlur}
+              onBlur={formik.handleBlur}
               value={formik.values.billType}
               error={formik.touched.billType && formik.errors.billType}
               helperText={formik.errors.billType}
@@ -207,7 +205,7 @@ const PersonalData = () => {
           <Grid item sm={4}>
             <FormSelect2
               value={formik.values.clientType}
-              //onBlur={formik.handleBlur}
+              onBlur={formik.handleBlur}
               error={formik.touched.clientType && formik.errors.clientType}
               helperText={formik.errors.clientType}
               fullWidth
