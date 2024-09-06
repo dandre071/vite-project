@@ -57,22 +57,8 @@ const PersonalData = () => {
     //setShowSuccess(true);
 
     navigate("/product-module");
-
-    console.log(formik.values);
   };
 
-  /*  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    
-
-    // setIsSubmitting(true);
-  }; */
-  const checkError = () => {
-    //const formError = Object.keys(formik.errors).length > 0 && console.log(formik.errors);
-    const formError = Object.keys(formik.errors);
-    console.log(formError);
-  };
   const formik = useFormik(
     {
       initialValues: {
@@ -207,23 +193,22 @@ const PersonalData = () => {
         <Grid container flexGrow={1} spacing={1.5}>
           <Grid item sm={8}>
             <FormSelect2
-              onBlur={formik.handleBlur}
+              // onBlur={formik.handleBlur}
               value={formik.values.billType}
-              error={formik.errors.billType}
-              //helperText={}
+              error={formik.touched.billType && formik.errors.billType}
+              helperText={formik.errors.billType}
               fullWidth
               name="billType"
               onChange={formik.handleChange}
               options={options.billType}
               label={"Tipo de recibo"}
             />
-            {formik.errors.billType && <p>{formik.errors.billType}</p>}
           </Grid>
           <Grid item sm={4}>
             <FormSelect2
               value={formik.values.clientType}
-              onBlur={formik.handleBlur}
-              error={formik.errors.clientType}
+              //onBlur={formik.handleBlur}
+              error={formik.touched.clientType && formik.errors.clientType}
               helperText={formik.errors.clientType}
               fullWidth
               name="clientType"
@@ -240,7 +225,7 @@ const PersonalData = () => {
             <Autocomplete
               fullWidth
               value={formik.values.name}
-              //helperText={formik.errors.name}
+              helperText={formik.errors.name}
               error={formik.errors.name}
               freeSolo={true}
               name="name"
@@ -250,15 +235,15 @@ const PersonalData = () => {
                 textTransform: "capitalize",
               }}
               defaultValue={localStore.name}
-              onBlur={formik.handleBlur}
+              // onBlur={formik.handleBlur}
               //onChange={handleAutoChange}
 
               //autoCapitalize="initial"
               renderInput={(params) => (
                 <TextField
-                  error={formik.errors.name}
+                  error={formik.touched.name && formik.errors.name}
                   value={formik.values.name}
-                  onBlur={formik.handleBlur}
+                  //onBlur={formik.handleBlur}
                   //error={() => formik.errors.name}
                   helperText={formik.errors.name}
                   name="name"
@@ -272,22 +257,12 @@ const PersonalData = () => {
                 />
               )}
             />
-
-            {/* {!formik.values.name == "" && (
-              <Button
-                onClick={checkUser}
-                variant="success"
-                sx={{ width: "10%" }}
-              >
-                <ArrowForwardIcon sx={{ color: "white", fontSize: 40 }} />
-              </Button>
-            )} */}
           </Grid>
 
           <Grid item sm={8}>
             <TextField
-              onBlur={formik.handleBlur}
-              error={formik.errors.email}
+              // onBlur={formik.handleBlur}
+              error={formik.touched.email && formik.errors.email}
               helperText={formik.errors.email}
               value={formik.values.email}
               name="email"
@@ -301,7 +276,12 @@ const PersonalData = () => {
 
           <Grid item sm={4}>
             <TextField
-              onBlur={formik.handleBlur}
+              onInput={(e) => {
+                e.target.value = parseInt(
+                  Math.max(0, parseInt(e.target.value)).toString().slice(0, 10)
+                );
+              }}
+              //onBlur={formik.handleBlur}
               error={formik.touched.phone && formik.errors.phone}
               helperText={formik.errors.phone}
               //value={colPesos.format(formik.values.phone)}
@@ -350,7 +330,7 @@ const PersonalData = () => {
         </Grid>
       </form>
 
-      {errors && (
+      {!formik.isValid && (
         <Alert severity="error">
           <AlertTitle>Error</AlertTitle>
           This is an error Alert with a scary title.
