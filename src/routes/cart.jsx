@@ -49,7 +49,7 @@ const Cart = () => {
           gap: 1,
           display: "flex",
           minHeight: 500,
-          width: 550,
+          width: 650,
           justifySelf: "center",
         }}
       >

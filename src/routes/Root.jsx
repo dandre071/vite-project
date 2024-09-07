@@ -22,7 +22,7 @@ const Root = () => {
           position: "fixed",
           zIndex: 1000,
           justifyContent: "center",
-
+          boxShadow: "0px 0px 20px 2px rgba(0, 0, 0, 0.3)",
           backdropFilter: "blur(5px)",
           // borderRadius: 10,
         }}

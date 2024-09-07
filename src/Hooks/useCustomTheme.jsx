@@ -13,7 +13,7 @@ import { redux } from "zustand/middleware";
 
 const primary = "customTheme.primary.main";
 const variantType = "outlined";
-const primaryColor = "#2979ff";
+const primaryColor = "rgb(22, 89, 233)";
 const primaryDarkColor = "#2962ff";
 const primaryDarkerColor = "#2962ff";
 const primaryLightColor = "#448aff";
