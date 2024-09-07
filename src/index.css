@@ -48,7 +48,7 @@ body {
   background: linear-gradient(to top, #1424b9, #2f4db3);
   background: linear-gradient(to, #243ba1, #7698ff);
   background: linear-gradient(to top, #002569, #004ec4);
-  background: #eef1ff !important;
+  background: #eef7ff !important;
   /* background: #182fff !important;
   background: #004aeb; */
   /*  background: #0275d3 !important;
@@ -320,7 +320,7 @@ body {
 }
 #modal-box:hover {
   transform: scale(1.02);
-  background-color: rgb(22, 89, 233);
+  background-color: #b0c4de;
   cursor: pointer;
 
   /*border: 1.2px solid var(--primary-main);

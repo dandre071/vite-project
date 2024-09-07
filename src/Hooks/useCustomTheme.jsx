@@ -13,14 +13,15 @@ import { redux } from "zustand/middleware";
 
 const primary = "customTheme.primary.main";
 const variantType = "outlined";
-const primaryColor = "rgb(22, 89, 233)";
-const primaryDarkColor = "#2962ff";
+const primaryColor = "#0866FF";
+const primaryDarkColor = "#0530ad";
 const primaryDarkerColor = "#2962ff";
-const primaryLightColor = "#448aff";
+const primaryLightColor = "#76ABDF";
 const primaryLightherColor = "#82b1ff";
 const secondaryColor = "#e50037";
 const mainText = "#02172a";
 //const backgroundColor =
+const grey = "#B0C4DE"; //light steel blue
 export const customTheme = createTheme({
   palette: {
     mode: "light",
@@ -66,7 +67,7 @@ export const customTheme = createTheme({
     },
     text: {
       main: "#02172a",
-      light: "#828187",
+      light: grey,
     },
   },
   spacing: 8,

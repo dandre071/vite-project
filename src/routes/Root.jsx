@@ -21,9 +21,11 @@ const Root = () => {
           transform: "translate(-50%, 50%)",
           position: "fixed",
           zIndex: 1000,
-          justifyContent: "center",
-          boxShadow: "0px 0px 20px 2px rgba(0, 0, 0, 0.3)",
-          backdropFilter: "blur(5px)",
+          display: "flex",
+          justifyContent: "space-evenly",
+          alignItems: "center",
+          boxShadow: "0px 0px 20px 2px rgba(0, 0, 0, 0.7)",
+          backdropFilter: "blur(10px)",
           // borderRadius: 10,
         }}
       >
