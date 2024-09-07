@@ -38,14 +38,21 @@ const ListItem = ({
   // console.log(fin);
   //const finishText =
   return (
-    <Box className={"list-item"}>
+    <Box
+      sx={{
+        width: "100%",
+
+        //gridTemplateRows: "1fr 1fr",
+
+        // width: 600,
+      }}
+    >
       <Box
         sx={{
-          bgcolor: "primary.light",
-
+          width: "100%",
           position: "relative",
           display: "grid",
-          gridTemplateColumns: "610px 1fr",
+          gridTemplateColumns: "500px 1fr",
           //gridTemplateRows: "1fr 1fr",
 
           // width: 600,
@@ -54,7 +61,7 @@ const ListItem = ({
         <Stack borderRadius={2} sx={listItemStyle}>
           <Stack
             display={"grid"}
-            gridTemplateColumns={"330px 100px 60px 120px"}
+            gridTemplateColumns={"260px 100px 40px 100px"}
             direction={"row"}
             sx={{
               justifyContent: "start",
@@ -64,7 +71,6 @@ const ListItem = ({
             <Typography
               style={{
                 whiteSpace: "pre-wrap",
-
                 color: "text.main",
                 fontSize: 18,
                 fontWeight: 700,

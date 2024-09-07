@@ -1,7 +1,5 @@
-import { Box, Button, Divider, Grid, Stack, Typography } from "@mui/material";
-import useLocalStorage from "../Hooks/useLocalState";
-import { useRef, useState } from "react";
-import { useEffect } from "react";
+import { Box, Stack, Typography } from "@mui/material";
+
 import ListItem from "../components/ListItem";
 import { useShoppingCart } from "../store/shoppingCart";
 import ModalHeader from "../components/ModalHeader";
@@ -49,23 +47,22 @@ const Cart = () => {
       <Box
         sx={{
           gap: 1,
-          // alignSelf: "start",
           display: "flex",
           minHeight: 500,
-          width: 650,
+          width: 550,
           justifySelf: "center",
         }}
       >
         <Box
+          className="list-item"
           sx={{
             ...modal,
-
+            width: "100%",
             justifySelf: "center",
             display: "grid",
-            width: 650,
+
             gridTemplateRows: "100px auto 50px",
             alignItems: "start",
-            /*  transform: "scale(0.9)", */
           }}
         >
           <Box sx={{}}>
@@ -74,18 +71,20 @@ const Cart = () => {
 
           {items.length > 0 && (
             <Box
-              style={{ transform: "scale(.90)" }}
+              style={{}}
               sx={{ display: "flex", flexDirection: "column", height: "auto" }}
             >
               <Stack
                 sx={{
+                  width: "100%",
                   bgcolor: "black",
                   display: "grid",
+                  justifyContent: "center",
                   alignItems: "end",
-                  height: 40,
+                  height: 60,
                   color: "white",
-                  borderRadius: 1.75,
-                  gridTemplateColumns: "330px 100px 60px 120px 1fr",
+                  borderRadius: 1,
+                  gridTemplateColumns: "260px 100px 40px 100px",
                 }}
               >
                 <Typography sx={{ fontWeight: 600 }}>Producto</Typography>
@@ -103,7 +102,6 @@ const Cart = () => {
                 <Box
                   sx={{
                     display: "flex",
-
                     flexDirection: "column",
                     justifyContent: "start",
                     alignItems: "center",
