@@ -48,7 +48,8 @@ body {
   background: linear-gradient(to top, #1424b9, #2f4db3);
   background: linear-gradient(to, #243ba1, #7698ff);
   background: linear-gradient(to top, #002569, #004ec4);
-  background: #f0f0f0 !important;
+  background: #1956da !important;
+  background: #757575 !important;
   background: #004aeb;
   /*  background: #0275d3 !important;
   background: #1841b4; */
@@ -528,7 +529,7 @@ body {
   border-radius: 10px;
   /*  border: 10px solid rgba(0, 1, 83, 0.8); */
   /* backdrop-filter: blur(20px); */
-  /*  box-shadow: 0px 0px 30px 5px rgba(0, 8, 80, 0.6); */
+  box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.3);
 }
 /* .modal::before {
   content: "";
@@ -551,8 +552,8 @@ body {
   }
 }
 .alert {
-  /* position: absolute; */
-  top: 10px;
+  position: absolute;
+  bottom: 220px;
 }
 .close-btn {
   position: relative;

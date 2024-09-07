@@ -28,7 +28,7 @@ const NavBtn = ({ pathNext, pathBack, display, classname, pointer }) => {
       </Box>
       <Box sx={{ display: display, pointerEvents: pointer }}>
         <Link to={pathNext}>
-          <NextBtn style={{ pointerEvents: pointer }} className={classname} />
+          <NextBtn style={{ pointerEvents: pointer }} className={"arrow-btn"} />
         </Link>
         {/* {items.length > 0 && (
           

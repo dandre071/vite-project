@@ -82,7 +82,11 @@ const ProductModule = () => {
             mt: 3,
           }}
         >
-          <NavBtn pathBack={"/client-data"} pathNext={"/cart"} />
+          <NavBtn
+            className={"arrow-btn"}
+            pathBack={"/client-data"}
+            pathNext={"/cart"}
+          />
         </Box>
       </Box>
     </div>
