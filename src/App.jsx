@@ -24,7 +24,6 @@ import Cart from "./routes/cart";
 import { customTheme } from "./Hooks/useCustomTheme";
 import useLocalStorage from "./Hooks/useLocalState";
 import { useEffect, useState } from "react";
-import ManualInput from "./components/modals/manualInput";
 import ListItem from "./components/ListItem";
 import Factura from "./routes/factura";
 import supabase from "./config/supabaseClient";
@@ -34,14 +33,6 @@ import { Form, useFormik } from "formik";
 import { useProduct } from "./Hooks/hooks";
 import CreateProduct from "./components/Forms/CreateProduct";
 import useUsers from "./Hooks/useUsers";
-import Counter from "./components/Forms/Counter";
-import DownloadPdf from "./components/Buttons/DownloadPdf";
-import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
-import PdfInvoice from "./components/Factura/PdfInvoice";
-/* import FacturaPdf from "./components/FacturaPdf";
- */
-import InvoicePDF from "./components/pages/InvoicePDF";
-import CreatePdf from "./components/Buttons/CreatePdf";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/Root";
 function Print() {

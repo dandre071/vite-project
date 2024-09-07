@@ -5,19 +5,13 @@ import useUsers from "../Hooks/useUsers";
 import Logo from "../components/Logo";
 import InvoiceItem from "../components/InvoiceComps/InvoiceItem";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import generatePDF from "react-to-pdf";
 import { usePersonalData, useShoppingCart } from "../store/shoppingCart";
 import { colPesos } from "../components/utils/configs";
 import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
 import { usePaymentData } from "../store/paymentData";
-
 import { useReactToPrint } from "react-to-print";
-import { PDFDownloadLink, Document, Page } from "@react-pdf/renderer";
-import { saveAs } from "file-saver";
 import { useState } from "react";
-import SuccessModal from "../components/modals/SuccessModal";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
-import { Printer } from "lucide-react";
 import PrintBtn from "../components/Buttons/PrintBtn";
 
 const Factura = () => {
@@ -64,9 +58,6 @@ const Factura = () => {
     cartReset();
     setOpen(false);
     navigate("/");
-    {
-      /* <Navigate to="/cart" replace={true} />; */
-    }
   };
   const handlePrint = useReactToPrint({
     content: () => targetRef.current,
@@ -97,12 +88,10 @@ const Factura = () => {
     display: "grid",
     width: "100%",
     gridTemplateColumns: "50px 80px",
-
     justifyContent: "center",
     alignItems: "center",
   };
 
-  const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
     redirect("/");
@@ -110,23 +99,6 @@ const Factura = () => {
   return (
     <>
       <div className="margin-top" style={{ display: "flex", height: "auto" }}>
-        {/* <Box
-          className="circle center p-fixed"
-          sx={{
-            bgcolor: "secondary.main",
-            width: 40,
-            height: 40,
-          }}
-        >
-          <Printer
-            onClick={handlePrint}
-            size={30}
-            strokeWidth={1.5}
-            absoluteStrokeWidth
-            style={{ color: "white" }}
-          />
-        </Box> */}
-
         <form className="pdf" ref={targetRef} style={{ height: "auto" }}>
           <Stack
             sx={{
@@ -147,7 +119,6 @@ const Factura = () => {
               sx={{
                 width: "100%",
                 height: "100%",
-                //alignItems: "end",
                 justifySelf: "center",
                 display: "grid",
 
@@ -155,12 +126,10 @@ const Factura = () => {
                 alignItems: "center",
 
                 gridTemplateColumns: "35% 1fr ",
-                // bgcolor: "red",
               }}
             >
               <Stack
                 sx={{
-                  //bgcolor: "red",
                   display: "grid",
                   height: "100%",
                 }}
@@ -176,7 +145,6 @@ const Factura = () => {
                 </Stack>
                 <Typography
                   variant="h6"
-                  //className="invoice-data fill"
                   sx={{
                     display: "flex",
                     flexDirection: "column",
@@ -224,15 +192,11 @@ const Factura = () => {
                 <Stack
                   sx={{
                     display: "grid",
-
-                    //bgcolor: "green",
-
                     padding: 0,
                     width: "100%",
                     height: "90%",
                     borderRadius: 1.8,
                     justifySelf: "end",
-
                     gridTemplateRows: "40% 60%",
                   }}
                 >
@@ -240,15 +204,12 @@ const Factura = () => {
                     sx={{
                       display: "grid",
                       gridTemplateColumns: "75% 1fr",
-
-                      //bgcolor: "green",
                       width: "100%",
                       height: "90%",
                       justifyContent: "end",
                       justifySelf: "end",
                       alignItems: "end",
                       alignSelf: "start",
-                      //border: `1.5px solid rgb(190, 190, 190)`,
                     }}
                   >
                     <Box
@@ -297,7 +258,7 @@ const Factura = () => {
                           fontSize: 14,
                           fontWeight: 800,
                           textAlign: "right",
-                          //bgcolor: "red",
+
                           width: "100%",
                           color: "primary.dark",
                         }}
@@ -317,7 +278,7 @@ const Factura = () => {
                       pb: 0.5,
                       borderRadius: 1.5,
                       bgcolor: "background.default",
-                      // bgcolor: "background.default",
+
                       justifySelf: "end",
                     }}
                   >
@@ -389,16 +350,12 @@ const Factura = () => {
               sx={{
                 display: "grid",
                 gridTemplateColumns: invoiceGrid,
-                //bgcolor: "background.default",
                 position: "relative",
-
                 width: 480,
                 height: ".7cm",
                 alignSelf: "center",
                 alignItems: "end",
                 justifyContent: "center",
-
-                //borderBottom: `2px solid black`,
               }}
             >
               <Typography className="invoice-title">Concepto</Typography>
@@ -427,19 +384,16 @@ const Factura = () => {
                 maxHeight: "100%",
                 maxWidth: 490,
                 width: "105%",
-                // bgcolor: "orange",
+
                 display: "flex",
                 alignItems: "center",
                 justifySelf: "center",
-
-                //border: `1.5px solid rgb(190, 190, 190)`,
               }}
             >
               <Stack
                 className="border-bottom-heavy "
                 spacing={0.2}
                 sx={{
-                  //  bgcolor: "red",
                   width: "97%",
                   height: "100%",
 
@@ -468,10 +422,8 @@ const Factura = () => {
               sx={{
                 width: "100%",
                 height: "100%",
-                // bgcolor: "blue",
                 display: "grid",
                 p: 0,
-
                 borderRadius: 2.5,
                 justifySelf: "center",
                 gridTemplateColumns: "1fr 4cm",
@@ -480,11 +432,9 @@ const Factura = () => {
               }}
             >
               <Stack
-                /*  className="fill" */
                 sx={{
                   width: "100%",
                   height: "100%",
-
                   display: "grid",
                   gridTemplateColumns: "1fr",
                   placeItems: "center",
@@ -498,9 +448,7 @@ const Factura = () => {
                     height: "100%",
                     display: "grid",
                     gridTemplateRows: ".5fr 1.5fr 1fr",
-
                     borderRadius: 2,
-
                     gap: 0.5,
                   }}
                 >
@@ -541,7 +489,6 @@ const Factura = () => {
                   </Stack>
                   <Stack
                     sx={{
-                      //bgcolor: "red",
                       display: "grid",
                       gridTemplateColumns: "1fr 1fr",
                       height: "95%",
@@ -573,12 +520,9 @@ const Factura = () => {
 
               <Stack
                 sx={{
-                  //bgcolor: "#f0f4ff",
                   width: "100%",
-
                   display: "grid",
                   justifyContent: "center",
-                  // border: `1.5px solid rgb(190, 190, 190)`,
                   alignItems: "start",
                   borderRadius: 2,
                   gridTemplateColumns: "1fr",
@@ -593,7 +537,6 @@ const Factura = () => {
                     display: "grid",
                     gridTemplateRows: "1fr ",
                     alignItems: "end",
-                    // bgcolor: "cyan",
                   }}
                 >
                   <Box
@@ -601,8 +544,6 @@ const Factura = () => {
                       ...box,
                       bgcolor: "background.dark",
                       height: 30,
-                      /* borderRadius: 1, */
-
                       color: "text.main",
                     }}
                   >
@@ -642,7 +583,6 @@ const Factura = () => {
                       </Typography>
                     </Box>
                     <Box
-                      //className="border-bottom"
                       sx={{
                         ...box,
                         bgcolor: "white",
@@ -722,33 +662,11 @@ const Factura = () => {
                     </Stack>
                   </Stack>
                 </Stack>
-                {/*  <Typography className={"invoice-label"}>EFECTIVO</Typography> */}
               </Stack>
             </Stack>
-            {/* <Typography
-            variant="h6"
-            //className="invoice-data fill"
-            sx={{
-              display: "flex",
-              justifySelf: "center",
-              width: "100%",
-              justifyContent: "center",
-              fontSize: 10,
-            }}
-          >
-            Carrera 16 # 102-53 - Barrio Baltazar (Turbo) / 310 417 18 14
-          </Typography> */}
           </Stack>
         </form>
-
-        {/*   <Button
-          style={{ position: "sticky", bottom: 0, alignSelf: "center" }}
-          onClick={handlePrint}
-        >
-          pdf
-        </Button> */}
         <div>
-          {/*  <Button onClick={handleOpen}>Open modal</Button> */}
           <Modal
             open={open}
             onClose={handleClose}
