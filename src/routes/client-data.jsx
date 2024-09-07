@@ -40,7 +40,7 @@ const ClientData = () => {
     <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
       <Box className="modal" sx={modal}>
         <ModalHeader
-          children={<PersonIcon sx={{ fontSize: 60 }} />}
+          children={<PersonIcon sx={{ fontSize: 60, color: "primary.dark" }} />}
           title={"Información del Cliente"}
         />
         <PersonalData />

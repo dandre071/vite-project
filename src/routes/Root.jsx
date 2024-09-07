@@ -10,10 +10,12 @@ const Root = () => {
     <ThemeProvider theme={customTheme}>
       <div
         style={{
-          backgroundColor: hexToRgba(color, "0.8"),
-          width: "70vw",
+          /* backgroundColor: hexToRgba(color, "0.8"), */
+          backgroundColor: "black",
+          width: "100vw",
+          height: 120,
           //justifySelf: "center",
-          top: 0,
+          top: -60,
           left: "50%",
           right: "50%",
           transform: "translate(-50%, 50%)",
@@ -22,7 +24,7 @@ const Root = () => {
           justifyContent: "center",
 
           backdropFilter: "blur(5px)",
-          borderRadius: 10,
+          // borderRadius: 10,
         }}
       >
         <ul

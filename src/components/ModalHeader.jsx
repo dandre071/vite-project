@@ -20,13 +20,18 @@ const ModalHeader = ({ title, children }) => {
           pb: 2,
           pt: 5,
           mb: 2,
-          borderBottom: `1px solid ${customTheme.palette.background.dark}`,
+          // borderBottom: `1px solid ${customTheme.palette.background.dark}`,
           // bgcolor: "primary.main",
         }}
       >
         <Box className="icon-container"> {children}</Box>
 
-        <Typography className="m-header-title" variant="h5" fontWeight={600}>
+        <Typography
+          className="m-header-title"
+          variant="h5"
+          color={"primary.main"}
+          fontWeight={600}
+        >
           {title}
         </Typography>
       </Box>

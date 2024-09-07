@@ -10,7 +10,7 @@ import { useShoppingCart } from "../store/shoppingCart";
 import NavBtn from "../Hooks/useCartItems";
 import { ShoppingCartOutlined } from "@mui/icons-material";
 import { iconSize } from "../Styles/styles";
-
+import AddShoppingCartRoundedIcon from "@mui/icons-material/AddShoppingCartRounded";
 const colors = {
   main: "#0303b3",
   light: "#597fff",
@@ -27,7 +27,7 @@ const ProductModule = () => {
       <Box sx={{ ...modal, height: "auto", gridTemplateRows: "30% 50% 20%" }}>
         <ModalHeader
           title={"Agregar producto"}
-          children={<ShoppingCartOutlined sx={{ fontSize: iconSize }} />}
+          children={<AddShoppingCartRoundedIcon sx={{ fontSize: iconSize }} />}
         />
         {items.length < 6 ? (
           <Stack
@@ -51,7 +51,7 @@ const ProductModule = () => {
                 matSize={options.materialWidth}
                 material={options.materials}
                 choice={options.choice}
-                colors={colors}
+                // colors={colors}
                 options={options.acabados}
               />
 

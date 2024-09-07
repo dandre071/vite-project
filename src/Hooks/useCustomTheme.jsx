@@ -13,10 +13,11 @@ import { redux } from "zustand/middleware";
 
 const primary = "customTheme.primary.main";
 const variantType = "outlined";
-const primaryColor = "#333dff";
-const primaryDarkColor = "#2e29ff";
-const primaryLightColor = "#f1f6ff";
-const primaryLightherColor = "#fafcff";
+const primaryColor = "#2979ff";
+const primaryDarkColor = "#2962ff";
+const primaryDarkerColor = "#2962ff";
+const primaryLightColor = "#448aff";
+const primaryLightherColor = "#82b1ff";
 const secondaryColor = "#e50037";
 const mainText = "#02172a";
 //const backgroundColor =
@@ -34,28 +35,18 @@ export const customTheme = createTheme({
       //contrastText: "#304ffe",
     },
     secondary: {
-      /* main: blueGrey[300],
-      light: blueGrey[100],
-      lighter: blueGrey[50],
-      dark: blueGrey[800], */
       main: "#e50037",
       light: "#f2d7e0",
-      // lighter: pink[100],
+
       dark: "#c9003a",
       contrastText: "white",
     },
     divider: "rgba(125,125,125,0.12)",
     error: {
       main: "#e50037",
-      //main: "#e2001b",
-      //light: "#ff2727",
-      // dark: "#d50000",
     },
     success: {
       main: "#49c134",
-      //light: "#2eff62",
-      //dark: "#00af2c",
-      //contrastText: "rgba(255,255,255,0.87)",
     },
     warning: {
       main: "#ef491d",

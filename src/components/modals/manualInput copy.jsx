@@ -32,6 +32,8 @@ import useUsers from "../../Hooks/useUsers.js";
 import { ShoppingCart } from "lucide-react";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import PersonIcon from "@mui/icons-material/Person";
+
+import AddShoppingCartRoundedIcon from "@mui/icons-material/AddShoppingCartRounded";
 const module = "ManualInput";
 
 const ManualInput2 = ({ text, acabado }) => {

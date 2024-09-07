@@ -353,7 +353,11 @@ const PersonalData = () => {
             arrow
           >
             <span>
-              <NextBtn onClick={formik.handleSubmit} className={"arrow-btn"} />
+              <NextBtn
+                style={{ color: "primary.main" }}
+                onClick={formik.handleSubmit}
+                className={"arrow-btn"}
+              />
             </span>
           </Tooltip>
         </Grid>

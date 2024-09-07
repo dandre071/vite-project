@@ -2,6 +2,9 @@ import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRound
 
 export const BackBtn = ({ className }) => {
   return (
-    <ArrowBackIosNewRoundedIcon className={className} sx={{ fontSize: 30 }} />
+    <ArrowBackIosNewRoundedIcon
+      className={className}
+      sx={{ fontSize: 30, color: "primary.main" }}
+    />
   );
 };

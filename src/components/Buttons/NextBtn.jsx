@@ -7,7 +7,7 @@ const NextBtn = ({ className, onClick, pointer, props }) => {
       <ArrowForwardIosRoundedIcon
         /*  className="arrow-btn" */
         className={className}
-        sx={{ fontSize: 30, pointerEvents: pointer }}
+        sx={{ fontSize: 30, pointerEvents: pointer, color: "primary.main" }}
       />
     </Box>
   );
