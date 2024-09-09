@@ -1,4 +1,4 @@
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import AutoProductModal from "../components/AutoProductModal";
 import VinylCutModal from "../components/VinylCutModal";
 import ManualInput2 from "../components/modals/manualInput copy";
@@ -11,6 +11,8 @@ import NavBtn from "../Hooks/useCartItems";
 import { ShoppingCartOutlined } from "@mui/icons-material";
 import { iconSize } from "../Styles/styles";
 import AddShoppingCartRoundedIcon from "@mui/icons-material/AddShoppingCartRounded";
+import { TriangleAlert } from "lucide-react";
+import ProductLimit from "../components/modals/ProductLImit";
 const colors = {
   main: "#0303b3",
   light: "#597fff",
@@ -22,8 +24,10 @@ const colors = {
 
 const ProductModule = () => {
   const items = useShoppingCart((state) => state.items);
+  const cart = useShoppingCart();
   return (
     <div style={{}}>
+      {/* {cart.length === 6 && <ProductLimit open={true} />} */}
       <Box sx={{ ...modal, height: "auto", gridTemplateRows: "30% 50% 20%" }}>
         <ModalHeader
           title={"Agregar producto"}
@@ -31,7 +35,7 @@ const ProductModule = () => {
         />
         {items.length < 6 ? (
           <Stack
-            sx={{ display: "grid" }}
+            sx={{ display: "grid" /* pointerEvents: "none" */ }}
             // direction="column"
           >
             {/* <ProductPriceModal
@@ -39,6 +43,7 @@ const ProductModule = () => {
         text={"Producto"}
         acabado={acabados}
       /> */}
+            <ProductLimit open={false} />
             <Stack
               sx={{
                 display: "grid",
@@ -72,7 +77,27 @@ const ProductModule = () => {
             </Stack>
           </Stack>
         ) : (
-          <Navigate to="/cart" replace={true} />
+          <Stack
+            sx={{
+              width: "100%",
+              height: "200px",
+              display: "grid",
+              placeItems: "center",
+              // bgcolor: "background.light",
+              borderRadius: 1.5,
+            }}
+          >
+            {<ProductLimit open={true} />}
+            <TriangleAlert strokeWidth={1.75} size={50} />
+            <Typography variant="h4" sx={{ fontWeight: 900 }}>
+              Carrito lleno!
+            </Typography>
+            <Typography sx={{ fontWeight: 400 }} variant="h7">
+              No se pueden agregar más productos.{" "}
+            </Typography>
+          </Stack>
+
+          /* <Navigate to="/cart" replace={true} /> */
         )}
         <Box
           sx={{
@@ -89,6 +114,7 @@ const ProductModule = () => {
           />
         </Box>
       </Box>
+      <ProductLimit />
     </div>
   );
 };

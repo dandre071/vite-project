@@ -251,19 +251,17 @@ const PersonalData = () => {
         </Grid>
       </form>
 
-      {/* <Fade
+      <Fade
         in={!formik.isValid} //Write the needed condition here to make it appear
         timeout={{ enter: 500, exit: 500 }} //Edit these two values to change the duration of transition when the element is getting appeared and disappeard
         addEndListener={() => {
-          setTimeout(() => {
-            setShow(false);
-          }, 1000);
+          setTimeout(1000);
         }}
-      > */}
-      {show && (
+      >
+        {/*  {!formik.isValid && ( */}
         <Alert
           onClose={() => {
-            setShow(false);
+            formik.setErrors({});
           }}
           className="alert"
           severity="error"
@@ -273,8 +271,8 @@ const PersonalData = () => {
           <AlertTitle>Error</AlertTitle>
           Los campos con asterisco (*) son obligatorios.
         </Alert>
-      )}
-      {/*    </Fade> */}
+        {/*  )} */}
+      </Fade>
     </Box>
   );
 };
