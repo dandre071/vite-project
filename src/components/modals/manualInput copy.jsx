@@ -34,6 +34,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import PersonIcon from "@mui/icons-material/Person";
 
 import AddShoppingCartRoundedIcon from "@mui/icons-material/AddShoppingCartRounded";
+import ProductLimit from "./ProductLImit.jsx";
 const module = "ManualInput";
 
 const ManualInput2 = ({ text, acabado }) => {
@@ -362,7 +363,7 @@ const ManualInput2 = ({ text, acabado }) => {
                 pb: 3,
               }}
             >
-              {items.length < 7 ? (
+              {items.length <= 6 ? (
                 <Button
                   sx={{ width: "80%" }}
                   //disabled={!formik.values.itemTotalPrice ? true : false}
@@ -375,7 +376,7 @@ const ManualInput2 = ({ text, acabado }) => {
                   Agregar
                 </Button>
               ) : (
-                <Typography>Límite de productos alcanzado!</Typography>
+                <ProductLimit open={true} />
               )}
             </Grid>
           </Box>

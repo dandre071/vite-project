@@ -33,51 +33,47 @@ const ProductModule = () => {
           title={"Agregar producto"}
           children={<AddShoppingCartRoundedIcon sx={{ fontSize: iconSize }} />}
         />
-        {items.length < 6 ? (
+
+        <Stack
+          sx={{ display: "grid" /* pointerEvents: "none" */ }}
+          // direction="column"
+        >
+          <ProductLimit open={false} />
           <Stack
-            sx={{ display: "grid" /* pointerEvents: "none" */ }}
-            // direction="column"
+            sx={{
+              display: "grid",
+
+              gap: 0.5,
+            }}
           >
-            {/* <ProductPriceModal
-        colors={colors}
-        text={"Producto"}
-        acabado={acabados}
-      /> */}
-            <ProductLimit open={false} />
-            <Stack
-              sx={{
-                display: "grid",
+            <AutoProductModal
+              text={"Auto"}
+              matSize={options.materialWidth}
+              material={options.materials}
+              choice={options.choice}
+              // colors={colors}
+              options={options.acabados}
+            />
 
-                gap: 0.5,
-              }}
-            >
-              <AutoProductModal
-                text={"Auto"}
-                matSize={options.materialWidth}
-                material={options.materials}
-                choice={options.choice}
-                // colors={colors}
-                options={options.acabados}
-              />
+            <VinylCutModal
+              text={"Corte en vinilo"}
+              materials={options.vinyls}
+              choice={options.choice}
+              descolillado={options.descolillado}
+              colors={{ colors }}
+            />
 
-              <VinylCutModal
-                text={"Corte en vinilo"}
-                materials={options.vinyls}
-                choice={options.choice}
-                descolillado={options.descolillado}
-                colors={{ colors }}
-              />
-
-              <ManualInput2
-                // onSubmit={handleChangeData}
-                choice={options.choice}
-                text={"Manual input"}
-                acabado={options.acabados}
-              />
-            </Stack>
+            <ManualInput2
+              // onSubmit={handleChangeData}
+              choice={options.choice}
+              text={"Manual input"}
+              acabado={options.acabados}
+            />
           </Stack>
-        ) : (
-          <Stack
+        </Stack>
+
+        {/*  <Stack
+          
             sx={{
               width: "100%",
               height: "200px",
@@ -97,8 +93,8 @@ const ProductModule = () => {
             </Typography>
           </Stack>
 
-          /* <Navigate to="/cart" replace={true} /> */
-        )}
+          <Navigate to="/cart" replace={true} />  */}
+
         <Box
           sx={{
             display: " flex",
@@ -114,7 +110,6 @@ const ProductModule = () => {
           />
         </Box>
       </Box>
-      <ProductLimit />
     </div>
   );
 };
