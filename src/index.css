@@ -601,7 +601,7 @@ body {
   }
   .alert {
     position: absolute;
-    bottom: 220px;
+    bottom: -10vh;
   }
   .pdf {
     margin-top: -25vh;

@@ -3,12 +3,13 @@ import {
   AlertTitle,
   Autocomplete,
   Box,
+  Fade,
   Grid,
   Modal,
   TextField,
   Tooltip,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import FormSelect2 from "../Forms/FormSelect2";
 import { useFormik } from "formik";
 import { options } from "../utils/options";
@@ -19,14 +20,19 @@ import { useNavigate } from "react-router-dom";
 import NextBtn from "../Buttons/NextBtn";
 
 const PersonalData = () => {
+  //HOOKS
+
+  ///////////
   const localStore = usePersonalData((state) => state.personalData);
   const addData = usePersonalData((state) => state.addData);
   const users = fakeUsers.map((user) => user.name);
   const navigate = useNavigate();
-
+  let isValid = true;
+  console.log(isValid);
   const handleSubmit = () => {
     !formik.isValid
       ? () => {
+          isValid = false;
           formik.setErrors({
             billType: formik.errors.billType,
             clientType: formik.errors.clientType,
@@ -83,6 +89,11 @@ const PersonalData = () => {
     console.log(found);
   };
 
+  const validate = () => formik.isValid;
+  const [show, setShow] = useState(formik.isValid);
+  console.log(show);
+
+  const handleShow = () => setShow(true);
   /*  const user = "diego";
 
   const errors = formik.errors.name;
@@ -240,8 +251,20 @@ const PersonalData = () => {
         </Grid>
       </form>
 
-      {!formik.isValid && (
+      {/* <Fade
+        in={!formik.isValid} //Write the needed condition here to make it appear
+        timeout={{ enter: 500, exit: 500 }} //Edit these two values to change the duration of transition when the element is getting appeared and disappeard
+        addEndListener={() => {
+          setTimeout(() => {
+            setShow(false);
+          }, 1000);
+        }}
+      > */}
+      {show && (
         <Alert
+          onClose={() => {
+            setShow(false);
+          }}
           className="alert"
           severity="error"
           /*   TransitionProps={{ timeout: 1000 }}
@@ -251,6 +274,7 @@ const PersonalData = () => {
           Los campos con asterisco (*) son obligatorios.
         </Alert>
       )}
+      {/*    </Fade> */}
     </Box>
   );
 };
