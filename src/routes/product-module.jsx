@@ -23,7 +23,7 @@ const colors = {
 const ProductModule = () => {
   const items = useShoppingCart((state) => state.items);
   return (
-    <div style={{ transform: "translateY(5%)" }}>
+    <div style={{}}>
       <Box sx={{ ...modal, height: "auto", gridTemplateRows: "30% 50% 20%" }}>
         <ModalHeader
           title={"Agregar producto"}
