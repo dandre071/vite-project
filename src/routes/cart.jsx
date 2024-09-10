@@ -8,6 +8,10 @@ import { modal } from "../Styles/styles";
 import { useUsersList } from "../store/lists";
 import { useFormik } from "formik";
 import NavBtn from "../Hooks/useCartItems";
+import InvoiceItem from "../components/InvoiceComps/InvoiceItem";
+import { colPesos } from "../components/utils/configs";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+
 const Cart = () => {
   const usersList = useUsersList((state) => state.usersList);
 
@@ -41,144 +45,152 @@ const Cart = () => {
   const handleClick = useShoppingCart((state) => state.updateItemQ);
 
   const { removeItem } = useShoppingCart();
-
+  const invoiceGrid = "299px 38px 114px 1fr";
   return (
     <>
       <Box
+        className="list-item"
         sx={{
-          gap: 1,
-          display: "flex",
+          ...modal,
+          width: 500,
           minHeight: 500,
-          width: 650,
+          maxHeight: 900,
           justifySelf: "center",
+          display: "grid",
+
+          gridTemplateRows: "100px 50px auto 50px",
         }}
       >
         <Box
-          className="list-item"
           sx={{
-            ...modal,
-            width: "100%",
-            justifySelf: "center",
-            display: "grid",
-
-            gridTemplateRows: "100px auto 50px",
-            alignItems: "start",
+            height: "100%",
+            //bgcolor: "red",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <Box sx={{}}>
-            <ModalHeader title={"Compras"} />
-          </Box>
-
-          {items.length > 0 && (
-            <Box
-              style={{}}
-              sx={{ display: "flex", flexDirection: "column", height: "auto" }}
-            >
-              <Stack
-                sx={{
-                  width: "100%",
-                  bgcolor: "black",
-                  display: "grid",
-                  justifyContent: "center",
-                  alignItems: "end",
-                  height: 60,
-                  color: "white",
-                  borderRadius: 1,
-                  gridTemplateColumns: "260px 100px 40px 100px",
-                }}
-              >
-                <Typography sx={{ fontWeight: 600 }}>Producto</Typography>
-                <Typography sx={{ fontWeight: 600, justifySelf: "center" }}>
-                  Precio
-                </Typography>
-                <Typography sx={{ fontWeight: 600, justifySelf: "center" }}>
-                  Cant
-                </Typography>
-                <Typography sx={{ fontWeight: 600, justifySelf: "center" }}>
-                  Total
-                </Typography>
-              </Stack>
-              <Stack spacing={1}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "start",
-                    alignItems: "center",
-                    height: "auto",
-                    pt: 1,
-                    pb: 1,
-                  }}
-                >
-                  <Stack
-                    display={"flex"}
-                    spacing={1}
-                    sx={{ display: "flex", alignItems: "start" }}
-                  >
-                    {items.map((item) => (
-                      <ListItem
-                        price={item.price}
-                        key={item.id}
-                        text={item.name}
-                        total={item.itemTotalPrice}
-                        q={item.quantity}
-                        handleChange={handleChange}
-                        description={item.description}
-                        qFinish={item.qFinish}
-                        finish={item.finish}
-                        onClick={() => {
-                          removeItem(item.id);
-                        }}
-                      />
-                    ))}
-                  </Stack>{" "}
-                </Box>
-              </Stack>
-            </Box>
-          )}
-          {items.length === 0 && (
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "end",
-              }}
-            >
-              <Stack
-                sx={{
-                  alignItems: "center",
-                  alignSelf: "center",
-                }}
-              >
-                <ShoppingBagOutlinedIcon sx={{ fontSize: 80, color: "grey" }} />
-                <Typography
-                  variant="h6"
-                  sx={{
-                    color: "grey",
-                  }}
-                >
-                  Aún no se han agregado productos.
-                </Typography>
-              </Stack>
-            </Box>
-          )}
-
-          <Box
+          <ModalHeader
+            children={<ShoppingCartOutlinedIcon fontSize={"80"} />}
+            title={"Compras"}
+          />
+        </Box>
+        {items.length > 0 && (
+          <Stack
             sx={{
-              width: "100%",
-              height: 60,
-              display: " flex",
+              bgcolor: "black",
+              display: "grid",
               justifyContent: "center",
+              alignItems: "end",
+              height: 40,
+              color: "white",
+              borderRadius: 0.8,
+              gridTemplateColumns: invoiceGrid,
             }}
           >
-            <NavBtn
-              pointer={items.length === 0 ? "none" : ""}
-              pathBack={"/product-module"}
-              pathNext={"/payment"}
-              classname={items.length > 0 ? "arrow-btn" : "disabled-btn"}
-              style={{ display: "flex", justifySelf: "center" }}
-            />
+            <Typography sx={{ fontWeight: 600, pl: 1 }}>Descripción</Typography>
+            <Typography sx={{ fontWeight: 600, justifySelf: "center" }}>
+              Cant
+            </Typography>
+
+            <Typography sx={{ fontWeight: 600, justifySelf: "end" }}>
+              Total
+            </Typography>
+          </Stack>
+        )}
+        {items.length > 0 && (
+          <Box
+            style={{}}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              height: "auto",
+              justifyContent: "center",
+              alignSelf: "start",
+            }}
+          >
+            <Stack spacing={1}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "start",
+                  alignItems: "center",
+                  height: "auto",
+                  pt: 1,
+                  pb: 1,
+                }}
+              >
+                <Stack
+                  display={"flex"}
+                  spacing={1}
+                  sx={{ display: "flex", alignItems: "start", flexGrow: 1 }}
+                >
+                  {items.map((item) => (
+                    <ListItem
+                      key={item.id}
+                      product={item.name}
+                      q={item.quantity}
+                      price={colPesos.format(item.price)}
+                      totalPrice={colPesos.format(item.itemTotalPrice)}
+                      finish={item.finish}
+                      description={item.description}
+                      finishQ={item.finishQ > 1 ? item.finishQ : ""}
+                      onClick={() => {
+                        removeItem(item.id);
+                      }}
+                    />
+                  ))}
+                </Stack>{" "}
+              </Box>
+            </Stack>
           </Box>
+        )}
+        {items.length === 0 && (
+          <Box
+            sx={{
+              display: "grid",
+
+              gridTemplateRows: "100px 300px 50px",
+            }}
+          >
+            <Stack
+              sx={{
+                height: 500,
+                alignItems: "center",
+                alignSelf: "center",
+              }}
+            >
+              <ShoppingBagOutlinedIcon sx={{ fontSize: 80, color: "grey" }} />
+              <Typography
+                variant="h6"
+                sx={{
+                  color: "grey",
+                }}
+              >
+                Aún no se han agregado productos.
+              </Typography>
+            </Stack>
+          </Box>
+        )}
+
+        <Box
+          sx={{
+            width: "100%",
+            height: 60,
+            display: " flex",
+            justifyContent: "center",
+          }}
+        >
+          <NavBtn
+            displayNext={items.length === 0 && "none"}
+            nextText={"Pagar"}
+            backText={"Agregar producto"}
+            pointer={items.length === 0 ? "none" : ""}
+            pathBack={"/product-module"}
+            pathNext={"/payment"}
+            classname={items.length > 0 ? "arrow-btn" : "disabled-btn"}
+          />
         </Box>
       </Box>
     </>

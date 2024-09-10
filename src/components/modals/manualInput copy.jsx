@@ -363,7 +363,7 @@ const ManualInput2 = ({ text, acabado }) => {
                 pb: 3,
               }}
             >
-              {items.length <= 6 ? (
+              {items.length < 6 ? (
                 <Button
                   sx={{ width: "80%" }}
                   //disabled={!formik.values.itemTotalPrice ? true : false}

@@ -377,7 +377,12 @@ const Payment = () => {
             m: 0,
           }}
         >
-          <NavBtn pathBack={"/cart"} pathNext={""} display={"none"} />
+          <NavBtn
+            backText={"Compras"}
+            pathBack={"/cart"}
+            pathNext={""}
+            displayNext={"none"}
+          />
           <Grid
             item
             sx={{

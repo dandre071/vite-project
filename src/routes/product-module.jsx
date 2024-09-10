@@ -104,6 +104,8 @@ const ProductModule = () => {
           }}
         >
           <NavBtn
+            nextText={"Compras"}
+            backText={"Datos del cliente"}
             className={"arrow-btn"}
             pathBack={"/client-data"}
             pathNext={"/cart"}
