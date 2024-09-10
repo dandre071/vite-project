@@ -572,7 +572,7 @@ body {
     align-items: center;
   }
   .nav-bar {
-    background-color: black;
+    background-color: rgb(2, 9, 41);
     width: 100vw;
     height: 120px;
     top: -7vh;
