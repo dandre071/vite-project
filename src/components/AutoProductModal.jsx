@@ -32,7 +32,7 @@ const AutoProductModal = ({ text, matSize, material, choice, acabado }) => {
   return (
     <div>
       <ModalCard
-        title={"Producto Automático"}
+        title={"Producto Estándar"}
         onClick={handleOpen}
         children={
           <SlCalculator

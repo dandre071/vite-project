@@ -149,7 +149,7 @@ export const modal = {
   bgcolor: "white",
   p: 3,
   borderRadius: 1.7,
-  "&:after": { width: 450, height: 500, bgcolor: "red" },
+
   /* backgroundColor: "rgb(247, 247, 247, 95%)",
   backdropFilter: "blur(30px)", */
   //boxShadow: 4,
@@ -172,4 +172,4 @@ export const center = { justifySelf: "center", alignSelf: "center" };
 
 export const invoiceGrid = "7.5cm 1cm 2cm 2cm";
 
-export const iconSize = 60;
+export const iconSize = 50;

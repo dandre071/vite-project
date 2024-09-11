@@ -12,14 +12,13 @@ const ModalHeader = ({ title, children }) => {
       <Box
         id="modal-header"
         sx={{
-          height: 100,
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          pb: 2,
-          pt: 5,
-          mb: 2,
+          position: "relative",
+          mb: 0,
+          height: 100,
           // borderBottom: `1px solid ${customTheme.palette.background.dark}`,
           // bgcolor: "primary.main",
         }}
@@ -29,8 +28,10 @@ const ModalHeader = ({ title, children }) => {
         <Typography
           className="m-header-title"
           variant="h5"
-          color={"primary.main"}
+          //color={"primary.main"}
+          color={"black"}
           fontWeight={600}
+          sx={{ fontSize: 30 }}
         >
           {title}
         </Typography>

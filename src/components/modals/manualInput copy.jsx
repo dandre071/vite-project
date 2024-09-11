@@ -29,11 +29,10 @@ import InfoIcon from "@mui/icons-material/Info";
 import { formatNumber } from "../utils/helpers.js";
 import { useUsersList } from "../../store/lists.js";
 import useUsers from "../../Hooks/useUsers.js";
-import { ShoppingCart } from "lucide-react";
+import { Settings, ShoppingCart } from "lucide-react";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import PersonIcon from "@mui/icons-material/Person";
 
-import AddShoppingCartRoundedIcon from "@mui/icons-material/AddShoppingCartRounded";
 import ProductLimit from "./ProductLImit.jsx";
 const module = "ManualInput";
 
@@ -127,9 +126,9 @@ const ManualInput2 = ({ text, acabado }) => {
   return (
     <Box>
       <ModalCard
-        title={"Producto Directo"}
+        title={"Configurar Producto"}
         onClick={handleOpen}
-        icon={<ShoppingCart id="icon" sx={{ fontSize: 20 }} />}
+        icon={<Settings strokeWidth={1.75} size={40} />}
       />
       <Modal
         disableEscapeKeyDown

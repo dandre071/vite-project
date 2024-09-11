@@ -18,6 +18,7 @@ import { usePersonalData } from "../../store/shoppingCart";
 import { fakeUsers } from "../utils/test";
 import { useNavigate } from "react-router-dom";
 import NextBtn from "../Buttons/NextBtn";
+import { AnimatePresence, motion } from "framer-motion";
 
 const PersonalData = () => {
   //HOOKS
@@ -121,6 +122,10 @@ const PersonalData = () => {
 
   return (
     <Box>
+      {/* <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+      > */}
       <form style={{ alignSelf: "center" }}>
         <Grid container flexGrow={1} spacing={1.5}>
           <Grid item sm={8}>
@@ -273,6 +278,7 @@ const PersonalData = () => {
         </Alert>
         {/*  )} */}
       </Fade>
+      {/* </motion.div> */}
     </Box>
   );
 };

@@ -9,6 +9,8 @@ import { Stack } from "@mui/material";
 import { TriangleAlert } from "lucide-react";
 import NextBtn from "../Buttons/NextBtn";
 import { customTheme } from "../../Hooks/useCustomTheme";
+import { iconSize } from "../../Styles/styles";
+import { AnimatePresence, motion } from "framer-motion";
 
 const style = {
   display: "flex",
@@ -24,7 +26,7 @@ const style = {
   // border: "2px solid #000",
   boxShadow: 24,
   borderRadius: 2,
-  p: 4,
+  pb: 5,
 };
 
 export default function ProductLimit({ open }) {
@@ -34,49 +36,78 @@ export default function ProductLimit({ open }) {
   const handleClose = () => setOpen(false); */
 
   return (
-    <div>
-      <Modal
-        open={open}
-        //onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
       >
-        <Box sx={style}>
-          <Stack
-            sx={{
-              display: "flex",
-              width: "100%",
-              height: "300px",
+        <Modal
+          open={open}
+          //onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Stack
+              sx={{
+                display: "flex",
+                width: "100%",
+                height: "200px",
 
-              // bgcolor: "background.light",
-              borderRadius: 1.5,
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            {/* {<ProductLimit open={true} />} */}
-            <TriangleAlert
-              strokeWidth={1.75}
-              size={90}
-              color={customTheme.palette.secondary.main}
-              style={{}}
-            />
-            <Typography variant="h4" sx={{ fontWeight: 900 }}>
-              Carrito lleno!
-            </Typography>
-            <Typography sx={{ fontWeight: 400 }} variant="h7">
-              No se pueden agregar más productos.{" "}
-            </Typography>
-          </Stack>
-          {/*<Navigate to="/cart" replace={true} /> */}
+                // bgcolor: "background.light",
+                borderRadius: 1.5,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {/* {<ProductLimit open={true} />} */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: -50,
+                  width: "90px",
+                  height: "90px",
+                  bgcolor: "secondary.main",
+                  borderRadius: "50%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <TriangleAlert
+                  className="icon"
+                  strokeWidth={1.75}
+                  size={iconSize}
+                  color={"white"}
+                />
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  mt: 4,
+                  alignItems: "center",
+                }}
+              >
+                <Typography variant="h4" sx={{ fontWeight: 900 }}>
+                  Carrito lleno!
+                </Typography>
+                <Typography sx={{ fontWeight: 400 }} variant="h7">
+                  No se pueden agregar más productos.{" "}
+                </Typography>
+              </Box>
+            </Stack>
+            {/*<Navigate to="/cart" replace={true} /> */}
 
-          <Link to="/cart">
-            <Button sx={{ height: 50 }} variant="prime">
-              Ir a Compras
-            </Button>
-          </Link>
-        </Box>
-      </Modal>
-    </div>
+            <Link to="/cart">
+              <Button sx={{ height: 50 }} variant="prime">
+                Ir a Compras
+              </Button>
+            </Link>
+          </Box>
+        </Modal>
+      </motion.div>
+    </AnimatePresence>
   );
 }

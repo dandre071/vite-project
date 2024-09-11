@@ -31,7 +31,12 @@ const ProductModule = () => {
       <Box sx={{ ...modal, height: "auto", gridTemplateRows: "30% 50% 20%" }}>
         <ModalHeader
           title={"Agregar producto"}
-          children={<AddShoppingCartRoundedIcon sx={{ fontSize: iconSize }} />}
+          children={
+            <AddShoppingCartRoundedIcon
+              className="icon"
+              sx={{ fontSize: iconSize }}
+            />
+          }
         />
 
         <Stack
