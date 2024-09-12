@@ -326,7 +326,7 @@ body {
 }
 #modal-box:hover {
   transform: scale(1.02);
-  background-color: #b0c4de;
+  background-color: #1e73f3;
   cursor: pointer;
 
   /*border: 1.2px solid var(--primary-main);

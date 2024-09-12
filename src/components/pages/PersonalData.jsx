@@ -256,14 +256,15 @@ const PersonalData = () => {
         </Grid>
       </form>
 
-      <Fade
+      {/* <Fade
         in={!formik.isValid} //Write the needed condition here to make it appear
         timeout={{ enter: 500, exit: 500 }} //Edit these two values to change the duration of transition when the element is getting appeared and disappeard
         addEndListener={() => {
           setTimeout(1000);
         }}
-      >
-        {/*  {!formik.isValid && ( */}
+      > */}
+      {/*  {!formik.isValid && ( */}
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
         <Alert
           onClose={() => {
             formik.setErrors({});
@@ -277,7 +278,8 @@ const PersonalData = () => {
           Los campos con asterisco (*) son obligatorios.
         </Alert>
         {/*  )} */}
-      </Fade>
+        {/*       </Fade> */}
+      </motion.div>
       {/* </motion.div> */}
     </Box>
   );

@@ -40,7 +40,7 @@ import { useState } from "react";
 import DatePicker from "../components/Forms/DatePicker";
 import { users } from "../db";
 import { usePaymentData } from "../store/paymentData";
-
+import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault("America/Bogota");
@@ -189,7 +189,7 @@ const Payment = () => {
             <TextField
               variant="standard"
               sx={{
-                width: "80px",
+                width: "auto",
                 maxWidth: "100px",
                 display: "flex",
                 justifySelf: "end",
@@ -414,11 +414,11 @@ const Payment = () => {
               <Button
                 disabled={formik.errors.payment}
                 onClick={handleAddData}
-                startIcon={<ShoppingCartOutlinedIcon />}
+                startIcon={<PaymentsOutlinedIcon />}
                 sx={{ color: "white", width: 250, height: 55 }}
                 variant="prime"
               >
-                Finalizar
+                Pagar
               </Button>
             </Link>
           </Grid>
