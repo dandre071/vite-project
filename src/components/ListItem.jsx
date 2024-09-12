@@ -1,24 +1,9 @@
-import {
-  Box,
-  Button,
-  Divider,
-  Grid,
-  Input,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import DeleteBtn from "./Buttons/DeleteBtn";
-import { colPesos } from "./utils/configs";
-import { themeColors } from "./utils/configs";
 import { useShoppingCart } from "../store/shoppingCart";
-
 import { motion } from "framer-motion";
-import ModalHeader from "./ModalHeader";
-import { customTheme } from "../Hooks/useCustomTheme";
-import { object } from "yup";
-import { uppercasing } from "./utils/helpers";
 import { Edit2Icon } from "lucide-react";
+import { customTheme } from "../Hooks/useCustomTheme";
 
 const ListItem = ({
   product,
@@ -32,9 +17,7 @@ const ListItem = ({
 }) => {
   const items = useShoppingCart((state) => state.items);
   const invoiceGrid = "1fr 1cm 3cm";
-  //const fin = finish.join(", ");
-  // console.log(fin);
-  //const finishText =
+
   return (
     <motion.div
       initial={{ opacity: 0, x: -50 }}
@@ -48,7 +31,7 @@ const ListItem = ({
           gridTemplateColumns: "90% 1fr",
           border: "1px solid #f9f9f9",
           borderRadius: 1,
-          bgcolor: "#f9f9f9",
+          bgcolor: "#f0f6ff",
           width: 600,
           pt: 1,
           pb: 1,
@@ -91,7 +74,11 @@ const ListItem = ({
             </Typography>
           </Stack>
           <Stack
-            sx={{ display: "grid", gridTemplateColumns: "70% 1fr", height: 30 }}
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "70% 1fr",
+              height: "auto",
+            }}
           >
             <Typography
               className="secondary-color capitalize"
@@ -100,7 +87,7 @@ const ListItem = ({
                 fontWeight: 400,
                 textAlign: "left",
                 lineHeight: 1.2,
-
+                height: "auto",
                 alignContent: "start",
               }}
             >
@@ -118,24 +105,27 @@ const ListItem = ({
                   lineHeight: 1.2,
                   display: "flex",
                   justifyContent: "center",
-                  bgcolor: "#f7f7f7",
-                  width: "100%",
-                  height: "90%",
+                  bgcolor: customTheme.palette.success.main,
+                  width: "auto",
+                  height: "auto",
                   borderRadius: 1,
                   alignItems: "center",
-                  p: 0.02,
+                  pl: 0.5,
+                  pr: 0.5,
                 }}
               >
-                <Typography
-                  className="secondary-color"
-                  sx={{
-                    fontSize: 12,
-                    fontWeight: 500,
-                    textAlign: "center",
-                  }}
-                >
-                  Acabado: {`${finishQ} ${finish}`}
-                </Typography>
+                {finish && (
+                  <Typography
+                    sx={{
+                      fontSize: 12,
+                      fontWeight: 500,
+                      textAlign: "center",
+                      color: "white",
+                    }}
+                  >
+                    Acabado: {`${finishQ} ${finish}`}
+                  </Typography>
+                )}
               </Box>
             </Box>
           </Stack>

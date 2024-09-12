@@ -7,8 +7,8 @@ import { AnimatePresence, motion } from "framer-motion";
 const ClientData = () => {
   return (
     <motion.div
-      initial={{ opacity: 0, x: -50 }}
-      animate={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 1, x: 50 }}
     >
       <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
