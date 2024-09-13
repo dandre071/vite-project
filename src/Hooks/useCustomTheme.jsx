@@ -12,7 +12,7 @@ import {
 import { redux } from "zustand/middleware";
 
 const primary = "customTheme.primary.main";
-const variantType = "outlined";
+const variantType = "filled";
 const primaryColor = "#0866FF";
 const primaryDarkColor = "#0530ad";
 const primaryDarkerColor = "#2962ff";
@@ -281,7 +281,7 @@ export const customTheme = createTheme({
     MuiInputBase: {
       defaultProps: {
         multiline: true,
-        disableUnderline: false,
+        disableUnderline: true,
         sx: {
           borderRadius: 2,
           //bgcolor: "red",

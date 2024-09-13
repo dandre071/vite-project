@@ -9,34 +9,26 @@ const Root = () => {
   return (
     <ThemeProvider theme={customTheme}>
       <div className="container">
-        <div className="nav-bar">
-          <ul className="nav">
-            <Link to={"/"}>
-              <Logo className="logo" width={50} />
-            </Link>
-            <CartCounter />
-            <li>
-              <Link to={"/client-data"}>Cliente</Link>
-            </li>
-            {/*  <li>
-            <Link to={"/factura"}>Factura</Link>
-          </li> */}
+        <header>
+          <nav className="nav-bar form-bg">
+            <ul className="nav">
+              <Link to={"/"}>
+                <Logo className="logo" width={50} />
+              </Link>
+              <CartCounter />
+              <li>
+                <Link to={"/client-data"}>Cliente</Link>
+              </li>
 
-            {/*    <li>
-            <Link to={"/product-module"}>Producto</Link>
-          </li> */}
-            {/* <li>
-            <Link to={"/cart"}>Cart</Link>
-          </li> */}
-            <li>
-              <Link to={"/payment"}>Pay</Link>
-            </li>
-          </ul>
-        </div>
-
-        <div className="outlet" style={{ display: "flex", height: "auto" }}>
+              <li>
+                <Link to={"/payment"}>Pay</Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <main>
           <Outlet />
-        </div>
+        </main>
       </div>
     </ThemeProvider>
   );

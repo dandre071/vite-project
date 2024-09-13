@@ -12,7 +12,7 @@ const ClientData = () => {
       exit={{ opacity: 1, x: 50 }}
     >
       <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-        <Box className="modal" sx={modal}>
+        <Box className="form-bg" sx={modal}>
           <ModalHeader
             children={
               <PersonIcon className="icon" sx={{ fontSize: iconSize }} />

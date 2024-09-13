@@ -29,7 +29,7 @@ html {
 }
 body {
   /*  background-color: #eaeaf3; */
-  margin: auto;
+  margin: 0;
   background: rgb(247, 247, 247);
   background-color: #00179b;
   background: linear-gradient(to right, #000428, #00179b);
@@ -51,9 +51,9 @@ body {
   background: linear-gradient(to, #243ba1, #7698ff);
   background: linear-gradient(to top, #002569, #004ec4);
   background: #f1f1f1 !important;
-  background: #f0f4f9 !important;
-  background: #1468c2 !important;
-  display: flex;
+  background: #eaf3ff !important;
+  /*  background: #1468c2 !important; */
+
   /* background: #182fff !important;
   background: #004aeb; */
   /*  background: #0275d3 !important;
@@ -64,7 +64,28 @@ body {
     rgba(255, 255, 255, 1) 100%
   ); */
 }
-
+nav::before {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  content: "";
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background-color: rgba(44, 111, 255, 0.15);
+  filter: blur(70px);
+}
+nav::after {
+  position: absolute;
+  top: -25%;
+  left: 0%;
+  content: "";
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background-color: rgba(178, 44, 255, 0.15);
+  filter: blur(70px);
+}
 .input-error {
   border-style: solid;
   border-color: "red";
@@ -577,13 +598,14 @@ body {
   top: -60px;
 }
 .icon-container-error {
+  clip-path: circle(60px at center);
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 80px;
   height: 80px;
-  border: 10px solid white;
+  /* border: 10px solid white; */
   background-color: var(--secondary-main);
   border-radius: 50%;
   top: -70px;
@@ -595,29 +617,31 @@ body {
 }
 
 @media (max-height: 1000px) {
-  html {
-    display: flex;
+  .container {
+    display: grid;
+    width: 100vw;
     justify-content: center;
     align-items: center;
-  }
-  body {
-    margin-top: 3vh;
     height: 100vh;
-    position: relative;
+    max-height: 100vh;
+    grid-template-rows: 50px 1fr;
+    overflow: hidden;
+  }
+  header {
+    /* margin-top: 3vh; */
+    width: 100vw;
+    height: 100%;
+
+    /*  position: relative; */
+  }
+  main {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    height: 100%;
   }
   .nav-bar {
-    background-color: rgb(0, 38, 143);
-    background-color: rgb(0, 0, 0);
-    width: 70vw;
-    height: 70px;
-    top: -3vh;
-    left: 50%;
-    right: 50%;
-    margin-top: 0;
-    transform: translate(-50%, 50%);
+    height: auto;
     position: fixed;
     z-index: 1000;
     display: flex;
@@ -640,10 +664,10 @@ body {
   }
   .alert {
     position: absolute;
-    bottom: 8vh;
+    bottom: -10vh;
   }
   .pdf {
-    margin-top: 200vh;
+    /* margin-top: 200vh; */
   }
 }
 @media (max-height: 700px) {
@@ -672,4 +696,30 @@ body {
   .pdf {
     transform: scale(0.8);
   }
+}
+.form-bg {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.3px);
+  -webkit-backdrop-filter: blur(8.3px);
+  border: 3px solid rgba(255, 255, 255, 1);
+}
+.MuiInputBase-input {
+  /*  color: red !important; */
+  background-color: none !important;
+}
+.MuiInputBase-root {
+  /*  color: red !important; */
+  background-color: rgba(233, 243, 255, 0.8) !important;
+  border: 1.5px solid rgb(255, 255, 255);
+
+  /*  border: 1px solid red; */
+}
+.MuiInputBase-root:hover {
+  /*  color: red !important; */
+  border: 1.5px solid rgb(255, 255, 255);
+  background-color: rgba(239, 245, 253, 0.68) !important;
+
+  /*  border: 1px solid red; */
 }
