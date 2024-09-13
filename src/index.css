@@ -585,18 +585,7 @@ nav::after {
 /* #modal-header :first-child {
   color: var(--primary-dark);
 } */
-.icon-container {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 70px;
-  height: 70px;
-  border: 10px solid white;
-  background-color: var(--primary-main);
-  border-radius: 50%;
-  top: -60px;
-}
+
 .icon-container-error {
   clip-path: circle(60px at center);
   position: absolute;
@@ -704,6 +693,38 @@ nav::after {
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
   border: 3px solid rgba(255, 255, 255, 1);
+}
+
+.icon-container {
+  z-index: 0;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  /*  border: 10px solid white; */
+  background-color: var(--primary-main);
+  border-radius: 50%;
+  top: -60px;
+}
+.icon-container::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+
+  height: 80px;
+  width: 80px;
+  background: red;
+  /*  background: rgba(255, 255, 255, 0.6) !important;
+  border-radius: 50%;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.3px);
+  -webkit-backdrop-filter: blur(8.3px);
+  border: 3px solid rgba(255, 255, 255, 1); */
 }
 .MuiInputBase-input {
   /*  color: red !important; */

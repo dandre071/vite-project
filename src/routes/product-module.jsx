@@ -30,7 +30,7 @@ const ProductModule = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 1, x: 50 }}
     >
-      <div style={{}}>
+      <div className={"form-bg"} style={{}}>
         <Box sx={{ ...modal, height: "auto", gridTemplateRows: "30% 50% 20%" }}>
           <ModalHeader
             title={"Agregar producto"}
