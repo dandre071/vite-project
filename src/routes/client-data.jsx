@@ -13,12 +13,11 @@ const ClientData = () => {
     >
       <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
         <Box className="form-bg" sx={modal}>
-          <ModalHeader
-            children={
+          <ModalHeader title={"Información del Cliente"}>
+            <div className={"modal-header-icon"}>
               <PersonIcon className="icon" sx={{ fontSize: iconSize }} />
-            }
-            title={"Información del Cliente"}
-          />
+            </div>
+          </ModalHeader>
           <PersonalData />
         </Box>
       </Box>

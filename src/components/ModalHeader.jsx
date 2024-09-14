@@ -10,11 +10,10 @@ const ModalHeader = ({ title, children }) => {
   return (
     <>
       <Box
-        id="modal-header"
         sx={{
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
+          justifyContent: "end",
           alignItems: "center",
           position: "relative",
           mb: 0,
@@ -23,7 +22,9 @@ const ModalHeader = ({ title, children }) => {
           // bgcolor: "primary.main",
         }}
       >
-        <Box className="icon-container"> {children}</Box>
+        <div className="icon-parent">
+          <Box className="icon-container"> {children}</Box>
+        </div>
 
         <Typography
           className="m-header-title"
@@ -31,7 +32,7 @@ const ModalHeader = ({ title, children }) => {
           //color={"primary.main"}
           color={"black"}
           fontWeight={600}
-          sx={{ fontSize: 30 }}
+          sx={{ fontSize: 30, mb: 2 }}
         >
           {title}
         </Typography>
