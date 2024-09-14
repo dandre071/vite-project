@@ -27,6 +27,7 @@ const Root = () => {
           </nav>
         </header>
         <main>
+          <div className="auxiliar"></div>
           <Outlet />
         </main>
       </div>

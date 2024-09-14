@@ -56,7 +56,7 @@ const Cart = () => {
         exit={{ opacity: 1, x: 50 }}
       >
         <Box
-          className="list-item"
+          className="form-bg"
           sx={{
             ...modal,
             width: 600,

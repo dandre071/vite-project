@@ -144,6 +144,7 @@ const Payment = () => {
   return (
     <Stack sx={{}}>
       <Stack
+        className="form-bg"
         spacing={0}
         sx={{
           ...modal,
