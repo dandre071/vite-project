@@ -35,7 +35,6 @@ const FormSelect2 = ({
 
       <Box sx={{ display: "flex" }}>
         <Select
-          error={error}
           helperText={helperText}
           onBlur={onBlur}
           size={size}
@@ -48,8 +47,11 @@ const FormSelect2 = ({
           label={label}
           disabled={disabled}
           options={options}
-          nothingFoundMessage="No State Found..."
-          inputProps={((variant = { variant }), (helperText = { helperText }))}
+          nothingFoundMessage="No encontrado..."
+          inputProps={
+            ((variant = { variant }),
+            ((error = { error }), (helperText = { helperText })))
+          }
         >
           {options.map((option, index) => (
             <MenuItem value={option} key={index}>

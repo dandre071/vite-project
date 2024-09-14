@@ -132,7 +132,7 @@ const PersonalData = () => {
             <FormSelect2
               required
               value={formik.values.billType}
-              error={formik.touched.billType && formik.errors.billType}
+              error={formik.errors.billType}
               helperText={formik.errors.billType}
               fullWidth
               name="billType"
@@ -140,12 +140,13 @@ const PersonalData = () => {
               options={options.billType}
               label={"Tipo de recibo"}
             />
+            <p>{formik.errors.billType}</p>
           </Grid>
           <Grid item sm={4}>
             <FormSelect2
               required
               value={formik.values.clientType}
-              error={formik.touched.clientType && formik.errors.clientType}
+              error={formik.errors.clientType && formik.errors.clientType}
               helperText={formik.errors.clientType}
               fullWidth
               name="clientType"
@@ -153,6 +154,7 @@ const PersonalData = () => {
               options={options.userType}
               label={"Cliente"}
             />
+            <p>{formik.errors.clientType}</p>
           </Grid>
           <Grid
             item
@@ -263,23 +265,26 @@ const PersonalData = () => {
           setTimeout(1000);
         }}
       > */}
-      {/*  {!formik.isValid && ( */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-        <Alert
-          onClose={() => {
-            formik.setErrors({});
-          }}
-          className="alert"
-          severity="error"
-          /*   TransitionProps={{ timeout: 1000 }}
+      {!formik.isValid && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <Alert
+            sx={{ bgcolor: "rgba(0, 0, 0, 1)", color: "red" }}
+            onClose={() => {
+              formik.setErrors({});
+            }}
+            className="alert"
+            severity="error"
+            /*   TransitionProps={{ timeout: 1000 }}
           TransitionComponent={Zoom} */
-        >
-          <AlertTitle>Error</AlertTitle>
-          Los campos con asterisco (*) son obligatorios.
-        </Alert>
-        {/*  )} */}
-        {/*       </Fade> */}
-      </motion.div>
+          >
+            <AlertTitle>Error</AlertTitle>
+            Los campos con asterisco (*) son obligatorios.
+          </Alert>
+          {/*  )} */}
+          {/*       </Fade> */}
+        </motion.div>
+      )}
+
       {/* </motion.div> */}
     </Box>
   );

@@ -9,7 +9,7 @@ const Root = () => {
   return (
     <ThemeProvider theme={customTheme}>
       <div className="container">
-        <header className="form-bg">
+        <header className="nav-bg">
           <nav className="nav-bar">
             <ul className="nav">
               <Link to={"/"}>

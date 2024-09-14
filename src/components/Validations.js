@@ -33,7 +33,7 @@ export const productSchema = object().shape({
 
 export const PersonSchema = object().shape({
   billType: string().required("Por favor ingrese un nombre."),
-  clientType: string().required(),
+  clientType: string().required("Elija una opción"),
   name: string().required("Por favor ingrese un nombre."),
 
   // .min(5, "too short"),
