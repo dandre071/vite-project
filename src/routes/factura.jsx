@@ -98,7 +98,7 @@ const Factura = () => {
   };
   return (
     <>
-      <div className="margin-top" style={{ display: "flex", height: "auto" }}>
+      <div style={{ display: "flex", height: "auto" }}>
         <form className="pdf" ref={targetRef} style={{ height: "auto" }}>
           <Stack
             sx={{
