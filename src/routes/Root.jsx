@@ -4,32 +4,42 @@ import { customTheme } from "../Hooks/useCustomTheme";
 import CartCounter from "../components/CartCounter";
 import Logo from "../components/Logo";
 import hexToRgba from "hex-to-rgba";
-const color = "fff";
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import { makeStyles } from "@mui/material";
+const style = makeStyles({
+  center: {
+    display: "flex",
+    justifyContent: "center",
+  },
+});
 const Root = () => {
   return (
     <ThemeProvider theme={customTheme}>
-      <div className="container">
-        <header className="nav-bg">
-          <nav className="nav-bar">
-            <ul className="nav">
-              <Link to={"/"}>
-                <Logo className="logo" width={50} />
-              </Link>
-              <CartCounter />
-              <li>
-                <Link to={"/client-data"}>Cliente</Link>
-              </li>
+      <div>
+        <Grid2 container>
+          <Grid2 item lg={12} sm={8} xs={12} md={10}>
+            <nav className="nav-bar">
+              <ul className="nav">
+                <Link to={"/"}>
+                  <Logo className="logo" width={50} />
+                </Link>
+                <CartCounter />
+                <li>
+                  <Link to={"/client-data"}>Cliente</Link>
+                </li>
 
-              <li>
-                <Link to={"/payment"}>Pay</Link>
-              </li>
-            </ul>
-          </nav>
-        </header>
-        <main>
-          <div></div>
-          <Outlet />
-        </main>
+                <li>
+                  <Link to={"/payment"}>Pay</Link>
+                </li>
+              </ul>
+            </nav>
+          </Grid2>
+          <Grid2 item lg={4} sm={8} xs={8} md={8}>
+            <main>
+              <Outlet />
+            </main>
+          </Grid2>
+        </Grid2>
       </div>
     </ThemeProvider>
   );
