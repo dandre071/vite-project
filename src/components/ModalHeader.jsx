@@ -17,7 +17,8 @@ const ModalHeader = ({ title, children }) => {
           alignItems: "center",
           position: "relative",
           mb: 0,
-          height: 100,
+          height: 80,
+          bgcolor: "primary.main",
         }}
       >
         {/* <div className="icon-parent">
@@ -28,7 +29,7 @@ const ModalHeader = ({ title, children }) => {
           className="m-header-title"
           variant="h5"
           //color={"primary.main"}
-          color={"black"}
+          color={"white"}
           fontWeight={600}
           sx={{ fontSize: 30, mb: 2 }}
         >

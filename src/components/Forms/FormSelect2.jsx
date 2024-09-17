@@ -30,11 +30,12 @@ const FormSelect2 = ({
 }) => {
   //console.log(options);
   return (
-    <FormControl required={required} onBlur={onBlur} fullWidth sx={{ my: 1 }}>
+    <FormControl required={required} onBlur={onBlur} fullWidth sx={{}}>
       <InputLabel id={`input-label-${name}`}>{label}</InputLabel>
 
       <Box sx={{ display: "flex" }}>
         <Select
+          sx={{ p: 0 }}
           helperText={helperText}
           onBlur={onBlur}
           size={size}

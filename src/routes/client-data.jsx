@@ -5,6 +5,7 @@ import { iconSize, modal } from "../Styles/styles";
 import PersonIcon from "@mui/icons-material/Person";
 import { AnimatePresence, motion } from "framer-motion";
 import { Typography } from "@mui/material";
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 const ClientData = () => {
   return (
     <motion.div
@@ -12,17 +13,36 @@ const ClientData = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 1, x: 50 }}
     >
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-        <Box /* className="form-bg" */ /* sx={modal} */>
-          {/*    <ModalHeader title={"Información del Cliente"}>
-            <div className={"modal-header-icon"}>
+      <Grid2 container flexGrow={1} lg={12} sx={{}}>
+        <Grid2
+          item
+          lg={9}
+          md={12}
+          sm={12}
+          xs={12}
+          sx={{
+            height: "60vh",
+            /* width: "100vw", */
+            alignSelf: "center",
+            justifySelf: "center",
+            bgcolor: "white",
+            display: "grid",
+            borderRadius: 2,
+            overflow: "hidden",
+            gridTemplateRows: "100px 1fr",
+          }}
+        >
+          <ModalHeader title={"Información del Cliente"} />
+          {/*  <div className={"modal-header-icon"}>
               <PersonIcon className="icon" sx={{ fontSize: iconSize }} />
             </div>
-          </ModalHeader> */}
-          <Typography>Información del cliente</Typography>
-          <PersonalData />
-        </Box>
-      </Box>
+          </ModalHeader>  */}
+          {/* <Typography>Información del cliente</Typography> */}
+          <Box sx={{ alignSelf: "center", justifySelf: "center" }}>
+            <PersonalData />
+          </Box>
+        </Grid2>
+      </Grid2>
     </motion.div>
   );
 };

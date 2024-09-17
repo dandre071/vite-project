@@ -31,8 +31,8 @@ const ProductModule = () => {
       exit={{ opacity: 1, x: 50 }}
     >
       <Box
-        className={"form-bg"}
-        sx={{ ...modal, height: "auto", gridTemplateRows: "30% 50% 20%" }}
+      /* className={"form-bg"} */
+      /*  sx={{ ...modal, height: "auto", gridTemplateRows: "30% 50% 20%" }} */
       >
         <ModalHeader
           title={"Agregar producto"}

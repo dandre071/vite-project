@@ -5,25 +5,32 @@ import CartCounter from "../components/CartCounter";
 import Logo from "../components/Logo";
 import hexToRgba from "hex-to-rgba";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import { Container, Stack } from "@mui/material";
+import { Container, Grid, Stack } from "@mui/material";
 
 const style = {};
 const Root = () => {
   return (
     <ThemeProvider theme={customTheme}>
-      <Stack>
-        <Grid2 container sx={{ width: "100vw" }} gridTemplateRows="10vh 1fr">
+      <Stack sx={{ minWidth: "400px" }}>
+        <Grid2
+          flexGrow={1}
+          container
+          lg={12}
+          md={12}
+          sm={12}
+          sx={{ bgcolor: "white" }}
+        >
           <Grid2
-            direction={"row"}
+            lg={1.5}
+            md={1}
+            sm={1}
+            xs={0}
+            direction={"column"}
             id="nav"
             item
-            lg={12}
-            sm={8}
-            xs={12}
-            md={10}
-            sx={{ height: "100%", bgcolor: "red" }}
+            sx={{ height: "100vh", bgcolor: "white" }}
           >
-            <ul style={{ display: "flex" }}>
+            <ul style={{ display: "flex", flexDirection: "column" }}>
               <Link to={"/"}>
                 <Logo className="logo" width={50} />
               </Link>
@@ -39,22 +46,31 @@ const Root = () => {
           </Grid2>
           <Grid2
             item
-            lg={4}
-            sm={8}
-            xs={8}
-            md={8}
+            lg={10.5}
+            md={11}
+            sm={11}
+            xs={12}
             sx={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              height: "90vh",
-              width: "100vw",
-              bgcolor: "blue",
+              height: "100vh",
+
+              bgcolor: "#f2f2f2",
             }}
           >
-            <Container sx={{}}>
+            <Grid
+              item
+              lg={12}
+              sx={{
+                display: "flex",
+                /* backgroundColor: "yellow", */
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <Outlet />
-            </Container>
+            </Grid>
           </Grid2>
         </Grid2>
       </Stack>
