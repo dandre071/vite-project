@@ -11,15 +11,10 @@ const style = {};
 const Root = () => {
   return (
     <ThemeProvider theme={customTheme}>
-      <Stack sx={{ minWidth: "400px" }}>
-        <Grid2
-          flexGrow={1}
-          container
-          lg={12}
-          md={12}
-          sm={12}
-          sx={{ bgcolor: "white" }}
-        >
+      <Stack
+        sx={{ minWidth: "400px", display: "flex", justifyContent: "center" }}
+      >
+        <Grid2 flexGrow={1} container sx={{ bgcolor: "white" }}>
           <Grid2
             lg={1.5}
             md={1}

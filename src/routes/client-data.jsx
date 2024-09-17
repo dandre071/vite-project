@@ -13,7 +13,12 @@ const ClientData = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 1, x: 50 }}
     >
-      <Grid2 container flexGrow={1} lg={12} sm={10} sx={{}}>
+      <Grid2
+        container
+        lg={12}
+        sm={12}
+        sx={{ /* bgcolor: "yellow",  */ justifyContent: "center" }}
+      >
         <Grid2
           item
           lg={9}
@@ -23,8 +28,7 @@ const ClientData = () => {
           sx={{
             height: "60vh",
             /* width: "100vw", */
-            alignSelf: "center",
-            justifySelf: "center",
+            justifyContent: "center",
             bgcolor: "white",
             display: "grid",
             borderRadius: 2,
@@ -41,9 +45,8 @@ const ClientData = () => {
             </div>
           </ModalHeader>  */}
           {/* <Typography>Información del cliente</Typography> */}
-          <Box sx={{ alignSelf: "center", justifySelf: "center" }}>
-            <PersonalData />
-          </Box>
+
+          <PersonalData />
         </Grid2>
       </Grid2>
     </motion.div>

@@ -296,19 +296,13 @@ const PersonalData = () => {
               }}
               className="alert"
               severity="error"
-              /*   TransitionProps={{ timeout: 1000 }}
-          TransitionComponent={Zoom} */
             >
               <AlertTitle>Error</AlertTitle>
               Los campos con asterisco (*) son obligatorios.
             </Alert>
           </Grid>
-          {/*  )} */}
-          {/*       </Fade> */}
         </motion.div>
       )}
-
-      {/* </motion.div> */}
     </Stack>
   );
 };
