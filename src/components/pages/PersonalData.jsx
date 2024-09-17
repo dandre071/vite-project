@@ -134,7 +134,7 @@ const PersonalData = () => {
         columnSpacing={1}
         sx={{
           display: "flex",
-
+          p: 0,
           /*   bgcolor: "pink", */
           alignSelf: "center",
         }}
@@ -228,10 +228,11 @@ const PersonalData = () => {
 
         <Grid
           item
+          lg={12}
+          xs={12}
           sx={{
             mt: 4,
-            pt: 3,
-            height: 70,
+
             width: "100%",
             display: "flex",
             justifyContent: "end",

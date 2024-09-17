@@ -17,7 +17,7 @@ const ModalHeader = ({ title, children }) => {
           alignItems: "center",
           position: "relative",
           mb: 0,
-          height: 80,
+          height: 120,
           bgcolor: "primary.main",
         }}
       >

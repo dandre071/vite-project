@@ -28,7 +28,7 @@ const Root = () => {
             direction={"column"}
             id="nav"
             item
-            sx={{ height: "100vh", bgcolor: "white" }}
+            sx={{ height: "100vh", bgcolor: "black" }}
           >
             <ul style={{ display: "flex", flexDirection: "column" }}>
               <Link to={"/"}>

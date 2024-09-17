@@ -13,7 +13,7 @@ const ClientData = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 1, x: 50 }}
     >
-      <Grid2 container flexGrow={1} lg={12} sx={{}}>
+      <Grid2 container flexGrow={1} lg={12} sm={10} sx={{}}>
         <Grid2
           item
           lg={9}
@@ -29,10 +29,13 @@ const ClientData = () => {
             display: "grid",
             borderRadius: 2,
             overflow: "hidden",
-            gridTemplateRows: "100px 1fr",
+            gridTemplateRows: "150px 1fr",
           }}
         >
-          <ModalHeader title={"Información del Cliente"} />
+          <ModalHeader
+            style={{ height: "100%" }}
+            title={"Información del Cliente"}
+          />
           {/*  <div className={"modal-header-icon"}>
               <PersonIcon className="icon" sx={{ fontSize: iconSize }} />
             </div>
