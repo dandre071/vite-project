@@ -13,13 +13,8 @@ const Root = () => {
     <ThemeProvider theme={customTheme}>
       <div flexGrow={1} className="grid-template" container>
         <div className="aside"></div>
-        <div
-          className={"nav-area"}
-          sx={{}}
-          /* id="nav" */
-          item
-        >
-          <ul style={{ display: "flex" }}>
+        <div className={"nav-area"} item>
+          <ul>
             <Link to={"/"}>
               <Logo className="logo" width={50} />
             </Link>
