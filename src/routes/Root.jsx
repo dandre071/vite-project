@@ -11,64 +11,38 @@ const style = {};
 const Root = () => {
   return (
     <ThemeProvider theme={customTheme}>
-      <Stack
-        sx={{ minWidth: "400px", display: "flex", justifyContent: "center" }}
-      >
-        <Grid2 flexGrow={1} container sx={{ bgcolor: "white" }}>
-          <Grid2
-            lg={1.5}
-            md={1}
-            sm={1}
-            xs={0}
-            direction={"column"}
-            id="nav"
-            item
-            sx={{ height: "100vh", bgcolor: "black" }}
-          >
-            <ul style={{ display: "flex", flexDirection: "column" }}>
-              <Link to={"/"}>
-                <Logo className="logo" width={50} />
-              </Link>
-              <CartCounter />
-              <li>
-                <Link to={"/client-data"}>Cliente</Link>
-              </li>
+      <div flexGrow={1} className="grid-template" container>
+        <div className="aside"></div>
+        <div
+          className={"nav-area"}
+          sx={{}}
+          /* id="nav" */
+          item
+        >
+          <ul style={{ display: "flex" }}>
+            <Link to={"/"}>
+              <Logo className="logo" width={50} />
+            </Link>
+            <CartCounter />
+            <li>
+              <Link to={"/client-data"}>Cliente</Link>
+            </li>
 
-              <li>
-                <Link to={"/payment"}>Pay</Link>
-              </li>
-            </ul>
-          </Grid2>
-          <Grid2
-            item
-            lg={10.5}
-            md={11}
-            sm={11}
-            xs={12}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "100vh",
-
-              bgcolor: "#f2f2f2",
-            }}
-          >
-            <Grid
-              item
-              lg={12}
-              sx={{
-                display: "flex",
-                /* backgroundColor: "yellow", */
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Outlet />
-            </Grid>
-          </Grid2>
-        </Grid2>
-      </Stack>
+            <li>
+              <Link to={"/payment"}>Pay</Link>
+            </li>
+          </ul>
+        </div>
+        <div
+          className={"main"}
+          item
+          sx={{
+            bgcolor: "#f2f2f2",
+          }}
+        >
+          <Outlet />
+        </div>
+      </div>
     </ThemeProvider>
   );
 };
