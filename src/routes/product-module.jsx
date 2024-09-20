@@ -30,68 +30,56 @@ const ProductModule = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 1, x: 50 }}
     >
-      <Box
-      /* className={"form-bg"} */
-      /*  sx={{ ...modal, height: "auto", gridTemplateRows: "30% 50% 20%" }} */
-      >
-        <ModalHeader
-          title={"Agregar producto"}
-          children={
-            <AddShoppingCartRoundedIcon
-              className="icon"
-              sx={{ fontSize: iconSize }}
-            />
-          }
-        />
+      <Box className="page-layout">
+        {/*     {<ProductLimit open={false} />} */}
+        {/* <ModalHeader title={"Producto"} /> */}
 
-        <Stack sx={{ display: "grid" /* pointerEvents: "none" */ }}>
-          <ProductLimit open={false} />
-          <Stack
-            sx={{
-              display: "grid",
-
-              gap: 0.5,
-            }}
-          >
-            <AutoProductModal
-              text={"Auto"}
-              matSize={options.materialWidth}
-              material={options.materials}
-              choice={options.choice}
-              options={options.acabados}
-            />
-
-            <VinylCutModal
-              text={"Corte en vinilo"}
-              materials={options.vinyls}
-              choice={options.choice}
-              descolillado={options.descolillado}
-              colors={{ colors }}
-            />
-
-            <ManualInput2
-              choice={options.choice}
-              text={"Manual input"}
-              acabado={options.acabados}
-            />
-          </Stack>
-        </Stack>
-        <Box
+        <Typography>Producto</Typography>
+        <Stack
           sx={{
-            display: " flex",
-            justifyContent: "center",
-            pb: 0,
-            mt: 3,
+            height: "100%",
+            width: "100%",
+            gap: 0.5,
           }}
         >
-          <NavBtn
-            nextText={"Compras"}
-            backText={"Datos del cliente"}
-            className={"arrow-btn"}
-            pathBack={"/client-data"}
-            pathNext={"/cart"}
+          <AutoProductModal
+            text={"Auto"}
+            matSize={options.materialWidth}
+            material={options.materials}
+            choice={options.choice}
+            options={options.acabados}
           />
-        </Box>
+
+          <VinylCutModal
+            text={"Corte en vinilo"}
+            materials={options.vinyls}
+            choice={options.choice}
+            descolillado={options.descolillado}
+            colors={{ colors }}
+          />
+
+          <ManualInput2
+            choice={options.choice}
+            text={"Manual input"}
+            acabado={options.acabados}
+          />
+          <Box
+            sx={{
+              display: " flex",
+              justifyContent: "center",
+              pb: 0,
+              mt: 3,
+            }}
+          >
+            <NavBtn
+              nextText={"Compras"}
+              backText={"Datos del cliente"}
+              className={"arrow-btn"}
+              pathBack={"/client-data"}
+              pathNext={"/cart"}
+            />
+          </Box>
+        </Stack>
       </Box>
     </motion.div>
   );

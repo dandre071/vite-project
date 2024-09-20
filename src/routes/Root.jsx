@@ -12,12 +12,12 @@ const Root = () => {
   return (
     <ThemeProvider theme={customTheme}>
       <div className="grid-template">
-        <Link to={"/"}>
-          <Logo className="logo" width={50} />
-        </Link>
         <div className="aside"></div>
         <div className={"nav-area"}>
           <ul>
+            <Link to={"/"}>
+              <Logo className="logo" width={50} />
+            </Link>
             <CartCounter />
             <li>
               <Link to={"/client-data"}>Cliente</Link>

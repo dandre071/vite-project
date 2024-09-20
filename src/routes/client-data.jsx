@@ -13,8 +13,8 @@ const ClientData = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 1, x: 50 }}
     >
-      <Box className={"client"} sx={{}}>
-        <Typography>Cliente</Typography>
+      <Box className={"page-layout"}>
+        <Typography className="page-title">Cliente</Typography>
         <PersonalData />
       </Box>
     </motion.div>

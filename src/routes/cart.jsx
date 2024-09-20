@@ -55,34 +55,11 @@ const Cart = () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 1, x: 50 }}
       >
-        <Box
-          className="form-bg"
-          sx={{
-            ...modal,
-            width: 600,
-            minHeight: 500,
-            maxHeight: 900,
-            justifySelf: "center",
-            display: "grid",
-            mt: marginTop,
-            gridTemplateRows: "100px auto",
-          }}
-        >
-          <Box
-            sx={{
-              height: "100%",
-              //bgcolor: "red",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <ModalHeader
-              children={<ShoppingCartOutlinedIcon fontSize={"80"} />}
-              title={"Compras"}
-            />
+        <Box className="page-layout" sx={{}}>
+          <Box sx={{ width: "100%" }}>
+            <Typography>Carrito</Typography>
           </Box>
-          {/** */}
+
           <Box>
             {items.length > 0 ? (
               <Box sx={{ display: "grid", gridTemplateRows: "50px auto 50px" }}>
