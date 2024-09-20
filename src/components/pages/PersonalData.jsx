@@ -124,9 +124,14 @@ const PersonalData = () => {
 
   return (
     <Stack
-      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      className="page-child"
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
     >
-      <Grid container md={8} rowSpacing={2} columnSpacing={1} sx={{}}>
+      <Grid container lg={4} md={4} rowSpacing={2} columnSpacing={1} sx={{}}>
         <Grid item lg={6} md={6} sm={6} xs={12} sx={{ p: 0, m: 0 }}>
           <FormSelect2
             required

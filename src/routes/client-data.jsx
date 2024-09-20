@@ -14,8 +14,13 @@ const ClientData = () => {
       exit={{ opacity: 1, x: 50 }}
     >
       <Box className={"page-layout"}>
-        <Typography className="page-title">Cliente</Typography>
-        <PersonalData />
+        <Box>
+          <Typography className="page-title">Cliente</Typography>
+        </Box>
+        <Box>
+          {" "}
+          <PersonalData />
+        </Box>
       </Box>
     </motion.div>
   );

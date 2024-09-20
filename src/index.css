@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 :root {
   font-family: Roboto;
   line-height: 1.5;
@@ -20,6 +24,8 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+
+  --nav-height: 50px;
 }
 
 .input-error {
@@ -704,15 +710,15 @@
   align-items: center;
 } */
 .grid-template {
-  width: 98vw;
-  height: 95vh;
+  width: 100vw;
+  height: 100vh;
   background-color: red;
   align-self: center;
   justify-self: center;
   margin-top: 10px;
   display: grid;
   grid-template-columns: 200px 1fr;
-  grid-template-rows: 70px 1fr;
+  grid-template-rows: 60px 1fr;
   margin: 0;
   justify-content: center;
   /*  align-items: center; */
@@ -731,24 +737,32 @@ body {
 
 .aside {
   grid-area: aside;
-  height: 100%; /* Full-height: remove this if you want "auto" height */
+  height: calc(
+    100vh - var(--nav-height)
+  ); /* Full-height: remove this if you want "auto" height */
   width: 200px;
   background-color: #29cdff;
-  border-radius: 5px;
+
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 0; /* Stay on top */
-  top: 60px; /* Stay at the top */
+  top: var(--nav-height); /* Stay at the top */
   left: 0;
   background-color: #36d659; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
 }
 .nav-area {
   background-color: rgb(12, 78, 179);
   grid-area: nav;
-  height: 95%;
+
   display: flex;
   justify-content: center;
+  top: 0;
+  left: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: var(--nav-height);
   align-items: center;
 }
 .nav-area > ul {
@@ -757,22 +771,21 @@ body {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 60px;
+  height: var(--nav-height);
   background-color: #000000;
   margin: 0;
   padding: 0%;
-  border-radius: 5px;
+
   position: fixed;
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
+  top: 0;
+  width: 100%;
 }
 .main {
   background-color: green;
   grid-area: main;
 
   display: grid;
-  grid-template-rows: 1fr;
+
   justify-content: center;
   align-items: center;
 }
@@ -783,13 +796,14 @@ body {
   justify-self: center;
 }
 .page-layout {
-  height: calc(95vh - 70px);
-  width: calc(98vw - 200px);
+  height: calc(100vh - var(--nav-height));
+
+  width: 100%;
   background-color: red;
   background-color: rgb(255, 255, 255);
   display: grid;
-  border-radius: 5px;
-  grid-template-rows: 60px 1fr;
+
+  grid-template-rows: var(--nav-height) 1fr;
   justify-content: center;
   align-items: center;
 }
@@ -798,4 +812,12 @@ body {
 }
 .page-title {
   font-size: 40px;
+  position: fixed;
+  background-color: #dbff11;
+  top: var(--nav-height);
+  width: 100%;
+}
+.page-child {
+  height: calc(100vh - var(--nav-height));
+  width: calc(100vw - 200px);
 }
