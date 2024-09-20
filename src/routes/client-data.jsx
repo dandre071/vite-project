@@ -14,11 +14,15 @@ const ClientData = () => {
       exit={{ opacity: 1, x: 50 }}
     >
       <Box className={"page-layout"}>
-        <Box>
-          <Typography className="page-title">Cliente</Typography>
+        <Box sx={{ height: "100%" }}>
+          <Typography
+            sx={{ fontSize: 25, fontWeight: 800, pl: 5 }}
+            className="page-title"
+          >
+            Cliente
+          </Typography>
         </Box>
         <Box>
-          {" "}
           <PersonalData />
         </Box>
       </Box>

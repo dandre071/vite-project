@@ -26,6 +26,7 @@
   box-sizing: border-box;
 
   --nav-height: 50px;
+  --drawer-width: 200px;
 }
 
 .input-error {
@@ -717,7 +718,7 @@
   justify-self: center;
 
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: var(--drawer-width) 1fr;
   grid-template-rows: var(--nav-height) 1fr;
   margin: 0;
   justify-content: center;
@@ -742,10 +743,10 @@ body {
     100vh - var(--nav-height)
   ); /* Full-height: remove this if you want "auto" height */
   width: 200px;
-
+  height: 100%;
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
-  top: var(--nav-height); /* Stay at the top */
+  /*  top: var(--nav-height); */ /* Stay at the top */
   left: 0;
   background-color: #36d659; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
@@ -779,6 +780,7 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 .main {
   background-color: green;
@@ -812,12 +814,13 @@ body {
 }
 .page-title {
   font-size: 40px;
-  position: fixed;
+  position: sticky;
   background-color: #dbff11;
   top: var(--nav-height);
+  height: 100%;
   width: 100%;
 }
 .page-child {
   height: calc(100vh - var(--nav-height));
-  width: calc(100vw - 200px);
+  width: calc(100vw - var(--drawer-width));
 }
