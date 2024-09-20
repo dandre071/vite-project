@@ -13,42 +13,10 @@ const ClientData = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 1, x: 50 }}
     >
-      <Grid2
-        container
-        lg={12}
-        sm={12}
-        sx={{ /* bgcolor: "yellow",  */ justifyContent: "center" }}
-      >
-        <Grid2
-          item
-          lg={9}
-          md={12}
-          sm={12}
-          xs={12}
-          sx={{
-            height: "60vh",
-            /* width: "100vw", */
-            justifyContent: "center",
-            bgcolor: "white",
-            display: "grid",
-            borderRadius: 2,
-            overflow: "hidden",
-            gridTemplateRows: "150px 1fr",
-          }}
-        >
-          <ModalHeader
-            style={{ height: "100%" }}
-            title={"Información del Cliente"}
-          />
-          {/*  <div className={"modal-header-icon"}>
-              <PersonIcon className="icon" sx={{ fontSize: iconSize }} />
-            </div>
-          </ModalHeader>  */}
-          {/* <Typography>Información del cliente</Typography> */}
-
-          <PersonalData />
-        </Grid2>
-      </Grid2>
+      <Box className={"client"} sx={{}}>
+        <Typography>Cliente</Typography>
+        <PersonalData />
+      </Box>
     </motion.div>
   );
 };

@@ -11,13 +11,13 @@ const style = {};
 const Root = () => {
   return (
     <ThemeProvider theme={customTheme}>
-      <div flexGrow={1} className="grid-template" container>
+      <div className="grid-template">
+        <Link to={"/"}>
+          <Logo className="logo" width={50} />
+        </Link>
         <div className="aside"></div>
-        <div className={"nav-area"} item>
+        <div className={"nav-area"}>
           <ul>
-            <Link to={"/"}>
-              <Logo className="logo" width={50} />
-            </Link>
             <CartCounter />
             <li>
               <Link to={"/client-data"}>Cliente</Link>
@@ -28,13 +28,7 @@ const Root = () => {
             </li>
           </ul>
         </div>
-        <div
-          className={"main"}
-          item
-          sx={{
-            bgcolor: "#f2f2f2",
-          }}
-        >
+        <div className={"main"}>
           <Outlet />
         </div>
       </div>

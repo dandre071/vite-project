@@ -123,22 +123,8 @@ const PersonalData = () => {
     formik.errors.phone || formik.errors.name || formik.errors.email;
 
   return (
-    <Stack>
-      <Grid
-        container
-        lg={10}
-        md={8}
-        sm={8}
-        xs={11}
-        rowSpacing={2}
-        columnSpacing={1}
-        sx={{
-          display: "flex",
-          p: 0,
-          /*   bgcolor: "pink", */
-          alignSelf: "center",
-        }}
-      >
+    <Stack sx={{}}>
+      <Grid container rowSpacing={2} columnSpacing={1} sx={{}}>
         <Grid item lg={6} md={6} sm={6} xs={12} sx={{ p: 0, m: 0 }}>
           <FormSelect2
             required
