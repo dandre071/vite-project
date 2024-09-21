@@ -713,7 +713,7 @@
 .grid-template {
   width: 100vw;
   height: 100vh;
-  background-color: red;
+  background-color: rgb(244, 245, 255);
   align-self: center;
   justify-self: center;
 
@@ -723,14 +723,12 @@
   margin: 0;
   justify-content: center;
   /*  align-items: center; */
+  align-items: center;
   grid-template-areas:
     "aside nav nav"
     "aside main main";
 }
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 0;
   height: 100vh;
   width: 100vw;
@@ -748,13 +746,13 @@ body {
   z-index: 1; /* Stay on top */
   /*  top: var(--nav-height); */ /* Stay at the top */
   left: 0;
-  background-color: #36d659; /* Black */
+  background-color: #fcfcfc; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
 }
 .nav-area {
   background-color: rgb(12, 78, 179);
   grid-area: nav;
-
+  z-index: 1;
   display: flex;
   justify-content: center;
   top: 0;
@@ -762,20 +760,21 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  width: 100%;
+
   height: var(--nav-height);
   align-items: center;
 }
 .nav-area > ul {
   display: flex;
-  width: auto;
+
   justify-content: space-around;
   align-items: center;
-  width: 100%;
+
   height: var(--nav-height);
-  background-color: #000000;
+  background-color: #3a0097;
   margin: 0;
   padding: 0%;
+  width: calc(100vw - var(--drawer-width));
 
   position: fixed;
   top: 0;
@@ -783,29 +782,34 @@ body {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 .main {
-  background-color: green;
   grid-area: main;
-
+  top: 0;
   display: grid;
 
   justify-content: center;
   align-items: center;
 }
 .logo {
-  background-color: #fff;
   grid-area: logo;
   width: 140px;
-  justify-self: center;
+}
+.logo-container {
+  width: 100%;
+  height: calc(var(--nav-height) * 2);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .page-layout {
-  height: calc(100vh - var(--nav-height));
-
+  height: calc(90vh - var(--nav-height));
+  top: 0;
   width: 100%;
-  background-color: red;
-  background-color: rgb(255, 255, 255);
+  height: 40vh;
+  background-color: rgb(244, 245, 255);
   display: grid;
 
-  grid-template-rows: var(--nav-height) 1fr;
+  grid-template-rows: calc(var(--nav-height)) 1fr;
   justify-content: center;
   align-items: center;
 }
@@ -815,12 +819,17 @@ body {
 .page-title {
   font-size: 40px;
   position: sticky;
-  background-color: #dbff11;
-  top: var(--nav-height);
+
+  /*  background-color: #f3f3f3; */
+  /*  top: var(--nav-height); */
   height: 100%;
-  width: 100%;
+
+  background-color: yellow;
+  /* border-bottom: 2px solid black; */
 }
 .page-child {
   height: calc(100vh - var(--nav-height));
-  width: calc(100vw - var(--drawer-width));
+  width: calc(80vw - var(--drawer-width));
+
+  background-color: #e50037;
 }

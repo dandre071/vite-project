@@ -131,132 +131,148 @@ const PersonalData = () => {
         alignItems: "center",
       }}
     >
-      <Grid container lg={4} md={4} rowSpacing={2} columnSpacing={1} sx={{}}>
-        <Grid item lg={6} md={6} sm={6} xs={12} sx={{ p: 0, m: 0 }}>
-          <FormSelect2
-            required
-            value={formik.values.billType}
-            error={formik.errors.billType}
-            helperText={formik.errors.billType}
-            fullWidth
-            name="billType"
-            onChange={formik.handleChange}
-            options={options.billType}
-            label={"Tipo de recibo"}
-          />
-        </Grid>
-        <Grid item lg={6} md={6} sm={6} xs={12} sx={{ padding: "-10px", m: 0 }}>
-          <FormSelect2
-            required
-            value={formik.values.clientType}
-            error={formik.errors.clientType && formik.errors.clientType}
-            helperText={formik.errors.clientType}
-            fullWidth
-            name="clientType"
-            onChange={formik.handleChange}
-            options={options.userType}
-            label={"Cliente"}
-          />
-          {/*  <p>{formik.errors.clientType}</p> */}
-        </Grid>
-        <Grid item lg={12} md={12} sm={12} xs={12} sx={{}}>
-          <Autocomplete
-            /*          fullWidth */
-            value={formik.values.name}
-            helperText={formik.errors.name}
-            error={formik.errors.name}
-            freeSolo={true}
-            name="name"
-            /* id="combo-box-demo" */
-            options={users}
+      <Grid
+        container
+        lg={6}
+        md={8}
+        rowSpacing={2}
+        columnSpacing={1}
+        sx={{ bgcolor: "white", borderRadius: 2 }}
+      >
+        <Box sx={{ width: 600 }}>
+          <Grid item lg={6} md={6} sm={6} xs={12} sx={{ p: 0, m: 0 }}>
+            <FormSelect2
+              required
+              value={formik.values.billType}
+              error={formik.errors.billType}
+              helperText={formik.errors.billType}
+              fullWidth
+              name="billType"
+              onChange={formik.handleChange}
+              options={options.billType}
+              label={"Tipo de recibo"}
+            />
+          </Grid>
+          <Grid
+            item
+            lg={6}
+            md={6}
+            sm={6}
+            xs={12}
+            sx={{ padding: "-10px", m: 0 }}
+          >
+            <FormSelect2
+              required
+              value={formik.values.clientType}
+              error={formik.errors.clientType && formik.errors.clientType}
+              helperText={formik.errors.clientType}
+              fullWidth
+              name="clientType"
+              onChange={formik.handleChange}
+              options={options.userType}
+              label={"Cliente"}
+            />
+            {/*  <p>{formik.errors.clientType}</p> */}
+          </Grid>
+          <Grid item lg={12} md={12} sm={12} xs={12} sx={{}}>
+            <Autocomplete
+              /*          fullWidth */
+              value={formik.values.name}
+              helperText={formik.errors.name}
+              error={formik.errors.name}
+              freeSolo={true}
+              name="name"
+              /* id="combo-box-demo" */
+              options={users}
+              sx={{
+                textTransform: "capitalize",
+              }}
+              defaultValue={localStore.name}
+              renderInput={(params) => (
+                <TextField
+                  required
+                  error={formik.errors.name}
+                  value={formik.values.name}
+                  helperText={formik.errors.name}
+                  name="name"
+                  /*    fullWidth */
+                  onChange={formik.handleChange}
+                  {...params}
+                  label="Nombre / Razón Social"
+                  InputProps={{
+                    ...params.InputProps,
+                  }}
+                />
+              )}
+            />
+          </Grid>
+
+          <Grid item lg={8} md={6} sm={6} xs={12}>
+            <TextField
+              error={formik.touched.email && formik.errors.email}
+              helperText={formik.errors.email}
+              value={formik.values.email}
+              name="email"
+              onChange={formik.handleChange}
+              fullWidth
+              label={"Email"}
+              type="email"
+            />
+          </Grid>
+
+          <Grid item lg={4} md={6} sm={6} xs={12}>
+            <TextField
+              required
+              error={formik.touched.phone && formik.errors.phone}
+              helperText={formik.errors.phone}
+              value={formik.values.phone}
+              name="phone"
+              onChange={formik.handleChange}
+              fullWidth
+              label={"Teléfono"}
+              type="text"
+            />
+          </Grid>
+
+          <Grid
+            item
+            lg={12}
+            xs={12}
             sx={{
-              textTransform: "capitalize",
+              mt: 4,
+
+              width: "100%",
+              display: "flex",
+              justifyContent: "end",
+              alignItems: "center",
+              /* bgcolor: "purple", */
             }}
-            defaultValue={localStore.name}
-            renderInput={(params) => (
-              <TextField
-                required
-                error={formik.errors.name}
-                value={formik.values.name}
-                helperText={formik.errors.name}
-                name="name"
-                /*    fullWidth */
-                onChange={formik.handleChange}
-                {...params}
-                label="Nombre / Razón Social"
-                InputProps={{
-                  ...params.InputProps,
-                }}
-              />
-            )}
-          />
-        </Grid>
-
-        <Grid item lg={8} md={6} sm={6} xs={12}>
-          <TextField
-            error={formik.touched.email && formik.errors.email}
-            helperText={formik.errors.email}
-            value={formik.values.email}
-            name="email"
-            onChange={formik.handleChange}
-            fullWidth
-            label={"Email"}
-            type="email"
-          />
-        </Grid>
-
-        <Grid item lg={4} md={6} sm={6} xs={12}>
-          <TextField
-            required
-            error={formik.touched.phone && formik.errors.phone}
-            helperText={formik.errors.phone}
-            value={formik.values.phone}
-            name="phone"
-            onChange={formik.handleChange}
-            fullWidth
-            label={"Teléfono"}
-            type="text"
-          />
-        </Grid>
-
-        <Grid
-          item
-          lg={12}
-          xs={12}
-          sx={{
-            mt: 4,
-
-            width: "100%",
-            display: "flex",
-            justifyContent: "end",
-            alignItems: "center",
-            /* bgcolor: "purple", */
-          }}
-        >
-          <Tooltip
-            componentsProps={{
-              tooltip: {
-                sx: {
-                  bgcolor: "secondary.main",
-                  "& .MuiTooltip-arrow": {
-                    color: "secondary.main",
+          >
+            <Tooltip
+              componentsProps={{
+                tooltip: {
+                  sx: {
+                    bgcolor: "secondary.main",
+                    "& .MuiTooltip-arrow": {
+                      color: "secondary.main",
+                    },
                   },
                 },
-              },
-            }}
-            title="Agregar productos"
-            placement="bottom"
-            arrow
-          >
-            <span>
-              <NextBtn
-                style={{ color: "primary.main" }}
-                onClick={formik.handleSubmit}
-                className={"arrow-btn"}
-              />
-            </span>
-          </Tooltip>
-        </Grid>
+              }}
+              title="Agregar productos"
+              placement="bottom"
+              arrow
+            >
+              <span>
+                <NextBtn
+                  style={{ color: "primary.main" }}
+                  onClick={formik.handleSubmit}
+                  className={"arrow-btn"}
+                />
+              </span>
+            </Tooltip>
+          </Grid>
+        </Box>
       </Grid>
 
       {/* <Fade

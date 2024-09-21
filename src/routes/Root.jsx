@@ -3,18 +3,18 @@ import { ThemeProvider } from "styled-components";
 import { customTheme } from "../Hooks/useCustomTheme";
 import CartCounter from "../components/CartCounter";
 import Logo from "../components/Logo";
-import hexToRgba from "hex-to-rgba";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import { Container, Grid, Stack } from "@mui/material";
 
-const style = {};
+import { Box, Container, Grid, Stack } from "@mui/material";
+
 const Root = () => {
   return (
     <ThemeProvider theme={customTheme}>
       <div className="grid-template">
         <div className="aside">
           <Link to={"/"}>
-            <Logo className="logo" width={50} />
+            <Box className="logo-container">
+              <Logo className="logo" width={50} />
+            </Box>
           </Link>
         </div>
         <div className={"nav-area"}>

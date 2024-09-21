@@ -1,11 +1,9 @@
 import Box from "@mui/material/Box";
 import PersonalData from "../components/pages/PersonalData";
-import ModalHeader from "../components/ModalHeader";
-import { iconSize, modal } from "../Styles/styles";
-import PersonIcon from "@mui/icons-material/Person";
-import { AnimatePresence, motion } from "framer-motion";
+
+import { motion } from "framer-motion";
 import { Typography } from "@mui/material";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+
 const ClientData = () => {
   return (
     <motion.div
