@@ -145,9 +145,9 @@ const PersonalData = () => {
             md={8}
             rowSpacing={2}
             columnSpacing={1}
-            sx={{ p: 0, m: 0 }}
+            sx={{ p: 0, m: 0, width: "700px" }}
           >
-            <Grid item lg={6} md={6} sm={6} xs={12}>
+            <Grid sx={{ width: "100%" }} item lg={6} md={6} sm={6} xs={12}>
               <FormSelect2
                 required
                 value={formik.values.billType}
@@ -242,13 +242,13 @@ const PersonalData = () => {
             </Grid>
           </Grid>{" "}
         </Box>
-        <div sx={{ height: "100%", display: "flex" }}>
+        <div sx={{ height: "100%", display: "flex", width: "100%" }}>
           <Grid
             item
             lg={12}
             xs={12}
             sx={{
-              width: "95%",
+              width: "90%",
               display: "flex",
               justifyContent: "end",
               alignItems: "center",
