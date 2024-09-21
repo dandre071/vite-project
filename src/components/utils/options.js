@@ -2,6 +2,9 @@ export const options = {
   acabados: [
     "Sin acabado",
     "Tubos",
+    "Troquel",
+    "Descolillado",
+    "Corte",
     "Ojales",
     "Palos",
     "Bolsillos",

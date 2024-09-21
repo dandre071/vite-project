@@ -687,7 +687,7 @@
 }
 .MuiInputBase-root {
   /*  color: red !important; */
-  background-color: rgba(215, 227, 255, 0.651) !important;
+  background-color: rgb(245, 248, 255) !important;
   /*  border: 1.5px solid rgb(255, 255, 255); */
 
   /*  border: 1px solid red; */
@@ -695,7 +695,7 @@
 .MuiInputBase-root:hover {
   /*  color: red !important; */
   /*  border: 1.5px solid rgb(255, 255, 255); */
-  background-color: rgba(242, 243, 255, 0.8) !important;
+  background-color: rgba(236, 238, 255, 0.8) !important;
 
   /*  border: 1px solid red; */
 }
@@ -846,4 +846,7 @@ body {
   align-items: center;
   border-radius: 5px;
   border-bottom: 0 20px solid black;
+}
+.active {
+  background-color: #e50037;
 }

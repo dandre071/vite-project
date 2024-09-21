@@ -1,21 +1,65 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { customTheme } from "../Hooks/useCustomTheme";
 import CartCounter from "../components/CartCounter";
 import Logo from "../components/Logo";
+import SellOutlinedIcon from "@mui/icons-material/SellOutlined";
+import {
+  Box,
+  buttonGroupClasses,
+  Container,
+  Drawer,
+  Grid,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Stack,
+} from "@mui/material";
 
-import { Box, Container, Grid, Stack } from "@mui/material";
+const menuItems = [
+  { text: "Venta", icon: <SellOutlinedIcon />, path: "/client-data" },
+];
 
 const Root = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   return (
     <ThemeProvider theme={customTheme}>
       <div className="grid-template">
         <div className="aside">
-          <Link to={"/"}>
-            <Box className="logo-container">
-              <Logo className="logo" width={50} />
-            </Box>
-          </Link>
+          <Drawer
+            variant="permanent"
+            anchor="left"
+            sx={{
+              width: 200,
+              flexShrink: 0,
+              "& .MuiDrawer-paper": {
+                width: 200,
+                boxSizing: "border-box",
+              },
+            }}
+          >
+            <List>
+              <Link to={"/"}>
+                <Box className="logo-container">
+                  <Logo className="logo" width={50} />
+                </Box>
+              </Link>
+              {menuItems.map((item) => (
+                <ListItemButton
+                  onClick={() => navigate("/client-data")}
+                  key={item.name}
+                  className={location.pathname == item.path ? "active" : null}
+                  selected={true}
+                >
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText primary={item.text} />
+                </ListItemButton>
+              ))}
+            </List>
+          </Drawer>
         </div>
         <div className={"nav-area"}>
           <ul>

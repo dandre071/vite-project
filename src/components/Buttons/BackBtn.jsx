@@ -4,7 +4,7 @@ export const BackBtn = ({ className }) => {
   return (
     <ArrowBackIosNewRoundedIcon
       className={className}
-      sx={{ fontSize: 30, color: "primary.main" }}
+      sx={{ fontSize: 40, color: "primary.main" }}
     />
   );
 };

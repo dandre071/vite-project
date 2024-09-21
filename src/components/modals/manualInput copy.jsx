@@ -12,7 +12,6 @@ import ModalHeader from "../ModalHeader";
 import { useState } from "react";
 import FormSelect2 from "../Forms/FormSelect2.jsx";
 import { styleConf, themeColors } from "../utils/configs.js";
-import Alert from "@mui/material/Alert";
 import { useShoppingCart } from "../../store/shoppingCart.js";
 import { colPesos } from "../utils/configs.js";
 import PriceCalc from "../PriceCalc.jsx";
@@ -161,10 +160,7 @@ const ManualInput2 = ({ text, acabado }) => {
               className="close-btn arrow-btn"
               onClick={handleClose}
             />
-            <ModalHeader
-              title={"Configuración Manual"}
-              children={<PersonIcon />}
-            />
+            <ModalHeader title={"Configuración Manual"} />
 
             <Box
               sx={{
