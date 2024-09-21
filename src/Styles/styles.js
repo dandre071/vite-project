@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material";
-import { themeColors } from "../components/utils/configs";
+
 import { customTheme } from "../Hooks/useCustomTheme";
 import { BorderBottom } from "@mui/icons-material";
 

@@ -1,4 +1,4 @@
-import { theme } from "../../Styles/styles";
+/* import { theme } from "../../Styles/styles";
 
 export const themeColors = {
   neutralLight: "white",
@@ -21,41 +21,38 @@ export const themeColors = {
   darkSecondary: theme.palette.secondary.main,
 };
 const globalTextBlue = themeColors.mainPrimary;
-export const styleConf = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  //width: 480,
-  // height: 500,
-  // bgcolor: ,
-  p: 0,
-  boxShadow: 2,
-};
+
 export const inputPropsConf = {
   color: themeColors.mainText,
   bgcolor: "white",
-  /*  bgcolor: themeColors.bgLight, */
+
   fontWeight: 500,
   fontSize: 18,
   borderRadius: 10,
 };
 
 export const fieldStyle = {
-  /* color: themeColors.mainText, */
-  /*  bgcolor: themeColors.bgLight, */
+  
   color: themeColors.darkText,
   bgcolor: "white",
   fontWeight: 500,
   fontSize: 18,
   borderRadius: 1.5,
-};
+}; */
+export const styleConf = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
 
+  p: 0,
+  boxShadow: 2,
+};
 export const textStyles = {
   p: 0,
   m: 0,
-  /*  bgcolor: themeColors.bgLight, */
-  color: themeColors.darkText,
+
+  color: "black",
   bgcolor: "white",
   fontSize: 3,
   fontWeight: 400,

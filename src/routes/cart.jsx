@@ -199,7 +199,7 @@ const Cart = () => {
                     Aún no se han agregado productos.
                   </Typography>
                 </Stack>
-                <Link to={"/product-module"}>
+                <Link to={"product-module"}>
                   <AddBtn variant="prime" />
                 </Link>
               </Box>

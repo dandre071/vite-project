@@ -2,11 +2,7 @@ import { Box, FormControl, Grid, Stack } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import { ThemeProvider } from "styled-components";
-import { fieldStyle, textStyles } from "../utils/configs";
-import { InputLabelProps } from "../../Styles/styles";
-import { customTheme } from "../../Hooks/useCustomTheme";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+
 const FormSelect2 = ({
   control,
 

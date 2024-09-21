@@ -17,12 +17,12 @@ const ClientData = () => {
             height: "100%",
             width: "100%",
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "start",
             alignItems: "end",
           }}
         >
           <Typography
-            sx={{ fontSize: 25, fontWeight: 800 }}
+            sx={{ fontSize: 35, fontWeight: 800 }}
             className="page-title"
           >
             Cliente

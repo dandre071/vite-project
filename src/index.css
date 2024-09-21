@@ -27,7 +27,7 @@
 
   --nav-height: 60px;
   --drawer-width: 200px;
-  --page-child-width: 97vw;
+  --page-child-width: 90vw;
 }
 
 .input-error {
@@ -715,6 +715,7 @@
   width: 100vw;
   height: 100vh;
   background-color: rgb(244, 245, 255);
+  background-color: rgb(255, 255, 255);
   align-self: center;
   justify-self: center;
 
@@ -747,7 +748,7 @@ body {
   z-index: 1; /* Stay on top */
   /*  top: var(--nav-height); */ /* Stay at the top */
   left: 0;
-  background-color: #fcfcfc; /* Black */
+  background-color: #e0e0e0; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
 }
 .nav-area {
@@ -772,6 +773,7 @@ body {
 
   height: var(--nav-height);
   background-color: #091370;
+  background-color: transparent;
   margin: 0;
   padding: 0%;
   width: calc(99vw - var(--drawer-width));
@@ -807,6 +809,7 @@ body {
   width: 100%;
 
   background-color: rgb(244, 245, 255);
+  background-color: rgb(255, 255, 255);
   display: grid;
 
   grid-template-rows: 40px 1fr;
@@ -817,13 +820,12 @@ body {
   color: #333dff;
 }
 .page-title {
-  font-size: 40px;
   position: sticky;
 
   /*  background-color: #f3f3f3; */
   /*  top: var(--nav-height); */
   height: 100%;
-  color: rgb(41, 0, 94);
+  color: rgb(0, 0, 0);
 
   /*  background-color: yellow; */
   /* border-bottom: 2px solid black; */
@@ -833,20 +835,24 @@ body {
 } */
 .page-child {
   height: calc(90vh - var(--nav-height));
-  width: calc(var(--page-child-width) - var(--drawer-width));
-
-  /* background-color: #e50037; */
+  min-width: 70vh;
+  /*  width: calc(var(--page-child-width) - var(--drawer-width)); */
+  /*  background-color: #009ffe; */
 }
 .form-container {
-  width: 50vw;
-  height: 70vh;
+  width: 100%;
+  min-height: 50%;
   background-color: #ffffff;
-  display: flex;
+  display: grid;
+  grid-template-rows: 80% 1fr;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  border-bottom: 0 20px solid black;
+  border: 1px solid rgb(199, 199, 199);
 }
 .active {
   background-color: #e50037;
+}
+.Mui-selected {
+  background-color: red;
 }

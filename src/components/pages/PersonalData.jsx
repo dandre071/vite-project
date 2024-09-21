@@ -131,11 +131,9 @@ const PersonalData = () => {
         alignItems: "center",
       }}
     >
-      <Box className="form-container">
+      <Box className="form-container" sx={{ width: "700px", height: "500px" }}>
         <Box
           sx={{
-            width: "93%",
-
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -147,9 +145,9 @@ const PersonalData = () => {
             md={8}
             rowSpacing={2}
             columnSpacing={1}
-            sx={{ height: "auto", p: 0, m: 0 }}
+            sx={{ p: 0, m: 0 }}
           >
-            <Grid item lg={6} md={6} sm={6} xs={12} sx={{ p: 0, m: 0 }}>
+            <Grid item lg={6} md={6} sm={6} xs={12}>
               <FormSelect2
                 required
                 value={formik.values.billType}
@@ -242,47 +240,46 @@ const PersonalData = () => {
                 type="text"
               />
             </Grid>
-
-            <Grid
-              item
-              lg={12}
-              xs={12}
-              sx={{
-                mt: 4,
-
-                width: "100%",
-                display: "flex",
-                justifyContent: "end",
-                alignItems: "center",
-                /* bgcolor: "purple", */
-              }}
-            >
-              <Tooltip
-                componentsProps={{
-                  tooltip: {
-                    sx: {
-                      bgcolor: "secondary.main",
-                      "& .MuiTooltip-arrow": {
-                        color: "secondary.main",
-                      },
-                    },
-                  },
-                }}
-                title="Agregar productos"
-                placement="bottom"
-                arrow
-              >
-                <span>
-                  <NextBtn
-                    style={{ color: "primary.main" }}
-                    onClick={formik.handleSubmit}
-                    className={"arrow-btn"}
-                  />
-                </span>
-              </Tooltip>
-            </Grid>
           </Grid>{" "}
         </Box>
+        <Grid
+          item
+          lg={12}
+          xs={12}
+          sx={{
+            mt: 4,
+
+            width: "100%",
+            display: "flex",
+            justifyContent: "end",
+            alignItems: "center",
+            /* bgcolor: "purple", */
+          }}
+        >
+          <Tooltip
+            componentsProps={{
+              tooltip: {
+                sx: {
+                  bgcolor: "secondary.main",
+                  "& .MuiTooltip-arrow": {
+                    color: "secondary.main",
+                  },
+                },
+              },
+            }}
+            title="Agregar productos"
+            placement="bottom"
+            arrow
+          >
+            <span>
+              <NextBtn
+                style={{ color: "primary.main" }}
+                onClick={formik.handleSubmit}
+                className={"arrow-btn"}
+              />
+            </span>
+          </Tooltip>
+        </Grid>
       </Box>
       {/* <Fade
         in={!formik.isValid} //Write the needed condition here to make it appear

@@ -7,7 +7,12 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 import Root from "./routes/Root";
 import ErrorPage from "./routes/ErrorPage.jsx";
 import Factura from "./routes/factura.jsx";
@@ -18,6 +23,20 @@ import Payment from "./routes/payment.jsx";
 import { ThemeProvider } from "@mui/material";
 import { customTheme } from "./Hooks/useCustomTheme.jsx";
 
+/* const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
+      <Route path="client-data" element={<ClientData />}>
+        <Route path="product-module" element={<ProductModule />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="payment" element={<Payment />} />
+        <Route path="factura" element={<Factura className="pdf" />} />
+      </Route>
+
+    </Route>
+  )
+); */
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,15 +44,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/factura",
-        element: <Factura className="pdf" />,
-      },
-      {
-        path: "/client-data",
+        path: "client-data",
         element: <ClientData />,
       },
       {
-        path: "/product-module",
+        path: "product-module",
         element: <ProductModule />,
       },
       {
@@ -41,15 +56,15 @@ const router = createBrowserRouter([
         element: <Cart />,
       },
       {
-        path: "/payment",
+        path: "payment",
         element: <Payment />,
+      },
+      {
+        path: "factura",
+        element: <Factura className="pdf" />,
       },
     ],
   },
-  /* {
-    path: "contacts/:contactId",
-    element: <Contact />,
-  }, */
 ]);
 /* ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

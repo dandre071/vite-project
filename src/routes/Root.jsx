@@ -31,12 +31,19 @@ const Root = () => {
       <div className="grid-template">
         <div className="aside">
           <Drawer
+            className="drawer"
             variant="permanent"
             anchor="left"
             sx={{
               width: 200,
               flexShrink: 0,
+
               "& .MuiDrawer-paper": {
+                display: "flex",
+                /* justifyContent: "center", */
+                alignItems: "center",
+                bgcolor: "#f4f4f4",
+
                 width: 200,
                 boxSizing: "border-box",
               },
@@ -52,11 +59,27 @@ const Root = () => {
                 <ListItemButton
                   onClick={() => navigate("/client-data")}
                   key={item.text}
-                  className={location.pathname == item.path ? "active" : null}
+                  sx={{
+                    width: 180,
+                    flexShrink: 0,
+                    /*   bgcolor: "blue", */
+                    "&.Mui-selected": {
+                      backgroundColor: "red",
+                    },
+                    "&.Mui-focusVisible": {
+                      backgroundColor: "red",
+                    },
+                    ":hover": {
+                      backgroundColor: "#2e8b57",
+                    },
+                  }}
+                  className={
+                    location.pathname == item.path ? "Mui-selected" : null
+                  }
                 >
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText
-                    className={location.pathname == item.path ? "active" : null}
+                    /*  className={location.pathname == item.path ? "active" : null} */
                     primary={item.text}
                   />
                 </ListItemButton>

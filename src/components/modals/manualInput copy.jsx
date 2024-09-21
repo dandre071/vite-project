@@ -11,7 +11,7 @@ import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "../ModalHeader";
 import { useState } from "react";
 import FormSelect2 from "../Forms/FormSelect2.jsx";
-import { styleConf, themeColors } from "../utils/configs.js";
+import { styleConf } from "../utils/configs.js";
 import { useShoppingCart } from "../../store/shoppingCart.js";
 import { colPesos } from "../utils/configs.js";
 import PriceCalc from "../PriceCalc.jsx";
@@ -308,7 +308,7 @@ const ManualInput2 = ({ text, acabado }) => {
                         formik.values.finish == "Bolsillos") && (
                         <TextField
                           sx={{
-                            color: themeColors.darkText,
+                            color: "black",
                             width: "49%",
                             borderRadius: 2,
                           }}
