@@ -12,9 +12,17 @@ const ClientData = () => {
       exit={{ opacity: 1, x: 50 }}
     >
       <Box className={"page-layout"}>
-        <Box sx={{ height: "100%" }}>
+        <Box
+          sx={{
+            height: "100%",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "end",
+          }}
+        >
           <Typography
-            sx={{ fontSize: 25, fontWeight: 800, pl: 5 }}
+            sx={{ fontSize: 25, fontWeight: 800 }}
             className="page-title"
           >
             Cliente
