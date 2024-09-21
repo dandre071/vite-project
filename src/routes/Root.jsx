@@ -24,6 +24,7 @@ const menuItems = [
 
 const Root = () => {
   const location = useLocation();
+  console.log(location.pathname);
   const navigate = useNavigate();
   return (
     <ThemeProvider theme={customTheme}>
@@ -50,12 +51,14 @@ const Root = () => {
               {menuItems.map((item) => (
                 <ListItemButton
                   onClick={() => navigate("/client-data")}
-                  key={item.name}
+                  key={item.text}
                   className={location.pathname == item.path ? "active" : null}
-                  selected={true}
                 >
                   <ListItemIcon>{item.icon}</ListItemIcon>
-                  <ListItemText primary={item.text} />
+                  <ListItemText
+                    className={location.pathname == item.path ? "active" : null}
+                    primary={item.text}
+                  />
                 </ListItemButton>
               ))}
             </List>
