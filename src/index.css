@@ -850,6 +850,15 @@ body {
   border-radius: 5px;
   border: 1px solid rgb(199, 199, 199);
 }
+.form-container > div:last-of-type {
+  /*  background-color: #fa2c2c; */
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border-top: 1px solid rgb(199, 199, 199);
+}
 .active {
   background-color: #e50037;
 }

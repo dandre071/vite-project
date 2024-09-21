@@ -242,44 +242,45 @@ const PersonalData = () => {
             </Grid>
           </Grid>{" "}
         </Box>
-        <Grid
-          item
-          lg={12}
-          xs={12}
-          sx={{
-            mt: 4,
-
-            width: "100%",
-            display: "flex",
-            justifyContent: "end",
-            alignItems: "center",
-            /* bgcolor: "purple", */
-          }}
-        >
-          <Tooltip
-            componentsProps={{
-              tooltip: {
-                sx: {
-                  bgcolor: "secondary.main",
-                  "& .MuiTooltip-arrow": {
-                    color: "secondary.main",
+        <div sx={{ height: "100%", display: "flex" }}>
+          <Grid
+            item
+            lg={12}
+            xs={12}
+            sx={{
+              width: "95%",
+              display: "flex",
+              justifyContent: "end",
+              alignItems: "center",
+              /*  borderTop: "1px solid grey", */
+              /* bgcolor: "purple", */
+            }}
+          >
+            <Tooltip
+              componentsProps={{
+                tooltip: {
+                  sx: {
+                    bgcolor: "black",
+                    "& .MuiTooltip-arrow": {
+                      color: "black",
+                    },
                   },
                 },
-              },
-            }}
-            title="Agregar productos"
-            placement="bottom"
-            arrow
-          >
-            <span>
-              <NextBtn
-                style={{ color: "primary.main" }}
-                onClick={formik.handleSubmit}
-                className={"arrow-btn"}
-              />
-            </span>
-          </Tooltip>
-        </Grid>
+              }}
+              title="Agregar productos"
+              placement="bottom"
+              arrow
+            >
+              <span>
+                <NextBtn
+                  style={{ color: "primary.main" }}
+                  onClick={formik.handleSubmit}
+                  className={"arrow-btn"}
+                />
+              </span>
+            </Tooltip>
+          </Grid>
+        </div>
       </Box>
       {/* <Fade
         in={!formik.isValid} //Write the needed condition here to make it appear

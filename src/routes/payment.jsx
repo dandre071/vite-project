@@ -3,6 +3,7 @@ import {
   Button,
   Grid,
   InputAdornment,
+  Modal,
   Stack,
   TextField,
   Typography,
@@ -60,6 +61,9 @@ const Payment = () => {
     };
     updateState();
   }, []);
+  const [openModal, setOpenModal] = useState(false);
+  const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = () => setOpenModal(false);
 
   const totalPrice = useGetCartTotalPrice();
   const clearCart = useShoppingCart((state) => state.clearCart);
@@ -97,6 +101,7 @@ const Payment = () => {
 
   const handleAddData = () => {
     addData({ ...formik.values, delivery: newDateFormat });
+    handleOpenModal();
     /* formik.resetForm();
     setOpen(false); */
   };
@@ -403,7 +408,7 @@ const Payment = () => {
               <ClearOutlinedIcon />
               {/* Cancelar */}
             </Button>
-            <Link
+            {/* <Link
               to={
                 formik.errors.payment ||
                 formik.errors.receives ||
@@ -411,20 +416,26 @@ const Payment = () => {
                   ? ""
                   : "/factura"
               }
+            > */}
+            <Button
+              disabled={formik.errors.payment}
+              onClick={handleAddData}
+              startIcon={<PaymentsOutlinedIcon />}
+              sx={{ color: "white", width: 250, height: 55 }}
+              variant="prime"
             >
-              <Button
-                disabled={formik.errors.payment}
-                onClick={handleAddData}
-                startIcon={<PaymentsOutlinedIcon />}
-                sx={{ color: "white", width: 250, height: 55 }}
-                variant="prime"
-              >
-                Pagar
-              </Button>
-            </Link>
+              Pagar
+            </Button>
+            {/*  </Link> */}
           </Grid>
         </Stack>
-
+        <Modal
+          open={openModal}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Factura />
+        </Modal>
         {/*  <Factura targetRef={targetRef} /> */}
       </Stack>
     </Stack>

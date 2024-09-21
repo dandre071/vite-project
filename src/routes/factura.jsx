@@ -14,7 +14,7 @@ import { useState } from "react";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import PrintBtn from "../components/Buttons/PrintBtn";
 
-const Factura = () => {
+const Factura = ({ openModal }) => {
   const navigate = useNavigate();
 
   const targetRef = useRef();
@@ -96,8 +96,14 @@ const Factura = () => {
     setOpen(false);
     redirect("/");
   };
+
   return (
     <>
+      {/*      <Modal
+        open={true}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      > */}
       <div style={{ display: "flex", height: "auto" }}>
         <form className="pdf" ref={targetRef} style={{ height: "auto" }}>
           <Stack
@@ -174,7 +180,11 @@ const Factura = () => {
                     </Typography>
                   </Box>{" "}
                   <Typography
-                    sx={{ fontSize: 10, fontFamily: "roboto", fontWeight: 500 }}
+                    sx={{
+                      fontSize: 10,
+                      fontFamily: "roboto",
+                      fontWeight: 500,
+                    }}
                   >
                     {" "}
                     Barrio Baltazar (Turbo)
@@ -723,6 +733,7 @@ const Factura = () => {
         </div>
       </div>
       <PrintBtn handlePrint={handlePrint} style={{}} />
+      {/*    </Modal> */}
     </>
   );
 };
