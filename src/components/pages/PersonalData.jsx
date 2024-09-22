@@ -20,7 +20,6 @@ import { fakeUsers } from "../utils/test";
 import { useNavigate } from "react-router-dom";
 import NextBtn from "../Buttons/NextBtn";
 import { AnimatePresence, motion } from "framer-motion";
-import ModalHeader from "../ModalHeader";
 
 const PersonalData = () => {
   //HOOKS
@@ -131,7 +130,7 @@ const PersonalData = () => {
         alignItems: "center",
       }}
     >
-      <Box className="form-container" sx={{ width: "700px", height: "500px" }}>
+      <Box className="form-container" sx={{}}>
         <Box
           sx={{
             display: "flex",
@@ -145,7 +144,7 @@ const PersonalData = () => {
             md={8}
             rowSpacing={2}
             columnSpacing={1}
-            sx={{ p: 0, m: 0, width: "700px" }}
+            sx={{ p: 0, m: 0, width: "600px" }}
           >
             <Grid sx={{ width: "100%" }} item lg={6} md={6} sm={6} xs={12}>
               <FormSelect2

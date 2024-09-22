@@ -16,15 +16,18 @@ import {
   ListItemIcon,
   ListItemText,
   Stack,
+  Typography,
 } from "@mui/material";
-
+import { routes } from "../main";
 const menuItems = [
   { text: "Venta", icon: <SellOutlinedIcon />, path: "/client-data" },
 ];
-
+/* const pathName = routes.filter(); */
 const Root = () => {
   const location = useLocation();
-  console.log(location.pathname);
+  const pathText = routes.filter((item) => item.path == location.pathname);
+  const pageTitle = pathText[0].name;
+  console.log(pathText[0].name);
   const navigate = useNavigate();
   return (
     <ThemeProvider theme={customTheme}>
@@ -42,7 +45,7 @@ const Root = () => {
                 display: "flex",
                 /* justifyContent: "center", */
                 alignItems: "center",
-                bgcolor: "#f4f4f4",
+                bgcolor: "#091370",
 
                 width: 200,
                 boxSizing: "border-box",
@@ -88,16 +91,21 @@ const Root = () => {
           </Drawer>
         </div>
         <div className={"nav-area"}>
-          <ul>
-            <CartCounter />
-            <li>
-              <Link to={"/client-data"}>Cliente</Link>
-            </li>
+          <div>
+            <Typography sx={{ fontSize: 25, fontWeight: 800 }}>
+              {" "}
+              {pageTitle}
+            </Typography>
 
-            <li>
+            <CartCounter />
+          </div>
+          {/*  <ListItem>
+              <Link to={"/client-data"}>Cliente</Link>
+            </ListItem>
+
+            <ListItem>
               <Link to={"/payment"}>Pay</Link>
-            </li>
-          </ul>
+            </ListItem> */}
         </div>
         <div className={"main"}>
           <Outlet />

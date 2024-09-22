@@ -12,7 +12,7 @@ const ClientData = () => {
       exit={{ opacity: 1, x: 50 }}
     >
       <Box className={"page-layout"}>
-        <Box
+        {/* <Box
           sx={{
             height: "100%",
             width: "100%",
@@ -27,7 +27,7 @@ const ClientData = () => {
           >
             Cliente
           </Typography>
-        </Box>
+        </Box> */}
         <Box>
           <PersonalData />
         </Box>

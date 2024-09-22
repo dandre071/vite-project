@@ -23,47 +23,30 @@ import Payment from "./routes/payment.jsx";
 import { ThemeProvider } from "@mui/material";
 import { customTheme } from "./Hooks/useCustomTheme.jsx";
 
-/* const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
-      <Route path="client-data" element={<ClientData />}>
-        <Route path="product-module" element={<ProductModule />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="payment" element={<Payment />} />
-        <Route path="factura" element={<Factura className="pdf" />} />
-      </Route>
-
-    </Route>
-  )
-); */
-
+export const routes = [
+  { path: "/client-data", element: <ClientData />, name: "Datos del cliente" },
+  {
+    path: "/product-module",
+    element: <ProductModule />,
+    name: "Producto",
+  },
+  {
+    path: "/cart",
+    element: <Cart />,
+    name: "Carrito",
+  },
+  {
+    path: "/payment",
+    element: <Payment />,
+    name: "Pagar",
+  },
+];
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "client-data",
-        element: <ClientData />,
-      },
-      {
-        path: "product-module",
-        element: <ProductModule />,
-      },
-      {
-        path: "/cart",
-        element: <Cart />,
-      },
-      {
-        path: "payment",
-        element: <Payment />,
-      },
-      {
-        path: "factura",
-        element: <Factura className="pdf" />,
-      },
-    ],
+    children: [...routes],
   },
 ]);
 /* ReactDOM.createRoot(document.getElementById("root")).render(
