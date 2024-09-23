@@ -1,8 +1,6 @@
 import Box from "@mui/material/Box";
 import PersonalData from "../components/pages/PersonalData";
-
 import { motion } from "framer-motion";
-import { Typography } from "@mui/material";
 
 const ClientData = () => {
   return (
@@ -12,22 +10,6 @@ const ClientData = () => {
       exit={{ opacity: 1, x: 50 }}
     >
       <Box className={"page-layout"}>
-        {/* <Box
-          sx={{
-            height: "100%",
-            width: "100%",
-            display: "flex",
-            justifyContent: "start",
-            alignItems: "end",
-          }}
-        >
-          <Typography
-            sx={{ fontSize: 35, fontWeight: 800 }}
-            className="page-title"
-          >
-            Cliente
-          </Typography>
-        </Box> */}
         <Box>
           <PersonalData />
         </Box>

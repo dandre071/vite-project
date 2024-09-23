@@ -50,112 +50,109 @@ const Cart = () => {
   const invoiceGrid = "299px 38px 114px 1fr";
   return (
     <>
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 1, x: 50 }}
-      >
-        <Box className="page-layout" sx={{}}>
-          <Box sx={{ width: "100%" }}>
-            <Typography>Carrito</Typography>
-          </Box>
+      > */}
+      <Box className="page-layout" style={{ alignItems: "start" }}>
+        <Box
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {items.length > 0 ? (
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateRows: "30px 1fr",
+                justifyContent: "center",
+              }}
+            >
+              <div className="cart-header">
+                <Typography sx={{ fontWeight: 400 }}>Descripción</Typography>
+                <Typography sx={{ fontWeight: 400, justifySelf: "center" }}>
+                  Cant
+                </Typography>
 
-          <Box>
-            {items.length > 0 ? (
-              <Box sx={{ display: "grid", gridTemplateRows: "50px auto 50px" }}>
-                <Stack
-                  sx={{
-                    bgcolor: "black",
-                    display: "grid",
-                    justifyContent: "center",
-                    alignItems: "end",
-                    height: 40,
-                    color: "white",
-                    borderRadius: 0.8,
-                    gridTemplateColumns: invoiceGrid,
-                  }}
-                >
-                  <Typography sx={{ fontWeight: 600, pl: 1 }}>
-                    Descripción
-                  </Typography>
-                  <Typography sx={{ fontWeight: 600, justifySelf: "center" }}>
-                    Cant
-                  </Typography>
+                <Typography sx={{ fontWeight: 400, justifySelf: "end" }}>
+                  Precio
+                </Typography>
+                <Typography sx={{ fontWeight: 400, justifySelf: "end" }}>
+                  Total
+                </Typography>
+              </div>
+              <Box
+                className="form-container"
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  minHeight: 300,
+                  //  bgcolor: "red",
+                  justifyContent: "center",
 
-                  <Typography sx={{ fontWeight: 600, justifySelf: "end" }}>
-                    Total
-                  </Typography>
-                </Stack>
-                <Box
-                  style={{}}
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    minHeight: 300,
-                    height: "auto",
-                    justifyContent: "start",
-                    alignSelf: "start",
-                  }}
-                >
-                  <Stack spacing={1}>
-                    <Box
+                  border: "none",
+                }}
+              >
+                <Stack spacing={1}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      height: "auto",
+                    }}
+                  >
+                    <Stack
+                      display={"flex"}
+                      spacing={0.2}
                       sx={{
                         display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "start",
-                        alignItems: "center",
-                        height: "auto",
+                        alignItems: "start",
+                        flexGrow: 1,
+                        minHeight: 300,
                       }}
                     >
-                      <Stack
-                        display={"flex"}
-                        spacing={1}
-                        sx={{
-                          display: "flex",
-                          alignItems: "start",
-                          flexGrow: 1,
-                        }}
-                      >
-                        {items.length > 0 &&
-                          items.map((item, i) => (
-                            /*  <AnimatePresence> */
-                            <motion.div
-                              initial={{ opacity: 0, y: 50 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{
-                                duration: 0.3,
-                                delay: i * 0.3,
-                                ease: "easeOut",
-                              }}
-                              exit={{ opacity: 0 }}
+                      {items.length > 0 &&
+                        items.map((item, i) => (
+                          /*  <AnimatePresence> */
+                          <motion.div
+                            initial={{ opacity: 0, y: 50 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{
+                              duration: 0.3,
+                              delay: i * 0.3,
+                              ease: "easeOut",
+                            }}
+                            exit={{ opacity: 0 }}
+                            key={item.id}
+                          >
+                            <ListItem
                               key={item.id}
-                            >
-                              <ListItem
-                                key={item.id}
-                                product={item.name}
-                                q={item.quantity}
-                                price={colPesos.format(item.price)}
-                                totalPrice={colPesos.format(
-                                  item.itemTotalPrice
-                                )}
-                                finish={item.finish}
-                                description={item.description}
-                                finishQ={item.finishQ > 1 ? item.finishQ : ""}
-                                onClick={() => {
-                                  removeItem(item.id);
-                                }}
-                              />
-                            </motion.div>
-                            /*  </AnimatePresence> */
-                          ))}
-                      </Stack>{" "}
-                    </Box>
-                  </Stack>
-                </Box>{" "}
+                              product={item.name}
+                              q={item.quantity}
+                              price={colPesos.format(item.price)}
+                              totalPrice={colPesos.format(item.itemTotalPrice)}
+                              finish={item.finish}
+                              description={item.description}
+                              finishQ={item.finishQ > 1 ? item.finishQ : ""}
+                              onClick={() => {
+                                removeItem(item.id);
+                              }}
+                            />
+                          </motion.div>
+                          /*  </AnimatePresence> */
+                        ))}
+                    </Stack>{" "}
+                  </Box>
+                </Stack>
                 <Box
                   sx={{
-                    width: "100%",
-                    height: 60,
+                    width: "90%",
+
                     display: " flex",
                     justifyContent: "center",
                   }}
@@ -170,43 +167,42 @@ const Cart = () => {
                     classname={items.length > 0 ? "arrow-btn" : "disabled-btn"}
                   />
                 </Box>
-              </Box>
-            ) : (
-              <Box
+              </Box>{" "}
+            </Box>
+          ) : (
+            <Box
+              sx={{
+                display: "grid",
+                justifyContent: "center",
+                alignItems: "center",
+                height: 300,
+                //gridTemplateRows: "100px 300px 50px",
+              }}
+            >
+              <Stack
                 sx={{
-                  display: "grid",
-                  justifyContent: "center",
                   alignItems: "center",
-                  height: 300,
-                  //gridTemplateRows: "100px 300px 50px",
+                  alignSelf: "center",
                 }}
               >
-                <Stack
+                <ShoppingBagOutlinedIcon sx={{ fontSize: 80, color: "grey" }} />
+                <Typography
+                  variant="h6"
                   sx={{
-                    alignItems: "center",
-                    alignSelf: "center",
+                    color: "grey",
                   }}
                 >
-                  <ShoppingBagOutlinedIcon
-                    sx={{ fontSize: 80, color: "grey" }}
-                  />
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      color: "grey",
-                    }}
-                  >
-                    Aún no se han agregado productos.
-                  </Typography>
-                </Stack>
-                <Link to={"product-module"}>
-                  <AddBtn variant="prime" />
-                </Link>
-              </Box>
-            )}
-          </Box>
+                  Aún no se han agregado productos.
+                </Typography>
+              </Stack>
+              <Link to={"product-module"}>
+                <AddBtn variant="prime" />
+              </Link>
+            </Box>
+          )}
         </Box>
-      </motion.div>
+      </Box>
+      {/*       </motion.div> */}
     </>
   );
 };

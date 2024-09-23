@@ -10,21 +10,20 @@ const ModalCard = ({
   disableBackdropClick,
 }) => {
   return (
-    <Box id="modal-box">
-      <Stack onClick={onClick} sx={ModalCardStyle}>
-        <Box
-          className="child"
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-            height: "100%",
-            borderRight: `2px solid ${customTheme.palette.primary.light}`,
-          }}
-        >
-          {icon}
-        </Box>
+    <Box id="modal-box" onClick={onClick}>
+      <Box
+        className="child"
+        sx={{ display: "flex", justifyContent: "center", alignItems: "end" }}
+      >
+        {icon}
+      </Box>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Typography
           className="child"
           variant="h6"
@@ -32,14 +31,13 @@ const ModalCard = ({
             fontWeight: 700,
             color: "text.main",
             lineHeight: 1,
-            textAlign: "left",
-            ml: 3,
+            textAlign: "center",
           }}
           style={{ cursor: "pointer" }}
         >
           {title}
         </Typography>
-      </Stack>
+      </div>
     </Box>
   );
 };

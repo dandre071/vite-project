@@ -30,39 +30,37 @@ const ProductModule = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 1, x: 50 }}
     >
-      <Box className="page-layout">
-        {/*     {<ProductLimit open={false} />} */}
-        {/* <ModalHeader title={"Producto"} /> */}
-
-        <Typography>Producto</Typography>
-        <Stack
-          sx={{
-            height: "100%",
-            width: "100%",
-            gap: 0.5,
+      <Box className={"page-layout"} style={{}}>
+        <div
+          className="form-container"
+          style={{
+            minWidth: 700,
+            height: 500,
+            background: "transparent",
+            border: "none",
           }}
         >
-          <AutoProductModal
-            text={"Auto"}
-            matSize={options.materialWidth}
-            material={options.materials}
-            choice={options.choice}
-            options={options.acabados}
-          />
-
-          <VinylCutModal
-            text={"Corte en vinilo"}
-            materials={options.vinyls}
-            choice={options.choice}
-            descolillado={options.descolillado}
-            colors={{ colors }}
-          />
-
-          <ManualInput2
-            choice={options.choice}
-            text={"Manual input"}
-            acabado={options.acabados}
-          />
+          <div style={{ display: "flex" }}>
+            <AutoProductModal
+              text={"Auto"}
+              matSize={options.materialWidth}
+              material={options.materials}
+              choice={options.choice}
+              options={options.acabados}
+            />
+            <VinylCutModal
+              text={"Corte en vinilo"}
+              materials={options.vinyls}
+              choice={options.choice}
+              descolillado={options.descolillado}
+              colors={{ colors }}
+            />
+            <ManualInput2
+              choice={options.choice}
+              text={"Manual input"}
+              acabado={options.acabados}
+            />
+          </div>
           <Box
             sx={{
               display: " flex",
@@ -78,8 +76,8 @@ const ProductModule = () => {
               pathBack={"/client-data"}
               pathNext={"/cart"}
             />
-          </Box>
-        </Stack>
+          </Box>{" "}
+        </div>
       </Box>
     </motion.div>
   );

@@ -25,14 +25,14 @@ const ListItem = ({
       exit={{ opacity: 1, x: 50 }}
     >
       <Box
+        className="cart-item"
         component={motion.div}
         sx={{
           display: "grid",
           gridTemplateColumns: "90% 1fr",
-          border: "1px solid #f9f9f9",
+
           borderRadius: 1,
-          bgcolor: "#f0f6ff",
-          width: 600,
+
           pt: 1,
           pb: 1,
           pl: 0.5,

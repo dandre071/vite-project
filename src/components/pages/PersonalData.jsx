@@ -123,7 +123,7 @@ const PersonalData = () => {
 
   return (
     <Stack
-      className="page-child"
+      // className="page-child"
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -241,7 +241,7 @@ const PersonalData = () => {
             </Grid>
           </Grid>{" "}
         </Box>
-        <div sx={{ height: "100%", display: "flex", width: "100%" }}>
+        <div style={{ height: "100%", display: "flex", width: "100%" }}>
           <Grid
             item
             lg={12}
@@ -288,36 +288,20 @@ const PersonalData = () => {
           setTimeout(1000);
         }}
       > */}
-      {!formik.isValid && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          style={{
-            display: "flex",
-            width: "50%",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Grid item lg={9} sx={{}}>
-            <Alert
-              sx={{
-                bgcolor: "rgba(0, 0, 0, 1)",
-                color: "red",
-                justifySelf: "center",
-              }}
-              onClose={() => {
-                formik.setErrors({});
-              }}
-              className="alert"
-              severity="error"
-            >
-              <AlertTitle>Error</AlertTitle>
-              Los campos con asterisco (*) son obligatorios.
-            </Alert>
-          </Grid>
-        </motion.div>
-      )}
+      {/*   {!formik.isValid && (
+        <Grid item lg={9} sx={{ position: "relative", bottom: 100 }}>
+          <Alert
+            onClose={() => {
+              formik.setErrors({});
+            }}
+            className="alert"
+            severity="error"
+          >
+            <AlertTitle>Error</AlertTitle>
+            Los campos con asterisco (*) son obligatorios.
+          </Alert>
+        </Grid>
+      )} */}
     </Stack>
   );
 };
