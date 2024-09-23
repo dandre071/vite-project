@@ -45,7 +45,8 @@ import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault("America/Bogota");
-const Payment = () => {
+
+const Payment = ({ height }) => {
   const client = usePersonalData((state) => state.personalData);
   const payment = usePaymentData((state) => state.paymentData);
   useEffect(() => {
@@ -142,26 +143,35 @@ const Payment = () => {
       display: "grid",
       gridTemplateColumns: "1fr 1fr",
       alignItems: "end",
-      mb: 2,
+
       borderBottom: `1.5px solid background.dark`,
     },
   };
+
   return (
-    <Stack sx={{}}>
+    <Stack
+      sx={{
+        minHeight: 560,
+        width: 450,
+        display: "grid",
+        bgcolor: "#f9f9f9",
+        gridTemplateRows: "repeat(5, 1fr))",
+        justifyContent: "center",
+        alignItems: "center",
+
+        // overflow: 'auto',
+      }}
+    >
       <Stack
-        className="form-bg"
         spacing={0}
         sx={{
-          ...modal,
-          height: "450px",
-          width: "300px",
+          minHeight: "90%",
+          width: 450,
           display: "grid",
-          gridTemplateRows: "50px 60px 20px 40px)",
+
+          /*   gridTemplateRows: "50px 60px 20px 40px)", */
           justifyContent: "center",
           alignItems: "center",
-
-          pr: 5,
-          pl: 5,
 
           // overflow: 'auto',
         }}
@@ -170,16 +180,17 @@ const Payment = () => {
         <Stack
           className="border-bottom-heavy"
           sx={{
-            width: "100%",
+            width: "350px",
             display: "grid",
             gridTemplateRows: "repeat(3, 30px)",
             justifyContent: "center",
+            alignItems: "start",
             p: 0,
-            //bgcolor: "green",
+            /*  bgcolor: "green", */
           }}
         >
           {/* first item */}
-          <Box sx={{ ...styles.paymentBox, width: 500, p: 0 }}>
+          <Box sx={{ ...styles.paymentBox, p: 0, width: 350 }}>
             <Typography
               sx={styles.payment}
             >{`Productos: (${items.length})`}</Typography>
@@ -223,7 +234,7 @@ const Payment = () => {
                   <InputAdornment
                     position="start"
                     component="div"
-                    style={{ paddingLeft: "-14px" }}
+                    /* style={{ paddingLeft: "-14px" }} */
                     disablePointerEvents
                   >
                     <Typography sx={{ fontWeight: 600 }}>$</Typography>
@@ -262,9 +273,9 @@ const Payment = () => {
             //bgcolor: "pink",
             gap: 1,
             display: "grid",
-            width: "100%",
+
             height: "60px",
-            gridTemplateColumns: "repeat(2, 130px) 220px",
+            gridTemplateColumns: "repeat(2, 1fr)",
             justifyContent: "center",
             alignContent: "center",
           }}
@@ -293,66 +304,66 @@ const Payment = () => {
             options={users}
             label={"Realiza"}
           />
+        </Box>
+        <Box sx={{}}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DemoContainer
+              fullWidth
+              components={["DateTimePicker"]}
+              sx={{ display: "grid" }}
+            >
+              <DateTimePicker
+                fullWidth
+                size="normal"
+                value={value}
+                error={formik.errors.delivery}
+                helperText={formik.errors.delivery}
+                //onChange={(newValue) => setfield (newValue)}
+                onChange={(e) => formik.setFieldValue("delivery", e)}
+                timezone="America/Bogota"
+                label={"Fecha Entrega"}
+                name={"delivery"}
+                format="DD/MM/YYYY, h:mma"
+                slotProps={{
+                  textField: {
+                    size: "normal",
+                    m: 0,
+                  },
+                }}
+                sx={{
+                  stack: {},
+                  textField: {},
+                  input: {
+                    color: "text.main",
+                    // bgcolor: "green",
+                    pr: 0,
+                    m: 0,
+                    textAlign: "right",
+                  },
+                  button: {
+                    color: "primary.main",
 
-          <Box sx={{}}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DemoContainer
-                components={["DateTimePicker"]}
-                sx={{ display: "grid", width: 300 }}
-              >
-                <DateTimePicker
-                  size="normal"
-                  value={value}
-                  error={formik.errors.delivery}
-                  helperText={formik.errors.delivery}
-                  //onChange={(newValue) => setfield (newValue)}
-                  onChange={(e) => formik.setFieldValue("delivery", e)}
-                  timezone="America/Bogota"
-                  label={"Fecha Entrega"}
-                  name={"delivery"}
-                  format="DD/MM/YYYY, h:mma"
-                  slotProps={{
-                    textField: {
-                      size: "normal",
-                      m: 0,
-                      width: 200,
-                    },
-                  }}
-                  sx={{
-                    stack: {},
-                    textField: {},
-                    input: {
-                      color: "text.main",
-                      // bgcolor: "green",
-                      pr: 0,
-                      m: 0,
-                      textAlign: "right",
-                    },
-                    button: {
-                      color: "primary.main",
-                      p: 1,
-                      m: 0,
-                      borderRadius: "50%",
-                      left: 190,
-                      bottom: 40,
-                      width: 20,
-                      height: 20,
-                    },
+                    m: 0,
+                    borderRadius: "50%",
 
-                    div: {
-                      display: "grid",
-                      gridTemplateColumns: "170px",
-                      width: 220,
-                      //bgcolor: "green",
+                    bottom: 40,
 
-                      m: 0,
-                    },
-                    svg: { transform: "scale(0.6)" },
-                  }}
-                />
-              </DemoContainer>
-            </LocalizationProvider>
-          </Box>
+                    height: 20,
+                  },
+
+                  div: {
+                    display: "grid",
+                    /*   gridTemplateColumns: "170px", */
+
+                    //bgcolor: "green",
+
+                    m: 0,
+                  },
+                  svg: { transform: "scale(0.8)" },
+                }}
+              />
+            </DemoContainer>
+          </LocalizationProvider>
         </Box>
         <TextField
           //onBlur={formik.handleBlur}
@@ -383,12 +394,12 @@ const Payment = () => {
             m: 0,
           }}
         >
-          <NavBtn
+          {/*  <NavBtn
             backText={"Compras"}
             pathBack={"/cart"}
             pathNext={""}
             displayNext={"none"}
-          />
+          /> */}
           <Grid
             item
             sx={{
@@ -421,7 +432,7 @@ const Payment = () => {
               disabled={formik.errors.payment}
               onClick={handleAddData}
               startIcon={<PaymentsOutlinedIcon />}
-              sx={{ color: "white", width: 250, height: 55 }}
+              sx={{ color: "white", width: 270, height: 55 }}
               variant="prime"
             >
               Pagar

@@ -14,8 +14,9 @@ import { AnimatePresence, LayoutGroup, motion, stagger } from "framer-motion";
 import AddBtn from "../components/Buttons/AddBtn";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import Payment from "./payment";
+import zIndex from "@mui/material/styles/zIndex";
 
-const Cart = () => {
+const Cart = ({ height }) => {
   const formik = useFormik({
     initialValues: {
       id: "",
@@ -50,6 +51,11 @@ const Cart = () => {
   const MotionList = motion(ListItem);
   const { removeItem } = useShoppingCart();
   const invoiceGrid = "299px 38px 114px 1fr";
+  /*  const cartContainer = document.getElementById("cart-container");
+  const cartHeight = cartContainer.offsetHeight;
+  console.log(cartHeight);
+  const [height, setHeight] = useState(0);
+  const handleHeight = () => setHeight(cartHeight); */
   return (
     <>
       {/* <motion.div
@@ -60,10 +66,11 @@ const Cart = () => {
       <Box
         className="page-layout"
         style={{
-          alignItems: "start",
-          marginTop: 40,
+          alignItems: "center",
+          justifyContent: "center",
+
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
+          gridTemplateColumns: "1fr 450px",
           gap: 0,
         }}
       >
@@ -84,10 +91,11 @@ const Cart = () => {
             >
               <Box
                 className="form-container"
+                id="cart-container"
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  minHeight: 300,
+                  minHeight: 560,
                   //  bgcolor: "red",
                   justifyContent: "center",
 
@@ -174,7 +182,8 @@ const Cart = () => {
                     backText={"Agregar producto"}
                     pointer={items.length === 0 ? "none" : ""}
                     pathBack={"/product-module"}
-                    pathNext={"/payment"}
+                    /* pathNext={"/payment"} */
+
                     classname={items.length > 0 ? "arrow-btn" : "disabled-btn"}
                   />
                 </Box>
@@ -212,7 +221,9 @@ const Cart = () => {
             </Box>
           )}
         </Box>
-        <Payment />
+        <Box /* style={{ position: "relative", left: "-50%" }} */>
+          <Payment />
+        </Box>
       </Box>
       {/*       </motion.div> */}
     </>

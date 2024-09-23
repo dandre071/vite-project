@@ -720,8 +720,8 @@
   height: 100vh;
   background-color: rgb(244, 245, 255);
 
-  background-color: rgb(240, 240, 240) !important;
-  background-color: rgb(255, 255, 255);
+  /*   background-color: rgb(240, 240, 240) !important; */
+  background-color: rgb(230, 235, 247);
   align-self: center;
   justify-self: center;
 
@@ -816,7 +816,7 @@ body {
   height: calc(100vh - var(--nav-height));
   top: 0;
   width: 100%;
-  background-color: #009ffe;
+  /*  background-color: #009ffe; */
   /*   background-color: rgb(244, 245, 255);
   background-color: rgb(255, 255, 255); */
   display: grid;

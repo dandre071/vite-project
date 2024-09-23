@@ -11,6 +11,7 @@ import { iconSize } from "../Styles/styles";
 import AddShoppingCartRoundedIcon from "@mui/icons-material/AddShoppingCartRounded";
 import ProductLimit from "../components/modals/ProductLImit";
 import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 
 const colors = {
   main: "#0303b3",
@@ -24,6 +25,14 @@ const colors = {
 const ProductModule = () => {
   const items = useShoppingCart((state) => state.items);
   const cart = useShoppingCart();
+  /*   const cartContainer = document.getElementById("cart-container");
+  const cartHeight = () => {
+    const height = cartContainer.offsetHeight;
+    console.log(height);
+  }; */
+
+  const [height, setHeight] = useState(0);
+  const handleHeight = () => setHeight(cartHeight);
   return (
     <motion.div
       initial={{ opacity: 0, y: -50 }}
