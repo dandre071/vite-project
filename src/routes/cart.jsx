@@ -13,6 +13,8 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { AnimatePresence, LayoutGroup, motion, stagger } from "framer-motion";
 import AddBtn from "../components/Buttons/AddBtn";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import Payment from "./payment";
+
 const Cart = () => {
   const formik = useFormik({
     initialValues: {
@@ -57,7 +59,13 @@ const Cart = () => {
       > */}
       <Box
         className="page-layout"
-        style={{ alignItems: "start", marginTop: 40 }}
+        style={{
+          alignItems: "start",
+          marginTop: 40,
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: 0,
+        }}
       >
         <Box
           style={{
@@ -170,7 +178,7 @@ const Cart = () => {
                     classname={items.length > 0 ? "arrow-btn" : "disabled-btn"}
                   />
                 </Box>
-              </Box>{" "}
+              </Box>
             </Box>
           ) : (
             <Box
@@ -204,6 +212,7 @@ const Cart = () => {
             </Box>
           )}
         </Box>
+        <Payment />
       </Box>
       {/*       </motion.div> */}
     </>
