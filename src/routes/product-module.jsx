@@ -45,7 +45,7 @@ const ProductModule = () => {
           style={{
             minWidth: 700,
             height: 500,
-            background: "transparent",
+
             border: "none",
           }}
         >

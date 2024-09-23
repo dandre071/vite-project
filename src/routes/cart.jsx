@@ -222,7 +222,7 @@ const Cart = ({ height }) => {
                 </Typography>
               </Stack>
               <Link to={"product-module"}>
-                <AddBtn variant="prime" />
+                <AddBtn variant="prime" style={{ width: 100 }} />
               </Link>
             </Box>
           )}
