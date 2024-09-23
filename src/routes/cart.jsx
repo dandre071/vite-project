@@ -191,16 +191,22 @@ const Cart = ({ height }) => {
             </Box>
           ) : (
             <Box
+              className="form-container"
+              id="cart-container"
               sx={{
-                display: "grid",
+                display: "flex",
+                flexDirection: "column",
+                minHeight: 560,
+                //  bgcolor: "red",
                 justifyContent: "center",
-                alignItems: "center",
-                height: 300,
-                //gridTemplateRows: "100px 300px 50px",
+
+                border: "none",
               }}
             >
               <Stack
                 sx={{
+                  width: "100%",
+                  height: "500px",
                   alignItems: "center",
                   alignSelf: "center",
                 }}
