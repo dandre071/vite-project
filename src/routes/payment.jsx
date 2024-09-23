@@ -154,7 +154,7 @@ const Payment = () => {
         sx={{
           ...modal,
           height: "450px",
-          width: "500px",
+          width: "300px",
           display: "grid",
           gridTemplateRows: "50px 60px 20px 40px)",
           justifyContent: "center",
