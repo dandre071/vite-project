@@ -55,7 +55,10 @@ const Cart = () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 1, x: 50 }}
       > */}
-      <Box className="page-layout" style={{ alignItems: "start" }}>
+      <Box
+        className="page-layout"
+        style={{ alignItems: "start", marginTop: 40 }}
+      >
         <Box
           style={{
             display: "flex",
@@ -67,23 +70,10 @@ const Cart = () => {
             <Box
               sx={{
                 display: "grid",
-                gridTemplateRows: "30px 1fr",
+                /*    gridTemplateRows: "30px 1fr", */
                 justifyContent: "center",
               }}
             >
-              <div className="cart-header">
-                <Typography sx={{ fontWeight: 400 }}>Descripción</Typography>
-                <Typography sx={{ fontWeight: 400, justifySelf: "center" }}>
-                  Cant
-                </Typography>
-
-                <Typography sx={{ fontWeight: 400, justifySelf: "end" }}>
-                  Precio
-                </Typography>
-                <Typography sx={{ fontWeight: 400, justifySelf: "end" }}>
-                  Total
-                </Typography>
-              </div>
               <Box
                 className="form-container"
                 sx={{
@@ -96,6 +86,19 @@ const Cart = () => {
                   border: "none",
                 }}
               >
+                <div className="cart-header">
+                  <Typography sx={{ fontWeight: 400 }}>Descripción</Typography>
+                  <Typography sx={{ fontWeight: 400, justifySelf: "center" }}>
+                    Cant
+                  </Typography>
+
+                  <Typography sx={{ fontWeight: 400, justifySelf: "end" }}>
+                    Precio
+                  </Typography>
+                  <Typography sx={{ fontWeight: 400, justifySelf: "end" }}>
+                    Total
+                  </Typography>
+                </div>
                 <Stack spacing={1}>
                   <Box
                     sx={{
