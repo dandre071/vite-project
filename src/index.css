@@ -878,12 +878,12 @@ body {
   justify-content: center;
   align-items: end;
   width: var(--cart-item-width);
-
-  height: 100%;
+  margin-top: 5px;
+  height: auto;
   color: rgb(168, 168, 168);
   grid-template-columns: var(--cart-grid);
 
-  background-color: #e50037;
+  /* background-color: #e50037; */
 }
 
 .cart-body {

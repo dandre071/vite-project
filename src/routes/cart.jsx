@@ -93,8 +93,8 @@ const Cart = ({ height }) => {
                 className="form-container"
                 id="cart-container"
                 sx={{
-                  display: "flex",
-                  flexDirection: "column",
+                  display: "grid",
+                  gridTemplateRows: "5% 80% 1fr",
                   minHeight: 560,
                   //  bgcolor: "red",
                   justifyContent: "center",
@@ -121,8 +121,7 @@ const Cart = ({ height }) => {
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "center",
-                      alignItems: "center",
-                      height: "auto",
+                      alignItems: "start",
                     }}
                   >
                     <Stack
@@ -131,8 +130,6 @@ const Cart = ({ height }) => {
                       sx={{
                         display: "flex",
                         alignItems: "start",
-                        flexGrow: 1,
-                        minHeight: 300,
                       }}
                     >
                       {items.length > 0 &&
@@ -194,7 +191,7 @@ const Cart = ({ height }) => {
               className="form-container"
               id="cart-container"
               sx={{
-                display: "flex",
+                display: "grid",
                 flexDirection: "column",
                 minHeight: 560,
                 //  bgcolor: "red",
@@ -205,10 +202,9 @@ const Cart = ({ height }) => {
             >
               <Stack
                 sx={{
-                  width: "100%",
-                  height: "500px",
+                  display: "grid",
+                  gap: 2,
                   alignItems: "center",
-                  alignSelf: "center",
                 }}
               >
                 <ShoppingBagOutlinedIcon sx={{ fontSize: 80, color: "grey" }} />
@@ -221,7 +217,7 @@ const Cart = ({ height }) => {
                   Aún no se han agregado productos.
                 </Typography>
               </Stack>
-              <Link to={"product-module"}>
+              <Link to={"/product-module"}>
                 <AddBtn variant="prime" style={{ width: 100 }} />
               </Link>
             </Box>
