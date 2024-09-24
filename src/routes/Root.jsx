@@ -45,7 +45,7 @@ const Root = () => {
                 display: "flex",
                 /* justifyContent: "center", */
                 alignItems: "center",
-                bgcolor: "#091370",
+                bgcolor: "#0067B8",
 
                 width: 200,
                 boxSizing: "border-box",

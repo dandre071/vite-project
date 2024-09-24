@@ -174,8 +174,8 @@ const Cart = ({ height }) => {
                   }}
                 >
                   <NavBtn
-                    displayNext={items.length === 0 && "none"}
-                    nextText={"Pagar"}
+                    displayNext={"none"}
+                    /*  nextText={"Pagar"} */
                     backText={"Agregar producto"}
                     pointer={items.length === 0 ? "none" : ""}
                     pathBack={"/product-module"}

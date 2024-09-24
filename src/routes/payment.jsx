@@ -45,7 +45,7 @@ import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault("America/Bogota");
-
+const style = { left: "50%", rigth: "50%" };
 const Payment = ({ height }) => {
   const client = usePersonalData((state) => state.personalData);
   const payment = usePaymentData((state) => state.paymentData);
@@ -441,6 +441,7 @@ const Payment = ({ height }) => {
           </Grid>
         </Stack>
         <Modal
+          style={style}
           open={openModal}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
