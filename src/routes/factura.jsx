@@ -13,6 +13,8 @@ import { useReactToPrint } from "react-to-print";
 import { useState } from "react";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import PrintBtn from "../components/Buttons/PrintBtn";
+import { Columns } from "lucide-react";
+import DeleteRoundedBtn from "../components/Buttons/DeleteRoundedBtn";
 
 const Factura = ({ openModal }) => {
   const navigate = useNavigate();
@@ -732,7 +734,19 @@ const Factura = ({ openModal }) => {
           </Modal>
         </div>
       </div>
-      <PrintBtn handlePrint={handlePrint} style={{}} />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 10,
+        }}
+      >
+        <PrintBtn handlePrint={handlePrint} style={{}} />
+        <DeleteRoundedBtn handlePrint={handlePrint} style={{}} />
+      </div>
+
       {/*    </Modal> */}
     </>
   );

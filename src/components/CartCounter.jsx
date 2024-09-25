@@ -9,7 +9,7 @@ const CartCounter = () => {
   return (
     <Link id="cart-counter" style={{}} to={"cart"}>
       <Badge color="secondary" badgeContent={count.length} showZero>
-        <ShoppingCartOutlinedIcon />
+        <ShoppingCartOutlinedIcon sx={{ color: "white", fontSize: 35 }} />
       </Badge>
     </Link>
   );

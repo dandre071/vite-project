@@ -151,10 +151,12 @@ const Payment = ({ height }) => {
   return (
     <Stack
       sx={{
-        minHeight: 560,
-        width: 450,
+        minHeight: "100%",
+        width: "100%",
         display: "grid",
         bgcolor: "#f9f9f9",
+        borderTopRightRadius: 10,
+        borderBottomRightRadius: 10,
         gridTemplateRows: "repeat(5, 1fr))",
         justifyContent: "center",
         alignItems: "center",
@@ -441,7 +443,15 @@ const Payment = ({ height }) => {
           </Grid>
         </Stack>
         <Modal
-          style={style}
+          sx={{
+            display: "flex",
+            justifySelf: "center",
+            alignSelf: "center",
+
+            "& .MuiModal-backdrop": {
+              backgroundColor: "rgba(0, 0, 0, 0.7);",
+            },
+          }}
           open={openModal}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"

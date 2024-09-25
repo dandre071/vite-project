@@ -24,6 +24,7 @@ import { ThemeProvider } from "@mui/material";
 import { customTheme } from "./Hooks/useCustomTheme.jsx";
 
 export const routes = [
+  { path: "/", element: <Root />, name: "Home" },
   { path: "/client-data", element: <ClientData />, name: "Datos del cliente" },
   {
     path: "/product-module",

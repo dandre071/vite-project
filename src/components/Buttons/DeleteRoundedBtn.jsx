@@ -1,21 +1,21 @@
 import { Box } from "@mui/material";
-import { Printer } from "lucide-react";
+import { Delete, Printer, Trash, X } from "lucide-react";
 import React from "react";
 
-const PrintBtn = ({ handlePrint }) => {
+const DeleteRoundedBtn = ({ handlePrint }) => {
   return (
     <Box
       className="circle center p-fixed button"
       sx={{
-        bgcolor: "success.main",
+        bgcolor: "red",
         width: 50,
         height: 50,
       }}
     >
-      <Printer
+      <X
         onClick={handlePrint}
         size={30}
-        strokeWidth={1.5}
+        strokeWidth={3}
         absoluteStrokeWidth
         style={{ color: "white" }}
       />
@@ -23,4 +23,4 @@ const PrintBtn = ({ handlePrint }) => {
   );
 };
 
-export default PrintBtn;
+export default DeleteRoundedBtn;

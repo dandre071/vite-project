@@ -44,12 +44,11 @@ const ProductModule = () => {
           className="form-container"
           style={{
             minWidth: 700,
-            height: 500,
 
             border: "none",
           }}
         >
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex", justifyContent: "center" }}>
             <AutoProductModal
               text={"Auto"}
               matSize={options.materialWidth}
@@ -76,6 +75,7 @@ const ProductModule = () => {
               justifyContent: "center",
               pb: 0,
               mt: 3,
+              minWidth: 700,
             }}
           >
             <NavBtn

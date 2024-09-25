@@ -71,6 +71,8 @@ const Cart = ({ height }) => {
 
           display: "grid",
           gridTemplateColumns: "1fr 450px",
+          gridTemplateRows: "1fr",
+          height: "65vh",
           gap: 0,
         }}
       >
@@ -94,9 +96,11 @@ const Cart = ({ height }) => {
                 id="cart-container"
                 sx={{
                   display: "grid",
-                  gridTemplateRows: "5% 80% 1fr",
-                  minHeight: 560,
-                  //  bgcolor: "red",
+                  gridTemplateRows: "5% 1fr",
+                  /* minHeight: 560, */
+                  borderTopRightRadius: 0,
+                  borderBottomRightRadius: 0,
+                  height: 600, //  bgcolor: "red",
                   justifyContent: "center",
 
                   border: "none",
@@ -165,25 +169,6 @@ const Cart = ({ height }) => {
                     </Stack>{" "}
                   </Box>
                 </Stack>
-                <Box
-                  sx={{
-                    width: "90%",
-
-                    display: " flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <NavBtn
-                    displayNext={"none"}
-                    /*  nextText={"Pagar"} */
-                    backText={"Agregar producto"}
-                    pointer={items.length === 0 ? "none" : ""}
-                    pathBack={"/product-module"}
-                    /* pathNext={"/payment"} */
-
-                    classname={items.length > 0 ? "arrow-btn" : "disabled-btn"}
-                  />
-                </Box>
               </Box>
             </Box>
           ) : (
@@ -193,7 +178,7 @@ const Cart = ({ height }) => {
               sx={{
                 display: "grid",
                 flexDirection: "column",
-                minHeight: 560,
+                height: 600,
                 //  bgcolor: "red",
                 justifyContent: "center",
 
@@ -223,8 +208,27 @@ const Cart = ({ height }) => {
             </Box>
           )}
         </Box>
-        <Box /* style={{ position: "relative", left: "-50%" }} */>
+        <Box style={{ height: 600 }}>
           <Payment />
+        </Box>
+        <Box
+          sx={{
+            width: "100%",
+
+            display: " flex",
+            justifyContent: "center",
+          }}
+        >
+          <NavBtn
+            displayNext={"none"}
+            /*  nextText={"Pagar"} */
+            backText={"Agregar producto"}
+            pointer={items.length === 0 ? "none" : ""}
+            pathBack={"/product-module"}
+            /* pathNext={"/payment"} */
+
+            classname={items.length > 0 ? "arrow-btn" : "disabled-btn"}
+          />
         </Box>
       </Box>
       {/*       </motion.div> */}

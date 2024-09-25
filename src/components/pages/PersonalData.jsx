@@ -241,46 +241,54 @@ const PersonalData = () => {
             </Grid>
           </Grid>{" "}
         </Box>
-        <div style={{ height: "100%", display: "flex", width: "100%" }}>
-          <Grid
-            item
-            lg={12}
-            xs={12}
-            sx={{
-              width: "90%",
-              display: "flex",
-              justifyContent: "end",
-              alignItems: "center",
-              /*  borderTop: "1px solid grey", */
-              /* bgcolor: "purple", */
-            }}
-          >
-            <Tooltip
-              componentsProps={{
-                tooltip: {
-                  sx: {
-                    bgcolor: "black",
-                    "& .MuiTooltip-arrow": {
-                      color: "black",
-                    },
+      </Box>
+      <div
+        style={{
+          height: 60,
+          display: "flex",
+          width: "100%",
+          /*  background: "black", */
+          borderRadius: 10,
+        }}
+      >
+        <Grid
+          item
+          lg={12}
+          xs={12}
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "end",
+            alignItems: "center",
+            /*  borderTop: "1px solid grey", */
+            /* bgcolor: "purple", */
+          }}
+        >
+          <Tooltip
+            componentsProps={{
+              tooltip: {
+                sx: {
+                  bgcolor: "black",
+                  "& .MuiTooltip-arrow": {
+                    color: "black",
                   },
                 },
-              }}
-              title="Agregar productos"
-              placement="bottom"
-              arrow
-            >
-              <span>
-                <NextBtn
-                  style={{ color: "primary.main" }}
-                  onClick={formik.handleSubmit}
-                  className={"arrow-btn"}
-                />
-              </span>
-            </Tooltip>
-          </Grid>
-        </div>
-      </Box>
+              },
+            }}
+            title="Agregar productos"
+            placement="bottom"
+            arrow
+          >
+            <span>
+              <NextBtn
+                style={{ color: "primary.main" }}
+                onClick={formik.handleSubmit}
+                className={"arrow-btn"}
+              />
+            </span>
+          </Tooltip>
+        </Grid>
+      </div>
       {/* <Fade
         in={!formik.isValid} //Write the needed condition here to make it appear
         timeout={{ enter: 500, exit: 500 }} //Edit these two values to change the duration of transition when the element is getting appeared and disappeard

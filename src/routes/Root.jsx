@@ -45,7 +45,7 @@ const Root = () => {
                 display: "flex",
                 /* justifyContent: "center", */
                 alignItems: "center",
-                bgcolor: "#0067B8",
+                /* bgcolor: "#0866FF", */
 
                 width: 200,
                 boxSizing: "border-box",
@@ -64,16 +64,18 @@ const Root = () => {
                   key={item.text}
                   sx={{
                     width: 180,
+                    borderRadius: 1,
                     flexShrink: 0,
                     /*   bgcolor: "blue", */
                     "&.Mui-selected": {
-                      backgroundColor: "red",
+                      backgroundColor: "black",
+                      color: "white",
                     },
                     "&.Mui-focusVisible": {
                       backgroundColor: "red",
                     },
                     ":hover": {
-                      backgroundColor: "#2e8b57",
+                      backgroundColor: "#f2f2f2",
                     },
                   }}
                   className={
@@ -92,8 +94,7 @@ const Root = () => {
         </div>
         <div className={"nav-area"}>
           <div>
-            <Typography sx={{ fontSize: 25, fontWeight: 800 }}>
-              {" "}
+            <Typography sx={{ color: "white", fontSize: 27, fontWeight: 700 }}>
               {pageTitle}
             </Typography>
 

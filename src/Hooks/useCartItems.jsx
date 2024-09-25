@@ -27,7 +27,6 @@ const NavBtn = ({
         width: "100%",
         justifyContent: "space-between",
         alignItems: "center",
-        // borderTop: "1px solid black",
       }}
     >
       <Box>
