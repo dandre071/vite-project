@@ -328,7 +328,7 @@
   transform: scale(1);
   border-radius: 50%;
   /*   color: var(--primary-main); */
-  transition: all 1s ease;
+  transition: all 2s ease;
   padding: 5px;
 
   /* background-color: var(--primary-light); */
@@ -336,9 +336,11 @@
 .arrow-btn:hover {
   transform-origin: center;
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(1.2);
+  /*  color: white; */
   /*   transform: translateX(10px); */
-  background-color: var(--primary-light);
+  /*  background-color: var(--primary-light);
+  background-color: black; */
 }
 .arrow-btn:visited {
   color: var(--primary-main);
