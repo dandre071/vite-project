@@ -13,7 +13,7 @@ const ModalCard = ({
     <Box id="modal-box" onClick={onClick}>
       <Box
         className="child"
-        sx={{ display: "flex", justifyContent: "center", alignItems: "end" }}
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         {icon}
       </Box>
@@ -22,14 +22,18 @@ const ModalCard = ({
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          "& :hover": { backgroundColor: customTheme.palette.primary.main },
+          /*    borderTopLeftRadius: 10,
+          borderTopRightRadius: 10, */
         }}
       >
         <Typography
           className="child"
           variant="h6"
           sx={{
-            fontWeight: 700,
-            color: "text.main",
+            fontSize: 20,
+            fontWeight: 500,
+            color: "white",
             lineHeight: 1,
             textAlign: "center",
           }}

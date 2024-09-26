@@ -127,7 +127,7 @@ const ManualInput2 = ({ text, acabado }) => {
       <ModalCard
         title={"Configurar Producto"}
         onClick={handleOpen}
-        icon={<Settings strokeWidth={1.75} size={40} />}
+        icon={<Settings strokeWidth={1.75} size={70} />}
       />
       <Modal
         disableEscapeKeyDown

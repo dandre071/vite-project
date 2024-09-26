@@ -39,12 +39,12 @@ const ProductModule = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 1, x: 50 }}
     >
-      <Box className={"page-layout"} style={{}}>
+      <Box className={""} sx={{}}>
         <div
           className="form-container"
           style={{
             minWidth: 700,
-
+            backgroundColor: "transparent",
             border: "none",
           }}
         >
