@@ -123,7 +123,7 @@ const ListItem = ({
                       color: "white",
                     }}
                   >
-                    Acabado: {`${finishQ} ${finish}`}
+                    {finishQ + finish}
                   </Typography>
                 )}
               </Box>
