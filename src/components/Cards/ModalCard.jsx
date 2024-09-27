@@ -11,33 +11,34 @@ const ModalCard = ({
 }) => {
   return (
     <Box id="modal-box" onClick={onClick}>
-      <Box
-        className="child"
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
-      >
-        {icon}
-      </Box>
       <div
         style={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          "& :hover": { backgroundColor: customTheme.palette.primary.main },
-          /*    borderTopLeftRadius: 10,
-          borderTopRightRadius: 10, */
+        }}
+      >
+        {icon}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <Typography
-          className="child"
+          className="modal-title"
           variant="h6"
-          sx={{
+          style={{
+            width: "70%",
             fontSize: 20,
             fontWeight: 500,
-            color: "white",
+            /* color: "white", */
             lineHeight: 1,
             textAlign: "center",
+            lineBreak: "loose",
           }}
-          style={{ cursor: "pointer" }}
         >
           {title}
         </Typography>

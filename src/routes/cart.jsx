@@ -102,7 +102,7 @@ const Cart = ({ height }) => {
                   borderBottomRightRadius: 0,
                   height: 600, //  bgcolor: "red",
                   justifyContent: "center",
-
+                  alignItems: "center",
                   border: "none",
                 }}
               >
@@ -119,56 +119,45 @@ const Cart = ({ height }) => {
                     Total
                   </Typography>
                 </div>
-                <Stack spacing={1}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      alignItems: "start",
-                    }}
-                  >
-                    <Stack
-                      display={"flex"}
-                      spacing={0.2}
-                      sx={{
-                        display: "flex",
-                        alignItems: "start",
-                      }}
-                    >
-                      {items.length > 0 &&
-                        items.map((item, i) => (
-                          /*  <AnimatePresence> */
-                          <motion.div
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                              duration: 0.3,
-                              delay: i * 0.3,
-                              ease: "easeOut",
-                            }}
-                            exit={{ opacity: 0 }}
-                            key={item.id}
-                          >
-                            <ListItem
-                              key={item.id}
-                              product={item.name}
-                              q={item.quantity}
-                              price={colPesos.format(item.price)}
-                              totalPrice={colPesos.format(item.itemTotalPrice)}
-                              finish={item.finish}
-                              description={item.description}
-                              finishQ={item.finishQ > 1 ? item.finishQ : ""}
-                              onClick={() => {
-                                removeItem(item.id);
-                              }}
-                            />
-                          </motion.div>
-                          /*  </AnimatePresence> */
-                        ))}
-                    </Stack>{" "}
-                  </Box>
-                </Stack>
+                <div
+                  style={{
+                    display: "grid",
+                    gap: 1,
+                    alignItems: "start",
+                    justifyContent: "start",
+                  }}
+                >
+                  {items.length > 0 &&
+                    items.map((item, i) => (
+                      /*  <AnimatePresence> */
+                      <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 0.3,
+                          delay: i * 0.3,
+                          ease: "easeOut",
+                        }}
+                        exit={{ opacity: 0 }}
+                        key={item.id}
+                      >
+                        <ListItem
+                          key={item.id}
+                          product={item.name}
+                          q={item.quantity}
+                          price={colPesos.format(item.price)}
+                          totalPrice={colPesos.format(item.itemTotalPrice)}
+                          finish={item.finish}
+                          description={item.description}
+                          finishQ={item.finishQ > 1 ? item.finishQ : ""}
+                          onClick={() => {
+                            removeItem(item.id);
+                          }}
+                        />
+                      </motion.div>
+                      /*  </AnimatePresence> */
+                    ))}
+                </div>{" "}
               </Box>
             </Box>
           ) : (

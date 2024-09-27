@@ -31,7 +31,7 @@ import useUsers from "../../Hooks/useUsers.js";
 import { Settings, ShoppingCart } from "lucide-react";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import PersonIcon from "@mui/icons-material/Person";
-
+import EditNoteIcon from "@mui/icons-material/EditNote";
 import ProductLimit from "./ProductLImit.jsx";
 const module = "ManualInput";
 
@@ -127,7 +127,7 @@ const ManualInput2 = ({ text, acabado }) => {
       <ModalCard
         title={"Configurar Producto"}
         onClick={handleOpen}
-        icon={<Settings strokeWidth={1.75} size={70} />}
+        icon={<EditNoteIcon className="modal-icon" sx={{ fontSize: 100 }} />}
       />
       <Modal
         disableEscapeKeyDown
