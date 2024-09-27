@@ -121,13 +121,13 @@
   margin-left: 2px;
 }
 .invoice-data-client {
-  font-size: 11px !important;
+  font-size: 12px !important;
   color: rgb(0, 0, 0) !important;
   width: 100%;
   text-transform: capitalize;
   padding: 0;
   font-weight: 600 !important;
-  text-align: left;
+  text-align: right;
 }
 
 .invoice-title {

@@ -139,7 +139,7 @@ const ListItem = ({
             alignSelf: "center",
           }}
         >
-          <Edit2Icon onClick={onClick} />
+          {/* <Edit2Icon onClick={onClick} /> */}
           <DeleteBtn onClick={onClick} />
         </Box>
       </Box>

@@ -19,7 +19,7 @@ const InvoiceItem = ({
           display: "grid",
           gridTemplateColumns: invoiceGrid,
           borderRadius: 1.5,
-          height: 40,
+          height: "auto",
           alignItems: "center",
         }}
       >
@@ -40,7 +40,7 @@ const InvoiceItem = ({
         </Typography>
       </Stack>
       <Stack
-        sx={{ display: "grid", gridTemplateColumns: "70% 1fr", height: 30 }}
+        sx={{ display: "grid", gridTemplateColumns: "70% 1fr", height: "auto" }}
       >
         <Typography
           className="secondary-color capitalize"
@@ -51,6 +51,7 @@ const InvoiceItem = ({
             lineHeight: 1.2,
             pt: 0.2,
             pb: 0.2,
+            mb: 1,
             alignContent: "start",
           }}
         >

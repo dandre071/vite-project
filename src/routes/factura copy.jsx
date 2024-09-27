@@ -297,13 +297,13 @@ const Factura = ({ openModal }) => {
                     <Box sx={{ width: "95%", height: "90%" }}>
                       <Box>
                         <Box>
-                          {/*  <Typography
+                          <Typography
                             variant="h6"
                             className="invoice-label-client"
                             sx={{}}
                           >
                             Cliente
-                          </Typography> */}
+                          </Typography>
                           <Typography
                             variant="h6"
                             className="invoice-data-client"
@@ -320,7 +320,7 @@ const Factura = ({ openModal }) => {
                           }}
                         >
                           <Box>
-                            {/* <Typography
+                            <Typography
                               className="invoice-label-client"
                               sx={{
                                 // bgcolor: "red",
@@ -330,7 +330,7 @@ const Factura = ({ openModal }) => {
                               }}
                             >
                               Email
-                            </Typography> */}
+                            </Typography>
                             <Typography
                               style={{ textTransform: "none" }}
                               className="invoice-data-client"
@@ -339,9 +339,9 @@ const Factura = ({ openModal }) => {
                             </Typography>
                           </Box>
                           <Box>
-                            {/*  <Typography className="invoice-label-client">
+                            <Typography className="invoice-label-client">
                               Teléfono
-                            </Typography> */}
+                            </Typography>
                             <Typography
                               variant="h6"
                               className="invoice-data-client"
