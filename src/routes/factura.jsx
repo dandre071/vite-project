@@ -404,7 +404,6 @@ const Factura = ({ openModal }) => {
             >
               <Stack
                 className="border-bottom-heavy "
-                spacing={0.2}
                 sx={{
                   width: "97%",
                   height: "100%",
