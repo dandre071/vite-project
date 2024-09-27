@@ -57,11 +57,17 @@ const ListItem = ({
             >
               {product}
             </Typography>
-            <Typography
-              sx={{ fontSize: 15, fontWeight: 600, textAlign: "center" }}
-            >
-              {q}
-            </Typography>
+            <div style={{}}>
+              <Typography
+                sx={{
+                  fontSize: 15,
+                  fontWeight: 600,
+                  textAlign: "center",
+                }}
+              >
+                {q}
+              </Typography>
+            </div>
             {/* <Typography
             sx={{ fontSize: 14, fontWeight: 600, textAlign: "right" }}
           >

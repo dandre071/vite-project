@@ -391,11 +391,12 @@ const Factura = ({ openModal }) => {
               </Typography>
             </Stack>
             <Stack
+              className="border-bottom-heavy "
               sx={{
                 height: "100%",
                 maxHeight: "100%",
                 maxWidth: 490,
-                width: "105%",
+                width: "100%",
 
                 display: "flex",
                 alignItems: "center",
@@ -403,13 +404,12 @@ const Factura = ({ openModal }) => {
               }}
             >
               <Stack
-                className="border-bottom-heavy "
                 sx={{
                   width: "97%",
-                  height: "100%",
+                  height: "auto",
 
-                  display: "grid",
-                  gridTemplateRows: "repeat(6,1fr)",
+                  display: "flex",
+
                   flexFlow: "wrap",
                   alignItems: "start",
                 }}

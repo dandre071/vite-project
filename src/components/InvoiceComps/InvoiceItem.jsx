@@ -29,9 +29,27 @@ const InvoiceItem = ({
         >
           {product}
         </Typography>
-        <Typography sx={{ fontSize: 13, fontWeight: 600, textAlign: "center" }}>
-          {q}
-        </Typography>
+        <div
+          style={{
+            backgroundColor: "#f5f5f5",
+            width: "90%",
+            borderRadius: 5,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: 13,
+              fontWeight: 600,
+              textAlign: "center",
+            }}
+          >
+            {q}
+          </Typography>
+        </div>
+
         <Typography sx={{ fontSize: 13, fontWeight: 600, textAlign: "right" }}>
           {price}
         </Typography>
