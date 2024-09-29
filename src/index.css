@@ -353,7 +353,7 @@
   text-transform: capitalize;
 }
 .capitalize {
-  text-transform: capitalize;
+  text-transform: initial;
 }
 .arrow-btn {
   display: grid;

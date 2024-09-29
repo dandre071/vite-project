@@ -117,7 +117,7 @@ const Factura = ({ openModal }) => {
             sx={{
               display: "grid",
 
-              gridTemplateRows: "3.2cm 0.7cm 12cm 0.8fr .5cm",
+              gridTemplateRows: "auto 0.7cm 13cm 1fr",
 
               justifyContent: "center",
               alignItems: "center",
@@ -140,36 +140,27 @@ const Factura = ({ openModal }) => {
               <Stack
                 sx={{
                   display: "grid",
-                  height: "100%",
+                  gridTemplateRows: "60% 1fr",
+                  height: "auto",
                   width: "100%",
+                  bgcolor: "red",
                 }}
               >
                 <Stack
                   sx={{
                     display: "flex",
-                    justifyContent: "end",
+                    justifyContent: "start",
                     alignItems: "start",
+                    bgcolor: "pink",
                   }}
                 >
-                  <Logo className="logo" />
-                </Stack>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifySelf: "start",
-                    lineHeight: 1.2,
-                    justifyContent: "center",
-                    fontSize: 10,
-                    textAlign: "center",
-                  }}
-                >
+                  <Logo className="logo" />{" "}
                   <Box
                     sx={{
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "start",
+                      bgcolor: "blue",
                     }}
                   >
                     <WhatsAppIcon sx={{ fontSize: 10 }} />{" "}
@@ -193,7 +184,7 @@ const Factura = ({ openModal }) => {
                     {" "}
                     Barrio Baltazar (Turbo)
                   </Typography>
-                </Typography>
+                </Stack>
               </Stack>
 
               <Box
@@ -201,6 +192,7 @@ const Factura = ({ openModal }) => {
                   display: "grid",
                   alignItems: "center",
                   height: "100%",
+                  alignItems: "start",
                 }}
               >
                 <Stack
@@ -208,10 +200,11 @@ const Factura = ({ openModal }) => {
                     display: "grid",
                     padding: 0,
                     width: "100%",
-                    height: "90%",
-                    borderRadius: 1.8,
-                    justifySelf: "end",
+                    height: "auto",
+
+                    alignItems: "start",
                     gridTemplateRows: "40% 60%",
+                    bgcolor: "green",
                   }}
                 >
                   <Stack
@@ -223,7 +216,6 @@ const Factura = ({ openModal }) => {
                       justifyContent: "end",
                       justifySelf: "end",
                       alignItems: "start",
-                      alignSelf: "start",
                     }}
                   >
                     <Box
@@ -640,6 +632,16 @@ const Factura = ({ openModal }) => {
                       <Typography className={"invoice-label"}>
                         Cajero:
                       </Typography>
+                    </Box>
+                    <Box
+                      sx={{
+                        height: "100%",
+                        bgcolor: "#f4f4f4",
+                        height: "100%",
+                        mt: 1,
+                      }}
+                    >
+                      <Typography>EFECTIVO</Typography>
                     </Box>
                   </Stack>
                 </Stack>

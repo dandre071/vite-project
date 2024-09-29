@@ -24,7 +24,7 @@ const InvoiceItem = ({
         }}
       >
         <Typography
-          className="invoice-content-data-l"
+          className="invoice-content-data-l capitalize"
           sx={{ fontWeight: 600, fontSize: 13 }}
         >
           {product}
