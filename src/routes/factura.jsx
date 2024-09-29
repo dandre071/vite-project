@@ -45,7 +45,7 @@ const Factura = ({ openModal }) => {
   const users = useUsers();
   const date = new Date();
   const fullDate = new Intl.DateTimeFormat("es-CO", {
-    dateStyle: "medium",
+    dateStyle: "short",
     timeStyle: "short",
     // timeZone: "Colombia/Bogotá",
   }).format(date);
@@ -220,14 +220,15 @@ const Factura = ({ openModal }) => {
                       height: "90%",
                       justifyContent: "end",
                       justifySelf: "end",
-                      alignItems: "end",
+                      alignItems: "start",
                       alignSelf: "start",
                     }}
                   >
                     <Box
                       sx={{
-                        transform: "scale(.9)",
+                        transform: "scale(0.9)",
                         display: "flex",
+                        /*   flexDirection: "column", */
                         justifyContent: "space-between",
                       }}
                     >
@@ -247,7 +248,7 @@ const Factura = ({ openModal }) => {
                           {fullDate}
                         </Typography>
                       </Box>
-                      <Box>
+                      <Box sx={{ borderLeft: "2px solid #f1f1f1", pl: 0.8 }}>
                         <Typography variant="h6" className="invoice-label">
                           Entrega
                         </Typography>

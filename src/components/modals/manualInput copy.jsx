@@ -18,19 +18,16 @@ import PriceCalc from "../PriceCalc.jsx";
 import { v4 as uuidv4 } from "uuid";
 import { productSchema } from "../Validations.js";
 import { useFormik } from "formik";
-import { ThemeProvider } from "styled-components";
+
 import { customTheme } from "../../Hooks/useCustomTheme.jsx";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { AddBoxOutlined, ShoppingBag } from "@mui/icons-material";
+
 import ModalCard from "../Cards/ModalCard.jsx";
-import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
-import InfoIcon from "@mui/icons-material/Info";
-import { formatNumber } from "../utils/helpers.js";
-import { useUsersList } from "../../store/lists.js";
+
 import useUsers from "../../Hooks/useUsers.js";
-import { Settings, ShoppingCart } from "lucide-react";
+
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import PersonIcon from "@mui/icons-material/Person";
+
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import ProductLimit from "./ProductLImit.jsx";
 const module = "ManualInput";
@@ -358,7 +355,7 @@ const ManualInput2 = ({ text, acabado }) => {
                 pb: 3,
               }}
             >
-              {items.length < 6 ? (
+              {items.length < 8 ? (
                 <Button
                   sx={{ width: "80%" }}
                   //disabled={!formik.values.itemTotalPrice ? true : false}
