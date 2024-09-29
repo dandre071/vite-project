@@ -134,7 +134,7 @@ const Factura = ({ openModal }) => {
                 justifyContent: "end",
                 alignItems: "center",
 
-                gridTemplateColumns: "auto auto 1fr ",
+                gridTemplateColumns: "auto 1fr ",
               }}
             >
               <Stack
@@ -143,7 +143,7 @@ const Factura = ({ openModal }) => {
                   gridTemplateRows: "60% 1fr",
 
                   width: "100%",
-                  bgcolor: "red",
+                  /* bgcolor: "red", */
                 }}
               >
                 <Stack
@@ -151,7 +151,7 @@ const Factura = ({ openModal }) => {
                     display: "flex",
                     justifyContent: "start",
                     alignItems: "start",
-                    bgcolor: "pink",
+                    /*  bgcolor: "pink", */
                   }}
                 >
                   <Logo className="logo" />{" "}
@@ -160,7 +160,7 @@ const Factura = ({ openModal }) => {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "start",
-                      bgcolor: "blue",
+                      /*    bgcolor: "blue", */
                       height: "100%",
                     }}
                   >
@@ -187,50 +187,7 @@ const Factura = ({ openModal }) => {
                   </Typography>
                 </Stack>
               </Stack>
-              <Box>
-                <Box
-                  sx={{
-                    transform: "scale(0.9)",
-                    display: "flex",
-                    bgcolor: "#f4f4f4",
-                    p: 0.5,
-                    borderRadius: 1,
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Box>
-                    <Typography
-                      variant="h6"
-                      className="invoice-label"
-                      sx={{ textAlign: "left" }}
-                    >
-                      Recepción
-                    </Typography>
-                    <Typography
-                      variant="h6"
-                      className="invoice-data-date"
-                      sx={{}}
-                    >
-                      {fullDate}
-                    </Typography>
-                  </Box>
-                  <Box sx={{}}>
-                    <Typography variant="h6" className="invoice-label">
-                      Entrega
-                    </Typography>
-                    <Typography
-                      variant="h6"
-                      className="invoice-data-date"
-                      sx={{}}
-                    >
-                      {typeof paymentData.delivery != "object"
-                        ? paymentData.delivery
-                        : ""}
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
+
               <Box
                 sx={{
                   display: "grid",
@@ -262,6 +219,50 @@ const Factura = ({ openModal }) => {
                       alignItems: "start",
                     }}
                   >
+                    <Box>
+                      <Box
+                        sx={{
+                          transform: "scale(0.9)",
+                          display: "flex",
+                          bgcolor: "#f4f4f4",
+                          p: 0.5,
+                          borderRadius: 1,
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <Box>
+                          <Typography
+                            variant="h6"
+                            className="invoice-label"
+                            sx={{ textAlign: "left" }}
+                          >
+                            Recepción
+                          </Typography>
+                          <Typography
+                            variant="h6"
+                            className="invoice-data-date"
+                            sx={{}}
+                          >
+                            {fullDate}
+                          </Typography>
+                        </Box>
+                        <Box sx={{}}>
+                          <Typography variant="h6" className="invoice-label">
+                            Entrega
+                          </Typography>
+                          <Typography
+                            variant="h6"
+                            className="invoice-data-date"
+                            sx={{}}
+                          >
+                            {typeof paymentData.delivery != "object"
+                              ? paymentData.delivery
+                              : ""}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </Box>
                     <Box className="grid-rows-2-1fr" sx={{}}>
                       <Typography
                         sx={{
@@ -565,13 +566,16 @@ const Factura = ({ openModal }) => {
                       bgcolor: "background.dark",
                       height: 30,
                       color: "text.main",
+                      width: "101%",
                     }}
                   >
                     <Typography sx={{ fontSize: 13, fontWeight: 800 }}>
                       Total:
                     </Typography>
 
-                    <Typography sx={{ fontSize: 16, fontWeight: 800 }}>
+                    <Typography
+                      sx={{ fontSize: 16, fontWeight: 800, width: "98%" }}
+                    >
                       {colPesos.format(totalInvoice)}
                     </Typography>
                   </Box>
