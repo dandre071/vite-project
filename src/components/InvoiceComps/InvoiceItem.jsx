@@ -32,7 +32,7 @@ const InvoiceItem = ({
         <div
           style={{
             backgroundColor: "#f5f5f5",
-            width: "90%",
+            width: "100%",
             borderRadius: 5,
             display: "flex",
             justifyContent: "center",
@@ -88,11 +88,11 @@ const InvoiceItem = ({
               display: "flex",
               justifyContent: "center",
               bgcolor: "#f7f7f7",
-              width: "100%",
+              width: "90%",
               height: "90%",
               borderRadius: 1,
               alignItems: "center",
-              p: 0.02,
+              p: 0.1,
             }}
           >
             <Typography

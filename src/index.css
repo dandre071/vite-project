@@ -145,7 +145,7 @@
 .invoice-label-payment {
   font-size: 13px !important;
   color: #000000 !important;
-
+  padding: 0;
   font-weight: 500 !important;
 }
 .invoice-data-date {
@@ -215,7 +215,7 @@
   display: grid;
   grid-template-rows: 40px 30px;
   min-height: 40px;
-
+  width: 100%;
   /*background-color: #ff0031;*/
   /* border-bottom: 1px solid rgb(190, 190, 190); */
 }
@@ -821,7 +821,8 @@ body {
 }
 .logo {
   grid-area: logo;
-  width: 120px;
+  width: 80%;
+  justify-self: center;
 }
 .logo-container {
   width: 100%;

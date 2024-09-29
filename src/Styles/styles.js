@@ -170,6 +170,6 @@ export const title = {
 
 export const center = { justifySelf: "center", alignSelf: "center" };
 
-export const invoiceGrid = "7.5cm 1cm 2cm 2cm";
+export const invoiceGrid = "60% 10% 1fr 2cm";
 
 export const iconSize = 50;

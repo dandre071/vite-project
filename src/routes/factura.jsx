@@ -89,9 +89,10 @@ const Factura = ({ openModal }) => {
   const box = {
     display: "grid",
     width: "100%",
-    gridTemplateColumns: "50px 80px",
+    gridTemplateColumns: "30% 1fr",
     justifyContent: "center",
     alignItems: "center",
+    p: 0,
   };
 
   const handleClose = () => {
@@ -101,20 +102,21 @@ const Factura = ({ openModal }) => {
 
   return (
     <>
-      {/*      <Modal
-        open={true}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      > */}
-      <div style={{ display: "flex", height: "auto" }}>
-        <form className="pdf" ref={targetRef} style={{ height: "auto" }}>
+      <div
+        style={{
+          display: "flex",
+          width: "140mm",
+          background: "white",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "216mm",
+        }}
+      >
+        <form ref={targetRef} style={{}}>
           <Stack
             sx={{
-              width: "14cm",
-              height: "21,6cm",
-              bgcolor: "white",
-
               display: "grid",
+
               gridTemplateRows: "3.2cm 0.7cm 12cm 0.8fr .5cm",
 
               justifyContent: "center",
@@ -125,11 +127,10 @@ const Factura = ({ openModal }) => {
             <Stack
               className="invoice-header"
               sx={{
-                width: "100%",
                 height: "100%",
                 justifySelf: "center",
                 display: "grid",
-
+                width: "130mm",
                 justifyContent: "end",
                 alignItems: "center",
 
@@ -140,6 +141,7 @@ const Factura = ({ openModal }) => {
                 sx={{
                   display: "grid",
                   height: "100%",
+                  width: "100%",
                 }}
               >
                 <Stack
@@ -228,6 +230,9 @@ const Factura = ({ openModal }) => {
                       sx={{
                         transform: "scale(0.9)",
                         display: "flex",
+                        bgcolor: "#f4f4f4",
+                        p: 0.5,
+                        borderRadius: 1,
                         /*   flexDirection: "column", */
                         justifyContent: "space-between",
                       }}
@@ -290,12 +295,12 @@ const Factura = ({ openModal }) => {
                       height: "100%",
                       pb: 0.5,
                       borderRadius: 1.5,
-                      bgcolor: "background.default",
-
+                      /* bgcolor: "background.default",
+                       */
                       justifySelf: "end",
                     }}
                   >
-                    <Box sx={{ width: "95%", height: "90%" }}>
+                    <Box sx={{ width: "100%", height: "90%" }}>
                       <Box>
                         <Box>
                           {/*  <Typography
@@ -364,7 +369,7 @@ const Factura = ({ openModal }) => {
                 display: "grid",
                 gridTemplateColumns: invoiceGrid,
                 position: "relative",
-                width: 480,
+                width: "100%",
                 height: ".7cm",
                 alignSelf: "center",
                 alignItems: "end",
@@ -406,7 +411,7 @@ const Factura = ({ openModal }) => {
             >
               <Stack
                 sx={{
-                  width: "97%",
+                  width: "100%",
                   height: "auto",
 
                   display: "flex",
@@ -449,14 +454,14 @@ const Factura = ({ openModal }) => {
                   height: "100%",
                   display: "grid",
                   gridTemplateColumns: "1fr",
-                  placeItems: "center",
+                  /*   placeItems: "center", */
                   p: 0,
                   borderRadius: 1.5,
                 }}
               >
                 <Box
                   sx={{
-                    width: "95%",
+                    width: "98%",
                     height: "100%",
                     display: "grid",
                     gridTemplateRows: ".5fr 1.5fr 1fr",
@@ -488,21 +493,24 @@ const Factura = ({ openModal }) => {
                         {paymentData.do}
                       </Typography>
                     </Box>
-                    <Box className="box-bottom">
+                    <Box /* className="box-bottom" */>
                       <Typography className="invoice-label">
-                        Revisa Valores
+                        Acabado:
                       </Typography>
                       <Typography></Typography>
                     </Box>
-                    <Box className="box-bottom">
-                      <Typography className="invoice-label">Entrega</Typography>
+                    <Box /* className="box-bottom" */>
+                      <Typography className="invoice-label">
+                        Entrega:
+                      </Typography>
                       <Typography></Typography>
                     </Box>
                   </Stack>
                   <Stack
                     sx={{
                       display: "grid",
-                      gridTemplateColumns: "1fr 1fr",
+                      //gridTemplateColumns: "1fr 1fr",
+                      gridTemplateColumns: "30% 1fr",
                       height: "95%",
                       justifyContent: "center",
                       alignSelf: "center",
@@ -510,16 +518,22 @@ const Factura = ({ openModal }) => {
                       gap: 1,
                     }}
                   >
+                    <Box>
+                      <Typography variant="h6" className="invoice-label">
+                        Revisa valores: <br />
+                      </Typography>
+                      <Typography variant="h6" className="invoice-label">
+                        Fecha:
+                      </Typography>
+                    </Box>
                     <Stack className="box-bottom">
+                      <Typography className={"invoice-label"}>Sello</Typography>
+                    </Stack>
+                    {/*   <Stack className="box-bottom">
                       <Typography className={"invoice-label"}>
                         Firma y sello
                       </Typography>
-                    </Stack>
-                    <Stack className="box-bottom">
-                      <Typography className={"invoice-label"}>
-                        Firma y sello
-                      </Typography>
-                    </Stack>
+                    </Stack> */}
                   </Stack>
                   <Box className={"box-bottom"} sx={{ height: "1cm" }}>
                     <Typography className={"invoice-label"}>
@@ -543,7 +557,7 @@ const Factura = ({ openModal }) => {
                 <Stack
                   sx={{
                     justifySelf: "right",
-                    width: "95%",
+                    width: "100%",
                     height: "100%",
                     textAlign: "right",
                     display: "grid",
@@ -559,11 +573,11 @@ const Factura = ({ openModal }) => {
                       color: "text.main",
                     }}
                   >
-                    <Typography sx={{ fontSize: 13, fontWeight: 600 }}>
+                    <Typography sx={{ fontSize: 13, fontWeight: 800 }}>
                       Total:
                     </Typography>
 
-                    <Typography sx={{ fontSize: 14, fontWeight: 600, pr: 0.5 }}>
+                    <Typography sx={{ fontSize: 16, fontWeight: 800 }}>
                       {colPesos.format(totalInvoice)}
                     </Typography>
                   </Box>
@@ -572,10 +586,7 @@ const Factura = ({ openModal }) => {
                       <Typography className={"invoice-label"}>
                         Abono 1:
                       </Typography>
-                      <Typography
-                        className={"invoice-label-payment"}
-                        sx={{ pr: 0.5 }}
-                      >
+                      <Typography className={"invoice-label-payment"} sx={{}}>
                         {colPesos.format(parseInt(paymentData.payment))}
                       </Typography>
                     </Box>
@@ -588,7 +599,6 @@ const Factura = ({ openModal }) => {
                         sx={{
                           textAlign: "right",
                           alignSelf: "center",
-                          pr: 0.5,
                         }}
                       >
                         {colPesos.format(totalInvoice - paymentData.payment)}
@@ -618,60 +628,19 @@ const Factura = ({ openModal }) => {
                         Resta:
                       </Typography>
                     </Box>
-                  </Stack>
-                  <Stack
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-around",
-                      flexDirection: "row",
-                      mt: 1,
-                    }}
-                  >
-                    <Stack
+                    <Box
+                      className="border-bottom"
                       sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "start",
-                        alignItems: "center",
-                        gap: 0.5,
+                        ...box,
+                        bgcolor: "white",
+                        height: "100%",
+                        mt: 1,
                       }}
                     >
-                      <Typography sx={{ fontSize: 10 }}>Efectivo</Typography>
-                      <Box
-                        className={"full-border"}
-                        sx={{
-                          width: 10,
-                          height: 10,
-
-                          borderRadius: 0.8,
-                        }}
-                      ></Box>
-                    </Stack>
-                    <Stack>
-                      <Stack
-                        sx={{
-                          display: "flex",
-                          flexDirection: "row",
-                          justifyContent: "end",
-                          alignItems: "center",
-                          gap: 0.5,
-                          width: "100%",
-                        }}
-                      >
-                        <Typography sx={{ fontSize: 10 }}>
-                          Transferencia
-                        </Typography>
-                        <Box
-                          className={"full-border"}
-                          sx={{
-                            width: 10,
-                            height: 10,
-
-                            borderRadius: 0.8,
-                          }}
-                        ></Box>
-                      </Stack>
-                    </Stack>
+                      <Typography className={"invoice-label"}>
+                        Cajero:
+                      </Typography>
+                    </Box>
                   </Stack>
                 </Stack>
               </Stack>
