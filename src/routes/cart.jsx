@@ -1,4 +1,4 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Modal, Stack, Typography } from "@mui/material";
 import ListItem from "../components/ListItem";
 import { useShoppingCart } from "../store/shoppingCart";
 import ModalHeader from "../components/ModalHeader";
@@ -15,7 +15,7 @@ import AddBtn from "../components/Buttons/AddBtn";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import Payment from "./payment";
 import zIndex from "@mui/material/styles/zIndex";
-
+import EditItem from "../components/modals/EditItem";
 const Cart = ({ height }) => {
   const formik = useFormik({
     initialValues: {
@@ -233,11 +233,11 @@ const Cart = ({ height }) => {
             backgroundColor: "rgba(0, 0, 0, 0.7);",
           },
         }}
-        open={openModal}
+        open={true}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <EditItem onClose={handleCloseModal} />
+        <EditItem />
       </Modal>
     </>
   );

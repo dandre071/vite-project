@@ -1,5 +1,10 @@
-import { TextField } from "@mui/material";
+import { Grid, TextField } from "@mui/material";
+import { useFormik } from "formik";
 import React from "react";
+import { productSchema } from "../Validations";
+import { useShoppingCart } from "../../store/shoppingCart";
+import FormSelect2 from "../Forms/FormSelect2";
+import { options } from "../components/utils/options";
 
 const EditItem = () => {
   const handlerAdd = (e) => {
@@ -77,7 +82,7 @@ const EditItem = () => {
             fullWidth
             name="finish"
             onChange={formik.handleChange}
-            options={acabado}
+            options={options.acabados}
             label={"Acabado"}
             defaultValue={"Sin acabado"}
             renderValue={(selected) => selected.join(", ")}
