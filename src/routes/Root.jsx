@@ -68,7 +68,7 @@ const Root = () => {
                     flexShrink: 0,
                     /*   bgcolor: "blue", */
                     "&.Mui-selected": {
-                      backgroundColor: "black",
+                      backgroundColor: "#e1e1e1",
                       color: "white",
                     },
                     "&.Mui-focusVisible": {
@@ -79,14 +79,23 @@ const Root = () => {
                     },
                   }}
                   className={
-                    location.pathname == item.path ? "Mui-selected" : null
+                    location.pathname.includes(item.path)
+                      ? "Mui-selected"
+                      : null
                   }
                 >
                   <ListItemIcon>{item.icon}</ListItemIcon>
-                  <ListItemText
-                    /*  className={location.pathname == item.path ? "active" : null} */
-                    primary={item.text}
-                  />
+
+                  <Typography
+                    style={{
+                      color: "black",
+                      fontWeight: 600,
+                      fontSize: 20,
+                      textAlign: "left",
+                    }}
+                  >
+                    {item.text}
+                  </Typography>
                 </ListItemButton>
               ))}
             </List>

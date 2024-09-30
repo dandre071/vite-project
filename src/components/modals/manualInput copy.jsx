@@ -96,6 +96,7 @@ const ManualInput2 = ({ text, acabado }) => {
       descolillado: "",
       transfer: false,
       itemTotalPrice: 0,
+      orientation: "",
     },
     validationSchema: productSchema,
 
@@ -129,7 +130,6 @@ const ManualInput2 = ({ text, acabado }) => {
       <Modal
         disableEscapeKeyDown
         //hideBackdrop
-
         open={open}
         //onClose={handleClose}
         disableBackdropClick
@@ -140,7 +140,7 @@ const ManualInput2 = ({ text, acabado }) => {
           <Box
             sx={{
               ...styleConf,
-              width: "auto",
+              width: 500,
               bgcolor: "white",
               display: "flex",
               flexDirection: "column",
@@ -150,28 +150,28 @@ const ManualInput2 = ({ text, acabado }) => {
               justifyContent: "center",
               pt: 1,
               pb: 1,
-              borderRadius: customTheme.shape.borderRadius,
+              borderRadius: 2,
             }}
           >
             <CloseRoundedIcon
               className="close-btn arrow-btn"
               onClick={handleClose}
             />
-            <ModalHeader title={"Configuración Manual"} />
+            <ModalHeader title={""} />
 
             <Box
               sx={{
                 p: customTheme.p[5],
                 pt: customTheme.p[0],
                 pb: customTheme.p[1],
-                width: customTheme.width[6],
+
                 borderRadius: 3,
                 bgcolor: "white",
               }}
             >
               <form onSubmit={formik.handleSubmit}>
                 <Grid container spacing={1.5} sx={{ flexGrow: 1 }}>
-                  <Grid item sm={12} xs={12}>
+                  <Grid item lg={12} sm={12} xs={12}>
                     <TextField
                       onBlur={formik.handleBlur}
                       error={formik.errors.name}
@@ -244,38 +244,9 @@ const ManualInput2 = ({ text, acabado }) => {
                     />
                   </Grid>
 
-                  {formik.values.price > 0 && (
-                    <Grid item sm={12} xs={12}>
-                      {/* <PriceCalc
-                          disabled={
-                            formik.errors.price ||
-                            formik.errors.quantity ||
-                            !formik.values.price
-                              ? true
-                              : false
-                          }
-                          value={formik.values.itemTotalPrice}
-                          name={"itemTotalPrice"}
-                          text={`${colPesos.format(
-                            formik.values.itemTotalPrice
-                          )}`}
-                          onClick={totalCalc}
-                        /> */}
-                      {/*disabled={
-                            formik.errors.price ||
-                            formik.errors.quantity ||
-                            !formik.values.price
-                              ? true
-                              : false
-                          }*/}
-                      <PriceCalc
-                        value={formik.values.itemTotalPrice}
-                        name="itemTotalPrice"
-                        text={colPesos.format(formik.values.itemTotalPrice)}
-                        //onClick={totalCalc}
-                      />
-                    </Grid>
-                  )}
+                  {/* {formik.values.price > 0 && ( */}
+
+                  {/*    )} */}
 
                   <Grid item sm={12} xs={12}>
                     <Box
@@ -301,12 +272,24 @@ const ManualInput2 = ({ text, acabado }) => {
                         renderValue={(selected) => selected.join(", ")}
                       />
 
-                      {(formik.values.finish == "Ojales" ||
+                      <FormSelect2
+                        value={formik.values.orientation}
+                        error={formik.errors.orientation}
+                        helperText={formik.errors.orientation}
+                        fullWidth
+                        name="orientation"
+                        onChange={formik.handleChange}
+                        options={["", "Vertical", "Horizontal"]}
+                        label={"Orientación"}
+                        /* defaultValue={"Sin acabado"} */
+                      />
+
+                      {(formik.values.finish.includes == "Ojales" ||
                         formik.values.finish == "Bolsillos") && (
                         <TextField
                           sx={{
                             color: "black",
-                            width: "49%",
+                            width: "45%",
                             borderRadius: 2,
                           }}
                           fullWidth
@@ -339,6 +322,36 @@ const ManualInput2 = ({ text, acabado }) => {
                       minRows={2}
                       multiline
                       sx={{ pb: 3 }}
+                    />
+                  </Grid>
+                  <Grid item sm={12} xs={12}>
+                    {/* <PriceCalc
+                          disabled={
+                            formik.errors.price ||
+                            formik.errors.quantity ||
+                            !formik.values.price
+                              ? true
+                              : false
+                          }
+                          value={formik.values.itemTotalPrice}
+                          name={"itemTotalPrice"}
+                          text={`${colPesos.format(
+                            formik.values.itemTotalPrice
+                          )}`}
+                          onClick={totalCalc}
+                        /> */}
+                    {/*disabled={
+                            formik.errors.price ||
+                            formik.errors.quantity ||
+                            !formik.values.price
+                              ? true
+                              : false
+                          }*/}
+                    <PriceCalc
+                      value={formik.values.itemTotalPrice}
+                      name="itemTotalPrice"
+                      text={colPesos.format(formik.values.itemTotalPrice)}
+                      //onClick={totalCalc}
                     />
                   </Grid>
                 </Grid>{" "}

@@ -14,6 +14,7 @@ const ListItem = ({
   description,
   finishQ,
   onClick,
+  orientation,
 }) => {
   const items = useShoppingCart((state) => state.items);
   const invoiceGrid = "1fr 1cm 3cm";
@@ -55,7 +56,7 @@ const ListItem = ({
               className="invoice-content-data-l"
               sx={{ fontWeight: 600, fontSize: 15 }}
             >
-              {product}
+              {`${product} - ${orientation}`}
             </Typography>
             <div style={{}}>
               <Typography
@@ -145,7 +146,7 @@ const ListItem = ({
             alignSelf: "center",
           }}
         >
-          {/* <Edit2Icon onClick={onClick} /> */}
+          <Edit2Icon size={21} onClick={onClick} />
           <DeleteBtn onClick={onClick} />
         </Box>
       </Box>

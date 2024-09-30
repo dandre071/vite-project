@@ -12,14 +12,11 @@ export const useShoppingCart = create()(
         }));
       },
       count: (state) => state.personalData,
-      /*  updateItem: (id, index, item) => {
+      updateItem: (id, index, item) => {
         set((state) => ({
-          items: {
-            ...state.items,
-            item.quantity.value: 100
-          },
+          items: [...state.items, values],
         }));
-      }, */
+      },
       removeItem: (id) => {
         set((state) => ({
           items: state.items.filter((item) => item.id !== id),

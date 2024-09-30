@@ -11,7 +11,7 @@ const DeleteBtn = ({ sx, onClick }) => {
 
       <Trash2
         className="delete-btn"
-        sx={{ fontSize: 25, fontWeight: 800 }}
+        sx={{ fontSize: 20, fontWeight: 800 }}
         onClick={onClick}
       />
     </>

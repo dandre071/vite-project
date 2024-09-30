@@ -142,6 +142,7 @@ const Cart = ({ height }) => {
                         key={item.id}
                       >
                         <ListItem
+                          orientation={item.orientation}
                           key={item.id}
                           product={item.name}
                           q={item.quantity}
@@ -222,7 +223,22 @@ const Cart = ({ height }) => {
           />
         </Box>
       </Box>
-      {/*       </motion.div> */}
+      <Modal
+        sx={{
+          display: "flex",
+          justifySelf: "center",
+          alignSelf: "center",
+
+          "& .MuiModal-backdrop": {
+            backgroundColor: "rgba(0, 0, 0, 0.7);",
+          },
+        }}
+        open={openModal}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <EditItem onClose={handleCloseModal} />
+      </Modal>
     </>
   );
 };

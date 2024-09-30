@@ -13,7 +13,7 @@ const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
         //  flexDirection: "row",
         borderRadius: customTheme.shape.borderRadius,
         justifyContent: "space-around",
-        border: `2px solid ${customTheme.palette.primary.main}`,
+        /* border: `2px solid ${customTheme.palette.primary.main}`, */
         p: 2,
         alignItems: "center",
       }}
@@ -30,11 +30,11 @@ const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
           //disabled={disabled}
           sx={{
             // width: "40%",
-            color: "white",
-            bgcolor: "primary.main",
+            color: "black",
+            /*  bgcolor: "primary.main", */
             p: 1,
             borderRadius: 2,
-            fontSize: 20,
+            fontSize: 35,
             lineHeight: 1,
             textAlign: "right",
             fontWeight: 500,
@@ -54,7 +54,7 @@ const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
           display: "flex",
           justifyContent: "right",
           textAlign: "right",
-          fontSize: 30,
+          fontSize: 35,
         }}
       >
         {text}
