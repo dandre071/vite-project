@@ -25,29 +25,62 @@ import { customTheme } from "./Hooks/useCustomTheme.jsx";
 
 export const routes = [
   { path: "/", element: <Root />, name: "Home" },
-  { path: "/client-data", element: <ClientData />, name: "Datos del cliente" },
+
   {
-    path: "/product-module",
+    path: "/client-data",
+    element: <ClientData />,
+    name: "Datos del cliente",
+  },
+  {
+    path: "/client-data/product-module",
     element: <ProductModule />,
     name: "Producto",
   },
   {
-    path: "/cart",
+    path: "/client-data/cart",
     element: <Cart />,
     name: "Carrito",
   },
   {
-    path: "/payment",
+    path: "/client-data/payment",
     element: <Payment />,
     name: "Pagar",
   },
 ];
 const router = createBrowserRouter([
+  /* {
+    path: "/",
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [...routes],
+  }, */
   {
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [...routes],
+  },
+  {
+    path: "/client-data",
+    element: <ClientData />,
+    name: "Datos del cliente",
+    children: [
+      {
+        path: "/client-data/product-module",
+        element: <ProductModule />,
+        name: "Producto",
+      },
+      {
+        path: "/client-data/cart",
+        element: <Cart />,
+        name: "Carrito",
+      },
+      {
+        path: "/client-data/payment",
+        element: <Payment />,
+        name: "Pagar",
+      },
+    ],
   },
 ]);
 /* ReactDOM.createRoot(document.getElementById("root")).render(

@@ -83,7 +83,7 @@ const ProductModule = () => {
               backText={"Datos del cliente"}
               className={"arrow-btn"}
               pathBack={"/client-data"}
-              pathNext={"/cart"}
+              pathNext={"/client-data/cart"}
             />
           </Box>{" "}
         </div>

@@ -215,7 +215,7 @@ const Cart = ({ height }) => {
             /*  nextText={"Pagar"} */
             backText={"Agregar producto"}
             pointer={items.length === 0 ? "none" : ""}
-            pathBack={"/product-module"}
+            pathBack={"/client-data/product-module"}
             /* pathNext={"/payment"} */
 
             classname={items.length > 0 ? "arrow-btn" : "disabled-btn"}

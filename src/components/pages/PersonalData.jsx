@@ -52,7 +52,7 @@ const PersonalData = () => {
         });
     addData(formik.values);
 
-    navigate("/product-module");
+    navigate("/client-data/product-module");
   };
 
   const formik = useFormik({
