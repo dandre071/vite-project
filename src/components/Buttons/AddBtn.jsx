@@ -18,7 +18,7 @@ const AddBtn = ({
   disabled,
 }) => {
   return (
-    <Box>
+    <Box sx={{ width: width }}>
       <Button
         fullWidth
         title={title}

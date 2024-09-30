@@ -434,6 +434,7 @@
   width: 90%;
   display: grid;
   place-items: center;
+  height: auto;
 }
 .status-modal-icon {
   color: greenyellow;
@@ -756,7 +757,7 @@
 }
 body {
   margin: 0;
-  height: 100vh;
+
   width: 100vw;
 
   overflow: hidden;
@@ -764,11 +765,9 @@ body {
 
 .aside {
   grid-area: aside;
-  height: calc(
-    100vh - var(--nav-height)
-  ); /* Full-height: remove this if you want "auto" height */
+  height: calc(100vh); /* Full-height: remove this if you want "auto" height */
   width: 200px;
-  height: 100%;
+
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
   /*  top: var(--nav-height); */ /* Stay at the top */
@@ -833,12 +832,10 @@ body {
   justify-content: center;
 }
 .page-layout {
-  height: calc(100vh - var(--nav-height));
+  /* height: calc(100vh - var(--nav-height)); */
   top: 0;
   width: 100%;
-  /*  background-color: #009ffe; */
-  /*   background-color: rgb(244, 245, 255);
-  background-color: rgb(255, 255, 255); */
+
   display: grid;
 
   justify-content: center;
@@ -923,4 +920,21 @@ body {
 }
 .MuiDrawer-paper {
   background-color: #e50037;
+}
+@media only screen and (max-height: 800px) {
+  .page-layout {
+    /*  display: flex;
+    transform: scale(0.85);
+    align-items: start; */
+    /*  margin-top: -170px; */
+  }
+  #pdf {
+  }
+  #form-container {
+  }
+}
+.btn {
+}
+.btn:hover {
+  cursor: pointer;
 }

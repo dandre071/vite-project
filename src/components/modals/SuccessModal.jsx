@@ -14,7 +14,9 @@ import { useState } from "react";
 import { useLocalStorage } from "../../Hooks/hooks.js";
 import { usePersonalData, useShoppingCart } from "../../store/shoppingCart.js";
 import { usePaymentData } from "../../store/paymentData.js";
-import { redirect } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
+import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -27,51 +29,54 @@ const style = {
   p: 4,
 };
 
-const SuccessModal = ({ text, onClick, handlePrint }) => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    close();
-    // setOpen(false);
-  };
-
-  const paymentData = usePaymentData((state) => state.clearData);
-  const clientData = usePersonalData((state) => state.clearData);
-  const cart = useShoppingCart((state) => state.clearCart);
-
-  const clear = () => {
-    paymentData();
-    clientData();
-    cart();
-    // handleClose();
-    //redirect("/");
-  };
-  const handleClick = () => {
-    onClick();
-    setOpen(true);
-  };
+const SuccessModal = ({ onClick }) => {
   return (
-    <div>
-      <Button onClick={onClick}>Open modal</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-          <Button onClick={clear}>clear</Button>
-        </Box>
-      </Modal>
-    </div>
+    <Box className="status-modal">
+      <Box className="status-modal-box">
+        <CheckCircleRoundedIcon
+          className="status-modal-icon"
+          sx={{ fontSize: 150 }}
+        />
+      </Box>
+      <Box className="status-modal-box">
+        <Typography
+          sx={{ fontSize: 40, fontWeight: 800 }}
+          className="status-modal-title"
+        >
+          Operación exitosa!
+        </Typography>
+        <Typography
+          sx={{ fontSize: 16, fontWeight: 400, textAlign: "center" }}
+          className="status-modal-title"
+        >
+          Todo salió bien y la información se agregó con normalidad.
+        </Typography>
+      </Box>
+      <Link>
+        <Button
+          variant="outlined"
+          sx={{
+            color: "greenyellow",
+            border: `2px solid greenyellow`,
+            textTransform: "capitalize",
+            borderRadius: 2,
+            height: 50,
+            width: 200,
+            fontSize: 20,
+            transform: "scale(1)",
+            "&:hover": {
+              border: `2px solid greenyellow`,
+              bgcolor: `greenyellow`,
+              color: "white",
+              transform: "scale(1.05)",
+            },
+          }}
+          onClick={onClick}
+        >
+          Finalizar
+        </Button>
+      </Link>
+    </Box>
   );
 };
 

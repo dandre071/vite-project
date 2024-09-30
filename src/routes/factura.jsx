@@ -11,12 +11,13 @@ import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
 import { usePaymentData } from "../store/paymentData";
 import { useReactToPrint } from "react-to-print";
 import { useState } from "react";
-import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import PrintBtn from "../components/Buttons/PrintBtn";
 import { Columns } from "lucide-react";
 import DeleteRoundedBtn from "../components/Buttons/DeleteRoundedBtn";
+import SuccessModal from "../components/modals/SuccessModal";
+import ConfirmModal from "../components/modals/ConfirmModal";
 
-const Factura = ({ openModal }) => {
+const Factura = ({ openModal, onClose }) => {
   const navigate = useNavigate();
 
   const targetRef = useRef();
@@ -50,10 +51,10 @@ const Factura = ({ openModal }) => {
     // timeZone: "Colombia/Bogotá",
   }).format(date);
 
+  const [confirmOpen, setConfirmOpen] = useState(false);
+
   const [open, setOpen] = useState(false);
-  function showModalHandler() {
-    setShowModal(!showModal);
-  }
+  const handleClose = () => setOpen(false);
   const clear = () => {
     paymentDataReset();
     clientData();
@@ -66,15 +67,13 @@ const Factura = ({ openModal }) => {
     documentTitle: `${client.name}.pdf`,
     copyStyles: true,
     //onAfterPrint: () => setOpen(true),
-    onAfterPrint: () => clear(),
-    onAfterPrint: () => setOpen(true),
+    onAfterPrint: () => {
+      setConfirmOpen(true);
+    },
+    /*  onAfterPrint: () => clear(), */
+    /*  onAfterPrint: () => setOpen(true), */
     //onAfterPrint: () => navigate("/cart"),
   });
-
-  const printFn = () => {
-    handlePrint();
-    //setShowModal(true);
-  };
 
   const phoneNumber = client.phone;
 
@@ -95,14 +94,10 @@ const Factura = ({ openModal }) => {
     p: 0,
   };
 
-  const handleClose = () => {
-    setOpen(false);
-    redirect("/");
-  };
-
   return (
     <>
       <div
+        id="pdf"
         style={{
           display: "flex",
           width: "140mm",
@@ -643,7 +638,7 @@ const Factura = ({ openModal }) => {
                       sx={{
                         height: "100%",
                         bgcolor: "#f4f4f4",
-                        height: "100%",
+
                         mt: 1,
                       }}
                     >
@@ -658,56 +653,10 @@ const Factura = ({ openModal }) => {
         <div>
           <Modal
             open={open}
-            onClose={handleClose}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box className="status-modal">
-              <Box className="status-modal-box">
-                <CheckCircleRoundedIcon
-                  className="status-modal-icon"
-                  sx={{ fontSize: 150 }}
-                />
-              </Box>
-              <Box className="status-modal-box">
-                <Typography
-                  sx={{ fontSize: 40, fontWeight: 800 }}
-                  className="status-modal-title"
-                >
-                  Éxito!
-                </Typography>
-                <Typography
-                  sx={{ fontSize: 16, fontWeight: 400, textAlign: "center" }}
-                  className="status-modal-title"
-                >
-                  Todo salió bien y la información se agregó con normalidad.
-                </Typography>
-              </Box>
-              <Link>
-                <Button
-                  variant="outlined"
-                  sx={{
-                    color: "greenyellow",
-                    border: `2px solid greenyellow`,
-                    textTransform: "capitalize",
-                    borderRadius: 2,
-                    height: 50,
-                    width: 200,
-                    fontSize: 20,
-                    transform: "scale(1)",
-                    "&:hover": {
-                      border: `2px solid greenyellow`,
-                      bgcolor: `greenyellow`,
-                      color: "white",
-                      transform: "scale(1.05)",
-                    },
-                  }}
-                  onClick={clear}
-                >
-                  Finalizar
-                </Button>
-              </Link>
-            </Box>
+            <SuccessModal onClick={clear} />
           </Modal>
         </div>
       </div>
@@ -720,11 +669,16 @@ const Factura = ({ openModal }) => {
           gap: 10,
         }}
       >
-        <PrintBtn handlePrint={handlePrint} style={{}} />
-        <DeleteRoundedBtn handlePrint={handlePrint} style={{}} />
+        <PrintBtn handlePrint={handlePrint} />
+        <DeleteRoundedBtn onClick={onClose} />
       </div>
-
-      {/*    </Modal> */}
+      <Modal
+        open={confirmOpen}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <ConfirmModal onClick={clear} onClose={() => setConfirmOpen(false)} />
+      </Modal>
     </>
   );
 };

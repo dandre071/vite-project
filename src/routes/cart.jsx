@@ -176,7 +176,9 @@ const Cart = ({ height }) => {
             >
               <Stack
                 sx={{
-                  display: "grid",
+                  display: "flex",
+                  //bgcolor: "red",
+                  height: "80%",
                   gap: 2,
                   alignItems: "center",
                 }}
@@ -190,10 +192,10 @@ const Cart = ({ height }) => {
                 >
                   Aún no se han agregado productos.
                 </Typography>
+                <Link to={"/product-module"}>
+                  <AddBtn variant="prime" width={300} />
+                </Link>
               </Stack>
-              <Link to={"/product-module"}>
-                <AddBtn variant="prime" style={{ width: 100 }} />
-              </Link>
             </Box>
           )}
         </Box>

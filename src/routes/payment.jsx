@@ -456,7 +456,7 @@ const Payment = ({ height }) => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Factura />
+          <Factura onClose={handleCloseModal} />
         </Modal>
         {/*  <Factura targetRef={targetRef} /> */}
       </Stack>
