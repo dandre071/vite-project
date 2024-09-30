@@ -4,8 +4,9 @@ import React from "react";
 import { productSchema } from "../Validations";
 import { useShoppingCart } from "../../store/shoppingCart";
 import FormSelect2 from "../Forms/FormSelect2";
-import { options } from "../components/utils/options";
-
+import { options } from "../utils/options";
+import PriceCalc from "../PriceCalc.jsx";
+import { colPesos } from "../utils/configs.js";
 const EditItem = () => {
   const handlerAdd = (e) => {
     addItem({
