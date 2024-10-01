@@ -12,9 +12,9 @@ const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
         display: "flex",
         //  flexDirection: "row",
         borderRadius: customTheme.shape.borderRadius,
-        justifyContent: "space-around",
+        justifyContent: "space-between",
         /* border: `2px solid ${customTheme.palette.primary.main}`, */
-        p: 2,
+        height: 30,
         alignItems: "center",
       }}
       item

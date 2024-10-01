@@ -1,4 +1,4 @@
-import { Grid, TextField } from "@mui/material";
+import { Box, Button, Grid, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import React from "react";
 import { productSchema } from "../Validations";
@@ -41,86 +41,112 @@ const EditItem = () => {
   });
   const addItem = useShoppingCart((state) => state.addItem);
   return (
-    <div>
-      <Grid container>
-        <Grid item sm={4} xs={4}>
-          <TextField
-            onBlur={formik.handleBlur}
-            error={formik.errors.name}
-            helperText={formik.errors.name}
-            value={formik.values.name}
-            name="name"
-            onChange={formik.handleChange}
-            fullWidth
-            label={"Producto"}
-            type="text"
-          />
+    <div style={{ display: "grid", gridTemplateRows: "80px 1fr" }}>
+      <Box sx={{ bgcolor: "primary.dark" }}>header</Box>
+      <Grid
+        container
+        sx={{
+          width: 500,
+          height: 400,
+          bgcolor: "white",
+          placeContent: "center",
+        }}
+      >
+        <Grid
+          container
+          sx={{
+            width: "450px",
+            height: "90%",
+            bgcolor: "red",
+          }}
+        >
+          <Grid item lg={12}>
+            <TextField
+              onBlur={formik.handleBlur}
+              error={formik.errors.name}
+              helperText={formik.errors.name}
+              value={formik.values.name}
+              name="name"
+              onChange={formik.handleChange}
+              fullWidth
+              label={"Producto"}
+              type="text"
+            />
+          </Grid>
+          <Grid item lg={2}>
+            <TextField
+              error={formik.errors.quantity}
+              helperText={formik.errors.quantity}
+              value={formik.values.quantity}
+              name="quantity"
+              fullWidth
+              label={"Cantidad"}
+              type="number"
+              onChange={(e) => {
+                formik.setValues({
+                  ...formik.values,
+                  quantity: e.target.value,
+                  itemTotalPrice: e.target.value * formik.values.price,
+                });
+              }}
+            />
+          </Grid>
+          <Grid item lg={5} xs={4}>
+            <FormSelect2
+              value={formik.values.finish}
+              multiple={true}
+              error={formik.errors.finish}
+              helperText={formik.errors.finish}
+              fullWidth
+              name="finish"
+              onChange={formik.handleChange}
+              options={options.acabados}
+              label={"Acabado"}
+              defaultValue={"Sin acabado"}
+              renderValue={(selected) => selected.join(", ")}
+            />
+          </Grid>
+          <Grid item lg={5}>
+            <FormSelect2
+              value={formik.values.orientation}
+              error={formik.errors.orientation}
+              helperText={formik.errors.orientation}
+              fullWidth
+              name="orientation"
+              onChange={formik.handleChange}
+              options={["", "Vertical", "Horizontal"]}
+              label={"Orientación"}
+              /* defaultValue={"Sin acabado"} */
+            />
+          </Grid>
+          <Grid item lg={12}>
+            <TextField
+              error={formik.errors.description}
+              helperText={formik.errors.description}
+              value={formik.values.description}
+              name="description"
+              fullWidth
+              label={"Descripción"}
+              type="text"
+              onChange={formik.handleChange}
+              minRows={2}
+              multiline
+            />
+          </Grid>
+          <Grid item lgm={12}>
+            <PriceCalc
+              value={formik.values.itemTotalPrice}
+              name="itemTotalPrice"
+              text={colPesos.format(formik.values.itemTotalPrice)}
+              //onClick={totalCalc}
+            />
+          </Grid>
+          <Grid item lg={12}>
+            <Button fullWidth variant="prime" sx={{ height: "100%" }}>
+              Aceptar
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item sm={4} xs={4}>
-          <TextField
-            error={formik.errors.quantity}
-            helperText={formik.errors.quantity}
-            value={formik.values.quantity}
-            name="quantity"
-            fullWidth
-            label={"Cantidad"}
-            type="number"
-            onChange={(e) => {
-              formik.setValues({
-                ...formik.values,
-                quantity: e.target.value,
-                itemTotalPrice: e.target.value * formik.values.price,
-              });
-            }}
-          />
-        </Grid>
-        <Grid item sm={4} xs={4}>
-          <FormSelect2
-            value={formik.values.finish}
-            multiple={true}
-            error={formik.errors.finish}
-            helperText={formik.errors.finish}
-            fullWidth
-            name="finish"
-            onChange={formik.handleChange}
-            options={options.acabados}
-            label={"Acabado"}
-            defaultValue={"Sin acabado"}
-            renderValue={(selected) => selected.join(", ")}
-          />
-        </Grid>
-        <FormSelect2
-          value={formik.values.orientation}
-          error={formik.errors.orientation}
-          helperText={formik.errors.orientation}
-          fullWidth
-          name="orientation"
-          onChange={formik.handleChange}
-          options={["", "Vertical", "Horizontal"]}
-          label={"Orientación"}
-          /* defaultValue={"Sin acabado"} */
-        />
-        <Grid item sm={12} xs={12} sx={{ pr: 1, pl: 1, pt: 0, pb: 0 }}>
-          <TextField
-            error={formik.errors.description}
-            helperText={formik.errors.description}
-            value={formik.values.description}
-            name="description"
-            fullWidth
-            label={"Descripción"}
-            type="text"
-            onChange={formik.handleChange}
-            minRows={2}
-            multiline
-            sx={{ pb: 3 }}
-          />
-        </Grid>
-        <PriceCalc
-          value={formik.values.itemTotalPrice}
-          name="itemTotalPrice"
-          text={colPesos.format(formik.values.itemTotalPrice)}
-          //onClick={totalCalc}
-        />
       </Grid>
     </div>
   );
