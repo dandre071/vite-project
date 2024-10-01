@@ -76,14 +76,13 @@ const EditItem = () => {
           sx={{
             width: "90%",
             height: "85%",
-            bgcolor: "red",
           }}
         >
           <Grid item lg={12}>
             <TextField
               onBlur={formik.handleBlur}
               error={formik.errors.name}
-              helperText={formik.errors.name}
+              /*  helperText={formik.errors.name} */
               value={formik.values.name}
               name="name"
               onChange={formik.handleChange}
@@ -105,7 +104,7 @@ const EditItem = () => {
                 ),
               }}
               error={formik.errors.price}
-              helperText={formik.errors.price}
+              /*    helperText={formik.errors.price} */
               value={formik.values.price}
               //onChange={formik.handleChange}
               onChange={(e) => {
@@ -181,16 +180,17 @@ const EditItem = () => {
               multiline
             />
           </Grid>
-          <Grid item lgm={12}>
-            <PriceCalc
-              value={formik.values.itemTotalPrice}
-              name="itemTotalPrice"
-              text={colPesos.format(formik.values.itemTotalPrice)}
-              //onClick={totalCalc}
-            />
-          </Grid>
-          <Grid item lg={12}>
-            <Button fullWidth variant="prime" sx={{ height: "100%" }}>
+          <Grid item lg={12} sx={{ display: "flex", flexDirection: "row" }}>
+            <Box sx={{ width: "60%" }}>
+              <PriceCalc
+                value={formik.values.itemTotalPrice}
+                name="itemTotalPrice"
+                text={colPesos.format(formik.values.itemTotalPrice)}
+                //onClick={totalCalc}
+              />
+            </Box>
+
+            <Button variant="prime" sx={{ height: 50, width: "40%" }}>
               Aceptar
             </Button>
           </Grid>
