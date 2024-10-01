@@ -1,4 +1,4 @@
-import { Box, Button, Grid, TextField } from "@mui/material";
+import { Box, Button, Grid, InputAdornment, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import React from "react";
 import { productSchema } from "../Validations";
@@ -41,7 +41,15 @@ const EditItem = () => {
   });
   const addItem = useShoppingCart((state) => state.addItem);
   return (
-    <div style={{ display: "grid", gridTemplateRows: "80px 1fr" }}>
+    <Box
+      sx={{
+        display: "grid",
+        gridTemplateRows: "80px 1fr",
+        borderRadius: 20,
+        width: 600,
+        height: 500,
+      }}
+    >
       <Box
         sx={{
           bgcolor: "primary.dark",
@@ -58,8 +66,6 @@ const EditItem = () => {
       <Grid
         container
         sx={{
-          width: 500,
-          height: 400,
           bgcolor: "white",
           placeContent: "center",
         }}
@@ -67,7 +73,7 @@ const EditItem = () => {
         <Grid
           container
           sx={{
-            width: "450px",
+            width: "90%",
             height: "90%",
             bgcolor: "red",
           }}
@@ -83,6 +89,35 @@ const EditItem = () => {
               fullWidth
               label={"Producto"}
               type="text"
+            />
+          </Grid>
+          <Grid item lg={5} xs={8}>
+            <TextField
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment
+                    position="start"
+                    InputProps={{ fontSize: 40 }}
+                  >
+                    $
+                  </InputAdornment>
+                ),
+              }}
+              error={formik.errors.price}
+              helperText={formik.errors.price}
+              value={formik.values.price}
+              //onChange={formik.handleChange}
+              onChange={(e) => {
+                formik.setValues({
+                  ...formik.values,
+                  price: e.target.value,
+                  itemTotalPrice: e.target.value * formik.values.quantity,
+                });
+              }}
+              name="price"
+              fullWidth
+              label={"Precio"}
+              type="number"
             />
           </Grid>
           <Grid item lg={2}>
@@ -160,7 +195,7 @@ const EditItem = () => {
           </Grid>
         </Grid>
       </Grid>
-    </div>
+    </Box>
   );
 };
 
