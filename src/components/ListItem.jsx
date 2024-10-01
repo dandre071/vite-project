@@ -1,9 +1,10 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Modal, Stack, Typography } from "@mui/material";
 import DeleteBtn from "./Buttons/DeleteBtn";
 import { useShoppingCart } from "../store/shoppingCart";
 import { motion } from "framer-motion";
 import { Edit2Icon } from "lucide-react";
 import { customTheme } from "../Hooks/useCustomTheme";
+import EditItem from "./modals/EditItem";
 
 const ListItem = ({
   product,
@@ -150,6 +151,22 @@ const ListItem = ({
           <DeleteBtn onClick={onClick} />
         </Box>
       </Box>
+      <Modal
+        sx={{
+          display: "flex",
+          justifySelf: "center",
+          alignSelf: "center",
+
+          "& .MuiModal-backdrop": {
+            backgroundColor: "rgba(0, 0, 0, 0.7);",
+          },
+        }}
+        open={true}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <EditItem />
+      </Modal>
     </motion.div>
   );
 };

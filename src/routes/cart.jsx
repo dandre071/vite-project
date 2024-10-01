@@ -223,22 +223,6 @@ const Cart = ({ height }) => {
           />
         </Box>
       </Box>
-      <Modal
-        sx={{
-          display: "flex",
-          justifySelf: "center",
-          alignSelf: "center",
-
-          "& .MuiModal-backdrop": {
-            backgroundColor: "rgba(0, 0, 0, 0.7);",
-          },
-        }}
-        open={true}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <EditItem />
-      </Modal>
     </>
   );
 };
