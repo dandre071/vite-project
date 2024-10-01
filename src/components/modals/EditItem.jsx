@@ -42,7 +42,19 @@ const EditItem = () => {
   const addItem = useShoppingCart((state) => state.addItem);
   return (
     <div style={{ display: "grid", gridTemplateRows: "80px 1fr" }}>
-      <Box sx={{ bgcolor: "primary.dark" }}>header</Box>
+      <Box
+        sx={{
+          bgcolor: "primary.dark",
+          display: "grid",
+          placeContent: "center",
+          color: "white",
+          fontSize: 35,
+          fontWeight: 600,
+          letterSpacing: 2,
+        }}
+      >
+        header
+      </Box>
       <Grid
         container
         sx={{
