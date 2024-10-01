@@ -45,9 +45,10 @@ const EditItem = () => {
       sx={{
         display: "grid",
         gridTemplateRows: "80px 1fr",
-        borderRadius: 20,
+        borderRadius: 2,
         width: 600,
         height: 500,
+        overflow: "hidden",
       }}
     >
       <Box
@@ -74,7 +75,7 @@ const EditItem = () => {
           container
           sx={{
             width: "90%",
-            height: "90%",
+            height: "85%",
             bgcolor: "red",
           }}
         >
