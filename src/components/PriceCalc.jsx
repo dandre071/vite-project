@@ -14,7 +14,7 @@ const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
         borderRadius: customTheme.shape.borderRadius,
         justifyContent: "space-between",
         /* border: `2px solid ${customTheme.palette.primary.main}`, */
-        height: 30,
+
         alignItems: "center",
       }}
       item

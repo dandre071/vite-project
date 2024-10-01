@@ -91,7 +91,7 @@ const EditItem = () => {
               type="text"
             />
           </Grid>
-          <Grid item lg={5} xs={8}>
+          <Grid item lg={4} xs={8}>
             <TextField
               InputProps={{
                 startAdornment: (
@@ -138,7 +138,7 @@ const EditItem = () => {
               }}
             />
           </Grid>
-          <Grid item lg={5} xs={4}>
+          <Grid item lg={3} xs={4}>
             <FormSelect2
               value={formik.values.finish}
               multiple={true}
@@ -153,7 +153,7 @@ const EditItem = () => {
               renderValue={(selected) => selected.join(", ")}
             />
           </Grid>
-          <Grid item lg={5}>
+          <Grid item lg={3}>
             <FormSelect2
               value={formik.values.orientation}
               error={formik.errors.orientation}
