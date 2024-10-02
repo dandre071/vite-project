@@ -26,8 +26,8 @@ const menuItems = [
 const Root = () => {
   const location = useLocation();
   const pathText = routes.filter((item) => item.path == location.pathname);
-  const pageTitle = pathText[0].name;
-  console.log(pathText[0].name);
+  const pageTitle = pathText[0] ? pathText[0].name : "";
+  /* console.log(pathText[0].name); */
   const navigate = useNavigate();
   return (
     <ThemeProvider theme={customTheme}>
@@ -104,7 +104,7 @@ const Root = () => {
         <div className={"nav-area"}>
           <div>
             <Typography sx={{ color: "white", fontSize: 27, fontWeight: 700 }}>
-              {pageTitle}
+              {pageTitle || ""}
             </Typography>
 
             <CartCounter />
