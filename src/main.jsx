@@ -22,9 +22,15 @@ import Cart from "./routes/cart.jsx";
 import Payment from "./routes/payment.jsx";
 import { ThemeProvider } from "@mui/material";
 import { customTheme } from "./Hooks/useCustomTheme.jsx";
+import EditItem from "./routes/EditItem.jsx";
 
 export const routes = [
   { path: "/", element: <Root />, name: "Home" },
+  {
+    path: "/client-data/cart/:itemId",
+    element: <EditItem />,
+    name: "Editar",
+  },
 
   {
     path: "/client-data",
@@ -68,7 +74,15 @@ const router = createBrowserRouter([
         path: "/client-data/cart",
         element: <Cart />,
         name: "Carrito",
+        children: [
+          {
+            path: "/client-data/cart/:itemId",
+            element: <EditItem />,
+            name: "Editar",
+          },
+        ],
       },
+
       {
         path: "/client-data/payment",
         element: <Payment />,

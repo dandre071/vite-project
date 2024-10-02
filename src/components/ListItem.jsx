@@ -15,6 +15,7 @@ const ListItem = ({
   finishQ,
   onClick,
   orientation,
+  editClick,
 }) => {
   const items = useShoppingCart((state) => state.items);
   const invoiceGrid = "1fr 1cm 3cm";
@@ -146,7 +147,7 @@ const ListItem = ({
             alignSelf: "center",
           }}
         >
-          <Edit2Icon size={21} onClick={onClick} />
+          <Edit2Icon size={21} onClick={editClick} />
           <DeleteBtn onClick={onClick} />
         </Box>
       </Box>

@@ -12,11 +12,13 @@ import { colPesos } from "../components/utils/configs";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { AnimatePresence, LayoutGroup, motion, stagger } from "framer-motion";
 import AddBtn from "../components/Buttons/AddBtn";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import Payment from "./payment";
 import zIndex from "@mui/material/styles/zIndex";
 import EditItem from "../components/modals/EditItem";
 const Cart = ({ height }) => {
+  const { itemId } = useParams();
+
   const formik = useFormik({
     initialValues: {
       id: "",
@@ -45,7 +47,7 @@ const Cart = ({ height }) => {
     items: [...state.items];
   };
 
-  const click = () => useNavigate("/product-module");
+  const navigate = useNavigate();
 
   const handleClick = useShoppingCart((state) => state.updateItemQ);
   const MotionList = motion(ListItem);
@@ -154,6 +156,9 @@ const Cart = ({ height }) => {
                           onClick={() => {
                             removeItem(item.id);
                           }}
+                          editClick={() =>
+                            navigate("/client-data/cart/:" + item.id)
+                          }
                         />
                       </motion.div>
                       /*  </AnimatePresence> */
@@ -223,7 +228,7 @@ const Cart = ({ height }) => {
           />
         </Box>
       </Box>
-      <Modal
+      {/*   <Modal
         sx={{
           display: "flex",
           justifySelf: "center",
@@ -238,7 +243,7 @@ const Cart = ({ height }) => {
         aria-describedby="modal-modal-description"
       >
         <EditItem />
-      </Modal>
+      </Modal> */}
     </>
   );
 };
