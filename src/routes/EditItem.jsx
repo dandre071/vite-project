@@ -15,6 +15,7 @@ const EditItem = () => {
   const updateItem = useShoppingCart((state) => state.updateItem);
   const removeItem = useShoppingCart((state) => state.removeItem);
   const cart = useShoppingCart((state) => state.items);
+  console.log({ ...cart });
   const location = useLocation();
   const id = location.pathname.slice(location.pathname.indexOf(":") + 1);
   const cartItem = cart.filter((item) => item.id === id)[0];
@@ -22,7 +23,7 @@ const EditItem = () => {
   console.log(cart.indexOf(cartItem));
   const handlerAdd = () => {
     /* removeItem(id); */
-    updateItem(formik.values);
+    updateItem(formik.values, index, id);
 
     /*  addItem({
       ...formik.values,
@@ -55,7 +56,7 @@ const EditItem = () => {
     },
     validationSchema: productSchema,
 
-    onSubmit: handlerAdd,
+    /*  onSubmit: handlerAdd, */
   });
 
   return (
