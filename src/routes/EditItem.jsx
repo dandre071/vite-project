@@ -1,6 +1,6 @@
 import { Box, Button, Grid, InputAdornment, TextField } from "@mui/material";
 import { useFormik } from "formik";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { productSchema } from "../components/Validations.js";
 import { useShoppingCart } from "../store/shoppingCart.js";
@@ -8,39 +8,56 @@ import FormSelect2 from "../components/Forms/FormSelect2.jsx";
 import { options } from "../components/utils/options.js";
 import PriceCalc from "../components/PriceCalc.jsx";
 import { colPesos } from "../components/utils/configs.js";
+import { useLocation, useNavigate } from "react-router-dom";
 const EditItem = () => {
-  const handlerAdd = (e) => {
-    addItem({
+  const navigate = useNavigate();
+
+  const updateItem = useShoppingCart((state) => state.updateItem);
+  const removeItem = useShoppingCart((state) => state.removeItem);
+  const cart = useShoppingCart((state) => state.items);
+  const location = useLocation();
+  const id = location.pathname.slice(location.pathname.indexOf(":") + 1);
+  const cartItem = cart.filter((item) => item.id === id)[0];
+  const index = cart.indexOf(cartItem);
+  console.log(cart.indexOf(cartItem));
+  const handlerAdd = () => {
+    /* removeItem(id); */
+    updateItem(formik.values);
+
+    /*  addItem({
       ...formik.values,
-      id: uuidv4(),
-    });
-    formik.resetForm();
-    setOpen(false);
+      id: uuidv4(), 
+    }); */
+
+    /*  formik.resetForm();
+    navigate("/client-data/cart"); */
+    /*  setOpen(false); */
   };
+  console.log(id);
   const formik = useFormik({
     initialValues: {
-      id: "",
-      module: "ManualInput",
-      name: "",
-      price: null,
-      quantity: 1,
-      description: "",
-      height: 0,
+      id: id,
+      /* module: "ManualInput", */
+      name: cartItem.name,
+      price: cartItem.price,
+      quantity: cartItem.quantity,
+      description: cartItem.description,
+      /*  height: 0,
       width: 0,
-      matWidth: 0,
-      finish: [],
-      finishQ: 1,
-      material: "",
-      descolillado: "",
-      transfer: false,
-      itemTotalPrice: 0,
-      orientation: "",
+      matWidth: 0, */
+      finish: cartItem.finish,
+      finishQ: cartItem.finishQ,
+      /* material: "", */
+      descolillado: cartItem.descolillado,
+      /* transfer: false, */
+      itemTotalPrice: cartItem.itemTotalPrice,
+      orientation: cartItem.orientation,
     },
     validationSchema: productSchema,
 
     onSubmit: handlerAdd,
   });
-  const addItem = useShoppingCart((state) => state.addItem);
+
   return (
     <Box
       sx={{
@@ -54,10 +71,10 @@ const EditItem = () => {
     >
       <Box
         sx={{
-          bgcolor: "primary.dark",
+          bgcolor: "white",
           display: "grid",
           placeContent: "center",
-          color: "white",
+          color: "primary.dark",
           fontSize: 35,
           fontWeight: 600,
           letterSpacing: 2,
@@ -83,6 +100,7 @@ const EditItem = () => {
             <TextField
               onBlur={formik.handleBlur}
               error={formik.errors.name}
+              /*    defaultValue={cartItem.name} */
               /*  helperText={formik.errors.name} */
               value={formik.values.name}
               name="name"
@@ -191,7 +209,11 @@ const EditItem = () => {
               />
             </Box>
 
-            <Button variant="prime" sx={{ height: 50, width: "40%" }}>
+            <Button
+              onClick={handlerAdd}
+              variant="prime"
+              sx={{ height: 50, width: "40%" }}
+            >
               Aceptar
             </Button>
           </Grid>

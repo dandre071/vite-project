@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+/* import produce from "immer"; */
 
 export const useShoppingCart = create()(
   persist(
@@ -12,14 +13,15 @@ export const useShoppingCart = create()(
         }));
       },
       count: (state) => state.personalData,
-      updateItem: (id, index, item) => {
+      updateItem: (values, index, itemId, id) => {
+        /*   const item = state.items.filter((item) => item.id === id); */
         set((state) => ({
-          items: [...state.items, values],
+          items: state.items.filter((item) => item.id === id),
         }));
       },
       removeItem: (id) => {
         set((state) => ({
-          items: state.items.filter((item) => item.id !== id),
+          items: [...state.items, state.items.filter((item) => item.id !== id)],
         }));
       },
       /* increaseQuantity: (id) => {
