@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import produce from "immer";
+/* import produce from "immer"; */
 
 export const useShoppingCart = create()(
   persist(
@@ -19,7 +19,7 @@ export const useShoppingCart = create()(
           /* items: state.items.filter((item) => item.id === id), */
           items: [
             ...state.items,
-            { ...state.items[index], name: values.name },
+            (state.items[0].name = values.name),
 
             /*  ((state.items[index].name = values.name),
             (state.items[index].price = values.price),
@@ -28,8 +28,6 @@ export const useShoppingCart = create()(
             (state.items[index].description = values.description),
             (state.items[index].finish = values.finish),
             (state.items[index].itemTotalPrice = values.itemTotalPrice)), */
-
-            ,
           ],
         }));
       },
