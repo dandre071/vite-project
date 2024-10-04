@@ -21,7 +21,7 @@ const EditItem = () => {
   const cartItem = cart.filter((item) => item.id === id)[0];
   const index = cart.indexOf(cartItem);
   console.log(cart.indexOf(cartItem));
-  const handlerAdd = () => {
+  const handleUpdate = () => {
     /* removeItem(id); */
     updateItem(formik.values, index, id);
 
@@ -211,7 +211,7 @@ const EditItem = () => {
             </Box>
 
             <Button
-              onClick={handlerAdd}
+              onClick={handleUpdate}
               variant="prime"
               sx={{ height: 50, width: "40%" }}
             >
