@@ -13,22 +13,21 @@ export const useShoppingCart = create()(
         }));
       },
       count: (state) => state.personalData,
-      updateItem: (values, index) => {
-        /*   const item = state.items.filter((item) => item.id === id); */
+      updateItem: (values, index, state) => {
+        /* const items = state.items;
+        const item = items[index];
+        const newValues = { values }; */
         set((state) => ({
           /* items: state.items.filter((item) => item.id === id), */
-          items: [
-            ...state.items,
-            (state.items[0].name = values.name),
 
-            /*  ((state.items[index].name = values.name),
+          items: [...state.items, (state.items[index] = { values })],
+          /*  ((state.items[index].name = values.name),
             (state.items[index].price = values.price),
             (state.items[index].quantity = values.quantity),
             (state.items[index].orientation = values.orientation),
             (state.items[index].description = values.description),
             (state.items[index].finish = values.finish),
             (state.items[index].itemTotalPrice = values.itemTotalPrice)), */
-          ],
         }));
       },
       removeItem: (id) => {
