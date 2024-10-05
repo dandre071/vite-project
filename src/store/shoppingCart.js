@@ -16,12 +16,30 @@ export const useShoppingCart = create()(
       updateItem: (values, index, id) => {
         /* const items = state.items;
         const item = items[index];
-        const newValues = { values }; */
-
+         */
+        const newValues = {
+          name: values.name,
+          price: values.price,
+          quantity: values.quantity,
+          description: values.description,
+          finish: values.finish,
+          finishQ: values.finishQ,
+          itemTotalPrice: values.itemTotalPrice,
+          orientation: values.orientation,
+        };
         set((state) => ({
           /* items: state.items.filter((item) => item.id === id), */
           items: state.items.map((item) =>
-            item.id === id ? (item.name = values.name) : item.name
+            item.id === id
+              ? ((item.name = values.name),
+                (item.price = values.price),
+                (item.quantity = values.quantity),
+                (item.description = values.description),
+                (item.finish = values.finish),
+                (item.finishQ = values.finishQ),
+                (item.itemTotalPrice = values.itemTotalPrice),
+                (item.orientation = values.orientation))
+              : null
           ),
 
           items: (state.items = [
