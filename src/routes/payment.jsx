@@ -85,6 +85,7 @@ const Payment = ({ height }) => {
       payment: null,
       comments: "",
       pending: null,
+      paymentMethod: "Efectivo",
     },
     validationSchema: PaymentSchema,
 
@@ -307,7 +308,7 @@ const Payment = ({ height }) => {
             label={"Realiza"}
           />
         </Box>
-        <Box sx={{}}>
+        <Box sx={{ display: "grid", gridTemplateColumns: "60% 40%" }}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer
               fullWidth
@@ -330,54 +331,64 @@ const Payment = ({ height }) => {
                   textField: {
                     size: "normal",
                     m: 0,
+                    width: 200,
                   },
                 }}
                 sx={{
-                  stack: {},
-                  textField: {},
+                  stack: { display: "flex" },
+                  textField: { height: 20 },
                   input: {
                     color: "text.main",
-                    // bgcolor: "green",
-                    pr: 0,
-                    m: 0,
-                    textAlign: "right",
+                    bgcolor: "green",
+
+                    p: 0,
+                    pl: 1.5,
+                    pt: 1,
+                    textAlign: "left",
+                    height: 56,
+                    width: 200,
                   },
+
                   button: {
                     color: "primary.main",
 
                     m: 0,
                     borderRadius: "50%",
-
+                    left: 60,
                     bottom: 40,
-
+                    width: 20,
                     height: 20,
                   },
 
                   div: {
                     display: "grid",
-                    /*   gridTemplateColumns: "170px", */
-
-                    //bgcolor: "green",
-
-                    m: 0,
+                    width: 200,
+                    height: 56,
                   },
                   svg: { transform: "scale(0.8)" },
                 }}
               />
             </DemoContainer>
           </LocalizationProvider>
+          <FormSelect2
+            full
+            size="normal"
+            value={formik.values.receives}
+            defaultValue={payment.receives}
+            error={formik.errors.receives}
+            helperText={formik.errors.receives}
+            name="paymentMethod"
+            onChange={formik.handleChange}
+            options={["Efectivo", "Transferencia"]}
+            label={"Medio de pago"}
+          />
         </Box>
         <TextField
-          //onBlur={formik.handleBlur}
-          //error={formik.errors.email}
-          // helperText={formik.errors.email}
-          /* value={formik.values.email} */
           name="comments"
           multiline
           value={formik.values.comments}
           onChange={formik.handleChange}
           fullWidth
-          //defaultValue={localStore.email}
           label={"Observaciones"}
           type="text"
         />
@@ -386,22 +397,14 @@ const Payment = ({ height }) => {
           spacing={1}
           direction={"row"}
           sx={{
-            // borderTop: "1px solid grey",
             width: "100%",
             alignItems: "center",
             display: "flex",
-            //bgcolor: "yellow",
-            // alignItems: "end",
+
             justifyContent: "space-between",
             m: 0,
           }}
         >
-          {/*  <NavBtn
-            backText={"Compras"}
-            pathBack={"/cart"}
-            pathNext={""}
-            displayNext={"none"}
-          /> */}
           <Grid
             item
             sx={{
