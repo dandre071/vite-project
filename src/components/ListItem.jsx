@@ -27,12 +27,9 @@ const ListItem = ({
       exit={{ opacity: 1, x: 50 }}
     >
       <Box
-        className="cart-item"
+        className="cart-item cart-grid"
         component={motion.div}
         sx={{
-          display: "grid",
-          gridTemplateColumns: "90% 1fr",
-
           borderRadius: 1,
 
           pt: 1,
@@ -42,102 +39,82 @@ const ListItem = ({
           alignItems: "center",
         }}
       >
-        <Stack sx={{}}>
-          <Stack
+        <Box>
+          <Typography
+            className="invoice-content-data-l"
+            sx={{ fontWeight: 600, fontSize: 15 }}
+          >
+            {`${product} - ${orientation}`}
+          </Typography>
+          <Typography
+            className="secondary-color capitalize"
             sx={{
-              // bgcolor: "#f7f7f7",
-              display: "grid",
-              gridTemplateColumns: invoiceGrid,
-              borderRadius: 1.5,
-              height: 40,
-              alignItems: "center",
+              fontSize: 12,
+              fontWeight: 400,
+              textAlign: "left",
+              lineHeight: 1.2,
+              height: "auto",
+              alignContent: "start",
             }}
           >
-            <Typography
-              className="invoice-content-data-l"
-              sx={{ fontWeight: 600, fontSize: 15 }}
-            >
-              {`${product} - ${orientation}`}
-            </Typography>
-            <div style={{}}>
+            {description}
+          </Typography>
+        </Box>
+
+        <div>
+          <Typography
+            sx={{
+              fontSize: 15,
+              fontWeight: 600,
+              textAlign: "center",
+            }}
+          >
+            {q}
+          </Typography>
+        </div>
+
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Box
+            sx={{
+              lineHeight: 1.2,
+              display: "flex",
+              justifyContent: "center",
+              bgcolor: customTheme.palette.success.main,
+              width: "auto",
+              height: "auto",
+              borderRadius: 1,
+              alignItems: "center",
+              pl: 0.5,
+              pr: 0.5,
+            }}
+          >
+            {finish && (
               <Typography
                 sx={{
-                  fontSize: 15,
-                  fontWeight: 600,
+                  fontSize: 12,
+                  fontWeight: 500,
                   textAlign: "center",
+                  color: "white",
                 }}
               >
-                {q}
+                {finishQ + finish}
               </Typography>
-            </div>
-            {/* <Typography
-            sx={{ fontSize: 14, fontWeight: 600, textAlign: "right" }}
+            )}
+          </Box>
+        </Box>
+        <Box>
+          <Typography
+            sx={{ fontSize: 15, fontWeight: 600, textAlign: "right" }}
           >
-            {price}
-          </Typography> */}
-            <Typography
-              sx={{ fontSize: 15, fontWeight: 600, textAlign: "right" }}
-            >
-              {totalPrice}
-            </Typography>
-          </Stack>
-          <Stack
-            sx={{
-              display: "grid",
-              gridTemplateColumns: "70% 1fr",
-              height: "auto",
-            }}
-          >
-            <Typography
-              className="secondary-color capitalize"
-              sx={{
-                fontSize: 12,
-                fontWeight: 400,
-                textAlign: "left",
-                lineHeight: 1.2,
-                height: "auto",
-                alignContent: "start",
-              }}
-            >
-              {description}
-            </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Box
-                sx={{
-                  lineHeight: 1.2,
-                  display: "flex",
-                  justifyContent: "center",
-                  bgcolor: customTheme.palette.success.main,
-                  width: "auto",
-                  height: "auto",
-                  borderRadius: 1,
-                  alignItems: "center",
-                  pl: 0.5,
-                  pr: 0.5,
-                }}
-              >
-                {finish && (
-                  <Typography
-                    sx={{
-                      fontSize: 12,
-                      fontWeight: 500,
-                      textAlign: "center",
-                      color: "white",
-                    }}
-                  >
-                    {finishQ + finish}
-                  </Typography>
-                )}
-              </Box>
-            </Box>
-          </Stack>
-        </Stack>
+            {totalPrice}
+          </Typography>
+        </Box>
         <Box
           sx={{
             display: "flex",

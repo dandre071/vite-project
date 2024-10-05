@@ -42,27 +42,7 @@ export const useShoppingCart = create()(
               : null
           ),
 
-          items: (state.items = [
-            ...state.items,
-            /* (state.items[0] = {
-              id: values.id,
-              name: values.name,
-              price: values.price,
-              quantity: values.quantity,
-              description: values.description,
-              finish: values.finish,
-              finishQ: values.finishQ,
-              itemTotalPrice: values.itemTotalPrice,
-              orientation: values.orientation,
-            }), */
-          ]),
-          /*  ((state.items[index].name = values.name),
-            (state.items[index].price = values.price),
-            (state.items[index].quantity = values.quantity),
-            (state.items[index].orientation = values.orientation),
-            (state.items[index].description = values.description),
-            (state.items[index].finish = values.finish),
-            (state.items[index].itemTotalPrice = values.itemTotalPrice)), */
+          items: (state.items = [...state.items]),
         }));
       },
       removeItem: (id) => {

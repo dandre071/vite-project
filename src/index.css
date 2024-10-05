@@ -28,10 +28,13 @@
   --nav-height: 60px;
   --drawer-width: 200px;
   --page-child-width: 90vw;
-  --cart-grid: 40% 10% 20% 20% 10%;
-  --cart-item-width: 550px;
+  --cart-grid: 40% 5% 15% 15% 15% 10%;
+  --cart-item-width: 650px;
 }
-
+.cart-grid {
+  display: grid;
+  grid-template-columns: var(--cart-grid);
+}
 .input-error {
   border-style: solid;
   border-color: "red";

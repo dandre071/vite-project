@@ -72,9 +72,9 @@ const Cart = ({ height }) => {
           justifyContent: "center",
 
           display: "grid",
-          gridTemplateColumns: "1fr 450px",
+          gridTemplateColumns: "1fr 350px",
           gridTemplateRows: "1fr",
-          height: "65vh",
+          minHeight: "65vh",
           gap: 0,
         }}
       >
@@ -97,12 +97,13 @@ const Cart = ({ height }) => {
                 className="form-container"
                 id="cart-container"
                 sx={{
+                  width: 700,
                   display: "grid",
                   gridTemplateRows: "5% 1fr",
                   /* minHeight: 560, */
                   borderTopRightRadius: 0,
                   borderBottomRightRadius: 0,
-                  height: 600, //  bgcolor: "red",
+                  minHeight: 600, //  bgcolor: "red",
                   justifyContent: "center",
                   alignItems: "center",
                   border: "none",
@@ -144,6 +145,7 @@ const Cart = ({ height }) => {
                         key={item.id}
                       >
                         <ListItem
+                          style={{ width: "100%" }}
                           orientation={item.orientation}
                           key={item.id}
                           product={item.name}

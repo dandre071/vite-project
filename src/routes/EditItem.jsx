@@ -24,7 +24,7 @@ const EditItem = () => {
   const handleUpdate = () => {
     /* removeItem(id); */
     updateItem(formik.values, index, id);
-
+    navigate("/client-data/cart");
     /*  addItem({
       ...formik.values,
       id: uuidv4(), 

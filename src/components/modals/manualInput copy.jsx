@@ -279,8 +279,15 @@ const ManualInput2 = ({ text, acabado }) => {
                         fullWidth
                         name="orientation"
                         onChange={formik.handleChange}
-                        options={["", "Vertical", "Horizontal"]}
-                        label={"Orientación"}
+                        options={[
+                          "",
+                          "Vertical",
+                          "Horizontal",
+                          "Cuadrado",
+                          "Circular",
+                          "Ovalado",
+                        ]}
+                        label={"Orientación/Forma"}
                         /* defaultValue={"Sin acabado"} */
                       />
 
