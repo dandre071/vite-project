@@ -152,7 +152,7 @@ const Payment = ({ height }) => {
     <Stack
       sx={{
         minHeight: "100%",
-        width: "100%",
+        width: 400,
         display: "grid",
         bgcolor: "#f9f9f9",
         borderTopRightRadius: 10,
