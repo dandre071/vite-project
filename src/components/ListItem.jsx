@@ -25,17 +25,12 @@ const ListItem = ({
       initial={{ opacity: 0, x: -50 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 1, x: 50 }}
+      style={{}}
     >
       <Box
         className="cart-item cart-grid"
         component={motion.div}
         sx={{
-          borderRadius: 1,
-
-          pt: 1,
-          pb: 1,
-          pl: 0.5,
-          pr: 0.5,
           alignItems: "center",
         }}
       >
@@ -90,8 +85,6 @@ const ListItem = ({
               height: "auto",
               borderRadius: 1,
               alignItems: "center",
-              pl: 0.5,
-              pr: 0.5,
             }}
           >
             {finish && (
@@ -118,10 +111,10 @@ const ListItem = ({
         <Box
           sx={{
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
+            width: "90%",
+            justifyContent: "space-evenly",
             alignItems: "center",
-            alignSelf: "center",
+            justifySelf: "end",
           }}
         >
           <Edit2Icon size={21} onClick={editClick} />
