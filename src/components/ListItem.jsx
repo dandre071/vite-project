@@ -118,8 +118,9 @@ const ListItem = ({
           }}
         >
           <EditIcon
+            className="btn"
             onClick={editClick}
-            sx={{ fontSize: 24, color: "primary" }}
+            sx={{ fontSize: 24, color: "primary.main" }}
           />
           <DeleteBtn onClick={onClick} />
         </Box>
