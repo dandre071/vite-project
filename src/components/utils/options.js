@@ -4,6 +4,8 @@ export const options = {
     "Tubos",
     "Troquel",
     "Descolillado",
+    "Descolillado negativo",
+    "Transfer",
     "Corte",
     "Ojales",
     "Palos",
