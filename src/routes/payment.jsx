@@ -42,6 +42,7 @@ import DatePicker from "../components/Forms/DatePicker";
 import { users } from "../db";
 import { usePaymentData } from "../store/paymentData";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
+
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault("America/Bogota");
@@ -313,10 +314,17 @@ const Payment = ({ height }) => {
             <DemoContainer
               fullWidth
               components={["DateTimePicker"]}
-              sx={{ display: "grid" }}
+              sx={{
+                /* bgcolor: "purple", */
+                width: 200,
+
+                overflow: "hidden",
+                p: 0,
+                display: "grid",
+                gridTemplateColumns: "80% 1fr",
+              }}
             >
               <DateTimePicker
-                fullWidth
                 size="normal"
                 value={value}
                 error={formik.errors.delivery}
@@ -331,22 +339,25 @@ const Payment = ({ height }) => {
                   textField: {
                     size: "normal",
                     m: 0,
-                    width: 200,
+
+                    overflow: "hidden",
                   },
+                  div: { backgroundColor: "orange" },
+                  "& .MuiFormControl": { backgroundColor: "brown" },
                 }}
                 sx={{
-                  stack: { display: "flex" },
-                  textField: { height: 20 },
+                  padding: 0,
+                  overflow: "hidden",
+                  stack: { p: 0, overflow: "hidden" },
+                  textField: {},
                   input: {
                     color: "text.main",
-                    bgcolor: "green",
 
                     p: 0,
                     pl: 1.5,
                     pt: 1,
                     textAlign: "left",
-                    height: 56,
-                    width: 200,
+                    height: 45,
                   },
 
                   button: {
@@ -354,18 +365,21 @@ const Payment = ({ height }) => {
 
                     m: 0,
                     borderRadius: "50%",
-                    left: 60,
-                    bottom: 40,
+                    right: -10,
+                    bottom: 10,
                     width: 20,
                     height: 20,
                   },
 
                   div: {
                     display: "grid",
+                    gridTemplateColumns: "160px 1fr",
                     width: 200,
-                    height: 56,
+
+                    padding: 0,
                   },
-                  svg: { transform: "scale(0.8)" },
+
+                  svg: { transform: "scale(0.7)" },
                 }}
               />
             </DemoContainer>
@@ -373,10 +387,10 @@ const Payment = ({ height }) => {
           <FormSelect2
             full
             size="normal"
-            value={formik.values.receives}
-            defaultValue={payment.receives}
-            error={formik.errors.receives}
-            helperText={formik.errors.receives}
+            value={formik.values.paymentMethod}
+            defaultValue={payment.paymentMethod}
+            error={formik.errors.paymentMethod}
+            helperText={formik.errors.paymentMethod}
             name="paymentMethod"
             onChange={formik.handleChange}
             options={["Efectivo", "Transferencia"]}

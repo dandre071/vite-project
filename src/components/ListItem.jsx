@@ -4,7 +4,7 @@ import { useShoppingCart } from "../store/shoppingCart";
 import { motion } from "framer-motion";
 import { Edit2Icon } from "lucide-react";
 import { customTheme } from "../Hooks/useCustomTheme";
-
+import EditIcon from "@mui/icons-material/Edit";
 const ListItem = ({
   product,
   q,
@@ -117,7 +117,10 @@ const ListItem = ({
             justifySelf: "end",
           }}
         >
-          <Edit2Icon size={21} onClick={editClick} />
+          <EditIcon
+            onClick={editClick}
+            sx={{ fontSize: 24, color: "primary" }}
+          />
           <DeleteBtn onClick={onClick} />
         </Box>
       </Box>
