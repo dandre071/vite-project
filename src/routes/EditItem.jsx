@@ -49,7 +49,7 @@ const EditItem = () => {
       finish: cartItem.finish,
       finishQ: cartItem.finishQ,
       /* material: "", */
-      descolillado: cartItem.descolillado,
+      /* descolillado: cartItem.descolillado, */
       /* transfer: false, */
       itemTotalPrice: cartItem.itemTotalPrice,
       orientation: cartItem.orientation,

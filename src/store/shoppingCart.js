@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-/* import produce from "immer"; */
+import { immer } from "zustand/middleware/immer";
 
 export const useShoppingCart = create()(
   persist(
@@ -13,14 +13,31 @@ export const useShoppingCart = create()(
         }));
       },
       count: (state) => state.personalData,
-      updateItem: (values, index, state) => {
+      updateItem: (values, index, id) => {
         /* const items = state.items;
         const item = items[index];
         const newValues = { values }; */
+
         set((state) => ({
           /* items: state.items.filter((item) => item.id === id), */
+          items: state.items.map((item) =>
+            item.id === id ? (item.name = values.name) : item.name
+          ),
 
-          items: [...state.items, (state.items[index] = { values })],
+          items: (state.items = [
+            ...state.items,
+            /* (state.items[0] = {
+              id: values.id,
+              name: values.name,
+              price: values.price,
+              quantity: values.quantity,
+              description: values.description,
+              finish: values.finish,
+              finishQ: values.finishQ,
+              itemTotalPrice: values.itemTotalPrice,
+              orientation: values.orientation,
+            }), */
+          ]),
           /*  ((state.items[index].name = values.name),
             (state.items[index].price = values.price),
             (state.items[index].quantity = values.quantity),
