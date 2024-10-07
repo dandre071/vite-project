@@ -160,119 +160,113 @@ const Payment = ({ height }) => {
         bgcolor: "#f9f9f9",
         borderTopRightRadius: 10,
         borderBottomRightRadius: 10,
-        gridTemplateRows: "repeat(5, 1fr))",
+        gridTemplateRows: "15% 20% 1fr 20%",
         justifyContent: "center",
         alignItems: "center",
 
         // overflow: 'auto',
       }}
     >
+      <ModalHeader title={"Resumen de compra"} />
+      <Stack
+        /*    className="border-bottom-heavy" */
+        sx={{
+          width: "95%",
+          height: "100%",
+          display: "grid",
+          gridTemplateRows: "repeat(3, 30px)",
+          justifyContent: "center",
+          alignItems: "center",
+          alignSelf: "start",
+          p: 0,
+          bgcolor: "#d1d1d1",
+          borderRadius: 1.5,
+        }}
+      >
+        {/* first item */}
+        <Box sx={{ ...styles.paymentBox, p: 0, width: 370 }}>
+          <Typography
+            sx={styles.payment}
+          >{`Productos: (${items.length})`}</Typography>
+          <Typography sx={{ ...styles.payment, textAlign: "right" }}>
+            {totalPayment}
+          </Typography>
+        </Box>
+        {/* end first item */}
+        {/* second item */}
+        <Box sx={{ ...styles.paymentBox }}>
+          <Typography sx={styles.paymentAmount}>{`Pago: `}</Typography>
+
+          <TextField
+            variant="standard"
+            sx={{
+              width: "auto",
+              maxWidth: "100px",
+              display: "flex",
+              justifySelf: "end",
+              textAlign: "right",
+            }}
+            error={
+              personalData.billType === "Recibo" ? formik.errors.payment : ""
+            }
+            /* helperText={
+                personalData.billType === "Recibo" && formik.errors.payment
+              } */
+            size="small"
+            name="payment"
+            onChange={formik.handleChange}
+            fullWidth={false}
+            value={formik.values.payment}
+            inputProps={{
+              style: { textAlign: "right", textJustify: "inter-word" },
+            }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment
+                  position="start"
+                  component="div"
+                  disablePointerEvents
+                >
+                  <Typography sx={{ fontWeight: 600 }}>$</Typography>
+                </InputAdornment>
+              ),
+            }}
+            type="tel"
+          />
+        </Box>
+        {/* end second item */}
+        {/* third item */}
+        <Box
+          //className="border-bottom-heavy"
+          sx={{
+            ...styles.paymentBox,
+            /*  mb: 2,
+              pb: 1, */
+          }}
+        >
+          {/*   <PaidIcon /> */}
+          <Typography
+            name="pending"
+            sx={styles.paymentAmount}
+          >{`Pendiente: `}</Typography>
+          <Typography
+            name={"pending"}
+            sx={{ ...styles.paymentAmount, textAlign: "right" }}
+          >
+            {colPesos.format(totalPrice - formik.values.payment)}
+          </Typography>
+        </Box>
+        {/* end third item */}
+      </Stack>
       <Stack
         spacing={0}
         sx={{
-          minHeight: "90%",
-
+          minHeight: "80%",
+          width: "95%",
           display: "grid",
-
-          /*   gridTemplateRows: "50px 60px 20px 40px)", */
-          justifyContent: "center",
-          alignItems: "center",
-
-          // overflow: 'auto',
+          alignItems: "start",
         }}
       >
-        <ModalHeader title={"Resumen de compra"} />
-        <Stack
-          className="border-bottom-heavy"
-          sx={{
-            width: "375px",
-            display: "grid",
-            gridTemplateRows: "repeat(3, 30px)",
-            justifyContent: "center",
-            alignItems: "start",
-            p: 0,
-            /*  bgcolor: "green", */
-          }}
-        >
-          {/* first item */}
-          <Box sx={{ ...styles.paymentBox, p: 0, width: 350 }}>
-            <Typography
-              sx={styles.payment}
-            >{`Productos: (${items.length})`}</Typography>
-            <Typography sx={{ ...styles.payment, textAlign: "right" }}>
-              {totalPayment}
-            </Typography>
-          </Box>
-          {/* end first item */}
-          {/* second item */}
-          <Box sx={{ ...styles.paymentBox }}>
-            <Typography sx={styles.paymentAmount}>{`Pago: `}</Typography>
-
-            <TextField
-              variant="standard"
-              sx={{
-                width: "auto",
-                maxWidth: "100px",
-                display: "flex",
-                justifySelf: "end",
-                textAlign: "right",
-              }}
-              error={
-                personalData.billType === "Recibo" ? formik.errors.payment : ""
-              }
-              helperText={
-                personalData.billType === "Recibo" && formik.errors.payment
-              }
-              /* value={formik.values.email} */
-              size="small"
-              name="payment"
-              onChange={formik.handleChange}
-              fullWidth={false}
-              // defaultValue={localStore.email}
-              // label={"Email"}
-              value={formik.values.payment}
-              inputProps={{
-                style: { textAlign: "right", textJustify: "inter-word" },
-              }}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment
-                    position="start"
-                    component="div"
-                    /* style={{ paddingLeft: "-14px" }} */
-                    disablePointerEvents
-                  >
-                    <Typography sx={{ fontWeight: 600 }}>$</Typography>
-                  </InputAdornment>
-                ),
-              }}
-              type="tel"
-            />
-          </Box>
-          {/* end second item */}
-          {/* third item */}
-          <Box
-            //className="border-bottom-heavy"
-            sx={{
-              ...styles.paymentBox,
-              /*  mb: 2,
-              pb: 1, */
-            }}
-          >
-            {/*   <PaidIcon /> */}
-            <Typography
-              name="pending"
-              sx={styles.paymentAmount}
-            >{`Pendiente: `}</Typography>
-            <Typography
-              name={"pending"}
-              sx={{ ...styles.paymentAmount, textAlign: "right" }}
-            >
-              {colPesos.format(totalPrice - formik.values.payment)}
-            </Typography>
-          </Box>
-          {/* end third item */}
-        </Stack>
         {/* END */}
         <Box
           sx={{
@@ -423,58 +417,6 @@ const Payment = ({ height }) => {
           type="text"
         />
 
-        <Stack
-          spacing={1}
-          direction={"row"}
-          sx={{
-            width: "100%",
-            alignItems: "center",
-            display: "flex",
-
-            justifyContent: "space-between",
-            m: 0,
-          }}
-        >
-          <Grid
-            item
-            sx={{
-              gap: 2,
-              display: "flex",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-            }}
-          >
-            <Button
-              onClick={clearCart}
-              //startIcon={<ClearOutlinedIcon />}
-              sx={{ width: 40, height: 55, m: 0 }}
-              // variant="secondary"
-              variant="secondary-outlined"
-            >
-              <ClearOutlinedIcon />
-              {/* Cancelar */}
-            </Button>
-            {/* <Link
-              to={
-                formik.errors.payment ||
-                formik.errors.receives ||
-                formik.errors.delivery
-                  ? ""
-                  : "/factura"
-              }
-            > */}
-            <Button
-              disabled={formik.errors.payment}
-              onClick={handleAddData}
-              startIcon={<PaymentsOutlinedIcon />}
-              sx={{ color: "white", width: 270, height: 55 }}
-              variant="prime"
-            >
-              Pagar
-            </Button>
-            {/*  </Link> */}
-          </Grid>
-        </Stack>
         <Modal
           sx={{
             display: "flex",
@@ -508,6 +450,58 @@ const Payment = ({ height }) => {
           <TextField />
         </Modal>
         {/*  <Factura targetRef={targetRef} /> */}
+      </Stack>
+      <Stack
+        spacing={1}
+        direction={"row"}
+        sx={{
+          width: "100%",
+          alignItems: "center",
+          display: "flex",
+
+          justifyContent: "space-between",
+          m: 0,
+        }}
+      >
+        <Grid
+          item
+          sx={{
+            gap: 2,
+            display: "flex",
+            justifyContent: "space-evenly",
+            alignItems: "center",
+          }}
+        >
+          <Button
+            onClick={clearCart}
+            //startIcon={<ClearOutlinedIcon />}
+            sx={{ width: 40, height: 55, m: 0 }}
+            // variant="secondary"
+            variant="secondary-outlined"
+          >
+            <ClearOutlinedIcon />
+            {/* Cancelar */}
+          </Button>
+          {/* <Link
+              to={
+                formik.errors.payment ||
+                formik.errors.receives ||
+                formik.errors.delivery
+                  ? ""
+                  : "/factura"
+              }
+            > */}
+          <Button
+            disabled={formik.errors.payment}
+            onClick={handleAddData}
+            startIcon={<PaymentsOutlinedIcon />}
+            sx={{ color: "white", width: 270, height: 55 }}
+            variant="prime"
+          >
+            Pagar
+          </Button>
+          {/*  </Link> */}
+        </Grid>
       </Stack>
     </Stack>
   );

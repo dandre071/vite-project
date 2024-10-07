@@ -642,7 +642,7 @@ const Factura = ({ openModal, onClose }) => {
                         mt: 1,
                       }}
                     >
-                      <Typography>EFECTIVO</Typography>
+                      {/*  <Typography>EFECTIVO</Typography> */}
                     </Box>
                   </Stack>
                 </Stack>
