@@ -315,13 +315,14 @@ const Payment = ({ height }) => {
           sx={{
             display: "grid",
             gridTemplateColumns: "60% 40%",
-            width: 400,
+            width: "100%",
+            bgcolor: "beige",
             p: 0,
           }}
         >
           <LocalizationProvider
             dateAdapter={AdapterDayjs}
-            style={{ width: "90%" }}
+            style={{ width: "95%" }}
           >
             <DemoContainer
               fullWidth
@@ -396,18 +397,21 @@ const Payment = ({ height }) => {
               />
             </DemoContainer>
           </LocalizationProvider>
-          <FormSelect2
-            width={150}
-            size="normal"
-            value={formik.values.paymentMethod}
-            defaultValue={payment.paymentMethod}
-            error={formik.errors.paymentMethod}
-            helperText={formik.errors.paymentMethod}
-            name="paymentMethod"
-            onChange={formik.handleChange}
-            options={["Efectivo", "Transferencia"]}
-            label={"Medio de pago"}
-          />
+          <Box sx={{ width: "100%" }}>
+            {" "}
+            <FormSelect2
+              width={"150px"}
+              size="normal"
+              value={formik.values.paymentMethod}
+              defaultValue={payment.paymentMethod}
+              error={formik.errors.paymentMethod}
+              helperText={formik.errors.paymentMethod}
+              name="paymentMethod"
+              onChange={formik.handleChange}
+              options={["Efectivo", "Transferencia"]}
+              label={"Medio de pago"}
+            />
+          </Box>
         </Box>
         <TextField
           name="comments"
