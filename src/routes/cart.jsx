@@ -116,10 +116,10 @@ const Cart = ({ height }) => {
                   </Typography>
 
                   <Typography sx={{ fontWeight: 400, justifySelf: "end" }}>
-                    Acabado
+                    Total
                   </Typography>
                   <Typography sx={{ fontWeight: 400, justifySelf: "end" }}>
-                    Total
+                    Acabado
                   </Typography>
                 </div>
                 <div

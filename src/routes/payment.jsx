@@ -42,7 +42,7 @@ import DatePicker from "../components/Forms/DatePicker";
 import { users } from "../db";
 import { usePaymentData } from "../store/paymentData";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
-
+import PaidIcon from "@mui/icons-material/Paid";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault("America/Bogota");
@@ -64,6 +64,7 @@ const Payment = ({ height }) => {
     updateState();
   }, []);
   const [openModal, setOpenModal] = useState(false);
+  const [openPay, setOpenPay] = useState(false);
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
 
@@ -154,7 +155,7 @@ const Payment = ({ height }) => {
     <Stack
       sx={{
         minHeight: "100%",
-        width: 400,
+        width: 450,
         display: "grid",
         bgcolor: "#f9f9f9",
         borderTopRightRadius: 10,
@@ -170,7 +171,7 @@ const Payment = ({ height }) => {
         spacing={0}
         sx={{
           minHeight: "90%",
-          width: 450,
+
           display: "grid",
 
           /*   gridTemplateRows: "50px 60px 20px 40px)", */
@@ -184,7 +185,7 @@ const Payment = ({ height }) => {
         <Stack
           className="border-bottom-heavy"
           sx={{
-            width: "350px",
+            width: "375px",
             display: "grid",
             gridTemplateRows: "repeat(3, 30px)",
             justifyContent: "center",
@@ -258,6 +259,7 @@ const Payment = ({ height }) => {
               pb: 1, */
             }}
           >
+            {/*   <PaidIcon /> */}
             <Typography
               name="pending"
               sx={styles.paymentAmount}
@@ -310,13 +312,16 @@ const Payment = ({ height }) => {
           />
         </Box>
         <Box sx={{ display: "grid", gridTemplateColumns: "60% 40%" }}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <LocalizationProvider
+            dateAdapter={AdapterDayjs}
+            style={{ width: "100%" }}
+          >
             <DemoContainer
               fullWidth
               components={["DateTimePicker"]}
               sx={{
                 /* bgcolor: "purple", */
-                width: 200,
+                width: "100%",
 
                 overflow: "hidden",
                 p: 0,
@@ -366,16 +371,16 @@ const Payment = ({ height }) => {
                     m: 0,
                     borderRadius: "50%",
                     right: -10,
-                    bottom: 10,
+                    bottom: 0,
                     width: 20,
-                    height: 20,
+                    height: 25,
                   },
 
                   div: {
                     display: "grid",
                     gridTemplateColumns: "160px 1fr",
-                    width: 200,
-
+                    width: 210,
+                    height: "100%",
                     padding: 0,
                   },
 
@@ -474,6 +479,22 @@ const Payment = ({ height }) => {
           aria-describedby="modal-modal-description"
         >
           <Factura onClose={handleCloseModal} />
+        </Modal>
+        <Modal
+          sx={{
+            display: "flex",
+            justifySelf: "center",
+            alignSelf: "center",
+
+            "& .MuiModal-backdrop": {
+              backgroundColor: "rgba(0, 0, 0, 0.7);",
+            },
+          }}
+          open={openPay}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <TextField />
         </Modal>
         {/*  <Factura targetRef={targetRef} /> */}
       </Stack>

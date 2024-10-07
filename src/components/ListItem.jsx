@@ -67,12 +67,18 @@ const ListItem = ({
             {q}
           </Typography>
         </div>
-
+        <Box>
+          <Typography
+            sx={{ fontSize: 15, fontWeight: 600, textAlign: "right" }}
+          >
+            {totalPrice}
+          </Typography>
+        </Box>
         <Box
           sx={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "end",
           }}
         >
           <Box
@@ -84,7 +90,8 @@ const ListItem = ({
               width: "auto",
               height: "auto",
               borderRadius: 1,
-              alignItems: "center",
+
+              p: 0.5,
             }}
           >
             {finish && (
@@ -101,13 +108,7 @@ const ListItem = ({
             )}
           </Box>
         </Box>
-        <Box>
-          <Typography
-            sx={{ fontSize: 15, fontWeight: 600, textAlign: "right" }}
-          >
-            {totalPrice}
-          </Typography>
-        </Box>
+
         <Box
           sx={{
             display: "flex",
