@@ -311,7 +311,14 @@ const Payment = ({ height }) => {
             label={"Realiza"}
           />
         </Box>
-        <Box sx={{ display: "grid", gridTemplateColumns: "60% 40%" }}>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "60% 40%",
+            width: 400,
+            p: 0,
+          }}
+        >
           <LocalizationProvider
             dateAdapter={AdapterDayjs}
             style={{ width: "100%" }}
@@ -360,7 +367,7 @@ const Payment = ({ height }) => {
 
                     p: 0,
                     pl: 1.5,
-                    pt: 1,
+                    pt: 1.5,
                     textAlign: "left",
                     height: 45,
                   },
@@ -390,7 +397,7 @@ const Payment = ({ height }) => {
             </DemoContainer>
           </LocalizationProvider>
           <FormSelect2
-            full
+            width={150}
             size="normal"
             value={formik.values.paymentMethod}
             defaultValue={payment.paymentMethod}

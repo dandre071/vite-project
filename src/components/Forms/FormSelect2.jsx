@@ -23,13 +23,14 @@ const FormSelect2 = ({
   renderValue,
   variant,
   size,
+  width,
 }) => {
   //console.log(options);
   return (
-    <FormControl required={required} onBlur={onBlur} fullWidth sx={{}}>
+    <FormControl required={required} onBlur={onBlur} fullWidth sx={{ p: 0 }}>
       <InputLabel id={`input-label-${name}`}>{label}</InputLabel>
 
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: "flex", padding: 0, width: width }}>
         <Select
           sx={{ p: 0 }}
           helperText={helperText}
@@ -51,7 +52,7 @@ const FormSelect2 = ({
           }
         >
           {options.map((option, index) => (
-            <MenuItem value={option} key={index}>
+            <MenuItem value={option} key={index} sx={{ width: "100%", p: 0 }}>
               {option}
             </MenuItem>
           ))}
