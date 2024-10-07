@@ -321,7 +321,7 @@ const Payment = ({ height }) => {
         >
           <LocalizationProvider
             dateAdapter={AdapterDayjs}
-            style={{ width: "100%" }}
+            style={{ width: "90%" }}
           >
             <DemoContainer
               fullWidth
