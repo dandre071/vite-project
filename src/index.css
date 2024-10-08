@@ -265,21 +265,20 @@
   justify-content: center;
   align-items: center;
 }
-#modal-box {
-  width: 200px;
-  height: 250px;
-  background-color: rgb(247, 247, 247, 1);
-  margin: 10px;
+.modal-box {
+  /* width: 200px;
+  height: 250px; */
+  background-color: rgb(255, 255, 255);
+
   border-radius: 3px;
   display: grid;
-  grid-template-rows: 60% 1fr;
+  grid-template-rows: 25% 1fr 60px;
   border-radius: 6px;
-  /* transform: scale(1); */
+
   transform: translateY(0px);
-  gap: 10px;
-  /*border: 2px solid var(--background-light);*/
-  /* transition: translateY 1s ease-in-out 2s; */
-  overflow: hidden;
+  gap: 5px;
+
+  /* overflow: hidden; */
 }
 
 #modal-box:hover {

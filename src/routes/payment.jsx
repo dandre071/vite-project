@@ -72,6 +72,7 @@ const Payment = ({ height }) => {
   const clearCart = useShoppingCart((state) => state.clearCart);
   const targetRef = useRef();
   const show = false;
+  const payRef = useRef();
   const items = useShoppingCart((state) => state.items);
   const totalPayment = colPesos.format(totalPrice);
   const [date, setDate] = useState();
@@ -150,6 +151,7 @@ const Payment = ({ height }) => {
       borderBottom: `1.5px solid background.dark`,
     },
   };
+  const [paidAmount, setPaidAmount] = useState(0);
 
   return (
     <Stack
@@ -178,7 +180,7 @@ const Payment = ({ height }) => {
           width: "95%",
           height: "100%",
           display: "grid",
-          gridTemplateRows: "repeat(3, 30px)",
+          gridTemplateRows: "repeat(4, 30px)",
           justifyContent: "center",
           alignItems: "center",
           alignSelf: "start",
@@ -200,8 +202,14 @@ const Payment = ({ height }) => {
         {/* second item */}
         <Box sx={{ ...styles.paymentBox }}>
           <Typography sx={styles.paymentAmount}>{`Pago: `}</Typography>
-
-          <TextField
+          <Typography
+            onChange={formik.handleChange}
+            value={formik.values.payment}
+            sx={{ ...styles.paymentAmount, textAlign: "right" }}
+          >
+            {colPesos.format(formik.values.payment)}
+          </Typography>
+          {/* <TextField
             variant="standard"
             sx={{
               width: "auto",
@@ -213,9 +221,7 @@ const Payment = ({ height }) => {
             error={
               personalData.billType === "Recibo" ? formik.errors.payment : ""
             }
-            /* helperText={
-                personalData.billType === "Recibo" && formik.errors.payment
-              } */
+           
             size="small"
             name="payment"
             onChange={formik.handleChange}
@@ -236,7 +242,7 @@ const Payment = ({ height }) => {
               ),
             }}
             type="tel"
-          />
+          /> */}
         </Box>
         {/* end second item */}
         {/* third item */}
@@ -261,6 +267,16 @@ const Payment = ({ height }) => {
           </Typography>
         </Box>
         {/* end third item */}
+        <Box
+          sx={{
+            ...styles.paymentBox,
+          }}
+        >
+          <Typography sx={styles.paymentAmount}>{`Medio de pago: `}</Typography>
+          <Typography sx={{ ...styles.paymentAmount, textAlign: "right" }}>
+            {formik.values.paymentMethod}
+          </Typography>
+        </Box>
       </Stack>
       <Stack
         spacing={0}
@@ -395,21 +411,6 @@ const Payment = ({ height }) => {
               />
             </DemoContainer>
           </LocalizationProvider>
-          <Box sx={{ width: "100%" }}>
-            {" "}
-            <FormSelect2
-              width={"150px"}
-              size="normal"
-              value={formik.values.paymentMethod}
-              defaultValue={payment.paymentMethod}
-              error={formik.errors.paymentMethod}
-              helperText={formik.errors.paymentMethod}
-              name="paymentMethod"
-              onChange={formik.handleChange}
-              options={["Efectivo", "Transferencia"]}
-              label={"Medio de pago"}
-            />
-          </Box>
         </Box>
         <TextField
           name="comments"
@@ -496,7 +497,8 @@ const Payment = ({ height }) => {
           display: "flex",
           justifySelf: "center",
           alignSelf: "center",
-
+          width: 500,
+          height: 350,
           "& .MuiModal-backdrop": {
             backgroundColor: "rgba(0, 0, 0, 0.7);",
           },
@@ -505,10 +507,68 @@ const Payment = ({ height }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={{ width: 400, height: 300, bgcolor: "white" }}>
-          {" "}
-          <TextField label={"Abono"} />
-          <Button onClick={() => setOpenPay(false)}>Cancelar</Button>
+        <Box
+          sx={{
+            width: 500,
+            height: 300,
+            bgcolor: "white",
+            borderRadius: 2,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Box sx={{ width: "90%", height: "90%" }} className="modal-box">
+            <Box sx={{}}>
+              <ModalHeader title={"Abonar"} />{" "}
+            </Box>
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, 1fr)",
+                gap: 1,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <TextField
+                label={"Abono"}
+                name="payment"
+                value={formik.values.payment}
+                onChange={formik.handleChange}
+              />
+              <FormSelect2
+                size="normal"
+                value={formik.values.paymentMethod}
+                defaultValue={payment.paymentMethod}
+                error={formik.errors.paymentMethod}
+                helperText={formik.errors.paymentMethod}
+                name="paymentMethod"
+                onChange={formik.handleChange}
+                options={["Efectivo", "Transferencia"]}
+                label={"Medio de pago"}
+              />
+            </Box>
+            <Box>
+              {" "}
+              <Button
+                sx={{ height: "100%" }}
+                variant="secondary-outlined"
+                onClick={() => setOpenPay(false)}
+              >
+                Cancelar
+              </Button>
+              <Button
+                variant="prime"
+                /* onClick={() =>
+                  
+                } */
+                sx={{ height: "100%" }}
+              >
+                Aceptar
+              </Button>
+            </Box>
+          </Box>
         </Box>
       </Modal>
     </Stack>
