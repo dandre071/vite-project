@@ -65,6 +65,8 @@ const Payment = ({ height }) => {
   }, []);
   const [openModal, setOpenModal] = useState(false);
   const [openPay, setOpenPay] = useState(false);
+  const [paymentAmount, setPaymentAmount] = useState(null);
+  const [payMethod, setPayMethod] = useState(null);
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
 
@@ -157,7 +159,7 @@ const Payment = ({ height }) => {
     <Stack
       sx={{
         minHeight: "100%",
-        width: 450,
+        width: 400,
         display: "grid",
         bgcolor: "#f9f9f9",
         borderTopRightRadius: 10,
@@ -169,15 +171,19 @@ const Payment = ({ height }) => {
         // overflow: 'auto',
       }}
     >
-      <Box>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <ModalHeader title={"Resumen de compra"} />
-        <PaidIcon onClick={() => setOpenPay(true)} />
+        <PaidIcon
+          sx={{ color: "success.main", fontSize: 42 }}
+          className="btn"
+          onClick={() => setOpenPay(true)}
+        />
       </Box>
 
       <Stack
         /*    className="border-bottom-heavy" */
         sx={{
-          width: "95%",
+          width: 350,
           height: "100%",
           display: "grid",
           gridTemplateRows: "repeat(4, 30px)",
@@ -185,12 +191,12 @@ const Payment = ({ height }) => {
           alignItems: "center",
           alignSelf: "start",
           p: 0,
-          bgcolor: "#d1d1d1",
+          bgcolor: "#f1f1f1",
           borderRadius: 1.5,
         }}
       >
         {/* first item */}
-        <Box sx={{ ...styles.paymentBox, p: 0, width: 370 }}>
+        <Box sx={{ ...styles.paymentBox, p: 0, width: 340 }}>
           <Typography
             sx={styles.payment}
           >{`Productos: (${items.length})`}</Typography>
@@ -207,54 +213,15 @@ const Payment = ({ height }) => {
             value={formik.values.payment}
             sx={{ ...styles.paymentAmount, textAlign: "right" }}
           >
-            {colPesos.format(formik.values.payment)}
+            {colPesos.format(paymentAmount)}
           </Typography>
-          {/* <TextField
-            variant="standard"
-            sx={{
-              width: "auto",
-              maxWidth: "100px",
-              display: "flex",
-              justifySelf: "end",
-              textAlign: "right",
-            }}
-            error={
-              personalData.billType === "Recibo" ? formik.errors.payment : ""
-            }
-           
-            size="small"
-            name="payment"
-            onChange={formik.handleChange}
-            fullWidth={false}
-            value={formik.values.payment}
-            inputProps={{
-              style: { textAlign: "right", textJustify: "inter-word" },
-            }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment
-                  position="start"
-                  component="div"
-                  disablePointerEvents
-                >
-                  <Typography sx={{ fontWeight: 600 }}>$</Typography>
-                </InputAdornment>
-              ),
-            }}
-            type="tel"
-          /> */}
         </Box>
-        {/* end second item */}
-        {/* third item */}
+
         <Box
-          //className="border-bottom-heavy"
           sx={{
             ...styles.paymentBox,
-            /*  mb: 2,
-              pb: 1, */
           }}
         >
-          {/*   <PaidIcon /> */}
           <Typography
             name="pending"
             sx={styles.paymentAmount}
@@ -274,7 +241,7 @@ const Payment = ({ height }) => {
         >
           <Typography sx={styles.paymentAmount}>{`Medio de pago: `}</Typography>
           <Typography sx={{ ...styles.paymentAmount, textAlign: "right" }}>
-            {formik.values.paymentMethod}
+            {payMethod}
           </Typography>
         </Box>
       </Stack>
@@ -293,7 +260,7 @@ const Payment = ({ height }) => {
             //bgcolor: "pink",
             gap: 1,
             display: "grid",
-
+            width: 350,
             height: "60px",
             gridTemplateColumns: "repeat(2, 1fr)",
             justifyContent: "center",
@@ -328,27 +295,22 @@ const Payment = ({ height }) => {
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: "60% 40%",
+            /* gridTemplateColumns: "60% 40%", */
             width: "100%",
             bgcolor: "beige",
             p: 0,
           }}
         >
-          <LocalizationProvider
-            dateAdapter={AdapterDayjs}
-            style={{ width: "95%" }}
-          >
+          <LocalizationProvider dateAdapter={AdapterDayjs} style={{}}>
             <DemoContainer
               fullWidth
               components={["DateTimePicker"]}
               sx={{
                 /* bgcolor: "purple", */
-                width: "100%",
 
                 overflow: "hidden",
                 p: 0,
                 display: "grid",
-                gridTemplateColumns: "80% 1fr",
               }}
             >
               <DateTimePicker
@@ -374,7 +336,7 @@ const Payment = ({ height }) => {
                 }}
                 sx={{
                   padding: 0,
-                  overflow: "hidden",
+
                   stack: { p: 0, overflow: "hidden" },
                   textField: {},
                   input: {
@@ -392,16 +354,9 @@ const Payment = ({ height }) => {
 
                     m: 0,
                     borderRadius: "50%",
-                    right: -10,
-                    bottom: 0,
-                    width: 20,
-                    height: 25,
                   },
 
                   div: {
-                    display: "grid",
-                    gridTemplateColumns: "160px 1fr",
-                    width: 210,
                     height: "100%",
                     padding: 0,
                   },
@@ -412,15 +367,18 @@ const Payment = ({ height }) => {
             </DemoContainer>
           </LocalizationProvider>
         </Box>
-        <TextField
-          name="comments"
-          multiline
-          value={formik.values.comments}
-          onChange={formik.handleChange}
-          fullWidth
-          label={"Observaciones"}
-          type="text"
-        />
+        <Box sx={{ alignSelf: "end" }}>
+          <TextField
+            name="comments"
+            multiline
+            minRows={4}
+            value={formik.values.comments}
+            onChange={formik.handleChange}
+            fullWidth
+            label={"Observaciones"}
+            type="text"
+          />
+        </Box>
 
         {/*  <Factura targetRef={targetRef} /> */}
       </Stack>
@@ -490,7 +448,7 @@ const Payment = ({ height }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Factura onClose={handleCloseModal} />
+        <Factura payMethod={payMethod} onClose={handleCloseModal} />
       </Modal>
       <Modal
         sx={{
@@ -560,9 +518,11 @@ const Payment = ({ height }) => {
               </Button>
               <Button
                 variant="prime"
-                /* onClick={() =>
-                  
-                } */
+                onClick={() => {
+                  setPaymentAmount(formik.values.payment);
+                  setPayMethod(formik.values.paymentMethod);
+                  setOpenPay(false);
+                }}
                 sx={{ height: "100%" }}
               >
                 Aceptar

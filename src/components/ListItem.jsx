@@ -19,7 +19,7 @@ const ListItem = ({
 }) => {
   const items = useShoppingCart((state) => state.items);
   const invoiceGrid = "1fr 1cm 3cm";
-
+  console.log(finish.join(", "));
   return (
     <motion.div
       initial={{ opacity: 0, x: -50 }}
@@ -83,29 +83,27 @@ const ListItem = ({
         >
           <Box
             sx={{
-              lineHeight: 1.2,
               display: "flex",
               justifyContent: "center",
               bgcolor: customTheme.palette.success.main,
-              width: "auto",
+              width: "90%",
               height: "auto",
               borderRadius: 1,
 
               p: 0.5,
             }}
           >
-            {finish && (
-              <Typography
-                sx={{
-                  fontSize: 12,
-                  fontWeight: 500,
-                  textAlign: "center",
-                  color: "white",
-                }}
-              >
-                {finishQ + finish}
-              </Typography>
-            )}
+            <Typography
+              sx={{
+                lineHeight: 1.2,
+                fontSize: 12,
+                fontWeight: 500,
+                textAlign: "center",
+                color: "white",
+              }}
+            >
+              {finish.join(", ")}
+            </Typography>
           </Box>
         </Box>
 

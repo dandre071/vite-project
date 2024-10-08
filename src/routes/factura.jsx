@@ -17,7 +17,7 @@ import DeleteRoundedBtn from "../components/Buttons/DeleteRoundedBtn";
 import SuccessModal from "../components/modals/SuccessModal";
 import ConfirmModal from "../components/modals/ConfirmModal";
 
-const Factura = ({ openModal, onClose }) => {
+const Factura = ({ openModal, onClose, payMethod }) => {
   const navigate = useNavigate();
 
   const targetRef = useRef();
@@ -642,7 +642,7 @@ const Factura = ({ openModal, onClose }) => {
                         mt: 1,
                       }}
                     >
-                      {/*  <Typography>EFECTIVO</Typography> */}
+                      <Typography>{payMethod}</Typography>
                     </Box>
                   </Stack>
                 </Stack>
