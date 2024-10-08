@@ -16,6 +16,8 @@ import { Columns } from "lucide-react";
 import DeleteRoundedBtn from "../components/Buttons/DeleteRoundedBtn";
 import SuccessModal from "../components/modals/SuccessModal";
 import ConfirmModal from "../components/modals/ConfirmModal";
+import { Warning, WarningRounded } from "@mui/icons-material";
+import { customTheme } from "../Hooks/useCustomTheme";
 
 const Factura = ({ openModal, onClose, payMethod }) => {
   const navigate = useNavigate();
@@ -93,7 +95,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
     alignItems: "center",
     p: 0,
   };
-
+  const boxColor = "#DFE5F2";
   return (
     <>
       <div
@@ -177,38 +179,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                       width: "100%",
                       height: "100%",
                     }}
-                  >
-                    {/*  <Typography
-                      sx={{
-                        alignSelf: "start",
-                        fontSize: 10,
-                        fontFamily: "roboto",
-                        fontWeight: 500,
-                      }}
-                    >
-                      <WhatsAppIcon sx={{ fontSize: 10 }} /> 310 417 18 14
-                    </Typography>
-                    <Typography
-                      sx={{
-                        alignSelf: "start",
-                        fontSize: 10,
-                        fontFamily: "roboto",
-                        fontWeight: 500,
-                      }}
-                    >
-                      Carrera 16 # 102-53
-                    </Typography> */}
-                    {/* <Typography
-                      sx={{
-                        alignSelf: "start",
-                        fontSize: 10,
-                        fontFamily: "roboto",
-                        fontWeight: 500,
-                      }}
-                    >
-                      Barrio Baltazar (Turbo)
-                    </Typography> */}
-                  </Box>{" "}
+                  ></Box>{" "}
                 </Stack>
               </Stack>
 
@@ -246,10 +217,11 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                   >
                     <Box
                       sx={{
-                        bgcolor: "#f4f4f4",
-                        p: 0.5,
+                        /* bgcolor: boxColor, */
+                        height: 77.97,
                         width: 120,
                         borderRadius: 1,
+                        pl: 0.5,
                       }}
                     >
                       <Box>
@@ -303,7 +275,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                         pb: 0.5,
                         borderRadius: 1.5,
                         mt: 0.2,
-                        bgcolor: "#f4f4f4",
+                        bgcolor: boxColor,
                         /* bgcolor: "background.default",
                          */
 
@@ -538,12 +510,17 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                       <Typography variant="h6" className="invoice-label">
                         Revisa valores: <br />
                       </Typography>
+                      <Box sx={{ height: 20 }}></Box>
                       <Typography variant="h6" className="invoice-label">
                         Fecha:
                       </Typography>
                     </Box>
-                    <Stack className="box-bottom">
-                      <Box className={"box-bottom"} sx={{ height: "1cm" }}>
+                    <Stack
+                      /* className="box-bottom" */ sx={{ bgcolor: "#f5f5f5" }}
+                    >
+                      <Box
+                        /* className={"box-bottom"} */ sx={{ height: "1cm" }}
+                      >
                         <Typography className={"invoice-label"}>
                           Observaciones: <br />
                           {paymentData.comments}
@@ -558,13 +535,38 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                   </Stack>
                   <Box
                     className={"box-bottom"}
-                    sx={{ height: "1cm", width: "100%" }}
+                    sx={{
+                      height: "1cm",
+
+                      bgcolor: "#C8D4F0",
+                      bgcolor: "secondary.light",
+                      /*   display: "flex", */
+                    }}
                   >
-                    <Typography className={"invoice-label"}>
-                      Conserve este recibo para efectos de entrega de su trabajo
-                      y reclamaciones. <br />
-                      {paymentData.comments}
-                    </Typography>
+                    <Box
+                      sx={{
+                        display: "grid",
+                        gridTemplateColumns: "30px 300px",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <WarningRounded
+                        sx={{ fontSize: 24, color: "secondary.dark" }}
+                      />
+                      <Typography
+                        style={{
+                          color: customTheme.palette.secondary.dark,
+                          fontWeight: 600,
+                          fontSize: 12,
+                        }}
+                      >
+                        Presente este recibo en Caja para entrega de su trabajo.
+                        SIN RECIBO NO HAY ENTREGA.
+                        <br />
+                        {paymentData.comments}
+                      </Typography>
+                    </Box>
                   </Box>
                 </Box>
               </Stack>
@@ -593,7 +595,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                   <Box
                     sx={{
                       ...box,
-                      bgcolor: higlightColor,
+                      bgcolor: boxColor,
                       height: 24,
                       color: "text.main",
                       width: "101%",
@@ -671,18 +673,50 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                     </Box>
                     <Box
                       sx={{
-                        height: "100%",
-                        bgcolor: "#f4f4f4",
-
-                        mt: 1,
+                        height: 20,
+                        bgcolor: boxColor,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
                       }}
                     >
-                      <Typography>{payMethod}</Typography>
+                      <Typography
+                        sx={{
+                          fontSize: 11,
+                          textTransform: "uppercase",
+                          fontWeight: 700,
+                        }}
+                      >
+                        {payMethod}
+                      </Typography>
+                      {payMethod === "Transferencia" && (
+                        <Box sx={{ width: "100%", height: 10 }}></Box>
+                      )}
                     </Box>
                   </Stack>
                 </Stack>
               </Stack>
             </Stack>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                color: "#949494",
+                alignItems: "end",
+              }}
+            >
+              <Typography
+                sx={{
+                  alignSelf: "start",
+                  fontSize: 11,
+                  fontFamily: "roboto",
+                  fontWeight: 500,
+                }}
+              >
+                <WhatsAppIcon sx={{ fontSize: 10 }} /> 310 417 18 14 - Carrera
+                16 # 102-53 - Barrio Baltazar (Turbo)
+              </Typography>
+            </Box>
           </Stack>
         </form>
         <div>
