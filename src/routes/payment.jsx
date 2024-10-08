@@ -246,25 +246,25 @@ const Payment = ({ height }) => {
         </Box>
       </Stack>
       <Stack
-        spacing={0}
+        spacing={0.5}
         sx={{
-          minHeight: "80%",
-          width: "95%",
-          display: "grid",
+          display: "flex",
           alignItems: "start",
+          bgcolor: "pink",
+          width: "100%",
+          height: "95%",
         }}
       >
         {/* END */}
         <Box
           sx={{
-            //bgcolor: "pink",
             gap: 1,
             display: "grid",
-            width: 350,
-            height: "60px",
+            width: "100%",
+            height: "100%",
             gridTemplateColumns: "repeat(2, 1fr)",
             justifyContent: "center",
-            alignContent: "center",
+            alignContent: "start",
           }}
         >
           <FormSelect2
@@ -367,11 +367,11 @@ const Payment = ({ height }) => {
             </DemoContainer>
           </LocalizationProvider>
         </Box>
-        <Box sx={{ alignSelf: "end" }}>
+        <Box sx={{}}>
           <TextField
             name="comments"
             multiline
-            minRows={4}
+            minRows={2}
             value={formik.values.comments}
             onChange={formik.handleChange}
             fullWidth
