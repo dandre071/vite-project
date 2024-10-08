@@ -26,7 +26,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
   const paymentDataReset = usePaymentData((state) => state.clearData);
   const clientData = usePersonalData((state) => state.clearData);
   const cartReset = useShoppingCart((state) => state.clearCart);
-
+  const higlightColor = "#f4f4f4";
   const style = {
     position: "absolute",
     top: "50%",
@@ -112,7 +112,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
             sx={{
               display: "grid",
 
-              gridTemplateRows: "auto 0.7cm 13cm 1fr",
+              gridTemplateRows: "80px 0.7cm 13cm 1fr",
 
               justifyContent: "center",
               alignItems: "center",
@@ -150,38 +150,64 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                   }}
                 >
                   <Logo className="logo" />{" "}
+                  <Box className="grid-rows-2-1fr" sx={{}}>
+                    <Typography
+                      sx={{
+                        alignSelf: "end",
+                        textTransform: "uppercase",
+                        fontSize: 14,
+                        fontWeight: 800,
+                        textAlign: "right",
+
+                        width: "100%",
+                        color: "primary.dark",
+                      }}
+                    >
+                      {client.billType}
+                    </Typography>
+                  </Box>
                   <Box
                     sx={{
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
-                      justifyContent: "start",
-                      alignSelf: "start",
+                      justifyContent: "center",
+                      alignSelf: "center",
                       /*   bgcolor: "blue", */
                       width: "100%",
                       height: "100%",
                     }}
                   >
-                    <WhatsAppIcon sx={{ fontSize: 10 }} />{" "}
-                    <Typography
+                    {/*  <Typography
                       sx={{
+                        alignSelf: "start",
                         fontSize: 10,
                         fontFamily: "roboto",
                         fontWeight: 500,
                       }}
                     >
-                      310 417 18 14 / Cra 16 # 102-53
+                      <WhatsAppIcon sx={{ fontSize: 10 }} /> 310 417 18 14
                     </Typography>
                     <Typography
                       sx={{
+                        alignSelf: "start",
                         fontSize: 10,
                         fontFamily: "roboto",
                         fontWeight: 500,
                       }}
                     >
-                      {" "}
+                      Carrera 16 # 102-53
+                    </Typography> */}
+                    {/* <Typography
+                      sx={{
+                        alignSelf: "start",
+                        fontSize: 10,
+                        fontFamily: "roboto",
+                        fontWeight: 500,
+                      }}
+                    >
                       Barrio Baltazar (Turbo)
-                    </Typography>
+                    </Typography> */}
                   </Box>{" "}
                 </Stack>
               </Stack>
@@ -202,7 +228,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                     width: "100%",
                     height: "100%",
 
-                    alignItems: "end",
+                    alignItems: "start",
                     gridTemplateColumns: "35% 1fr",
                     /*   bgcolor: "green", */
                   }}
@@ -212,7 +238,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                       display: "grid",
 
                       height: "100%",
-                      justifyContent: "end",
+                      justifyContent: "start",
 
                       alignItems: "start",
                       /*    bgcolor: "blue", */
@@ -263,15 +289,15 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                     sx={{
                       display: "flex",
                       flexDirection: "column",
-                      justifyContent: "end",
+                      justifyContent: "start",
+                      alignItems: "start",
                     }}
                   >
                     <Stack
                       direction={"column"}
                       sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
+                        justifyContent: "start",
+                        alignItems: "start",
                         width: "97%",
 
                         pb: 0.5,
@@ -280,38 +306,42 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                         bgcolor: "#f4f4f4",
                         /* bgcolor: "background.default",
                          */
-                        justifySelf: "end",
+
                         alignSelf: "end",
                       }}
                     >
-                      <Box sx={{ width: "100%", height: "100%" }}>
-                        <Box sx={{ width: "98%", height: "95%" }}>
-                          <Box>
-                            <Typography
-                              variant="h6"
-                              className="invoice-label-client"
-                              sx={{ textAlign: "right" }}
-                            >
-                              Cliente
-                            </Typography>
-                            <Typography
-                              variant="h6"
-                              className="invoice-data-client"
-                              sx={{}}
-                            >
-                              {client.name}
-                            </Typography>
-                          </Box>
-
-                          <Box
-                            sx={{
-                              display: "flex",
-                              justifyContent: "right",
-                              /*  gridTemplateColumns: "1fr", */
-                            }}
+                      <Box
+                        sx={{
+                          width: "98%",
+                          height: "95%",
+                        }}
+                      >
+                        <Box>
+                          <Typography
+                            variant="h6"
+                            className="invoice-label-client"
+                            sx={{ textAlign: "right" }}
                           >
-                            <Box>
-                              {/* <Typography
+                            Cliente
+                          </Typography>
+                          <Typography
+                            variant="h6"
+                            className="invoice-data-client"
+                            sx={{}}
+                          >
+                            {client.name}
+                          </Typography>
+                        </Box>
+
+                        <Box
+                          sx={{
+                            display: "flex",
+                            justifyContent: "right",
+                            /*  gridTemplateColumns: "1fr", */
+                          }}
+                        >
+                          <Box>
+                            {/* <Typography
                               className="invoice-label-client"
                               sx={{
                                 // bgcolor: "red",
@@ -322,44 +352,27 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                             >
                               Email
                             </Typography> */}
-                              <Typography
-                                variant="h6"
-                                className="invoice-data-client"
-                              >
-                                {formatNum}
-                              </Typography>
-                              <Typography
-                                style={{ textTransform: "none" }}
-                                className="invoice-data-client"
-                              >
-                                {client.email}
-                              </Typography>
-                            </Box>
-                            <Box>
-                              {/*  <Typography className="invoice-label-client">
+                            <Typography
+                              variant="h6"
+                              className="invoice-data-client"
+                            >
+                              {formatNum}
+                            </Typography>
+                            <Typography
+                              style={{ textTransform: "none" }}
+                              className="invoice-data-client"
+                            >
+                              {client.email}
+                            </Typography>
+                          </Box>
+                          <Box>
+                            {/*  <Typography className="invoice-label-client">
                               Teléfono
                             </Typography> */}
-                            </Box>
                           </Box>
                         </Box>
                       </Box>
                     </Stack>
-                    <Box className="grid-rows-2-1fr" sx={{}}>
-                      <Typography
-                        sx={{
-                          alignSelf: "end",
-                          textTransform: "uppercase",
-                          fontSize: 14,
-                          fontWeight: 800,
-                          textAlign: "right",
-
-                          width: "100%",
-                          color: "primary.dark",
-                        }}
-                      >
-                        {client.billType}
-                      </Typography>
-                    </Box>
                   </Box>
                 </Stack>
               </Box>
@@ -530,7 +543,12 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                       </Typography>
                     </Box>
                     <Stack className="box-bottom">
-                      <Typography className={"invoice-label"}>Sello</Typography>
+                      <Box className={"box-bottom"} sx={{ height: "1cm" }}>
+                        <Typography className={"invoice-label"}>
+                          Observaciones: <br />
+                          {paymentData.comments}
+                        </Typography>
+                      </Box>
                     </Stack>
                     {/*   <Stack className="box-bottom">
                       <Typography className={"invoice-label"}>
@@ -538,9 +556,13 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                       </Typography>
                     </Stack> */}
                   </Stack>
-                  <Box className={"box-bottom"} sx={{ height: "1cm" }}>
+                  <Box
+                    className={"box-bottom"}
+                    sx={{ height: "1cm", width: "100%" }}
+                  >
                     <Typography className={"invoice-label"}>
-                      Observaciones: <br />
+                      Conserve este recibo para efectos de entrega de su trabajo
+                      y reclamaciones. <br />
                       {paymentData.comments}
                     </Typography>
                   </Box>
@@ -571,18 +593,18 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                   <Box
                     sx={{
                       ...box,
-                      bgcolor: "background.dark",
-                      height: 30,
+                      bgcolor: higlightColor,
+                      height: 24,
                       color: "text.main",
                       width: "101%",
                     }}
                   >
-                    <Typography sx={{ fontSize: 13, fontWeight: 800 }}>
+                    <Typography sx={{ fontSize: 15, fontWeight: 800 }}>
                       Total:
                     </Typography>
 
                     <Typography
-                      sx={{ fontSize: 16, fontWeight: 800, width: "98%" }}
+                      sx={{ fontSize: 15, fontWeight: 800, width: "98%" }}
                     >
                       {colPesos.format(totalInvoice)}
                     </Typography>
