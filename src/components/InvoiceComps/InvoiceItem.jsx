@@ -10,6 +10,7 @@ const InvoiceItem = ({
   finish,
   description,
   finishQ,
+  orientation,
 }) => {
   return (
     <Stack className="invoice-item border-bottom" sx={{}}>
@@ -27,7 +28,7 @@ const InvoiceItem = ({
           className="invoice-content-data-l capitalize"
           sx={{ fontWeight: 600, fontSize: 13 }}
         >
-          {product}
+          {`${product} - ${orientation}`}
         </Typography>
         <div
           style={{
@@ -103,7 +104,7 @@ const InvoiceItem = ({
                 textAlign: "center",
               }}
             >
-              Acabado: {`${finishQ} ${finish}`}
+              {` ${finish.join(" + ")}`}
             </Typography>
           </Box>
         </Box>
