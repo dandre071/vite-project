@@ -161,8 +161,15 @@ const EditItem = () => {
               fullWidth
               name="orientation"
               onChange={formik.handleChange}
-              options={["", "Vertical", "Horizontal"]}
-              label={"Orientación"}
+              options={[
+                "",
+                "Vertical",
+                "Horizontal",
+                "Circular",
+                "Cuadrado",
+                "Ovalado",
+              ]}
+              label={"Orientación/Forma"}
               /* defaultValue={"Sin acabado"} */
             />
           </Grid>

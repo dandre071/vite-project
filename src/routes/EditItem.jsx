@@ -66,7 +66,7 @@ const EditItem = () => {
         gridTemplateRows: "80px 1fr",
         borderRadius: 2,
         width: 600,
-        height: 500,
+        height: 450,
         overflow: "hidden",
       }}
     >
@@ -95,6 +95,8 @@ const EditItem = () => {
           sx={{
             width: "90%",
             height: "85%",
+            /*  bgcolor: "red", */
+            gap: 1,
           }}
         >
           <Grid item lg={12}>
@@ -111,7 +113,15 @@ const EditItem = () => {
               type="text"
             />
           </Grid>
-          <Grid item lg={4} xs={8}>
+          <Grid
+            item
+            lg={12}
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "25% 15% 30% 1fr",
+              gap: 1,
+            }}
+          >
             <TextField
               InputProps={{
                 startAdornment: (
@@ -139,8 +149,7 @@ const EditItem = () => {
               label={"Precio"}
               type="number"
             />
-          </Grid>
-          <Grid item lg={2}>
+
             <TextField
               error={formik.errors.quantity}
               helperText={formik.errors.quantity}
@@ -157,8 +166,7 @@ const EditItem = () => {
                 });
               }}
             />
-          </Grid>
-          <Grid item lg={3} xs={4}>
+
             <FormSelect2
               value={formik.values.finish}
               multiple={true}
@@ -172,8 +180,7 @@ const EditItem = () => {
               defaultValue={"Sin acabado"}
               renderValue={(selected) => selected.join(", ")}
             />
-          </Grid>
-          <Grid item lg={3}>
+
             <FormSelect2
               value={formik.values.orientation}
               error={formik.errors.orientation}
@@ -181,7 +188,14 @@ const EditItem = () => {
               fullWidth
               name="orientation"
               onChange={formik.handleChange}
-              options={["", "Vertical", "Horizontal"]}
+              options={[
+                "",
+                "Vertical",
+                "Horizontal",
+                "Circular",
+                "Cuadrado",
+                "Ovalado",
+              ]}
               label={"Orientación"}
               /* defaultValue={"Sin acabado"} */
             />
@@ -200,7 +214,11 @@ const EditItem = () => {
               multiline
             />
           </Grid>
-          <Grid item lg={12} sx={{ display: "flex", flexDirection: "row" }}>
+          <Grid
+            item
+            lg={12}
+            sx={{ display: "flex", flexDirection: "row", mt: 2, pb: 2, gap: 3 }}
+          >
             <Box sx={{ width: "60%" }}>
               <PriceCalc
                 value={formik.values.itemTotalPrice}
@@ -209,14 +227,22 @@ const EditItem = () => {
                 //onClick={totalCalc}
               />
             </Box>
-
-            <Button
-              onClick={handleUpdate}
-              variant="prime"
-              sx={{ height: 50, width: "40%" }}
-            >
-              Aceptar
-            </Button>
+            <Box sx={{ display: "flex", width: "40%", gap: 1 }}>
+              <Button
+                onClick={handleUpdate}
+                variant="secondary"
+                sx={{ height: 50 }}
+              >
+                Cancelar
+              </Button>
+              <Button
+                onClick={() => navigate("/client-data/cart")}
+                variant="prime"
+                sx={{ height: 50 }}
+              >
+                Aceptar
+              </Button>
+            </Box>
           </Grid>
         </Grid>
       </Grid>
