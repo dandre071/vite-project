@@ -34,26 +34,32 @@ const EditItem = () => {
     navigate("/client-data/cart"); */
     /*  setOpen(false); */
   };
+  const values = {
+    id: id,
+    /* module: "ManualInput", */
+    name: cartItem.name,
+    price: cartItem.price,
+    quantity: cartItem.quantity,
+    description: cartItem.description,
+    /*  height: 0,
+    width: 0,
+    matWidth: 0, */
+    finish: cartItem.finish,
+    finishQ: cartItem.finishQ,
+    /* material: "", */
+    /* descolillado: cartItem.descolillado, */
+    /* transfer: false, */
+    itemTotalPrice: cartItem.itemTotalPrice,
+    orientation: cartItem.orientation,
+  };
+  const handleCancel = () => {
+    formik.setValues({ values });
+    navigate("/client-data/cart");
+  };
+
   console.log(id);
   const formik = useFormik({
-    initialValues: {
-      id: id,
-      /* module: "ManualInput", */
-      name: cartItem.name,
-      price: cartItem.price,
-      quantity: cartItem.quantity,
-      description: cartItem.description,
-      /*  height: 0,
-      width: 0,
-      matWidth: 0, */
-      finish: cartItem.finish,
-      finishQ: cartItem.finishQ,
-      /* material: "", */
-      /* descolillado: cartItem.descolillado, */
-      /* transfer: false, */
-      itemTotalPrice: cartItem.itemTotalPrice,
-      orientation: cartItem.orientation,
-    },
+    initialValues: values,
     validationSchema: productSchema,
 
     /*  onSubmit: handlerAdd, */
@@ -229,14 +235,14 @@ const EditItem = () => {
             </Box>
             <Box sx={{ display: "flex", width: "40%", gap: 1 }}>
               <Button
-                onClick={handleUpdate}
+                onClick={handleCancel}
                 variant="secondary"
                 sx={{ height: 50 }}
               >
                 Cancelar
               </Button>
               <Button
-                onClick={() => navigate("/client-data/cart")}
+                onClick={handleUpdate}
                 variant="prime"
                 sx={{ height: 50 }}
               >
