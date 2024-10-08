@@ -124,7 +124,8 @@ const Cart = ({ height }) => {
                 </div>
                 <div
                   style={{
-                    display: "grid",
+                    display: "flex",
+                    flexDirection: "column",
                     gap: 1,
                     alignItems: "start",
                     justifyContent: "start",

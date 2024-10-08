@@ -167,7 +167,11 @@ const Payment = ({ height }) => {
         // overflow: 'auto',
       }}
     >
-      <ModalHeader title={"Resumen de compra"} />
+      <Box>
+        <ModalHeader title={"Resumen de compra"} />
+        <PaidIcon onClick={() => setOpenPay(true)} />
+      </Box>
+
       <Stack
         /*    className="border-bottom-heavy" */
         sx={{
@@ -417,38 +421,6 @@ const Payment = ({ height }) => {
           type="text"
         />
 
-        <Modal
-          sx={{
-            display: "flex",
-            justifySelf: "center",
-            alignSelf: "center",
-
-            "& .MuiModal-backdrop": {
-              backgroundColor: "rgba(0, 0, 0, 0.7);",
-            },
-          }}
-          open={openModal}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Factura onClose={handleCloseModal} />
-        </Modal>
-        <Modal
-          sx={{
-            display: "flex",
-            justifySelf: "center",
-            alignSelf: "center",
-
-            "& .MuiModal-backdrop": {
-              backgroundColor: "rgba(0, 0, 0, 0.7);",
-            },
-          }}
-          open={openPay}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <TextField />
-        </Modal>
         {/*  <Factura targetRef={targetRef} /> */}
       </Stack>
       <Stack
@@ -503,6 +475,42 @@ const Payment = ({ height }) => {
           {/*  </Link> */}
         </Grid>
       </Stack>
+      <Modal
+        sx={{
+          display: "flex",
+          justifySelf: "center",
+          alignSelf: "center",
+
+          "& .MuiModal-backdrop": {
+            backgroundColor: "rgba(0, 0, 0, 0.7);",
+          },
+        }}
+        open={openModal}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Factura onClose={handleCloseModal} />
+      </Modal>
+      <Modal
+        sx={{
+          display: "flex",
+          justifySelf: "center",
+          alignSelf: "center",
+
+          "& .MuiModal-backdrop": {
+            backgroundColor: "rgba(0, 0, 0, 0.7);",
+          },
+        }}
+        open={openPay}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={{ width: 400, height: 300, bgcolor: "white" }}>
+          {" "}
+          <TextField label={"Abono"} />
+          <Button onClick={() => setOpenPay(false)}>Cancelar</Button>
+        </Box>
+      </Modal>
     </Stack>
   );
 };
