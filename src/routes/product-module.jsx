@@ -48,7 +48,13 @@ const ProductModule = () => {
             border: "none",
           }}
         >
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              gap: 10,
+            }}
+          >
             <AutoProductModal
               text={"Auto"}
               matSize={options.materialWidth}

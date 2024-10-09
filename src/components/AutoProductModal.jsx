@@ -12,6 +12,7 @@ import OpenModalBtn from "./OpenModalBtn";
 import { SlCalculator } from "react-icons/sl";
 import ModalCard from "./Cards/ModalCard";
 import { customTheme } from "../Hooks/useCustomTheme";
+import StorageRoundedIcon from "@mui/icons-material/StorageRounded";
 const style = {
   position: "absolute",
   top: "50%",
@@ -32,13 +33,9 @@ const AutoProductModal = ({ text, matSize, material, choice, acabado }) => {
   return (
     <div>
       <ModalCard
-        title={"Buscar producto"}
+        title={"Eligir de la Base de Datos"}
         onClick={handleOpen}
-        children={
-          <SlCalculator
-            style={{ color: customTheme.palette.primary.main, fontSize: 50 }}
-          />
-        }
+        children={<StorageRoundedIcon />}
       />
       <Modal
         open={open}

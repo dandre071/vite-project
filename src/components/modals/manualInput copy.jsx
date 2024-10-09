@@ -123,7 +123,7 @@ const ManualInput2 = ({ text, acabado }) => {
   return (
     <Box>
       <ModalCard
-        title={"Configurar Producto"}
+        title={"Configurar manualmente"}
         onClick={handleOpen}
         icon={<EditNoteIcon className="modal-icon" sx={{ fontSize: 100 }} />}
       />

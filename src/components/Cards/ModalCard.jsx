@@ -10,12 +10,13 @@ const ModalCard = ({
   disableBackdropClick,
 }) => {
   return (
-    <Box id="modal-box" onClick={onClick}>
+    <Box className="modal-card" onClick={onClick}>
       <div
         style={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          color: "red",
         }}
       >
         {icon}
@@ -25,6 +26,9 @@ const ModalCard = ({
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          backgroundColor: customTheme.palette.primary.main,
+          /* borderTopLeftRadius: 30,
+          borderTopRightRadius: 30, */
         }}
       >
         <Typography
@@ -32,12 +36,14 @@ const ModalCard = ({
           variant="h6"
           style={{
             width: "70%",
-            fontSize: 20,
-            fontWeight: 500,
+            fontSize: 24,
+            fontWeight: 600,
             /* color: "white", */
             lineHeight: 1,
             textAlign: "center",
             lineBreak: "loose",
+            /*  color: customTheme.palette.primary.main, */
+            color: "white",
           }}
         >
           {title}

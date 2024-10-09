@@ -40,7 +40,7 @@ export const routes = [
   {
     path: "/client-data/product-module",
     element: <ProductModule />,
-    name: "Producto",
+    name: "Eligir productos",
   },
   {
     path: "/client-data/cart",
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
       {
         path: "/client-data/product-module",
         element: <ProductModule />,
-        name: "Producto",
+        name: "Eligir productos",
       },
       {
         path: "/client-data/cart",

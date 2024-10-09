@@ -201,7 +201,7 @@ const Cart = ({ height }) => {
                 >
                   Aún no se han agregado productos.
                 </Typography>
-                <Link to={"/product-module"}>
+                <Link to={"/client-data/product-module"}>
                   <AddBtn variant="prime" width={300} />
                 </Link>
               </Stack>

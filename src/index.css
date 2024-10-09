@@ -281,11 +281,49 @@
   /* overflow: hidden; */
 }
 
-#modal-box:hover {
-  transform: translateY(-5px);
+.modal-card {
+  background-color: rgb(255, 255, 255);
+  width: 250px;
+  height: 250px;
+  border-radius: 3px;
+  display: grid;
+  grid-template-rows: 55% 1fr;
+  border-radius: 6px;
+  overflow: hidden;
+  transform: translateY(0px);
+  gap: 5px;
+}
+
+.modal-card:hover {
+  /* transform: translateY(-5px); */
   /* background-color: #0866ff; */
   cursor: pointer;
 }
+
+/* .modal-card::before {
+  content: "";
+  background-color: rgb(46, 119, 255);
+  width: 250px;
+  height: 250px;
+  border-radius: 3px;
+
+  border-radius: 6px;
+  z-index: 1;
+  transform: translateY(240px);
+  gap: 5px;
+} */
+/* .modal-card:hover::before {
+  content: "";
+  background-color: rgb(46, 119, 255);
+  width: 250px;
+  height: 250px;
+
+  display: grid;
+
+  border-radius: 6px;
+  z-index: 1;
+  transform: translateY(0px);
+} */
 /* #modal-box:hover .modal-icon {
   color: var(--primary-dark);
   cursor: pointer;
@@ -318,7 +356,7 @@
 }
 .modal-icon,
 .modal-title {
-  color: rgb(172, 172, 172);
+  color: rgb(71, 89, 255);
 }
 .modal-title {
   font-weight: 800;
