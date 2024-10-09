@@ -563,8 +563,6 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                       >
                         Presente este recibo en Caja para entrega de su trabajo.
                         SIN RECIBO NO HAY ENTREGA.
-                        <br />
-                        {paymentData.comments}
                       </Typography>
                     </Box>
                   </Box>

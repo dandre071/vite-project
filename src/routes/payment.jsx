@@ -246,11 +246,12 @@ const Payment = ({ height }) => {
         </Box>
       </Stack>
       <Stack
-        spacing={0.5}
+        spacing={1}
         sx={{
-          display: "flex",
+          display: "grid",
+          gridTemplateRows: "auto auto 1fr",
           alignItems: "start",
-          bgcolor: "pink",
+          /*   bgcolor: "pink", */
           width: "100%",
           height: "95%",
         }}
@@ -371,7 +372,7 @@ const Payment = ({ height }) => {
           <TextField
             name="comments"
             multiline
-            minRows={2}
+            rows={4}
             value={formik.values.comments}
             onChange={formik.handleChange}
             fullWidth
