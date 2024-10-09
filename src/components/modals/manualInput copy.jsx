@@ -30,6 +30,8 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import ProductLimit from "./ProductLImit.jsx";
+import KeyboardRoundedIcon from "@mui/icons-material/KeyboardRounded";
+
 const module = "ManualInput";
 
 const ManualInput2 = ({ text, acabado }) => {
@@ -125,7 +127,9 @@ const ManualInput2 = ({ text, acabado }) => {
       <ModalCard
         title={"Configurar manualmente"}
         onClick={handleOpen}
-        icon={<EditNoteIcon className="modal-icon" sx={{ fontSize: 100 }} />}
+        icon={
+          <KeyboardRoundedIcon className="modal-icon" sx={{ fontSize: 100 }} />
+        }
       />
       <Modal
         disableEscapeKeyDown
