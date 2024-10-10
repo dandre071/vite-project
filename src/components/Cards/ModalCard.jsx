@@ -26,7 +26,7 @@ const ModalCard = ({
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: customTheme.palette.primary.main,
+          /* backgroundColor: customTheme.palette.primary.main, */
           /* borderTopLeftRadius: 30,
           borderTopRightRadius: 30, */
         }}
@@ -43,7 +43,7 @@ const ModalCard = ({
             textAlign: "center",
             lineBreak: "loose",
             /*  color: customTheme.palette.primary.main, */
-            color: "white",
+            color: customTheme.palette.primary.main,
           }}
         >
           {title}
