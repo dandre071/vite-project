@@ -452,6 +452,7 @@ const Payment = ({ height }) => {
         <Factura payMethod={payMethod} onClose={handleCloseModal} />
       </Modal>
       <Modal
+        className="scale-up-center"
         sx={{
           display: "flex",
           justifySelf: "center",
@@ -477,7 +478,10 @@ const Payment = ({ height }) => {
             alignItems: "center",
           }}
         >
-          <Box sx={{ width: "80%", height: "80%" }} className="modal-box">
+          <Box
+            sx={{ width: "80%", height: "80%" }}
+            className="modal-box scale-up-center"
+          >
             <Box sx={{}}>
               <ModalHeader title={"Abonar"} />{" "}
             </Box>

@@ -67,6 +67,7 @@ const EditItem = () => {
 
   return (
     <Box
+      className="scale-up-center"
       sx={{
         display: "grid",
         gridTemplateRows: "80px 1fr",
