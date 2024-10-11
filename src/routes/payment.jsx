@@ -484,7 +484,7 @@ const Payment = ({ height }) => {
           >
             <Box
               sx={{
-                borderBottom: `2px solid ${customTheme.palette.primary.dark}`,
+                borderBottom: `3px solid #f8f8f8`,
               }}
             >
               <ModalHeader title={"Abonar"} />{" "}
