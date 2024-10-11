@@ -43,6 +43,7 @@ import { users } from "../db";
 import { usePaymentData } from "../store/paymentData";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import PaidIcon from "@mui/icons-material/Paid";
+import { customTheme } from "../Hooks/useCustomTheme";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault("America/Bogota");
@@ -457,8 +458,7 @@ const Payment = ({ height }) => {
           display: "flex",
           justifySelf: "center",
           alignSelf: "center",
-          width: 500,
-          height: 350,
+
           "& .MuiModal-backdrop": {
             backgroundColor: "rgba(0, 0, 0, 0.7);",
           },
@@ -470,7 +470,7 @@ const Payment = ({ height }) => {
         <Box
           sx={{
             width: 400,
-            height: 400,
+            height: 350,
             bgcolor: "white",
             borderRadius: 2,
             display: "flex",
@@ -482,7 +482,11 @@ const Payment = ({ height }) => {
             sx={{ width: "80%", height: "80%" }}
             className="modal-box scale-up-center"
           >
-            <Box sx={{}}>
+            <Box
+              sx={{
+                borderBottom: `2px solid ${customTheme.palette.primary.dark}`,
+              }}
+            >
               <ModalHeader title={"Abonar"} />{" "}
             </Box>
             <Box

@@ -9,7 +9,7 @@ const ModalHeader = ({ title, children }) => {
         //color={"primary.main"}
 
         fontWeight={600}
-        sx={{ fontSize: 24 }}
+        sx={{ fontSize: 28 }}
       >
         {title}
       </Typography>
