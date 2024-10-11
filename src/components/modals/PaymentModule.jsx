@@ -14,7 +14,7 @@ const PaymentModule = ({ onClose, formikValues }) => {
   return (
     <Box
       sx={{
-        width: 500,
+        width: 350,
         height: 300,
         bgcolor: "white",
         borderRadius: 2,
@@ -23,14 +23,14 @@ const PaymentModule = ({ onClose, formikValues }) => {
         alignItems: "center",
       }}
     >
-      <Box sx={{ width: "90%", height: "90%" }} className="modal-box">
+      <Box sx={{ width: "80%", height: "90%" }} className="modal-box">
         <Box sx={{}}>
           <ModalHeader title={"Abonar"} />{" "}
         </Box>
         <Box
           sx={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
+            display: "block",
+
             gap: 1,
             justifyContent: "center",
             alignItems: "center",

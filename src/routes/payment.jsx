@@ -468,8 +468,8 @@ const Payment = ({ height }) => {
       >
         <Box
           sx={{
-            width: 500,
-            height: 300,
+            width: 400,
+            height: 400,
             bgcolor: "white",
             borderRadius: 2,
             display: "flex",
@@ -477,14 +477,14 @@ const Payment = ({ height }) => {
             alignItems: "center",
           }}
         >
-          <Box sx={{ width: "90%", height: "90%" }} className="modal-box">
+          <Box sx={{ width: "80%", height: "80%" }} className="modal-box">
             <Box sx={{}}>
               <ModalHeader title={"Abonar"} />{" "}
             </Box>
             <Box
               sx={{
-                display: "grid",
-                gridTemplateColumns: "repeat(2, 1fr)",
+                display: "flex",
+                flexDirection: "column",
                 gap: 1,
                 justifyContent: "center",
                 alignItems: "center",
@@ -508,10 +508,16 @@ const Payment = ({ height }) => {
                 label={"Medio de pago"}
               />
             </Box>
-            <Box>
-              {" "}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                width: "100%",
+                gap: 2,
+              }}
+            >
               <Button
-                sx={{ height: "100%" }}
+                sx={{ height: "90%", width: "100%" }}
                 variant="secondary-outlined"
                 onClick={() => setOpenPay(false)}
               >
@@ -524,7 +530,7 @@ const Payment = ({ height }) => {
                   setPayMethod(formik.values.paymentMethod);
                   setOpenPay(false);
                 }}
-                sx={{ height: "100%" }}
+                sx={{ height: "90%", width: "100%" }}
               >
                 Aceptar
               </Button>

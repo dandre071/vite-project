@@ -43,7 +43,7 @@ const ModalCard = ({
             textAlign: "center",
             lineBreak: "loose",
             /*  color: customTheme.palette.primary.main, */
-            color: customTheme.palette.primary.main,
+            color: "black",
           }}
         >
           {title}

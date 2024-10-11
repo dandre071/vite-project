@@ -128,7 +128,7 @@ const ManualInput2 = ({ text, acabado }) => {
         title={"Configurar manualmente"}
         onClick={handleOpen}
         icon={
-          <KeyboardRoundedIcon className="modal-icon" sx={{ fontSize: 100 }} />
+          <KeyboardRoundedIcon className="modal-icon" sx={{ fontSize: 80 }} />
         }
       />
       <Modal
