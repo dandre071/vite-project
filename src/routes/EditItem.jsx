@@ -80,14 +80,15 @@ const EditItem = () => {
         sx={{
           bgcolor: "white",
           display: "grid",
-          placeContent: "center",
+          justifyContent: "center",
+          alignItems: "end",
           color: "primary.dark",
           fontSize: 35,
           fontWeight: 600,
-          letterSpacing: 2,
+          /*  letterSpacing: 2, */
         }}
       >
-        header
+        Editar Ítem
       </Box>
       <Grid
         container
