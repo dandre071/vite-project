@@ -174,11 +174,13 @@ const Payment = ({ height }) => {
     >
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <ModalHeader title={"Resumen de compra"} />
-        <PaidIcon
-          sx={{ color: "success.main", fontSize: 42 }}
-          className="btn"
-          onClick={() => setOpenPay(true)}
-        />
+
+        <div className="success circle btn" onClick={() => setOpenPay(true)}>
+          <PaidIcon
+            className="btn"
+            sx={{ color: "success.main", fontSize: 55, p: 0 }}
+          />
+        </div>
       </Box>
 
       <Stack
@@ -452,6 +454,7 @@ const Payment = ({ height }) => {
       >
         <Factura payMethod={payMethod} onClose={handleCloseModal} />
       </Modal>
+
       <Modal
         className="scale-up-center"
         sx={{
