@@ -19,8 +19,10 @@ import {
   Typography,
 } from "@mui/material";
 import { routes } from "../main";
+import { Settings } from "@mui/icons-material";
 const menuItems = [
   { text: "Venta", icon: <SellOutlinedIcon />, path: "/client-data" },
+  { text: "Configuraciones", icon: <Settings />, path: "/Configuraciones" },
 ];
 /* const pathName = routes.filter(); */
 const Root = () => {
@@ -60,7 +62,9 @@ const Root = () => {
               </Link>
               {menuItems.map((item) => (
                 <ListItemButton
-                  onClick={() => navigate("/client-data")}
+                  onClick={
+                    () => navigate(item.path) /* console.log(item.path */
+                  }
                   key={item.text}
                   sx={{
                     width: 180,

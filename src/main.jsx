@@ -23,9 +23,15 @@ import Payment from "./routes/payment.jsx";
 import { ThemeProvider } from "@mui/material";
 import { customTheme } from "./Hooks/useCustomTheme.jsx";
 import EditItem from "./routes/EditItem.jsx";
+import ConfigPage from "./routes/ConfigPage.jsx";
 
 export const routes = [
   { path: "/", element: <Root />, name: "Home" },
+  {
+    path: "/Configuraciones",
+    element: <ConfigPage />,
+    name: "Configurar",
+  },
   {
     path: "/client-data/cart/:itemId",
     element: <EditItem />,
@@ -59,6 +65,11 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [...routes],
+  },
+  {
+    path: "Configuraciones",
+    element: <ConfigPage />,
+    name: "Configurar",
   },
   {
     path: "/client-data",
