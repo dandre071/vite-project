@@ -15,6 +15,7 @@ import { GiBoxCutter } from "react-icons/gi";
 import { customTheme } from "../Hooks/useCustomTheme";
 import { Slice } from "lucide-react";
 import { vinylPrice } from "../../public/configs";
+import { usePersonalData } from "../store/shoppingCart";
 
 const style = {
   position: "absolute",
@@ -28,6 +29,7 @@ const style = {
   // boxShadow: 24,
   p: 4,
 };
+
 const VinylCutModal = ({
   text,
   materials,
@@ -39,6 +41,8 @@ const VinylCutModal = ({
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const personalData = usePersonalData((state) => state.personalData);
+  console.log(personalData.clientType);
   return (
     <div>
       <ModalCard

@@ -28,3 +28,21 @@ export const publicistPrices = {
   "Descolillado grande": 5000,
   "Descolillado pequeño": 10000,
 };
+export const clientPrices = {
+  Banner: 6,
+  Adhesivo: 8,
+  Panaflex: 8,
+  Reflectivo: 8,
+  Microperforado: 10,
+  Lienzo: 10,
+  "Aviso con estructura": 18,
+  "Aviso luminoso": 45,
+  "Aviso luminoso 2 caras": 50,
+  Retablo: 20,
+  "Adhesivo + acrílico (pequeño)": 20,
+  "Adhesivo + acrílico (Grande)": 15,
+  "corte en vinilo (m)": 13000,
+  "corte en vinilo 50 Cm": 7000,
+  "Descolillado grande": 10000,
+  "Descolillado pequeño": 14000,
+};
