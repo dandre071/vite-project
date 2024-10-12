@@ -13,6 +13,8 @@ import ProductLimit from "../components/modals/ProductLImit";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { vinylPrice } from "../../public/configs";
+import { cutPrice } from "../components/utils/calcs";
+
 const colors = {
   main: "#0303b3",
   light: "#597fff",
@@ -21,7 +23,7 @@ const colors = {
   success: "#41f749",
   info: "#260987",
 };
-
+cutPrice("Particular", 60, "Vinilo");
 const ProductModule = () => {
   const items = useShoppingCart((state) => state.items);
   const cart = useShoppingCart();
