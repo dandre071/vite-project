@@ -536,7 +536,7 @@
   margin: 50vh auto 0;
   transform: translateY(-45%);
 }
-.circle {
+.circled {
   border-radius: 50%;
 }
 .center {

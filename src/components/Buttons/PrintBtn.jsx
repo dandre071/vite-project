@@ -5,7 +5,7 @@ import React from "react";
 const PrintBtn = ({ handlePrint }) => {
   return (
     <Box
-      className="circle center p-fixed button"
+      className="circled center p-fixed button"
       sx={{
         bgcolor: "success.main",
         width: 50,

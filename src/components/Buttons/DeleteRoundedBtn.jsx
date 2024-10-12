@@ -5,7 +5,7 @@ import React from "react";
 const DeleteRoundedBtn = ({ onClick }) => {
   return (
     <Box
-      className="circle center p-fixed button"
+      className="circled center p-fixed button"
       sx={{
         bgcolor: "red",
         width: 50,

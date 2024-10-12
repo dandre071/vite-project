@@ -28,7 +28,7 @@ const InvoiceItem = ({
           className="invoice-content-data-l capitalize"
           sx={{ fontWeight: 600, fontSize: 13 }}
         >
-          {`${product} - ${orientation}`}
+          {`${product} / ${orientation} `}
         </Typography>
         <div
           style={{
