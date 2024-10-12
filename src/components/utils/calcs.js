@@ -4,7 +4,7 @@ const personalData = usePersonalData((state) => state.personalData);
 const client = personalData.clientType;
 console.log();
 
-export const cutPrice = () => {
+export const cutPrice = (material, descolillado, transportador) => {
   if (client === "Particular") {
     /*  const cutValue = clientPrices. */
   }
