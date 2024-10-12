@@ -14,6 +14,7 @@ import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import { GiBoxCutter } from "react-icons/gi";
 import { customTheme } from "../Hooks/useCustomTheme";
 import { Slice } from "lucide-react";
+import { vinylPrice } from "../../public/configs";
 
 const style = {
   position: "absolute",

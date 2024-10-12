@@ -12,7 +12,7 @@ import AddShoppingCartRoundedIcon from "@mui/icons-material/AddShoppingCartRound
 import ProductLimit from "../components/modals/ProductLImit";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-
+import { vinylPrice } from "../../public/configs";
 const colors = {
   main: "#0303b3",
   light: "#597fff",
@@ -64,7 +64,7 @@ const ProductModule = () => {
             />
             <VinylCutModal
               text={"Corte en vinilo"}
-              materials={options.vinyls}
+              materials={Object.keys(vinylPrice)}
               choice={options.choice}
               descolillado={options.descolillado}
               colors={{ colors }}
