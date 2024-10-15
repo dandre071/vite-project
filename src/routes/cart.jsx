@@ -16,11 +16,37 @@ import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import Payment from "./payment";
 import zIndex from "@mui/material/styles/zIndex";
 import EditItem from "../components/modals/EditItem";
-import sql from "../server";
+import axios from "axios";
+import { useEffect, useState } from "react";
+/* import app from "../server"; */
+/* import { app } from "../server"; */
+/* import sql from "../server"; */
 
 const Cart = ({ height }) => {
   const { itemId } = useParams();
-  console.log(sql);
+  /*   console.log(sql); */
+
+  /* app.get("/productos", (req, res) => {
+    client.query(`Select * from productos`, (err, result) => {
+      if (!err) {
+        res.send(result.rows);
+      }
+    });
+    client.end;
+  }); */
+  const [products, setProducts] = useState([]);
+  /*  useEffect(() => {
+    const fetchProducts = async () => {
+        setLoading(true);
+      const res = await axios.get("http://localhost:3000/productos");
+      setProducts(res.data);
+      console.log(res.data);
+        setLoading(false);
+    };
+    fetchProducts();
+  }, []); */
+  /*   console.log(app); */
+
   const formik = useFormik({
     initialValues: {
       id: "",
