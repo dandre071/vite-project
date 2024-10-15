@@ -16,9 +16,11 @@ import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import Payment from "./payment";
 import zIndex from "@mui/material/styles/zIndex";
 import EditItem from "../components/modals/EditItem";
+import sql from "../server";
+
 const Cart = ({ height }) => {
   const { itemId } = useParams();
-
+  console.log(sql);
   const formik = useFormik({
     initialValues: {
       id: "",
@@ -46,7 +48,8 @@ const Cart = ({ height }) => {
   const handleChange = () => {
     items: [...state.items];
   };
-
+  /* const clientPg = client;
+  console.log(clientPg); */
   const navigate = useNavigate();
 
   const handleClick = useShoppingCart((state) => state.updateItemQ);
