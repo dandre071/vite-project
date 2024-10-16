@@ -1,11 +1,12 @@
 /* const pool = require("./db"); */
 import { pool } from "./db.js";
+/* import { queries } from "./queries.js"; */
 
-export const getProducts = (req, res) => {
-  pool.query("SELECT * FROM products", (error, results) => {
+export const getProducts = (req, response) => {
+  pool.query("SELECT * FROM productos", (error, results) => {
     if (error) throw error;
-    res.status(200).json(results.rows);
   });
+  response.status(200).json(results.rows);
 };
 /* module.exports = {
   getProducts,
