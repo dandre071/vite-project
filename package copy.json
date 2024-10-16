@@ -2,7 +2,7 @@
   "name": "vite-project",
   "private": true,
   "version": "0.0.0",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -24,7 +24,6 @@
     "@tanstack/react-query-devtools": "^5.52.2",
     "axios": "^1.7.7",
     "dayjs": "^1.11.11",
-    "express": "^4.21.1",
     "file-saver": "^2.0.5",
     "formik": "^2.4.6",
     "framer-motion": "^11.5.4",
