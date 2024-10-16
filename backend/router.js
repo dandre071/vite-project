@@ -1,7 +1,8 @@
-const { Router } = require("express");
-const router = Router();
+import { Router } from "express";
+import { getProducts } from "./controller.js";
+/* const { Router } = require("express"); */
+/* const controller = require("./controller"); */
+export const router = Router();
 
-router.get("/", (req, res) => {
-  res.send("using api route");
-});
-module.exports = router;
+router.get("/", getProducts);
+/* module.exports = router; */
