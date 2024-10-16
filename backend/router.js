@@ -4,10 +4,10 @@ import { getProducts } from "./controller.js";
 /* const controller = require("./controller"); */
 export const router = Router();
 
-router.get("/", (req, response) => {
+/* router.get("/", (req, response) => {
   pool.query("SELECT * FROM productos", (error, results) => {
     if (error) throw error;
   });
   response.status(200).json(results.rows);
-});
+}); */
 /* module.exports = router; */
