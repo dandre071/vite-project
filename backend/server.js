@@ -5,10 +5,10 @@ import { router } from "../backend/router.js";
 /* const impresosDb = router; */
 const app = express();
 const port = 3000;
-app.use(json);
+/* app.use(json); */
 app.get("/", (req, res) => {
   res.send("hello");
 });
-app.use("/api/v1/impresos", impresosDb);
+app.use("/api/v1/impresos", router);
 
 app.listen(port, () => console.log(`app listening in port ${port}`));

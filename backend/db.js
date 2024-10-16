@@ -1,5 +1,5 @@
-import Pool from "pg";
-
+import pg from "pg";
+const { Pool } = pg;
 /* const Pool = require("pg").Pool; */
 export const pool = new Pool({
   user: "postgres",

@@ -3,8 +3,8 @@ import { pool } from "./db.js";
 
 export const getProducts = (req, res) => {
   pool.query("SELECT * FROM products", (error, results) => {
-    /* if (error) throw error; */
-    /*  res.status(200).json(results.rows); */
+    if (error) throw error;
+    res.status(200).json(results.rows);
   });
 };
 /* module.exports = {
