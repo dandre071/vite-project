@@ -46,6 +46,8 @@ import { usePaymentData } from "../store/paymentData";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import PaidIcon from "@mui/icons-material/Paid";
 import { customTheme } from "../Hooks/useCustomTheme";
+import { endPoints } from "../../backend/endPoints";
+
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault("America/Bogota");
@@ -116,7 +118,7 @@ const Payment = ({ height }) => {
     setOpen(false); */
   };
 
-  //console.log(paymentData);
+  /*   console.log(getProducts); */
 
   const handleDate = () => {
     formik.setValues({ ...formik.values, delivery: newDateFormat });
@@ -157,14 +159,14 @@ const Payment = ({ height }) => {
     },
   };
   const [paidAmount, setPaidAmount] = useState(0);
-
+  const salesPeople = endPoints.users;
   return (
     <Stack
       sx={{
         minHeight: "100%",
         width: 400,
         display: "grid",
-        bgcolor: "#f9f9f9",
+        bgcolor: "#f6f7f9",
         borderTopRightRadius: 10,
         borderBottomRightRadius: 10,
         gridTemplateRows: "15% 20% 1fr 20%",

@@ -34,9 +34,9 @@ const Root = () => {
   return (
     <ThemeProvider theme={customTheme}>
       <div className="grid-template">
+        <div className="asider">jhjhj</div>
         <div className="aside">
           <Drawer
-            className="drawer"
             variant="permanent"
             anchor="left"
             sx={{
@@ -44,15 +44,18 @@ const Root = () => {
               flexShrink: 0,
 
               "& .MuiDrawer-paper": {
+                zIndex: 0,
+                top: "auto",
                 display: "flex",
                 justifyContent: "start",
                 alignItems: "center",
                 /*  bgcolor: "#0530ad", */
-                bgcolor: "transparent",
-                height: "85vh",
+                /*    bgcolor: "red", */
+                height: "50%",
                 width: 200,
+                alignSelf: "center",
                 boxSizing: "border-box",
-                top: "10vh",
+                overflow: "hidden",
               },
             }}
           >
@@ -106,17 +109,14 @@ const Root = () => {
           <div>
             <Link to={"/"}>
               <Box className="logo-container">
-                <Logo className="logo" width={50} />
+                <Logo className="logo" style={{ fill: "white" }} />
               </Box>
             </Link>
-            <Typography
-              sx={{ color: "#0530ad", fontSize: 35, fontWeight: 900 }}
-            >
-              {pageTitle || ""}
-            </Typography>
+            <div></div>
 
             <CartCounter />
           </div>
+
           {/*  <ListItem>
               <Link to={"/client-data"}>Cliente</Link>
             </ListItem>
@@ -126,9 +126,24 @@ const Root = () => {
             </ListItem> */}
         </div>
         <div className={"main"}>
-          <Outlet />
+          <Typography
+            sx={{
+              color: "black",
+              fontSize: 40,
+              fontWeight: 900,
+              justifySelf: "center",
+            }}
+          >
+            {pageTitle || ""}
+          </Typography>
+          <div>
+            {" "}
+            <Outlet />
+          </div>
         </div>
-        <div className="footer">v.1.16.10.24</div>
+        <div className="footer">
+          <p>v.1.16.10.24</p>
+        </div>
       </div>
     </ThemeProvider>
   );

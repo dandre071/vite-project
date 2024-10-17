@@ -168,7 +168,7 @@ const Cart = ({ height }) => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{
                           duration: 0.3,
-                          delay: i * 0.3,
+                          delay: i === 0 ? 0.5 : i * 0.7,
                           ease: "easeOut",
                         }}
                         exit={{ opacity: 0 }}

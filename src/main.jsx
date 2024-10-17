@@ -24,9 +24,10 @@ import { ThemeProvider } from "@mui/material";
 import { customTheme } from "./Hooks/useCustomTheme.jsx";
 import EditItem from "./routes/EditItem.jsx";
 import ConfigPage from "./routes/ConfigPage.jsx";
+import Home from "./routes/home.jsx";
 
 export const routes = [
-  { path: "/", element: <Root />, name: "Home" },
+  { path: "/", element: <Home />, name: "Home" },
   {
     path: "/Configuraciones",
     element: <ConfigPage />,
