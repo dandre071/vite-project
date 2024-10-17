@@ -26,6 +26,7 @@
   box-sizing: border-box;
 
   --nav-height: 60px;
+  --nav-height: 100px;
   --drawer-width: 200px;
   --page-child-width: 90vw;
   --cart-grid: 45% 10% 15% 15% 15%;
@@ -283,15 +284,15 @@
 
 .modal-card {
   background-color: rgb(255, 255, 255);
-  width: 220px;
-  height: 250px;
+  background-color: #f6f7f9;
+  width: 280px;
+  height: 150px;
   border-radius: 3px;
   display: grid;
-  grid-template-rows: 55% 1fr;
+  grid-template-columns: 35% 1fr;
   border-radius: 6px;
   overflow: hidden;
   transform: translateY(0px);
-  gap: 5px;
 }
 
 .modal-card:hover {
@@ -795,21 +796,24 @@
   width: 100vw;
   height: 100vh;
 
-  background-color: #f0f0f0 !important;
+  background-color: #f0f0f0;
   background-color: rgb(230, 235, 247);
+  background-color: rgb(255, 255, 255); /*SETS BODY BACKGROUND COLOR*/
   align-self: center;
   justify-self: center;
 
   display: grid;
   grid-template-columns: var(--drawer-width) 1fr;
-  grid-template-rows: var(--nav-height) 1fr;
+
+  grid-template-rows: var(--nav-height) 1fr var(--nav-height);
   margin: 0;
   justify-content: center;
   /*  align-items: center; */
   align-items: center;
   grid-template-areas:
-    "aside nav nav"
-    "aside main main";
+    "nav nav nav"
+    "aside main main"
+    "aside footer footer";
 }
 body {
   margin: 0;
@@ -818,18 +822,24 @@ body {
 
   overflow: hidden;
 }
+.footer {
+  grid-area: footer;
+}
 
 .aside {
   grid-area: aside;
-  height: calc(100vh); /* Full-height: remove this if you want "auto" height */
+  height: calc(
+    100vh - var(--nav-height)
+  ); /* Full-height: remove this if you want "auto" height */
   width: 200px;
 
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
   /*  top: var(--nav-height); */ /* Stay at the top */
   left: 0;
-  background-color: #e0e0e0; /* Black */
+  /* background-color: #616161;  */
   overflow-x: hidden; /* Disable horizontal scroll */
+  top: 20vh;
 }
 .nav-area {
   grid-area: nav;
@@ -842,11 +852,18 @@ body {
   background-color: #0866ff;
   background-color: #0530ad;
   right: 1vw;
+
   /* width: calc(var(--page-child-width) - var(--drawer-width)); */
   height: var(--nav-height);
   align-items: center;
   width: calc(98vw - var(--drawer-width));
+
   border-radius: 5px;
+  border-radius: 0;
+  width: 100%;
+  right: 0;
+  top: 0;
+  background-color: #ffffff;
 }
 .nav-area > div {
   display: flex;
@@ -865,6 +882,7 @@ body {
   top: 1vh;
 
   /* box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); */
+  border-bottom: 1px solid var(--primary-dark);
 }
 .main {
   grid-area: main;

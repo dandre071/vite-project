@@ -30,7 +30,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import ProductLimit from "./ProductLImit.jsx";
-import KeyboardRoundedIcon from "@mui/icons-material/KeyboardRounded";
+import KeyboardAltOutlinedIcon from "@mui/icons-material/KeyboardAltOutlined";
 
 const module = "ManualInput";
 
@@ -128,7 +128,10 @@ const ManualInput2 = ({ text, acabado }) => {
         title={"Configurar manualmente"}
         onClick={handleOpen}
         icon={
-          <KeyboardRoundedIcon className="modal-icon" sx={{ fontSize: 80 }} />
+          <KeyboardAltOutlinedIcon
+            className="modal-icon"
+            sx={{ fontSize: 60 }}
+          />
         }
       />
       <Modal

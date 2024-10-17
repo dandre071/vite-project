@@ -45,18 +45,21 @@ const Root = () => {
 
               "& .MuiDrawer-paper": {
                 display: "flex",
-                justifyContent: "start",
+                /* justifyContent: "center", */
                 alignItems: "center",
-                /*  bgcolor: "#0530ad", */
-                bgcolor: "transparent",
-                height: "85vh",
+                /* bgcolor: "#0866FF", */
+
                 width: 200,
                 boxSizing: "border-box",
-                top: "10vh",
               },
             }}
           >
             <List>
+              <Link to={"/"}>
+                <Box className="logo-container">
+                  <Logo className="logo" width={50} />
+                </Box>
+              </Link>
               {menuItems.map((item) => (
                 <ListItemButton
                   onClick={
@@ -104,14 +107,7 @@ const Root = () => {
         </div>
         <div className={"nav-area"}>
           <div>
-            <Link to={"/"}>
-              <Box className="logo-container">
-                <Logo className="logo" width={50} />
-              </Box>
-            </Link>
-            <Typography
-              sx={{ color: "#0530ad", fontSize: 35, fontWeight: 900 }}
-            >
+            <Typography sx={{ color: "white", fontSize: 27, fontWeight: 700 }}>
               {pageTitle || ""}
             </Typography>
 
@@ -128,7 +124,6 @@ const Root = () => {
         <div className={"main"}>
           <Outlet />
         </div>
-        <div className="footer">v.1.16.10.24</div>
       </div>
     </ThemeProvider>
   );

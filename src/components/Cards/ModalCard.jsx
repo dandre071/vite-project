@@ -24,7 +24,7 @@ const ModalCard = ({
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "start",
           alignItems: "center",
           /* backgroundColor: customTheme.palette.primary.main, */
           /* borderTopLeftRadius: 30,
@@ -37,10 +37,10 @@ const ModalCard = ({
           style={{
             width: "70%",
             fontSize: 24,
-            fontWeight: 600,
+            fontWeight: 800,
             /* color: "white", */
             lineHeight: 1,
-            textAlign: "center",
+            textAlign: "left",
             lineBreak: "loose",
             /*  color: customTheme.palette.primary.main, */
             color: "black",
