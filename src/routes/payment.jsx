@@ -47,7 +47,7 @@ import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import PaidIcon from "@mui/icons-material/Paid";
 import { customTheme } from "../Hooks/useCustomTheme";
 import { endPoints } from "../../backend/endPoints";
-
+/* import { getProducts } from "../../backend/controller"; */
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault("America/Bogota");
@@ -117,7 +117,8 @@ const Payment = ({ height }) => {
     /* formik.resetForm();
     setOpen(false); */
   };
-
+  /*   const products = getProducts(); */
+  console.log(products);
   /*   console.log(getProducts); */
 
   const handleDate = () => {
