@@ -1,7 +1,13 @@
 import { Router } from "express";
 import * as express from "express";
 import { pool } from "./db.js";
-import { getProducts, getUsers } from "./controller.js";
+import {
+  getLaminatePrice,
+  getMaterialPrice,
+  getProducts,
+  getUsers,
+  getVinylPrice,
+} from "./controller.js";
 
 /* const { Router } = require("express"); */
 /* const controller = require("./controller"); */
@@ -9,7 +15,9 @@ export const router = express.Router();
 /* export const usersRouter = express.Router(); */
 router.get("/", getProducts);
 router.get("/users", getUsers);
-
+router.get("/laminado", getLaminatePrice);
+router.get("/precio-material", getMaterialPrice);
+router.get("/precio-vinilo", getVinylPrice);
 /* router.get("/", getProducts); */
 
 /* router.get("/users", getUsers); */

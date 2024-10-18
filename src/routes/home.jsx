@@ -21,8 +21,18 @@ const Home = () => {
   }, []);
   const products = useFetch("http://localhost:3000/api/v1/impresosDB");
   const users = useFetch("http://localhost:3000/api/v1/impresosDB/users");
+  const laminado = useFetch("http://localhost:3000/api/v1/impresosDB/laminado");
+  const materialPrice = useFetch(
+    "http://localhost:3000/api/v1/impresosDB/precio-material"
+  );
+  const vinylPrice = useFetch(
+    "http://localhost:3000/api/v1/impresosDB/precio-vinilos"
+  );
   console.log(products);
   console.log(users);
+  console.log(laminado);
+  console.log(materialPrice);
+  console.log(vinylPrice);
   return (
     <>
       {/*  {products.map((product) => (
