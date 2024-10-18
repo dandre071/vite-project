@@ -118,7 +118,7 @@ const Payment = ({ height }) => {
     setOpen(false); */
   };
   /*   const products = getProducts(); */
-  console.log(products);
+  /*  console.log(products); */
   /*   console.log(getProducts); */
 
   const handleDate = () => {

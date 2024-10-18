@@ -6,7 +6,7 @@ import cors from "cors";
 const impresosDB = router;
 /* const users = usersRouter; */
 const corsOptions = {
-  origin: ["http://localhost:5173"],
+  origin: ["http://localhost:5173", "http://localhost:80"],
 };
 
 const app = express();
