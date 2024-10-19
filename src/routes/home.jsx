@@ -57,35 +57,26 @@ const Home = () => {
     .then((respuesta) => respuesta.json())
     .then((datos) => console.log(datos)); */
   /*  const [id, setId] = useState(products[0].length); */
-  /* const currId = products[0].length + 1; */
-  const getId = () => {
+
+  const createProduct = () => {
+    /*  let currId;
     fetch("http://localhost:3000/api/v1/impresosDB")
       .then((res) => res.json())
-      .then((data) => {
-        const currId = data;
-        return data.length + 1;
-      });
-  };
-  getId();
+      .then((data) => (currId = data[0].length + 1)); */
 
-  /* console.log(products[0].length); */
-  const createProduct = () => {
-    const id = products[0].length + 1;
-    console.log(id);
     fetch("http://localhost:3000/api/v1/impresosDB/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: getId(),
+        id: 1223,
         producto: "prueba",
         precio: 500000,
       }),
     })
       .then((respuesta) => respuesta.ok)
       .then((datos) => console.log(datos));
-    console.log(id);
   };
 
   /*  console.log(products[0].length); */
