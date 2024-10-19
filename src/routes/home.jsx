@@ -28,11 +28,23 @@ const Home = () => {
   const vinylPrice = useFetch(
     "http://localhost:3000/api/v1/impresosDB/precio-vinilos"
   );
+  const productsPOST = useFetch("http://localhost:3000/api/v1/impresosDB", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id: 500,
+      producto: "prueba",
+      precio: 500000,
+    }),
+  });
   console.log(products);
   console.log(users);
   console.log(laminado);
   console.log(materialPrice);
   console.log(vinylPrice);
+
   return (
     <>
       {/*  {products.map((product) => (

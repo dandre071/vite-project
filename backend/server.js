@@ -1,8 +1,10 @@
 /* import express from "express";
 import { router } from "../backend/router.js"; */
 import express, { json } from "express";
+
 import { router /* usersRouter  */ } from "../backend/router.js";
 import cors from "cors";
+import bodyParser from "body-parser";
 const impresosDB = router;
 /* const users = usersRouter; */
 const corsOptions = {
@@ -11,8 +13,15 @@ const corsOptions = {
 
 const app = express();
 const port = 3000;
-app.use(cors(corsOptions));
 /* app.use(json); */
+app.use(express.json());
+app.use(cors(corsOptions));
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 app.get("/", (req, res) => {
   res.send("hello");
 });

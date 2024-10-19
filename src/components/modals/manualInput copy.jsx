@@ -18,16 +18,11 @@ import PriceCalc from "../PriceCalc.jsx";
 import { v4 as uuidv4 } from "uuid";
 import { productSchema } from "../Validations.js";
 import { useFormik } from "formik";
-
 import { customTheme } from "../../Hooks/useCustomTheme.jsx";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-
 import ModalCard from "../Cards/ModalCard.jsx";
-
 import useUsers from "../../Hooks/useUsers.js";
-
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import ProductLimit from "./ProductLImit.jsx";
 import KeyboardAltOutlinedIcon from "@mui/icons-material/KeyboardAltOutlined";
@@ -145,35 +140,25 @@ const ManualInput2 = ({ text, acabado }) => {
       >
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Box
+            className="product-modal"
             sx={{
               ...styleConf,
-              width: 500,
-              bgcolor: "white",
-              display: "flex",
-              flexDirection: "column",
-              flexGrow: 1,
-              flexWrap: "wrap",
-              alignContent: "center",
-              justifyContent: "center",
-              pt: 1,
-              pb: 1,
-              borderRadius: 2,
             }}
           >
-            <CloseRoundedIcon
-              className="close-btn arrow-btn"
-              onClick={handleClose}
-            />
-            <ModalHeader title={""} />
+            <div
+              style={{ width: "80%", justifySelf: "center", alignSelf: "end" }}
+            >
+              <ModalHeader title={"Producto"} />
+            </div>
 
             <Box
               sx={{
                 p: customTheme.p[5],
                 pt: customTheme.p[0],
                 pb: customTheme.p[1],
-
-                borderRadius: 3,
-                bgcolor: "white",
+                borderTop: `2px solid ${customTheme.palette.background.dark}`,
+                borderBottom: `2px solid ${customTheme.palette.background.dark}`,
+                //bgcolor: "blue",
               }}
             >
               <form onSubmit={formik.handleSubmit}>
@@ -182,7 +167,7 @@ const ManualInput2 = ({ text, acabado }) => {
                     <TextField
                       onBlur={formik.handleBlur}
                       error={formik.errors.name}
-                      helperText={formik.errors.name}
+                      // helperText={formik.errors.name}
                       value={formik.values.name}
                       name="name"
                       onChange={formik.handleChange}
@@ -190,17 +175,6 @@ const ManualInput2 = ({ text, acabado }) => {
                       label={"Producto"}
                       type="text"
                     />
-                    {/* {formik.errors.name && (
-                        <Tooltip
-                          title={formik.errors.name}
-                          arrow
-                          sx={{ position: "absolute", top: -100 }}
-                        >
-                          <InfoIcon
-                            sx={{ fontSize: 25, color: "error.main" }}
-                          />
-                        </Tooltip>
-                      )} */}
                   </Grid>
                   <Grid item sm={8} xs={8}>
                     <TextField
@@ -215,7 +189,7 @@ const ManualInput2 = ({ text, acabado }) => {
                         ),
                       }}
                       error={formik.errors.price}
-                      helperText={formik.errors.price}
+                      // helperText={formik.errors.price}
                       value={formik.values.price}
                       //onChange={formik.handleChange}
                       onChange={(e) => {
@@ -317,13 +291,8 @@ const ManualInput2 = ({ text, acabado }) => {
                       )}
                     </Box>
                   </Grid>
-                  {/*Total price module*/}
-                  <Grid
-                    item
-                    sm={12}
-                    xs={12}
-                    sx={{ pr: 1, pl: 1, pt: 0, pb: 0 }}
-                  >
+
+                  <Grid item sm={12} xs={12} sx={{}}>
                     <TextField
                       error={formik.errors.description}
                       helperText={formik.errors.description}
@@ -335,32 +304,9 @@ const ManualInput2 = ({ text, acabado }) => {
                       onChange={formik.handleChange}
                       minRows={2}
                       multiline
-                      sx={{ pb: 3 }}
                     />
                   </Grid>
                   <Grid item sm={12} xs={12}>
-                    {/* <PriceCalc
-                          disabled={
-                            formik.errors.price ||
-                            formik.errors.quantity ||
-                            !formik.values.price
-                              ? true
-                              : false
-                          }
-                          value={formik.values.itemTotalPrice}
-                          name={"itemTotalPrice"}
-                          text={`${colPesos.format(
-                            formik.values.itemTotalPrice
-                          )}`}
-                          onClick={totalCalc}
-                        /> */}
-                    {/*disabled={
-                            formik.errors.price ||
-                            formik.errors.quantity ||
-                            !formik.values.price
-                              ? true
-                              : false
-                          }*/}
                     <PriceCalc
                       value={formik.values.itemTotalPrice}
                       name="itemTotalPrice"
@@ -377,23 +323,38 @@ const ManualInput2 = ({ text, acabado }) => {
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                borderTop: `2px solid ${customTheme.palette.background.dark}`,
-                pt: 2,
-                pb: 3,
+                alignItems: "center",
               }}
             >
               {items.length < 8 ? (
-                <Button
-                  sx={{ width: "80%" }}
-                  //disabled={!formik.values.itemTotalPrice ? true : false}
-                  title={"Agregar"}
-                  variant="prime"
-                  type="submit"
-                  onClick={handlerAdd}
-                  startIcon={<AddShoppingCartIcon />}
+                <div
+                  style={{
+                    width: "70%",
+                    height: "80%",
+                    display: "grid",
+                    gridTemplateColumns: "repeat(2,1fr)",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    paddingBottom: "10px",
+                  }}
                 >
-                  Agregar
-                </Button>
+                  <CloseRoundedIcon
+                    className="btn"
+                    onClick={handleClose}
+                    sx={{ fontSize: 50, color: "secondary.main" }}
+                  />
+                  <Button
+                    sx={{ width: "100%", height: "100%" }}
+                    //disabled={!formik.values.itemTotalPrice ? true : false}
+                    title={"Agregar"}
+                    variant="prime"
+                    type="submit"
+                    onClick={handlerAdd}
+                    startIcon={<AddShoppingCartIcon />}
+                  >
+                    Agregar
+                  </Button>
+                </div>
               ) : (
                 <ProductLimit open={true} />
               )}

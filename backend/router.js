@@ -2,6 +2,7 @@ import { Router } from "express";
 import * as express from "express";
 import { pool } from "./db.js";
 import {
+  createProduct,
   getLaminatePrice,
   getMaterialPrice,
   getProducts,
@@ -14,6 +15,7 @@ import {
 export const router = express.Router();
 /* export const usersRouter = express.Router(); */
 router.get("/", getProducts);
+router.post("/", createProduct);
 router.get("/users", getUsers);
 router.get("/laminado", getLaminatePrice);
 router.get("/precio-material", getMaterialPrice);

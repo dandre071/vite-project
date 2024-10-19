@@ -33,6 +33,21 @@ export const getVinylPrice = (req, response) => {
     response.status(200).json(results.rows);
   });
 };
+
+export const createProduct = (request, response) => {
+  const { id, producto, precio } = request.body;
+
+  pool.query(
+    "INSERT INTO productos (id,producto, precio) VALUES ($1, $2, $3) RETURNING *",
+    [id, producto, precio],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(201).send(`User added with ID: ${results.rows[0].id}`);
+    }
+  );
+};
 /* console.log(users); */
 /* module.exports = {
   getProducts,

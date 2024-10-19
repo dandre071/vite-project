@@ -1079,3 +1079,13 @@ body {
 
   /*  border: 2.5px dashed #4bb543; */
 }
+.product-modal {
+  width: 500px;
+  height: auto;
+  background-color: rgb(255, 255, 255);
+  display: grid;
+  grid-template-rows: 70px auto 80px;
+  border-radius: 7px;
+  justify-content: center;
+  align-items: center;
+}
