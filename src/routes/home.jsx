@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import useFetch from "../fetchHooks/useFetch";
 import { Button } from "@mui/material";
+
 const Home = () => {
   /*  const [products, setProducts] = useState(""); */
   useEffect(() => {
@@ -21,6 +22,7 @@ const Home = () => {
       }); */
   }, []);
   const products = useFetch("http://localhost:3000/api/v1/impresosDB");
+
   const users = useFetch("http://localhost:3000/api/v1/impresosDB/users");
   const laminado = useFetch("http://localhost:3000/api/v1/impresosDB/laminado");
   const materialPrice = useFetch(
@@ -29,7 +31,7 @@ const Home = () => {
   const vinylPrice = useFetch(
     "http://localhost:3000/api/v1/impresosDB/precio-vinilos"
   );
-  const productsPOST = useFetch("http://localhost:3000/api/v1/impresosDB", {
+  /* const productsPOST = useFetch("http://localhost:3000/api/v1/impresosDB", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -39,8 +41,24 @@ const Home = () => {
       producto: "prueba",
       precio: 500000,
     }),
-  });
-  console.log(products);
+  }); */
+
+  /* const productsPOST = fetch("http://localhost:3000/api/v1/impresosDB/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id: 500,
+      producto: "prueba",
+      precio: 500000,
+    }),
+  })
+    .then((respuesta) => respuesta.json())
+    .then((datos) => console.log(datos)); */
+  /*  const [id, setId] = useState(products[0].length); */
+
+  /* console.log(products[0].length); */
   console.log(users);
   console.log(laminado);
   console.log(materialPrice);
@@ -48,7 +66,27 @@ const Home = () => {
 
   return (
     <>
-      <Button onClick={() => productsPOST}>crear</Button>
+      <Button
+        onClick={
+          () =>
+            fetch("http://localhost:3000/api/v1/impresosDB/", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                id: 139,
+                producto: "prueba",
+                precio: 500000,
+              }),
+            })
+              .then((respuesta) => respuesta.ok)
+              .then((datos) => console.log(datos))
+          /*   .then(() => setId()) */
+        }
+      >
+        crear
+      </Button>
     </>
   );
 };

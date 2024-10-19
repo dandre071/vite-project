@@ -9,14 +9,14 @@ import useUsers from "./Hooks/useUsers";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/Root";
 import { useEffect, useState } from "react";
+import useFetch from "./fetchHooks/useFetch";
 
 function App() {
   const [products, setProducts] = useState("");
   useEffect(() => {
     const fetchProducts = async () => {
-      const result = await fetch("http://localhost:3000/api/v1/impresosDB");
-      const resultJson = await result.json();
-      setProducts(resultJson);
+      const products = useFetch("http://localhost:3000/api/v1/impresosDB");
+      setProducts(products);
     };
     fetchProducts();
   }, []);

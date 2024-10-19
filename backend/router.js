@@ -15,6 +15,7 @@ import {
 export const router = express.Router();
 /* export const usersRouter = express.Router(); */
 router.get("/", getProducts);
+/* router.get("/", getProductsLastId); */
 router.post("/", createProduct);
 router.get("/users", getUsers);
 router.get("/laminado", getLaminatePrice);
