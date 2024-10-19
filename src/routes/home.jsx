@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useFetch from "../fetchHooks/useFetch";
+import { Button } from "@mui/material";
 const Home = () => {
   /*  const [products, setProducts] = useState(""); */
   useEffect(() => {
@@ -47,9 +48,7 @@ const Home = () => {
 
   return (
     <>
-      {/*  {products.map((product) => (
-        <p>{product.name}</p>
-      ))} */}
+      <Button onClick={() => productsPOST}>crear</Button>
     </>
   );
 };
