@@ -18,6 +18,14 @@ const Home = () => {
     "http://localhost:3000/api/v1/impresosDB/precio-vinilos"
   );
 
+  const getProductList = () => {
+    fetch("http://localhost:3000/api/v1/impresosDB/")
+      .then((res) => res.json())
+      .then((data) => {
+        setProductList(data);
+      });
+  };
+
   const createProduct = () => {
     fetch("http://localhost:3000/api/v1/impresosDB/", {
       method: "POST",
@@ -31,7 +39,8 @@ const Home = () => {
       }),
     })
       .then((respuesta) => respuesta.ok)
-      .then((datos) => console.log(datos));
+      .then((datos) => console.log(datos))
+      .then(getProductList());
   };
   useEffect(() => {
     const getProductList = () => {
@@ -49,14 +58,14 @@ const Home = () => {
     const filterItem = productList.filter((product) => product.id === 1);
     setProductFilter(filterItem[0].producto);
   };
-  console.log(productFilter);
+  /*  console.log(productFilter); */
   console.log(productList);
   console.log(invoiceNum);
   /*  console.log(products); */
-  console.log(users);
+  /*  console.log(users);
   console.log(laminado);
   console.log(materialPrice);
-  console.log(vinylPrice);
+  console.log(vinylPrice); */
 
   return (
     <>

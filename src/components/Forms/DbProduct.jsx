@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
 import {
+  Autocomplete,
   Button,
   InputAdornment,
   TextField,
@@ -9,7 +10,7 @@ import {
 import Modal from "@mui/material/Modal";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import ModalHeader from "../ModalHeader.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FormSelect2 from "./FormSelect2.jsx";
 import { styleConf } from "../utils/configs.js";
 import { useShoppingCart } from "../../store/shoppingCart.js";
@@ -26,7 +27,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 /* import ProductLimit from "./ProductLImit.jsx"; */
 import KeyboardAltOutlinedIcon from "@mui/icons-material/KeyboardAltOutlined";
-import ProductSearchInput from "../ProductSearchInput.jsx";
+import SearchIcon from "@mui/icons-material/Search";
 
 const module = "ManualInput";
 
@@ -73,7 +74,7 @@ const DbProduct = ({ text, acabado }) => {
   const formik = useFormik({
     initialValues: {
       id: "",
-      module: "ManualInput",
+      module: "DB",
       name: "",
       price: null,
       quantity: 1,
@@ -102,7 +103,32 @@ const DbProduct = ({ text, acabado }) => {
   };
 
   const users = useUsers();
+  const [productList, setProductList] = useState(null);
+  const [price, setPrice] = useState(null);
+  useEffect(() => {
+    const getProductList = async () => {
+      await fetch("http://localhost:3000/api/v1/impresosDB/")
+        .then((res) => res.json())
+        .then((data) => {
+          setProductList(data);
+        });
+    };
+    getProductList();
+  }, []);
+  const options = productList || null;
 
+  const [value, setValue] = useState(options);
+  const [inputValue, setInputValue] = useState("");
+
+  const prices = productList ? productList.map((x) => x.precio) : 0;
+  const products = productList ? productList.map((x) => x.producto) : "";
+  const index = products.indexOf(value);
+  console.log(inputValue);
+  const getPrice = () => {
+    const price = prices[index];
+    setPrice(price);
+  };
+  console.log(prices[index]);
   const items = useShoppingCart((state) => state.items);
   return (
     <Box>
@@ -130,12 +156,13 @@ const DbProduct = ({ text, acabado }) => {
             className="product-modal"
             sx={{
               ...styleConf,
+              width: 550,
             }}
           >
             <div
               style={{ width: "80%", justifySelf: "center", alignSelf: "end" }}
             >
-              <ModalHeader title={"Producto"} />
+              <ModalHeader title={"Buscar en la base de datos"} />
             </div>
 
             <Box
@@ -150,10 +177,73 @@ const DbProduct = ({ text, acabado }) => {
             >
               <form onSubmit={formik.handleSubmit}>
                 <Grid container spacing={1.5} sx={{ flexGrow: 1 }}>
-                  <Grid item lg={12} sm={12} xs={12}>
-                    <ProductSearchInput />
+                  <Grid container spacing={2} sx={{ alignItems: "center" }}>
+                    <Grid
+                      item
+                      sm={12}
+                      sx={{
+                        display: "grid",
+                        gridTemplateColumns: "1fr 40px",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        gap: 1,
+                      }}
+                    >
+                      <Autocomplete
+                        value={value}
+                        onChange={(event, newValue) => {
+                          setValue(newValue);
+                          console.log(typeof value);
+                        }}
+                        inputValue={inputValue}
+                        onInputChange={(event, newInputValue) => {
+                          setInputValue(newInputValue);
+                        }}
+                        on
+                        id="controllable-states-demo"
+                        options={options && options.map((x) => x.producto)}
+                        fullWidth
+                        renderInput={(params) => (
+                          <TextField {...params} label="Productos" />
+                        )}
+                      />
+                      <Box
+                        sx={{
+                          bgcolor: "primary.main",
+                          width: 40,
+                          height: 40,
+                          borderRadius: "50%",
+                          display: "grid",
+                          placeItems: "center",
+                        }}
+                      >
+                        <SearchIcon
+                          className="btn circle"
+                          sx={{ color: "white" }}
+                          onClick={getPrice}
+                        />
+                      </Box>
+                    </Grid>
+
+                    <Grid item sm={4} style={{ textAlign: "right" }}>
+                      <div>Valor del Producto:</div>
+                    </Grid>
+                    <Grid item sm={5}>
+                      <Box
+                        className="price-holder"
+                        sx={{
+                          textAlign: "right",
+                          fontSize: 25,
+                          fontWeight: 700,
+                          color: "secondary",
+                        }}
+                        color={"primary"}
+                      >
+                        {value !== null && ` ${colPesos.format(price)}`}
+                      </Box>
+                    </Grid>
                   </Grid>
-                  <Grid item sm={8} xs={8}>
+                  {/* <Grid item sm={8} xs={8}>
                     <TextField
                       InputProps={{
                         startAdornment: (
@@ -180,7 +270,7 @@ const DbProduct = ({ text, acabado }) => {
                       label={"Precio"}
                       type="number"
                     />
-                  </Grid>
+                  </Grid> */}
                   <Grid item sm={4} xs={4}>
                     <TextField
                       error={formik.errors.quantity}
@@ -190,11 +280,18 @@ const DbProduct = ({ text, acabado }) => {
                       fullWidth
                       label={"Cantidad"}
                       type="number"
+                      /* onChange={(e) => {
+                        formik.setValues({
+                          ...formik.values,
+                          quantity: e.target.value,
+                          itemTotalPrice: e.target.value * price,
+                        });
+                      }} */
                       onChange={(e) => {
                         formik.setValues({
                           ...formik.values,
                           quantity: e.target.value,
-                          itemTotalPrice: e.target.value * formik.values.price,
+                          itemTotalPrice: e.target.value * price,
                         });
                       }}
                     />

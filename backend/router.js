@@ -15,13 +15,13 @@ export const router = express.Router();
 router.get("/", getProducts);
 router.post("/", createProduct);
 //IMPRESOS SERVER
-/* router.get("/users" || "/vendedores", getUsers);
+router.get("/users" || "/vendedores", getUsers);
 router.get("/laminado", getLaminatePrice);
 router.get("/precio-material" || "/precios", getMaterialPrice);
-router.get("/precio-vinilo" || "/vinilos", getVinylPrice); */
+router.get("/precio-vinilo" || "/vinilos", getVinylPrice);
 
 //HOME SERVER
-router.get("/vendedores", getUsers);
+/* router.get("/vendedores", getUsers);
 router.get("/laminado", getLaminatePrice);
 router.get("/precios", getMaterialPrice);
-router.get("/vinilos", getVinylPrice);
+router.get("/vinilos", getVinylPrice); */

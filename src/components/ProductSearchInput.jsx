@@ -6,7 +6,7 @@ import { Box, Button, Grid } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { useState } from "react";
 import { useEffect } from "react";
-
+/* import { productList } from "../fetchHooks/fetchProducts"; */
 const colPesos = new Intl.NumberFormat("es-CO", {
   style: "currency",
   currency: "COP",
@@ -16,8 +16,8 @@ const ProductSearchInput = () => {
   const [productList, setProductList] = useState(null);
   const [price, setPrice] = useState(null);
   useEffect(() => {
-    const getProductList = () => {
-      fetch("http://localhost:3000/api/v1/impresosDB/")
+    const getProductList = async () => {
+      await fetch("http://localhost:3000/api/v1/impresosDB/")
         .then((res) => res.json())
         .then((data) => {
           setProductList(data);
@@ -26,14 +26,20 @@ const ProductSearchInput = () => {
     getProductList();
   }, []);
   const options = productList || null;
-  console.log(productList);
+
   const [value, setValue] = useState(options);
   const [inputValue, setInputValue] = useState("");
-  /*  const price = options && options.filter((x) => x.producto === value); */
-  console.log(value);
-  /*  console.log(price.precio); */
-  /*   const price = options.filter((x) => x.precio);
-  console.log(price); */
+
+  const prices = productList ? productList.map((x) => x.precio) : 0;
+  const products = productList ? productList.map((x) => x.producto) : "";
+  const index = products.indexOf(value);
+  console.log(inputValue);
+  const getPrice = () => {
+    const price = prices[index];
+    setPrice(price);
+  };
+  console.log(prices[index]);
+
   return (
     <Grid container spacing={2} sx={{ alignItems: "center" }}>
       <Grid item sm={12}>
@@ -53,13 +59,7 @@ const ProductSearchInput = () => {
           fullWidth
           renderInput={(params) => <TextField {...params} label="Productos" />}
         />
-        <Button
-          onClick={() => {
-            setPrice(options.filter((x) => x.producto === value).precio);
-          }}
-        >
-          OK
-        </Button>
+        <Button onClick={getPrice}>OK</Button>
       </Grid>
       <Grid item sm={3}>
         <TextField label={"Cant"} type="number" sx={{ alignSelf: "end" }} />
