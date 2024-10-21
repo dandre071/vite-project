@@ -2,7 +2,7 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import array from "../db";
-import { Box, Grid } from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -14,6 +14,7 @@ const colPesos = new Intl.NumberFormat("es-CO", {
 /* const options = productList; */
 const ProductSearchInput = () => {
   const [productList, setProductList] = useState(null);
+  const [price, setPrice] = useState(null);
   useEffect(() => {
     const getProductList = () => {
       fetch("http://localhost:3000/api/v1/impresosDB/")
@@ -28,9 +29,9 @@ const ProductSearchInput = () => {
   console.log(productList);
   const [value, setValue] = useState(options);
   const [inputValue, setInputValue] = useState("");
-  const price = options && options.filter((x) => x.producto === value);
+  /*  const price = options && options.filter((x) => x.producto === value); */
   console.log(value);
-  console.log(price.precio);
+  /*  console.log(price.precio); */
   /*   const price = options.filter((x) => x.precio);
   console.log(price); */
   return (
@@ -52,6 +53,13 @@ const ProductSearchInput = () => {
           fullWidth
           renderInput={(params) => <TextField {...params} label="Productos" />}
         />
+        <Button
+          onClick={() => {
+            setPrice(options.filter((x) => x.producto === value).precio);
+          }}
+        >
+          OK
+        </Button>
       </Grid>
       <Grid item sm={3}>
         <TextField label={"Cant"} type="number" sx={{ alignSelf: "end" }} />
