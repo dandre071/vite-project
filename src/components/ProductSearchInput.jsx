@@ -4,17 +4,30 @@ import Autocomplete from "@mui/material/Autocomplete";
 import array from "../db";
 import { Box, Grid } from "@mui/material";
 import Divider from "@mui/material/Divider";
+import { useState } from "react";
+import { useEffect } from "react";
 
-const options = array;
 const colPesos = new Intl.NumberFormat("es-CO", {
   style: "currency",
   currency: "COP",
 });
-
+/* const options = productList; */
 const ProductSearchInput = () => {
-  const [value, setValue] = React.useState(options[0]);
-  const [inputValue, setInputValue] = React.useState("");
-
+  const [productList, setProductList] = useState(null);
+  useEffect(() => {
+    const getProductList = () => {
+      fetch("http://localhost:3000/api/v1/impresosDB/")
+        .then((res) => res.json())
+        .then((data) => {
+          setProductList(data);
+        });
+    };
+    getProductList();
+  }, []);
+  const options = productList.map((x) => x.producto);
+  console.log();
+  const [value, setValue] = useState(options);
+  const [inputValue, setInputValue] = useState("");
   return (
     <Grid container spacing={2} sx={{ alignItems: "center" }}>
       <Grid item sm={12}>

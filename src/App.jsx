@@ -12,20 +12,11 @@ import { useEffect, useState } from "react";
 import useFetch from "./fetchHooks/useFetch";
 
 function App() {
-  const [products, setProducts] = useState("");
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const products = useFetch("http://localhost:3000/api/v1/impresosDB");
-      setProducts(products);
-    };
-    fetchProducts();
-  }, []);
-  console.log(products);
   return (
     <>
-      {products.map((product) => (
+      {/*   {products.map((product) => (
         <p>{product.name}</p>
-      ))}
+      ))} */}
     </>
   );
 }

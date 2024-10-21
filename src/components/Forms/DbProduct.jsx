@@ -8,9 +8,9 @@ import {
 } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import ModalHeader from "../ModalHeader";
+import ModalHeader from "../ModalHeader.jsx";
 import { useState } from "react";
-import FormSelect2 from "../Forms/FormSelect2.jsx";
+import FormSelect2 from "./FormSelect2.jsx";
 import { styleConf } from "../utils/configs.js";
 import { useShoppingCart } from "../../store/shoppingCart.js";
 import { colPesos } from "../utils/configs.js";
@@ -24,12 +24,13 @@ import ModalCard from "../Cards/ModalCard.jsx";
 import useUsers from "../../Hooks/useUsers.js";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import EditNoteIcon from "@mui/icons-material/EditNote";
-import ProductLimit from "./ProductLImit.jsx";
+/* import ProductLimit from "./ProductLImit.jsx"; */
 import KeyboardAltOutlinedIcon from "@mui/icons-material/KeyboardAltOutlined";
+import ProductSearchInput from "../ProductSearchInput.jsx";
 
 const module = "ManualInput";
 
-const ManualInput2 = ({ text, acabado }) => {
+const DbProduct = ({ text, acabado }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -150,17 +151,7 @@ const ManualInput2 = ({ text, acabado }) => {
               <form onSubmit={formik.handleSubmit}>
                 <Grid container spacing={1.5} sx={{ flexGrow: 1 }}>
                   <Grid item lg={12} sm={12} xs={12}>
-                    <TextField
-                      onBlur={formik.handleBlur}
-                      error={formik.errors.name}
-                      // helperText={formik.errors.name}
-                      value={formik.values.name}
-                      name="name"
-                      onChange={formik.handleChange}
-                      fullWidth
-                      label={"Producto"}
-                      type="text"
-                    />
+                    <ProductSearchInput />
                   </Grid>
                   <Grid item sm={8} xs={8}>
                     <TextField
@@ -175,9 +166,7 @@ const ManualInput2 = ({ text, acabado }) => {
                         ),
                       }}
                       error={formik.errors.price}
-                      // helperText={formik.errors.price}
                       value={formik.values.price}
-                      //onChange={formik.handleChange}
                       onChange={(e) => {
                         formik.setValues({
                           ...formik.values,
@@ -293,7 +282,6 @@ const ManualInput2 = ({ text, acabado }) => {
                       value={formik.values.itemTotalPrice}
                       name="itemTotalPrice"
                       text={colPesos.format(formik.values.itemTotalPrice)}
-                      //onClick={totalCalc}
                     />
                   </Grid>
                 </Grid>{" "}
@@ -348,4 +336,4 @@ const ManualInput2 = ({ text, acabado }) => {
   );
 };
 
-export default ManualInput2;
+export default DbProduct;

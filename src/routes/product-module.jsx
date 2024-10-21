@@ -11,9 +11,10 @@ import { iconSize } from "../Styles/styles";
 import AddShoppingCartRoundedIcon from "@mui/icons-material/AddShoppingCartRounded";
 import ProductLimit from "../components/modals/ProductLImit";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { vinylPrice } from "../../public/configs";
 import { cutPrice } from "../components/utils/calcs";
+import DbProduct from "../components/Forms/DbProduct";
 
 const colors = {
   main: "#0303b3",
@@ -57,6 +58,11 @@ const ProductModule = () => {
               gap: 10,
             }}
           >
+            <DbProduct
+              choice={options.choice}
+              text={"DB"}
+              acabado={options.acabados}
+            />
             <AutoProductModal
               text={"Auto"}
               matSize={options.materialWidth}
