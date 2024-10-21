@@ -26,7 +26,7 @@ const Home = () => {
       },
       body: JSON.stringify({
         /*     id: 1223, */
-        producto: "prueba",
+        producto: "prueba3000",
         precio: 500000,
       }),
     })

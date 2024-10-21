@@ -24,10 +24,15 @@ const ProductSearchInput = () => {
     };
     getProductList();
   }, []);
-  const options = productList.map((x) => x.producto);
-  console.log();
+  const options = productList || null;
+  console.log(productList);
   const [value, setValue] = useState(options);
   const [inputValue, setInputValue] = useState("");
+  const price = options && options.filter((x) => x.producto === value);
+  console.log(value);
+  console.log(price.precio);
+  /*   const price = options.filter((x) => x.precio);
+  console.log(price); */
   return (
     <Grid container spacing={2} sx={{ alignItems: "center" }}>
       <Grid item sm={12}>
@@ -43,7 +48,7 @@ const ProductSearchInput = () => {
           }}
           on
           id="controllable-states-demo"
-          options={options}
+          options={options && options.map((x) => x.producto)}
           fullWidth
           renderInput={(params) => <TextField {...params} label="Productos" />}
         />
@@ -65,7 +70,7 @@ const ProductSearchInput = () => {
           }}
           color={"primary"}
         >
-          {value !== null && ` ${colPesos.format(value.price)}`}
+          {value !== null && ` ${colPesos.format(price)}`}
         </Box>
       </Grid>
     </Grid>
