@@ -4,24 +4,10 @@ import useFetch from "../fetchHooks/useFetch";
 import { Button } from "@mui/material";
 
 const Home = () => {
-  /*  const [products, setProducts] = useState(""); */
-  useEffect(() => {
-    /* const fetchProducts = () => {
-      const result = fetch("http://localhost:3000/api/v1/impresosDB");
-       const resultJson = await JSON.parse(result);
-      setProducts(result);
-    };
-    fetchProducts(); */
-    /* fetch("http://localhost:3000/api/v1/impresosDB").then((response) =>
-      response.json().then((data) => console.log(data))
-    ); */
-    /* fetch("http://localhost:3000/api/v1/impresosDB")
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data);
-      }); */
-  }, []);
-  const products = useFetch("http://localhost:3000/api/v1/impresosDB");
+  const [productList, setProductList] = useState(null);
+  const [invoiceNum, setInvoiceNum] = useState(null);
+  const [productFilter, setProductFilter] = useState(null);
+  /* const products = useFetch("http://localhost:3000/api/v1/impresosDB"); */
 
   const users = useFetch("http://localhost:3000/api/v1/impresosDB/users");
   const laminado = useFetch("http://localhost:3000/api/v1/impresosDB/laminado");
@@ -31,46 +17,15 @@ const Home = () => {
   const vinylPrice = useFetch(
     "http://localhost:3000/api/v1/impresosDB/precio-vinilos"
   );
-  /* const productsPOST = useFetch("http://localhost:3000/api/v1/impresosDB", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      id: 500,
-      producto: "prueba",
-      precio: 500000,
-    }),
-  }); */
-
-  /* const productsPOST = fetch("http://localhost:3000/api/v1/impresosDB/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      id: 500,
-      producto: "prueba",
-      precio: 500000,
-    }),
-  })
-    .then((respuesta) => respuesta.json())
-    .then((datos) => console.log(datos)); */
-  /*  const [id, setId] = useState(products[0].length); */
 
   const createProduct = () => {
-    /*  let currId;
-    fetch("http://localhost:3000/api/v1/impresosDB")
-      .then((res) => res.json())
-      .then((data) => (currId = data[0].length + 1)); */
-
     fetch("http://localhost:3000/api/v1/impresosDB/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: 1223,
+        /*     id: 1223, */
         producto: "prueba",
         precio: 500000,
       }),
@@ -78,8 +33,26 @@ const Home = () => {
       .then((respuesta) => respuesta.ok)
       .then((datos) => console.log(datos));
   };
+  useEffect(() => {
+    const getProductList = () => {
+      fetch("http://localhost:3000/api/v1/impresosDB/")
+        .then((res) => res.json())
+        .then((data) => {
+          setProductList(data);
+          setInvoiceNum(data.length);
+        });
+    };
+    getProductList();
+  }, []);
 
-  /*  console.log(products[0].length); */
+  const filteredList = () => {
+    const filterItem = productList.filter((product) => product.id === 1);
+    setProductFilter(filterItem[0].producto);
+  };
+  console.log(productFilter);
+  console.log(productList);
+  console.log(invoiceNum);
+  /*  console.log(products); */
   console.log(users);
   console.log(laminado);
   console.log(materialPrice);
@@ -88,6 +61,7 @@ const Home = () => {
   return (
     <>
       <Button onClick={createProduct}>crear</Button>
+      <Button onClick={filteredList}>crear</Button>{" "}
     </>
   );
 };

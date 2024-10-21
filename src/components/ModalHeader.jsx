@@ -2,7 +2,7 @@ import { Box, Divider, Typography } from "@mui/material";
 
 const ModalHeader = ({ title, children }) => {
   return (
-    <>
+    <div style={{ width: "90%" }}>
       <Typography
         className="m-header-title"
         variant="h5"
@@ -13,7 +13,7 @@ const ModalHeader = ({ title, children }) => {
       >
         {title}
       </Typography>
-    </>
+    </div>
   );
 };
 

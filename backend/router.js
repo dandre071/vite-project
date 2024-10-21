@@ -10,24 +10,18 @@ import {
   getVinylPrice,
 } from "./controller.js";
 
-/* const { Router } = require("express"); */
-/* const controller = require("./controller"); */
 export const router = express.Router();
-/* export const usersRouter = express.Router(); */
-router.get("/", getProducts);
-/* router.get("/", getProductsLastId); */
-router.post("/", createProduct);
-router.get("/users", getUsers);
-router.get("/laminado", getLaminatePrice);
-router.get("/precio-material", getMaterialPrice);
-router.get("/precio-vinilo", getVinylPrice);
-/* router.get("/", getProducts); */
 
-/* router.get("/users", getUsers); */
-/* router.get("/", (req, response) => {
-  pool.query("SELECT * FROM productos", (error, results) => {
-    if (error) throw error;
-    response.status(200).json(results.rows);
-  });
-}); */
-/* module.exports = router;*/
+router.get("/", getProducts);
+router.post("/", createProduct);
+//IMPRESOS SERVER
+/* router.get("/users" || "/vendedores", getUsers);
+router.get("/laminado", getLaminatePrice);
+router.get("/precio-material" || "/precios", getMaterialPrice);
+router.get("/precio-vinilo" || "/vinilos", getVinylPrice); */
+
+//HOME SERVER
+router.get("/vendedores", getUsers);
+router.get("/laminado", getLaminatePrice);
+router.get("/precios", getMaterialPrice);
+router.get("/vinilos", getVinylPrice);
