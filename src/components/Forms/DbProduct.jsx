@@ -190,6 +190,7 @@ const DbProduct = ({ text, acabado }) => {
                       }}
                     >
                       <Autocomplete
+                        freeSolo
                         value={value}
                         onChange={(event, newValue) => {
                           setValue(newValue);
@@ -226,7 +227,7 @@ const DbProduct = ({ text, acabado }) => {
                     </Grid>
 
                     <Grid item sm={4} style={{ textAlign: "right" }}>
-                      <div>Valor del Producto:</div>
+                      <div>Precio:</div>
                     </Grid>
                     <Grid item sm={5}>
                       <Box
@@ -280,13 +281,7 @@ const DbProduct = ({ text, acabado }) => {
                       fullWidth
                       label={"Cantidad"}
                       type="number"
-                      /* onChange={(e) => {
-                        formik.setValues({
-                          ...formik.values,
-                          quantity: e.target.value,
-                          itemTotalPrice: e.target.value * price,
-                        });
-                      }} */
+                      defaultValue={1}
                       onChange={(e) => {
                         formik.setValues({
                           ...formik.values,
@@ -378,7 +373,7 @@ const DbProduct = ({ text, acabado }) => {
                     <PriceCalc
                       value={formik.values.itemTotalPrice}
                       name="itemTotalPrice"
-                      text={colPesos.format(formik.values.itemTotalPrice)}
+                      text={colPesos.format(formik.values.quantity * price)}
                     />
                   </Grid>
                 </Grid>{" "}
