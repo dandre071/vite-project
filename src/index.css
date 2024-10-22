@@ -1089,3 +1089,9 @@ body {
   justify-content: center;
   align-items: center;
 }
+.product-module-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 40px 100px 1fr 50px;
+  grid-template-areas: "type";
+}

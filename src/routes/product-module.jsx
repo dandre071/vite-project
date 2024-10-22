@@ -120,80 +120,84 @@ const ProductModule = () => {
         <div
           className="form-container"
           style={{
-            width: 600,
-            backgroundColor: "transparent",
+            width: 700,
+            backgroundColor: "red",
             border: "none",
           }}
         >
-          <Box sx={{ display: "grid", gridTemplateRows: "40px 40px 1fr 50px" }}>
-            <FormSelect2
-              options={["Corte en vinilo", "Producto", "Mantenimiento"]}
-              label={"Acabado"}
-              defaultValue={"Sin acabado"}
-            />
-          </Box>
-          <Box>
-            <Box
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "1fr auto 80px",
-                gap: 2,
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Autocomplete
-                freeSolo
-                value={value}
-                onChange={(event, newValue) => {
-                  setValue(newValue);
-                  console.log(typeof value);
-                }}
-                inputValue={inputValue}
-                onInputChange={(event, newInputValue) => {
-                  setInputValue(newInputValue);
-                }}
-                on
-                id="controllable-states-demo"
-                options={options && options.map((x) => x.producto)}
-                fullWidth
-                renderInput={(params) => (
-                  <TextField {...params} label="Productos" />
-                )}
-              />
-              <Box
-                sx={{
-                  bgcolor: "primary.main",
-                  width: 40,
-                  height: 40,
-                  borderRadius: "50%",
-                  display: "grid",
-                  placeItems: "center",
-                }}
-              >
-                <SearchIcon
-                  className="btn circle"
-                  sx={{ color: "white" }}
-                  onClick={getPrice}
-                />
-              </Box>
-              <TextField
-                error={formik.errors.quantity}
-                helperText={formik.errors.quantity}
-                value={formik.values.quantity}
-                name="quantity"
-                label={"Cantidad"}
-                type="number"
-                defaultValue={1}
-                onChange={(e) => {
-                  formik.setValues({
-                    ...formik.values,
-                    quantity: e.target.value,
-                    itemTotalPrice: e.target.value * price,
-                  });
-                }}
+          <Box className="product-module-grid">
+            <Box sx={{}}>
+              <FormSelect2
+                options={["Corte en vinilo", "Producto", "Mantenimiento"]}
+                label={"Acabado"}
+                defaultValue={"Sin acabado"}
               />
             </Box>
+
+            <Box>
+              <Box
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr auto 80px",
+                  gap: 2,
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Autocomplete
+                  freeSolo
+                  value={value}
+                  onChange={(event, newValue) => {
+                    setValue(newValue);
+                    console.log(typeof value);
+                  }}
+                  inputValue={inputValue}
+                  onInputChange={(event, newInputValue) => {
+                    setInputValue(newInputValue);
+                  }}
+                  on
+                  id="controllable-states-demo"
+                  options={options && options.map((x) => x.producto)}
+                  fullWidth
+                  renderInput={(params) => (
+                    <TextField {...params} label="Productos" />
+                  )}
+                />
+                <Box
+                  sx={{
+                    bgcolor: "primary.main",
+                    width: 40,
+                    height: 40,
+                    borderRadius: "50%",
+                    display: "grid",
+                    placeItems: "center",
+                  }}
+                >
+                  <SearchIcon
+                    className="btn circle"
+                    sx={{ color: "white" }}
+                    onClick={getPrice}
+                  />
+                </Box>
+                <TextField
+                  error={formik.errors.quantity}
+                  helperText={formik.errors.quantity}
+                  value={formik.values.quantity}
+                  name="quantity"
+                  label={"Cantidad"}
+                  type="number"
+                  defaultValue={1}
+                  onChange={(e) => {
+                    formik.setValues({
+                      ...formik.values,
+                      quantity: e.target.value,
+                      itemTotalPrice: e.target.value * price,
+                    });
+                  }}
+                />
+              </Box>
+            </Box>
+
             <Box
               className="price-holder"
               sx={{
