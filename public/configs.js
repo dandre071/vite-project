@@ -105,3 +105,4 @@ export const lists = {
   userType: ["Particular", "Publicista"],
   billType: ["Recibo", "Cotización"],
 };
+export const workType = ["Corte en vinilo", "Producto", "Mantenimiento"];
