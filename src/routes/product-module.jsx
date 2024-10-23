@@ -37,6 +37,7 @@ import PriceCalc from "../components/PriceCalc";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { workType } from "../../public/configs";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import { v4 as uuidv4 } from "uuid";
 const configs = clientPrices;
 console.log(clientPrices);
 console.log(lists.acabados);
@@ -44,16 +45,26 @@ cutPrice("Particular", 60, "Vinilo");
 const ProductModule = () => {
   const items = useShoppingCart((state) => state.items);
   const cart = useShoppingCart();
-  const addItem = useShoppingCart((state) => state.items);
+  const addItem = useShoppingCart((state) => state.addItem);
   const [height, setHeight] = useState(0);
   const handleHeight = () => setHeight(cartHeight);
   const handlerAdd = (e) => {
     addItem({
       ...formik.values,
+      name: inputValue,
       id: uuidv4(),
     });
     formik.resetForm();
-    setOpen(false);
+    formik.setValues({
+      ...formik.values,
+      type: e.target.value,
+      quantity: 1,
+      name: "",
+      price: null,
+      finish: [],
+      orientation: "",
+      description: "",
+    });
   };
   const handleClose = () => {
     //resetForm();
@@ -116,6 +127,11 @@ const ProductModule = () => {
   const getPrice = () => {
     const price = prices[index];
     setPrice(price);
+    formik.setValues({
+      ...formik.values,
+      price: price,
+      itemTotalPrice: price * formik.values.quantity,
+    });
   };
   console.log(prices[index]);
   /* const items = useShoppingCart((state) => state.items); */
@@ -300,87 +316,15 @@ const ProductModule = () => {
               />
             )}
           </Box>
-          <TextField
-            error={formik.errors.quantity}
-            helperText={formik.errors.quantity}
-            value={formik.values.quantity}
-            name="quantity"
-            label={"Cantidad"}
-            type="number"
-            defaultValue={1}
-            onChange={(e) => {
-              formik.setValues({
-                ...formik.values,
-                quantity: e.target.value,
-                itemTotalPrice: e.target.value * price,
-              });
-            }}
+          <PriceCalc
+            value={formik.values.itemTotalPrice}
+            name="itemTotalPrice"
+            text={colPesos.format(formik.values.quantity * price)}
           />
         </Box>
-        <Box
-          className="product-details"
-          sx={
-            {
-              /*   p: customTheme.p[5],
-            pt: customTheme.p[0],
-            pb: customTheme.p[1], */
-              /*  borderTop: `2px solid ${customTheme.palette.background.dark}`,
-            borderBottom: `2px solid ${customTheme.palette.background.dark}`, */
-              //bgcolor: "blue",
-            }
-          }
-        >
+        <Box className="product-details">
           <form onSubmit={formik.handleSubmit}>
             <Grid container spacing={1.5} sx={{ flexGrow: 1 }}>
-              {/* <Grid item sm={8} xs={8}>
-                    <TextField
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment
-                            position="start"
-                            InputProps={{ fontSize: 40 }}
-                          >
-                            $
-                          </InputAdornment>
-                        ),
-                      }}
-                      error={formik.errors.price}
-                      value={formik.values.price}
-                      onChange={(e) => {
-                        formik.setValues({
-                          ...formik.values,
-                          price: e.target.value,
-                          itemTotalPrice:
-                            e.target.value * formik.values.quantity,
-                        });
-                      }}
-                      name="price"
-                      fullWidth
-                      label={"Precio"}
-                      type="number"
-                    />
-                  </Grid> */}
-
-              {/*   <Grid item sm={4} xs={4}>
-                <TextField
-                  error={formik.errors.quantity}
-                  helperText={formik.errors.quantity}
-                  value={formik.values.quantity}
-                  name="quantity"
-                  fullWidth
-                  label={"Cantidad"}
-                  type="number"
-                  defaultValue={1}
-                  onChange={(e) => {
-                    formik.setValues({
-                      ...formik.values,
-                      quantity: e.target.value,
-                      itemTotalPrice: e.target.value * price,
-                    });
-                  }}
-                />
-              </Grid> */}
-
               <Grid item sm={12} xs={12}>
                 <Box
                   sx={{
@@ -391,6 +335,22 @@ const ProductModule = () => {
                     m: 0,
                   }}
                 >
+                  <TextField
+                    error={formik.errors.quantity}
+                    helperText={formik.errors.quantity}
+                    value={formik.values.quantity}
+                    name="quantity"
+                    label={"Cantidad"}
+                    type="number"
+                    defaultValue={1}
+                    onChange={(e) => {
+                      formik.setValues({
+                        ...formik.values,
+                        quantity: e.target.value,
+                        itemTotalPrice: e.target.value * price,
+                      });
+                    }}
+                  />
                   <FormSelect2
                     value={formik.values.finish}
                     multiple={true}
@@ -462,11 +422,11 @@ const ProductModule = () => {
           </form>{" "}
         </Box>
         <div className="total-bar" item sm={12} xs={12}>
-          <PriceCalc
+          {/*  <PriceCalc
             value={formik.values.itemTotalPrice}
             name="itemTotalPrice"
             text={colPesos.format(formik.values.quantity * price)}
-          />
+          /> */}
           <Box
             sx={{
               display: "grid",

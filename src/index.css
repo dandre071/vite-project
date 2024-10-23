@@ -1133,7 +1133,7 @@ body {
   gap: 10px;
   /*   background-color: rgb(255, 47, 238); */
   display: grid;
-  grid-template-columns: 1fr 90px;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: center;
 }
