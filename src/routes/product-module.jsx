@@ -89,6 +89,9 @@ const ProductModule = () => {
       transfer: false,
       itemTotalPrice: 0,
       orientation: "",
+      model: "",
+      brand: "",
+      device: "",
     },
     validationSchema: productSchema,
 
