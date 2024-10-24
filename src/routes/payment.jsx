@@ -47,7 +47,8 @@ import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import PaidIcon from "@mui/icons-material/Paid";
 import { customTheme } from "../Hooks/useCustomTheme";
 import { endPoints } from "../../backend/endPoints";
-/* import { getProducts } from "../../backend/controller"; */
+import { lists } from "../../public/configs";
+
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault("America/Bogota");
@@ -285,7 +286,7 @@ const Payment = ({ height }) => {
             fullWidth
             name="receives"
             onChange={formik.handleChange}
-            options={users}
+            options={lists.users}
             label={"Recibe"}
           />
           <FormSelect2
@@ -297,7 +298,7 @@ const Payment = ({ height }) => {
             fullWidth
             name="do"
             onChange={formik.handleChange}
-            options={users}
+            options={lists.users}
             label={"Realiza"}
           />
         </Box>

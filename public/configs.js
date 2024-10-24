@@ -105,4 +105,35 @@ export const lists = {
   userType: ["Particular", "Publicista"],
   billType: ["Recibo", "Cotización"],
 };
-export const workType = ["Corte en vinilo", "Producto", "Mantenimiento"];
+export const workType = [
+  "Corte en vinilo",
+  "Producto estándar",
+  "Producto manual",
+  "Mantenimiento",
+];
+
+export const shapes = [
+  "",
+  "Vertical",
+  "Horizontal",
+  "Cuadrado",
+  "Circular",
+  "Ovalado",
+];
+export const devices = [
+  "Impresora Inkjet",
+  "Impresora Láser",
+  "Computadora de escritorio",
+  "Computadora Portátil",
+  "Computadora Todo en Uno",
+];
+export const brands = [
+  "EPSON",
+  "HP",
+  "LENOVO",
+  "ASUS",
+  "COMPUMAX",
+  "DELL",
+  "SAMSUNG",
+  "ACER",
+];

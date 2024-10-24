@@ -1097,7 +1097,7 @@ body {
   display: grid;
   gap: 5px;
   grid-template-columns: 1fr;
-  grid-template-rows: 60px 60px 60px 1fr 70px 80px;
+  grid-template-rows: 60px 60px 90px 1fr 70px 150px;
   grid-template-areas:
     "type"
     "product-bar"
@@ -1131,7 +1131,8 @@ body {
   justify-self: center;
   grid-area: price-bar;
   gap: 10px;
-  /*   background-color: rgb(255, 47, 238); */
+  /*  background-color: rgb(204, 220, 255); */
+  border-radius: 7px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
@@ -1140,7 +1141,10 @@ body {
 .product-btn {
   width: 100%;
   width: var(--product-module-width);
+  height: 100%;
   grid-area: product-btn;
+  align-items: end;
+
   /* background-color: rgb(255, 147, 47); */
 }
 .total-bar {
@@ -1150,7 +1154,28 @@ body {
   height: 100%;
   grid-template-columns: 1fr auto;
   align-items: center;
-  gap: 10px;
+
   grid-area: total-bar;
   /*  background-color: rgb(255, 47, 238); */
+}
+.standard-product {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20% 38% 1fr;
+  gap: 10px;
+}
+.maintain-product {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 35% 15% 1fr;
+  gap: 10px;
+}
+.none {
+  display: none;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 0;
 }
