@@ -8,43 +8,36 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import AutoProductModal from "../components/AutoProductModal";
-import VinylCutModal from "../components/VinylCutModal";
-import ManualInput2 from "../components/modals/manualInput copy";
 
-import { modal } from "../Styles/styles";
-import ModalHeader from "../components/ModalHeader";
 import { useShoppingCart } from "../store/shoppingCart";
 import NavBtn from "../Hooks/useCartItems";
-import { iconSize } from "../Styles/styles";
-import AddShoppingCartRoundedIcon from "@mui/icons-material/AddShoppingCartRounded";
-import ProductLimit from "../components/modals/ProductLImit";
+
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { brands, devices, shapes, vinylPrice } from "../../public/configs";
 import { cutPrice } from "../components/utils/calcs";
-import DbProduct from "../components/Forms/DbProduct";
+
 import FormSelect2 from "../components/Forms/FormSelect2";
 import { useFormik } from "formik";
 import { productSchema } from "../components/Validations";
 import SearchIcon from "@mui/icons-material/Search";
 import { colPesos } from "../components/utils/configs";
-import { customTheme } from "../Hooks/useCustomTheme";
+
 import { clientPrices } from "../../public/configs";
-/* import config from "../../public/config.json"; */
+
 import { lists } from "../../public/configs";
 import PriceCalc from "../components/PriceCalc";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { workType } from "../../public/configs";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { v4 as uuidv4 } from "uuid";
-const configs = clientPrices;
+/* const configs = clientPrices;
 console.log(clientPrices);
-console.log(lists.acabados);
-cutPrice("Particular", 60, "Vinilo");
+console.log(lists.acabados); */
+/* cutPrice("Particular", 60, "Vinilo"); */
 const ProductModule = () => {
-  const items = useShoppingCart((state) => state.items);
-  const cart = useShoppingCart();
+  /* const items = useShoppingCart((state) => state.items);
+  const cart = useShoppingCart(); */
   const addItem = useShoppingCart((state) => state.addItem);
   const [height, setHeight] = useState(0);
   const handleHeight = () => setHeight(cartHeight);
@@ -483,14 +476,14 @@ const ProductModule = () => {
             <Button
               sx={{ height: 60, width: 100 }}
               onClick={handleClose}
-              variant="secondary"
+              variant="secondary-outlined"
               className="btn"
             >
               {" "}
               <CloseRoundedIcon
                 /* */
 
-                sx={{ fontSize: 40, color: "white" }}
+                sx={{ fontSize: 40, color: "secondary.main" }}
               />
             </Button>
 

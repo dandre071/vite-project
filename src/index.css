@@ -1095,9 +1095,9 @@ body {
   width: var(--product-module-width);
   /*   background-color: #009ffe; */
   display: grid;
-  gap: 5px;
+  gap: 10px;
   grid-template-columns: 1fr;
-  grid-template-rows: 60px 60px 90px 1fr 70px 150px;
+  grid-template-rows: 60px 60px 90px 1fr 80px 150px;
   grid-template-areas:
     "type"
     "product-bar"
@@ -1136,7 +1136,9 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
+
   align-items: center;
+  border: 2px solid rgb(184, 184, 184);
 }
 .product-btn {
   width: 100%;
@@ -1153,9 +1155,10 @@ body {
   display: grid;
   height: 100%;
   grid-template-columns: 1fr auto;
-  align-items: center;
+  align-items: end;
 
   grid-area: total-bar;
+
   /*  background-color: rgb(255, 47, 238); */
 }
 .standard-product {
