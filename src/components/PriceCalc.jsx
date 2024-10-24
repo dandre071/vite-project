@@ -25,13 +25,13 @@ const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
          disabled={disabled}
         />
       </Box> */}
-      <Box>
+      <Box sx={{ backgroundColor: "primary.main", p: 0.8, borderRadius: 1.5 }}>
         <Typography
           sx={{
-            color: "black",
+            color: "white",
 
             borderRadius: 2,
-            fontSize: 16,
+            fontSize: 24,
             lineHeight: 1,
             textAlign: "end",
             fontWeight: 500,
@@ -40,21 +40,23 @@ const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
           Total:
         </Typography>
       </Box>{" "}
-      <Typography
-        value={value}
-        name={name}
-        onChange={onChange}
-        sx={{
-          fontWeight: 700,
-          color: "primary.dark",
-          display: "flex",
+      <Box>
+        <Typography
+          value={value}
+          name={name}
+          onChange={onChange}
+          sx={{
+            fontWeight: 900,
+            color: "primary.dark",
+            display: "flex",
 
-          textAlign: "end",
-          fontSize: 28,
-        }}
-      >
-        {text}
-      </Typography>
+            textAlign: "end",
+            fontSize: 28,
+          }}
+        >
+          {text}
+        </Typography>
+      </Box>
     </Grid>
   );
 };
