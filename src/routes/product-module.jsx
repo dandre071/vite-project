@@ -31,16 +31,11 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { workType } from "../../public/configs";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { v4 as uuidv4 } from "uuid";
-/* const configs = clientPrices;
-console.log(clientPrices);
-console.log(lists.acabados); */
-/* cutPrice("Particular", 60, "Vinilo"); */
+
 const ProductModule = () => {
-  /* const items = useShoppingCart((state) => state.items);
-  const cart = useShoppingCart(); */
   const addItem = useShoppingCart((state) => state.addItem);
   const [height, setHeight] = useState(0);
-  const handleHeight = () => setHeight(cartHeight);
+
   const handlerAdd = (e) => {
     addItem({
       ...formik.values,
@@ -100,7 +95,7 @@ const ProductModule = () => {
   });
 
   const productType = formik.values.type;
-  const errors = formik.errors;
+
   const totalCalc = () => {
     formik.setValues({
       ...formik.values,
@@ -108,13 +103,6 @@ const ProductModule = () => {
     });
   };
 
-  const handleDeviceChange = (e) => {
-    formik.setValues({
-      ...formik.values,
-
-      name: `${formik.values.device} / ${formik.values.brand} / ${formik.values.model}`,
-    });
-  };
   const [productList, setProductList] = useState(null);
   const [price, setPrice] = useState(null);
   useEffect(() => {
@@ -145,10 +133,10 @@ const ProductModule = () => {
       itemTotalPrice: price * formik.values.quantity,
     });
   };
-  console.log(prices[index]);
+  /* console.log(prices[index]);
   const maintainText = `${formik.values.device} / ${formik.values.brand} / ${formik.values.model}`;
   console.log(maintainText);
-  console.log(formik.values.brand);
+  console.log(formik.values.brand); */
 
   return (
     <motion.div
@@ -183,7 +171,7 @@ const ProductModule = () => {
             }}
             fullWidth
             options={workType}
-            label={""}
+            label={"Tipo de Producto"}
             defaultValue={"Producto"}
           />
         </Box>
@@ -260,7 +248,7 @@ const ProductModule = () => {
                 onClose={() => {
                   formik.setValues({ ...formik.values, itemTotalPrice: 0 });
                 }}
-                freeSolo
+                /* freeSolo */
                 value={value}
                 onChange={(event, newValue) => {
                   setValue(newValue);
@@ -274,24 +262,21 @@ const ProductModule = () => {
                 options={options && options.map((x) => x.producto)}
                 fullWidth
                 renderInput={(params) => (
-                  <TextField {...params} label="Productos" />
+                  <TextField {...params} label="Buscar producto" />
                 )}
               />
               <Box
+                className="btn"
                 sx={{
                   bgcolor: "primary.main",
-                  width: 40,
-                  height: 40,
+                  width: 45,
+                  height: 45,
                   borderRadius: "50%",
                   display: "grid",
                   placeItems: "center",
                 }}
               >
-                <SearchIcon
-                  className="btn circle"
-                  sx={{ color: "white" }}
-                  onClick={getPrice}
-                />
+                <SearchIcon sx={{ color: "white" }} onClick={getPrice} />
               </Box>
             </>
           )}
@@ -308,8 +293,44 @@ const ProductModule = () => {
         >
           <Box>
             {" "}
-            {productType == "Producto estándar" &&
-              `Precio: ${colPesos.format(price)}`}
+            {productType == "Producto estándar" && (
+              <Box
+                sx={{
+                  display: "grid",
+                  height: "80%",
+
+                  justifyContent: "end",
+
+                  alignItems: "center",
+                }}
+              >
+                <Typography
+                  sx={{
+                    color: "black",
+
+                    borderRadius: 2,
+                    fontSize: 16,
+                    lineHeight: 1,
+                    textAlign: "end",
+                    fontWeight: 500,
+                  }}
+                >
+                  Precio:
+                </Typography>
+                <Typography
+                  sx={{
+                    fontWeight: 700,
+                    color: "primary.dark",
+                    display: "flex",
+
+                    textAlign: "end",
+                    fontSize: 28,
+                  }}
+                >
+                  {colPesos.format(price)}
+                </Typography>
+              </Box>
+            )}
             {productType !== "Producto estándar" && (
               <TextField
                 InputProps={{

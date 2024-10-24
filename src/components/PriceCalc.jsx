@@ -10,11 +10,11 @@ const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
       disabled={disabled}
       sx={{
         display: "grid",
-        //  flexDirection: "row",
-        borderRadius: customTheme.shape.borderRadius,
-        justifyContent: "center",
-        /* border: `2px solid ${customTheme.palette.primary.main}`, */
-
+        height: "80%",
+        gridTemplateColumns: "auto 1fr",
+        gap: 2,
+        justifyContent: "end",
+        justifySelf: "end",
         alignItems: "center",
       }}
       item
@@ -31,9 +31,9 @@ const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
             color: "black",
 
             borderRadius: 2,
-            fontSize: 20,
+            fontSize: 16,
             lineHeight: 1,
-            textAlign: "center",
+            textAlign: "end",
             fontWeight: 500,
           }}
         >
@@ -41,17 +41,16 @@ const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
         </Typography>
       </Box>{" "}
       <Typography
-        //disabled={disabled}
         value={value}
         name={name}
         onChange={onChange}
         sx={{
           fontWeight: 700,
-          color: "secondary.main",
+          color: "primary.dark",
           display: "flex",
-          justifyContent: "right",
-          textAlign: "right",
-          fontSize: 30,
+
+          textAlign: "end",
+          fontSize: 28,
         }}
       >
         {text}
