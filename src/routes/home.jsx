@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import useFetch from "../fetchHooks/useFetch";
 import { Button } from "@mui/material";
+import Table from "../components/Forms/Table";
 
 const Home = () => {
   const [productList, setProductList] = useState(null);
@@ -50,12 +51,12 @@ const Home = () => {
       },
       body: JSON.stringify({
         fecha_recibido: "24/10/2024",
-        fecha_entrega: "26/10/2024",
-        nombre: "prueba1",
+        fecha_entrega: "28/10/2024",
+        nombre: "prueba2",
         nit: 1234567890,
         telefono: 3206598822,
         email: "prueba@gmail.com",
-        trabajo: "{ trabajo: [1, 2] }",
+        trabajo: "{ 'trabajo1' , 'trabajo2 '}",
         recibe: "diego",
         realiza: "diego",
         total: 12345,
@@ -127,6 +128,7 @@ const Home = () => {
 
   return (
     <>
+      <Table />
       <Button onClick={createRegister}>crear</Button>
       <Button onClick={filteredList}>crear</Button>{" "}
     </>
