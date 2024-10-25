@@ -8,7 +8,7 @@ const handleClick = (event, cellValues) => {
   console.log(cellValues.row);
 };
 const columns = [
-  { field: "id", headerName: "ID", width: 50 },
+  { field: "id", headerName: "Orden", width: 60 },
   {
     field: "fecha_recibido",
     headerName: "Recepción",
@@ -23,7 +23,7 @@ const columns = [
   },
   {
     field: "nombre",
-    headerName: "Nombre",
+    headerName: "Cliente",
     /*  type: "number", */
     width: 150,
     /*  editable: true, */
