@@ -63,6 +63,10 @@ const columns = [
     type: "number",
     width: 90,
     /*  editable: true, */
+    valueGetter: (value, row) => {
+      return row.abono1 + parseInt(row.abono2);
+      console.log(parseInt(row.abono2) + row.abono1);
+    },
   },
 
   {
@@ -79,7 +83,15 @@ const columns = [
     width: 90,
     /*  editable: true, */
     renderCell: (cellValues) => {
-      return <Box className="status-ok">{cellValues.row.estado}</Box>;
+      return (
+        <Box
+          className={
+            cellValues.row.estado === "en espera" ? "status-wait" : "status-ok"
+          }
+        >
+          {cellValues.row.estado}
+        </Box>
+      );
     },
     /* cellClassName: "status-bg", */
   },
@@ -130,6 +142,7 @@ export default function Table() {
   return (
     <Box sx={{ height: "auto", width: "100%" }}>
       <DataGrid
+        sx={{ border: "none" }}
         /* rows={rows} */
         rows={jobList}
         columns={columns}

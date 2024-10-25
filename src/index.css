@@ -1183,7 +1183,25 @@ body {
   padding: 0;
 }
 .status-ok {
-  background-color: red;
+  text-transform: capitalize;
+  font-weight: 600;
+  color: rgb(0, 133, 22);
+  background-color: rgb(109, 209, 142);
+  width: 100%;
+  height: 60%;
+  align-self: center;
+  border-radius: 5px;
+  position: relative;
+  top: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.status-wait {
+  text-transform: capitalize;
+  font-weight: 600;
+  color: rgb(180, 87, 0);
+  background-color: rgb(255, 208, 0);
   width: 100%;
   height: 60%;
   align-self: center;
