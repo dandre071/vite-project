@@ -56,6 +56,63 @@ export const createProduct = (request, response) => {
     }
   );
 };
+export const getRegister = (req, response) => {
+  pool.query("SELECT * FROM registro", (error, results) => {
+    if (error) throw error;
+    response.status(200).json(results.rows);
+  });
+};
+export const createRegister = (request, response) => {
+  /*  const { id, producto, precio } = request.body; */
+  const {
+    fecha_recibido,
+    fecha_entrega,
+    nombre,
+    nit,
+    telefono,
+    email,
+    trabajo,
+    recibe,
+    realiza,
+    total,
+    abono1,
+    abono2,
+    resta,
+    estado,
+    observaciones,
+  } = request.body;
+
+  pool.query(
+    /*     "INSERT INTO productos (id,producto, precio) VALUES ($1, $2, $3) RETURNING *", */
+    "INSERT INTO registro (fecha_recibido, fecha_entrega, nombre, nit, telefono, email, trabajo, recibe, realiza, total, abono1, abono2, resta, estado, observaciones) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING *",
+    /*  [id, producto, precio], */
+    [
+      fecha_recibido,
+      fecha_entrega,
+      nombre,
+      nit,
+      telefono,
+      email,
+      trabajo,
+      recibe,
+      realiza,
+      total,
+      abono1,
+      abono2,
+      resta,
+      estado,
+      observaciones,
+    ],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response
+        .status(201)
+        .send(`Register added with ID: ${results.rows[0].id}`);
+    }
+  );
+};
 
 const getProductById = (request, response) => {
   const id = parseInt(request.params.id);

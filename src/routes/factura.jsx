@@ -1,5 +1,5 @@
 import { Alert, Box, Button, Modal, Stack, Typography } from "@mui/material";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { invoiceGrid, modal } from "../Styles/styles";
 import useUsers from "../Hooks/useUsers";
 import Logo from "../components/Logo";
@@ -18,10 +18,25 @@ import SuccessModal from "../components/modals/SuccessModal";
 import ConfirmModal from "../components/modals/ConfirmModal";
 import { Warning, WarningRounded } from "@mui/icons-material";
 import { customTheme } from "../Hooks/useCustomTheme";
-
+import useFetch from "../fetchHooks/useFetch";
+import useFetchProducts from "../fetchHooks/useFetchProducts";
+import { add_zero } from "../components/utils/helpers";
 const Factura = ({ openModal, onClose, payMethod }) => {
   const navigate = useNavigate();
+  const [invoiceNum, setinvoiceNum] = useState(null);
 
+  useEffect(() => {
+    const getProductList = async () => {
+      await fetch("http://localhost:3000/api/v1/impresosDB/")
+        .then((res) => res.json())
+        .then((data) => {
+          setinvoiceNum(data.length + 1);
+          console.log(data.length);
+        });
+    };
+    getProductList();
+  }, []);
+  console.log(invoiceNum);
   const targetRef = useRef();
   const cart = useShoppingCart((state) => state.items);
   const paymentData = usePaymentData((state) => state.paymentData);
@@ -165,7 +180,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                         color: "primary.dark",
                       }}
                     >
-                      {client.billType}
+                      {`${client.billType} / R${add_zero(invoiceNum, 5)}`}
                     </Typography>
                   </Box>
                   <Box

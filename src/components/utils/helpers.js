@@ -36,3 +36,10 @@ export const uppercasing = (string) => {
 export const finishOperation = (targetRef, options) => {
   generatePDF(targetRef, { filename: "page.pdf" });
 };
+export function add_zero(your_number, length) {
+  var num = "" + your_number;
+  while (num.length < length) {
+    num = "0" + num;
+  }
+  return num;
+}

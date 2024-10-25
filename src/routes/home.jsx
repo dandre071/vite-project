@@ -42,7 +42,34 @@ const Home = () => {
       .then((datos) => console.log(datos))
       .then(getProductList());
   };
-  useEffect(() => {
+  const createRegister = () => {
+    fetch("http://localhost:3000/api/v1/impresosDB/registro", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        fecha_recibido: "24/10/2024",
+        fecha_entrega: "26/10/2024",
+        nombre: "prueba1",
+        nit: 1234567890,
+        telefono: 3206598822,
+        email: "prueba@gmail.com",
+        trabajo: ["trabajo1", "trabajo2"],
+        recibe: "diego",
+        realiza: "diego",
+        total: 12345,
+        abono1: 1234,
+        abono2: 0,
+        resta: 234,
+        estado: "en espera",
+        observaciones: "fjfdkfjdkjfkdjf",
+      }),
+    })
+      .then((respuesta) => respuesta.json)
+      .then((datos) => console.log(datos));
+  };
+  /*  useEffect(() => {
     const getProductList = () => {
       fetch("http://localhost:3000/api/v1/impresosDB/")
         .then((res) => res.json())
@@ -52,6 +79,37 @@ const Home = () => {
         });
     };
     getProductList();
+  }, []); */
+  useEffect(() => {
+    /* const createRegister = () => {
+      fetch("http://localhost:3000/api/v1/impresosDB/registro", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fecha_recibido: "24/10/2024",
+          fecha_entrega: "26/10/2024",
+          nombre: "prueba1",
+          nit: 1234567890,
+          telefono: 3206598822,
+          email: "prueba@gmail.com",
+          trabajo: ["trabajo1", "trabajo2"],
+          recibe: "diego",
+          realiza: "diego",
+          total: 12345,
+          abono1: 1234,
+          abono2: 0,
+          resta: 234,
+          estado: "en espera",
+          observaciones: "fjfdkfjdkjfkdjf",
+        }),
+      })
+        .then((respuesta) => respuesta.ok)
+        .then((datos) => console.log(datos));
+   
+    };
+    createRegister(); */
   }, []);
 
   const filteredList = () => {
@@ -69,7 +127,7 @@ const Home = () => {
 
   return (
     <>
-      <Button onClick={createProduct}>crear</Button>
+      <Button onClick={createRegister}>crear</Button>
       <Button onClick={filteredList}>crear</Button>{" "}
     </>
   );
