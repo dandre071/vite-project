@@ -55,7 +55,7 @@ const Home = () => {
         nit: 1234567890,
         telefono: 3206598822,
         email: "prueba@gmail.com",
-        trabajo: "{trabajo1}",
+        trabajo: "{ trabajo: [1, 2] }",
         recibe: "diego",
         realiza: "diego",
         total: 12345,
