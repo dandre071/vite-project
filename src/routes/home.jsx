@@ -55,7 +55,7 @@ const Home = () => {
         nit: 1234567890,
         telefono: 3206598822,
         email: "prueba@gmail.com",
-        trabajo: ["trabajo1", "trabajo2"],
+        trabajo: '{"trabajo1"}',
         recibe: "diego",
         realiza: "diego",
         total: 12345,
@@ -66,7 +66,7 @@ const Home = () => {
         observaciones: "fjfdkfjdkjfkdjf",
       }),
     })
-      .then((respuesta) => respuesta.json)
+      .then((respuesta) => respuesta.ok)
       .then((datos) => console.log(datos));
   };
   /*  useEffect(() => {
