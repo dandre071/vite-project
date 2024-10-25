@@ -27,6 +27,7 @@ const columns = [
     /*  type: "number", */
     width: 150,
     /*  editable: true, */
+    cellClassName: "text-transform",
   },
 
   {
@@ -35,6 +36,7 @@ const columns = [
     /*  type: "number", */
     width: 200,
     /*  editable: true, */
+    cellClassName: "text-transform",
   },
   {
     field: "recibe",
@@ -42,6 +44,7 @@ const columns = [
     /*  type: "number", */
     width: 90,
     /*  editable: true, */
+    cellClassName: "text-transform",
   },
   {
     field: "realiza",
@@ -49,6 +52,7 @@ const columns = [
     /*  type: "number", */
     width: 90,
     /*  editable: true, */
+    cellClassName: "text-transform",
   },
   {
     field: "total",
@@ -56,6 +60,7 @@ const columns = [
     type: "number",
     width: 90,
     /*  editable: true, */
+    cellClassName: "fw-800",
   },
   {
     field: "abono1",

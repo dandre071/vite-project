@@ -1212,3 +1212,13 @@ body {
   justify-content: center;
   align-items: center;
 }
+.text-transform {
+  text-transform: capitalize;
+}
+.fw-500 {
+  font-weight: 500;
+}
+.fw-800 {
+  font-weight: 800;
+  color: rgb(5, 48, 173);
+}
