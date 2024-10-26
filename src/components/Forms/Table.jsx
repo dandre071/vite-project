@@ -43,11 +43,11 @@ const columns = [
     /* renderCell: (cellValues) => {
       return <p>{cellValues[0]}</p>;
     }, */
-    /*  valueGetter: (value, row) => {
+    valueGetter: (value, row) => {
       const val = row.trabajo;
 
-      return val.slice(0, 2);
-    }, */
+      return val;
+    },
     cellClassName: "text-transform",
   },
   {
