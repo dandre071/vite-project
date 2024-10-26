@@ -26,7 +26,7 @@ const Home = () => {
         setProductList(data);
       });
   };
-
+  const test = ["ldjfdfjdf", "kkjsjsjd", "llgfgoorkjr"];
   const createProduct = () => {
     fetch("http://localhost:3000/api/v1/impresosDB/", {
       method: "POST",
@@ -56,7 +56,8 @@ const Home = () => {
         nit: 1234567890,
         telefono: 3206598822,
         email: "prueba@gmail.com",
-        trabajo: "['trabajo1' , 'trabajo2 ']",
+        /* trabajo: '{"trabajo1","trabajo2"}', */
+        trabajo: "trabajo1,trabajo2",
         recibe: "diego",
         realiza: "diego",
         total: 12345,

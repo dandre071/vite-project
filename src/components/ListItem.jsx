@@ -1,10 +1,11 @@
 import { Box, Stack, Typography } from "@mui/material";
 import DeleteBtn from "./Buttons/DeleteBtn";
+import EditIcon from "@mui/icons-material/Edit";
 import { useShoppingCart } from "../store/shoppingCart";
 import { motion } from "framer-motion";
 import { Edit2Icon } from "lucide-react";
 import { customTheme } from "../Hooks/useCustomTheme";
-import EditIcon from "@mui/icons-material/Edit";
+
 const ListItem = ({
   product,
   q,

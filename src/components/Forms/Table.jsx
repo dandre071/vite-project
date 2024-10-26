@@ -4,6 +4,10 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Button, Chip } from "@mui/material";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteBtn from "../Buttons/DeleteBtn";
+
 const handleClick = (event, cellValues) => {
   console.log(cellValues.row);
 };
@@ -29,15 +33,24 @@ const columns = [
     /*  editable: true, */
     cellClassName: "text-transform",
   },
-
+  /* 
   {
     field: "trabajo",
     headerName: "Trabajo",
-    /*  type: "number", */
+     type: "number",
     width: 200,
-    /*  editable: true, */
+     editable: true,
+    renderCell: (cellValues) => {
+      return <p>{cellValues[0]}</p>;
+    },
+     valueGetter: (value, row) => {
+      const val = row.trabajo;
+
+
+      return val.slice(0, 2);
+    },
     cellClassName: "text-transform",
-  },
+  }, */
   {
     field: "recibe",
     headerName: "Recibe",
@@ -60,6 +73,7 @@ const columns = [
     type: "number",
     width: 90,
     /*  editable: true, */
+    valueFormatter: (value) => `$${value}`,
     cellClassName: "fw-800",
   },
   {
@@ -67,6 +81,7 @@ const columns = [
     headerName: "Abono1",
     type: "number",
     width: 90,
+    valueFormatter: (value) => `$${value}`,
     /*  editable: true, */
     valueGetter: (value, row) => {
       return row.abono1 + parseInt(row.abono2);
@@ -78,6 +93,7 @@ const columns = [
     field: "resta",
     headerName: "Resta",
     /*  type: "number", */
+    valueFormatter: (value) => `$${value}`,
     width: 90,
     /*  editable: true, */
   },
@@ -101,10 +117,30 @@ const columns = [
     /* cellClassName: "status-bg", */
   },
   {
-    field: "Print",
+    field: " ",
+    width: 80,
+
     renderCell: (cellValues) => {
       return (
-        <Button
+        <Box
+          sx={{
+            display: "flex",
+
+            justifyContent: "space-evenly",
+            alignItems: "center",
+            justifySelf: "end",
+          }}
+        >
+          <EditIcon
+            className="btn"
+            /*  onClick={editClick} */
+            sx={{ fontSize: 24, color: "primary.main" }}
+          />
+          <VisibilityOutlinedIcon sx={{ fontSize: 30 }} />
+        </Box>
+      );
+
+      /* <Button
           variant="contained"
           color="primary"
           onClick={(event) => {
@@ -112,9 +148,9 @@ const columns = [
           }}
         >
           Print
-        </Button>
-      );
+        </Button> */
     },
+    cellClassName: "center",
   },
   /*  {
     field: "observaciones",
@@ -147,6 +183,7 @@ export default function Table() {
   return (
     <Box sx={{ height: "auto", width: "100%" }}>
       <DataGrid
+        rowHeight={45}
         sx={{ border: "none" }}
         /* rows={rows} */
         rows={jobList}

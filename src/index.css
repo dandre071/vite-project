@@ -1222,3 +1222,8 @@ body {
   font-weight: 800;
   color: rgb(5, 48, 173);
 }
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
