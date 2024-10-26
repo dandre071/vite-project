@@ -33,24 +33,23 @@ const columns = [
     /*  editable: true, */
     cellClassName: "text-transform",
   },
-  /* 
+
   {
     field: "trabajo",
     headerName: "Trabajo",
-     type: "number",
+    /*   type: "number", */
     width: 200,
-     editable: true,
-    renderCell: (cellValues) => {
+    /*   editable: true, */
+    /* renderCell: (cellValues) => {
       return <p>{cellValues[0]}</p>;
-    },
-     valueGetter: (value, row) => {
+    }, */
+    /*  valueGetter: (value, row) => {
       const val = row.trabajo;
 
-
       return val.slice(0, 2);
-    },
+    }, */
     cellClassName: "text-transform",
-  }, */
+  },
   {
     field: "recibe",
     headerName: "Recibe",

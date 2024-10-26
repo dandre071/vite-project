@@ -43,6 +43,7 @@ const Home = () => {
       .then((datos) => console.log(datos))
       .then(getProductList());
   };
+  const array = ["ggfdfdf", "lllhghg", "llgfkgfgj"];
   const createRegister = () => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro", {
       method: "POST",
@@ -57,7 +58,7 @@ const Home = () => {
         telefono: 3206598822,
         email: "prueba@gmail.com",
         /* trabajo: '{"trabajo1","trabajo2"}', */
-        trabajo: "trabajo1,trabajo2",
+        trabajo: '{"prueba2", "prueba3"}',
         recibe: "diego",
         realiza: "diego",
         total: 12345,
