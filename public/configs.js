@@ -137,3 +137,12 @@ export const brands = [
   "SAMSUNG",
   "ACER",
 ];
+export const statusList = [
+  "ASIGNADO",
+  "DISEÑO",
+  "IMPRESIÓN",
+  "ACABADO",
+  "DEMORADO",
+  "LISTO",
+  "EN REVISIÓN",
+];

@@ -25,6 +25,7 @@ import { customTheme } from "./Hooks/useCustomTheme.jsx";
 import EditItem from "./routes/EditItem.jsx";
 import ConfigPage from "./routes/ConfigPage.jsx";
 import Home from "./routes/home.jsx";
+import EditRegister from "./components/Forms/EditRegister.jsx";
 
 export const routes = [
   { path: "/", element: <Home />, name: "Home" },
@@ -38,7 +39,11 @@ export const routes = [
     element: <EditItem />,
     name: "Editar",
   },
-
+  {
+    path: "/editar-registro/:id",
+    element: <EditRegister />,
+    name: "editar-registro",
+  },
   {
     path: "/client-data",
     element: <ClientData />,
@@ -66,6 +71,11 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [...routes],
+  },
+  {
+    path: "/register/:id",
+    element: <EditRegister />,
+    name: "editar-registro",
   },
   {
     path: "Configuraciones",

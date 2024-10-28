@@ -7,9 +7,11 @@ import {
   getLaminatePrice,
   getMaterialPrice,
   getProducts,
+  getRegById,
   getRegister,
   getUsers,
   getVinylPrice,
+  updateReg,
 } from "./controller.js";
 
 export const router = express.Router();
@@ -28,6 +30,8 @@ router.get("/precio-vinilo" || "/vinilos", getVinylPrice); */
 router.get("/vendedores", getUsers);
 router.get("/laminado", getLaminatePrice);
 router.get("/registro", getRegister);
+router.get("/registro/:id", getRegById);
 router.post("/registro", createRegister);
+router.put("/registro/:id", updateReg);
 router.get("/precios", getMaterialPrice);
 router.get("/vinilos", getVinylPrice);

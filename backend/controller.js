@@ -57,7 +57,7 @@ export const createProduct = (request, response) => {
   );
 };
 export const getRegister = (req, response) => {
-  pool.query("SELECT * FROM registro", (error, results) => {
+  pool.query("SELECT * FROM registro ORDER BY id ASC", (error, results) => {
     if (error) throw error;
     response.status(200).json(results.rows);
   });
@@ -114,15 +114,30 @@ export const createRegister = (request, response) => {
   );
 };
 
-const getProductById = (request, response) => {
+export const getRegById = (request, response) => {
   const id = parseInt(request.params.id);
 
-  pool.query("SELECT * FROM users WHERE id = $1", [id], (error, results) => {
+  pool.query("SELECT * FROM registro WHERE id = $1", [id], (error, results) => {
     if (error) {
       throw error;
     }
     response.status(200).json(results.rows);
   });
+};
+export const updateReg = (request, response) => {
+  const id = parseInt(request.params.id);
+  const { abono2, resta, total, estado } = request.body;
+
+  pool.query(
+    "UPDATE registro SET abono2 = $1, resta = $2, total = $3, estado = $4 WHERE id = $5",
+    [abono2, resta, total, estado],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).send(`Registro modificado en ID: ${id}`);
+    }
+  );
 };
 /* console.log(users); */
 /* module.exports = {

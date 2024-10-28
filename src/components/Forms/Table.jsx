@@ -7,9 +7,17 @@ import { Button, Chip } from "@mui/material";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteBtn from "../Buttons/DeleteBtn";
+import { useNavigate } from "react-router-dom";
 
 const handleClick = (event, cellValues) => {
   console.log(cellValues.row);
+};
+const getReg = (id) => {
+  fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    });
 };
 const columns = [
   {
@@ -139,7 +147,8 @@ const columns = [
     field: " ",
     width: 80,
 
-    renderCell: (cellValues) => {
+    renderCell: (cellValues, row) => {
+      const navigate = useNavigate();
       return (
         <Box
           sx={{
@@ -155,7 +164,11 @@ const columns = [
             /*  onClick={editClick} */
             sx={{ fontSize: 24, color: "primary.main" }}
           />
-          <VisibilityOutlinedIcon sx={{ fontSize: 30 }} />
+          <VisibilityOutlinedIcon
+            // onClick={getReg(cellValues.row.id)}
+            onClick={() => navigate("/editar-registro/" + cellValues.row.id)}
+            sx={{ fontSize: 30 }}
+          />
         </Box>
       );
 
@@ -190,6 +203,7 @@ const columns = [
 
 export default function Table() {
   const [jobList, setJobList] = useState(null);
+
   useEffect(() => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro")
       .then((res) => res.json())
