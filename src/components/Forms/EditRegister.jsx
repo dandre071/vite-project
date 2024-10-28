@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const EditRegister = () => {
-  const id = location.pathname;
+  const id = location.pathname.match(/[0-9]/g);
   console.log(id);
   const [reg, setReg] = useState([]);
   useEffect(() => {
@@ -13,7 +13,7 @@ const EditRegister = () => {
       });
   }, []);
   console.log(reg);
-
+  console.log();
   return <div>EditRegister</div>;
 };
 
