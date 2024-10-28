@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Button, Chip } from "@mui/material";
+import { Button, Chip, Typography } from "@mui/material";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteBtn from "../Buttons/DeleteBtn";
@@ -60,11 +60,18 @@ const columns = [
     /* renderCell: (cellValues) => {
       return <p>{cellValues[0]}</p>;
     }, */
-    valueGetter: (value, row) => {
-      const val = row.trabajo;
+    renderCell: (cellValues) => {
+      const val = cellValues.row.trabajo;
       /*   return val; */
       /*  return val[0]; */
-      return Array.from(val).join(" / ");
+      /*  return Array.from(val).join("\n"); */
+      return (
+        <Box>
+          {val.map((x) => (
+            <Typography key={cellValues.row.id}>{x}</Typography>
+          ))}
+        </Box>
+      );
     },
     cellClassName: "text-transform",
   },

@@ -43,7 +43,7 @@ const Home = () => {
       .then((datos) => console.log(datos))
       .then(getProductList());
   };
-  const array = ["ggfdfdf", "lllhghg", "llgfkgfgj"];
+
   const createRegister = () => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro", {
       method: "POST",
