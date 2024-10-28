@@ -12,20 +12,28 @@ const handleClick = (event, cellValues) => {
   console.log(cellValues.row);
 };
 const columns = [
-  { field: "id", headerName: "Orden", width: 60 },
   {
+    headerClassName: "table-header",
+    field: "id",
+    headerName: "Orden",
+    width: 60 /* headerClassName:  headerAlign:  */,
+  },
+  {
+    headerClassName: "table-header",
     field: "fecha_recibido",
     headerName: "Recepción",
     width: 90,
     /*    editable: true, */
   },
   {
+    headerClassName: "table-header",
     field: "fecha_entrega",
     headerName: "Entrega",
     width: 90,
     /*  editable: true, */
   },
   {
+    headerClassName: "table-header",
     field: "nombre",
     headerName: "Cliente",
     /*  type: "number", */
@@ -35,6 +43,7 @@ const columns = [
   },
 
   {
+    headerClassName: "table-header",
     field: "trabajo",
     headerName: "Trabajo",
     /*   type: "number", */
@@ -45,12 +54,14 @@ const columns = [
     }, */
     valueGetter: (value, row) => {
       const val = row.trabajo;
-
-      return val;
+      /*   return val; */
+      /*  return val[0]; */
+      return Array.from(val).join(" / ");
     },
     cellClassName: "text-transform",
   },
   {
+    headerClassName: "table-header",
     field: "recibe",
     headerName: "Recibe",
     /*  type: "number", */
@@ -59,6 +70,7 @@ const columns = [
     cellClassName: "text-transform",
   },
   {
+    headerClassName: "table-header",
     field: "realiza",
     headerName: "Realiza",
     /*  type: "number", */
@@ -67,6 +79,7 @@ const columns = [
     cellClassName: "text-transform",
   },
   {
+    headerClassName: "table-header",
     field: "total",
     headerName: "Total",
     type: "number",
@@ -76,6 +89,7 @@ const columns = [
     cellClassName: "fw-800",
   },
   {
+    headerClassName: "table-header",
     field: "abono1",
     headerName: "Abono1",
     type: "number",
@@ -89,14 +103,19 @@ const columns = [
   },
 
   {
+    headerClassName: "table-header",
     field: "resta",
     headerName: "Resta",
     /*  type: "number", */
     valueFormatter: (value) => `$${value}`,
     width: 90,
+    /* cellClassName: `${
+      field.value > 0 ? "error-text fw-800" : "success-text fw-800"
+    }`, */
     /*  editable: true, */
   },
   {
+    headerClassName: "table-header",
     field: "estado",
     headerName: "Estado",
     /*  type: "number", */
@@ -116,6 +135,7 @@ const columns = [
     /* cellClassName: "status-bg", */
   },
   {
+    headerClassName: "table-header",
     field: " ",
     width: 80,
 

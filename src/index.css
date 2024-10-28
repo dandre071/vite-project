@@ -1227,3 +1227,14 @@ body {
   justify-content: center;
   align-items: center;
 }
+.error-text {
+  color: red;
+}
+.success-text {
+  color: rgb(0, 201, 33);
+}
+.table-header {
+  background-color: #000000;
+  color: white;
+  font-weight: 800;
+}

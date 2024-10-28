@@ -58,7 +58,7 @@ const Home = () => {
         telefono: 3206598822,
         email: "prueba@gmail.com",
         /* trabajo: '{"trabajo1","trabajo2"}', */
-        trabajo: "[KFDKSKFLDKF, ÑGFLÑGFGFG]",
+        trabajo: '{"value1", "value2"}',
         recibe: "diego",
         realiza: "diego",
         total: 12345,
