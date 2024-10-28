@@ -217,7 +217,7 @@ export default function Table() {
     <Box sx={{ height: "auto", width: "100%" }}>
       <DataGrid
         rowHeight={45}
-        sx={{ border: "none" }}
+        sx={{ border: "none", justifySelf: "start" }}
         /* rows={rows} */
         rows={jobList}
         columns={columns}
