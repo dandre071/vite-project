@@ -45,7 +45,7 @@ const columns = [
     field: "nombre",
     headerName: "Cliente",
     /*  type: "number", */
-    width: 150,
+    width: 200,
     /*  editable: true, */
     cellClassName: "text-transform",
   },
@@ -55,7 +55,7 @@ const columns = [
     field: "trabajo",
     headerName: "Trabajo",
     /*   type: "number", */
-    width: 200,
+    width: 270,
     /*   editable: true, */
     /* renderCell: (cellValues) => {
       return <p>{cellValues[0]}</p>;
@@ -68,7 +68,12 @@ const columns = [
       return (
         <Box>
           {val.map((x) => (
-            <Typography key={cellValues.row.id}>{x}</Typography>
+            <Typography
+              sx={{ fontSize: 14, borderBottom: "1px solid #f2f2f2" }}
+              key={cellValues.row.id}
+            >
+              {`${val.indexOf(x) + 1}. ${x}`}
+            </Typography>
           ))}
         </Box>
       );
@@ -103,19 +108,19 @@ const columns = [
     valueFormatter: (value) => `$${value}`,
     cellClassName: "fw-800",
   },
-  {
+  /* {
     headerClassName: "table-header",
     field: "abono1",
-    headerName: "Abono1",
+    headerName: "Abono",
     type: "number",
     width: 90,
     valueFormatter: (value) => `$${value}`,
-    /*  editable: true, */
+  
     valueGetter: (value, row) => {
       return row.abono1 + parseInt(row.abono2);
       console.log(parseInt(row.abono2) + row.abono1);
     },
-  },
+  }, */
 
   {
     headerClassName: "table-header",
@@ -124,6 +129,17 @@ const columns = [
     /*  type: "number", */
     valueFormatter: (value) => `$${value}`,
     width: 90,
+    renderCell: (cellValues) => {
+      return cellValues.row.resta === 0 ? (
+        <Box className="success-text fw-800 center">
+          <Typography>PAGADO</Typography>
+        </Box>
+      ) : (
+        <Box className="error-text fw-800 center">
+          <Typography> {`$${cellValues.row.resta}`}</Typography>
+        </Box>
+      );
+    },
     /* cellClassName: `${
       field.value > 0 ? "error-text fw-800" : "success-text fw-800"
     }`, */
@@ -152,7 +168,7 @@ const columns = [
   {
     headerClassName: "table-header",
     field: " ",
-    width: 80,
+    width: 60,
 
     renderCell: (cellValues, row) => {
       const navigate = useNavigate();
@@ -166,11 +182,11 @@ const columns = [
             justifySelf: "end",
           }}
         >
-          <EditIcon
+          {/* <EditIcon
             className="btn"
-            /*  onClick={editClick} */
+           
             sx={{ fontSize: 24, color: "primary.main" }}
-          />
+          /> */}
           <VisibilityOutlinedIcon
             // onClick={getReg(cellValues.row.id)}
             onClick={() => navigate("/editar-registro/" + cellValues.row.id)}
