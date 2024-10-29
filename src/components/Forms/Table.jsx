@@ -131,7 +131,7 @@ const columns = [
     width: 90,
     renderCell: (cellValues) => {
       return cellValues.row.resta === 0 ? (
-        <Box className="success-text fw-800 center">
+        <Box className="success-bg fw-800 center">
           <Typography>PAGADO</Typography>
         </Box>
       ) : (
