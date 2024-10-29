@@ -8,6 +8,7 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteBtn from "../Buttons/DeleteBtn";
 import { useNavigate } from "react-router-dom";
+import { AlignCenter } from "lucide-react";
 
 const handleClick = (event, cellValues) => {
   console.log(cellValues.row);
@@ -23,6 +24,7 @@ const columns = [
   {
     headerClassName: "table-header",
     field: "id",
+
     headerName: "Orden",
     width: 60 /* headerClassName:  headerAlign:  */,
   },
@@ -66,10 +68,21 @@ const columns = [
       /*  return val[0]; */
       /*  return Array.from(val).join("\n"); */
       return (
-        <Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
           {val.map((x) => (
             <Typography
-              sx={{ fontSize: 14, borderBottom: "1px solid #f2f2f2" }}
+              sx={{
+                fontSize: 13,
+                /*   borderBottom: "1px solid #f2f2f2", */
+                p: 0.2,
+                height: "100%",
+              }}
               key={cellValues.row.id}
             >
               {`${val.indexOf(x) + 1}. ${x}`}
@@ -148,6 +161,7 @@ const columns = [
         </Box>
       );
     },
+    cellClassName: "center",
     /* cellClassName: `${
       field.value > 0 ? "error-text fw-800" : "success-text fw-800"
     }`, */
@@ -196,9 +210,10 @@ const columns = [
             sx={{ fontSize: 24, color: "primary.main" }}
           /> */}
           <VisibilityOutlinedIcon
+            className="btn bg-primary"
             // onClick={getReg(cellValues.row.id)}
             onClick={() => navigate("/editar-registro/" + cellValues.row.id)}
-            sx={{ fontSize: 30 }}
+            sx={{ fontSize: 30, color: "primary.dark" }}
           />
         </Box>
       );
@@ -245,9 +260,9 @@ export default function Table() {
   }, []);
   const rows = [{ id: jobList, lastName: "Snow", firstName: "Jon", age: 14 }];
   return (
-    <Box sx={{ height: "auto", width: "100%" }}>
+    <Box sx={{ height: "auto", width: "auto" }}>
       <DataGrid
-        rowHeight={45}
+        rowHeight={"auto"}
         sx={{ border: "none", justifySelf: "start" }}
         /* rows={rows} */
         rows={jobList}
