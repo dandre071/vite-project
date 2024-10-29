@@ -132,11 +132,19 @@ const columns = [
     renderCell: (cellValues) => {
       return cellValues.row.resta === 0 ? (
         <Box className="success-bg fw-800 center">
-          <Typography>PAGADO</Typography>
+          <Typography sx={{ fontSize: 14, fontWeight: 800, color: "white" }}>
+            PAGADO
+          </Typography>
         </Box>
       ) : (
-        <Box className="error-text fw-800 center">
-          <Typography> {`$${cellValues.row.resta}`}</Typography>
+        <Box
+          className="error-bg fw-800 center"
+          sx={{ fontSize: 14, fontWeight: 800, color: "white" }}
+        >
+          <Typography sx={{ fontSize: 14, fontWeight: 800, color: "white" }}>
+            {" "}
+            {`$${cellValues.row.resta}`}
+          </Typography>
         </Box>
       );
     },

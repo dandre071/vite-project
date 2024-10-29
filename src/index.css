@@ -1243,5 +1243,14 @@ body {
   font-weight: 800;
 }
 .success-bg {
+  width: 98%;
+  height: 95%;
+  /*  border-radius: 6px; */
   background-color: rgb(0, 201, 33);
+}
+.error-bg {
+  width: 98%;
+  height: 95%;
+  /*  border-radius: 6px; */
+  background-color: rgb(255, 0, 0);
 }
