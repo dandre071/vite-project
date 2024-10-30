@@ -1,10 +1,9 @@
 import { Box, Button, Modal, Stack, Typography } from "@mui/material";
 import ListItem from "../components/ListItem";
 import { useShoppingCart } from "../store/shoppingCart";
-import ModalHeader from "../components/ModalHeader";
+
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
-import { modal } from "../Styles/styles";
-import { useUsersList } from "../store/lists";
+
 import { useFormik } from "formik";
 import NavBtn from "../Hooks/useCartItems";
 

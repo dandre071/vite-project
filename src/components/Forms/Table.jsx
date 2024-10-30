@@ -192,20 +192,20 @@ const columns = [
     field: "estado",
     headerName: "Estado",
     /*  type: "number", */
-    width: 90,
+    width: 100,
     /*  editable: true, */
     renderCell: (cellValues) => {
       return (
         <Box
           className={
-            cellValues.row.estado === "en espera" ? "status-wait" : "success-bg"
+            cellValues.row.estado === "en espera" ? "process-bg" : "success-bg"
           }
         >
           {cellValues.row.estado}
         </Box>
       );
     },
-    cellClassName: "center",
+    cellClassName: "center flex",
   },
   {
     align: "center",
@@ -285,7 +285,17 @@ export default function Table() {
     <Box sx={{ height: "auto", width: "auto" }}>
       <DataGrid
         rowHeight={"auto"}
-        sx={{ border: "none", justifySelf: "start" }}
+        sx={{
+          border: "none",
+          justifySelf: "start",
+          "&.MuiDataGrid-root": {
+            border: "none",
+          },
+          "& .MuiDataGrid-sortIcon": {
+            opacity: "inherit !important",
+            width: 20,
+          },
+        }}
         /* rows={rows} */
         rows={jobList}
         columns={columns}

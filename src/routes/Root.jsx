@@ -29,6 +29,7 @@ const Root = () => {
   const location = useLocation();
   const pathText = routes.filter((item) => item.path == location.pathname);
   const pageTitle = pathText[0] ? pathText[0].name : "";
+  console.log(location.pathname);
   /* console.log(pathText[0].name); */
   const navigate = useNavigate();
   return (
