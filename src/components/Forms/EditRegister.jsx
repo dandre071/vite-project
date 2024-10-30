@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, LayoutGroup, motion, stagger } from "framer-motion";
+import { useFormik } from "formik";
 const EditRegister = () => {
   const id = location.pathname.match(/[0-9]/g).join("");
   console.log(id);
@@ -14,7 +15,13 @@ const EditRegister = () => {
       });
   }, []);
   console.log(reg);
-  console.log();
+
+  const formik = useFormik({
+    /*   abono2: null,
+    resta: reg[0].abono1 - reg[0].total,
+    estado: reg[0].estado, */
+  });
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -50 }}
