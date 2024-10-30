@@ -1,6 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridColumnHeaderMenu } from "@mui/x-data-grid";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Button, Chip, Typography } from "@mui/material";
@@ -9,7 +9,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteBtn from "../Buttons/DeleteBtn";
 import { useNavigate } from "react-router-dom";
 import { AlignCenter } from "lucide-react";
-
+import { colPesos } from "../utils/configs";
 const handleClick = (event, cellValues) => {
   console.log(cellValues.row);
 };
@@ -22,6 +22,8 @@ const getReg = (id) => {
 };
 const columns = [
   {
+    align: "center",
+    headerAlign: "center",
     headerClassName: "table-header",
     field: "id",
 
@@ -29,6 +31,8 @@ const columns = [
     width: 60 /* headerClassName:  headerAlign:  */,
   },
   {
+    align: "center",
+    headerAlign: "center",
     headerClassName: "table-header",
     field: "fecha_recibido",
     headerName: "Recepción",
@@ -36,6 +40,8 @@ const columns = [
     /*    editable: true, */
   },
   {
+    align: "center",
+    headerAlign: "center",
     headerClassName: "table-header",
     field: "fecha_entrega",
     headerName: "Entrega",
@@ -43,6 +49,8 @@ const columns = [
     /*  editable: true, */
   },
   {
+    /*  align: "center",
+    headerAlign: "center", */
     headerClassName: "table-header",
     field: "nombre",
     headerName: "Cliente",
@@ -53,6 +61,8 @@ const columns = [
   },
 
   {
+    /* align: "center",
+    headerAlign: "center", */
     headerClassName: "table-header",
     field: "trabajo",
     headerName: "Trabajo",
@@ -94,6 +104,8 @@ const columns = [
     cellClassName: "text-transform",
   },
   {
+    align: "center",
+    headerAlign: "center",
     headerClassName: "table-header",
     field: "recibe",
     headerName: "Recibe",
@@ -103,6 +115,8 @@ const columns = [
     cellClassName: "text-transform",
   },
   {
+    align: "center",
+    headerAlign: "center",
     headerClassName: "table-header",
     field: "realiza",
     headerName: "Realiza",
@@ -112,13 +126,15 @@ const columns = [
     cellClassName: "text-transform",
   },
   {
+    align: "center",
+    headerAlign: "center",
     headerClassName: "table-header",
     field: "total",
     headerName: "Total",
     type: "number",
     width: 90,
     /*  editable: true, */
-    valueFormatter: (value) => `$${value}`,
+    valueFormatter: (value) => colPesos.format(value),
     cellClassName: "fw-800",
   },
   /* {
@@ -136,6 +152,8 @@ const columns = [
   }, */
 
   {
+    align: "center",
+    headerAlign: "center",
     headerClassName: "table-header",
     field: "resta",
     headerName: "Resta",
@@ -143,7 +161,7 @@ const columns = [
     valueFormatter: (value) => `$${value}`,
     width: 90,
     renderCell: (cellValues) => {
-      return cellValues.row.resta === 0 ? (
+      return parseInt(cellValues.row.resta) === 0 ? (
         <Box className="success-bg fw-800 center">
           <Typography sx={{ fontSize: 14, fontWeight: 800, color: "white" }}>
             PAGADO
@@ -156,7 +174,7 @@ const columns = [
         >
           <Typography sx={{ fontSize: 14, fontWeight: 800, color: "white" }}>
             {" "}
-            {`$${cellValues.row.resta}`}
+            {colPesos.format(cellValues.row.resta)}
           </Typography>
         </Box>
       );
@@ -168,6 +186,8 @@ const columns = [
     /*  editable: true, */
   },
   {
+    align: "center",
+    headerAlign: "center",
     headerClassName: "table-header",
     field: "estado",
     headerName: "Estado",
@@ -178,16 +198,18 @@ const columns = [
       return (
         <Box
           className={
-            cellValues.row.estado === "en espera" ? "status-wait" : "status-ok"
+            cellValues.row.estado === "en espera" ? "status-wait" : "success-bg"
           }
         >
           {cellValues.row.estado}
         </Box>
       );
     },
-    /* cellClassName: "status-bg", */
+    cellClassName: "center",
   },
   {
+    align: "center",
+    headerAlign: "center",
     headerClassName: "table-header",
     field: " ",
     width: 60,

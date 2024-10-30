@@ -57,7 +57,7 @@ export const createProduct = (request, response) => {
   );
 };
 export const getRegister = (req, response) => {
-  pool.query("SELECT * FROM registro ORDER BY id ASC", (error, results) => {
+  pool.query("SELECT * FROM registro ORDER BY id DESC", (error, results) => {
     if (error) throw error;
     response.status(200).json(results.rows);
   });
