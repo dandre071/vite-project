@@ -93,7 +93,8 @@ const ProductModule = () => {
 
     onSubmit: handlerAdd,
   });
-
+  const maintainText =
+    formik.values.device + formik.values.brand + formik.values.model;
   const productType = formik.values.type;
 
   const totalCalc = () => {
@@ -123,7 +124,7 @@ const ProductModule = () => {
   const prices = productList ? productList.map((x) => x.precio) : 0;
   const products = productList ? productList.map((x) => x.producto) : "";
   const index = products.indexOf(value);
-  console.log(inputValue);
+  /*  console.log(inputValue); */
   const getPrice = () => {
     const price = prices[index];
     setPrice(price);
