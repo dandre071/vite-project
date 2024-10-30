@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, LayoutGroup, motion, stagger } from "framer-motion";
 import { useFormik } from "formik";
@@ -17,11 +17,13 @@ const EditRegister = () => {
   console.log(reg);
 
   const formik = useFormik({
-    /*   abono2: null,
-    resta: reg[0].abono1 - reg[0].total,
-    estado: reg[0].estado, */
+    initialValues: {
+      updatePayment: 0,
+      updateDebt: null,
+      updateStatus: "",
+    },
   });
-
+  console.log(formik.values.updatePayment);
   return (
     <motion.div
       initial={{ opacity: 0, y: -50 }}
@@ -47,10 +49,16 @@ const EditRegister = () => {
           <p>{reg && reg[0].realiza}</p>
           <p>{reg && reg[0].total}</p>
           <p>{reg && reg[0].abono1}</p>
-          <p>{reg && reg[0].abono2}</p>
+          <p>{reg && reg[0].resta - formik.values.updatePayment}</p>
+          <p>{formik.values.updatePayment}</p>
           <p>{reg && reg[0].observaciones}</p>
           <p>{reg && reg[0].estado}</p>
-
+          <TextField
+            label="Actualizar Pago"
+            type="number"
+            name="updatePayment"
+            onChange={formik.handleChange}
+          />
           {/*   <p>{reg && Object.values(reg[0]).map((x) => <p>{x}</p>)}</p> */}
         </div>
       </div>
