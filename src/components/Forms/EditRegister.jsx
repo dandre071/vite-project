@@ -1,16 +1,30 @@
-import { TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, LayoutGroup, motion, stagger } from "framer-motion";
 import { useFormik } from "formik";
+import { add_zero } from "../utils/helpers";
+import { statusList } from "../../../public/configs";
+import { Save } from "lucide-react";
+import { colPesos } from "../utils/configs";
+
 const EditRegister = () => {
   const id = location.pathname.match(/[0-9]/g).join("");
   console.log(id);
-  const [reg, setReg] = useState(null);
+  const [reg, setReg] = useState("");
   useEffect(() => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
       .then((res) => res.json())
       .then((data) => {
-        setReg(data);
+        data && setReg(data);
         console.log(data);
       });
   }, []);
@@ -37,28 +51,119 @@ const EditRegister = () => {
         }}
       >
         <div>
-          <p>{id}</p>
-          <p>{reg && reg[0].fecha_recibido}</p>
-          <p>{reg && reg[0].fecha_entrega}</p>
-          <p>{reg && reg[0].nombre}</p>
-          <p>{reg && reg[0].nit}</p>
-          <p>{reg && reg[0].telefono}</p>
-          <p>{reg && reg[0].email}</p>
-          <p>{reg && reg[0].trabajo}</p>
-          <p>{reg && reg[0].recibe}</p>
-          <p>{reg && reg[0].realiza}</p>
-          <p>{reg && reg[0].total}</p>
-          <p>{reg && reg[0].abono1}</p>
-          <p>{reg && reg[0].resta - formik.values.updatePayment}</p>
-          <p>{formik.values.updatePayment}</p>
-          <p>{reg && reg[0].observaciones}</p>
-          <p>{reg && reg[0].estado}</p>
+          <Box className="grid-2-cols border-bottom">
+            <Typography>Número de registro</Typography>
+            <Typography>{`R${add_zero(id, 5)}`}</Typography>
+          </Box>
+          <Box className="grid-2-cols border-bottom">
+            <Typography>Recepción</Typography>
+            <Typography>{reg && reg[0].fecha_recibido}</Typography>
+          </Box>
+          <Box className="grid-2-cols border-bottom">
+            <Typography>Entrega</Typography>
+            <Typography>{reg && reg[0].fecha_entrega}</Typography>
+          </Box>
+          <Box className="grid-2-cols border-bottom">
+            <Typography>Cliente</Typography>
+            <Typography>particular</Typography>
+          </Box>
+          <Box className="grid-2-cols border-bottom">
+            <Typography>Nombre</Typography>
+            <Typography>{reg && reg[0].nombre}</Typography>
+          </Box>
+          <Box className="grid-2-cols border-bottom">
+            <Typography>NIT</Typography>
+            <Typography>{reg && reg[0].nit}</Typography>
+          </Box>
+          <Box className="grid-2-cols border-bottom">
+            <Typography>Teléfono / Celular</Typography>
+            <Typography>{reg && reg[0].telefono}</Typography>
+          </Box>
+          <Box className="grid-2-cols border-bottom">
+            <Typography>Email</Typography>
+            <Typography>{reg && reg[0].email}</Typography>
+          </Box>
+          <Box className="grid-2-cols border-bottom" sx={{ height: "auto" }}>
+            <Typography
+              sx={{
+                bgcolor: "blue",
+                width: "90%",
+                color: "white",
+                fontWeight: 700,
+              }}
+            >
+              Trabajo
+            </Typography>
+            <Box>
+              {reg &&
+                reg[0].trabajo.map((x) => {
+                  return <Typography>{x}</Typography>;
+                  console.log(x);
+                })}
+            </Box>
+          </Box>
+          <Box className="grid-2-cols border-bottom">
+            <Typography>Recibe</Typography>
+            <Typography>{reg && reg[0].recibe}</Typography>
+          </Box>
+          <Box className="grid-2-cols border-bottom">
+            <Typography>Recibe</Typography>
+            <Typography>{reg && reg[0].realiza}</Typography>
+          </Box>
+          <Box className="grid-2-cols border-bottom">
+            <Typography>Total</Typography>
+            <Typography>{reg && reg[0].total}</Typography>
+          </Box>
+          <Box className="grid-2-cols border-bottom">
+            <Typography>Abono 1</Typography>
+            <Typography>{reg && reg[0].abono1}</Typography>
+          </Box>
+          <Box className="grid-2-cols border-bottom">
+            <Typography>Abono 2</Typography>
+            <Typography>{reg && reg[0].abono2}</Typography>
+          </Box>
+          <Box className="grid-2-cols border-bottom">
+            <Typography>Debe</Typography>
+            <Typography>{reg && reg[0].resta}</Typography>
+          </Box>
+          <Box className="grid-2-cols border-bottom">
+            <Typography>Debe 2</Typography>
+            <Typography>{reg && colPesos.format(reg[0].resta)}</Typography>
+          </Box>
+          <Box className="grid-2-cols border-bottom">
+            <Typography>Observaciones</Typography>
+            <Typography>{reg && reg[0].observaciones}</Typography>
+          </Box>
+          <Box className="grid-2-cols border-bottom">
+            <Typography>Estado</Typography>
+            <Typography>{reg && reg[0].estado}</Typography>
+          </Box>
+
           <TextField
-            label="Actualizar Pago"
+            label="Abonar"
             type="number"
             name="updatePayment"
+            size="small"
             onChange={formik.handleChange}
           />
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Estado</InputLabel>
+            <Select
+              size="small"
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              /* value={age} */
+              label="Estado"
+              /* onChange={handleChange} */
+            >
+              {statusList.map((item) => (
+                <MenuItem value={item}>{item}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <Button>
+            <Save />
+          </Button>
           {/*   <p>{reg && Object.values(reg[0]).map((x) => <p>{x}</p>)}</p> */}
         </div>
       </div>

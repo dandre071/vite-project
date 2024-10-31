@@ -1274,3 +1274,12 @@ body {
 .flex {
   display: flex;
 }
+.grid-2-cols {
+  display: grid;
+
+  grid-template-columns: 150px 1fr;
+}
+.border-bottom {
+  height: 30px;
+  border-bottom: 1.5px solid rgb(197, 197, 197);
+}

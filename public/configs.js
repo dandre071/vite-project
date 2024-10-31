@@ -144,5 +144,5 @@ export const statusList = [
   "ACABADO",
   "DEMORADO",
   "LISTO",
-  "EN REVISIÓN",
+  "REVISIÓN",
 ];
