@@ -29,7 +29,8 @@ const EditRegister = () => {
       });
   }, []);
   console.log(reg);
-
+  const path = location.pathname;
+  console.log(path);
   const formik = useFormik({
     initialValues: {
       updatePayment: 0,
@@ -48,6 +49,7 @@ const EditRegister = () => {
         className="product-module-grid"
         style={{
           border: "none",
+          /*   background: "red", */
         }}
       >
         <div>
