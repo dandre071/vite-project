@@ -56,5 +56,5 @@ export const getPageTitle = () => {
     return pathText[0].name;
   }
   if (location.pathname.includes("editar-registro"))
-    return `Editar Registro ${add_zero(id, 5)}`;
+    return `Registro ${add_zero(id, 5)}`;
 };

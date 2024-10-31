@@ -1276,8 +1276,12 @@ body {
 }
 .grid-2-cols {
   display: grid;
-
   grid-template-columns: 150px 1fr;
+}
+.reg-label {
+  background-color: #e7e7e7;
+  color: rgb(46, 46, 46);
+  font-weight: 700;
 }
 .border-bottom {
   height: 30px;

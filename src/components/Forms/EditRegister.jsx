@@ -53,49 +53,40 @@ const EditRegister = () => {
         }}
       >
         <div>
-          <Box className="grid-2-cols border-bottom">
+          {/* <Box className="grid-2-cols border-bottom">
             <Typography>Número de registro</Typography>
             <Typography>{`R${add_zero(id, 5)}`}</Typography>
-          </Box>
+          </Box> */}
           <Box className="grid-2-cols border-bottom">
-            <Typography>Recepción</Typography>
+            <Typography className="reg-label">Recepción</Typography>
             <Typography>{reg && reg[0].fecha_recibido}</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom">
-            <Typography>Entrega</Typography>
+            <Typography className="reg-label">Entrega</Typography>
             <Typography>{reg && reg[0].fecha_entrega}</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom">
-            <Typography>Cliente</Typography>
+            <Typography className="reg-label">Cliente</Typography>
             <Typography>particular</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom">
-            <Typography>Nombre</Typography>
+            <Typography className="reg-label">Nombre</Typography>
             <Typography>{reg && reg[0].nombre}</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom">
-            <Typography>NIT</Typography>
+            <Typography className="reg-label">NIT</Typography>
             <Typography>{reg && reg[0].nit}</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom">
-            <Typography>Teléfono / Celular</Typography>
+            <Typography className="reg-label">Teléfono / Celular</Typography>
             <Typography>{reg && reg[0].telefono}</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom">
-            <Typography>Email</Typography>
+            <Typography className="reg-label">Email</Typography>
             <Typography>{reg && reg[0].email}</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom" sx={{ height: "auto" }}>
-            <Typography
-              sx={{
-                bgcolor: "blue",
-                width: "90%",
-                color: "white",
-                fontWeight: 700,
-              }}
-            >
-              Trabajo
-            </Typography>
+            <Typography className="reg-label">Trabajo</Typography>
             <Box>
               {reg &&
                 reg[0].trabajo.map((x) => {
@@ -105,39 +96,39 @@ const EditRegister = () => {
             </Box>
           </Box>
           <Box className="grid-2-cols border-bottom">
-            <Typography>Recibe</Typography>
+            <Typography className="reg-label">Recibe</Typography>
             <Typography>{reg && reg[0].recibe}</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom">
-            <Typography>Recibe</Typography>
+            <Typography className="reg-label">Recibe</Typography>
             <Typography>{reg && reg[0].realiza}</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom">
-            <Typography>Total</Typography>
+            <Typography className="reg-label">Total</Typography>
             <Typography>{reg && reg[0].total}</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom">
-            <Typography>Abono 1</Typography>
+            <Typography className="reg-label">Abono 1</Typography>
             <Typography>{reg && reg[0].abono1}</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom">
-            <Typography>Abono 2</Typography>
+            <Typography className="reg-label">Abono 2</Typography>
             <Typography>{reg && reg[0].abono2}</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom">
-            <Typography>Debe</Typography>
+            <Typography className="reg-label">Debe</Typography>
             <Typography>{reg && reg[0].resta}</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom">
-            <Typography>Debe 2</Typography>
+            <Typography className="reg-label">Debe 2</Typography>
             <Typography>{reg && colPesos.format(reg[0].resta)}</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom">
-            <Typography>Observaciones</Typography>
+            <Typography className="reg-label">Observaciones</Typography>
             <Typography>{reg && reg[0].observaciones}</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom">
-            <Typography>Estado</Typography>
+            <Typography className="reg-label">Estado</Typography>
             <Typography>{reg && reg[0].estado}</Typography>
           </Box>
 
