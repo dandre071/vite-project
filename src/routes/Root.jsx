@@ -20,16 +20,15 @@ import {
 } from "@mui/material";
 import { routes } from "../main";
 import { Settings } from "@mui/icons-material";
+import { getPageTitle } from "../components/utils/helpers";
 const menuItems = [
   { text: "Venta", icon: <SellOutlinedIcon />, path: "/client-data" },
   { text: "Configuraciones", icon: <Settings />, path: "/Configuraciones" },
 ];
 /* const pathName = routes.filter(); */
 const Root = () => {
-  const location = useLocation();
-  const pathText = routes.filter((item) => item.path == location.pathname);
-  const pageTitle = pathText[0] ? pathText[0].name : "";
-  console.log(location.pathname);
+  /* const pageTitle =  pathText[0] ? pathText[0].name : ""; */
+  console.log(location.pathname.includes("editar-registro"));
   /* console.log(pathText[0].name); */
   const navigate = useNavigate();
   return (
@@ -135,7 +134,7 @@ const Root = () => {
               justifySelf: "center",
             }}
           >
-            {pageTitle || ""}
+            {getPageTitle() || ""}
           </Typography>
           <div>
             {" "}

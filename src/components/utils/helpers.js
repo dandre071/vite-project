@@ -3,6 +3,8 @@ import { usePersonalData, useShoppingCart } from "../../store/shoppingCart";
 import { colPesos } from "./configs";
 import generatePDF from "react-to-pdf";
 import { usePaymentData } from "../../store/paymentData";
+import { useLocation } from "react-router-dom";
+import { routes } from "../../main";
 export function sum() {
   console.log(2 + 1);
 }
@@ -43,3 +45,16 @@ export function add_zero(your_number, length) {
   }
   return num;
 }
+export const getPageTitle = () => {
+  const location = useLocation();
+  const pathText = routes.filter((item) => item.path == location.pathname);
+
+  const id =
+    location.pathname.includes("editar-registro") &&
+    location.pathname.match(/[0-9]/g).join("");
+  if (pathText[0]) {
+    return pathText[0].name;
+  }
+  if (location.pathname.includes("editar-registro"))
+    return `Editar Registro ${add_zero(id, 5)}`;
+};

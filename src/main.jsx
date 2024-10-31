@@ -73,9 +73,9 @@ const router = createBrowserRouter([
     children: [...routes],
   },
   {
-    path: "/register/:id",
+    path: "/editar-registro/:id",
     element: <EditRegister />,
-    name: "editar-registro",
+    name: "editar registro",
   },
   {
     path: "Configuraciones",
