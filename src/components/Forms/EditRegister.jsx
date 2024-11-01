@@ -11,7 +11,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, LayoutGroup, motion, stagger } from "framer-motion";
 import { useFormik } from "formik";
-import { add_zero } from "../utils/helpers";
+import { add_zero, formatPhoneNumber } from "../utils/helpers";
 import { statusList } from "../../../public/configs";
 import { Save } from "lucide-react";
 import { colPesos } from "../utils/configs";
@@ -46,7 +46,6 @@ const EditRegister = () => {
       exit={{ opacity: 1, x: 50 }}
     >
       <div
-        className="product-module-grid"
         style={{
           border: "none",
           /*   background: "red", */
@@ -79,7 +78,7 @@ const EditRegister = () => {
           </Box>
           <Box className="grid-2-cols border-bottom">
             <Typography className="reg-label">Teléfono / Celular</Typography>
-            <Typography>{reg && reg[0].telefono}</Typography>
+            <Typography>{reg && formatPhoneNumber(reg[0].telefono)}</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom">
             <Typography className="reg-label">Email</Typography>
@@ -105,22 +104,22 @@ const EditRegister = () => {
           </Box>
           <Box className="grid-2-cols border-bottom">
             <Typography className="reg-label">Total</Typography>
-            <Typography>{reg && reg[0].total}</Typography>
+            <Typography>{reg && colPesos.format(reg[0].total)}</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom">
             <Typography className="reg-label">Abono 1</Typography>
-            <Typography>{reg && reg[0].abono1}</Typography>
+            <Typography>{reg && colPesos.format(reg[0].abono1)}</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom">
             <Typography className="reg-label">Abono 2</Typography>
-            <Typography>{reg && reg[0].abono2}</Typography>
+            <Typography>{reg && colPesos.format(reg[0].abono2)}</Typography>
           </Box>
-          <Box className="grid-2-cols border-bottom">
+          {/*<Box className="grid-2-cols border-bottom">
             <Typography className="reg-label">Debe</Typography>
             <Typography>{reg && reg[0].resta}</Typography>
-          </Box>
+          </Box>*/}
           <Box className="grid-2-cols border-bottom">
-            <Typography className="reg-label">Debe 2</Typography>
+            <Typography className="reg-label">Debe</Typography>
             <Typography>{reg && colPesos.format(reg[0].resta)}</Typography>
           </Box>
           <Box className="grid-2-cols border-bottom">

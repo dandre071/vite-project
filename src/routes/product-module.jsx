@@ -146,64 +146,63 @@ const ProductModule = () => {
       exit={{ opacity: 1, x: 50 }}
     >
       <div
-        className="product-module-grid"
+        // className={ formik.values.type !== "Mantenimiento"  ? "product-module-standard"  : "product-module-grid-maintenance"         }
         style={{
           border: "none",
+          width: 600,
         }}
       >
-        <Box className={"type"}>
-          <FormSelect2
-            name={"type"}
-            value={formik.values.type}
-            onChange={(e) => {
-              formik.handleChange;
-              formik.setValues({
-                ...formik.values,
-                type: e.target.value,
-                quantity: 1,
-                name: "",
-                price: null,
-                finish: [],
-                orientation: "",
-                description: "",
-              });
-              setPrice(0);
-              setValue("");
-            }}
-            fullWidth
-            options={workType}
-            label={"Tipo de Producto"}
-            defaultValue={"Producto"}
-          />
-        </Box>
-        <Box
-          className="product-bar"
-          sx={{
-            alignSelf: "center",
-            justifySelf: "center",
-
-            display: "grid",
-            gridTemplateColumns: "1fr auto",
-            gap: 1,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          {productType !== "Producto estándar" && (
-            <TextField
-              onBlur={formik.handleBlur}
-              error={formik.errors.name}
-              // helperText={formik.errors.name}
-              value={formik.values.name}
-              name="name"
-              onChange={formik.handleChange}
+        <Box className="standard">
+          <Box>
+            <FormSelect2
+              name={"type"}
+              value={formik.values.type}
+              onChange={(e) => {
+                formik.handleChange;
+                formik.setValues({
+                  ...formik.values,
+                  type: e.target.value,
+                  quantity: 1,
+                  name: "",
+                  price: null,
+                  finish: [],
+                  orientation: "",
+                  description: "",
+                });
+                setPrice(0);
+                setValue("");
+              }}
               fullWidth
-              label={"Producto"}
-              type="text"
+              options={workType}
+              label={"Tipo de Producto"}
+              defaultValue={"Producto"}
             />
-          )}
-          {productType === "Mantenimiento" && (
-            <Box className="grid-3">
+          </Box>
+          <Box
+            //className="product-bar"
+            sx={{
+              display: "grid",
+              gap: 1,
+              gridTemplateColumns: "1fr",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {productType === "Producto manual" && (
+              <TextField
+                onBlur={formik.handleBlur}
+                error={formik.errors.name}
+                // helperText={formik.errors.name}
+                value={formik.values.name}
+                name="name"
+                onChange={formik.handleChange}
+                fullWidth
+                label={"Producto"}
+                type="text"
+              />
+            )}
+
+            {productType === "Mantenimiento" && (
               <FormSelect2
                 value={formik.values.device}
                 /*   error={formik.errors.device}
@@ -221,66 +220,96 @@ const ProductModule = () => {
                 label={"Equipo"}
                 defaultValue={""}
               />
+            )}
+            {productType === "Corte en vinilo" && (
               <FormSelect2
-                value={formik.values.brand}
-                /*  error={formik.errors.brand}
-                helperText={formik.errors.brand} */
+                value={formik.values.device}
+                /*   error={formik.errors.device}
+                helperText={formik.errors.device} */
                 fullWidth
-                name="brand"
-                onChange={formik.handleChange}
-                options={brands}
-                label={"Marca"}
+                name="material"
+                onChange={(e) => {
+                  formik.setValues({
+                    ...formik.values,
+                    device: e.target.value,
+                    name: formik.values.material,
+                  });
+                }}
+                options={devices}
+                label={"Material"}
                 defaultValue={""}
               />
-              <TextField
-                /*  error={formik.errors.model}
+            )}
+            {productType === "Mantenimiento" && (
+              <Box className="grid-3">
+                <FormSelect2
+                  value={formik.values.brand}
+                  /*  error={formik.errors.brand}
+                helperText={formik.errors.brand} */
+                  fullWidth
+                  name="brand"
+                  onChange={formik.handleChange}
+                  options={brands}
+                  label={"Marca"}
+                  defaultValue={""}
+                />
+                <TextField
+                  /*  error={formik.errors.model}
                 helperText={formik.errors.model} */
-                onChange={formik.handleChange}
-                value={formik.values.model}
-                name="model"
-                label={"Modelo"}
-              />
-            </Box>
-          )}
-          {productType == "Producto estándar" && (
-            <>
-              <Autocomplete
-                name="name"
-                onClose={() => {
-                  formik.setValues({ ...formik.values, itemTotalPrice: 0 });
-                }}
-                /* freeSolo */
-                value={value}
-                onChange={(event, newValue) => {
-                  setValue(newValue);
-                  console.log(typeof value);
-                }}
-                inputValue={inputValue}
-                onInputChange={(event, newInputValue) => {
-                  setInputValue(newInputValue);
-                }}
-                id="controllable-states-demo"
-                options={options && options.map((x) => x.producto)}
-                fullWidth
-                renderInput={(params) => (
-                  <TextField {...params} label="Buscar producto" />
-                )}
-              />
+                  onChange={formik.handleChange}
+                  value={formik.values.model}
+                  name="model"
+                  label={"Modelo"}
+                />
+              </Box>
+            )}
+            {productType === "Producto estándar" && (
               <Box
-                className="btn"
                 sx={{
-                  bgcolor: "primary.main",
-                  width: 45,
-                  height: 45,
-                  borderRadius: "50%",
                   display: "grid",
+                  gridTemplateColumns: "1fr 40px",
+                  gap: 1,
                   placeItems: "center",
                 }}
               >
-                <SearchIcon sx={{ color: "white" }} onClick={getPrice} />
+                <Autocomplete
+                  name="name"
+                  onClose={() => {
+                    formik.setValues({ ...formik.values, itemTotalPrice: 0 });
+                  }}
+                  /* freeSolo */
+                  value={value}
+                  onChange={(event, newValue) => {
+                    setValue(newValue);
+                    console.log(typeof value);
+                  }}
+                  inputValue={inputValue}
+                  onInputChange={(event, newInputValue) => {
+                    setInputValue(newInputValue);
+                  }}
+                  id="controllable-states-demo"
+                  options={options && options.map((x) => x.producto)}
+                  fullWidth
+                  renderInput={(params) => (
+                    <TextField {...params} label="Buscar producto" />
+                  )}
+                />
+                <Box
+                  className="btn"
+                  sx={{
+                    bgcolor: "primary.main",
+                    width: 45,
+                    height: 45,
+                    borderRadius: "50%",
+                    display: "grid",
+                    placeItems: "center",
+                  }}
+                >
+                  <SearchIcon sx={{ color: "white" }} onClick={getPrice} />
+                </Box>
               </Box>
-            </>
-          )}
+            )}
+          </Box>
         </Box>
         <Box
           className={
@@ -364,6 +393,7 @@ const ProductModule = () => {
           </Box>
           {productType === "Mantenimiento" && (
             <TextField
+              className="cant"
               style={{ width: "100%" }}
               /*  error={formik.errors.quantity}
               helperText={formik.errors.quantity} */
@@ -407,6 +437,7 @@ const ProductModule = () => {
                   <TextField
                     /*  error={formik.errors.quantity}
                     helperText={formik.errors.quantity} */
+                    className="cant"
                     value={formik.values.quantity}
                     name="quantity"
                     label={"Cantidad"}

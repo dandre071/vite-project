@@ -32,7 +32,7 @@
   --cart-grid: 45% 10% 15% 15% 15%;
   --cart-item-width: 650px;
 
-  --product-module-width: 500px;
+  --product-module-width: 600px;
   --success: rgb(0, 201, 33);
   --atention: #ffeb3b;
   --warning: #ff9800;
@@ -1098,27 +1098,58 @@ body {
   justify-content: center;
   align-items: center;
 }
-.product-module-grid {
+/* .product-module-grid {
   width: var(--product-module-width);
-  /*   background-color: #009ffe; */
+
   display: grid;
   gap: 10px;
-  grid-template-columns: 1fr;
-  grid-template-rows: 60px 60px 80px 1fr 80px 150px;
+  grid-template-columns: 150px 1fr;
+  grid-template-rows: 60px 80px 1fr 80px 150px;
   grid-template-areas:
-    "type"
-    "product-bar"
-    "price-bar"
-    "product-details"
-    "total-bar"
-    "product-btn";
+    "type product-bar"
+    "price-bar price-bar"
+    "product-details product-details"
+    "total-bar total-bar"
+    "product-btn product-btn";
 }
+.product-module-grid-maintenance {
+  width: var(--product-module-width);
+  
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 150px 1fr;
+  grid-template-rows: 60px 80px 1fr 80px 150px;
+  grid-template-areas:
+    "type product-bar"
+    "price-bar price-bar"
+    "product-details product-details"
+    "total-bar total-bar"
+    "product-btn product-btn";
+}
+.product-module-standard {
+  width: var(--product-module-width);
+ 
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 60px 80px 1fr 80px 150px;
+  grid-template-areas:
+    "type type product-bar product-bar product-bar"
+    "cant cant price-bar price-bar price-bar"
+    "product-details product-details product-details product-details product-details"
+    "total-bar total-bar total-bar total-bar total-bar"
+    "product-btn product-btn product-btn product-btn product-btn";
+} */
+
 .type {
   grid-area: type;
-  width: 50%;
+
   /*  justify-self: center; */
   height: 100%;
   /* background-color: greenyellow; */
+}
+.cant {
+  grid-area: standard;
 }
 .product-bar {
   width: 100%;
@@ -1277,13 +1308,20 @@ body {
 .grid-2-cols {
   display: grid;
   grid-template-columns: 150px 1fr;
+  justify-content: center;
 }
 .reg-label {
-  background-color: #e7e7e7;
+  background-color: #f1f1f1;
   color: rgb(46, 46, 46);
   font-weight: 700;
+  padding-left: 5px;
 }
 .border-bottom {
   height: 30px;
   border-bottom: 1.5px solid rgb(197, 197, 197);
+}
+.standard {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  gap: 8px;
 }

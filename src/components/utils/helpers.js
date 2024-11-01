@@ -58,3 +58,11 @@ export const getPageTitle = () => {
   if (location.pathname.includes("editar-registro"))
     return `Registro ${add_zero(id, 5)}`;
 };
+/* export function formatPhoneNumber(phoneNumberString) {
+  var cleaned = ("" + phoneNumberString).replace(/\\D/g, "");
+  var match = cleaned.match(/^(\\d{3})(\\d{3})(\\d{4})$/);
+  if (match) {
+    return "(" + match[1] + ") " + match[2] + "-" + match[3];
+  }
+  return null;
+} */
