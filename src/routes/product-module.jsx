@@ -178,6 +178,23 @@ const ProductModule = () => {
               defaultValue={"Producto"}
             />
           </Box>
+          <TextField
+            /*  error={formik.errors.quantity}
+                    helperText={formik.errors.quantity} */
+            className="cant"
+            value={formik.values.quantity}
+            name="quantity"
+            label={"Cantidad"}
+            type="number"
+            defaultValue={1}
+            onChange={(e) => {
+              formik.setValues({
+                ...formik.values,
+                quantity: e.target.value,
+                itemTotalPrice: e.target.value * price,
+              });
+            }}
+          />
           <Box
             //className="product-bar"
             sx={{
@@ -192,7 +209,6 @@ const ProductModule = () => {
               <TextField
                 onBlur={formik.handleBlur}
                 error={formik.errors.name}
-                // helperText={formik.errors.name}
                 value={formik.values.name}
                 name="name"
                 onChange={formik.handleChange}
@@ -361,7 +377,7 @@ const ProductModule = () => {
                 </Typography>
               </Box>
             )}
-            {productType !== "Producto estándar" && (
+            {productType === "Corte en vinilo" && (
               <TextField
                 InputProps={{
                   startAdornment: (
@@ -395,8 +411,6 @@ const ProductModule = () => {
             <TextField
               className="cant"
               style={{ width: "100%" }}
-              /*  error={formik.errors.quantity}
-              helperText={formik.errors.quantity} */
               value={formik.values.quantity}
               name="quantity"
               label={"Cantidad"}
@@ -434,23 +448,6 @@ const ProductModule = () => {
                   }
                   sx={{}}
                 >
-                  <TextField
-                    /*  error={formik.errors.quantity}
-                    helperText={formik.errors.quantity} */
-                    className="cant"
-                    value={formik.values.quantity}
-                    name="quantity"
-                    label={"Cantidad"}
-                    type="number"
-                    defaultValue={1}
-                    onChange={(e) => {
-                      formik.setValues({
-                        ...formik.values,
-                        quantity: e.target.value,
-                        itemTotalPrice: e.target.value * price,
-                      });
-                    }}
-                  />
                   <FormSelect2
                     value={formik.values.finish}
                     multiple={true}

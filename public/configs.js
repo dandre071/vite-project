@@ -145,4 +145,5 @@ export const statusList = [
   "DEMORADO",
   "LISTO",
   "REVISIÓN",
+  "ENTREGADO",
 ];
