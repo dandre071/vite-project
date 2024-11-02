@@ -1316,4 +1316,5 @@ body {
   gap: 8px;
 }
 . {
+  display: grid;
 }
