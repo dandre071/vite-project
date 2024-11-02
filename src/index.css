@@ -1315,3 +1315,8 @@ body {
   grid-template-columns: 30% 1fr;
   gap: 8px;
 }
+.standard {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  gap: 8px;
+}
