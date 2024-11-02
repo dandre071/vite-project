@@ -312,21 +312,61 @@ const ProductModule = () => {
         {/*end second row*/}
         {/*start third row*/}
         <Box>
-          <TextField
-            className="cant"
-            value={formik.values.quantity}
-            name="quantity"
-            label={"Cantidad"}
-            type="number"
-            defaultValue={1}
-            onChange={(e) => {
-              formik.setValues({
-                ...formik.values,
-                quantity: e.target.value,
-                itemTotalPrice: e.target.value * price,
-              });
-            }}
-          />
+          {productType !== "Mantenimiento" && (
+            <TextField
+              className="cant"
+              value={formik.values.quantity}
+              name="quantity"
+              label={"Cantidad"}
+              type="number"
+              defaultValue={1}
+              onChange={(e) => {
+                formik.setValues({
+                  ...formik.values,
+                  quantity: e.target.value,
+                  itemTotalPrice: e.target.value * price,
+                });
+              }}
+            />
+          )}
+          {productType === "Producto estándar" && (
+            <Box
+              sx={{
+                display: "grid",
+                height: "80%",
+                gridTemplateColumns: "1fr",
+                justifyContent: "end",
+
+                alignItems: "center",
+              }}
+            >
+              <Typography
+                sx={{
+                  color: "black",
+
+                  borderRadius: 2,
+                  fontSize: 16,
+                  lineHeight: 1,
+                  textAlign: "end",
+                  fontWeight: 500,
+                }}
+              >
+                Precio:
+              </Typography>
+              <Typography
+                sx={{
+                  fontWeight: 700,
+                  color: "primary.dark",
+                  display: "flex",
+
+                  textAlign: "end",
+                  fontSize: 28,
+                }}
+              >
+                {colPesos.format(price)}
+              </Typography>
+            </Box>
+          )}
         </Box>
         {/*end third row*/}
         <Box
@@ -339,76 +379,7 @@ const ProductModule = () => {
             fontWeight: 700,
           }}
         >
-          <Box>
-            {" "}
-            {productType == "Producto estándar" && (
-              <Box
-                sx={{
-                  display: "grid",
-                  height: "80%",
-
-                  justifyContent: "end",
-
-                  alignItems: "center",
-                }}
-              >
-                <Typography
-                  sx={{
-                    color: "black",
-
-                    borderRadius: 2,
-                    fontSize: 16,
-                    lineHeight: 1,
-                    textAlign: "end",
-                    fontWeight: 500,
-                  }}
-                >
-                  Precio:
-                </Typography>
-                <Typography
-                  sx={{
-                    fontWeight: 700,
-                    color: "primary.dark",
-                    display: "flex",
-
-                    textAlign: "end",
-                    fontSize: 28,
-                  }}
-                >
-                  {colPesos.format(price)}
-                </Typography>
-              </Box>
-            )}
-            {productType === "Corte en vinilo" && (
-              <TextField
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment
-                      position="start"
-                      InputProps={{ fontSize: 40 }}
-                    >
-                      $
-                    </InputAdornment>
-                  ),
-                }}
-                error={formik.errors.price}
-                // helperText={formik.errors.price}
-                value={formik.values.price}
-                //onChange={formik.handleChange}
-                onChange={(e) => {
-                  formik.setValues({
-                    ...formik.values,
-                    price: e.target.value,
-                    itemTotalPrice: e.target.value * formik.values.quantity,
-                  });
-                }}
-                name="price"
-                fullWidth
-                label={"Precio"}
-                type="number"
-              />
-            )}
-          </Box>
+          <Box></Box>
           {productType === "Mantenimiento" && (
             <TextField
               className="cant"
