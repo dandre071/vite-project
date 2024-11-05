@@ -1308,7 +1308,7 @@ body {
   width: var(--product-module-width);
   display: grid;
   gap: 10px;
-  grid-template-rows: 60px 80px 1fr 80px 150px;
+  grid-template-rows: auto auto auto auto auto;
 }
 .standard {
   display: grid;

@@ -258,7 +258,6 @@ const ProductModule = () => {
                   onInputChange={(event, newInputValue) => {
                     setInputValue(newInputValue);
                   }}
-                  id="controllable-states-demo"
                   options={options && options.map((x) => x.producto)}
                   fullWidth
                   renderInput={(params) => (
@@ -284,6 +283,96 @@ const ProductModule = () => {
         </Box>
         {/*end first row*/}
         {/*start second row*/}
+        <Box sx={{ display: "flex", gap: 1 }}>
+          <TextField
+            sx={{ width: 100 }}
+            fullWidth={false}
+            className="cant"
+            value={formik.values.quantity}
+            name="quantity"
+            label={"Cantidad"}
+            type="number"
+            defaultValue={1}
+            onChange={(e) => {
+              formik.setValues({
+                ...formik.values,
+                quantity: e.target.value,
+                itemTotalPrice: e.target.value * price,
+              });
+            }}
+          />
+          {productType === "Producto estándar" && (
+            <Box
+              sx={{
+                display: "grid",
+                height: "80%",
+                width: "40%",
+                gridTemplateColumns: "repeat(2, 1fr)",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Box sx={{}}>
+                <Typography
+                  sx={{
+                    color: "black",
+
+                    fontSize: 16,
+                    lineHeight: 1,
+                    textAlign: "left",
+                    fontWeight: 500,
+                  }}
+                >
+                  Precio:
+                </Typography>{" "}
+              </Box>
+
+              <Typography
+                sx={{
+                  fontWeight: 700,
+                  color: "primary.dark",
+                  display: "flex",
+
+                  textAlign: "end",
+                  fontSize: 26,
+                }}
+              >
+                {colPesos.format(price)}
+              </Typography>
+            </Box>
+          )}
+          {productType !== "Producto estándar" && (
+            <Box
+              sx={{
+                display: "grid",
+                height: "80%",
+                width: "40%",
+                gridTemplateColumns: "repeat(2, 1fr)",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <TextField
+                label="Precio"
+                name="price"
+                type="number"
+                onChange={formik.handleChange}
+                sx={{ width: 200 }}
+              ></TextField>
+            </Box>
+          )}
+          <PriceCalc
+            value={formik.values.itemTotalPrice}
+            name="itemTotalPrice"
+            text={
+              formik.values.type == "Producto estándar"
+                ? colPesos.format(formik.values.quantity * price)
+                : colPesos.format(formik.values.price * formik.values.quantity)
+            }
+          />
+        </Box>
+        {/*end second row*/}
+        {/*start third row*/}
         {productType === "Mantenimiento" && (
           <Box
             sx={{
@@ -309,180 +398,47 @@ const ProductModule = () => {
             />
           </Box>
         )}
-        {/*end second row*/}
-        {/*start third row*/}
-        <Box>
-          {productType !== "Mantenimiento" && (
-            <TextField
-              className="cant"
-              value={formik.values.quantity}
-              name="quantity"
-              label={"Cantidad"}
-              type="number"
-              defaultValue={1}
-              onChange={(e) => {
-                formik.setValues({
-                  ...formik.values,
-                  quantity: e.target.value,
-                  itemTotalPrice: e.target.value * price,
-                });
-              }}
-            />
-          )}
-          {productType === "Producto estándar" && (
-            <Box
-              sx={{
-                display: "grid",
-                height: "80%",
-                gridTemplateColumns: "1fr",
-                justifyContent: "end",
-
-                alignItems: "center",
-              }}
-            >
-              <Typography
-                sx={{
-                  color: "black",
-
-                  borderRadius: 2,
-                  fontSize: 16,
-                  lineHeight: 1,
-                  textAlign: "end",
-                  fontWeight: 500,
-                }}
-              >
-                Precio:
-              </Typography>
-              <Typography
-                sx={{
-                  fontWeight: 700,
-                  color: "primary.dark",
-                  display: "flex",
-
-                  textAlign: "end",
-                  fontSize: 28,
-                }}
-              >
-                {colPesos.format(price)}
-              </Typography>
-            </Box>
-          )}
-        </Box>
         {/*end third row*/}
-        <Box
-          className={
-            productType === "Mantenimiento" ? "maintain-product" : "price-bar"
-          }
-          sx={{
-            textAlign: "center",
-            fontSize: 24,
-            fontWeight: 700,
-          }}
-        >
-          <Box></Box>
-          {productType === "Mantenimiento" && (
-            <TextField
-              className="cant"
-              style={{ width: "100%" }}
-              value={formik.values.quantity}
-              name="quantity"
-              label={"Cantidad"}
-              type="number"
-              defaultValue={1}
-              onChange={(e) => {
-                formik.setValues({
-                  ...formik.values,
-                  quantity: e.target.value,
-                  itemTotalPrice: e.target.value * price,
-                });
-              }}
-            />
-          )}
+        {/*start fourth row*/}
+        <Box sx={{ display: "flex", gap: 2 }}>
+          <FormSelect2
+            value={formik.values.finish}
+            multiple={true}
+            /*  error={formik.errors.finish}
+                    helperText={formik.errors.finish} */
+            fullWidth
+            name="finish"
+            onChange={formik.handleChange}
+            options={lists.acabados}
+            label={"Acabado"}
+            defaultValue={"Sin acabado"}
+            renderValue={(selected) => selected.join(", ")}
+          />
 
-          <PriceCalc
-            value={formik.values.itemTotalPrice}
-            name="itemTotalPrice"
-            text={
-              formik.values.type == "Producto estándar"
-                ? colPesos.format(formik.values.quantity * price)
-                : colPesos.format(formik.values.price * formik.values.quantity)
-            }
+          <FormSelect2
+            value={formik.values.orientation}
+            fullWidth
+            name="orientation"
+            onChange={formik.handleChange}
+            options={shapes}
+            label={"Orientación/Forma"}
+            defaultValue={"Sin acabado"}
           />
         </Box>
+        {/*end fourth row*/}
         <Box className="product-details">
-          <form onSubmit={formik.handleSubmit}>
-            <Grid container spacing={1.5} sx={{ flexGrow: 1 }}>
-              <Grid item sm={12} xs={12}>
-                <Box
-                  className={
-                    formik.values.type !== "Mantenimiento"
-                      ? "standard-product"
-                      : "none"
-                  }
-                  sx={{}}
-                >
-                  <FormSelect2
-                    value={formik.values.finish}
-                    multiple={true}
-                    /*  error={formik.errors.finish}
-                    helperText={formik.errors.finish} */
-                    fullWidth
-                    name="finish"
-                    onChange={formik.handleChange}
-                    options={lists.acabados}
-                    label={"Acabado"}
-                    defaultValue={"Sin acabado"}
-                    renderValue={(selected) => selected.join(", ")}
-                  />
-
-                  <FormSelect2
-                    value={formik.values.orientation}
-                    /* error={formik.errors.orientation}
-                    helperText={formik.errors.orientation} */
-                    fullWidth
-                    name="orientation"
-                    onChange={formik.handleChange}
-                    options={shapes}
-                    label={"Orientación/Forma"}
-                    defaultValue={"Sin acabado"}
-                  />
-
-                  {/* {(formik.values.finish.includes == "Ojales" ||
-                    formik.values.finish == "Bolsillos") && (
-                    <TextField
-                      sx={{
-                        color: "black",
-                        width: "45%",
-                        borderRadius: 2,
-                      }}
-                      fullWidth
-                      type={"number"}
-                      label={"Cantidad"}
-                      defaultValue={1}
-                      value={formik.values.finishQ}
-                      name="finishQ"
-                      onChange={formik.handleChange}
-                    />
-                  )} */}
-                </Box>
-              </Grid>
-
-              <Grid item sm={12} xs={12} sx={{}}>
-                <TextField
-                  /*  error={formik.errors.description}
+          <TextField
+            /*  error={formik.errors.description}
                   helperText={formik.errors.description} */
-                  value={formik.values.description}
-                  name="description"
-                  fullWidth
-                  label={"Descripción"}
-                  type="text"
-                  onChange={formik.handleChange}
-                  minRows={2}
-                  multiline
-                />
-              </Grid>
-            </Grid>{" "}
-          </form>{" "}
+            value={formik.values.description}
+            name="description"
+            fullWidth
+            label={"Descripción"}
+            type="text"
+            onChange={formik.handleChange}
+            minRows={2}
+            multiline
+          />
         </Box>
         <div className="total-bar" item sm={12} xs={12}>
           <Box
