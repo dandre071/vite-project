@@ -51,39 +51,69 @@ const EditRegister = () => {
           /*   background: "red", */
         }}
       >
-        <div>
-          {/* <Box className="grid-2-cols border-bottom">
-            <Typography>Número de registro</Typography>
-            <Typography>{`R${add_zero(id, 5)}`}</Typography>
-          </Box> */}
-          <Box className="grid-2-cols border-bottom">
-            <Typography className="reg-label">Recepción</Typography>
-            <Typography>{reg && reg[0].fecha_recibido}</Typography>
+        <div style={{ width: 600 }}>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "100px 160px 160px 1fr 1fr",
+            }}
+          >
+            <Box className="grid-2-cols" sx={{ width: "100%" }}>
+              <Typography className="reg-label" sx={{ width: "100%" }}>
+                Cliente
+              </Typography>
+              <Typography sx={{ width: "100%" }}>particular</Typography>
+            </Box>
+            <Box className="grid-2-cols">
+              <Typography className="reg-label">Recepción</Typography>
+              <Typography>{reg && reg[0].fecha_recibido}</Typography>
+            </Box>
+            <Box className="grid-2-cols">
+              <Typography className="reg-label">Entrega</Typography>
+              <Typography>{reg && reg[0].fecha_entrega}</Typography>
+            </Box>
+            <Box className="grid-2-cols border-bottom">
+              <Typography className="reg-label">Recibe</Typography>
+              <Typography>{reg && reg[0].recibe}</Typography>
+            </Box>
+            <Box className="grid-2-cols border-bottom">
+              <Typography className="reg-label">Recibe</Typography>
+              <Typography>{reg && reg[0].realiza}</Typography>
+            </Box>
           </Box>
-          <Box className="grid-2-cols border-bottom">
-            <Typography className="reg-label">Entrega</Typography>
-            <Typography>{reg && reg[0].fecha_entrega}</Typography>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "2fr 1fr",
+            }}
+          >
+            <Box className="grid-2-cols border-bottom">
+              <Typography className="reg-label">Nombre</Typography>
+              <Typography>{reg && reg[0].nombre}</Typography>
+            </Box>
+            <Box className="grid-2-cols border-bottom">
+              <Typography className="reg-label">NIT</Typography>
+              <Typography>{reg && reg[0].nit}</Typography>
+            </Box>
           </Box>
-          <Box className="grid-2-cols border-bottom">
-            <Typography className="reg-label">Cliente</Typography>
-            <Typography>particular</Typography>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+            }}
+          >
+            <Box className="grid-2-cols border-bottom">
+              <Typography className="reg-label">Teléfono / Celular</Typography>
+              <Typography>
+                {reg && formatPhoneNumber(reg[0].telefono)}
+              </Typography>
+            </Box>
+            <Box className="grid-2-cols border-bottom">
+              <Typography className="reg-label">Email</Typography>
+              <Typography>{reg && reg[0].email}</Typography>
+            </Box>
           </Box>
-          <Box className="grid-2-cols border-bottom">
-            <Typography className="reg-label">Nombre</Typography>
-            <Typography>{reg && reg[0].nombre}</Typography>
-          </Box>
-          <Box className="grid-2-cols border-bottom">
-            <Typography className="reg-label">NIT</Typography>
-            <Typography>{reg && reg[0].nit}</Typography>
-          </Box>
-          <Box className="grid-2-cols border-bottom">
-            <Typography className="reg-label">Teléfono / Celular</Typography>
-            <Typography>{reg && formatPhoneNumber(reg[0].telefono)}</Typography>
-          </Box>
-          <Box className="grid-2-cols border-bottom">
-            <Typography className="reg-label">Email</Typography>
-            <Typography>{reg && reg[0].email}</Typography>
-          </Box>
+
           <Box className="grid-2-cols border-bottom" sx={{ height: "auto" }}>
             <Typography className="reg-label">Trabajo</Typography>
             <Box>
@@ -94,68 +124,86 @@ const EditRegister = () => {
                 })}
             </Box>
           </Box>
-          <Box className="grid-2-cols border-bottom">
-            <Typography className="reg-label">Recibe</Typography>
-            <Typography>{reg && reg[0].recibe}</Typography>
-          </Box>
-          <Box className="grid-2-cols border-bottom">
-            <Typography className="reg-label">Recibe</Typography>
-            <Typography>{reg && reg[0].realiza}</Typography>
-          </Box>
-          <Box className="grid-2-cols border-bottom">
-            <Typography className="reg-label">Total</Typography>
-            <Typography>{reg && colPesos.format(reg[0].total)}</Typography>
-          </Box>
-          <Box className="grid-2-cols border-bottom">
-            <Typography className="reg-label">Abono 1</Typography>
-            <Typography>{reg && colPesos.format(reg[0].abono1)}</Typography>
-          </Box>
-          <Box className="grid-2-cols border-bottom">
-            <Typography className="reg-label">Abono 2</Typography>
-            <Typography>{reg && colPesos.format(reg[0].abono2)}</Typography>
-          </Box>
-          {/*<Box className="grid-2-cols border-bottom">
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "repeat(4,1fr)",
+            }}
+          >
+            <Box className="grid-2-cols border-bottom">
+              <Typography className="reg-label">Total</Typography>
+              <Typography>{reg && colPesos.format(reg[0].total)}</Typography>
+            </Box>
+            <Box className="grid-2-cols border-bottom">
+              <Typography className="reg-label">Abono 1</Typography>
+              <Typography>{reg && colPesos.format(reg[0].abono1)}</Typography>
+            </Box>
+            <Box className="grid-2-cols border-bottom">
+              <Typography className="reg-label">Abono 2</Typography>
+              <Typography>{reg && colPesos.format(reg[0].abono2)}</Typography>
+            </Box>
+            {/*<Box className="grid-2-cols border-bottom">
             <Typography className="reg-label">Debe</Typography>
             <Typography>{reg && reg[0].resta}</Typography>
           </Box>*/}
-          <Box className="grid-2-cols border-bottom">
-            <Typography className="reg-label">Debe</Typography>
-            <Typography>{reg && colPesos.format(reg[0].resta)}</Typography>
+            <Box className="grid-2-cols border-bottom">
+              <Typography className="reg-label">Debe</Typography>
+              <Typography>{reg && colPesos.format(reg[0].resta)}</Typography>
+            </Box>
           </Box>
-          <Box className="grid-2-cols border-bottom">
+
+          <Box className="grid-2-cols ">
             <Typography className="reg-label">Observaciones</Typography>
             <Typography>{reg && reg[0].observaciones}</Typography>
           </Box>
-          <Box className="grid-2-cols border-bottom">
-            <Typography className="reg-label">Estado</Typography>
-            <Typography>{reg && reg[0].estado}</Typography>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "150px 1fr",
+
+              gap: 1,
+            }}
+          >
+            <Box className="grid-2-cols border-bottom">
+              <Typography className="reg-label">Estado</Typography>
+              <Typography>{reg && reg[0].estado}</Typography>
+            </Box>
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: "repeat(4,1fr)",
+
+                gap: 1,
+              }}
+            >
+              <TextField
+                label="Abonar"
+                type="number"
+                name="updatePayment"
+                size="small"
+                onChange={formik.handleChange}
+              />
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Estado</InputLabel>
+                <Select
+                  size="small"
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  /* value={age} */
+                  label="Estado"
+                  /* onChange={handleChange} */
+                >
+                  {statusList.map((item) => (
+                    <MenuItem value={item}>{item}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <Button>
+                <Save />
+              </Button>
+            </Box>
           </Box>
 
-          <TextField
-            label="Abonar"
-            type="number"
-            name="updatePayment"
-            size="small"
-            onChange={formik.handleChange}
-          />
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Estado</InputLabel>
-            <Select
-              size="small"
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              /* value={age} */
-              label="Estado"
-              /* onChange={handleChange} */
-            >
-              {statusList.map((item) => (
-                <MenuItem value={item}>{item}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <Button>
-            <Save />
-          </Button>
           {/*   <p>{reg && Object.values(reg[0]).map((x) => <p>{x}</p>)}</p> */}
         </div>
       </div>
