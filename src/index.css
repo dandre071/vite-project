@@ -1039,7 +1039,7 @@ body {
 }
 .btn:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(1.03);
 }
 .scale-up-center {
   -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
@@ -1291,7 +1291,8 @@ body {
 }
 .grid-2-cols {
   display: grid;
-  grid-template-columns: 150px 1fr;
+  /*  grid-template-columns: 150px 1fr; */
+  grid-template-rows: auto 1fr;
   justify-content: center;
 }
 .reg-label {
@@ -1301,7 +1302,7 @@ body {
   padding-left: 5px;
 }
 .border-bottom {
-  height: 30px;
+  height: 55px;
   border-bottom: 1.5px solid rgb(197, 197, 197);
 }
 .product-module-grid {
