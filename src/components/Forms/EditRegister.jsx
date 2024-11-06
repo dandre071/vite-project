@@ -6,7 +6,6 @@ import {
   MenuItem,
   Select,
   TextField,
-  Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, LayoutGroup, motion, stagger } from "framer-motion";
@@ -15,7 +14,7 @@ import { add_zero, formatPhoneNumber } from "../utils/helpers";
 import { statusList } from "../../../public/configs";
 import { Save } from "lucide-react";
 import { colPesos } from "../utils/configs";
-
+import SaveAsOutlinedIcon from "@mui/icons-material/SaveAsOutlined";
 const EditRegister = () => {
   const id = location.pathname.match(/[0-9]/g).join("");
   console.log(id);
@@ -51,49 +50,47 @@ const EditRegister = () => {
           /*   background: "red", */
         }}
       >
-        <div style={{ width: 600 }}>
+        <div style={{ width: 600, display: "grid", gap: "5px 5px" }}>
           <Box
             sx={{
               display: "grid",
               gridTemplateColumns: "100px 160px 160px 1fr 1fr",
             }}
           >
-            <Box className="grid-2-cols" sx={{ width: "100%" }}>
-              <Typography className="reg-label" sx={{ width: "100%" }}>
-                Cliente
-              </Typography>
-              <Typography sx={{ width: "100%" }}>particular</Typography>
+            <Box className="grid-2-cols">
+              <p className="reg-label">Cliente</p>
+              <p sx={{ width: "100%" }}>particular</p>
             </Box>
             <Box className="grid-2-cols">
-              <Typography className="reg-label">Recepción</Typography>
-              <Typography>{reg && reg[0].fecha_recibido}</Typography>
+              <p className="reg-label">Recepción</p>
+              <p>{reg && reg[0].fecha_recibido}</p>
             </Box>
             <Box className="grid-2-cols">
-              <Typography className="reg-label">Entrega</Typography>
-              <Typography>{reg && reg[0].fecha_entrega}</Typography>
+              <p className="reg-label">Entrega</p>
+              <p>{reg && reg[0].fecha_entrega}</p>
             </Box>
-            <Box className="grid-2-cols border-bottom">
-              <Typography className="reg-label">Recibe</Typography>
-              <Typography>{reg && reg[0].recibe}</Typography>
+            <Box className="grid-2-cols ">
+              <p className="reg-label">Recibe</p>
+              <p>{reg && reg[0].recibe}</p>
             </Box>
-            <Box className="grid-2-cols border-bottom">
-              <Typography className="reg-label">Recibe</Typography>
-              <Typography>{reg && reg[0].realiza}</Typography>
+            <Box className="grid-2-cols ">
+              <p className="reg-label">Recibe</p>
+              <p>{reg && reg[0].realiza}</p>
             </Box>
           </Box>
           <Box
             sx={{
               display: "grid",
-              gridTemplateColumns: "2fr 1fr",
+              gridTemplateColumns: "2.3fr 1fr",
             }}
           >
-            <Box className="grid-2-cols border-bottom">
-              <Typography className="reg-label">Nombre</Typography>
-              <Typography>{reg && reg[0].nombre}</Typography>
+            <Box className="grid-2-cols">
+              <p className="reg-label">Nombre</p>
+              <p>{reg && reg[0].nombre}</p>
             </Box>
-            <Box className="grid-2-cols border-bottom">
-              <Typography className="reg-label">NIT</Typography>
-              <Typography>{reg && reg[0].nit}</Typography>
+            <Box className="grid-2-cols ">
+              <p className="reg-label">NIT</p>
+              <p>{reg && reg[0].nit}</p>
             </Box>
           </Box>
           <Box
@@ -102,27 +99,24 @@ const EditRegister = () => {
               gridTemplateColumns: "1fr 1fr",
             }}
           >
-            <Box className="grid-2-cols border-bottom">
-              <Typography className="reg-label">Teléfono / Celular</Typography>
-              <Typography>
-                {reg && formatPhoneNumber(reg[0].telefono)}
-              </Typography>
+            <Box className="grid-2-cols">
+              <p className="reg-label">Teléfono / Celular</p>
+              <p>{reg && formatPhoneNumber(reg[0].telefono)}</p>
             </Box>
-            <Box className="grid-2-cols border-bottom">
-              <Typography className="reg-label">Email</Typography>
-              <Typography>{reg && reg[0].email}</Typography>
+            <Box className="grid-2-cols">
+              <p className="reg-label">Email</p>
+              <p>{reg && reg[0].email}</p>
             </Box>
           </Box>
 
-          <Box className="grid-2-cols border-bottom" sx={{ height: "auto" }}>
-            <Typography className="reg-label">Trabajo</Typography>
-            <Box>
-              {reg &&
-                reg[0].trabajo.map((x) => {
-                  return <Typography>{x}</Typography>;
-                  console.log(x);
-                })}
-            </Box>
+          <Box className="grid-2-cols" sx={{ height: "auto" }}>
+            <p className="reg-label">Trabajo</p>
+
+            {reg &&
+              reg[0].trabajo.map((x) => {
+                return <p>{x}</p>;
+                console.log(x);
+              })}
           </Box>
           <Box
             sx={{
@@ -130,31 +124,31 @@ const EditRegister = () => {
               gridTemplateColumns: "repeat(4,1fr)",
             }}
           >
-            <Box className="grid-2-cols border-bottom">
-              <Typography className="reg-label">Total</Typography>
-              <Typography>{reg && colPesos.format(reg[0].total)}</Typography>
+            <Box className="grid-2-cols">
+              <p className="reg-label">Total</p>
+              <p>{reg && colPesos.format(reg[0].total)}</p>
             </Box>
-            <Box className="grid-2-cols border-bottom">
-              <Typography className="reg-label">Abono 1</Typography>
-              <Typography>{reg && colPesos.format(reg[0].abono1)}</Typography>
+            <Box className="grid-2-cols">
+              <p className="reg-label">Abono 1</p>
+              <p>{reg && colPesos.format(reg[0].abono1)}</p>
             </Box>
-            <Box className="grid-2-cols border-bottom">
-              <Typography className="reg-label">Abono 2</Typography>
-              <Typography>{reg && colPesos.format(reg[0].abono2)}</Typography>
+            <Box className="grid-2-cols">
+              <p className="reg-label">Abono 2</p>
+              <p>{reg && colPesos.format(reg[0].abono2)}</p>
             </Box>
             {/*<Box className="grid-2-cols border-bottom">
-            <Typography className="reg-label">Debe</Typography>
-            <Typography>{reg && reg[0].resta}</Typography>
+            <p className="reg-label">Debe</p>
+            <p>{reg && reg[0].resta}</p>
           </Box>*/}
-            <Box className="grid-2-cols border-bottom">
-              <Typography className="reg-label">Debe</Typography>
-              <Typography>{reg && colPesos.format(reg[0].resta)}</Typography>
+            <Box className="grid-2-cols">
+              <p className="reg-label">Debe</p>
+              <p>{reg && colPesos.format(reg[0].resta)}</p>
             </Box>
           </Box>
 
           <Box className="grid-2-cols ">
-            <Typography className="reg-label">Observaciones</Typography>
-            <Typography>{reg && reg[0].observaciones}</Typography>
+            <p className="reg-label">Observaciones</p>
+            <p>{reg && reg[0].observaciones}</p>
           </Box>
           <Box
             sx={{
@@ -164,15 +158,15 @@ const EditRegister = () => {
               gap: 1,
             }}
           >
-            <Box className="grid-2-cols border-bottom">
-              <Typography className="reg-label">Estado</Typography>
-              <Typography>{reg && reg[0].estado}</Typography>
+            <Box className="grid-2-cols">
+              <p className="reg-label">Estado</p>
+              <p>{reg && reg[0].estado}</p>
             </Box>
             <Box
               sx={{
                 display: "grid",
-                gridTemplateColumns: "repeat(4,1fr)",
-
+                gridTemplateColumns: "1fr 1fr",
+                alignItems: "center",
                 gap: 1,
               }}
             >
@@ -191,6 +185,11 @@ const EditRegister = () => {
                   id="demo-simple-select"
                   /* value={age} */
                   label="Estado"
+                  sx={{
+                    inputprops: {
+                      color: "red",
+                    },
+                  }}
                   /* onChange={handleChange} */
                 >
                   {statusList.map((item) => (
@@ -198,11 +197,15 @@ const EditRegister = () => {
                   ))}
                 </Select>
               </FormControl>
-              <Button>
-                <Save />
-              </Button>
             </Box>
           </Box>
+          <Button variant="prime" sx={{ height: 55, mt: 2, gap: 2 }}>
+            <SaveAsOutlinedIcon
+              className="btn"
+              sx={{ color: "white", fontSize: 40 }}
+            />
+            <p>Actualizar</p>
+          </Button>
 
           {/*   <p>{reg && Object.values(reg[0]).map((x) => <p>{x}</p>)}</p> */}
         </div>

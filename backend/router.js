@@ -19,21 +19,21 @@ export const router = express.Router();
 router.get("/", getProducts);
 router.post("/", createProduct);
 //IMPRESOS SERVER
-/* router.get("/users" || "/vendedores", getUsers);
+router.get("/users" || "/vendedores", getUsers);
 router.get("/laminado", getLaminatePrice);
 router.get("/registro", getRegister);
 router.get("/registro/:id", getRegById);
 router.put("/registro/:id", updateReg);
 router.post("/registro", createRegister);
 router.get("/precio-material" || "/precios", getMaterialPrice);
-router.get("/precio-vinilo" || "/vinilos", getVinylPrice); */
+router.get("/precio-vinilo" || "/vinilos", getVinylPrice);
 
 //HOME SERVER
-router.get("/vendedores", getUsers);
+/* router.get("/vendedores", getUsers);
 router.get("/laminado", getLaminatePrice);
 router.get("/registro", getRegister);
 router.get("/registro/:id", getRegById);
 router.post("/registro", createRegister);
 router.put("/registro/:id", updateReg);
 router.get("/precios", getMaterialPrice);
-router.get("/vinilos", getVinylPrice);
+router.get("/vinilos", getVinylPrice); */
