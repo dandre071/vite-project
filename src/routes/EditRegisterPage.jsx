@@ -15,20 +15,24 @@ import { statusList } from "../.././public/configs";
 import { Save } from "lucide-react";
 import { colPesos } from "../components/utils/configs";
 import SaveAsOutlinedIcon from "@mui/icons-material/SaveAsOutlined";
+import { useLocation } from "react-router-dom";
 const EditRegisterPage = () => {
+  const location = useLocation();
+  const { from } = location.state;
+  const reg = from;
   const id = location.pathname.match(/[0-9]/g).join("");
   console.log(id);
-  const [reg, setReg] = useState("");
+  /* const [reg, setReg] = useState(""); */
 
-  useEffect(() => {
+  /* useEffect(() => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
       .then((res) => res.json())
       .then((data) => {
         data && setReg(data);
         console.log(data);
       });
-  }, []);
-  console.log(reg);
+  }, []); */
+  /* console.log(reg); */
   const path = location.pathname;
   console.log(path);
   const formik = useFormik({
@@ -225,8 +229,8 @@ const EditRegisterPage = () => {
             </Box>
           </Box>
           <Button
-            /* onClick={() => {
-              fetch("http://localhost:3000/api/v1/impresosDB/registro/" + 2, {
+            onClick={() => {
+              fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id, {
                 method: "PUT",
                 headers: {
                   "Content-Type": "application/json",
@@ -237,10 +241,9 @@ const EditRegisterPage = () => {
                   estado: formik.values.updateStatus,
                 }),
               })
-                .then((datos) => console.log(id))
-                .then((respuesta) => respuesta.ok)
-                .then((datos) => console.log(datos));
-            }} */
+                .then((datos) => console.log(datos))
+                .then((respuesta) => respuesta.text);
+            }}
             variant="prime"
             sx={{ height: 55, mt: 2, gap: 2 }}
           >

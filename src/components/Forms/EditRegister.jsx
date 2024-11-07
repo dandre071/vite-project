@@ -16,7 +16,7 @@ import { Save } from "lucide-react";
 import { colPesos } from "../utils/configs";
 import SaveAsOutlinedIcon from "@mui/icons-material/SaveAsOutlined";
 import EditIcon from "@mui/icons-material/Edit";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const EditRegister = () => {
   const id = location.pathname.match(/[0-9]/g).join("");
@@ -228,8 +228,10 @@ const EditRegister = () => {
               </FormControl>
             </Box> */}
           </Box>
-          <Button
-            /* onClick={() => {
+
+          <Link to={`/registro/${id}/editar-registro/`} state={{ from: reg }}>
+            <Button
+              /* onClick={() => {
               fetch("http://localhost:3000/api/v1/impresosDB/registro/" + 2, {
                 method: "PUT",
                 headers: {
@@ -245,16 +247,16 @@ const EditRegister = () => {
                 .then((respuesta) => respuesta.ok)
                 .then((datos) => console.log(datos));
             }} */
-            onClick={() => {
+              /* onClick={() => {
               navigate(`/registro/${id}/editar-registro/`);
-            }}
-            variant="prime"
-            sx={{ height: 55, mt: 2, gap: 2 }}
-          >
-            <EditIcon className="btn" sx={{ color: "white", fontSize: 40 }} />
-            <p>Actualizar</p>
-          </Button>
-
+            }} */
+              variant="prime"
+              sx={{ height: 55, mt: 2, gap: 2 }}
+            >
+              <EditIcon className="btn" sx={{ color: "white", fontSize: 40 }} />
+              <p>Actualizar</p>
+            </Button>
+          </Link>
           {/*   <p>{reg && Object.values(reg[0]).map((x) => <p>{x}</p>)}</p> */}
         </div>
       </div>
