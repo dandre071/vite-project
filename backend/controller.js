@@ -126,15 +126,15 @@ export const getRegById = (request, response) => {
 };
 
 export const updateReg = (request, response) => {
-  const id = parseInt(request.params.id);
+  const id = request.params;
 
   const { abono2, resta, estado } = request.body;
 
   pool.query(
     /*  `UPDATE registro SET abono2 = $1, resta = $2, estado = $3 WHERE id = ${id}`, */
-    "UPDATE registro SET abono2 = $1, resta = $2, estado = $3 WHERE id = $4 RETURNING *",
+    "UPDATE registro SET abono2 = $1, resta = $2, estado = $3 observaciones = $4 WHERE id = $5 RETURNING *",
     /*     "UPDATE registro SET abono2='12233', resta=222555, estado='KKFFDFDF' WHERE id=4", */
-    [abono2, resta, estado, id],
+    [abono2, resta, estado, observaciones, id],
     (error, results) => {
       if (error) {
         throw error;
