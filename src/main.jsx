@@ -26,6 +26,7 @@ import EditItem from "./routes/EditItem.jsx";
 import ConfigPage from "./routes/ConfigPage.jsx";
 import Home from "./routes/home.jsx";
 import EditRegister from "./components/Forms/EditRegister.jsx";
+import EditRegisterPage from "./routes/EditRegisterPage.jsx";
 
 export const routes = [
   { path: "/", element: <Home />, name: "Home" },
@@ -40,8 +41,13 @@ export const routes = [
     name: "Editar",
   },
   {
-    path: "/editar-registro/:id",
+    path: "/registro/:id",
     element: <EditRegister />,
+    name: "registro",
+  },
+  {
+    path: "/registro/:id/editar-registro",
+    element: <EditRegisterPage />,
     name: "editar-registro",
   },
   {
@@ -73,9 +79,16 @@ const router = createBrowserRouter([
     children: [...routes],
   },
   {
-    path: "/editar-registro/:id",
+    path: "/registro/:id",
     element: <EditRegister />,
-    name: "editar registro",
+    name: "registro",
+    children: [
+      {
+        path: "/registro/:id/editar-registro",
+        element: <EditRegisterPage />,
+        name: "editar registro",
+      },
+    ],
   },
   {
     path: "Configuraciones",

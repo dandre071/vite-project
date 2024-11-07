@@ -234,7 +234,7 @@ const columns = [
           <VisibilityOutlinedIcon
             className="btn bg-primary"
             // onClick={getReg(cellValues.row.id)}
-            onClick={() => navigate("/editar-registro/" + cellValues.row.id)}
+            onClick={() => navigate("/registro/" + cellValues.row.id)}
             sx={{ fontSize: 30, color: "primary.dark" }}
           />
         </Box>

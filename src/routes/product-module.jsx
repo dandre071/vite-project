@@ -456,7 +456,7 @@ const ProductModule = () => {
               }}
             >
               <Button
-                sx={{ height: 60, width: 150 }}
+                sx={{ height: 60 }}
                 onClick={handleClose}
                 variant="secondary-outlined"
                 className="btn"
@@ -470,7 +470,8 @@ const ProductModule = () => {
               </Button>
 
               <Button
-                sx={{ height: 60, width: 150 }}
+                fullWidth
+                sx={{ height: 60 }}
                 variant="prime"
                 className="btn"
                 onClick={handlerAdd}

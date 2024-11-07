@@ -124,18 +124,22 @@ export const getRegById = (request, response) => {
     response.status(200).json(results.rows);
   });
 };
+
 export const updateReg = (request, response) => {
   const id = parseInt(request.params.id);
-  const { abono2, resta, total, estado } = request.body;
+  console.log(id);
+  const { abono2, resta, estado } = request.body;
 
   pool.query(
-    "UPDATE registro SET abono2 = $1, resta = $2, total = $3, estado = $4 WHERE id = $5",
-    [abono2, resta, total, estado],
+    /*  `UPDATE registro SET abono2 = $1, resta = $2, estado = $3 WHERE id = ${id}`, */
+    "UPDATE registro SET abono2 = $1, resta = $2, estado = $3 WHERE id = $4 RETURNING *",
+    [abono2, resta, estado, id],
     (error, results) => {
       if (error) {
         throw error;
       }
       response.status(200).send(`Registro modificado en ID: ${id}`);
+      console.log(id);
     }
   );
 };

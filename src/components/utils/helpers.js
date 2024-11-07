@@ -50,12 +50,12 @@ export const getPageTitle = () => {
   const pathText = routes.filter((item) => item.path == location.pathname);
 
   const id =
-    location.pathname.includes("editar-registro") &&
+    location.pathname.includes("registro") &&
     location.pathname.match(/[0-9]/g).join("");
   if (pathText[0]) {
     return pathText[0].name;
   }
-  if (location.pathname.includes("editar-registro"))
+  if (location.pathname.includes("registro"))
     return `Registro ${add_zero(id, 5)}`;
 };
 /* export function formatPhoneNumber(phoneNumberString) {

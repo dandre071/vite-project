@@ -10,15 +10,12 @@ import {
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, LayoutGroup, motion, stagger } from "framer-motion";
 import { useFormik } from "formik";
-import { add_zero, formatPhoneNumber } from "../utils/helpers";
-import { statusList } from "../../../public/configs";
+import { add_zero, formatPhoneNumber } from "../components/utils/helpers";
+import { statusList } from "../.././public/configs";
 import { Save } from "lucide-react";
-import { colPesos } from "../utils/configs";
+import { colPesos } from "../components/utils/configs";
 import SaveAsOutlinedIcon from "@mui/icons-material/SaveAsOutlined";
-import EditIcon from "@mui/icons-material/Edit";
-import { useNavigate } from "react-router-dom";
-
-const EditRegister = () => {
+const EditRegisterPage = () => {
   const id = location.pathname.match(/[0-9]/g).join("");
   console.log(id);
   const [reg, setReg] = useState("");
@@ -59,7 +56,6 @@ const EditRegister = () => {
 
   }; */
   console.log(formik.values);
-  const navigate = useNavigate();
   return (
     <motion.div
       initial={{ opacity: 0, y: -50 }}
@@ -189,7 +185,7 @@ const EditRegister = () => {
               <p className="reg-label">Estado</p>
               <p>{reg && reg[0].estado}</p>
             </Box>
-            {/*  <Box
+            <Box
               sx={{
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr",
@@ -212,21 +208,21 @@ const EditRegister = () => {
                   size="small"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-              
+                  /* value={age} */
                   label="Estado"
                   sx={{
                     inputprops: {
                       color: "red",
                     },
                   }}
-           
+                  /* onChange={handleChange} */
                 >
                   {statusList.map((item) => (
                     <MenuItem value={item}>{item}</MenuItem>
                   ))}
                 </Select>
               </FormControl>
-            </Box> */}
+            </Box>
           </Box>
           <Button
             /* onClick={() => {
@@ -245,13 +241,13 @@ const EditRegister = () => {
                 .then((respuesta) => respuesta.ok)
                 .then((datos) => console.log(datos));
             }} */
-            onClick={() => {
-              navigate(`/registro/${id}/editar-registro/`);
-            }}
             variant="prime"
             sx={{ height: 55, mt: 2, gap: 2 }}
           >
-            <EditIcon className="btn" sx={{ color: "white", fontSize: 40 }} />
+            <SaveAsOutlinedIcon
+              className="btn"
+              sx={{ color: "white", fontSize: 40 }}
+            />
             <p>Actualizar</p>
           </Button>
 
@@ -262,4 +258,4 @@ const EditRegister = () => {
   );
 };
 
-export default EditRegister;
+export default EditRegisterPage;
