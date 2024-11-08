@@ -1,10 +1,9 @@
-import { useRef } from "react";
-import { usePersonalData, useShoppingCart } from "../../store/shoppingCart";
-import { colPesos } from "./configs";
 import generatePDF from "react-to-pdf";
-import { usePaymentData } from "../../store/paymentData";
+
 import { useLocation } from "react-router-dom";
-import { routes } from "../../main";
+
+import { colPesos } from "./configs.js";
+import { routes } from "../../main.jsx";
 export function sum() {
   console.log(2 + 1);
 }
@@ -57,6 +56,13 @@ export const getPageTitle = () => {
   }
   if (location.pathname.includes("registro"))
     return `Registro ${add_zero(id, 5)}`;
+};
+export const getPageId = () => {
+  const location = useLocation();
+  const pathText = routes.filter((item) => item.path == location.pathname);
+
+  const id = location.pathname.match(/[0-9]/g).join("");
+  return id;
 };
 /* export function formatPhoneNumber(phoneNumberString) {
   var cleaned = ("" + phoneNumberString).replace(/\\D/g, "");

@@ -21,9 +21,10 @@ router.post("/", createProduct);
 //IMPRESOS SERVER
 router.get("/users" || "/vendedores", getUsers);
 router.get("/laminado", getLaminatePrice);
+router.put("/registro/:id", updateReg);
 router.get("/registro", getRegister);
 router.get("/registro/:id", getRegById);
-router.put("/registro/:id", updateReg);
+
 router.post("/registro", createRegister);
 router.get("/precio-material" || "/precios", getMaterialPrice);
 router.get("/precio-vinilo" || "/vinilos", getVinylPrice);

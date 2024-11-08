@@ -23,14 +23,25 @@ const EditRegister = () => {
   console.log(id);
   const [reg, setReg] = useState("");
 
-  useEffect(() => {
+  const getReg = () => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
       .then((res) => res.json())
       .then((data) => {
         data && setReg(data);
         console.log(data);
       });
+  };
+  useEffect(() => {
+    getReg();
   }, []);
+  /* useEffect(() => {
+    fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
+      .then((res) => res.json())
+      .then((data) => {
+        data && setReg(data);
+        console.log(data);
+      });
+  }, []); */
   console.log(reg);
   const path = location.pathname;
   console.log(path);
@@ -156,7 +167,7 @@ const EditRegister = () => {
             </Box>
             <Box className="grid-2-cols">
               <p className="reg-label">Abono 2</p>
-              <p>{reg && colPesos.format(formik.values.updatePayment)}</p>
+              <p>{reg && colPesos.format(reg[0].abono2)}</p>
             </Box>
             {/*<Box className="grid-2-cols border-bottom">
             <p className="reg-label">Debe</p>
@@ -164,12 +175,7 @@ const EditRegister = () => {
           </Box>*/}
             <Box className="grid-2-cols">
               <p className="reg-label">Debe</p>
-              <p>
-                {reg &&
-                  colPesos.format(
-                    reg[0].total - reg[0].abono1 - formik.values.updatePayment
-                  )}
-              </p>
+              <p>{reg && colPesos.format(reg[0].resta)}</p>
             </Box>
           </Box>
 

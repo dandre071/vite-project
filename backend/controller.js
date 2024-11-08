@@ -1,4 +1,5 @@
 /* const pool = require("./db"); */
+
 import { pool } from "./db.js";
 /* import { queries } from "./queries.js"; */
 
@@ -126,22 +127,21 @@ export const getRegById = (request, response) => {
 };
 
 export const updateReg = (request, response) => {
-  const id = request.params;
+  const id = parseInt(request.params.id);
 
   const { abono2, resta, estado } = request.body;
 
   pool.query(
-    /*  `UPDATE registro SET abono2 = $1, resta = $2, estado = $3 WHERE id = ${id}`, */
-    "UPDATE registro SET abono2 = $1, resta = $2, estado = $3 observaciones = $4 WHERE id = $5 RETURNING *",
-    /*     "UPDATE registro SET abono2='12233', resta=222555, estado='KKFFDFDF' WHERE id=4", */
-    [abono2, resta, estado, observaciones, id],
-    (error, results) => {
+    "UPDATE registro SET abono2 = $1, resta = $2, estado = $3 WHERE id = $4",
+    [abono2, resta, estado, id],
+    (error) => {
       if (error) {
         throw error;
       }
-      response.status(200).send(`Registro modificado en ID: ${id}`);
+      response.status(201).send(`Registro modificado en ID: ${id}`);
     }
   );
+  /* return res.json(rows[0]); */
 };
 /* console.log(users); */
 /* module.exports = {

@@ -13,7 +13,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import Root from "./routes/Root";
+import Root from "./routes/Root.jsx";
 import ErrorPage from "./routes/ErrorPage.jsx";
 import Factura from "./routes/factura.jsx";
 import ClientData from "./routes/client-data.jsx";

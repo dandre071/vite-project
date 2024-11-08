@@ -15,24 +15,16 @@ import { statusList } from "../.././public/configs";
 import { Save } from "lucide-react";
 import { colPesos } from "../components/utils/configs";
 import SaveAsOutlinedIcon from "@mui/icons-material/SaveAsOutlined";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 const EditRegisterPage = () => {
   const location = useLocation();
   const { from } = location.state;
   const reg = from;
+  const navigate = useNavigate();
   const id = location.pathname.match(/[0-9]/g).join("");
-  console.log(id);
+  console.log(id, reg);
   /* const [reg, setReg] = useState(""); */
 
-  /* useEffect(() => {
-    fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
-      .then((res) => res.json())
-      .then((data) => {
-        data && setReg(data);
-        console.log(data);
-      });
-  }, []); */
-  /* console.log(reg); */
   const path = location.pathname;
   console.log(path);
   const formik = useFormik({
@@ -156,7 +148,7 @@ const EditRegisterPage = () => {
             </Box>
             <Box className="grid-2-cols">
               <p className="reg-label">Abono 2</p>
-              <p>{reg && colPesos.format(formik.values.updatePayment)}</p>
+              <p>{reg && colPesos.format(reg[0].abono2)}</p>
             </Box>
             {/*<Box className="grid-2-cols border-bottom">
             <p className="reg-label">Debe</p>
@@ -237,12 +229,14 @@ const EditRegisterPage = () => {
                 },
                 body: JSON.stringify({
                   abono2: formik.values.updatePayment,
-                  resta: formik.values.updateDebt,
+                  resta:
+                    reg[0].total - reg[0].abono1 - formik.values.updatePayment,
                   estado: formik.values.updateStatus,
                 }),
               })
                 .then((datos) => console.log(datos))
-                .then((respuesta) => respuesta.text);
+                .then((respuesta) => respuesta.text)
+                .then(navigate(`/registro/${id}`));
             }}
             variant="prime"
             sx={{ height: 55, mt: 2, gap: 2 }}
