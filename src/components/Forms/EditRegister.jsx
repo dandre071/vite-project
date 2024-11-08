@@ -21,7 +21,7 @@ import { Link, useNavigate } from "react-router-dom";
 const EditRegister = () => {
   const id = location.pathname.match(/[0-9]/g).join("");
   console.log(id);
-  const [reg, setReg] = useState("");
+  const [reg, setReg] = useState({});
 
   /*   const getReg = () => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
@@ -36,7 +36,6 @@ const EditRegister = () => {
       .then((res) => res.json())
       .then((data) => {
         data && setReg(data);
-        console.log(data);
       });
   }, []);
   /* useEffect(() => {
@@ -47,6 +46,7 @@ const EditRegister = () => {
         console.log(data);
       });
   }, []); */
+
   console.log(reg);
   const path = location.pathname;
   console.log(path);
@@ -83,7 +83,7 @@ const EditRegister = () => {
       return textClass;
     }
   };
-  console.log(textClass, reg[0].estado);
+  /* console.log(textClass, reg[0].estado); */
 
   return (
     <motion.div

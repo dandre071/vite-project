@@ -10,6 +10,9 @@ import DeleteBtn from "../Buttons/DeleteBtn";
 import { useNavigate } from "react-router-dom";
 import { AlignCenter } from "lucide-react";
 import { colPesos } from "../utils/configs";
+import uuid4 from "uuid4";
+
+const key = uuid4();
 const handleClick = (event, cellValues) => {
   console.log(cellValues.row);
 };
@@ -93,7 +96,7 @@ const columns = [
                 p: 0.2,
                 height: "100%",
               }}
-              key={cellValues.row.id}
+              key={key}
             >
               {`${val.indexOf(x) + 1}. ${x}`}
             </Typography>

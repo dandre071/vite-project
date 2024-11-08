@@ -132,7 +132,7 @@ export const updateReg = (request, response) => {
   const { abono2, resta, estado } = request.body;
 
   pool.query(
-    "UPDATE registro SET abono2 = $1, resta = $2, estado = $3 WHERE id = $4",
+    "UPDATE registro SET abono2 = $1, resta = $2, estado = $3 WHERE id = $4 RETURNING *",
     [abono2, resta, estado, id],
     (error) => {
       if (error) {

@@ -49,6 +49,7 @@
     "react-to-print": "^2.15.1",
     "styled-components": "^6.1.11",
     "uuid": "^10.0.0",
+    "uuid4": "^2.0.3",
     "yup": "^1.4.0",
     "zustand": "^4.5.2"
   },
