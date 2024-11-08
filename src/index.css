@@ -1293,11 +1293,12 @@ body {
   /*  grid-template-columns: 150px 1fr; */
   grid-template-rows: 1fr 1fr;
   justify-content: start;
-  background-color: #f8f8f8;
+  /*   background-color: #f8f8f8; */
   border-radius: 3px;
 
   /*  margin: 2px; */
 }
+
 .grid-2-cols > p:last-of-type {
   color: black;
   padding-left: 3px;

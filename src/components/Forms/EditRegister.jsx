@@ -23,16 +23,21 @@ const EditRegister = () => {
   console.log(id);
   const [reg, setReg] = useState("");
 
-  const getReg = () => {
+  /*   const getReg = () => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
       .then((res) => res.json())
       .then((data) => {
         data && setReg(data);
         console.log(data);
       });
-  };
+  }; */
   useEffect(() => {
-    getReg();
+    fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
+      .then((res) => res.json())
+      .then((data) => {
+        data && setReg(data);
+        console.log(data);
+      });
   }, []);
   /* useEffect(() => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
@@ -69,8 +74,17 @@ const EditRegister = () => {
       .then((datos) => console.log(datos));
 
   }; */
-  console.log(formik.values);
+  console.log(reg);
   const navigate = useNavigate();
+  let textClass;
+  const status = () => {
+    if (reg.estado === "ENTREGADO") {
+      textClass = "success-bg";
+      return textClass;
+    }
+  };
+  console.log(textClass, reg[0].estado);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -50 }}
@@ -191,7 +205,7 @@ const EditRegister = () => {
               gap: 1,
             }}
           >
-            <Box className="grid-2-cols">
+            <Box className={`grid-2-cols ${status}`}>
               <p className="reg-label">Estado</p>
               <p>{reg && reg[0].estado}</p>
             </Box>
