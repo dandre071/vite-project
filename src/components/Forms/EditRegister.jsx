@@ -31,6 +31,7 @@ const EditRegister = () => {
         console.log(data);
       });
   }; */
+  // console.log("http://localhost:3000/api/v1/impresosDB/registro/" + id);
   useEffect(() => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
       .then((res) => res.json())
