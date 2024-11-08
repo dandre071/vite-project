@@ -21,7 +21,7 @@ import { Link, useNavigate } from "react-router-dom";
 const EditRegister = () => {
   const id = location.pathname.match(/[0-9]/g).join("");
   console.log(id);
-  const [reg, setReg] = useState({});
+  const [reg, setReg] = useState(null);
 
   /*   const getReg = () => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
@@ -79,7 +79,7 @@ const EditRegister = () => {
   const navigate = useNavigate();
   let textClass;
   const status = () => {
-    if (reg.estado === "ENTREGADO") {
+    if (reg[0].estado === "ENTREGADO") {
       textClass = "success-bg";
       return textClass;
     }
