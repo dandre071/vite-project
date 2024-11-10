@@ -3,7 +3,13 @@ import Box from "@mui/material/Box";
 import { DataGrid, GridColumnHeaderMenu } from "@mui/x-data-grid";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Button, Chip, Typography } from "@mui/material";
+import {
+  Autocomplete,
+  Button,
+  Chip,
+  TextField,
+  Typography,
+} from "@mui/material";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteBtn from "../Buttons/DeleteBtn";
@@ -12,7 +18,8 @@ import { AlignCenter } from "lucide-react";
 import { colPesos } from "../utils/configs";
 import uuid4 from "uuid4";
 import { useRegData } from "../../store/regStore";
-import { getClassName } from "../utils/helpers";
+import { getClassName, getClassNameTable } from "../utils/helpers";
+import { useFormik } from "formik";
 
 const key = uuid4();
 /* const handleClick = (event, cellValues) => {
@@ -25,7 +32,7 @@ const key = uuid4();
       console.log(data);
     });
 }; */
-
+getClassName();
 const columns = [
   {
     align: "center",
@@ -202,7 +209,7 @@ const columns = [
     /*  editable: true, */
     renderCell: (cellValues) => {
       return (
-        <Box className={getClassName(cellValues.row.estado)}>
+        <Box className={getClassNameTable(cellValues.row.estado)}>
           {cellValues.row.estado}
         </Box>
       );
@@ -283,52 +290,106 @@ const columns = [
 export default function Table() {
   const [jobList, setJobList] = useState(null);
 
+  const [listByOrder, setListByOrder] = useState("");
+  const formik = useFormik({
+    initialValues: {
+      orderN: null,
+    },
+  });
+
+  /* const options = jobList || null; */
+  const [orders, setOrders] = useState("");
+  console.log(jobList);
+  const [value, setValue] = useState(orders);
+  console.log(value.toString());
+  const [inputValue, setInputValue] = useState("");
+  console.log(inputValue);
   useEffect(() => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro")
       .then((res) => res.json())
       .then((data) => {
         setJobList(data);
-        console.log(data.map((x) => x.id));
+        setOrders(data.map((x) => x.id));
       });
   }, []);
-  const rows = [{ id: jobList, lastName: "Snow", firstName: "Jon", age: 14 }];
-  const setReg = useRegData((state) => state.addData);
-  const click = (data) => {
-    setReg({
-      data,
-    });
+  const [filteredJobList, setfilteredJobList] = useState(jobList);
+  /* const rows = [{ id: jobList, lastName: "Snow", firstName: "Jon", age: 14 }]; */
+  const getRegById = () => {
+    fetch("http://localhost:3000/api/v1/impresosDB/registro/" + value && value)
+      .then((res) => res.json())
+      .then((data) => {
+        setJobList(data);
+        /* setOrders(data.map((x) => x.id)); */
+      });
   };
+  /*   if (inputValue === "") setfilteredJobList(jobList); */
+  const getListByOrder = () => {
+    setfilteredJobList(jobList.filter((x) => x.id === 5));
+  };
+  console.log(filteredJobList);
+  /*  console.log(jobList && Object.values(jobList[0])); */
+  // console.log(jobList && jobList[0].filter((x) => x.id === 4));
   /* console.log(setReg); */
   return (
-    <Box sx={{ height: "auto", width: "auto" }}>
-      <DataGrid
-        getRowId={(row) => row.id}
-        rowHeight={"auto"}
-        sx={{
-          border: "none",
-          justifySelf: "start",
-          "&.MuiDataGrid-root": {
+    <Box>
+      <Box
+        sx={{ display: "grid", width: "50%", gridTemplateColumns: "100px 1fr" }}
+      >
+        <Autocomplete
+          name="orderN"
+          /* onClose={() => {
+          formik.setValues({ ...formik.values, itemTotalPrice: 0 });
+        }} */
+          freeSolo
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+            console.log(typeof value);
+          }}
+          inputValue={inputValue}
+          onInputChange={(event, newInputValue) => {
+            setInputValue(newInputValue);
+          }}
+          options={orders}
+          /* fullWidth */
+          renderInput={(params) => (
+            <TextField {...params} label="Buscar Orden" />
+          )}
+        />
+        <Button onClick={getListByOrder}>Buscar</Button>
+      </Box>
+
+      <Box sx={{ height: "auto", width: "auto" }}>
+        <DataGrid
+          getRowId={(row) => row.id}
+          rowHeight={"auto"}
+          sx={{
             border: "none",
-          },
-          "& .MuiDataGrid-sortIcon": {
-            opacity: "inherit !important",
-            width: 20,
-          },
-        }}
-        /* rows={rows} */
-        rows={jobList}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 10,
+            justifySelf: "start",
+            "&.MuiDataGrid-root": {
+              border: "none",
             },
-          },
-        }}
-        pageSizeOptions={[10]}
-        /*   checkboxSelection */
-        disableRowSelectionOnClick
-      />
+            "& .MuiDataGrid-sortIcon": {
+              opacity: "inherit !important",
+              width: 20,
+            },
+          }}
+          /* rows={rows} */
+          /*  rows={jobList} */
+          rows={filteredJobList}
+          columns={columns}
+          initialState={{
+            pagination: {
+              paginationModel: {
+                pageSize: 10,
+              },
+            },
+          }}
+          pageSizeOptions={[10]}
+          /*   checkboxSelection */
+          disableRowSelectionOnClick
+        />
+      </Box>
     </Box>
   );
 }

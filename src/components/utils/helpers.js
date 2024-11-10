@@ -87,3 +87,18 @@ export const getClassName = (reg) => {
   }
   return textClass;
 };
+export const getClassNameTable = (data) => {
+  let textClass;
+  if (data) {
+    if (data === "ASIGNADO") textClass = "initial-bg";
+    if (data === "ENTREGADO") textClass = "success-bg";
+    if (data === "DISEÑO") textClass = "design-bg";
+    if (data === "IMPRESIÓN") textClass = "print-bg";
+    if (data === "REVISIÓN") textClass = "print-bg";
+    if (data === "ACABADO") textClass = "finish-bg";
+    if (data === "LISTO") textClass = "ready-bg";
+    if (data === "DEMORADO") textClass = "delay-bg";
+    if (data === "CANCELADO") textClass = "cancelled-bg";
+  }
+  return textClass;
+};
