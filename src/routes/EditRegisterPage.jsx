@@ -131,7 +131,6 @@ const EditRegisterPage = () => {
             {reg &&
               reg[0].trabajo.map((x) => {
                 return <p>{x}</p>;
-                console.log(x);
               })}
           </Box>
           <Box

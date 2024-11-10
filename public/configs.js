@@ -146,4 +146,5 @@ export const statusList = [
   "LISTO",
   "REVISIÓN",
   "ENTREGADO",
+  "CANCELADO",
 ];

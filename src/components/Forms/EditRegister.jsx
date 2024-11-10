@@ -93,7 +93,15 @@ const EditRegister = () => {
   let textClass;
 
   if (reg) {
+    if (reg[0].estado === "ASIGNADO") textClass = "initial-bg";
     if (reg[0].estado === "ENTREGADO") textClass = "success-bg";
+    if (reg[0].estado === "DISEÑO") textClass = "design-bg";
+    if (reg[0].estado === "IMPRESIÓN") textClass = "print-bg";
+    if (reg[0].estado === "REVISIÓN") textClass = "print-bg";
+    if (reg[0].estado === "ACABADO") textClass = "finish-bg";
+    if (reg[0].estado === "LISTO") textClass = "ready-bg";
+    if (reg[0].estado === "DEMORADO") textClass = "delay-bg";
+    if (reg[0].estado === "CANCELADO") textClass = "cancelled-bg";
   }
 
   /* console.log(textClass); */
@@ -111,6 +119,18 @@ const EditRegister = () => {
         }}
       >
         <div style={{ width: 600, display: "grid", gap: "5px 5px" }}>
+          <Box
+            className={`${textClass}`}
+            sx={{
+              display: "grid",
+              width: "100%",
+              height: 40,
+              placeItems: "center",
+            }}
+          >
+            {/* <p className="reg-label">Estado</p> */}
+            <p>{reg && reg[0].estado}</p>
+          </Box>
           <Box
             sx={{
               display: "grid",
@@ -173,8 +193,13 @@ const EditRegister = () => {
             <p className="reg-label">Trabajo</p>
 
             {reg &&
-              reg[0].trabajo.map((x) => {
-                return <p>{x}</p>;
+              reg[0].trabajo.map((x, index) => {
+                return (
+                  <p>
+                    {`${index + 1}. 
+                    ${x}`}
+                  </p>
+                );
                 console.log(x);
               })}
           </Box>
@@ -218,10 +243,6 @@ const EditRegister = () => {
               gap: 1,
             }}
           >
-            <Box className={`grid-2-cols ${textClass}`}>
-              <p className="reg-label">Estado</p>
-              <p>{reg && reg[0].estado}</p>
-            </Box>
             {/*  <Box
               sx={{
                 display: "grid",

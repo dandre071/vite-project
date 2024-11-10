@@ -12,6 +12,7 @@ import { AlignCenter } from "lucide-react";
 import { colPesos } from "../utils/configs";
 import uuid4 from "uuid4";
 import { useRegData } from "../../store/regStore";
+import { getClassName } from "../utils/helpers";
 
 const key = uuid4();
 /* const handleClick = (event, cellValues) => {
@@ -24,6 +25,7 @@ const key = uuid4();
       console.log(data);
     });
 }; */
+
 const columns = [
   {
     align: "center",
@@ -200,11 +202,7 @@ const columns = [
     /*  editable: true, */
     renderCell: (cellValues) => {
       return (
-        <Box
-          className={
-            cellValues.row.estado === "en espera" ? "process-bg" : "success-bg"
-          }
-        >
+        <Box className={getClassName(cellValues.row.estado)}>
           {cellValues.row.estado}
         </Box>
       );

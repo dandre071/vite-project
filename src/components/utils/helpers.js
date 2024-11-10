@@ -72,3 +72,18 @@ export const getPageId = () => {
   }
   return null;
 } */
+export const getClassName = (reg) => {
+  let textClass;
+  if (reg) {
+    if (reg[0].estado === "ASIGNADO") textClass = "initial-bg";
+    if (reg[0].estado === "ENTREGADO") textClass = "success-bg";
+    if (reg[0].estado === "DISEÑO") textClass = "design-bg";
+    if (reg[0].estado === "IMPRESIÓN") textClass = "print-bg";
+    if (reg[0].estado === "REVISIÓN") textClass = "print-bg";
+    if (reg[0].estado === "ACABADO") textClass = "finish-bg";
+    if (reg[0].estado === "LISTO") textClass = "ready-bg";
+    if (reg[0].estado === "DEMORADO") textClass = "delay-bg";
+    if (reg[0].estado === "CANCELADO") textClass = "cancelled-bg";
+  }
+  return textClass;
+};
