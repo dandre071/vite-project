@@ -15,7 +15,9 @@ import { statusList } from "../.././public/configs";
 import { Save } from "lucide-react";
 import { colPesos } from "../components/utils/configs";
 import SaveAsOutlinedIcon from "@mui/icons-material/SaveAsOutlined";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+
 const EditRegisterPage = () => {
   const location = useLocation();
   const { from } = location.state;
@@ -220,34 +222,54 @@ const EditRegisterPage = () => {
               </FormControl>
             </Box>
           </Box>
-          <Button
-            onClick={() => {
-              fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id, {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  abono2: formik.values.updatePayment,
-                  resta:
-                    reg[0].total - reg[0].abono1 - formik.values.updatePayment,
-                  estado: formik.values.updateStatus,
-                }),
-              })
-                .then((datos) => console.log(datos))
-                .then((respuesta) => respuesta.text)
-                .then(navigate(`/registro/${id}`));
-            }}
-            variant="prime"
-            sx={{ height: 55, mt: 2, gap: 2 }}
-          >
-            <SaveAsOutlinedIcon
-              className="btn"
-              sx={{ color: "white", fontSize: 40 }}
-            />
-            <p>Actualizar</p>
-          </Button>
+          <Box>
+            <Link to={"/"}>
+              <Button
+                sx={{ height: 60 }}
+                variant="secondary-outlined"
+                className="btn"
+              >
+                {" "}
+                <CloseRoundedIcon
+                  /* */
 
+                  sx={{ fontSize: 40, color: "secondary.main" }}
+                />
+              </Button>
+            </Link>
+            <Button
+              onClick={() => {
+                fetch(
+                  "http://localhost:3000/api/v1/impresosDB/registro/" + id,
+                  {
+                    method: "PUT",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      abono2: formik.values.updatePayment,
+                      resta:
+                        reg[0].total -
+                        reg[0].abono1 -
+                        formik.values.updatePayment,
+                      estado: formik.values.updateStatus,
+                    }),
+                  }
+                )
+                  .then((datos) => console.log(datos))
+                  .then((respuesta) => respuesta.text)
+                  .then(navigate(`/registro/${id}`));
+              }}
+              variant="prime"
+              sx={{ height: 55, mt: 2, gap: 2 }}
+            >
+              <SaveAsOutlinedIcon
+                className="btn"
+                sx={{ color: "white", fontSize: 40 }}
+              />
+              <p>Actualizar</p>
+            </Button>
+          </Box>
           {/*   <p>{reg && Object.values(reg[0]).map((x) => <p>{x}</p>)}</p> */}
         </div>
       </div>

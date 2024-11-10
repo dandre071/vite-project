@@ -15,30 +15,30 @@ export const getProducts = (req, response) => {
     response.status(200).json(results.rows);
   });
 }; */
-export const getUsers = (req, response) => {
+/* export const getUsers = (req, response) => {
   pool.query("SELECT * FROM vendedores", (error, results) => {
     if (error) throw error;
     response.status(200).json(results.rows);
   });
-};
-export const getLaminatePrice = (req, response) => {
+}; */
+/* export const getLaminatePrice = (req, response) => {
   pool.query("SELECT * FROM laminado", (error, results) => {
     if (error) throw error;
     response.status(200).json(results.rows);
   });
-};
-export const getMaterialPrice = (req, response) => {
+}; */
+/* export const getMaterialPrice = (req, response) => {
   pool.query("SELECT * FROM precio_material", (error, results) => {
     if (error) throw error;
     response.status(200).json(results.rows);
   });
-};
-export const getVinylPrice = (req, response) => {
+}; */
+/* export const getVinylPrice = (req, response) => {
   pool.query("SELECT * FROM precio_vinilos", (error, results) => {
     if (error) throw error;
     response.status(200).json(results.rows);
   });
-};
+}; */
 
 export const createProduct = (request, response) => {
   /*  const { id, producto, precio } = request.body; */

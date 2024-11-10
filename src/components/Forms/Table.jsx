@@ -7,22 +7,23 @@ import { Button, Chip, Typography } from "@mui/material";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteBtn from "../Buttons/DeleteBtn";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AlignCenter } from "lucide-react";
 import { colPesos } from "../utils/configs";
 import uuid4 from "uuid4";
+import { useRegData } from "../../store/regStore";
 
 const key = uuid4();
-const handleClick = (event, cellValues) => {
+/* const handleClick = (event, cellValues) => {
   console.log(cellValues.row);
-};
-const getReg = (id) => {
+}; */
+/* const getReg = (id) => {
   fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
     });
-};
+}; */
 const columns = [
   {
     align: "center",
@@ -234,12 +235,21 @@ const columns = [
            
             sx={{ fontSize: 24, color: "primary.main" }}
           /> */}
-          <VisibilityOutlinedIcon
-            className="btn bg-primary"
-            // onClick={getReg(cellValues.row.id)}
-            onClick={() => navigate("/registro/" + cellValues.row.id)}
-            sx={{ fontSize: 30, color: "primary.dark" }}
-          />
+          <Link
+            to={`/registro/${cellValues.row.id}`}
+            state={{ from: cellValues.row.id }}
+          >
+            <VisibilityOutlinedIcon
+              className="btn bg-primary"
+              // onClick={getReg(cellValues.row.id)}
+              onClick={() => {
+                // click(cellValues.row.id);
+                //navigate("/registro/" + cellValues.row.id);
+              }}
+              sx={{ fontSize: 30, color: "primary.dark" }}
+              id={cellValues.row.id}
+            />
+          </Link>
         </Box>
       );
 
@@ -284,9 +294,17 @@ export default function Table() {
       });
   }, []);
   const rows = [{ id: jobList, lastName: "Snow", firstName: "Jon", age: 14 }];
+  const setReg = useRegData((state) => state.addData);
+  const click = (data) => {
+    setReg({
+      data,
+    });
+  };
+  /* console.log(setReg); */
   return (
     <Box sx={{ height: "auto", width: "auto" }}>
       <DataGrid
+        getRowId={(row) => row.id}
         rowHeight={"auto"}
         sx={{
           border: "none",

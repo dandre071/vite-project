@@ -17,10 +17,18 @@ import { colPesos } from "../utils/configs";
 import SaveAsOutlinedIcon from "@mui/icons-material/SaveAsOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import { Link, useNavigate } from "react-router-dom";
-
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import { useLocation } from "react-router-dom";
 const EditRegister = () => {
-  const id = location.pathname.match(/[0-9]/g).join("");
-  console.log(id);
+  const location = useLocation();
+
+  const [id, setId] = useState(null);
+
+  const controller = new AbortController();
+  /*  const { from } = location.state; */
+  /*   const id = 10; */
+  /*  console.log(id); */
+  /* console.log(location.pathname.match(/[0-9]/g).join("")); */
   const [reg, setReg] = useState(null);
 
   /*   const getReg = () => {
@@ -32,13 +40,18 @@ const EditRegister = () => {
       });
   }; */
   // console.log("http://localhost:3000/api/v1/impresosDB/registro/" + id);
+
   useEffect(() => {
-    fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
+    const locationId = location.pathname.match(/[0-9]/g).join("");
+    fetch("http://localhost:3000/api/v1/impresosDB/registro/" + locationId)
       .then((res) => res.json())
       .then((data) => {
         data && setReg(data);
-      });
+        setId(locationId);
+      })
+      .finally(controller.abort());
   }, []);
+
   /* useEffect(() => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
       .then((res) => res.json())
@@ -48,9 +61,9 @@ const EditRegister = () => {
       });
   }, []); */
 
-  console.log(reg);
+  /*  console.log(reg); */
   const path = location.pathname;
-  console.log(path);
+  /* console.log(path); */
   const formik = useFormik({
     initialValues: {
       updatePayment: 0,
@@ -75,16 +88,15 @@ const EditRegister = () => {
       .then((datos) => console.log(datos));
 
   }; */
-  console.log(reg);
+  /* console.log(reg); */
   const navigate = useNavigate();
   let textClass;
-  const status = () => {
-    if (reg[0].estado === "ENTREGADO") {
-      textClass = "success-bg";
-      return textClass;
-    }
-  };
-  /* console.log(textClass, reg[0].estado); */
+
+  if (reg) {
+    if (reg[0].estado === "ENTREGADO") textClass = "success-bg";
+  }
+
+  /* console.log(textClass); */
 
   return (
     <motion.div
@@ -206,7 +218,7 @@ const EditRegister = () => {
               gap: 1,
             }}
           >
-            <Box className={`grid-2-cols ${status}`}>
+            <Box className={`grid-2-cols ${textClass}`}>
               <p className="reg-label">Estado</p>
               <p>{reg && reg[0].estado}</p>
             </Box>
@@ -249,35 +261,32 @@ const EditRegister = () => {
               </FormControl>
             </Box> */}
           </Box>
+          <Box>
+            <Link to={"/"}>
+              <Button
+                sx={{ height: 60 }}
+                variant="secondary-outlined"
+                className="btn"
+              >
+                {" "}
+                <CloseRoundedIcon
+                  /* */
 
-          <Link to={`/registro/${id}/editar-registro/`} state={{ from: reg }}>
-            <Button
-              /* onClick={() => {
-              fetch("http://localhost:3000/api/v1/impresosDB/registro/" + 2, {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  abono2: formik.values.updatePayment,
-                  resta: formik.values.updateDebt,
-                  estado: formik.values.updateStatus,
-                }),
-              })
-                .then((datos) => console.log(id))
-                .then((respuesta) => respuesta.ok)
-                .then((datos) => console.log(datos));
-            }} */
-              /* onClick={() => {
-              navigate(`/registro/${id}/editar-registro/`);
-            }} */
-              variant="prime"
-              sx={{ height: 55, mt: 2, gap: 2 }}
-            >
-              <EditIcon className="btn" sx={{ color: "white", fontSize: 40 }} />
-              <p>Actualizar</p>
-            </Button>
-          </Link>
+                  sx={{ fontSize: 40, color: "secondary.main" }}
+                />
+              </Button>
+            </Link>
+            <Link to={`/registro/${id}/editar-registro/`} state={{ from: reg }}>
+              <Button variant="prime" sx={{ height: 55, mt: 2, gap: 2 }}>
+                <EditIcon
+                  className="btn"
+                  sx={{ color: "white", fontSize: 40 }}
+                />
+                <p>Actualizar</p>
+              </Button>
+            </Link>
+          </Box>
+
           {/*   <p>{reg && Object.values(reg[0]).map((x) => <p>{x}</p>)}</p> */}
         </div>
       </div>

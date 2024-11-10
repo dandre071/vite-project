@@ -21,6 +21,7 @@ import {
 import { routes } from "../main";
 import { Settings } from "@mui/icons-material";
 import { getPageTitle } from "../components/utils/helpers";
+import { useEffect } from "react";
 const menuItems = [
   { text: "Venta", icon: <SellOutlinedIcon />, path: "/client-data" },
   { text: "Configuraciones", icon: <Settings />, path: "/Configuraciones" },
@@ -28,9 +29,14 @@ const menuItems = [
 /* const pathName = routes.filter(); */
 const Root = () => {
   /* const pageTitle =  pathText[0] ? pathText[0].name : ""; */
-  console.log(location.pathname.includes("editar-registro"));
+
   /* console.log(pathText[0].name); */
   const navigate = useNavigate();
+  useEffect(() => {
+    location.pathname.includes("editar-registro");
+    console.log(location.pathname.includes("registro"));
+  }, []);
+
   return (
     <ThemeProvider theme={customTheme}>
       <div className="grid-template">
