@@ -8,7 +8,11 @@ import bodyParser from "body-parser";
 const impresosDB = router;
 /* const users = usersRouter; */
 const corsOptions = {
-  origin: ["http://localhost:5173", "http://localhost:80"],
+  origin: [
+    "http://localhost:5173",
+    "http://localhost:80",
+    "http://192.168.1.3",
+  ],
 };
 
 const app = express();

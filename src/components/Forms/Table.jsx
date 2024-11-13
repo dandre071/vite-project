@@ -301,7 +301,7 @@ export default function Table() {
   const [orders, setOrders] = useState("");
   console.log(jobList);
   const [value, setValue] = useState(orders);
-  console.log(value.toString());
+  console.log(value);
   const [inputValue, setInputValue] = useState("");
   console.log(inputValue);
   useEffect(() => {
@@ -312,20 +312,36 @@ export default function Table() {
         setOrders(data.map((x) => x.id));
       });
   }, []);
-  const [filteredJobList, setfilteredJobList] = useState(jobList);
-  /* const rows = [{ id: jobList, lastName: "Snow", firstName: "Jon", age: 14 }]; */
-  const getRegById = () => {
-    fetch("http://localhost:3000/api/v1/impresosDB/registro/" + value && value)
+  const getReg = () => {
+    fetch("http://localhost:3000/api/v1/impresosDB/registro")
       .then((res) => res.json())
       .then((data) => {
         setJobList(data);
+        /*   setOrders(data.map((x) => x.id)); */
+      });
+  };
+  const [filteredJobList, setfilteredJobList] = useState("");
+  /* const rows = [{ id: jobList, lastName: "Snow", firstName: "Jon", age: 14 }]; */
+  const getRegById = () => {
+    fetch(
+      "http://localhost:3000/api/v1/impresosDB/registro/" + inputValue &&
+        inputValue
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setfilteredJobList(jobList.filter((x) => x.id === value));
+
         /* setOrders(data.map((x) => x.id)); */
       });
   };
-  /*   if (inputValue === "") setfilteredJobList(jobList); */
+  console.log(value);
+  /*  if (inputValue === "") setfilteredJobList(jobList); */
   const getListByOrder = () => {
-    setfilteredJobList(jobList.filter((x) => x.id === 5));
+    if (formik.values.orderN)
+      setfilteredJobList(jobList.filter((x) => x.id === value));
+    else setfilteredJobList(jobList);
   };
+  console.log(formik.values.orderN);
   console.log(filteredJobList);
   /*  console.log(jobList && Object.values(jobList[0])); */
   // console.log(jobList && jobList[0].filter((x) => x.id === 4));
@@ -337,14 +353,15 @@ export default function Table() {
       >
         <Autocomplete
           name="orderN"
+          freeSolo
           /* onClose={() => {
           formik.setValues({ ...formik.values, itemTotalPrice: 0 });
         }} */
-          freeSolo
+          // getOptionLabel={(option) => option.toString() || ""}
           value={value}
           onChange={(event, newValue) => {
             setValue(newValue);
-            console.log(typeof value);
+            console.log(typeof newValue);
           }}
           inputValue={inputValue}
           onInputChange={(event, newInputValue) => {
@@ -356,7 +373,7 @@ export default function Table() {
             <TextField {...params} label="Buscar Orden" />
           )}
         />
-        <Button onClick={getListByOrder}>Buscar</Button>
+        <Button onClick={() => getRegById}>Buscar</Button>
       </Box>
 
       <Box sx={{ height: "auto", width: "auto" }}>
