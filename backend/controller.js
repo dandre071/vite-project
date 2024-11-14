@@ -63,6 +63,25 @@ export const getRegister = (req, response) => {
     response.status(200).json(results.rows);
   });
 };
+export const searchByName = (req, response) => {
+  const searchTerm = req.query.term;
+  if (!searchTerm) {
+    return res.status(400)
+        .json(
+            {
+                error: 'Search term is required'
+            });
+} 
+const searchValue = `%${searchTerm}%`;
+
+  pool.query(`SELECT * FROM registro WHERE nombre LIKE ?`,[searchValue,
+    searchValue], (error, results) => {
+
+    
+    if (error) throw error;
+    response.status(200).json(results.rows);
+  });
+};
 export const createRegister = (request, response) => {
   /*  const { id, producto, precio } = request.body; */
   const {

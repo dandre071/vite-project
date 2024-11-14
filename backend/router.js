@@ -9,6 +9,7 @@ import {
   getProducts,
   getRegById,
   getRegister,
+  searchByName,
   /*  getUsers,
   getVinylPrice, */
   updateReg,
@@ -17,12 +18,13 @@ import {
 export const router = express.Router();
 
 router.get("/", getProducts);
+
 router.post("/", createProduct);
 //IMPRESOS SERVER
 router.put("/registro/:id", updateReg);
 router.get("/registro", getRegister);
 router.get("/registro/:id", getRegById);
-
+router.get("/registro/search", searchByName);
 router.post("/registro", createRegister);
 
 ////////////////////////////////////////////////

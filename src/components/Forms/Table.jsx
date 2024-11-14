@@ -329,9 +329,22 @@ export default function Table() {
     )
       .then((res) => res.json())
       .then((data) => {
-        setfilteredJobList(jobList.filter((x) => x.id === value));
-
+        const filtered = data.filter((x) => x.id === value)
+        setJobList(filtered);
+console.log(filtered)
         /* setOrders(data.map((x) => x.id)); */
+      });
+  };
+  const getRegByName= () => {
+    fetch(
+      "http://localhost:3000/api/v1/impresosDB/registro/" 
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        
+        setJobList(filtered);
+console.log(filtered)
+     
       });
   };
   console.log(value);
@@ -373,7 +386,7 @@ export default function Table() {
             <TextField {...params} label="Buscar Orden" />
           )}
         />
-        <Button onClick={() => getRegById}>Buscar</Button>
+        <Button onClick={getRegById()}>Buscar</Button>
       </Box>
 
       <Box sx={{ height: "auto", width: "auto" }}>
@@ -392,8 +405,8 @@ export default function Table() {
             },
           }}
           /* rows={rows} */
-          /*  rows={jobList} */
-          rows={filteredJobList}
+           rows={jobList}
+      /*     rows={filteredJobList} */
           columns={columns}
           initialState={{
             pagination: {
