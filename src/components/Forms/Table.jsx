@@ -22,6 +22,8 @@ import { getClassName, getClassNameTable } from "../utils/helpers";
 import { useFormik } from "formik";
 import { array } from "yup";
 import CircularProgress from "@mui/material/CircularProgress";
+import { ReplayOutlined, Search } from "@mui/icons-material";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 const key = uuid4();
 
 const width = 1300;
@@ -287,7 +289,12 @@ export default function Table() {
       .then((res) => res.json())
       .then((data) => {
         setJobList(data);
+
         console.log(data);
+      })
+      .finally(() => {
+        formik.setValues({ ...formik.values, orderN: "" });
+        setInputValue("");
       });
   };
 
@@ -323,7 +330,9 @@ export default function Table() {
             />
           )}
         />
-        <Button onClick={getRegById}>Buscar</Button>
+        <Button sx={{ width: 40 }} onClick={getRegById}>
+          {inputValue ? <Search /> : <ReplayOutlined />}
+        </Button>
       </Box>
 
       <Box sx={{ width: width }}>
