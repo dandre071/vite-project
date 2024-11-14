@@ -253,7 +253,7 @@ const columns = [
 ];
 
 export default function Table() {
-  const [jobList, setJobList] = useState(null);
+  const [jobList, setJobList] = useState([]);
 
   const [listByOrder, setListByOrder] = useState("");
   const formik = useFormik({
@@ -262,14 +262,10 @@ export default function Table() {
     },
   });
 
-  /* const options = jobList || null; */
-  const [orders, setOrders] = useState("");
-  console.log(jobList);
+  const [orders, setOrders] = useState([]);
+
   const [value, setValue] = useState(orders);
-  console.log(value);
-  console.log(formik.values.orderN);
   const [inputValue, setInputValue] = useState("");
-  console.log(inputValue);
   useEffect(() => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro")
       .then((res) => res.json())
@@ -283,11 +279,9 @@ export default function Table() {
       .then((res) => res.json())
       .then((data) => {
         setJobList(data);
-        /*   setOrders(data.map((x) => x.id)); */
       });
   };
-  const [filteredJobList, setfilteredJobList] = useState([]);
-  /* const rows = [{ id: jobList, lastName: "Snow", firstName: "Jon", age: 14 }]; */
+
   const getRegById = () => {
     fetch(
       "http://localhost:3000/api/v1/impresosDB/registro/" +
@@ -295,30 +289,11 @@ export default function Table() {
     )
       .then((res) => res.json())
       .then((data) => {
-        const filtered = data.filter((x) => x.id === value);
-        setJobList(filtered);
-        console.log(filtered);
-        /* setOrders(data.map((x) => x.id)); */
+        setJobList(data);
+        console.log(data);
       });
   };
-  const searchById = () => {
-    const found = Object.values(jobList);
-    console.log(Array.from(jobList[0]));
-  };
-  console.log(value);
-  console.log(inputValue);
 
-  /*  if (inputValue === "") setfilteredJobList(jobList); */
-  const getListByOrder = () => {
-    if (formik.values.orderN)
-      setfilteredJobList(jobList.filter((x) => x.id === value));
-    else setfilteredJobList(jobList);
-  };
-  console.log(formik.values.orderN);
-  console.log(filteredJobList);
-  /*  console.log(jobList && Object.values(jobList[0])); */
-  // console.log(jobList && jobList[0].filter((x) => x.id === 4));
-  /* console.log(setReg); */
   return (
     <Box sx={{ height: "100vh" /*  backgroundColor: "red" */ }}>
       <Box
@@ -331,11 +306,10 @@ export default function Table() {
           /* onClose={() => {
           formik.setValues({ ...formik.values, itemTotalPrice: 0 });
         }} */
-          // getOptionLabel={(option) => option.toString() || ""}
+          getOptionLabel={(option) => option.toString() || ""}
           value={value}
           onChange={(event, newValue) => {
             setValue(newValue);
-            console.log(typeof newValue);
           }}
           inputValue={inputValue}
           onInputChange={(event, newInputValue) => {
@@ -352,7 +326,7 @@ export default function Table() {
             />
           )}
         />
-        <Button onClick={searchById}>Buscar</Button>
+        <Button onClick={getRegById}>Buscar</Button>
       </Box>
 
       <Box sx={{ width: width }}>
