@@ -24,7 +24,7 @@ router.post("/", createProduct);
 router.put("/registro/:id", updateReg);
 router.get("/registro", getRegister);
 router.get("/registro/:id", getRegById);
-router.get("/registro/search", searchByName);
+router.get("/search", searchByName);
 router.post("/registro", createRegister);
 
 ////////////////////////////////////////////////

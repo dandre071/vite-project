@@ -20,6 +20,7 @@ import uuid4 from "uuid4";
 import { useRegData } from "../../store/regStore";
 import { getClassName, getClassNameTable } from "../utils/helpers";
 import { useFormik } from "formik";
+import { array } from "yup";
 
 const key = uuid4();
 /* const handleClick = (event, cellValues) => {
@@ -42,6 +43,7 @@ const columns = [
 
     headerName: "Orden",
     width: 60 /* headerClassName:  headerAlign:  */,
+    cellClassName: "bold",
   },
   {
     align: "center",
@@ -67,10 +69,11 @@ const columns = [
     headerClassName: "table-header",
     field: "nombre",
     headerName: "Cliente",
+
     /*  type: "number", */
-    width: 200,
+    width: 250,
     /*  editable: true, */
-    cellClassName: "text-transform",
+    cellClassName: "text-transform bold",
   },
 
   {
@@ -85,6 +88,10 @@ const columns = [
     /* renderCell: (cellValues) => {
       return <p>{cellValues[0]}</p>;
     }, */
+    filterable: false,
+    sortable: false,
+    hideable: false,
+    /* disableColumnMenu: true, */
     renderCell: (cellValues) => {
       const val = cellValues.row.trabajo;
       /*   return val; */
@@ -150,19 +157,6 @@ const columns = [
     valueFormatter: (value) => colPesos.format(value),
     cellClassName: "fw-800",
   },
-  /* {
-    headerClassName: "table-header",
-    field: "abono1",
-    headerName: "Abono",
-    type: "number",
-    width: 90,
-    valueFormatter: (value) => `$${value}`,
-  
-    valueGetter: (value, row) => {
-      return row.abono1 + parseInt(row.abono2);
-      console.log(parseInt(row.abono2) + row.abono1);
-    },
-  }, */
 
   {
     align: "center",
@@ -175,17 +169,19 @@ const columns = [
     width: 90,
     renderCell: (cellValues) => {
       return parseInt(cellValues.row.resta) === 0 ? (
-        <Box className="success-bg fw-800 center">
-          <Typography sx={{ fontSize: 14, fontWeight: 800, color: "white" }}>
+        <Box className="success-out-bg fw-800 center">
+          <Typography
+            sx={{ fontSize: 12, fontWeight: 800, color: "success.main" }}
+          >
             PAGADO
           </Typography>
         </Box>
       ) : (
         <Box
-          className="error-bg fw-800 center"
+          className="error-out-bg fw-800 center"
           sx={{ fontSize: 14, fontWeight: 800, color: "white" }}
         >
-          <Typography sx={{ fontSize: 14, fontWeight: 800, color: "white" }}>
+          <Typography sx={{ fontSize: 14, fontWeight: 800, color: "red" }}>
             {" "}
             {colPesos.format(cellValues.row.resta)}
           </Typography>
@@ -210,7 +206,10 @@ const columns = [
     renderCell: (cellValues) => {
       return (
         <Box className={getClassNameTable(cellValues.row.estado)}>
-          {cellValues.row.estado}
+          <Typography sx={{ fontSize: 12, fontWeight: 800 }}>
+            {" "}
+            {cellValues.row.estado}
+          </Typography>
         </Box>
       );
     },
@@ -221,7 +220,7 @@ const columns = [
     headerAlign: "center",
     headerClassName: "table-header",
     field: " ",
-    width: 60,
+    width: 50,
 
     renderCell: (cellValues, row) => {
       const navigate = useNavigate();
@@ -251,40 +250,15 @@ const columns = [
                 // click(cellValues.row.id);
                 //navigate("/registro/" + cellValues.row.id);
               }}
-              sx={{ fontSize: 30, color: "primary.dark" }}
+              sx={{ fontSize: 25, color: "primary.dark", display: "flex" }}
               id={cellValues.row.id}
             />
           </Link>
         </Box>
       );
-
-      /* <Button
-          variant="contained"
-          color="primary"
-          onClick={(event) => {
-            handleClick(event, cellValues);
-          }}
-        >
-          Print
-        </Button> */
     },
     cellClassName: "center",
   },
-  /*  {
-    field: "observaciones",
-    headerName: "Observaciones",
-     type: "number",
-    width: 200,
-    editable: true, 
-  }, */
-  /*   {
-    field: "fullName",
-    headerName: "Full name",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    width: 160,
-    valueGetter: (value, row) => `${row.firstName || ""} ${row.lastName || ""}`,
-  }, */
 ];
 
 export default function Table() {
@@ -320,7 +294,7 @@ export default function Table() {
         /*   setOrders(data.map((x) => x.id)); */
       });
   };
-  const [filteredJobList, setfilteredJobList] = useState("");
+  const [filteredJobList, setfilteredJobList] = useState([]);
   /* const rows = [{ id: jobList, lastName: "Snow", firstName: "Jon", age: 14 }]; */
   const getRegById = () => {
     fetch(
@@ -329,23 +303,15 @@ export default function Table() {
     )
       .then((res) => res.json())
       .then((data) => {
-        const filtered = data.filter((x) => x.id === value)
+        const filtered = data.filter((x) => x.id === value);
         setJobList(filtered);
-console.log(filtered)
+        console.log(filtered);
         /* setOrders(data.map((x) => x.id)); */
       });
   };
-  const getRegByName= () => {
-    fetch(
-      "http://localhost:3000/api/v1/impresosDB/registro/" 
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        
-        setJobList(filtered);
-console.log(filtered)
-     
-      });
+  const searchById = () => {
+    const found = Object.values(jobList);
+    console.log(Array.from(jobList[0]));
   };
   console.log(value);
   /*  if (inputValue === "") setfilteredJobList(jobList); */
@@ -360,7 +326,7 @@ console.log(filtered)
   // console.log(jobList && jobList[0].filter((x) => x.id === 4));
   /* console.log(setReg); */
   return (
-    <Box>
+    <Box sx={{ height: "100vh" /*  backgroundColor: "red" */ }}>
       <Box
         sx={{ display: "grid", width: "50%", gridTemplateColumns: "100px 1fr" }}
       >
@@ -386,27 +352,28 @@ console.log(filtered)
             <TextField {...params} label="Buscar Orden" />
           )}
         />
-        <Button onClick={getRegById()}>Buscar</Button>
+        <Button onClick={searchById}>Buscar</Button>
       </Box>
 
-      <Box sx={{ height: "auto", width: "auto" }}>
+      <Box sx={{ width: 1270 }}>
         <DataGrid
           getRowId={(row) => row.id}
           rowHeight={"auto"}
           sx={{
+            width: "100%",
             border: "none",
             justifySelf: "start",
             "&.MuiDataGrid-root": {
               border: "none",
             },
-            "& .MuiDataGrid-sortIcon": {
-              opacity: "inherit !important",
-              width: 20,
+            "& .MuiDataGrid-iconButtonContainer": {
+              display: "none",
             },
           }}
           /* rows={rows} */
-           rows={jobList}
-      /*     rows={filteredJobList} */
+          rows={jobList}
+          /*     rows={filteredJobList} */
+          disableColumnMenu
           columns={columns}
           initialState={{
             pagination: {

@@ -890,6 +890,7 @@ body {
   top: 0;
   background-color: var(--primary-main);
   background-color: rgba(255, 255, 255, 0.9);
+  background-color: #263b88;
   /*  background-color: var(--primary-dark); */
   border-bottom: 2px solid rgb(238, 238, 238);
 }
@@ -1254,10 +1255,13 @@ body {
 }
 .table-header {
   font-weight: 800;
-  font-size: 1.2em;
-  /*  background-color: #000000;
+  font-size: 1em;
+
+  background-color: var(--primary-main);
+  background-color: rgb(33, 105, 212);
   color: white;
-  font-weight: 800; */
+  font-weight: 800;
+  height: 20px;
 }
 
 .color-primary {
@@ -1320,7 +1324,7 @@ body {
 }
 .initial-bg {
   width: 98%;
-  height: 80%;
+  height: 60%;
   font-weight: 600;
   color: rgb(160, 160, 160);
   text-transform: uppercase;
@@ -1330,7 +1334,7 @@ body {
 }
 .design-bg {
   width: 98%;
-  height: 80%;
+  height: 60%;
   font-weight: 600;
   color: rgb(255, 255, 255);
   text-transform: uppercase;
@@ -1340,7 +1344,7 @@ body {
 }
 .print-bg {
   width: 98%;
-  height: 80%;
+  height: 60%;
   font-weight: 600;
   color: rgb(255, 255, 255);
   text-transform: uppercase;
@@ -1350,7 +1354,7 @@ body {
 }
 .finish-bg {
   width: 98%;
-  height: 80%;
+  height: 60%;
   font-weight: 600;
   color: rgb(36, 36, 36);
   text-transform: uppercase;
@@ -1359,8 +1363,11 @@ body {
   /*  border: 2.8px solid rgb(160, 160, 160); */
 }
 .ready-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 98%;
-  height: 80%;
+  height: 60%;
   font-weight: 600;
   color: rgb(255, 255, 255);
   text-transform: uppercase;
@@ -1369,8 +1376,11 @@ body {
   /*  border: 2.8px solid rgb(160, 160, 160); */
 }
 .delay-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 98%;
-  height: 80%;
+  height: 60%;
   font-weight: 600;
   color: rgb(170, 130, 0);
   text-transform: uppercase;
@@ -1379,8 +1389,11 @@ body {
   /*  border: 2.8px solid rgb(160, 160, 160); */
 }
 .cancelled-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 98%;
-  height: 80%;
+  height: 60%;
   font-weight: 600;
   color: rgb(255, 255, 255);
   text-transform: uppercase;
@@ -1389,17 +1402,41 @@ body {
   /*  border: 2.8px solid rgb(160, 160, 160); */
 }
 .success-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 98%;
-  height: 80%;
+  height: 60%;
   font-weight: 600;
   color: white;
   text-transform: uppercase;
   border-radius: var(--reg-radius);
   background-color: var(--success);
 }
+.success-out-bg {
+  width: 98%;
+  height: 60%;
+  font-weight: 600;
+  color: var(--success);
+  text-transform: uppercase;
+  border-radius: var(--reg-radius);
+  border: 2px solid var(--success);
+}
+.error-out-bg {
+  width: 98%;
+  height: 60%;
+  font-weight: 600;
+  color: rgb(255, 0, 0);
+  text-transform: uppercase;
+  border-radius: var(--reg-radius);
+  border: 2px solid rgb(255, 0, 0);
+}
 .process-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 80%;
+  height: 60%;
   font-weight: 600;
   color: rgb(235, 133, 0);
   text-transform: uppercase;
@@ -1408,9 +1445,15 @@ body {
 }
 
 .error-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 80%;
+  height: 60%;
   align-self: center;
   /*  border-radius: 6px; */
   background-color: rgb(255, 0, 0);
+}
+.bold {
+  font-weight: 800;
 }
