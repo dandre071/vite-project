@@ -283,10 +283,7 @@ export default function Table() {
   };
 
   const getRegById = () => {
-    fetch(
-      "http://localhost:3000/api/v1/impresosDB/registro/" +
-        formik.values.orderN && formik.values.orderN
-    )
+    fetch("http://localhost:3000/api/v1/impresosDB/registro/" + inputValue)
       .then((res) => res.json())
       .then((data) => {
         setJobList(data);
