@@ -21,18 +21,10 @@ import { useRegData } from "../../store/regStore";
 import { getClassName, getClassNameTable } from "../utils/helpers";
 import { useFormik } from "formik";
 import { array } from "yup";
-
+import CircularProgress from "@mui/material/CircularProgress";
 const key = uuid4();
-/* const handleClick = (event, cellValues) => {
-  console.log(cellValues.row);
-}; */
-/* const getReg = (id) => {
-  fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-    });
-}; */
+
+const width = 1300;
 getClassName();
 const columns = [
   {
@@ -42,7 +34,7 @@ const columns = [
     field: "id",
 
     headerName: "Orden",
-    width: 60 /* headerClassName:  headerAlign:  */,
+    width: `${width * 0.047}` /* headerClassName:  headerAlign:  */,
     cellClassName: "bold",
   },
   {
@@ -51,7 +43,7 @@ const columns = [
     headerClassName: "table-header",
     field: "fecha_recibido",
     headerName: "Recepción",
-    width: 90,
+    width: `${width * 0.071}`,
     /*    editable: true, */
   },
   {
@@ -60,7 +52,7 @@ const columns = [
     headerClassName: "table-header",
     field: "fecha_entrega",
     headerName: "Entrega",
-    width: 90,
+    width: `${width * 0.07}`,
     /*  editable: true, */
   },
   {
@@ -71,7 +63,7 @@ const columns = [
     headerName: "Cliente",
 
     /*  type: "number", */
-    width: 250,
+    width: `${width * 0.197}`,
     /*  editable: true, */
     cellClassName: "text-transform bold",
   },
@@ -83,7 +75,7 @@ const columns = [
     field: "trabajo",
     headerName: "Trabajo",
     /*   type: "number", */
-    width: 270,
+    width: `${width * 0.213}`,
     /*   editable: true, */
     /* renderCell: (cellValues) => {
       return <p>{cellValues[0]}</p>;
@@ -130,7 +122,7 @@ const columns = [
     field: "recibe",
     headerName: "Recibe",
     /*  type: "number", */
-    width: 90,
+    width: `${width * 0.071}`,
     /*  editable: true, */
     cellClassName: "text-transform",
   },
@@ -141,7 +133,7 @@ const columns = [
     field: "realiza",
     headerName: "Realiza",
     /*  type: "number", */
-    width: 90,
+    width: `${width * 0.071}`,
     /*  editable: true, */
     cellClassName: "text-transform",
   },
@@ -152,7 +144,7 @@ const columns = [
     field: "total",
     headerName: "Total",
     type: "number",
-    width: 90,
+    width: `${width * 0.071}`,
     /*  editable: true, */
     valueFormatter: (value) => colPesos.format(value),
     cellClassName: "fw-800",
@@ -182,7 +174,6 @@ const columns = [
           sx={{ fontSize: 14, fontWeight: 800, color: "white" }}
         >
           <Typography sx={{ fontSize: 14, fontWeight: 800, color: "red" }}>
-            {" "}
             {colPesos.format(cellValues.row.resta)}
           </Typography>
         </Box>
@@ -201,7 +192,7 @@ const columns = [
     field: "estado",
     headerName: "Estado",
     /*  type: "number", */
-    width: 100,
+    width: `${width * 0.079}`,
     /*  editable: true, */
     renderCell: (cellValues) => {
       return (
@@ -220,7 +211,7 @@ const columns = [
     headerAlign: "center",
     headerClassName: "table-header",
     field: " ",
-    width: 50,
+    width: `${width * 0.036}`,
 
     renderCell: (cellValues, row) => {
       const navigate = useNavigate();
@@ -267,7 +258,7 @@ export default function Table() {
   const [listByOrder, setListByOrder] = useState("");
   const formik = useFormik({
     initialValues: {
-      orderN: null,
+      orderN: "",
     },
   });
 
@@ -276,6 +267,7 @@ export default function Table() {
   console.log(jobList);
   const [value, setValue] = useState(orders);
   console.log(value);
+  console.log(formik.values.orderN);
   const [inputValue, setInputValue] = useState("");
   console.log(inputValue);
   useEffect(() => {
@@ -298,8 +290,8 @@ export default function Table() {
   /* const rows = [{ id: jobList, lastName: "Snow", firstName: "Jon", age: 14 }]; */
   const getRegById = () => {
     fetch(
-      "http://localhost:3000/api/v1/impresosDB/registro/" + inputValue &&
-        inputValue
+      "http://localhost:3000/api/v1/impresosDB/registro/" +
+        formik.values.orderN && formik.values.orderN
     )
       .then((res) => res.json())
       .then((data) => {
@@ -314,6 +306,8 @@ export default function Table() {
     console.log(Array.from(jobList[0]));
   };
   console.log(value);
+  console.log(inputValue);
+
   /*  if (inputValue === "") setfilteredJobList(jobList); */
   const getListByOrder = () => {
     if (formik.values.orderN)
@@ -333,6 +327,7 @@ export default function Table() {
         <Autocomplete
           name="orderN"
           freeSolo
+          disableClearable
           /* onClose={() => {
           formik.setValues({ ...formik.values, itemTotalPrice: 0 });
         }} */
@@ -349,14 +344,30 @@ export default function Table() {
           options={orders}
           /* fullWidth */
           renderInput={(params) => (
-            <TextField {...params} label="Buscar Orden" />
+            <TextField
+              name="orderN"
+              onChange={formik.handleChange}
+              {...params}
+              label="Buscar Orden"
+            />
           )}
         />
         <Button onClick={searchById}>Buscar</Button>
       </Box>
 
-      <Box sx={{ width: 1270 }}>
+      <Box sx={{ width: width }}>
         <DataGrid
+          /*  loading={loading} */
+          /* components={{
+            LoadingOverlay: CircularProgress,
+          }} */
+          /*    loading */
+          slotProps={{
+            loadingOverlay: {
+              variant: "linear-progress",
+              noRowsVariant: "skeleton",
+            },
+          }}
           getRowId={(row) => row.id}
           rowHeight={"auto"}
           sx={{
@@ -365,6 +376,7 @@ export default function Table() {
             justifySelf: "start",
             "&.MuiDataGrid-root": {
               border: "none",
+              overflow: "hidden",
             },
             "& .MuiDataGrid-iconButtonContainer": {
               display: "none",
