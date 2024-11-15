@@ -24,9 +24,21 @@ import { getPageTitle } from "../components/utils/helpers";
 import { useEffect } from "react";
 import StorageRoundedIcon from "@mui/icons-material/StorageRounded";
 const menuItems = [
-  { text: "Venta", icon: <SellOutlinedIcon />, path: "/client-data" },
-  { text: "Configuraciones", icon: <Settings />, path: "/Configuraciones" },
-  { text: "Registro", icon: <StorageRoundedIcon />, path: "/trabajos" },
+  {
+    text: "Venta",
+    icon: <SellOutlinedIcon sx={{ fontSize: 30 }} />,
+    path: "/client-data",
+  },
+  {
+    text: "Configuraciones",
+    icon: <Settings sx={{ fontSize: 30 }} />,
+    path: "/Configuraciones",
+  },
+  {
+    text: "Registro",
+    icon: <StorageRoundedIcon sx={{ fontSize: 30 }} />,
+    path: "/trabajos",
+  },
 ];
 /* const pathName = routes.filter(); */
 const Root = () => {
@@ -50,7 +62,7 @@ const Root = () => {
             sx={{
               width: 200,
               flexShrink: 0,
-
+              fontSize: 12,
               "& .MuiDrawer-paper": {
                 zIndex: 0,
                 top: "auto",
@@ -60,8 +72,8 @@ const Root = () => {
                 /*  bgcolor: "#0530ad", */
                 /*    bgcolor: "red", */
                 height: "50%",
-                width: 200,
-                alignSelf: "center",
+                width: 190,
+                alignSelf: "start",
                 boxSizing: "border-box",
                 overflow: "hidden",
               },
@@ -76,9 +88,12 @@ const Root = () => {
                   key={item.text}
                   sx={{
                     width: 190,
-                    borderRadius: 1,
+                    borderRadius: 0,
                     flexShrink: 0,
                     fontSize: 12,
+                    p: 1,
+                    display: "grid",
+                    gridTemplateColumns: "auto 1fr",
                     /*   bgcolor: "blue", */
                     "&.Mui-selected": {
                       backgroundColor: "#e1e1e1",
@@ -97,14 +112,19 @@ const Root = () => {
                       : null
                   }
                 >
-                  <ListItemIcon sx={{ fontSize: 12 }}>{item.icon}</ListItemIcon>
+                  <ListItemIcon sx={{ width: "auto", p: 0 }}>
+                    {item.icon}
+                  </ListItemIcon>
 
                   <Typography
                     style={{
+                      width: "auto",
                       color: "black",
                       fontWeight: 600,
-                      fontSize: 20,
+                      fontSize: 18,
                       textAlign: "left",
+                      p: 0,
+                      m: 0,
                     }}
                   >
                     {item.text}
