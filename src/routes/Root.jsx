@@ -71,11 +71,12 @@ const Root = () => {
                 alignItems: "center",
                 /*  bgcolor: "#0530ad", */
                 /*    bgcolor: "red", */
-                height: "80%",
+                height: "100%",
                 width: 190,
                 alignSelf: "start",
                 boxSizing: "border-box",
                 overflow: "hidden",
+                border: "none",
               },
             }}
           >
