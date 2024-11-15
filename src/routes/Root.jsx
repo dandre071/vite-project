@@ -23,6 +23,7 @@ import { Settings } from "@mui/icons-material";
 import { getPageTitle } from "../components/utils/helpers";
 import { useEffect } from "react";
 import StorageRoundedIcon from "@mui/icons-material/StorageRounded";
+import LogoMono from "../components/LogoMono";
 const menuItems = [
   {
     text: "Venta",
@@ -138,8 +139,9 @@ const Root = () => {
         <div className={"nav-area"}>
           <div>
             <Link to={"/"}>
-              <Box className="logo-container">
-                <Logo className="logo" style={{ fill: "white" }} />
+              <Box className="logo-container" style={{ fill: "white" }}>
+                {/*  <Logo className="logo" style={{ fill: "white" }} /> */}
+                <LogoMono className="logo" />
               </Box>
             </Link>
             <div></div>

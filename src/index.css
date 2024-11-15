@@ -1458,3 +1458,7 @@ body {
 .bold {
   font-weight: 800;
 }
+.logo-mono {
+  color: white;
+  /*   color: rgb(34, 153, 252); */
+}

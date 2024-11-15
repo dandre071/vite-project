@@ -164,7 +164,7 @@ export const searchByName = (req, response) => {
   );
 };
 
-export const selectByStatus = (req, response) => {
+/* export const selectByStatus = (req, response) => {
   const { q } = req.query;
   if (!q) {
     return response
@@ -182,4 +182,4 @@ export const selectByStatus = (req, response) => {
       response.status(200).json(results.rows);
     }
   );
-};
+}; */

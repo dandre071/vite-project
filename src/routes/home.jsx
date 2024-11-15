@@ -44,7 +44,7 @@ const Home = () => {
       .then(getProductList());
   }; */
 
-  const createRegister = () => {
+  /* const createRegister = () => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro", {
       method: "POST",
       headers: {
@@ -57,7 +57,7 @@ const Home = () => {
         nit: 1234567890,
         telefono: 3206598822,
         email: "prueba@gmail.com",
-        /* trabajo: '{"trabajo1","trabajo2"}', */
+        
         trabajo: '{"value1", "value2"}',
         recibe: "diego",
         realiza: "diego",
@@ -68,10 +68,9 @@ const Home = () => {
         estado: "Listo",
         observaciones: "fjfdkfjdkjfkdjf",
       }),
-    })
-      .then((respuesta) => respuesta.ok)
-      .then((datos) => console.log(datos));
-  };
+    }).then((respuesta) => respuesta.ok);
+
+  }; */
   /*  useEffect(() => {
     const getProductList = () => {
       fetch("http://localhost:3000/api/v1/impresosDB/")
@@ -100,8 +99,8 @@ const Home = () => {
   return (
     <>
       <Table />
-      <Button onClick={createRegister}>crear</Button>
-      <Button onClick={filteredList}>crear</Button>{" "}
+      <Button /* onClick={createRegister} */>crear</Button>
+      <Button /* onClick={filteredList} */>crear</Button>{" "}
     </>
   );
 };

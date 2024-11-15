@@ -111,7 +111,7 @@ const columns = [
                 p: 0.2,
                 height: "100%",
               }}
-              key={x}
+              key={x + Math.random()}
             >
               {`${val.indexOf(x) + 1}. ${x}`}
             </Typography>
@@ -265,7 +265,7 @@ export default function Table() {
   const formik = useFormik({
     initialValues: {
       orderN: "",
-      filterOption: "",
+      filterOption: "todo",
     },
   });
 
@@ -300,14 +300,15 @@ export default function Table() {
   };
   const query = inputValue;
 
-  const filterByClient = () => {
+  /* const filterByClient = () => {
     fetch(`http://localhost:3000/api/v1/impresosDB/search?q=${query}`)
       .then((res) => res.json())
       .then((data) => {
         setJobList(data);
       });
   };
-  const getRegById = () => {
+ */
+  /*  const getRegById = () => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro/" + inputValue)
       .then((res) => res.json())
       .then((data) => {
@@ -319,28 +320,51 @@ export default function Table() {
         formik.setValues({ ...formik.values, orderN: "" });
         setInputValue("");
       });
-  };
+  }; */
 
-  useEffect(() => {
+  /*  useEffect(() => {
     getRegById();
-  }, []);
-  useEffect(() => {
+  }); */
+  /*  useEffect(() => {
     filterByClient();
-  }, []);
-  useEffect(() => {
+  }); */
+  /* useEffect(() => {
     getReg();
-  });
+  }); */
   let optionChoice;
-  if (formik.values.filterOption !== "todo") {
-    if (formik.values.filterOption === "orden") optionChoice = orders;
-    if (formik.values.filterOption === "cliente") optionChoice = names;
-  } else if (formik.values.filterOption === "todo") {
-    /* getReg(); */
-  }
-  /*  if(formik.values.filterOption === "todo") setJobList() */
 
+  if (formik.values.filterOption === "orden") optionChoice = orders;
+  if (formik.values.filterOption === "cliente") optionChoice = names;
+
+  if (formik.values.filterOption === "todo") {
+  }
+  const searchFn = () => {
+    if (formik.values.filterOption === "orden") {
+      fetch("http://localhost:3000/api/v1/impresosDB/registro/" + inputValue)
+        .then((res) => res.json())
+        .then((data) => {
+          setJobList(data);
+
+          //console.log(data);
+        })
+        .finally(() => {
+          formik.setValues({ ...formik.values, orderN: "" });
+          setInputValue("");
+        });
+    } else if (formik.values.filterOption === "cliente") {
+      fetch(`http://localhost:3000/api/v1/impresosDB/search?q=${query}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setJobList(data);
+        })
+        .finally(() => {
+          formik.setValues({ ...formik.values, orderN: "" });
+          setInputValue("");
+        });
+    }
+  };
   return (
-    <Box sx={{ height: "100vh" /*  backgroundColor: "red" */ }}>
+    <Box sx={{ mt: 5, height: "100vh" /*  backgroundColor: "red" */ }}>
       <Box
         sx={{
           display: "flex",
@@ -353,6 +377,7 @@ export default function Table() {
         <FormControl sx={{ width: 200 }} fullWidth={false}>
           <InputLabel id="demo-simple-select-label">Filtrar</InputLabel>
           <Select
+            size="small"
             name="filterOption"
             value={formik.values.filterOption}
             label="Filtrar"
@@ -363,7 +388,7 @@ export default function Table() {
             ))}
           </Select>
         </FormControl>
-        {formik.values.filterOption && (
+        {formik.values.filterOption !== "todo" && (
           <Box
             sx={{
               display: "grid",
@@ -372,6 +397,7 @@ export default function Table() {
             }}
           >
             <Autocomplete
+              size="small"
               name="orderN"
               freeSolo
               disableClearable
@@ -402,16 +428,55 @@ export default function Table() {
                 />
               )}
             />
-            <Button
-              sx={{ width: 40 }}
+            <Box
+              className="btn"
+              sx={{
+                width: 55,
+                bgcolor: "#2299FC",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                left: -10,
+                position: "relative",
+                zIndex: 0,
+                borderRadius: "0 10px 10px 0",
+              }}
               onClick={
-                formik.values.filterOption === "orden"
-                  ? getRegById
-                  : filterByClient
+                /* formik.values.filterOption === "orden"
+                  ? 
+                    () => {
+                      fetch(
+                        "http://localhost:3000/api/v1/impresosDB/registro/" +
+                          inputValue
+                      )
+                        .then((res) => res.json())
+                        .then((data) => {
+                          setJobList(data);
+
+                        })
+                        .finally(() => {
+                          formik.setValues({ ...formik.values, orderN: "" });
+                          setInputValue("");
+                        });
+                    }
+                  :  () => {
+                      fetch(
+                        `http://localhost:3000/api/v1/impresosDB/search?q=${query}`
+                      )
+                        .then((res) => res.json())
+                        .then((data) => {
+                          setJobList(data);
+                        });
+                    } */
+                () => searchFn()
               }
             >
-              {inputValue ? <Search /> : <ReplayOutlined />}
-            </Button>
+              {inputValue ? (
+                <Search sx={{ color: "white" }} />
+              ) : (
+                <ReplayOutlined sx={{ color: "white" }} />
+              )}
+            </Box>
           </Box>
         )}
       </Box>
@@ -451,11 +516,11 @@ export default function Table() {
           initialState={{
             pagination: {
               paginationModel: {
-                pageSize: 5,
+                pageSize: 10,
               },
             },
           }}
-          pageSizeOptions={[5]}
+          pageSizeOptions={[10]}
           /*   checkboxSelection */
           disableRowSelectionOnClick
         />
