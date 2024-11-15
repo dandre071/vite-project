@@ -1023,9 +1023,7 @@ body {
 .primary-color {
   background: #ff00b3;
 }
-.MuiDrawer-paper {
-  background-color: #e50037;
-}
+
 @media only screen and (max-height: 800px) {
   .page-layout {
     /*  display: flex;

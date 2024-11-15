@@ -265,7 +265,7 @@ export default function Table() {
   const formik = useFormik({
     initialValues: {
       orderN: "",
-      filterOption: "",
+      filterOption: "todo",
     },
   });
 
@@ -299,7 +299,7 @@ export default function Table() {
       });
   };
   const query = inputValue;
-  console.log(query);
+  /*  console.log(query); */
   const filterByClient = () => {
     fetch(`http://localhost:3000/api/v1/impresosDB/search?q=${query}`)
       .then((res) => res.json())
@@ -320,6 +320,16 @@ export default function Table() {
         setInputValue("");
       });
   };
+
+  useEffect(() => {
+    getRegById();
+  }, []);
+  useEffect(() => {
+    filterByClient();
+  }, []);
+  useEffect(() => {
+    getReg();
+  }, []);
   let optionChoice;
   if (formik.values.filterOption !== "todo") {
     if (formik.values.filterOption === "orden") optionChoice = orders;

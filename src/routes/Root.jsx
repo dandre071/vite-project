@@ -71,7 +71,7 @@ const Root = () => {
                 alignItems: "center",
                 /*  bgcolor: "#0530ad", */
                 /*    bgcolor: "red", */
-                height: "50%",
+                height: "80%",
                 width: 190,
                 alignSelf: "start",
                 boxSizing: "border-box",
