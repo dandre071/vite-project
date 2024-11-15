@@ -97,9 +97,9 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "Configuraciones",
+    path: "dashboard",
     element: <ConfigPage />,
-    name: "Configurar",
+    name: "Dashboard",
   },
   {
     path: "/trabajos",

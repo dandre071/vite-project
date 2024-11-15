@@ -30,9 +30,9 @@ const menuItems = [
     path: "/client-data",
   },
   {
-    text: "Configuraciones",
+    text: "Dashboard",
     icon: <Settings sx={{ fontSize: 30 }} />,
-    path: "/Configuraciones",
+    path: "/dashboard",
   },
   {
     text: "Registro",
@@ -172,7 +172,7 @@ const Root = () => {
           </div>
         </div>
         <div className="footer">
-          <p>v.1.16.10.24</p>
+          <p>v.1.11.14</p>
         </div>
       </div>
     </ThemeProvider>
