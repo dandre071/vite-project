@@ -271,15 +271,18 @@ export default function Table() {
 
   const [orders, setOrders] = useState([]);
 
+  const [names, setNames] = useState([]);
+
   const [value, setValue] = useState(orders);
   const [inputValue, setInputValue] = useState("");
-  const filterOptions = ["", "orden", "nombre"];
+  const filterOptions = ["todo", "orden", "cliente"];
   useEffect(() => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro")
       .then((res) => res.json())
       .then((data) => {
         setJobList(data);
         setOrders(data.map((x) => x.id));
+        setNames(data.map((x) => x.nombre));
       });
   }, []);
   const getReg = () => {
@@ -289,7 +292,15 @@ export default function Table() {
         setJobList(data);
       });
   };
-
+  const query = inputValue;
+  console.log(query);
+  const filterByClient = () => {
+    fetch(`http://localhost:3000/api/v1/impresosDB/search?q=${query}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setJobList(data);
+      });
+  };
   const getRegById = () => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro/" + inputValue)
       .then((res) => res.json())
@@ -303,10 +314,24 @@ export default function Table() {
         setInputValue("");
       });
   };
-
+  let optionChoice;
+  if (formik.values.filterOption === "orden") optionChoice = orders;
+  if (formik.values.filterOption === "cliente") optionChoice = names;
+  /*  if(formik.values.filterOption === "todo") setJobList() */
+  const getOptionList = () => {
+    if (formik.values.filterOption === "orden") optionChoice = orders;
+    if (formik.values.filterOption === "cliente") optionChoice = names;
+  };
   return (
     <Box sx={{ height: "100vh" /*  backgroundColor: "red" */ }}>
-      <Box sx={{ display: "flex", gap: 2 }}>
+      <Box
+        sx={{
+          display: "flex",
+          gap: 2,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <FormControl sx={{ width: 200 }} fullWidth={false}>
           <InputLabel id="demo-simple-select-label">Filtrar</InputLabel>
           <Select
@@ -320,44 +345,53 @@ export default function Table() {
             ))}
           </Select>
         </FormControl>
-        <Box
-          sx={{
-            display: "grid",
-            width: "80%",
-            gridTemplateColumns: "500px 1fr",
-          }}
-        >
-          <Autocomplete
-            name="orderN"
-            freeSolo
-            disableClearable
-            /* onClose={() => {
+        {formik.values.filterOption !== "" && (
+          <Box
+            sx={{
+              display: "grid",
+              width: "80%",
+              gridTemplateColumns: "500px 1fr",
+            }}
+          >
+            <Autocomplete
+              name="orderN"
+              freeSolo
+              disableClearable
+              /* onClose={() => {
           formik.setValues({ ...formik.values, itemTotalPrice: 0 });
         }} */
-            getOptionLabel={(option) => option.toString() || ""}
-            value={value}
-            onChange={(event, newValue) => {
-              setValue(newValue);
-            }}
-            inputValue={inputValue}
-            onInputChange={(event, newInputValue) => {
-              setInputValue(newInputValue);
-            }}
-            options={orders}
-            /* fullWidth */
-            renderInput={(params) => (
-              <TextField
-                name="orderN"
-                onChange={formik.handleChange}
-                {...params}
-                label="Buscar Orden"
-              />
-            )}
-          />
-          <Button sx={{ width: 40 }} onClick={getRegById}>
-            {inputValue ? <Search /> : <ReplayOutlined />}
-          </Button>
-        </Box>
+              getOptionLabel={(option) => option.toString() || ""}
+              value={value}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+              }}
+              inputValue={inputValue}
+              onInputChange={(event, newInputValue) => {
+                setInputValue(newInputValue);
+              }}
+              options={optionChoice}
+              /* fullWidth */
+              renderInput={(params) => (
+                <TextField
+                  name="orderN"
+                  onChange={formik.handleChange}
+                  {...params}
+                  label="Buscar Orden"
+                />
+              )}
+            />
+            <Button
+              sx={{ width: 40 }}
+              onClick={
+                formik.values.filterOption === "orden"
+                  ? getRegById
+                  : filterByClient
+              }
+            >
+              {inputValue ? <Search /> : <ReplayOutlined />}
+            </Button>
+          </Box>
+        )}
       </Box>
 
       <Box sx={{ width: width }}>
