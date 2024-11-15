@@ -376,7 +376,11 @@ export default function Table() {
                   name="orderN"
                   onChange={formik.handleChange}
                   {...params}
-                  label="Buscar Orden"
+                  label={
+                    formik.values.filterOption === "orden"
+                      ? "Buscar Orden"
+                      : "Buscar Cliente"
+                  }
                 />
               )}
             />
