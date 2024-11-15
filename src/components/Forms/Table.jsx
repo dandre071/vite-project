@@ -260,12 +260,12 @@ const columns = [
 
 export default function Table() {
   const [jobList, setJobList] = useState([]);
-
+  const filterOptions = ["todo", "orden", "cliente"];
   const [listByOrder, setListByOrder] = useState("");
   const formik = useFormik({
     initialValues: {
       orderN: "",
-      filterOption: "todo",
+      filterOption: "",
     },
   });
 
@@ -275,7 +275,7 @@ export default function Table() {
 
   const [value, setValue] = useState(orders);
   const [inputValue, setInputValue] = useState("");
-  const filterOptions = ["todo", "orden", "cliente"];
+
   useEffect(() => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro")
       .then((res) => res.json())
@@ -364,7 +364,7 @@ export default function Table() {
             ))}
           </Select>
         </FormControl>
-        {formik.values.filterOption !== "todo" && (
+        {formik.values.filterOption && (
           <Box
             sx={{
               display: "grid",
