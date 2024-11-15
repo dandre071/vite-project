@@ -290,6 +290,8 @@ export default function Table() {
       .then((res) => res.json())
       .then((data) => {
         setJobList(data);
+        setOrders(data.map((x) => x.id));
+        setNames(data.map((x) => x.nombre));
       });
   };
   const query = inputValue;
@@ -315,13 +317,15 @@ export default function Table() {
       });
   };
   let optionChoice;
-  if (formik.values.filterOption === "orden") optionChoice = orders;
-  if (formik.values.filterOption === "cliente") optionChoice = names;
-  /*  if(formik.values.filterOption === "todo") setJobList() */
-  const getOptionList = () => {
+  if (formik.values.filterOption !== "todo") {
     if (formik.values.filterOption === "orden") optionChoice = orders;
     if (formik.values.filterOption === "cliente") optionChoice = names;
-  };
+  }
+  if (formik.values.filterOption === "todo") {
+    getReg();
+  }
+  /*  if(formik.values.filterOption === "todo") setJobList() */
+
   return (
     <Box sx={{ height: "100vh" /*  backgroundColor: "red" */ }}>
       <Box
@@ -345,7 +349,7 @@ export default function Table() {
             ))}
           </Select>
         </FormControl>
-        {formik.values.filterOption !== "" && (
+        {formik.values.filterOption !== "todo" && (
           <Box
             sx={{
               display: "grid",
