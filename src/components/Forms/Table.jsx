@@ -292,6 +292,10 @@ export default function Table() {
         setJobList(data);
         setOrders(data.map((x) => x.id));
         setNames(data.map((x) => x.nombre));
+      })
+      .finally(() => {
+        formik.setValues({ ...formik.values, orderN: "" });
+        setInputValue("");
       });
   };
   const query = inputValue;
@@ -332,8 +336,9 @@ export default function Table() {
         sx={{
           display: "flex",
           gap: 2,
-          justifyContent: "center",
+          justifyContent: "end",
           alignItems: "center",
+          mb: 1,
         }}
       >
         <FormControl sx={{ width: 200 }} fullWidth={false}>
@@ -353,7 +358,7 @@ export default function Table() {
           <Box
             sx={{
               display: "grid",
-              width: "80%",
+              width: "auto",
               gridTemplateColumns: "500px 1fr",
             }}
           >

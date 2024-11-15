@@ -22,9 +22,11 @@ import { routes } from "../main";
 import { Settings } from "@mui/icons-material";
 import { getPageTitle } from "../components/utils/helpers";
 import { useEffect } from "react";
+import StorageRoundedIcon from "@mui/icons-material/StorageRounded";
 const menuItems = [
   { text: "Venta", icon: <SellOutlinedIcon />, path: "/client-data" },
   { text: "Configuraciones", icon: <Settings />, path: "/Configuraciones" },
+  { text: "Registro", icon: <StorageRoundedIcon />, path: "/registro" },
 ];
 /* const pathName = routes.filter(); */
 const Root = () => {
