@@ -7,6 +7,10 @@ import {
   Autocomplete,
   Button,
   Chip,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
   TextField,
   Typography,
 } from "@mui/material";
@@ -18,7 +22,7 @@ import { AlignCenter } from "lucide-react";
 import { colPesos } from "../utils/configs";
 import uuid4 from "uuid4";
 import { useRegData } from "../../store/regStore";
-import { getClassName, getClassNameTable } from "../utils/helpers";
+import { getClassName, getClassNameTable, uppercasing } from "../utils/helpers";
 import { useFormik } from "formik";
 import { array } from "yup";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -261,6 +265,7 @@ export default function Table() {
   const formik = useFormik({
     initialValues: {
       orderN: "",
+      filterOption: "",
     },
   });
 
@@ -268,6 +273,7 @@ export default function Table() {
 
   const [value, setValue] = useState(orders);
   const [inputValue, setInputValue] = useState("");
+  const filterOptions = ["", "orden", "nombre"];
   useEffect(() => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro")
       .then((res) => res.json())
@@ -300,39 +306,58 @@ export default function Table() {
 
   return (
     <Box sx={{ height: "100vh" /*  backgroundColor: "red" */ }}>
-      <Box
-        sx={{ display: "grid", width: "50%", gridTemplateColumns: "100px 1fr" }}
-      >
-        <Autocomplete
-          name="orderN"
-          freeSolo
-          disableClearable
-          /* onClose={() => {
+      <Box sx={{ display: "flex", gap: 2 }}>
+        <FormControl sx={{ width: 200 }} fullWidth={false}>
+          <InputLabel id="demo-simple-select-label">Filtrar</InputLabel>
+          <Select
+            name="filterOption"
+            value={formik.values.filterOption}
+            label="Filtrar"
+            onChange={formik.handleChange}
+          >
+            {filterOptions.map((option) => (
+              <MenuItem value={option}>{uppercasing(option)}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <Box
+          sx={{
+            display: "grid",
+            width: "80%",
+            gridTemplateColumns: "500px 1fr",
+          }}
+        >
+          <Autocomplete
+            name="orderN"
+            freeSolo
+            disableClearable
+            /* onClose={() => {
           formik.setValues({ ...formik.values, itemTotalPrice: 0 });
         }} */
-          getOptionLabel={(option) => option.toString() || ""}
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-          inputValue={inputValue}
-          onInputChange={(event, newInputValue) => {
-            setInputValue(newInputValue);
-          }}
-          options={orders}
-          /* fullWidth */
-          renderInput={(params) => (
-            <TextField
-              name="orderN"
-              onChange={formik.handleChange}
-              {...params}
-              label="Buscar Orden"
-            />
-          )}
-        />
-        <Button sx={{ width: 40 }} onClick={getRegById}>
-          {inputValue ? <Search /> : <ReplayOutlined />}
-        </Button>
+            getOptionLabel={(option) => option.toString() || ""}
+            value={value}
+            onChange={(event, newValue) => {
+              setValue(newValue);
+            }}
+            inputValue={inputValue}
+            onInputChange={(event, newInputValue) => {
+              setInputValue(newInputValue);
+            }}
+            options={orders}
+            /* fullWidth */
+            renderInput={(params) => (
+              <TextField
+                name="orderN"
+                onChange={formik.handleChange}
+                {...params}
+                label="Buscar Orden"
+              />
+            )}
+          />
+          <Button sx={{ width: 40 }} onClick={getRegById}>
+            {inputValue ? <Search /> : <ReplayOutlined />}
+          </Button>
+        </Box>
       </Box>
 
       <Box sx={{ width: width }}>

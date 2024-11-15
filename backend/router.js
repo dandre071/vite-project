@@ -21,11 +21,11 @@ router.get("/", getProducts);
 
 router.post("/", createProduct);
 //IMPRESOS SERVER
-router.put("/registro/:id", updateReg);
+/* router.put("/registro/:id", updateReg);
 router.get("/registro", getRegister);
 router.get("/registro/:id", getRegById);
 router.get("/search", searchByName);
-router.post("/registro", createRegister);
+router.post("/registro", createRegister); */
 
 ////////////////////////////////////////////////
 /* router.get("/users" || "/vendedores", getUsers);
@@ -40,7 +40,8 @@ router.get("/precio-vinilo" || "/vinilos", getVinylPrice); */
 /* router.get("/precios", getMaterialPrice);
 router.get("/vinilos", getVinylPrice); */
 //////////////////////////////////////////
-/* router.get("/registro", getRegister);
+router.get("/registro", getRegister);
 router.get("/registro/:id", getRegById);
 router.post("/registro", createRegister);
-router.put("/registro/:id", updateReg); */
+router.put("/registro/:id", updateReg);
+router.get("/search", searchByName);
