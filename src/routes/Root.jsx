@@ -26,7 +26,7 @@ import StorageRoundedIcon from "@mui/icons-material/StorageRounded";
 const menuItems = [
   { text: "Venta", icon: <SellOutlinedIcon />, path: "/client-data" },
   { text: "Configuraciones", icon: <Settings />, path: "/Configuraciones" },
-  { text: "Registro", icon: <StorageRoundedIcon />, path: "/registro" },
+  { text: "Registro", icon: <StorageRoundedIcon />, path: "/trabajos" },
 ];
 /* const pathName = routes.filter(); */
 const Root = () => {
@@ -42,7 +42,7 @@ const Root = () => {
   return (
     <ThemeProvider theme={customTheme}>
       <div className="grid-template">
-        <div className="asider">jhjhj</div>
+        <div className="asider"></div>
         <div className="aside">
           <Drawer
             variant="permanent"
@@ -75,9 +75,10 @@ const Root = () => {
                   }
                   key={item.text}
                   sx={{
-                    width: 180,
+                    width: 190,
                     borderRadius: 1,
                     flexShrink: 0,
+                    fontSize: 12,
                     /*   bgcolor: "blue", */
                     "&.Mui-selected": {
                       backgroundColor: "#e1e1e1",
@@ -96,7 +97,7 @@ const Root = () => {
                       : null
                   }
                 >
-                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemIcon sx={{ fontSize: 12 }}>{item.icon}</ListItemIcon>
 
                   <Typography
                     style={{

@@ -282,12 +282,20 @@ const EditRegister = () => {
               </FormControl>
             </Box> */}
           </Box>
-          <Box>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 2,
+            }}
+          >
             <Link to={"/"}>
               <Button
-                sx={{ height: 60 }}
+                fullWidth
+                sx={{ height: 55 }}
                 variant="secondary-outlined"
-                className="btn"
               >
                 {" "}
                 <CloseRoundedIcon
@@ -298,7 +306,11 @@ const EditRegister = () => {
               </Button>
             </Link>
             <Link to={`/registro/${id}/editar-registro/`} state={{ from: reg }}>
-              <Button variant="prime" sx={{ height: 55, mt: 2, gap: 2 }}>
+              <Button
+                fullWidth
+                variant="prime"
+                sx={{ height: 55, gap: 2, p: 0 }}
+              >
                 <EditIcon
                   className="btn"
                   sx={{ color: "white", fontSize: 40 }}

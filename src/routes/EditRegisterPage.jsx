@@ -221,10 +221,20 @@ const EditRegisterPage = () => {
               </FormControl>
             </Box>
           </Box>
-          <Box>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 2,
+              mt: 2,
+            }}
+          >
             <Link to={"/"}>
               <Button
-                sx={{ height: 60 }}
+                fullWidth
+                sx={{ height: 55 }}
                 variant="secondary-outlined"
                 className="btn"
               >
@@ -237,6 +247,7 @@ const EditRegisterPage = () => {
               </Button>
             </Link>
             <Button
+              fullWidth
               onClick={() => {
                 fetch(
                   "http://localhost:3000/api/v1/impresosDB/registro/" + id,
@@ -260,7 +271,7 @@ const EditRegisterPage = () => {
                   .then(navigate(`/registro/${id}`));
               }}
               variant="prime"
-              sx={{ height: 55, mt: 2, gap: 2 }}
+              sx={{ height: 55 }}
             >
               <SaveAsOutlinedIcon
                 className="btn"

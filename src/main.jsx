@@ -27,6 +27,7 @@ import ConfigPage from "./routes/ConfigPage.jsx";
 import Home from "./routes/home.jsx";
 import EditRegister from "./components/Forms/EditRegister.jsx";
 import EditRegisterPage from "./routes/EditRegisterPage.jsx";
+import Table from "./components/Forms/Table.jsx";
 
 export const routes = [
   { path: "/", element: <Home />, name: "Home" },
@@ -34,6 +35,11 @@ export const routes = [
     path: "/Configuraciones",
     element: <ConfigPage />,
     name: "Configurar",
+  },
+  {
+    path: "/trabajos",
+    element: <Table />,
+    name: "trabajos",
   },
   {
     path: "/client-data/cart/:itemId",
@@ -94,6 +100,11 @@ const router = createBrowserRouter([
     path: "Configuraciones",
     element: <ConfigPage />,
     name: "Configurar",
+  },
+  {
+    path: "/trabajos",
+    element: <Table />,
+    name: "trabajos",
   },
   {
     path: "/client-data",
