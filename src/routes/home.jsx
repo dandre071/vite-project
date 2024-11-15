@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import Table from "../components/Forms/Table";
 
 const Home = () => {
-  const [productList, setProductList] = useState(null);
+  const [productList, setProductList] = useState([]);
   const [invoiceNum, setInvoiceNum] = useState(null);
   const [productFilter, setProductFilter] = useState(null);
   /* const products = useFetch("http://localhost:3000/api/v1/impresosDB"); */
@@ -19,13 +19,13 @@ const Home = () => {
     "http://localhost:3000/api/v1/impresosDB/precio-vinilos"
   );
  */
-  const getProductList = () => {
+  /*  const getProductList = () => {
     fetch("http://localhost:3000/api/v1/impresosDB/")
       .then((res) => res.json())
       .then((data) => {
         setProductList(data);
       });
-  };
+  }; */
 
   /* const createProduct = () => {
     fetch("http://localhost:3000/api/v1/impresosDB/", {

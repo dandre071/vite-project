@@ -28,7 +28,7 @@ import { array } from "yup";
 import CircularProgress from "@mui/material/CircularProgress";
 import { ReplayOutlined, Search } from "@mui/icons-material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-const key = uuid4();
+/* const key = uuid4(); */
 
 const width = 1300;
 getClassName();
@@ -111,7 +111,7 @@ const columns = [
                 p: 0.2,
                 height: "100%",
               }}
-              key={key}
+              key={x}
             >
               {`${val.indexOf(x) + 1}. ${x}`}
             </Typography>
@@ -299,7 +299,7 @@ export default function Table() {
       });
   };
   const query = inputValue;
-  /*  console.log(query); */
+
   const filterByClient = () => {
     fetch(`http://localhost:3000/api/v1/impresosDB/search?q=${query}`)
       .then((res) => res.json())
@@ -313,7 +313,7 @@ export default function Table() {
       .then((data) => {
         setJobList(data);
 
-        console.log(data);
+        //console.log(data);
       })
       .finally(() => {
         formik.setValues({ ...formik.values, orderN: "" });
@@ -329,14 +329,13 @@ export default function Table() {
   }, []);
   useEffect(() => {
     getReg();
-  }, []);
+  });
   let optionChoice;
   if (formik.values.filterOption !== "todo") {
     if (formik.values.filterOption === "orden") optionChoice = orders;
     if (formik.values.filterOption === "cliente") optionChoice = names;
-  }
-  if (formik.values.filterOption === "todo") {
-    getReg();
+  } else if (formik.values.filterOption === "todo") {
+    /* getReg(); */
   }
   /*  if(formik.values.filterOption === "todo") setJobList() */
 
