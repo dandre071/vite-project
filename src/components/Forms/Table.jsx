@@ -259,6 +259,7 @@ const columns = [
 ];
 
 export default function Table() {
+  const navigate = useNavigate();
   const [jobList, setJobList] = useState([]);
   const filterOptions = ["todo", "orden", "cliente"];
   const [listByOrder, setListByOrder] = useState("");
@@ -336,8 +337,6 @@ export default function Table() {
   if (formik.values.filterOption === "orden") optionChoice = orders;
   if (formik.values.filterOption === "cliente") optionChoice = names;
 
-  if (formik.values.filterOption === "todo") {
-  }
   const searchFn = () => {
     if (formik.values.filterOption === "orden") {
       fetch("http://localhost:3000/api/v1/impresosDB/registro/" + inputValue)
@@ -361,6 +360,21 @@ export default function Table() {
           formik.setValues({ ...formik.values, orderN: "" });
           setInputValue("");
         });
+    } else if (formik.values.filterOption === "todo" || !inputValue) {
+      formik.setValues({
+        ...formik.values,
+        filterOption: "Todo",
+      });
+      setInputValue("");
+      navigate("/");
+    } else if (!inputValue) {
+      () => {
+        formik.setValues({
+          ...formik.values,
+          filterOption: "Todo",
+        });
+      };
+      navigate("/");
     }
   };
   return (
@@ -388,14 +402,16 @@ export default function Table() {
             ))}
           </Select>
         </FormControl>
-        {formik.values.filterOption !== "todo" && (
-          <Box
-            sx={{
-              display: "grid",
-              width: "auto",
-              gridTemplateColumns: "500px 1fr",
-            }}
-          >
+
+        <Box
+          sx={{
+            display: "grid",
+            width: "auto",
+            gridTemplateColumns: "500px 1fr",
+            gridTemplateRows: 48,
+          }}
+        >
+          {formik.values.filterOption !== "todo" && (
             <Autocomplete
               size="small"
               name="orderN"
@@ -428,57 +444,30 @@ export default function Table() {
                 />
               )}
             />
-            <Box
-              className="btn"
-              sx={{
-                width: 55,
-                bgcolor: "#2299FC",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                left: -10,
-                position: "relative",
-                zIndex: 0,
-                borderRadius: "0 10px 10px 0",
-              }}
-              onClick={
-                /* formik.values.filterOption === "orden"
-                  ? 
-                    () => {
-                      fetch(
-                        "http://localhost:3000/api/v1/impresosDB/registro/" +
-                          inputValue
-                      )
-                        .then((res) => res.json())
-                        .then((data) => {
-                          setJobList(data);
+          )}
+          <Box
+            className="btn"
+            sx={{
+              width: 55,
+              height: "100%",
+              bgcolor: "#2299FC",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
 
-                        })
-                        .finally(() => {
-                          formik.setValues({ ...formik.values, orderN: "" });
-                          setInputValue("");
-                        });
-                    }
-                  :  () => {
-                      fetch(
-                        `http://localhost:3000/api/v1/impresosDB/search?q=${query}`
-                      )
-                        .then((res) => res.json())
-                        .then((data) => {
-                          setJobList(data);
-                        });
-                    } */
-                () => searchFn()
-              }
-            >
-              {inputValue ? (
-                <Search sx={{ color: "white" }} />
-              ) : (
-                <ReplayOutlined sx={{ color: "white" }} />
-              )}
-            </Box>
+              position: "relative",
+              zIndex: 0,
+              borderRadius: "8px 8px 8px 8px",
+            }}
+            onClick={() => searchFn()}
+          >
+            {inputValue ? (
+              <Search sx={{ color: "white" }} />
+            ) : (
+              <ReplayOutlined sx={{ color: "white" }} />
+            )}
           </Box>
-        )}
+        </Box>
       </Box>
 
       <Box sx={{ width: width }}>
