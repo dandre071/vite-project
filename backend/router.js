@@ -45,3 +45,4 @@ router.get("/registro/:id", getRegById);
 router.post("/registro", createRegister);
 router.put("/registro/:id", updateReg);
 router.get("/search", searchByName);
+router.post("/registro", createRegister);
