@@ -55,9 +55,8 @@ export const customTheme = createTheme({
       dark: "#d04200", */
     },
     info: {
-      main: "#0d97f4",
-      /* light: "#41bcff",
-      dark: "#0060a4", */
+      main: "#00bdff",
+      light: "#bdf6ff",
     },
     background: {
       default: "#f1f1f2",

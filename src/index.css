@@ -1051,6 +1051,7 @@ body {
 }
 .btn {
 }
+
 .btn:hover {
   cursor: pointer;
   transform: scale(1.03);
@@ -1492,4 +1493,13 @@ body {
 .logo-mono {
   color: white;
   /*   color: rgb(34, 153, 252); */
+}
+.bg-info {
+  background-color: var(--info);
+}
+.info {
+  color: var(--info);
+}
+.success {
+  color: var(--success);
 }

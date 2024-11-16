@@ -241,13 +241,13 @@ const columns = [
             state={{ from: cellValues.row.id }}
           >
             <VisibilityOutlinedIcon
-              className="btn bg-primary"
+              className="btn success"
               // onClick={getReg(cellValues.row.id)}
               onClick={() => {
                 // click(cellValues.row.id);
                 //navigate("/registro/" + cellValues.row.id);
               }}
-              sx={{ fontSize: 25, color: "primary.dark", display: "flex" }}
+              sx={{ fontSize: 25, display: "flex" }}
               id={cellValues.row.id}
             />
           </Link>
