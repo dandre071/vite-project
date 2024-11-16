@@ -13,11 +13,11 @@ import { redux } from "zustand/middleware";
 
 const primary = "customTheme.primary.main";
 const variantType = "filled";
-const primaryColor = "#0866FF";
-const primaryDarkColor = "#0530ad";
+const primaryColor = "#0d6efd";
+const primaryDarkColor = "#0a5ad1";
 const primaryDarkerColor = "#2962ff";
-const primaryLightColor = "#76ABDF";
-const primaryLightherColor = "#82b1ff";
+const primaryLightColor = "#69a5ff";
+const primaryLightherColor = "#abcdff";
 const secondaryColor = "#e50037";
 const mainText = "#02172a";
 //const backgroundColor =
@@ -47,7 +47,7 @@ export const customTheme = createTheme({
       main: "#e50037",
     },
     success: {
-      main: "#49c134",
+      main: "#14cf87",
     },
     warning: {
       main: "#ef491d",

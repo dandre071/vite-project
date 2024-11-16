@@ -75,7 +75,7 @@ export const getPageId = () => {
 export const getClassName = (reg) => {
   let textClass;
   if (reg) {
-    if (reg[0].estado === "ASIGNADO") textClass = "initial-bg";
+    if (reg[0].estado === "asignado") textClass = "initial-bg";
     if (reg[0].estado === "ENTREGADO") textClass = "success-bg";
     if (reg[0].estado === "DISEÑO") textClass = "design-bg";
     if (reg[0].estado === "IMPRESIÓN") textClass = "print-bg";
@@ -90,7 +90,7 @@ export const getClassName = (reg) => {
 export const getClassNameTable = (data) => {
   let textClass;
   if (data) {
-    if (data === "ASIGNADO") textClass = "initial-bg";
+    if (data === "asignado") textClass = "initial-bg";
     if (data === "ENTREGADO") textClass = "success-bg";
     if (data === "DISEÑO") textClass = "design-bg";
     if (data === "IMPRESIÓN") textClass = "print-bg";

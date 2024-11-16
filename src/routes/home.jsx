@@ -65,7 +65,7 @@ const Home = () => {
         abono1: 12345,
         abono2: 0,
         resta: 0,
-        estado: "Listo",
+        estado: "asignado",
         observaciones: "fjfdkfjdkjfkdjf",
       }),
     }).then((respuesta) => respuesta.ok);
