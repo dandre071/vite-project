@@ -337,10 +337,13 @@ export default function Table() {
     getReg();
   }, []);
   let optionChoice;
-
+  let label;
   if (formik.values.filterOption === "orden") optionChoice = orders;
   if (formik.values.filterOption === "cliente") optionChoice = names;
-  if (formik.values.filterOption === "vendedor") optionChoice = users;
+  if (formik.values.filterOption === "vendedor") {
+    optionChoice = users;
+    label = "Seleccionar vendedor";
+  }
   const searchFn = () => {
     if (formik.values.filterOption === "orden") {
       fetch("http://localhost:3000/api/v1/impresosDB/registro/" + inputValue)
@@ -445,9 +448,10 @@ export default function Table() {
                   onChange={formik.handleChange}
                   {...params}
                   label={
-                    formik.values.filterOption === "orden"
+                    /* formik.values.filterOption === "orden"
                       ? "Buscar Orden"
-                      : "Buscar Cliente"
+                      : "Buscar Cliente" */
+                    label
                   }
                 />
               )}
