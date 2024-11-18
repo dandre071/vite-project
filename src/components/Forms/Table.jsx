@@ -28,6 +28,10 @@ import { array } from "yup";
 import CircularProgress from "@mui/material/CircularProgress";
 import { ReplayOutlined, Search } from "@mui/icons-material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import { lists } from "../../../public/configs";
+const users = lists.users;
+console.log(users);
+
 /* const key = uuid4(); */
 
 const width = 1300;
@@ -261,7 +265,7 @@ const columns = [
 export default function Table() {
   const navigate = useNavigate();
   const [jobList, setJobList] = useState([]);
-  const filterOptions = ["todo", "orden", "cliente"];
+  const filterOptions = ["todo", "orden", "cliente", "vendedor", "responsable"];
   const [listByOrder, setListByOrder] = useState("");
   const formik = useFormik({
     initialValues: {
@@ -336,7 +340,7 @@ export default function Table() {
 
   if (formik.values.filterOption === "orden") optionChoice = orders;
   if (formik.values.filterOption === "cliente") optionChoice = names;
-
+  if (formik.values.filterOption === "vendedor") optionChoice = users;
   const searchFn = () => {
     if (formik.values.filterOption === "orden") {
       fetch("http://localhost:3000/api/v1/impresosDB/registro/" + inputValue)
@@ -368,7 +372,9 @@ export default function Table() {
       setInputValue("");
       /*  navigate("/trabajos"); */
       getReg();
-    } else if (!inputValue) {
+    } /* else if (formik.values.filterOption === "vendedor") {
+      optionChoice = users;
+    } */ else if (!inputValue) {
       () => {
         formik.setValues({
           ...formik.values,
