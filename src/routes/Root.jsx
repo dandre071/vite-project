@@ -65,14 +65,14 @@ const Root = () => {
               flexShrink: 0,
               fontSize: 12,
               "& .MuiDrawer-paper": {
-                zIndex: 0,
                 top: "auto",
                 display: "flex",
+                height: "auto",
                 justifyContent: "start",
                 alignItems: "center",
                 /*  bgcolor: "#0530ad", */
                 /*    bgcolor: "red", */
-                height: "100%",
+
                 width: 190,
                 alignSelf: "start",
                 boxSizing: "border-box",

@@ -329,9 +329,9 @@ export default function Table() {
   /*  useEffect(() => {
     filterByClient();
   }); */
-  /* useEffect(() => {
+  useEffect(() => {
     getReg();
-  }); */
+  }, []);
   let optionChoice;
 
   if (formik.values.filterOption === "orden") optionChoice = orders;
@@ -366,7 +366,8 @@ export default function Table() {
         filterOption: "Todo",
       });
       setInputValue("");
-      navigate("/");
+      /*  navigate("/trabajos"); */
+      getReg();
     } else if (!inputValue) {
       () => {
         formik.setValues({
@@ -374,11 +375,12 @@ export default function Table() {
           filterOption: "Todo",
         });
       };
-      navigate("/");
+      /* navigate("/trabajos"); */
+      getReg();
     }
   };
   return (
-    <Box sx={{ mt: 5, height: "100vh" /*  backgroundColor: "red" */ }}>
+    <Box sx={{ mt: 5, height: "50vh" /*  backgroundColor: "red" */ }}>
       <Box
         sx={{
           display: "flex",
