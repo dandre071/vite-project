@@ -20,8 +20,9 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 const EditRegisterPage = () => {
   const location = useLocation();
-  const { from } = location.state;
-  const reg = from;
+ /*  const { from } = location.state; */
+ /*  const reg = from; */
+ const [reg, setReg] = useState(null)
   const navigate = useNavigate();
   const id = location.pathname.match(/[0-9]/g).join("");
   console.log(id, reg);
@@ -36,6 +37,16 @@ const EditRegisterPage = () => {
       updateStatus: "",
     },
   });
+  useEffect(()=>{
+    fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
+      .then((res) => res.json())
+      .then((data) => {
+        data && setReg(data);
+        console.log(data);
+      });
+  
+  }, [])
+  
 
   /*   const updateReg = () => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id, {
@@ -274,7 +285,7 @@ const EditRegisterPage = () => {
               sx={{ height: 55 }}
             >
               <SaveAsOutlinedIcon
-                className="btn"
+                className= {formik.values.updateStatus != 'entregado'  ? "btn" : 'disable-btn'}
                 sx={{ color: "white", fontSize: 40 }}
               />
               <p>Actualizar</p>

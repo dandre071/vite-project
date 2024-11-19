@@ -17,7 +17,7 @@ import {
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteBtn from "../Buttons/DeleteBtn";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AlignCenter } from "lucide-react";
 import { colPesos } from "../utils/configs";
 import uuid4 from "uuid4";
@@ -34,7 +34,7 @@ console.log(users);
 
 /* const key = uuid4(); */
 
-const width = 1300;
+const width = 1350;
 getClassName();
 const columns = [
   {
@@ -202,7 +202,7 @@ const columns = [
     field: "estado",
     headerName: "Estado",
     /*  type: "number", */
-    width: `${width * 0.079}`,
+    width: `${width * 0.070}`,
     /*  editable: true, */
     renderCell: (cellValues) => {
       return (
@@ -221,7 +221,7 @@ const columns = [
     headerAlign: "center",
     headerClassName: "table-header",
     field: " ",
-    width: `${width * 0.036}`,
+    width: `${width * 0.045}`,
 
     renderCell: (cellValues, row) => {
       const navigate = useNavigate();
@@ -229,10 +229,11 @@ const columns = [
         <Box
           sx={{
             display: "flex",
-
-            justifyContent: "space-evenly",
+            width: `${width * 0.045}`,
+flexDirection: 'row',
+          justifyContent: 'space-evenly',
             alignItems: "center",
-            justifySelf: "end",
+          p: 0
           }}
         >
           {/* <EditIcon
@@ -240,7 +241,7 @@ const columns = [
            
             sx={{ fontSize: 24, color: "primary.main" }}
           /> */}
-          <Link
+          <Box sx={{justifySelf: 'start'}}><Link
             to={`/registro/${cellValues.row.id}`}
             state={{ from: cellValues.row.id }}
           >
@@ -251,10 +252,20 @@ const columns = [
                 // click(cellValues.row.id);
                 //navigate("/registro/" + cellValues.row.id);
               }}
-              sx={{ fontSize: 25, display: "flex" }}
+              sx={{ fontSize: 22, display: "flex" }}
               id={cellValues.row.id}
             />
-          </Link>
+          </Link></Box>
+          
+          <Link to={`/registro/${cellValues.row.id}/editar-registro/`} state={{ from: cellValues.row.id }}>
+             
+                <EditIcon
+                  className={cellValues.row.status != 'entregado' ? "btn" : 'disabled-btn'}
+                  sx={{ color: "primary.main", fontSize: 22 }}
+                />
+               
+          
+            </Link>
         </Box>
       );
     },
@@ -280,6 +291,20 @@ export default function Table() {
 
   const [value, setValue] = useState(orders);
   const [inputValue, setInputValue] = useState("");
+
+  const [reg, setReg] = useState(null);
+ /*  const location = useLocation();
+
+  useEffect(() => {
+    const locationId = location.pathname.match(/[0-9]/g).join("");
+    fetch("http://localhost:3000/api/v1/impresosDB/registro/" + locationId)
+      .then((res) => res.json())
+      .then((data) => {
+        data && setReg(data);
+        setId(locationId);
+      })
+      .finally(controller.abort());
+  }, []); */
 
   useEffect(() => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro")

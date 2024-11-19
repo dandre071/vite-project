@@ -31,15 +31,6 @@ const EditRegister = () => {
   /* console.log(location.pathname.match(/[0-9]/g).join("")); */
   const [reg, setReg] = useState(null);
 
-  /*   const getReg = () => {
-    fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
-      .then((res) => res.json())
-      .then((data) => {
-        data && setReg(data);
-        console.log(data);
-      });
-  }; */
-  // console.log("http://localhost:3000/api/v1/impresosDB/registro/" + id);
 
   useEffect(() => {
     const locationId = location.pathname.match(/[0-9]/g).join("");
