@@ -217,10 +217,10 @@ const columns = [
     cellClassName: "center flex",
   },
   {
-    align: "center",
+   
     headerAlign: "center",
     headerClassName: "table-header",
-    field: " ",
+    field: "Acción",
     width: `${width * 0.045}`,
 
     renderCell: (cellValues, row) => {
@@ -228,9 +228,10 @@ const columns = [
       return (
         <Box
           sx={{
-            display: "flex",
-            width: `${width * 0.045}`,
-flexDirection: 'row',
+            display: "grid",
+            width: `100%`,
+            gap: 1,
+gridTemplateColumns: '1fr 1fr',
           justifyContent: 'space-evenly',
             alignItems: "center",
           p: 0
@@ -260,9 +261,10 @@ flexDirection: 'row',
          {/*  <Link to={`/registro/${cellValues.row.id}/editar-registro/`} state={{ from: cellValues.row.id }}>
               */}
                 <EditIcon
+               
                 onClick={()=>navigate(`/registro/${cellValues.row.id}/editar-registro/`) }
                 
-                  sx={{ color: `${cellValues.row.estado === 'ENTREGADO' ? '#cfcfcf': "primary.main"}`, fontSize: 20, cursor: `${cellValues.row.estado === 'ENTREGADO' ? 'not-allowed': 'pointer'}`, pointerEvents: `${cellValues.row.estado === 'ENTREGADO' ? 'none': 'all'}` }}
+                  sx={{ color: `${cellValues.row.estado === 'ENTREGADO' ? '#cfcfcf': "info.main"}`, fontSize: 20, cursor: `${cellValues.row.estado === 'ENTREGADO' ? 'not-allowed': 'pointer'}`, pointerEvents: `${cellValues.row.estado === 'ENTREGADO' ? 'none': 'all'}` }}
                 />
                
       {/*     
