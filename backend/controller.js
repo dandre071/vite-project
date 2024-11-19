@@ -153,7 +153,8 @@ export const searchByName = (req, response) => {
   }
 
   pool.query(
-    `SELECT * FROM registro WHERE LOWER(nombre) LIKE LOWER($1)`,
+   /*  `SELECT * FROM registro WHERE LOWER(nombre) LIKE LOWER($1) OR description ILIKE $1`, */
+   `SELECT * FROM registro WHERE LOWER(nombre) LIKE LOWER($1) OR LOWER(recibe) ILIKE $1`,
     [`%${q}%`],
     (error, results) => {
       if (error) {
@@ -163,7 +164,25 @@ export const searchByName = (req, response) => {
     }
   );
 };
+export const searchBySeller = (req, response) => {
+  const { q } = req.query;
+  if (!q) {
+    return response
+      .status(400)
+      .json({ error: 'Query parameter "q" is required' });
+  }
 
+  pool.query(
+    `SELECT * FROM registro WHERE LOWER(recibe) LIKE LOWER($1)`,
+    [`%${q}%`],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
+    }
+  );
+};
 /* export const selectByStatus = (req, response) => {
   const { q } = req.query;
   if (!q) {

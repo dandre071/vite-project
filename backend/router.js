@@ -13,6 +13,7 @@ import {
   /*  getUsers,
   getVinylPrice, */
   updateReg,
+  searchBySeller
 } from "./controller.js";
 
 export const router = express.Router();
@@ -45,4 +46,5 @@ router.get("/registro/:id", getRegById);
 router.post("/registro", createRegister);
 router.put("/registro/:id", updateReg);
 router.get("/search", searchByName);
+router.get("/search/vendedor", searchBySeller);
 router.post("/registro", createRegister);
