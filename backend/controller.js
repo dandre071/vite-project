@@ -154,7 +154,7 @@ export const searchByName = (req, response) => {
 
   pool.query(
    /*  `SELECT * FROM registro WHERE LOWER(nombre) LIKE LOWER($1) OR description ILIKE $1`, */
-   `SELECT * FROM registro WHERE LOWER(nombre) LIKE LOWER($1) OR LOWER(recibe) ILIKE $1`,
+   `SELECT * FROM registro WHERE LOWER(nombre) LIKE LOWER($1) OR LOWER(recibe) LIKE($1)`,
     [`%${q}%`],
     (error, results) => {
       if (error) {
