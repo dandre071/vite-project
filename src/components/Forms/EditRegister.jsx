@@ -296,7 +296,7 @@ const EditRegister = () => {
                 />
               </Button>
             </Link>
-            <Link to={`/registro/${id}/editar-registro/`} state={{ from: reg }}>
+           {/*  <Link to={`/registro/${id}/editar-registro/`} state={{ from: reg }}>
               <Button
                 fullWidth
                 variant="prime"
@@ -308,7 +308,7 @@ const EditRegister = () => {
                 />
                 <p>Actualizar</p>
               </Button>
-            </Link>
+            </Link> */}
           </Box>
 
           {/*   <p>{reg && Object.values(reg[0]).map((x) => <p>{x}</p>)}</p> */}

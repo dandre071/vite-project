@@ -262,7 +262,7 @@ flexDirection: 'row',
                 <EditIcon
                 onClick={()=>navigate(`/registro/${cellValues.row.id}/editar-registro/`) }
                 
-                  sx={{ color: "primary.main", fontSize: 22, cursor: `${cellValues.row.status === 'ENTREGADO' ? 'not-allowed': 'pointer'}`, pointerEvents: `${cellValues.row.status === 'ENTREGADO' ? 'none': 'all'}` }}
+                  sx={{ color: `${cellValues.row.estado === 'ENTREGADO' ? '#cfcfcf': "primary.main"}`, fontSize: 20, cursor: `${cellValues.row.estado === 'ENTREGADO' ? 'not-allowed': 'pointer'}`, pointerEvents: `${cellValues.row.estado === 'ENTREGADO' ? 'none': 'all'}` }}
                 />
                
       {/*     
