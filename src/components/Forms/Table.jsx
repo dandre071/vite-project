@@ -257,15 +257,16 @@ flexDirection: 'row',
             />
           </Link></Box>
           
-          <Link to={`/registro/${cellValues.row.id}/editar-registro/`} state={{ from: cellValues.row.id }}>
-             
+         {/*  <Link to={`/registro/${cellValues.row.id}/editar-registro/`} state={{ from: cellValues.row.id }}>
+              */}
                 <EditIcon
-                  className={cellValues.row.status != 'entregado' ? "btn" : 'disabled-btn'}
-                  sx={{ color: "primary.main", fontSize: 22 }}
+                onClick={()=>navigate(`/registro/${cellValues.row.id}/editar-registro/`) }
+                
+                  sx={{ color: "primary.main", fontSize: 22, cursor: `${cellValues.row.status === 'ENTREGADO' ? 'not-allowed': 'pointer'}`, pointerEvents: `${cellValues.row.status === 'ENTREGADO' ? 'none': 'all'}` }}
                 />
                
-          
-            </Link>
+      {/*     
+            </Link> */}
         </Box>
       );
     },
