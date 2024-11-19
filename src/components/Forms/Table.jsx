@@ -304,6 +304,7 @@ export default function Table() {
       });
   };
   const query = inputValue;
+  
 
   /* const filterByClient = () => {
     fetch(`http://localhost:3000/api/v1/impresosDB/search?q=${query}`)
@@ -338,12 +339,24 @@ export default function Table() {
   }, []);
   let optionChoice;
   let label;
-  if (formik.values.filterOption === "orden") optionChoice = orders;
-  if (formik.values.filterOption === "cliente") optionChoice = names;
+  if (formik.values.filterOption === "orden") {optionChoice = orders;
+    label = "Buscar Orden de trabajo";
+  }
+  if (formik.values.filterOption === "cliente") {optionChoice = names;
+    label = "Buscar cliente";
+  }
   if (formik.values.filterOption === "vendedor") {
     optionChoice = users;
     label = "Seleccionar vendedor";
   }
+  if (formik.values.filterOption === "responsable") {
+    optionChoice = users;
+    label = "Seleccionar Responsable";
+  }
+
+  console.log(inputValue)
+  console.log(label)
+  console.log(optionChoice)
   const searchFn = () => {
     if (formik.values.filterOption === "orden") {
       fetch("http://localhost:3000/api/v1/impresosDB/registro/" + inputValue)
@@ -375,9 +388,27 @@ export default function Table() {
       setInputValue("");
       /*  navigate("/trabajos"); */
       getReg();
-    } /* else if (formik.values.filterOption === "vendedor") {
-      optionChoice = users;
-    } */ else if (!inputValue) {
+    } else if (formik.values.filterOption === "vendedor") {
+      fetch(`http://localhost:3000/api/v1/impresosDB/search?q=${query}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setJobList(data);
+      })
+      .finally(() => {
+        formik.setValues({ ...formik.values, orderN: "" });
+        setInputValue("");
+      });
+    }else if (formik.values.filterOption === "responsable") {
+      fetch(`http://localhost:3000/api/v1/impresosDB/search-r?q=${query}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setJobList(data);
+      })
+      .finally(() => {
+        formik.setValues({ ...formik.values, orderN: "" });
+        setInputValue("");
+      });
+    } else if (!inputValue) {
       () => {
         formik.setValues({
           ...formik.values,
@@ -387,6 +418,7 @@ export default function Table() {
       /* navigate("/trabajos"); */
       getReg();
     }
+    
   };
   return (
     <Box sx={{ mt: 5, height: "50vh" /*  backgroundColor: "red" */ }}>

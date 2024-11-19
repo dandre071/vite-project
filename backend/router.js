@@ -13,6 +13,7 @@ import {
   /*  getUsers,
   getVinylPrice, */
   updateReg,
+  searchByResp
 /*   searchBySeller */
 } from "./controller.js";
 
@@ -46,5 +47,6 @@ router.get("/registro/:id", getRegById);
 router.post("/registro", createRegister);
 router.put("/registro/:id", updateReg);
 router.get("/search", searchByName);
+router.get("/search-r", searchByResp);
 /* router.get("/search/vendedor", searchBySeller); */
 router.post("/registro", createRegister);
