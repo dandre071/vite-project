@@ -20,30 +20,39 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 const EditRegisterPage = () => {
   const location = useLocation();
- /*  const { from } = location.state; */
- /*  const reg = from; */
+
  const [reg, setReg] = useState(null)
+ const [status, setStatus] = useState('')
   const navigate = useNavigate();
   const id = location.pathname.match(/[0-9]/g).join("");
-  console.log(id, reg);
-  /* const [reg, setReg] = useState(""); */
+  console.log(reg && reg[0].estado);
+ 
 
   const path = location.pathname;
   console.log(path);
   const formik = useFormik({
     initialValues: {
-      updatePayment: 0,
+      updatePayment: parseInt(reg && reg[0].abono2),
       updateDebt: null,
-      updateStatus: "",
+      updateStatus: reg && reg[0].estado,
     },
   });
+  
+ 
+ 
+  console.log(formik.values.updateStatus);
   useEffect(()=>{
     fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
       .then((res) => res.json())
       .then((data) => {
         data && setReg(data);
+        formik.setValues({...formik.values, updateStatus: data[0].estado})
+       /*  formik.setValues({...formik.values,  updatePayment: reg && reg[0].abono2,
+     
+          updateStatus: [reg && reg[0].estado], }) */
         console.log(data);
-      });
+      })
+      .then();
   
   }, [])
   
@@ -64,7 +73,7 @@ const EditRegisterPage = () => {
       .then((datos) => console.log(datos));
 
   }; */
-  console.log(formik.values);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -50 }}
@@ -74,7 +83,7 @@ const EditRegisterPage = () => {
       <div
         style={{
           border: "none",
-          /*   background: "red", */
+     
         }}
       >
         <div style={{ width: 600, display: "grid", gap: "5px 5px" }}>
@@ -162,10 +171,7 @@ const EditRegisterPage = () => {
               <p className="reg-label">Abono 2</p>
               <p>{reg && colPesos.format(reg[0].abono2)}</p>
             </Box>
-            {/*<Box className="grid-2-cols border-bottom">
-            <p className="reg-label">Debe</p>
-            <p>{reg && reg[0].resta}</p>
-          </Box>*/}
+         
             <Box className="grid-2-cols">
               <p className="reg-label">Debe</p>
               <p>
@@ -206,6 +212,8 @@ const EditRegisterPage = () => {
                 type="number"
                 name="updatePayment"
                 size="small"
+                value={formik.values.updatePayment}
+                defaultValue={parseInt(reg && reg[0].abono2)}
                 onChange={formik.handleChange}
               />
               <FormControl fullWidth>
@@ -216,14 +224,16 @@ const EditRegisterPage = () => {
                   size="small"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  /* value={age} */
+                defaultValue={formik.values.updateStatus}
+                  value={formik.values.updateStatus}
                   label="Estado"
+              /*     value={formik.values.updateStatus} */
                   sx={{
                     inputprops: {
                       color: "red",
                     },
                   }}
-                  /* onChange={handleChange} */
+              
                 >
                   {statusList.map((item) => (
                     <MenuItem value={item}>{item}</MenuItem>
@@ -291,7 +301,7 @@ const EditRegisterPage = () => {
               <p>Actualizar</p>
             </Button>
           </Box>
-          {/*   <p>{reg && Object.values(reg[0]).map((x) => <p>{x}</p>)}</p> */}
+      
         </div>
       </div>
     </motion.div>

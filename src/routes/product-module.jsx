@@ -84,7 +84,7 @@ const ProductModule = () => {
       descolillado: "",
       transfer: false,
       itemTotalPrice: 0,
-      orientation: "",
+      orientation: ["Vertical"],
       model: "",
       brand: "",
       device: "",
