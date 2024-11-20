@@ -4,5 +4,10 @@
   "description": "RESTful API with Node.js, Express, and PostgreSQL",
   "main": "index.js",
   "license": "MIT",
-  "type": "module"
+  "type": "module",
+  "scripts": {
+  "start": "node server.js",
+  "dev": "nodemon server.js"
+}
+  
 }
