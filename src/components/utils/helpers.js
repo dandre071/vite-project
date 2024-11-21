@@ -75,7 +75,7 @@ export const getPageId = () => {
 export const getClassName = (reg) => {
   let textClass;
   if (reg) {
-    if (reg[0].estado === "asignado") textClass = "initial-bg";
+    if (reg[0].estado === "asignado" || "ASIGNADO") textClass = "initial-bg";
     if (reg[0].estado === "ENTREGADO") textClass = "success-bg";
     if (reg[0].estado === "DISEÑO") textClass = "design-bg";
     if (reg[0].estado === "IMPRESIÓN") textClass = "print-bg";
@@ -90,15 +90,16 @@ export const getClassName = (reg) => {
 export const getClassNameTable = (data) => {
   let textClass;
   if (data) {
-    if (data === "asignado") textClass = "initial-bg";
-    if (data === "ENTREGADO") textClass = "success-bg";
-    if (data === "DISEÑO") textClass = "design-bg";
-    if (data === "IMPRESIÓN") textClass = "print-bg";
-    if (data === "REVISIÓN") textClass = "print-bg";
-    if (data === "ACABADO") textClass = "finish-bg";
-    if (data === "LISTO") textClass = "ready-bg";
-    if (data === "DEMORADO") textClass = "delay-bg";
-    if (data === "CANCELADO") textClass = "cancelled-bg";
+    if (data === "asignado" || data ==="ASIGNADO") textClass = "initial-bg";
+    
+    if (data === "diseño" || data ==="DISEÑO") textClass = "design-bg";
+    if (data === "impresión" || data ==='IMPRESIÓN') textClass = "print-bg";
+    if (data === "revisión" || data ==='REVISIÓN') textClass = "print-bg";
+    if (data === "acabado" || data ==='ACABADO') textClass = "finish-bg";
+    if (data === "listo"|| data === 'LISTO') textClass = "ready-bg";
+    if (data === "entregado" ||data === 'ENTREGADO') textClass = "success-bg";
+    if (data === "demorado" || data === 'DEMORADO') textClass = "delay-bg";
+    if (data === "cancelado" || data ==='CANCELADO') textClass = "cancelled-bg";
   }
   return textClass;
 };

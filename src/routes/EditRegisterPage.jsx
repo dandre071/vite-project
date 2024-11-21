@@ -12,7 +12,7 @@ import { AnimatePresence, LayoutGroup, motion, stagger } from "framer-motion";
 import { useFormik } from "formik";
 import { add_zero, formatPhoneNumber } from "../components/utils/helpers";
 import { statusList } from "../.././public/configs";
-import { Save } from "lucide-react";
+
 import { colPesos } from "../components/utils/configs";
 import SaveAsOutlinedIcon from "@mui/icons-material/SaveAsOutlined";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -23,56 +23,42 @@ const EditRegisterPage = () => {
 
  const [reg, setReg] = useState(null)
  const [status, setStatus] = useState('')
+ const [payment, setPayment] = useState('')
   const navigate = useNavigate();
   const id = location.pathname.match(/[0-9]/g).join("");
-  console.log(reg && reg[0].estado);
+  const estado = reg && reg[0].estado
+  console.log(estado);
  
 
   const path = location.pathname;
-  console.log(path);
+ // console.log(path);
   const formik = useFormik({
     initialValues: {
-      updatePayment: parseInt(reg && reg[0].abono2),
-      updateDebt: null,
-      updateStatus: reg && reg[0].estado,
+      updatePayment: 0,
+      updateDebt: 0,
+      updateStatus: '',
     },
   });
   
  
  
-  console.log(formik.values.updateStatus);
+  
   useEffect(()=>{
     fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id)
       .then((res) => res.json())
       .then((data) => {
         data && setReg(data);
-        formik.setValues({...formik.values, updateStatus: data[0].estado})
-       /*  formik.setValues({...formik.values,  updatePayment: reg && reg[0].abono2,
-     
-          updateStatus: [reg && reg[0].estado], }) */
-        console.log(data);
+        formik.setValues({...formik.values, updateStatus: data[0].estado,  /* updatePayment: parseInt(data[0].abono2) */})
+     setPayment(parseInt(data[0].abono2))
+        //console.log(data);
       })
       .then();
   
   }, [])
-  
+  const updatePayment = formik.values.updatePayment
+  //console.log(updatePayment);
 
-  /*   const updateReg = () => {
-    fetch("http://localhost:3000/api/v1/impresosDB/registro/" + id, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        abono2: formik.values.updatePayment,
-        resta: formik.values.updateDebt,
-        estado: formik.values.updateStatus,
-      }),
-    })
-      .then((respuesta) => respuesta.ok)
-      .then((datos) => console.log(datos));
-
-  }; */
+  console.log(payment)
 
   return (
     <motion.div
@@ -174,10 +160,10 @@ const EditRegisterPage = () => {
          
             <Box className="grid-2-cols">
               <p className="reg-label">Debe</p>
-              <p>
+              <p name='updateDebt'>
                 {reg &&
                   colPesos.format(
-                    reg[0].total - reg[0].abono1 - formik.values.updatePayment
+                    reg[0].total - reg[0].abono1 - reg[0].abono2 
                   )}
               </p>
             </Box>
@@ -227,7 +213,7 @@ const EditRegisterPage = () => {
                 defaultValue={formik.values.updateStatus}
                   value={formik.values.updateStatus}
                   label="Estado"
-              /*     value={formik.values.updateStatus} */
+              
                   sx={{
                     inputprops: {
                       color: "red",
@@ -259,10 +245,9 @@ const EditRegisterPage = () => {
                 variant="secondary-outlined"
                 className="btn"
               >
-                {" "}
+             
                 <CloseRoundedIcon
-                  /* */
-
+             
                   sx={{ fontSize: 40, color: "secondary.main" }}
                 />
               </Button>
@@ -278,16 +263,16 @@ const EditRegisterPage = () => {
                       "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                      abono2: formik.values.updatePayment,
+                      abono2: formik.values.updatePayment +payment,
                       resta:
                         reg[0].total -
                         reg[0].abono1 -
-                        formik.values.updatePayment,
+                        formik.values.updatePayment - payment,
                       estado: formik.values.updateStatus,
                     }),
                   }
                 )
-                  .then((datos) => console.log(datos))
+                  .then((datos) => alert('Registro actualizado exitosamente'))
                   .then((respuesta) => respuesta.text)
                   .then(navigate(`/registro/${id}`));
               }}

@@ -35,7 +35,7 @@ console.log(users);
 /* const key = uuid4(); */
 
 const width = 1350;
-getClassName();
+/* getClassName(); */
 const columns = [
   {
     align: "center",
@@ -205,10 +205,12 @@ const columns = [
     width: `${width * 0.070}`,
     /*  editable: true, */
     renderCell: (cellValues) => {
+      const estado = cellValues && cellValues.row.estado
+      
       return (
-        <Box className={getClassNameTable(cellValues.row.estado)}>
+        <Box className={getClassNameTable(estado)}>
           <Typography sx={{ fontSize: 12, fontWeight: 800 }}>
-            {" "}
+          
             {cellValues.row.estado}
           </Typography>
         </Box>
