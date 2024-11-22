@@ -141,10 +141,9 @@ export const statusList = [
   "ASIGNADO",
   "DISEÑO",
   "IMPRESIÓN",
-  "ACABADO",
-  "DEMORADO",
-  "LISTO",
   "REVISIÓN",
+  "ACABADO",
+  "LISTO",
   "ENTREGADO",
   "CANCELADO",
 ];
