@@ -111,7 +111,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
     p: 0,
   };
   const boxColor = "#DFE5F2";
-<<<<<<< HEAD
+
 const trabajos = cart.map(x=>`${x.name}${ x.descolillado && x.descolillado}${ x.descolillado && x.descolillado}`)
 console.log(trabajos)
 const record = {
@@ -135,7 +135,7 @@ const record = {
   tipo_recibo: 'recibo'
 }
 
-=======
+
 
   const details = cart;
   let jobText;
@@ -174,7 +174,7 @@ const record = {
       }),
     }).then((respuesta) => respuesta.ok);
   };
->>>>>>> 4bfed56b86fdc0c04d5a1089cb903008db822e53
+
   return (
     <>
       <div

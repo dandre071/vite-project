@@ -431,7 +431,8 @@ console.log(maintainText)
           )}
           {/*end third row*/}
           {/*start fourth row*/}
-          <Box sx={{ display: "flex", gap: 2 }}>
+
+          {productType !== "Mantenimiento"&&<Box sx={{ display: "flex", gap: 2 }}>
             <FormSelect2
               value={formik.values.finish}
               multiple={true}
@@ -455,7 +456,7 @@ console.log(maintainText)
               label={"Orientación/Forma"}
               defaultValue={"Sin acabado"}
             />
-          </Box>
+          </Box>}
           {/*end fourth row*/}
           <Box className="product-details">
             <TextField
