@@ -111,6 +111,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
     p: 0,
   };
   const boxColor = "#DFE5F2";
+<<<<<<< HEAD
 const trabajos = cart.map(x=>`${x.name}${ x.descolillado && x.descolillado}${ x.descolillado && x.descolillado}`)
 console.log(trabajos)
 const record = {
@@ -134,6 +135,46 @@ const record = {
   tipo_recibo: 'recibo'
 }
 
+=======
+
+  const details = cart;
+  let jobText;
+  cart.map((x) => {
+    if (x.type !== "Mantenimiento") {
+      `${x.name}/ ${x.quantity}/ ${x.finish}/ ${x.orientation}`;
+    }
+    jobText = `${x.name}`;
+  });
+  console.log(
+    jobText /* cart.map((x) => `${x.name}/ ${x.quantity}/ ${x.finish}/ ${x?.orientation}`) */
+  );
+  const createRegister = () => {
+    fetch("http://localhost:3000/api/v1/impresosDB/registro", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        fecha_recibido: "24/10/2024",
+        fecha_entrega: "28/10/2024",
+        nombre: "prueba2",
+        nit: 1234567890,
+        telefono: 3206598822,
+        email: "prueba@gmail.com",
+
+        trabajo: '{"value1", "value2"}',
+        recibe: "diego",
+        realiza: "diego",
+        total: 12345,
+        abono1: 12345,
+        abono2: 0,
+        resta: 0,
+        estado: "asignado",
+        observaciones: "fjfdkfjdkjfkdjf",
+      }),
+    }).then((respuesta) => respuesta.ok);
+  };
+>>>>>>> 4bfed56b86fdc0c04d5a1089cb903008db822e53
   return (
     <>
       <div
