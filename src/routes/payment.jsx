@@ -522,7 +522,7 @@ const Payment = ({ height }) => {
                 helperText={formik.errors.paymentMethod}
                 name="paymentMethod"
                 onChange={formik.handleChange}
-                options={["Efectivo", "Transferencia"]}
+                options={["Efectivo", "Transferencia", "Crédito"]}
                 label={"Medio de pago"}
               />
             </Box>
@@ -544,6 +544,7 @@ const Payment = ({ height }) => {
               <Button
                 variant="prime"
                 onClick={() => {
+                  addData(formik.values);
                   setPaymentAmount(formik.values.payment);
                   setPayMethod(formik.values.paymentMethod);
                   setOpenPay(false);
