@@ -67,7 +67,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
     timeStyle: "short",
     // timeZone: "Colombia/Bogotá",
   }).format(date);
-
+console.log(fullDate)
   const [confirmOpen, setConfirmOpen] = useState(false);
 
   const [open, setOpen] = useState(false);
@@ -115,29 +115,29 @@ const Factura = ({ openModal, onClose, payMethod }) => {
 const trabajos = cart.map(x=>`${x.name}${ x.descolillado && x.descolillado}${ x.descolillado && x.descolillado}`)
 console.log(trabajos)
 const record = {
-  fecha_recibido: "24/10/2024",
+  fecha_recibido: fullDate,
   fecha_entrega: paymentData.delivery,
   nombre: clientData.name,
   nit: '',
   telefono: clientData.phone,
   email: clientData.email,
-  trabajo: `'{${title}}'`,
+  trabajo: `'{${title.join(',')}}'`,
  /*  trabajo: '{"value1", "value2"}', */
-  recibe: "diego",
-  realiza: "diego",
-  total: 12345,
-  abono1: 12345,
+  recibe: paymentData.receives,
+  realiza: paymentData.do,
+  total: totalInvoice,
+  abono1: paymentData.payment,
   abono2: 0,
-  resta: 0,
+  resta: totalInvoice - paymentData.payment,
   estado: "asignado",
-  observaciones: "fjfdkfjdkjfkdjf",
-  tipo_cliente: 'particular',
-  tipo_recibo: 'recibo'
+  observaciones: paymentData.comments,
+  tipo_cliente: client.clientType,
+  tipo_recibo: client.billType
 }
 
 
 
-  console.log(  title.join(',')  );
+  console.log(  record.trabajo );
   const createRegister = () => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro", {
       method: "POST",

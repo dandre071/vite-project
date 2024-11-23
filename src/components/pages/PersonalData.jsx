@@ -75,6 +75,7 @@ const PersonalData = () => {
   useEffect(() => {
     const updateState = () => {
       formik.setValues({
+       
         billType: localStore.billType,
         clientType: localStore.clientType,
         name: localStore.name,
@@ -94,7 +95,7 @@ const PersonalData = () => {
 
   const validate = () => formik.isValid;
   const [show, setShow] = useState(formik.isValid);
-  console.log(show);
+ 
 
   const handleShow = () => setShow(true);
   

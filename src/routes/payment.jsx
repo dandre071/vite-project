@@ -96,12 +96,13 @@ const Payment = ({ height }) => {
       payment: null,
       comments: "",
       pending: null,
-      paymentMethod: "Efectivo",
+      paymentMethod: "",
     },
     validationSchema: PaymentSchema,
 
     // onSubmit: handleSubmit,
   });
+  console.log(formik.values.paymentMethod)
   const paymentData = usePaymentData((state) => state.paymentData);
   const personalData = usePersonalData((state) => state.personalData);
   const addData = usePaymentData((state) => state.addData);

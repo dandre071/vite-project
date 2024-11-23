@@ -11,6 +11,7 @@ export const usePaymentData = create()(
         payment: null,
         comments: "",
         pending: null,
+        paymentMethod: "",
       },
 
       addData: (values) => {
@@ -45,6 +46,7 @@ export const usePaymentData = create()(
             payment: null,
             comments: "",
             pending: null,
+            paymentMethod: "",
           }),
         }));
       },
