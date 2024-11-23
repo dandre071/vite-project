@@ -1,10 +1,9 @@
-/* const pool = require("./db"); */
-
 import { pool } from "./db.js";
-/* import { queries } from "./queries.js"; */
+import { getAllProducts, getAllReg, getSingleReg, insertProduct, insertReg, search, updateRecord } from "./queries.js";
+
 
 export const getProducts = (req, response) => {
-  pool.query("SELECT * FROM productos", (error, results) => {
+  pool.query(getAllProducts, (error, results) => {
     if (error) throw error;
     response.status(200).json(results.rows);
   });
@@ -15,39 +14,15 @@ export const getProducts = (req, response) => {
     response.status(200).json(results.rows);
   });
 }; */
-/* export const getUsers = (req, response) => {
-  pool.query("SELECT * FROM vendedores", (error, results) => {
-    if (error) throw error;
-    response.status(200).json(results.rows);
-  });
-}; */
-/* export const getLaminatePrice = (req, response) => {
-  pool.query("SELECT * FROM laminado", (error, results) => {
-    if (error) throw error;
-    response.status(200).json(results.rows);
-  });
-}; */
-/* export const getMaterialPrice = (req, response) => {
-  pool.query("SELECT * FROM precio_material", (error, results) => {
-    if (error) throw error;
-    response.status(200).json(results.rows);
-  });
-}; */
-/* export const getVinylPrice = (req, response) => {
-  pool.query("SELECT * FROM precio_vinilos", (error, results) => {
-    if (error) throw error;
-    response.status(200).json(results.rows);
-  });
-}; */
+
 
 export const createProduct = (request, response) => {
-  /*  const { id, producto, precio } = request.body; */
+
   const { producto, precio } = request.body;
 
   pool.query(
-    /*     "INSERT INTO productos (id,producto, precio) VALUES ($1, $2, $3) RETURNING *", */
-    "INSERT INTO productos (producto, precio) VALUES ($1, $2) RETURNING *",
-    /*  [id, producto, precio], */
+    insertProduct,
+ 
     [producto, precio],
     (error, results) => {
       if (error) {
@@ -58,14 +33,14 @@ export const createProduct = (request, response) => {
   );
 };
 export const getRegister = (req, response) => {
-  pool.query("SELECT * FROM registro ORDER BY id DESC", (error, results) => {
+  pool.query(getAllReg, (error, results) => {
     if (error) throw error;
     response.status(200).json(results.rows);
   });
 };
 
 export const createRegister = (request, response) => {
-  /*  const { id, producto, precio } = request.body; */
+
   const {
     fecha_recibido,
     fecha_entrega,
@@ -85,9 +60,7 @@ export const createRegister = (request, response) => {
   } = request.body;
 
   pool.query(
-    /*     "INSERT INTO productos (id,producto, precio) VALUES ($1, $2, $3) RETURNING *", */
-    "INSERT INTO registro (fecha_recibido, fecha_entrega, nombre, nit, telefono, email, trabajo, recibe, realiza, total, abono1, abono2, resta, estado, observaciones) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING *",
-    /*  [id, producto, precio], */
+    insertReg,
     [
       fecha_recibido,
       fecha_entrega,
@@ -119,7 +92,7 @@ export const createRegister = (request, response) => {
 export const getRegById = (request, response) => {
   const id = parseInt(request.params.id);
 
-  pool.query("SELECT * FROM registro WHERE id = $1", [id], (error, results) => {
+  pool.query(getSingleReg, [id], (error, results) => {
     if (error) {
       throw error;
     }
@@ -133,7 +106,7 @@ export const updateReg = (request, response) => {
   const { abono2, resta, estado } = request.body;
 
   pool.query(
-    "UPDATE registro SET abono2 = $1, resta = $2, estado = $3 WHERE id = $4 RETURNING *",
+    updateRecord,
     [abono2, resta, estado, id],
     (error) => {
       if (error) {
@@ -153,8 +126,8 @@ export const searchByName = (req, response) => {
   }
 
   pool.query(
-   /*  `SELECT * FROM registro WHERE LOWER(nombre) LIKE LOWER($1) OR description ILIKE $1`, */
-   `SELECT * FROM registro WHERE LOWER(nombre) LIKE LOWER($1) OR LOWER(recibe) LIKE LOWER($1)`,
+ 
+   search,
     [`%${q}%`],
     (error, results) => {
       if (error) {
@@ -173,7 +146,7 @@ export const searchByResp = (req, response) => {
   }
 
   pool.query(
-   /*  `SELECT * FROM registro WHERE LOWER(nombre) LIKE LOWER($1) OR description ILIKE $1`, */
+ 
    `SELECT * FROM registro WHERE LOWER(realiza) LIKE LOWER($1)`,
     [`%${q}%`],
     (error, results) => {

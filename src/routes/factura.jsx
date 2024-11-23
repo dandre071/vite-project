@@ -111,6 +111,29 @@ const Factura = ({ openModal, onClose, payMethod }) => {
     p: 0,
   };
   const boxColor = "#DFE5F2";
+const trabajos = cart.map(x=>`${x.name}${ x.descolillado && x.descolillado}${ x.descolillado && x.descolillado}`)
+console.log(trabajos)
+const record = {
+  fecha_recibido: "24/10/2024",
+  fecha_entrega: paymentData.delivery,
+  nombre: clientData.name,
+  nit: '',
+  telefono: clientData.phone,
+  email: clientData.email,
+  trabajo: '{"value1", "value2"}',
+ /*  trabajo: '{"value1", "value2"}', */
+  recibe: "diego",
+  realiza: "diego",
+  total: 12345,
+  abono1: 12345,
+  abono2: 0,
+  resta: 0,
+  estado: "asignado",
+  observaciones: "fjfdkfjdkjfkdjf",
+  tipo_cliente: 'particular',
+  tipo_recibo: 'recibo'
+}
+
   return (
     <>
       <div

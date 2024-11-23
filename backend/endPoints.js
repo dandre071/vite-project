@@ -1,6 +1,6 @@
 export const endPoints = {
   products: "http://localhost:3000/api/v1/impresosDB",
-  users: "http://localhost:3000/api/v1/impresosDB/users",
+ records: "http://localhost:3000/api/v1/impresosDB/registro"
 };
 
 /* fetch("/api/v1/impresosDB/users")

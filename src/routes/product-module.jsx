@@ -39,7 +39,7 @@ const ProductModule = () => {
   const handlerAdd = (e) => {
     addItem({
       ...formik.values,
-      name: inputValue || formik.values.name || maintainText,
+      name: nameText,
       id: uuidv4(),
     });
     formik.resetForm();
@@ -64,6 +64,7 @@ const ProductModule = () => {
       finish: [],
       orientation: "",
       description: "",
+      color: ''
     });
   };
   const formik = useFormik({
@@ -81,6 +82,8 @@ const ProductModule = () => {
       finish: ["Sin acabado"],
       finishQ: 1,
       material: "",
+      color:'',
+      cutLength: null,
       descolillado: "",
       transfer: false,
       itemTotalPrice: 0,
@@ -93,10 +96,35 @@ const ProductModule = () => {
 
     onSubmit: handlerAdd,
   });
-  const maintainText =
-    formik.values.device + formik.values.brand + formik.values.model;
-  const productType = formik.values.type;
+  const device = formik.values.device
+  const brand=  formik.values.brand
+const model = formik.values.model
+const finish = formik.values.finish
+const orientation = formik.values.finish
+const material = formik.values.material
+const color = formik.values.color
+const cutLength =formik.values.cutLength
+/* const orientation = formik.values.finish */
+let nameText
+/* if(formik.values.type !== 'Mantenimiento'){
+  formik.setValues({
+    ...formik.values, device: '', model: '', brand: ''
+  })
+} */
+if(formik.values.type === 'Mantenimiento'){
+  nameText = `${device} ${brand} ${model}`
+}
+if(formik.values.type === 'Corte en vinilo'){
+ 
+  nameText = `${material} ${brand} ${model}`
 
+}
+console.log(nameText)
+console.log(material)
+  const maintainText =
+    `${device} ${brand} ${model} ${finish && finish} ${orientation && orientation}`;
+  const productType = formik.values.type;
+console.log(maintainText)
   const totalCalc = () => {
     formik.setValues({
       ...formik.values,
@@ -120,7 +148,7 @@ const ProductModule = () => {
 
   const [value, setValue] = useState(options);
   const [inputValue, setInputValue] = useState("");
-  const [type, setType] = useState("");
+
   const prices = productList ? productList.map((x) => x.precio) : 0;
   const products = productList ? productList.map((x) => x.producto) : "";
   const index = products.indexOf(value);
@@ -134,10 +162,8 @@ const ProductModule = () => {
       itemTotalPrice: price * formik.values.quantity,
     });
   };
-  /* console.log(prices[index]);
-  const maintainText = `${formik.values.device} / ${formik.values.brand} / ${formik.values.model}`;
-  console.log(maintainText);
-  console.log(formik.values.brand); */
+  console.log(formik.values.color)
+
 
   return (
     <motion.div
@@ -148,7 +174,7 @@ const ProductModule = () => {
       <form>
         <div
           className="product-module-grid"
-          // className={ formik.values.type !== "Mantenimiento"  ? "product-module-standard"  : "product-module-grid-maintenance"         }
+       
           style={{
             border: "none",
           }}
@@ -169,6 +195,9 @@ const ProductModule = () => {
                   finish: [],
                   orientation: "",
                   description: "",
+                  model: '',
+                  brand: '',
+                  device: ''
                 });
                 setPrice(0);
                 setValue("");
@@ -218,21 +247,19 @@ const ProductModule = () => {
                 />
               )}
               {productType === "Corte en vinilo" && (
+                <Box sx={{display: 'flex', gap: 0.5}}>
                 <FormSelect2
-                  value={formik.values.device}
-                  fullWidth
+                  value={formik.values.material}
+                  
                   name="material"
-                  onChange={(e) => {
-                    formik.setValues({
-                      ...formik.values,
-                      device: e.target.value,
-                      name: formik.values.material,
-                    });
-                  }}
-                  options={devices}
+                  onChange={formik.handleChange}
+                  options={lists.vinyls}
                   label={"Material"}
                   defaultValue={""}
                 />
+                {material === 'Vinilo' && <TextField sx={{}} label='Color' onChange={formik.handleChange} name="color" value={formik.values.color}></TextField>}
+                <TextField label='Largo' type="number" onChange={formik.handleChange} name="cutLength" value={formik.values.cutLength}></TextField>
+                </Box>
               )}
 
               {productType === "Producto estándar" && (
@@ -245,6 +272,7 @@ const ProductModule = () => {
                   }}
                 >
                   <Autocomplete
+                 // getOptionLabel={(option) => option.toString() || ""}
                     name="name"
                     onClose={() => {
                       formik.setValues({ ...formik.values, itemTotalPrice: 0 });

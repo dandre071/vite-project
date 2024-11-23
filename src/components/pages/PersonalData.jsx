@@ -80,6 +80,7 @@ const PersonalData = () => {
         name: localStore.name,
         email: localStore.email,
         phone: localStore.phone,
+        nit: localStore.nit
       });
     };
     updateState();
@@ -96,34 +97,13 @@ const PersonalData = () => {
   console.log(show);
 
   const handleShow = () => setShow(true);
-  /*  const user = "diego";
-
-  const errors = formik.errors.name;
-  console.log({ ...formik });
-  console.log(formik.errors.toString());
-  const foundName = users.filter((user) => user == formik.values.name);
-  console.log(foundName); */
-  /* const checkUser = () => {
-    const selectedUser = formik.values.name;
-    const userFound = users.indexOf(selectedUser);
-    formik.setValues({
-      ...formik.values,
-      email: fakeUsers[userFound].email,
-      phone: fakeUsers[userFound].phone,
-      nit: fakeUsers[userFound].nit,
-    });
-  };
-  const clientName = localStore.name;
-
-  console.log(clientName); */
-  // console.log(users);
-
+  
   const errors =
     formik.errors.phone || formik.errors.name || formik.errors.email;
 
   return (
     <Stack
-      // className="page-child"
+  
       sx={{
         display: "flex",
         justifyContent: "center",
