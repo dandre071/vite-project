@@ -111,7 +111,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
     p: 0,
   };
   const boxColor = "#DFE5F2";
-
+  const title = cart.map(x=>`"${x.title}"`)
 const trabajos = cart.map(x=>`${x.name}${ x.descolillado && x.descolillado}${ x.descolillado && x.descolillado}`)
 console.log(trabajos)
 const record = {
@@ -121,7 +121,7 @@ const record = {
   nit: '',
   telefono: clientData.phone,
   email: clientData.email,
-  trabajo: '{"value1", "value2"}',
+  trabajo: `'{${title}}'`,
  /*  trabajo: '{"value1", "value2"}', */
   recibe: "diego",
   realiza: "diego",
@@ -137,17 +137,7 @@ const record = {
 
 
 
-  const details = cart;
-  let jobText;
-  cart.map((x) => {
-    if (x.type !== "Mantenimiento") {
-      `${x.name}/ ${x.quantity}/ ${x.finish}/ ${x.orientation}`;
-    }
-    jobText = `${x.name}`;
-  });
-  console.log(
-    jobText /* cart.map((x) => `${x.name}/ ${x.quantity}/ ${x.finish}/ ${x?.orientation}`) */
-  );
+  console.log(  title.join(',')  );
   const createRegister = () => {
     fetch("http://localhost:3000/api/v1/impresosDB/registro", {
       method: "POST",

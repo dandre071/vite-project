@@ -34,25 +34,16 @@ import { v4 as uuidv4 } from "uuid";
 
 const ProductModule = () => {
   const addItem = useShoppingCart((state) => state.addItem);
-  const [height, setHeight] = useState(0);
+  
 
   const handlerAdd = (e) => {
     addItem({
       ...formik.values,
-      name: nameText,
+      title: title,
       id: uuidv4(),
     });
     formik.resetForm();
-    /*  formik.setValues({
-      ...formik.values,
-      type: e.target.value,
-      quantity: 1,
-      name: "",
-      price: null,
-      finish: [],
-      orientation: "",
-      description: "",
-    }); */
+
   };
   const handleClose = (e) => {
     formik.setValues({
@@ -91,6 +82,7 @@ const ProductModule = () => {
       model: "",
       brand: "",
       device: "",
+      title: ''
     },
     validationSchema: productSchema,
 
@@ -100,27 +92,22 @@ const ProductModule = () => {
   const brand=  formik.values.brand
 const model = formik.values.model
 const finish = formik.values.finish
-const orientation = formik.values.finish
+const orientation = formik.values.orientation
 const material = formik.values.material
 const color = formik.values.color
 const cutLength =formik.values.cutLength
-/* const orientation = formik.values.finish */
-let nameText
-/* if(formik.values.type !== 'Mantenimiento'){
-  formik.setValues({
-    ...formik.values, device: '', model: '', brand: ''
-  })
-} */
+const q= formik.values.quantity
+
+let title
+
 if(formik.values.type === 'Mantenimiento'){
-  nameText = `${device} ${brand} ${model}`
+  title = `${device} ${brand} ${model}`
 }
 if(formik.values.type === 'Corte en vinilo'){
- 
-  nameText = `${material} ${brand} ${model}`
-
+   title = `${material} ${color}/ ${cutLength + 'cm'}/ ${orientation}/  ${finish.join(' + ')}/ Cant: ${q}`
 }
-console.log(nameText)
-console.log(material)
+console.log(title)
+//console.log(material)
   const maintainText =
     `${device} ${brand} ${model} ${finish && finish} ${orientation && orientation}`;
   const productType = formik.values.type;
@@ -152,7 +139,7 @@ console.log(maintainText)
   const prices = productList ? productList.map((x) => x.precio) : 0;
   const products = productList ? productList.map((x) => x.producto) : "";
   const index = products.indexOf(value);
-  /*  console.log(inputValue); */
+   console.log(products);
   const getPrice = () => {
     const price = prices[index];
     setPrice(price);
@@ -179,9 +166,7 @@ console.log(maintainText)
             border: "none",
           }}
         >
-          {/*start first row*/}
-          <Box className="standard-product">
-            <FormSelect2
+          <FormSelect2
               name={"type"}
               value={formik.values.type}
               onChange={(e) => {
@@ -207,10 +192,14 @@ console.log(maintainText)
               label={"Tipo de Producto"}
               defaultValue={"Producto"}
             />
+          {/*start first row*/}
+          <Box className="standard-product">
+            
             <Box
               sx={{
                 display: "grid",
-                gap: 1,
+                
+           
                 gridTemplateColumns: "1fr",
                 justifyContent: "center",
                 alignItems: "center",
@@ -267,12 +256,12 @@ console.log(maintainText)
                   sx={{
                     display: "grid",
                     gridTemplateColumns: "1fr 40px",
-                    gap: 1,
+                   
                     placeItems: "center",
                   }}
                 >
                   <Autocomplete
-                 // getOptionLabel={(option) => option.toString() || ""}
+               getOptionLabel={(option) => option|| ""}
                     name="name"
                     onClose={() => {
                       formik.setValues({ ...formik.values, itemTotalPrice: 0 });
@@ -281,7 +270,7 @@ console.log(maintainText)
                     value={value}
                     onChange={(event, newValue) => {
                       setValue(newValue);
-                      console.log(typeof value);
+                   
                     }}
                     inputValue={inputValue}
                     onInputChange={(event, newInputValue) => {
@@ -297,9 +286,14 @@ console.log(maintainText)
                     className="btn"
                     sx={{
                       bgcolor: "primary.main",
-                      width: 45,
-                      height: 45,
-                      borderRadius: "50%",
+                      width: '110%',
+                      height: '99%',
+                      left: -5,
+                      zIndex: 0,
+                      position: 'relative',
+                     /*  borderRadius: "50%", */
+                     borderTopRightRadius: 10,
+                     borderBottomRightRadius: 10,
                       display: "grid",
                       placeItems: "center",
                     }}
