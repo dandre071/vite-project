@@ -2,7 +2,7 @@ import pg from "pg";
 export const { Pool } = pg;
 /* const Pool = require("pg").Pool; */
 
-export const pool = new Pool({
+/* export const pool = new Pool({
   user: "postgres",
   host: "192.168.1.7",
   host: "localhost",
@@ -10,13 +10,13 @@ export const pool = new Pool({
   password: "laboriosidad",
   port: 5432,
 });
-
-/* export const pool = new Pool({
+ */
+export const pool = new Pool({
   user: "postgres",
   host: "localhost",
   database: "postgres",
   password: "Onepiece.07",
   port: 5432,
-}); */
+});
 /* module.exports = pool; */
 /* export default pool;*/

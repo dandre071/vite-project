@@ -3,7 +3,7 @@ import { Frown, PrinterCheck, Smile } from "lucide-react";
 import React from "react";
 import { customTheme } from "../../Hooks/useCustomTheme";
 
-const ConfirmModal = ({ onClick, onClose }) => {
+const ConfirmModal = ({ onClick, onClose, ok }) => {
   return (
     <div
       style={{

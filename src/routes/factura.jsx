@@ -21,6 +21,7 @@ import { customTheme } from "../Hooks/useCustomTheme";
 import useFetch from "../fetchHooks/useFetch";
 import useFetchProducts from "../fetchHooks/useFetchProducts";
 import { add_zero } from "../components/utils/helpers";
+import { endPoints } from "../../backend/endPoints";
 const Factura = ({ openModal, onClose, payMethod }) => {
   const navigate = useNavigate();
   const [invoiceNum, setinvoiceNum] = useState(null);
@@ -67,12 +68,13 @@ const Factura = ({ openModal, onClose, payMethod }) => {
     timeStyle: "short",
     // timeZone: "Colombia/Bogotá",
   }).format(date);
-console.log(fullDate)
+  console.log(fullDate);
   const [confirmOpen, setConfirmOpen] = useState(false);
 
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const clear = () => {
+    createRegister();
     paymentDataReset();
     clientData();
     cartReset();
@@ -111,57 +113,43 @@ console.log(fullDate)
     p: 0,
   };
   const boxColor = "#DFE5F2";
-  const title = cart.map(x=>`"${x.title}"`)
-const trabajos = cart.map(x=>`${x.name}${ x.descolillado && x.descolillado}${ x.descolillado && x.descolillado}`)
-console.log(trabajos)
-const record = {
-  fecha_recibido: fullDate,
-  fecha_entrega: paymentData.delivery,
-  nombre: clientData.name,
-  nit: '',
-  telefono: clientData.phone,
-  email: clientData.email,
-  trabajo: `'{${title.join(',')}}'`,
- /*  trabajo: '{"value1", "value2"}', */
-  recibe: paymentData.receives,
-  realiza: paymentData.do,
-  total: totalInvoice,
-  abono1: paymentData.payment,
-  abono2: 0,
-  resta: totalInvoice - paymentData.payment,
-  estado: "asignado",
-  observaciones: paymentData.comments,
-  tipo_cliente: client.clientType,
-  tipo_recibo: client.billType
-}
+  const title = cart.map((x) => `"${x.title}"`);
+  const trabajos = cart.map(
+    (x) =>
+      `${x.name}${x.descolillado && x.descolillado}${
+        x.descolillado && x.descolillado
+      }`
+  );
+  console.log(trabajos);
+  const record = {
+    fecha_recibido: fullDate,
+    fecha_entrega: paymentData.delivery,
+    nombre: clientData.name,
+    nit: null,
+    telefono: clientData.phone,
+    email: clientData.email,
+    trabajo: `{${title.join(",")}}`,
+    /*  trabajo: '{"value1", "value2"}', */
+    recibe: paymentData.receives,
+    realiza: paymentData.do,
+    total: totalInvoice,
+    abono1: paymentData.payment,
+    abono2: 0,
+    resta: totalInvoice - paymentData.payment,
+    estado: "asignado",
+    observaciones: paymentData.comments,
+    tipo_cliente: client.clientType,
+    tipo_recibo: client.billType,
+  };
 
-
-
-  console.log(  record.trabajo );
+  console.log(record.trabajo);
   const createRegister = () => {
-    fetch("http://localhost:3000/api/v1/impresosDB/registro", {
+    fetch(endPoints.records, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        fecha_recibido: "24/10/2024",
-        fecha_entrega: "28/10/2024",
-        nombre: "prueba2",
-        nit: 1234567890,
-        telefono: 3206598822,
-        email: "prueba@gmail.com",
-
-        trabajo: '{"value1", "value2"}',
-        recibe: "diego",
-        realiza: "diego",
-        total: 12345,
-        abono1: 12345,
-        abono2: 0,
-        resta: 0,
-        estado: "asignado",
-        observaciones: "fjfdkfjdkjfkdjf",
-      }),
+      body: JSON.stringify(record),
     }).then((respuesta) => respuesta.ok);
   };
 
