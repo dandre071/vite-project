@@ -12,19 +12,15 @@ import {
 import { useShoppingCart } from "../store/shoppingCart";
 import NavBtn from "../Hooks/useCartItems";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { brands, devices, shapes, vinylPrice } from "../../public/configs";
-import { cutPrice } from "../components/utils/calcs";
 
 import FormSelect2 from "../components/Forms/FormSelect2";
-import { Form, useFormik } from "formik";
+import { useFormik } from "formik";
 import { productSchema } from "../components/Validations";
 import SearchIcon from "@mui/icons-material/Search";
 import { colPesos } from "../components/utils/configs";
-
-import { clientPrices } from "../../public/configs";
-
 import { lists } from "../../public/configs";
 import PriceCalc from "../components/PriceCalc";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -34,7 +30,6 @@ import { v4 as uuidv4 } from "uuid";
 
 const ProductModule = () => {
   const addItem = useShoppingCart((state) => state.addItem);
-  
 
   const handlerAdd = (e) => {
     addItem({
@@ -43,7 +38,6 @@ const ProductModule = () => {
       id: uuidv4(),
     });
     formik.resetForm();
-
   };
   const handleClose = (e) => {
     formik.setValues({
@@ -55,7 +49,7 @@ const ProductModule = () => {
       finish: [],
       orientation: "",
       description: "",
-      color: ''
+      color: "",
     });
   };
   const formik = useFormik({
@@ -73,7 +67,7 @@ const ProductModule = () => {
       finish: ["Sin acabado"],
       finishQ: 1,
       material: "",
-      color:'',
+      color: "",
       cutLength: null,
       descolillado: "",
       transfer: false,
@@ -82,36 +76,39 @@ const ProductModule = () => {
       model: "",
       brand: "",
       device: "",
-      title: ''
+      title: "",
     },
     validationSchema: productSchema,
 
     onSubmit: handlerAdd,
   });
-  const device = formik.values.device
-  const brand=  formik.values.brand
-const model = formik.values.model
-const finish = formik.values.finish
-const orientation = formik.values.orientation
-const material = formik.values.material
-const color = formik.values.color
-const cutLength =formik.values.cutLength
-const q= formik.values.quantity
+  const device = formik.values.device;
+  const brand = formik.values.brand;
+  const model = formik.values.model;
+  const finish = formik.values.finish;
+  const orientation = formik.values.orientation;
+  const material = formik.values.material;
+  const color = formik.values.color;
+  const cutLength = formik.values.cutLength;
+  const q = formik.values.quantity;
 
-let title
+  let title;
 
-if(formik.values.type === 'Mantenimiento'){
-  title = `${device} ${brand} ${model}`
-}
-if(formik.values.type === 'Corte en vinilo'){
-   title = `${material} ${color}/ ${cutLength + 'cm'}/ ${orientation}/  ${finish.join(' + ')}/ Cant: ${q}`
-}
-console.log(title)
-//console.log(material)
-  const maintainText =
-    `${device} ${brand} ${model} ${finish && finish} ${orientation && orientation}`;
+  if (formik.values.type === "Mantenimiento") {
+    title = `${device} ${brand} ${model}`;
+  }
+  if (formik.values.type === "Corte en vinilo") {
+    title = `${material} ${color}/ ${
+      cutLength + "cm"
+    }/ ${orientation}/  ${finish.join(" + ")}/ Cant: ${q}`;
+  }
+  console.log(title);
+
+  const maintainText = `${device} ${brand} ${model} ${finish && finish} ${
+    orientation && orientation
+  }`;
   const productType = formik.values.type;
-console.log(maintainText)
+  console.log(maintainText);
   const totalCalc = () => {
     formik.setValues({
       ...formik.values,
@@ -139,7 +136,7 @@ console.log(maintainText)
   const prices = productList ? productList.map((x) => x.precio) : 0;
   const products = productList ? productList.map((x) => x.producto) : "";
   const index = products.indexOf(value);
-   console.log(products);
+  console.log(products);
   const getPrice = () => {
     const price = prices[index];
     setPrice(price);
@@ -149,8 +146,7 @@ console.log(maintainText)
       itemTotalPrice: price * formik.values.quantity,
     });
   };
-  console.log(formik.values.color)
-
+  console.log(formik.values.color);
 
   return (
     <motion.div
@@ -161,45 +157,42 @@ console.log(maintainText)
       <form>
         <div
           className="product-module-grid"
-       
           style={{
             border: "none",
           }}
         >
           <FormSelect2
-              name={"type"}
-              value={formik.values.type}
-              onChange={(e) => {
-                formik.handleChange;
-                formik.setValues({
-                  ...formik.values,
-                  type: e.target.value,
-                  quantity: 1,
-                  name: "",
-                  price: null,
-                  finish: [],
-                  orientation: "",
-                  description: "",
-                  model: '',
-                  brand: '',
-                  device: ''
-                });
-                setPrice(0);
-                setValue("");
-              }}
-              fullWidth
-              options={workType}
-              label={"Tipo de Producto"}
-              defaultValue={"Producto"}
-            />
+            name={"type"}
+            value={formik.values.type}
+            onChange={(e) => {
+              formik.handleChange;
+              formik.setValues({
+                ...formik.values,
+                type: e.target.value,
+                quantity: 1,
+                name: "",
+                price: null,
+                finish: [],
+                orientation: "",
+                description: "",
+                model: "",
+                brand: "",
+                device: "",
+              });
+              setPrice(0);
+              setValue("");
+            }}
+            fullWidth
+            options={workType}
+            label={"Tipo de Producto"}
+            defaultValue={"Producto"}
+          />
           {/*start first row*/}
           <Box className="standard-product">
-            
             <Box
               sx={{
                 display: "grid",
-                
-           
+
                 gridTemplateColumns: "1fr",
                 justifyContent: "center",
                 alignItems: "center",
@@ -236,18 +229,31 @@ console.log(maintainText)
                 />
               )}
               {productType === "Corte en vinilo" && (
-                <Box sx={{display: 'flex', gap: 0.5}}>
-                <FormSelect2
-                  value={formik.values.material}
-                  
-                  name="material"
-                  onChange={formik.handleChange}
-                  options={lists.vinyls}
-                  label={"Material"}
-                  defaultValue={""}
-                />
-                {material === 'Vinilo' && <TextField sx={{}} label='Color' onChange={formik.handleChange} name="color" value={formik.values.color}></TextField>}
-                <TextField label='Largo' type="number" onChange={formik.handleChange} name="cutLength" value={formik.values.cutLength}></TextField>
+                <Box sx={{ display: "flex", gap: 0.5 }}>
+                  <FormSelect2
+                    value={formik.values.material}
+                    name="material"
+                    onChange={formik.handleChange}
+                    options={lists.vinyls}
+                    label={"Material"}
+                    defaultValue={""}
+                  />
+                  {material === "Vinilo" && (
+                    <TextField
+                      sx={{}}
+                      label="Color"
+                      onChange={formik.handleChange}
+                      name="color"
+                      value={formik.values.color}
+                    ></TextField>
+                  )}
+                  <TextField
+                    label="Largo"
+                    type="number"
+                    onChange={formik.handleChange}
+                    name="cutLength"
+                    value={formik.values.cutLength}
+                  ></TextField>
                 </Box>
               )}
 
@@ -256,12 +262,12 @@ console.log(maintainText)
                   sx={{
                     display: "grid",
                     gridTemplateColumns: "1fr 40px",
-                   
+
                     placeItems: "center",
                   }}
                 >
                   <Autocomplete
-               getOptionLabel={(option) => option|| ""}
+                    getOptionLabel={(option) => option || ""}
                     name="name"
                     onClose={() => {
                       formik.setValues({ ...formik.values, itemTotalPrice: 0 });
@@ -270,7 +276,6 @@ console.log(maintainText)
                     value={value}
                     onChange={(event, newValue) => {
                       setValue(newValue);
-                   
                     }}
                     inputValue={inputValue}
                     onInputChange={(event, newInputValue) => {
@@ -285,15 +290,15 @@ console.log(maintainText)
                   <Box
                     className="btn"
                     sx={{
-                      bgcolor: "primary.main",
-                      width: '110%',
-                      height: '99%',
+                      bgcolor: "success.main",
+                      width: "110%",
+                      height: "99%",
                       left: -5,
                       zIndex: 0,
-                      position: 'relative',
-                     /*  borderRadius: "50%", */
-                     borderTopRightRadius: 10,
-                     borderBottomRightRadius: 10,
+                      position: "relative",
+                      /*  borderRadius: "50%", */
+                      borderTopRightRadius: 10,
+                      borderBottomRightRadius: 10,
                       display: "grid",
                       placeItems: "center",
                     }}
@@ -425,32 +430,33 @@ console.log(maintainText)
           )}
           {/*end third row*/}
           {/*start fourth row*/}
-
-          {productType !== "Mantenimiento"&&<Box sx={{ display: "flex", gap: 2 }}>
-            <FormSelect2
-              value={formik.values.finish}
-              multiple={true}
-              /*  error={formik.errors.finish}
+          {productType !== "Mantenimiento" && (
+            <Box sx={{ display: "flex", gap: 2 }}>
+              <FormSelect2
+                value={formik.values.finish}
+                multiple={true}
+                /*  error={formik.errors.finish}
                     helperText={formik.errors.finish} */
-              fullWidth
-              name="finish"
-              onChange={formik.handleChange}
-              options={lists.acabados}
-              label={"Acabado"}
-              defaultValue={"Sin acabado"}
-              renderValue={(selected) => selected.join(", ")}
-            />
+                fullWidth
+                name="finish"
+                onChange={formik.handleChange}
+                options={lists.acabados}
+                label={"Acabado"}
+                defaultValue={"Sin acabado"}
+                renderValue={(selected) => selected.join(", ")}
+              />
 
-            <FormSelect2
-              value={formik.values.orientation}
-              fullWidth
-              name="orientation"
-              onChange={formik.handleChange}
-              options={shapes}
-              label={"Orientación/Forma"}
-              defaultValue={"Sin acabado"}
-            />
-          </Box>}
+              <FormSelect2
+                value={formik.values.orientation}
+                fullWidth
+                name="orientation"
+                onChange={formik.handleChange}
+                options={shapes}
+                label={"Orientación/Forma"}
+                defaultValue={"Sin acabado"}
+              />
+            </Box>
+          )}
           {/*end fourth row*/}
           <Box className="product-details">
             <TextField

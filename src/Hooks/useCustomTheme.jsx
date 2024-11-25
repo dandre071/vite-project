@@ -20,20 +20,17 @@ const primaryLightColor = "#69a5ff";
 const primaryLightherColor = "#abcdff";
 const secondaryColor = "#e50037";
 const mainText = "#02172a";
-//const backgroundColor =
-const grey = "#B0C4DE"; //light steel blue
+
+const grey = "#B0C4DE";
 export const customTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      //main: "#186cff",
-      //main: "#0067FF",
       main: primaryColor,
-      //dark: "#0552db",
+
       dark: primaryDarkColor,
       light: primaryLightColor,
       lighter: primaryLightherColor,
-      //contrastText: "#304ffe",
     },
     secondary: {
       main: "#e50037",
@@ -51,8 +48,6 @@ export const customTheme = createTheme({
     },
     warning: {
       main: "#ef491d",
-      /*  light: "#ff8a2d",
-      dark: "#d04200", */
     },
     info: {
       main: "#00bdff",
@@ -61,7 +56,7 @@ export const customTheme = createTheme({
     background: {
       default: "#f1f1f2",
       light: "#eef2ff",
-      //light: "#f7f7f7",
+
       dark: "#e2e2e2",
     },
     text: {
@@ -84,7 +79,7 @@ export const customTheme = createTheme({
         disableUnderline: true,
         sx: {
           borderRadius: 2,
-          //bgcolor: "green",
+
           color: "text.main",
           fontWeight: 600,
           fontSize: 16,
@@ -101,12 +96,7 @@ export const customTheme = createTheme({
       },
     },
   },
-  props: {
-    /* MuiInputBase: { disableUnderline: true },
-    MuiAppBar: {
-      color: "inherit",
-    }, */
-  },
+  props: {},
 
   components: {
     MuiButton: {
@@ -115,7 +105,6 @@ export const customTheme = createTheme({
           props: {
             variant: "prime",
             color: "primary",
-            //fullWidth: "true",
           },
 
           style: {
@@ -123,7 +112,6 @@ export const customTheme = createTheme({
             backgroundColor: primaryColor,
             color: "white",
             fontSize: 20,
-            //width: 400,
 
             borderRadius: 8,
             height: 70,
@@ -133,12 +121,7 @@ export const customTheme = createTheme({
             "&:hover": {
               background: primaryDarkColor,
             },
-            /* "&:disabled": {
-              backgroundColor: primaryLightherColor,
-              border: `2px solid ${primaryColor}`,
-              color: primaryColor,
-              fontSize: 20,
-            }, */
+
             "&:disabled": {
               background: primaryColor,
               color: primaryLightColor,
@@ -153,11 +136,10 @@ export const customTheme = createTheme({
 
           style: {
             textTransform: "initial",
-            // backgroundColor: "white",
+
             border: `2px solid ${primaryColor}`,
             color: primaryColor,
             fontSize: 20,
-            // width: 400,
 
             borderRadius: 8,
             height: 60,
@@ -180,7 +162,6 @@ export const customTheme = createTheme({
             background: "#e50037",
             color: "#fff",
             fontSize: 20,
-            // width: 400,
 
             borderRadius: 8,
             height: 60,
@@ -206,19 +187,13 @@ export const customTheme = createTheme({
             background: "white",
             color: secondaryColor,
             fontSize: 20,
-            // width: 400,
+
             border: `3px solid ${secondaryColor}`,
             borderRadius: 8,
             height: 60,
 
             p: 0,
             m: 0,
-            /* "&:hover": {
-              background: "#f7003b",
-            },
-            "&:disabled": {
-              background: "#f7f7f7",
-            }, */
           },
         },
         {
@@ -229,7 +204,7 @@ export const customTheme = createTheme({
           style: {
             textTransform: "initial",
             background: "#49c134",
-            // color: secondaryColor,
+
             fontSize: 20,
 
             borderRadius: 8,
@@ -237,34 +212,11 @@ export const customTheme = createTheme({
 
             p: 0,
             m: 0,
-            /* "&:hover": {
-              background: "#f7003b",
-            },
-            "&:disabled": {
-              background: "#f7f7f7",
-            }, */
           },
         },
       ],
     },
     MuiSvgIcon: { defaultProps: { sx: { width: 35, height: 35 } } },
-    /* 
-    MuiInputLabel: {
-      defaultProps: {
-        multiline: true,
-        //shrink: true,
-
-        sx: {
-          // bgcolor: "yellow",
-          color: "primary.main",
-          //color: "primary.main",
-          textAlign: "left",
-          height: 0,
-          fontSize: 18,
-          fontWeight: 500,
-        },
-      },
-    }, */
 
     MuiTextField: {
       defaultProps: {
@@ -283,7 +235,7 @@ export const customTheme = createTheme({
         disableUnderline: true,
         sx: {
           borderRadius: 2,
-          //bgcolor: "red",
+
           color: mainText,
           fontWeight: 600,
           fontSize: 16,
@@ -321,7 +273,7 @@ export const customTheme = createTheme({
 
         sx: {
           borderRadius: 2,
-          // bgcolor: primaryLightherColor,
+
           color: "text.main",
           fontWeight: 600,
           fontSize: 15,
@@ -346,7 +298,7 @@ export const customTheme = createTheme({
 
         sx: {
           borderRadius: 1.5,
-          // bgcolor: "#f3f3f3",
+
           color: "text.main",
           fontWeight: 600,
           fontSize: 17,

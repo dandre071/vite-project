@@ -8,7 +8,7 @@ export const vinylPrice = {
   "Vinilo Fluorescente": 22000,
   Transportador: 6000,
 };
-console.log(vinylPrice["Vinilo Fluorescente"]);
+/* console.log(vinylPrice["Vinilo Fluorescente"]); */
 
 export const publicistPrices = {
   Banner: 2.2,

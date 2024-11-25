@@ -30,7 +30,7 @@ import { ReplayOutlined, Search } from "@mui/icons-material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { lists } from "../../../public/configs";
 const users = lists.users;
-console.log(users);
+/* console.log(users); */
 
 /* const key = uuid4(); */
 
@@ -202,15 +202,14 @@ const columns = [
     field: "estado",
     headerName: "Estado",
     /*  type: "number", */
-    width: `${width * 0.070}`,
+    width: `${width * 0.07}`,
     /*  editable: true, */
     renderCell: (cellValues) => {
-      const estado = cellValues && cellValues.row.estado
-      
+      const estado = cellValues && cellValues.row.estado;
+
       return (
         <Box className={getClassNameTable(estado)}>
           <Typography sx={{ fontSize: 12, fontWeight: 800 }}>
-          
             {cellValues.row.estado}
           </Typography>
         </Box>
@@ -219,7 +218,6 @@ const columns = [
     cellClassName: "center flex",
   },
   {
-   
     headerAlign: "center",
     headerClassName: "table-header",
     field: "Acción",
@@ -233,10 +231,10 @@ const columns = [
             display: "grid",
             width: `100%`,
             gap: 1,
-gridTemplateColumns: '1fr 1fr',
-          justifyContent: 'space-evenly',
+            gridTemplateColumns: "1fr 1fr",
+            justifyContent: "space-evenly",
             alignItems: "center",
-          p: 0
+            p: 0,
           }}
         >
           {/* <EditIcon
@@ -244,32 +242,47 @@ gridTemplateColumns: '1fr 1fr',
            
             sx={{ fontSize: 24, color: "primary.main" }}
           /> */}
-          <Box sx={{justifySelf: 'start'}}><Link
-            to={`/registro/${cellValues.row.id}`}
-            state={{ from: cellValues.row.id }}
-          >
-            <VisibilityOutlinedIcon
-              className="btn success"
-              // onClick={getReg(cellValues.row.id)}
-              onClick={() => {
-                // click(cellValues.row.id);
-                //navigate("/registro/" + cellValues.row.id);
-              }}
-              sx={{ fontSize: 22, display: "flex" }}
-              id={cellValues.row.id}
-            />
-          </Link></Box>
-          
-         {/*  <Link to={`/registro/${cellValues.row.id}/editar-registro/`} state={{ from: cellValues.row.id }}>
-              */}
-                <EditIcon
-               
-                onClick={()=>navigate(`/registro/${cellValues.row.id}/editar-registro/`) }
-                
-                  sx={{ color: `${cellValues.row.estado === 'ENTREGADO' ? '#cfcfcf': "info.main"}`, fontSize: 20, cursor: `${cellValues.row.estado === 'ENTREGADO' ? 'not-allowed': 'pointer'}`, pointerEvents: `${cellValues.row.estado === 'ENTREGADO' ? 'none': 'all'}` }}
-                />
-               
-      {/*     
+          <Box sx={{ justifySelf: "start" }}>
+            <Link
+              to={`/registro/${cellValues.row.id}`}
+              state={{ from: cellValues.row.id }}
+            >
+              <VisibilityOutlinedIcon
+                className="btn success"
+                // onClick={getReg(cellValues.row.id)}
+                onClick={() => {
+                  // click(cellValues.row.id);
+                  //navigate("/registro/" + cellValues.row.id);
+                }}
+                sx={{ fontSize: 22, display: "flex" }}
+                id={cellValues.row.id}
+              />
+            </Link>
+          </Box>
+
+          {/*  <Link to={`/registro/${cellValues.row.id}/editar-registro/`} state={{ from: cellValues.row.id }}>
+           */}
+          <EditIcon
+            onClick={() =>
+              navigate(`/registro/${cellValues.row.id}/editar-registro/`)
+            }
+            sx={{
+              color: `${
+                cellValues.row.estado === "ENTREGADO" ? "#cfcfcf" : "info.main"
+              }`,
+              fontSize: 20,
+              cursor: `${
+                cellValues.row.estado === "ENTREGADO"
+                  ? "not-allowed"
+                  : "pointer"
+              }`,
+              pointerEvents: `${
+                cellValues.row.estado === "ENTREGADO" ? "none" : "all"
+              }`,
+            }}
+          />
+
+          {/*     
             </Link> */}
         </Box>
       );
@@ -298,7 +311,7 @@ export default function Table() {
   const [inputValue, setInputValue] = useState("");
 
   const [reg, setReg] = useState(null);
- /*  const location = useLocation();
+  /*  const location = useLocation();
 
   useEffect(() => {
     const locationId = location.pathname.match(/[0-9]/g).join("");
@@ -334,7 +347,6 @@ export default function Table() {
       });
   };
   const query = inputValue;
-  
 
   /* const filterByClient = () => {
     fetch(`http://localhost:3000/api/v1/impresosDB/search?q=${query}`)
@@ -369,10 +381,12 @@ export default function Table() {
   }, []);
   let optionChoice;
   let label;
-  if (formik.values.filterOption === "orden") {optionChoice = orders;
+  if (formik.values.filterOption === "orden") {
+    optionChoice = orders;
     label = "Buscar Orden de trabajo";
   }
-  if (formik.values.filterOption === "cliente") {optionChoice = names;
+  if (formik.values.filterOption === "cliente") {
+    optionChoice = names;
     label = "Buscar cliente";
   }
   if (formik.values.filterOption === "vendedor") {
@@ -384,9 +398,9 @@ export default function Table() {
     label = "Seleccionar Responsable";
   }
 
-  console.log(inputValue)
-  console.log(label)
-  console.log(optionChoice)
+  console.log(inputValue);
+  console.log(label);
+  console.log(optionChoice);
   const searchFn = () => {
     if (formik.values.filterOption === "orden") {
       fetch("http://localhost:3000/api/v1/impresosDB/registro/" + inputValue)
@@ -420,24 +434,24 @@ export default function Table() {
       getReg();
     } else if (formik.values.filterOption === "vendedor") {
       fetch(`http://localhost:3000/api/v1/impresosDB/search?q=${query}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setJobList(data);
-      })
-      .finally(() => {
-        formik.setValues({ ...formik.values, orderN: "" });
-        setInputValue("");
-      });
-    }else if (formik.values.filterOption === "responsable") {
+        .then((res) => res.json())
+        .then((data) => {
+          setJobList(data);
+        })
+        .finally(() => {
+          formik.setValues({ ...formik.values, orderN: "" });
+          setInputValue("");
+        });
+    } else if (formik.values.filterOption === "responsable") {
       fetch(`http://localhost:3000/api/v1/impresosDB/search-r?q=${query}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setJobList(data);
-      })
-      .finally(() => {
-        formik.setValues({ ...formik.values, orderN: "" });
-        setInputValue("");
-      });
+        .then((res) => res.json())
+        .then((data) => {
+          setJobList(data);
+        })
+        .finally(() => {
+          formik.setValues({ ...formik.values, orderN: "" });
+          setInputValue("");
+        });
     } else if (!inputValue) {
       () => {
         formik.setValues({
@@ -448,7 +462,6 @@ export default function Table() {
       /* navigate("/trabajos"); */
       getReg();
     }
-    
   };
   return (
     <Box sx={{ mt: 5, height: "50vh" /*  backgroundColor: "red" */ }}>

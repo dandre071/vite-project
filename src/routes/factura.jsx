@@ -1,25 +1,24 @@
-import { Alert, Box, Button, Modal, Stack, Typography } from "@mui/material";
+import { Box, Modal, Stack, Typography } from "@mui/material";
 import React, { useEffect, useRef } from "react";
-import { invoiceGrid, modal } from "../Styles/styles";
+import { invoiceGrid } from "../Styles/styles";
 import useUsers from "../Hooks/useUsers";
 import Logo from "../components/Logo";
 import InvoiceItem from "../components/InvoiceComps/InvoiceItem";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { usePersonalData, useShoppingCart } from "../store/shoppingCart";
 import { colPesos } from "../components/utils/configs";
-import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { usePaymentData } from "../store/paymentData";
 import { useReactToPrint } from "react-to-print";
 import { useState } from "react";
 import PrintBtn from "../components/Buttons/PrintBtn";
-import { Columns } from "lucide-react";
+
 import DeleteRoundedBtn from "../components/Buttons/DeleteRoundedBtn";
 import SuccessModal from "../components/modals/SuccessModal";
 import ConfirmModal from "../components/modals/ConfirmModal";
-import { Warning, WarningRounded } from "@mui/icons-material";
+import { WarningRounded } from "@mui/icons-material";
 import { customTheme } from "../Hooks/useCustomTheme";
-import useFetch from "../fetchHooks/useFetch";
-import useFetchProducts from "../fetchHooks/useFetchProducts";
+
 import { add_zero } from "../components/utils/helpers";
 import { endPoints } from "../../backend/endPoints";
 const Factura = ({ openModal, onClose, payMethod }) => {
@@ -129,7 +128,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
     telefono: clientData.phone,
     email: clientData.email,
     trabajo: `{${title.join(",")}}`,
-    /*  trabajo: '{"value1", "value2"}', */
+
     recibe: paymentData.receives,
     realiza: paymentData.do,
     total: totalInvoice,
@@ -197,7 +196,6 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                   flexDirection: "column",
 
                   width: "100%",
-                  /*   bgcolor: "red", */
                 }}
               >
                 <Stack
@@ -205,7 +203,6 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                     display: "flex",
                     justifyContent: "start",
                     alignItems: "start",
-                    /*   bgcolor: "orange", */
                   }}
                 >
                   <Logo className="logo" />{" "}
@@ -232,7 +229,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                       alignItems: "center",
                       justifyContent: "center",
                       alignSelf: "center",
-                      /*   bgcolor: "blue", */
+
                       width: "100%",
                       height: "100%",
                     }}
@@ -258,7 +255,6 @@ const Factura = ({ openModal, onClose, payMethod }) => {
 
                     alignItems: "start",
                     gridTemplateColumns: "35% 1fr",
-                    /*   bgcolor: "green", */
                   }}
                 >
                   <Stack
@@ -269,12 +265,10 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                       justifyContent: "start",
 
                       alignItems: "start",
-                      /*    bgcolor: "blue", */
                     }}
                   >
                     <Box
                       sx={{
-                        /* bgcolor: boxColor, */
                         height: 77.97,
                         width: 120,
                         borderRadius: 1,
@@ -333,9 +327,6 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                         borderRadius: 1.5,
                         mt: 0.2,
                         bgcolor: boxColor,
-                        /* bgcolor: "background.default",
-                         */
-
                         alignSelf: "end",
                       }}
                     >
@@ -366,21 +357,9 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                           sx={{
                             display: "flex",
                             justifyContent: "right",
-                            /*  gridTemplateColumns: "1fr", */
                           }}
                         >
                           <Box>
-                            {/* <Typography
-                              className="invoice-label-client"
-                              sx={{
-                                // bgcolor: "red",
-                                p: 0,
-                                textTransform: "none",
-                                fontSize: 11,
-                              }}
-                            >
-                              Email
-                            </Typography> */}
                             <Typography
                               variant="h6"
                               className="invoice-data-client"
@@ -394,11 +373,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                               {client.email}
                             </Typography>
                           </Box>
-                          <Box>
-                            {/*  <Typography className="invoice-label-client">
-                              Teléfono
-                            </Typography> */}
-                          </Box>
+                          <Box></Box>
                         </Box>
                       </Box>
                     </Stack>
@@ -499,7 +474,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                   height: "100%",
                   display: "grid",
                   gridTemplateColumns: "1fr",
-                  /*   placeItems: "center", */
+
                   p: 0,
                   borderRadius: 1.5,
                 }}
@@ -538,13 +513,13 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                         {paymentData.do}
                       </Typography>
                     </Box>
-                    <Box /* className="box-bottom" */>
+                    <Box>
                       <Typography className="invoice-label">
                         Acabado:
                       </Typography>
                       <Typography></Typography>
                     </Box>
-                    <Box /* className="box-bottom" */>
+                    <Box>
                       <Typography className="invoice-label">
                         Entrega:
                       </Typography>
@@ -554,7 +529,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                   <Stack
                     sx={{
                       display: "grid",
-                      //gridTemplateColumns: "1fr 1fr",
+
                       gridTemplateColumns: "30% 1fr",
                       height: "95%",
                       justifyContent: "center",
@@ -572,23 +547,14 @@ const Factura = ({ openModal, onClose, payMethod }) => {
                         Fecha:
                       </Typography>
                     </Box>
-                    <Stack
-                      /* className="box-bottom" */ sx={{ bgcolor: "#f5f5f5" }}
-                    >
-                      <Box
-                        /* className={"box-bottom"} */ sx={{ height: "1cm" }}
-                      >
+                    <Stack sx={{ bgcolor: "#f5f5f5" }}>
+                      <Box sx={{ height: "1cm" }}>
                         <Typography className={"invoice-label"}>
                           Observaciones: <br />
                           {paymentData.comments}
                         </Typography>
                       </Box>
                     </Stack>
-                    {/*   <Stack className="box-bottom">
-                      <Typography className={"invoice-label"}>
-                        Firma y sello
-                      </Typography>
-                    </Stack> */}
                   </Stack>
                   <Box
                     className={"box-bottom"}
@@ -597,7 +563,6 @@ const Factura = ({ openModal, onClose, payMethod }) => {
 
                       bgcolor: "#C8D4F0",
                       bgcolor: "secondary.light",
-                      /*   display: "flex", */
                     }}
                   >
                     <Box

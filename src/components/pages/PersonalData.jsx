@@ -1,11 +1,7 @@
 import {
-  Alert,
-  AlertTitle,
   Autocomplete,
   Box,
-  Fade,
   Grid,
-  Modal,
   Stack,
   TextField,
   Tooltip,
@@ -19,18 +15,14 @@ import { usePersonalData } from "../../store/shoppingCart";
 import { fakeUsers } from "../utils/test";
 import { useNavigate } from "react-router-dom";
 import NextBtn from "../Buttons/NextBtn";
-import { AnimatePresence, motion } from "framer-motion";
 
 const PersonalData = () => {
-  //HOOKS
-
-  ///////////
   const localStore = usePersonalData((state) => state.personalData);
   const addData = usePersonalData((state) => state.addData);
   const users = fakeUsers.map((user) => user.name);
   const navigate = useNavigate();
   let isValid = true;
-  console.log(isValid);
+
   const handleSubmit = () => {
     !formik.isValid
       ? () => {
@@ -63,7 +55,6 @@ const PersonalData = () => {
       email: "",
       phone: "",
       nit: "",
-      //receives: "",
     },
     validationSchema: PersonSchema,
     onSubmit: handleSubmit,
@@ -75,13 +66,12 @@ const PersonalData = () => {
   useEffect(() => {
     const updateState = () => {
       formik.setValues({
-       
         billType: localStore.billType,
         clientType: localStore.clientType,
         name: localStore.name,
         email: localStore.email,
         phone: localStore.phone,
-        nit: localStore.nit
+        nit: localStore.nit,
       });
     };
     updateState();
@@ -92,26 +82,15 @@ const PersonalData = () => {
     const found = users.filter((user) => user == formik.values.name);
     console.log(found);
   };
-
-  const validate = () => formik.isValid;
-  const [show, setShow] = useState(formik.isValid);
- 
-
-  const handleShow = () => setShow(true);
-  
-  const errors =
-    formik.errors.phone || formik.errors.name || formik.errors.email;
-
   return (
     <Stack
-  
       sx={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
-      <Box className="form-container" sx={{}}>
+      <Box sx={{}}>
         <Box
           sx={{
             display: "flex",
@@ -121,8 +100,6 @@ const PersonalData = () => {
         >
           <Grid
             container
-            lg={10}
-            md={8}
             rowSpacing={2}
             columnSpacing={1}
             sx={{ p: 0, m: 0, width: "600px" }}
@@ -159,17 +136,14 @@ const PersonalData = () => {
                 options={options.userType}
                 label={"Cliente"}
               />
-              {/*  <p>{formik.errors.clientType}</p> */}
             </Grid>
             <Grid item lg={12} md={12} sm={12} xs={12} sx={{}}>
               <Autocomplete
-                /*          fullWidth */
                 value={formik.values.name}
                 helperText={formik.errors.name}
                 error={formik.errors.name}
                 freeSolo={true}
                 name="name"
-                /* id="combo-box-demo" */
                 options={users}
                 sx={{
                   textTransform: "capitalize",
@@ -182,7 +156,6 @@ const PersonalData = () => {
                     value={formik.values.name}
                     helperText={formik.errors.name}
                     name="name"
-                    /*    fullWidth */
                     onChange={formik.handleChange}
                     {...params}
                     label="Nombre / Razón Social"
@@ -228,7 +201,7 @@ const PersonalData = () => {
           height: 60,
           display: "flex",
           width: "100%",
-          /*  background: "black", */
+
           borderRadius: 10,
         }}
       >
@@ -241,8 +214,6 @@ const PersonalData = () => {
             display: "flex",
             justifyContent: "end",
             alignItems: "center",
-            /*  borderTop: "1px solid grey", */
-            /* bgcolor: "purple", */
           }}
         >
           <Tooltip
@@ -270,27 +241,6 @@ const PersonalData = () => {
           </Tooltip>
         </Grid>
       </div>
-      {/* <Fade
-        in={!formik.isValid} //Write the needed condition here to make it appear
-        timeout={{ enter: 500, exit: 500 }} //Edit these two values to change the duration of transition when the element is getting appeared and disappeard
-        addEndListener={() => {
-          setTimeout(1000);
-        }}
-      > */}
-      {/*   {!formik.isValid && (
-        <Grid item lg={9} sx={{ position: "relative", bottom: 100 }}>
-          <Alert
-            onClose={() => {
-              formik.setErrors({});
-            }}
-            className="alert"
-            severity="error"
-          >
-            <AlertTitle>Error</AlertTitle>
-            Los campos con asterisco (*) son obligatorios.
-          </Alert>
-        </Grid>
-      )} */}
     </Stack>
   );
 };

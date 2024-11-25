@@ -2,23 +2,17 @@ import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { customTheme } from "../Hooks/useCustomTheme";
 import CartCounter from "../components/CartCounter";
-import Logo from "../components/Logo";
+
 import SellOutlinedIcon from "@mui/icons-material/SellOutlined";
 import {
   Box,
-  buttonGroupClasses,
-  Container,
   Drawer,
-  Grid,
   List,
-  ListItem,
   ListItemButton,
   ListItemIcon,
-  ListItemText,
-  Stack,
   Typography,
 } from "@mui/material";
-import { routes } from "../main";
+
 import { Settings } from "@mui/icons-material";
 import { getPageTitle } from "../components/utils/helpers";
 import { useEffect } from "react";
@@ -41,15 +35,12 @@ const menuItems = [
     path: "/trabajos",
   },
 ];
-/* const pathName = routes.filter(); */
-const Root = () => {
-  /* const pageTitle =  pathText[0] ? pathText[0].name : ""; */
 
-  /* console.log(pathText[0].name); */
+const Root = () => {
   const navigate = useNavigate();
   useEffect(() => {
     location.pathname.includes("editar-registro");
-    console.log(location.pathname.includes("registro"));
+    /*   console.log(location.pathname.includes("registro")); */
   }, []);
 
   return (
@@ -70,8 +61,6 @@ const Root = () => {
                 height: "auto",
                 justifyContent: "start",
                 alignItems: "center",
-                /*  bgcolor: "#0530ad", */
-                /*    bgcolor: "red", */
 
                 width: 190,
                 alignSelf: "start",
@@ -84,9 +73,7 @@ const Root = () => {
             <List>
               {menuItems.map((item) => (
                 <ListItemButton
-                  onClick={
-                    () => navigate(item.path) /* console.log(item.path */
-                  }
+                  onClick={() => navigate(item.path)}
                   key={item.text}
                   sx={{
                     width: 190,
@@ -96,7 +83,7 @@ const Root = () => {
                     p: 1,
                     display: "grid",
                     gridTemplateColumns: "auto 1fr",
-                    /*   bgcolor: "blue", */
+
                     "&.Mui-selected": {
                       backgroundColor: "#e1e1e1",
                       color: "white",
@@ -140,7 +127,6 @@ const Root = () => {
           <div>
             <Link to={"/"}>
               <Box className="logo-container" style={{ fill: "white" }}>
-                {/*  <Logo className="logo" style={{ fill: "white" }} /> */}
                 <LogoMono className="logo" />
               </Box>
             </Link>
@@ -148,14 +134,6 @@ const Root = () => {
 
             <CartCounter />
           </div>
-
-          {/*  <ListItem>
-              <Link to={"/client-data"}>Cliente</Link>
-            </ListItem>
-
-            <ListItem>
-              <Link to={"/payment"}>Pay</Link>
-            </ListItem> */}
         </div>
         <div className={"main"}>
           <Typography
