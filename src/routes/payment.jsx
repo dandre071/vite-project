@@ -78,16 +78,12 @@ const Payment = ({ height }) => {
 
   const totalPrice = useGetCartTotalPrice();
   const clearCart = useShoppingCart((state) => state.clearCart);
-  const targetRef = useRef();
-  const show = false;
-  const payRef = useRef();
+
   const items = useShoppingCart((state) => state.items);
   const totalPayment = colPesos.format(totalPrice);
-  const [date, setDate] = useState();
+
   const [value, setValue] = useState();
-  //console.log(users);
-  //const dateString = newDate.toString();
-  //console.log(dateString);
+ 
   const formik = useFormik({
     initialValues: {
       receives: "",
@@ -116,32 +112,17 @@ const Payment = ({ height }) => {
   const handleAddData = () => {
     addData({ ...formik.values, delivery: newDateFormat });
     handleOpenModal();
-    /* formik.resetForm();
-    setOpen(false); */
+  
   };
-  /*   const products = getProducts(); */
-  /*  console.log(products); */
-  /*   console.log(getProducts); */
+ 
 
-  const handleDate = () => {
-    formik.setValues({ ...formik.values, delivery: newDateFormat });
-  };
-  // console.log(newDateFormat);
-  const handleDeliveryDate = () => {
-    formik.setValues();
-  };
 
-  //console.log(formik.values);
 
-  const handleChange = (e) => {
-    formik.setValues({
-      ...formik.values,
-      payment: e.target.value,
-      pending: totalPrice - formik.values.payment,
-    });
-  };
 
-  // console.log(newDateFormat);
+
+ 
+
+ 
   const styles = {
     payment: {
       fontWeight: 800,
@@ -161,8 +142,7 @@ const Payment = ({ height }) => {
       borderBottom: `1.5px solid background.dark`,
     },
   };
-  const [paidAmount, setPaidAmount] = useState(0);
-  const salesPeople = endPoints.users;
+ 
   return (
     <Stack
       sx={{

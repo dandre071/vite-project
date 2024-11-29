@@ -10,7 +10,7 @@ export const usePaymentData = create()(
         delivery: "",
         payment: null,
         comments: "",
-        pending: null,
+       
         paymentMethod: "",
       },
 
@@ -45,7 +45,7 @@ export const usePaymentData = create()(
             delivery: new Date(),
             payment: null,
             comments: "",
-            pending: null,
+           
             paymentMethod: "",
           }),
         }));

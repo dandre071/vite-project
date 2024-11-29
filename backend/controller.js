@@ -57,6 +57,9 @@ export const createRegister = (request, response) => {
     resta,
     estado,
     observaciones,
+    invoice_data,
+    tipo_cliente,
+      tipo_recibo
   } = request.body;
 
   pool.query(
@@ -77,6 +80,10 @@ export const createRegister = (request, response) => {
       resta,
       estado,
       observaciones,
+      invoice_data,
+      tipo_cliente,
+      tipo_recibo
+
     ],
     (error, results) => {
       if (error) {
@@ -157,6 +164,8 @@ export const searchByResp = (req, response) => {
     }
   );
 };
+
+
 /* export const searchBySeller = (req, response) => {
   const { q } = req.query;
   if (!q) {

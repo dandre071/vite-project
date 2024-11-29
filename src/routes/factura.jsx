@@ -40,9 +40,29 @@ const Factura = ({ openModal, onClose, payMethod }) => {
   const targetRef = useRef();
   const cart = useShoppingCart((state) => state.items);
   const paymentData = usePaymentData((state) => state.paymentData);
+  const personalData = usePersonalData((state) => state.personalData)
   const paymentDataReset = usePaymentData((state) => state.clearData);
   const clientData = usePersonalData((state) => state.clearData);
   const cartReset = useShoppingCart((state) => state.clearCart);
+const dataObject = {comments: paymentData.comments,
+  deliveryDate: paymentData.delivery,
+  does: paymentData.do,
+  payment: paymentData.payment,
+  paymentMethod: paymentData.paymentMethod,
+  receives: paymentData.receives,
+  billType: personalData.billType,
+  clientType: personalData.clientType,
+  email: personalData.email,
+  clientName: personalData.name,
+  clientPhone: personalData.phone,
+  cart, 
+total: cart.map((x)=> x.itemTotalPrice).reduce((a,b)=>a+b),
+debt: cart.map((x)=> x.itemTotalPrice).reduce((a,b)=>a+b) - paymentData.payment
+
+}
+  console.log(dataObject)
+  console.log(cart)
+ /*  console.log(dataObject.cart.map((x)=> x.itemTotalPrice).reduce((a,b)=>a+b)) */
   const higlightColor = "#f4f4f4";
   const style = {
     position: "absolute",
@@ -67,7 +87,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
     timeStyle: "short",
     // timeZone: "Colombia/Bogotá",
   }).format(date);
-  console.log(fullDate);
+/*   console.log(fullDate); */
   const [confirmOpen, setConfirmOpen] = useState(false);
 
   const [open, setOpen] = useState(false);
@@ -119,6 +139,7 @@ const Factura = ({ openModal, onClose, payMethod }) => {
         x.descolillado && x.descolillado
       }`
   );
+ 
   console.log(trabajos);
   const record = {
     fecha_recibido: fullDate,
@@ -128,7 +149,6 @@ const Factura = ({ openModal, onClose, payMethod }) => {
     telefono: clientData.phone,
     email: clientData.email,
     trabajo: `{${title.join(",")}}`,
-
     recibe: paymentData.receives,
     realiza: paymentData.do,
     total: totalInvoice,
@@ -137,11 +157,12 @@ const Factura = ({ openModal, onClose, payMethod }) => {
     resta: totalInvoice - paymentData.payment,
     estado: "asignado",
     observaciones: paymentData.comments,
+    invoice_data: dataObject,
     tipo_cliente: client.clientType,
     tipo_recibo: client.billType,
   };
 
-  console.log(record.trabajo);
+  console.log(record.invoice_data);
   const createRegister = () => {
     fetch(endPoints.records, {
       method: "POST",
