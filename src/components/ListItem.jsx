@@ -18,9 +18,8 @@ const ListItem = ({
   orientation,
   editClick,
 }) => {
-  const items = useShoppingCart((state) => state.items);
-  const invoiceGrid = "1fr 1cm 3cm";
-  console.log(finish.join(", "));
+  
+ // console.log(finish.join(", "));
   return (
     <motion.div
       initial={{ opacity: 0, x: -50 }}

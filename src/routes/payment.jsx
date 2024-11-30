@@ -4,7 +4,7 @@ import {
   Box,
   Button,
   Grid,
-  InputAdornment,
+
   Modal,
   Stack,
   TextField,
@@ -14,40 +14,34 @@ import { colPesos } from "../components/utils/configs";
 import { useGetCartTotalPrice } from "../Hooks/hooks";
 import { usePersonalData, useShoppingCart } from "../store/shoppingCart";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import { Link } from "react-router-dom";
-import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import { finishOperation } from "../components/utils/helpers";
-import { useEffect, useRef } from "react";
-import generatePDF from "react-to-pdf";
+
+import { useEffect,} from "react";
+
 import Factura from "./factura";
-import NavBtn from "../Hooks/useCartItems";
-import { modal } from "../Styles/styles";
+
 import FormSelect2 from "../components/Forms/FormSelect2";
 import { Form, useFormik } from "formik";
-import { PaymentSchema, PersonSchema } from "../components/Validations";
+import { PaymentSchema } from "../components/Validations";
 import ModalHeader from "../components/ModalHeader";
-import { FormInputDate } from "../components/Forms/FormInputDate";
+
 import {
   LocalizationProvider,
-  MuiPickersAdapterContext,
+
 } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DateField, DateTimePicker } from "@mui/x-date-pickers";
+import { DateTimePicker } from "@mui/x-date-pickers";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import dayjs, { Dayjs } from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import { useState } from "react";
-import DatePicker from "../components/Forms/DatePicker";
-import { users } from "../db";
+
 import { usePaymentData } from "../store/paymentData";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import PaidIcon from "@mui/icons-material/Paid";
-import { customTheme } from "../Hooks/useCustomTheme";
-import { endPoints } from "../../backend/endPoints";
+
 import { lists } from "../../public/configs";
+import { cssVars } from "../components/utils/helpers";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -98,7 +92,7 @@ const Payment = ({ height }) => {
 
     // onSubmit: handleSubmit,
   });
-  console.log(formik.values.paymentMethod)
+  //console.log(formik.values.paymentMethod)
   const paymentData = usePaymentData((state) => state.paymentData);
   const personalData = usePersonalData((state) => state.personalData);
   const addData = usePaymentData((state) => state.addData);
@@ -114,14 +108,6 @@ const Payment = ({ height }) => {
     handleOpenModal();
   
   };
- 
-
-
-
-
-
- 
-
  
   const styles = {
     payment: {
@@ -149,7 +135,7 @@ const Payment = ({ height }) => {
         minHeight: "100%",
         width: 400,
         display: "grid",
-        bgcolor: "#f6f7f9",
+        bgcolor: cssVars.getPropertyValue('--lighter') ,
         borderTopRightRadius: 10,
         borderBottomRightRadius: 10,
         gridTemplateRows: "15% 20% 1fr 20%",
@@ -181,7 +167,7 @@ const Payment = ({ height }) => {
           alignItems: "center",
           alignSelf: "start",
           p: 0,
-          bgcolor: "#f1f1f1",
+       
           borderRadius: 1.5,
         }}
       >

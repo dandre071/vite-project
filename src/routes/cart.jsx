@@ -22,77 +22,19 @@ import { useEffect, useState } from "react";
 /* import sql from "../server"; */
 
 const Cart = ({ height }) => {
-  const { itemId } = useParams();
-  /*   console.log(sql); */
+ 
 
-  /* app.get("/productos", (req, res) => {
-    client.query(`Select * from productos`, (err, result) => {
-      if (!err) {
-        res.send(result.rows);
-      }
-    });
-    client.end;
-  }); */
-  const [products, setProducts] = useState([]);
-  /*  useEffect(() => {
-    const fetchProducts = async () => {
-        setLoading(true);
-      const res = await axios.get("http://localhost:3000/productos");
-      setProducts(res.data);
-      console.log(res.data);
-        setLoading(false);
-    };
-    fetchProducts();
-  }, []); */
-  /*   console.log(app); */
-
-  const formik = useFormik({
-    initialValues: {
-      id: "",
-      module: "ManualInput",
-      name: "",
-      price: null,
-      quantity: 1,
-      description: "",
-      height: 0,
-      width: 0,
-      matWidth: 0,
-      finish: [],
-      finishQ: 1,
-      material: "",
-      descolillado: "",
-      transfer: false,
-      itemTotalPrice: 0,
-    },
-    //validationSchema: productSchema,
-
-    //onSubmit: handlerAdd,
-  });
   const items = useShoppingCart((state) => state.items);
-  const marginTop = items.length > 5 && 6;
-  const handleChange = () => {
-    items: [...state.items];
-  };
-  /* const clientPg = client;
-  console.log(clientPg); */
+
+ 
   const navigate = useNavigate();
 
-  const handleClick = useShoppingCart((state) => state.updateItemQ);
-  const MotionList = motion(ListItem);
   const { removeItem } = useShoppingCart();
-  const invoiceGrid = "299px 38px 114px 1fr";
-  /*  const cartContainer = document.getElementById("cart-container");
-  const cartHeight = cartContainer.offsetHeight;
-  console.log(cartHeight);
-  const [height, setHeight] = useState(0);
-  const handleHeight = () => setHeight(cartHeight); */
+ 
+ 
   return (
     <>
-      {/* <motion.div
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 1, x: 50 }}
-      > */}
+    
       <Box
         className="page-layout"
         style={{
@@ -177,7 +119,7 @@ const Cart = ({ height }) => {
                           style={{ width: "100%" }}
                           orientation={item.orientation}
                           key={item.id}
-                          product={item.name}
+                          product={item.title}
                           q={item.quantity}
                           price={colPesos.format(item.price)}
                           totalPrice={colPesos.format(item.itemTotalPrice)}
@@ -192,9 +134,9 @@ const Cart = ({ height }) => {
                           }
                         />
                       </motion.div>
-                      /*  </AnimatePresence> */
+                  
                     ))}
-                </div>{" "}
+                </div>
               </Box>
             </Box>
           ) : (
@@ -259,22 +201,7 @@ const Cart = ({ height }) => {
           />
         </Box>
       </Box>
-      {/*   <Modal
-        sx={{
-          display: "flex",
-          justifySelf: "center",
-          alignSelf: "center",
-
-          "& .MuiModal-backdrop": {
-            backgroundColor: "rgba(0, 0, 0, 0.7);",
-          },
-        }}
-        open={true}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <EditItem />
-      </Modal> */}
+     
     </>
   );
 };

@@ -103,3 +103,4 @@ export const getClassNameTable = (data) => {
   }
   return textClass;
 };
+export  const cssVars = getComputedStyle(document.body)

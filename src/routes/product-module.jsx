@@ -36,6 +36,7 @@ const ProductModule = () => {
       ...formik.values,
       title: title,
       id: uuidv4(),
+      itemTotalPrice: formik.values.price * formik.values.quantity
     });
     formik.resetForm();
   };
@@ -64,7 +65,7 @@ const ProductModule = () => {
       height: 0,
       width: 0,
       matWidth: 0,
-      finish: ["Sin acabado"],
+      finish: [],
       finishQ: 1,
       material: "",
       color: "",
@@ -72,13 +73,13 @@ const ProductModule = () => {
       descolillado: "",
       transfer: false,
       itemTotalPrice: 0,
-      orientation: ["Vertical"],
+      orientation: '',
       model: "",
       brand: "",
       device: "",
       title: "",
     },
-    validationSchema: productSchema,
+   /*  validationSchema: productSchema, */
 
     onSubmit: handlerAdd,
   });
@@ -91,19 +92,32 @@ const ProductModule = () => {
   const color = formik.values.color;
   const cutLength = formik.values.cutLength;
   const q = formik.values.quantity;
-
+const name = formik.values.name
+const itemPrice = formik.values.price
   let title;
+  let regTitle
+  const [inputValue, setInputValue] = useState("");
 
   if (formik.values.type === "Mantenimiento") {
     title = `${device} ${brand} ${model}`;
+ 
   }
   if (formik.values.type === "Corte en vinilo") {
     title = `${material} ${color}/ ${
       cutLength + "cm"
-    }/ ${orientation}/  ${finish.join(" + ")}/ Cant: ${q}`;
+    }/ ${orientation}`;
+/*     title = `${material} ${color}/ ${
+      cutLength + "cm"
+    }/ ${orientation}/  ${finish.join(" + ")}/ Cant: ${q}`; */
+  }
+  if (formik.values.type === "Producto estándar") {
+    title = `${inputValue}`;
+  }
+  if (formik.values.type === "Producto manual") {
+    title = `${formik.values.name}`;
   }
   console.log(title);
-
+  console.log(itemPrice);
   const maintainText = `${device} ${brand} ${model} ${finish && finish} ${
     orientation && orientation
   }`;
@@ -130,9 +144,8 @@ const ProductModule = () => {
   }, []);
   const options = productList || null;
 
+ 
   const [value, setValue] = useState(options);
-  const [inputValue, setInputValue] = useState("");
-
   const prices = productList ? productList.map((x) => x.precio) : 0;
   const products = productList ? productList.map((x) => x.producto) : "";
   const index = products.indexOf(value);
@@ -146,7 +159,7 @@ const ProductModule = () => {
       itemTotalPrice: price * formik.values.quantity,
     });
   };
-  console.log(formik.values.color);
+  console.log(formik.values.price);
 
   return (
     <motion.div
@@ -384,6 +397,7 @@ const ProductModule = () => {
                   label="Precio"
                   name="price"
                   type="number"
+                  value={formik.values.price}
                   onChange={formik.handleChange}
                   sx={{ width: 200 }}
                 ></TextField>

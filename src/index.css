@@ -34,8 +34,9 @@
 
   --product-module-width: 600px;
   --light: #e9ecef;
-  --light: #edf0f3;
-  --light-dark: #7f7f7f;
+  --lighter: #f6f6f7;
+ /*  --light: #edf0f3; */
+  --light-dark: #7c7d83;
   --success: #14cf87;
   --success-light: #b3f2d4;
   --info: #00bdff;
@@ -51,6 +52,7 @@
   --ready-light: #aef2ff;
   --reg-radius: 5px;
 }
+
 .cart-grid {
   display: grid;
   grid-template-columns: var(--cart-grid);

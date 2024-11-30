@@ -19,9 +19,12 @@ import ConfirmModal from "../components/modals/ConfirmModal";
 import { WarningRounded } from "@mui/icons-material";
 import { customTheme } from "../Hooks/useCustomTheme";
 
-import { add_zero } from "../components/utils/helpers";
+import { add_zero, cssVars } from "../components/utils/helpers";
 import { endPoints } from "../../backend/endPoints";
+
+
 const Factura = ({ openModal, onClose, payMethod }) => {
+ 
   const navigate = useNavigate();
   const [invoiceNum, setinvoiceNum] = useState(null);
 
@@ -55,13 +58,14 @@ const dataObject = {comments: paymentData.comments,
   email: personalData.email,
   clientName: personalData.name,
   clientPhone: personalData.phone,
-  cart, 
+ products: {...cart}, 
 total: cart.map((x)=> x.itemTotalPrice).reduce((a,b)=>a+b),
 debt: cart.map((x)=> x.itemTotalPrice).reduce((a,b)=>a+b) - paymentData.payment
 
 }
-  console.log(dataObject)
-  console.log(cart)
+cart.map(x=>console.log('hello' + x.type))
+  console.log(dataObject.products[0].type)
+  //console.log(cart)
  /*  console.log(dataObject.cart.map((x)=> x.itemTotalPrice).reduce((a,b)=>a+b)) */
   const higlightColor = "#f4f4f4";
   const style = {
@@ -140,7 +144,7 @@ debt: cart.map((x)=> x.itemTotalPrice).reduce((a,b)=>a+b) - paymentData.payment
       }`
   );
  
-  console.log(trabajos);
+  //console.log(trabajos);
   const record = {
     fecha_recibido: fullDate,
     fecha_entrega: paymentData.delivery,
@@ -338,16 +342,17 @@ debt: cart.map((x)=> x.itemTotalPrice).reduce((a,b)=>a+b) - paymentData.payment
                     }}
                   >
                     <Stack
+                 /*    className={'light'} */
                       direction={"column"}
                       sx={{
                         justifyContent: "start",
                         alignItems: "start",
                         width: "97%",
-
+bgcolor:  cssVars.getPropertyValue('--lighter'),
                         pb: 0.5,
                         borderRadius: 1.5,
                         mt: 0.2,
-                        bgcolor: boxColor,
+                      
                         alignSelf: "end",
                       }}
                     >
@@ -363,7 +368,7 @@ debt: cart.map((x)=> x.itemTotalPrice).reduce((a,b)=>a+b) - paymentData.payment
                             className="invoice-label-client"
                             sx={{ textAlign: "right" }}
                           >
-                            Cliente
+                            Datos del cliente
                           </Typography>
                           <Typography
                             variant="h6"
@@ -463,7 +468,7 @@ debt: cart.map((x)=> x.itemTotalPrice).reduce((a,b)=>a+b) - paymentData.payment
                 {cart.map((item) => (
                   <InvoiceItem
                     key={item.id}
-                    product={item.name}
+                    product={item.title}
                     orientation={item.orientation}
                     q={item.quantity}
                     price={colPesos.format(item.price)}
@@ -636,18 +641,18 @@ debt: cart.map((x)=> x.itemTotalPrice).reduce((a,b)=>a+b) - paymentData.payment
                   <Box
                     sx={{
                       ...box,
-                      bgcolor: boxColor,
+                      bgcolor: cssVars.getPropertyValue('--light-dark'),
                       height: 24,
-                      color: "text.main",
-                      width: "101%",
+                      color: "white",
+                      width: "100%",
                     }}
                   >
-                    <Typography sx={{ fontSize: 15, fontWeight: 800 }}>
+                    <Typography sx={{ fontSize: 15, fontWeight: 500 }}>
                       Total:
                     </Typography>
 
                     <Typography
-                      sx={{ fontSize: 15, fontWeight: 800, width: "98%" }}
+                      sx={{ fontSize: 15, fontWeight: 500, width: "98%" }}
                     >
                       {colPesos.format(totalInvoice)}
                     </Typography>
@@ -699,7 +704,7 @@ debt: cart.map((x)=> x.itemTotalPrice).reduce((a,b)=>a+b) - paymentData.payment
                         Resta:
                       </Typography>
                     </Box>
-                    <Box
+                    {/* <Box
                       className="border-bottom"
                       sx={{
                         ...box,
@@ -711,7 +716,7 @@ debt: cart.map((x)=> x.itemTotalPrice).reduce((a,b)=>a+b) - paymentData.payment
                       <Typography className={"invoice-label"}>
                         Cajero:
                       </Typography>
-                    </Box>
+                    </Box> */}
                     <Box
                       sx={{
                         height: 20,
