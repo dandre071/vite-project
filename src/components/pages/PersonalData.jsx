@@ -80,31 +80,30 @@ const PersonalData = () => {
   const handleAutoChange = (event, value) => {
     formik.values.name = value;
     const found = users.filter((user) => user == formik.values.name);
-    console.log(found);
+   /*  console.log(found); */
   };
   return (
     <Stack
+    className=""
       sx={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
-      <Box sx={{}}>
+      <Box  sx={{}}>
         <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+         
         >
           <Grid
             container
-            rowSpacing={2}
-            columnSpacing={1}
-            sx={{ p: 0, m: 0, width: "600px" }}
+            rowGap={1}
+            columnGap={0.1}
+         
+            className="form-body"
+            sx={{width: "600px", backgroundColor: 'red', display: 'grid', gridTemplateAreas: `''` }}
           >
-            <Grid sx={{ width: "100%" }} item lg={6} md={6} sm={6} xs={12}>
+            <Grid sx={{ width: "100%" }} item >
               <FormSelect2
                 required
                 value={formik.values.billType}
@@ -118,12 +117,7 @@ const PersonalData = () => {
               />
             </Grid>
             <Grid
-              item
-              lg={6}
-              md={6}
-              sm={6}
-              xs={12}
-              sx={{ padding: "-10px", m: 0 }}
+           
             >
               <FormSelect2
                 required
@@ -137,7 +131,7 @@ const PersonalData = () => {
                 label={"Cliente"}
               />
             </Grid>
-            <Grid item lg={12} md={12} sm={12} xs={12} sx={{}}>
+            <Grid item >
               <Autocomplete
                 value={formik.values.name}
                 helperText={formik.errors.name}
@@ -167,7 +161,7 @@ const PersonalData = () => {
               />
             </Grid>
 
-            <Grid item lg={8} md={6} sm={6} xs={12}>
+            <Grid item >
               <TextField
                 error={formik.touched.email && formik.errors.email}
                 helperText={formik.errors.email}
@@ -180,7 +174,7 @@ const PersonalData = () => {
               />
             </Grid>
 
-            <Grid item lg={4} md={6} sm={6} xs={12}>
+            <Grid item >
               <TextField
                 required
                 error={formik.touched.phone && formik.errors.phone}
@@ -202,13 +196,11 @@ const PersonalData = () => {
           display: "flex",
           width: "100%",
 
-          borderRadius: 10,
         }}
       >
         <Grid
           item
-          lg={12}
-          xs={12}
+         
           sx={{
             width: "100%",
             display: "flex",
@@ -231,7 +223,7 @@ const PersonalData = () => {
             placement="bottom"
             arrow
           >
-            <span>
+            <span style={{marginTop: 50}}>
               <NextBtn
                 style={{ color: "primary.main" }}
                 onClick={formik.handleSubmit}
