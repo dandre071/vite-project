@@ -1,0 +1,77 @@
+@media (max-width: 576px) {
+    .client-data-container{
+        width: 600px;
+        height: 350px;
+        border: 2px solid black;
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .client-data-layout{
+       /*  background-color: blueviolet; */
+        width: 550px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        grid-template-areas:
+        "recibo"
+        "cliente"
+        "telefono"
+        "mail";
+        gap: 12px
+    }
+  }
+  
+  /* Styles for devices between 576px and 768px */
+/*   @media (min-width: 576px) and (max-width: 768px) {
+   
+  } */
+  
+  /* Styles for devices larger than 768px */
+  @media (min-width: 768px) {
+    .client-data-container{
+        width: 600px;
+        height: 350px;
+        border: 2px solid black;
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .client-data-layout{
+        /* background-color: blueviolet; */
+        width: 550px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-areas:
+        "recibo recibo"
+        "cliente cliente"
+        "telefono mail";
+        gap: 15px
+    }
+    }
+   
+   
+  .recibo{
+      grid-area: recibo;
+      
+      padding: 0;
+     }
+  .cliente{
+      grid-area: cliente;
+      width: 100%;
+  }
+  .telefono{
+      grid-area: telefono;
+  }
+  .email{
+      grid-area: mail;
+  }
+  .product-type{
+    width:40%;
+
+  }

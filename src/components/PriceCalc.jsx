@@ -9,15 +9,20 @@ const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
     <Grid
       disabled={disabled}
       sx={{
-        display: "grid",
-        height: "80%",
-        gridTemplateColumns: "auto 1fr",
+        display: "flex",
+        width: '100%',
+        height: "100%",
+        
         gap: 2,
-        justifyContent: "end",
-        justifySelf: "end",
+      justifyContent: 'center',
+
+      
         alignItems: "center",
+       /*  border: '2px solid blackn', */
+        backgroundColor: "success.light",
+        borderRadius: 1.5,
       }}
-      item
+    
     >
       {/* <Box>
         <CalcBtn
@@ -25,15 +30,15 @@ const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
          disabled={disabled}
         />
       </Box> */}
-      <Box sx={{ backgroundColor: "primary.main", p: 0.8, borderRadius: 1.5 }}>
+      <Box sx={{  p: 0.8, borderRadius: 1.5 }}>
         <Typography
           sx={{
             color: "white",
 
-            borderRadius: 2,
-            fontSize: 24,
+          
+            fontSize: 26,
             lineHeight: 1,
-            textAlign: "end",
+        
             fontWeight: 500,
           }}
         >
@@ -47,11 +52,11 @@ const PriceCalc = ({ name, onClick, onChange, text, value, disabled }) => {
           onChange={onChange}
           sx={{
             fontWeight: 900,
-            color: "primary.dark",
+            color: "white",
             display: "flex",
 
-            textAlign: "end",
-            fontSize: 28,
+ 
+            fontSize: 26,
           }}
         >
           {text}

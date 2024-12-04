@@ -18,6 +18,7 @@ import { getPageTitle } from "../components/utils/helpers";
 import { useEffect } from "react";
 import StorageRoundedIcon from "@mui/icons-material/StorageRounded";
 import LogoMono from "../components/LogoMono";
+import Logo from "../components/Logo";
 const menuItems = [
   {
     text: "Venta",
@@ -126,8 +127,8 @@ const Root = () => {
         <div className={"nav-area"}>
           <div>
             <Link to={"/"}>
-              <Box className="logo-container" style={{ fill: "white" }}>
-                <LogoMono className="logo" />
+              <Box className="logo-container" style={{  }}>
+                <Logo className="logo" />
               </Box>
             </Link>
             <div></div>

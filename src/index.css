@@ -32,7 +32,7 @@
   --cart-grid: 45% 10% 15% 15% 15%;
   --cart-item-width: 650px;
 
-  --product-module-width: 600px;
+  --product-module-width: 550px;
   --light: #e9ecef;
   --lighter: #f6f6f7;
  /*  --light: #edf0f3; */
@@ -789,7 +789,7 @@
 }
 .MuiInputBase-root {
   /*  color: red !important; */
-  background-color: rgb(241, 241, 241) !important;
+  /* background-color: rgb(241, 241, 241) !important; */
 
   /*  border: 1.5px solid rgb(255, 255, 255); */
 
@@ -798,7 +798,7 @@
 .MuiInputBase-root:hover {
   /*  color: red !important; */
   /*  border: 1.5px solid rgb(255, 255, 255); */
-  background-color: rgb(241, 241, 241) !important;
+/*   background-color: rgb(241, 241, 241) !important; */
 
   /*  border: 1px solid red; */
 }
@@ -903,8 +903,7 @@ body {
   top: 0;
   background-color: var(--primary-main);
   background-color: rgba(255, 255, 255, 0.9);
-  background-color: #0572ce;
-  background-color: #0d6efd;
+
   /*   background-color: #f7f7f7; */
   /*  background-color: var(--primary-dark); */
   /*  border-bottom: 2px solid rgb(238, 238, 238); */
@@ -938,9 +937,7 @@ body {
   width: 120px;
   justify-self: center;
 }
-.logo > cls-4 {
-  fill: white;
-}
+
 .logo-container {
   width: 100%;
   height: calc(var(--nav-height) * 2);
@@ -1516,4 +1513,33 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* .client-data-layout{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+  "recibo recibo"
+  "cliente cliente"
+  "telefono mail";
+}
+.recibo{
+  grid-area: recibo;
+  width: 100%;
+  background-color: red
+}
+.cliente{
+  grid-area: cliente;
+  width: 100%;
+}
+.telefono{
+  grid-area: telefono;
+}
+.email{
+  grid-area: mail;
+} */
+
+.MuiAutocomplete-endAdornment {
+  display: none;
 }

@@ -15,6 +15,8 @@ import { usePersonalData } from "../../store/shoppingCart";
 import { fakeUsers } from "../utils/test";
 import { useNavigate } from "react-router-dom";
 import NextBtn from "../Buttons/NextBtn";
+import "../styles/layout.css"
+
 
 const PersonalData = () => {
   const localStore = usePersonalData((state) => state.personalData);
@@ -84,27 +86,27 @@ const PersonalData = () => {
   };
   return (
     <Stack
-    className=""
+    className="form-body"
       sx={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
-      <Box  sx={{}}>
+     
         <Box
-         
+         className="client-data-container"
         >
-          <Grid
-            container
-            rowGap={1}
-            columnGap={0.1}
+          <div
+           
          
-            className="form-body"
-            sx={{width: "600px", backgroundColor: 'red', display: 'grid', gridTemplateAreas: `''` }}
+            className="client-data-layout"
+        
           >
-            <Grid sx={{ width: "100%" }} item >
+          
+
               <FormSelect2
+              className='recibo'
                 required
                 value={formik.values.billType}
                 error={formik.errors.billType}
@@ -115,11 +117,10 @@ const PersonalData = () => {
                 options={options.billType}
                 label={"Tipo de recibo"}
               />
-            </Grid>
-            <Grid
-           
-            >
+        
+            
               <FormSelect2
+              className='cliente'
                 required
                 value={formik.values.clientType}
                 error={formik.errors.clientType && formik.errors.clientType}
@@ -130,9 +131,10 @@ const PersonalData = () => {
                 options={options.userType}
                 label={"Cliente"}
               />
-            </Grid>
-            <Grid item >
+            
+        
               <Autocomplete
+              className='cliente'
                 value={formik.values.name}
                 helperText={formik.errors.name}
                 error={formik.errors.name}
@@ -145,6 +147,7 @@ const PersonalData = () => {
                 defaultValue={localStore.name}
                 renderInput={(params) => (
                   <TextField
+                     className='cliente'
                     required
                     error={formik.errors.name}
                     value={formik.values.name}
@@ -159,10 +162,11 @@ const PersonalData = () => {
                   />
                 )}
               />
-            </Grid>
+   
 
-            <Grid item >
+        
               <TextField
+                 className='mail'
                 error={formik.touched.email && formik.errors.email}
                 helperText={formik.errors.email}
                 value={formik.values.email}
@@ -172,10 +176,11 @@ const PersonalData = () => {
                 label={"Email"}
                 type="email"
               />
-            </Grid>
+    
 
-            <Grid item >
+      
               <TextField
+                 className='telefono'
                 required
                 error={formik.touched.phone && formik.errors.phone}
                 helperText={formik.errors.phone}
@@ -186,10 +191,10 @@ const PersonalData = () => {
                 label={"Teléfono"}
                 type="text"
               />
-            </Grid>
-          </Grid>{" "}
+       
+          </div>
         </Box>
-      </Box>
+   
       <div
         style={{
           height: 60,

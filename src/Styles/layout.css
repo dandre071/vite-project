@@ -1,0 +1,23 @@
+.client-data-layout{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+    "recibo recibo"
+    "cliente cliente"
+    "telefono mail";
+}
+.recibo{
+    grid-area: recibo;
+    width: 100%;
+}
+.cliente{
+    grid-area: cliente;
+    width: 100%;
+}
+.telefono{
+    grid-area: telefono;
+}
+.email{
+    grid-area: mail;
+}

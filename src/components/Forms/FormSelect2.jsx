@@ -30,9 +30,9 @@ const FormSelect2 = ({
     <FormControl required={required} onBlur={onBlur} fullWidth sx={{ p: 0 }}>
       <InputLabel id={`input-label-${name}`}>{label}</InputLabel>
 
-      <Box sx={{ display: "flex", padding: 0, width: width }}>
+      <Box sx={{ display: "flex", padding: 0, width: width, height: '100%' }}>
         <Select
-          sx={{ p: 0 }}
+          sx={{ pl: 2 }}
           helperText={helperText}
           onBlur={onBlur}
           size={size}

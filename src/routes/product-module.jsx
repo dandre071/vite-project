@@ -2,8 +2,13 @@ import {
   Autocomplete,
   Box,
   Button,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
   Grid,
   InputAdornment,
+  Radio,
+  RadioGroup,
   Stack,
   TextField,
   Typography,
@@ -27,10 +32,16 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { workType } from "../../public/configs";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { v4 as uuidv4 } from "uuid";
-
+import '../components/styles/layout.css'
 const ProductModule = () => {
   const addItem = useShoppingCart((state) => state.addItem);
+  const [checkValue, setCheckValue] = useState("");
 
+  const handleChange = (event) => {
+    setCheckValue(event.target.value);
+   
+  };
+  console.log(checkValue)
   const handlerAdd = (e) => {
     addItem({
       ...formik.values,
@@ -172,9 +183,26 @@ const itemPrice = formik.values.price
           className="product-module-grid"
           style={{
             border: "none",
+         
           }}
         >
-          <FormSelect2
+    {/*        <FormControl>
+      <FormLabel >Tipo de producto</FormLabel>
+      <RadioGroup
+        aria-labelledby="demo-radio-buttons-group-label"
+        value={checkValue}
+        onChange={handleChange}
+        name="radio-buttons-group"
+        sx={{display: 'flex', flexDirection: 'row'}}
+      >
+        <FormControlLabel value="Producto estándar" control={<Radio size="small"/>} label="Producto estándar" />
+        <FormControlLabel value="Producto manual" control={<Radio size="small"/>} label="Producto manual" />
+        <FormControlLabel value="Corte en vinilo" control={<Radio size="small"/>} label="Corte en vinilo" />
+        <FormControlLabel value="Mantenimiento" control={<Radio size="small"/>} label="Mantenimiento" />
+      </RadioGroup>
+    </FormControl> */}
+    <Box className='product-type'><FormSelect2
+          
             name={"type"}
             value={formik.values.type}
             onChange={(e) => {
@@ -195,11 +223,12 @@ const itemPrice = formik.values.price
               setPrice(0);
               setValue("");
             }}
-            fullWidth
+           
             options={workType}
             label={"Tipo de Producto"}
             defaultValue={"Producto"}
-          />
+          /></Box>
+          
           {/*start first row*/}
           <Box className="standard-product">
             <Box
@@ -324,9 +353,9 @@ const itemPrice = formik.values.price
           </Box>
           {/*end first row*/}
           {/*start second row*/}
-          <Box sx={{ display: "flex", gap: 1 }}>
+          <Box sx={{ display: "flex", gap: 1, bgcolor: 'success.light', height: 70, alignItems: 'center'  }}>
             <TextField
-              sx={{ width: 100 }}
+              sx={{ width: 100, }}
               fullWidth={false}
               className="cant"
               value={formik.values.quantity}
@@ -342,7 +371,7 @@ const itemPrice = formik.values.price
                 });
               }}
             />
-            {productType === "Producto estándar" && (
+            {/* {productType === "Producto estándar" && (
               <Box
                 sx={{
                   display: "grid",
@@ -381,7 +410,7 @@ const itemPrice = formik.values.price
                   {colPesos.format(price)}
                 </Typography>
               </Box>
-            )}
+            )} */}
             {productType !== "Producto estándar" && (
               <Box
                 sx={{

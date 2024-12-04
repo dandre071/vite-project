@@ -12,7 +12,7 @@ import {
 import { redux } from "zustand/middleware";
 
 const primary = "customTheme.primary.main";
-const variantType = "filled";
+const variantType = "outlined";
 const primaryColor = "#0d6efd";
 const primaryDarkColor = "#0a5ad1";
 const primaryDarkerColor = "#2962ff";
@@ -84,10 +84,10 @@ export const customTheme = createTheme({
           fontWeight: 600,
           fontSize: 16,
           "&:hover": {
-            backgroundColor: "#f3f3f3",
+        /*     backgroundColor: "#f3f3f3", */
           },
           "&:notched": {
-            backgroundColor: "#f3f3f3",
+           /*  backgroundColor: "#f3f3f3", */
           },
           "& .MuiInputLabel-shrink": {
             color: "blue",
@@ -240,7 +240,7 @@ export const customTheme = createTheme({
           fontWeight: 600,
           fontSize: 16,
           "&:hover": {
-            backgroundColor: primaryLightherColor,
+            /* backgroundColor: primaryLightherColor, */
             borderStyle: "none",
           },
           "&.Mui-focused": {
@@ -278,10 +278,10 @@ export const customTheme = createTheme({
           fontWeight: 600,
           fontSize: 15,
           "&:hover": {
-            backgroundColor: primaryLightherColor,
+            /* backgroundColor: primaryLightherColor, */
           },
           "&:notched": {
-            backgroundColor: primaryLightherColor,
+        /*     backgroundColor: primaryLightherColor, */
             borderStyle: "none",
           },
 
@@ -298,15 +298,15 @@ export const customTheme = createTheme({
 
         sx: {
           borderRadius: 1.5,
-
+/* backgroundColor: 'red', */
           color: "text.main",
           fontWeight: 600,
           fontSize: 17,
           "&:hover": {
-            backgroundColor: "#f3f3f3",
+          /*   backgroundColor: "#f3f3f3", */
           },
           "&:notched": {
-            backgroundColor: "#f3f3f3",
+        /*     backgroundColor: "#f3f3f3", */
           },
 
           "& .MuiOutlinedInputLabel": {
