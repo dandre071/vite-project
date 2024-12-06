@@ -27,7 +27,7 @@
   box-sizing: border-box;
 
 
-  --nav-height: 60px;
+  --nav-height: 100px;
   --drawer-width: 200px;
   --page-child-width: 90vw;
   --cart-grid: 45% 10% 15% 15% 15%;
@@ -821,7 +821,7 @@ body {
 }
 .footer {
   grid-area: footer;
-  background-color: var(--light);
+  /* background-color: var(--light); */
   height: 100%;
 }
 .asider {
@@ -902,8 +902,8 @@ body {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-rows: auto 1fr;
-  background-color: var(--lighter);
+  grid-template-rows: 1fr;
+ 
   justify-content: center;
   align-items: center;
 }
@@ -1486,8 +1486,12 @@ body {
 }
 .form-body{
   display: flex;
+ 
+  grid-template-rows: 1fr auto;
+ /* background-color: rgb(0, 174, 255); */
   justify-content: center;
   align-items: center;
+ 
 }
 
 /* .client-data-layout{

@@ -5,6 +5,7 @@ import {
   Stack,
   TextField,
   Tooltip,
+  Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import FormSelect2 from "../Forms/FormSelect2";
@@ -16,6 +17,7 @@ import { fakeUsers } from "../utils/test";
 import { useNavigate } from "react-router-dom";
 import NextBtn from "../Buttons/NextBtn";
 import "../styles/layout.css"
+import { getPageTitle } from "../utils/helpers";
 
 
 const PersonalData = () => {
@@ -88,15 +90,24 @@ const PersonalData = () => {
     <Stack
     className="form-body"
       sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+       
       }}
     >
      
         <Box
          className="client-data-container"
+        
         >
+        <Typography sx={{color: "black",
+              fontSize: 40,
+              fontWeight: 900,
+              justifySelf: "center",
+           alignSelf: 'end'
+             
+              }}>
+              {getPageTitle()}
+            </Typography>
+         
           <div
            
          

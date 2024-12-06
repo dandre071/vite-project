@@ -140,16 +140,19 @@ console.log(mediaQuery)
           </div>
         </div>
         <div className={"main"}>
-          <Typography
+          {/* <Typography
             sx={{
               color: "black",
               fontSize: 40,
               fontWeight: 900,
               justifySelf: "center",
+              alignSelf: "end",
+              bgcolor: "red",
+              width: '100%',
             }}
           >
             {getPageTitle() || ""}
-          </Typography>
+          </Typography> */}
           <div>
       
             <Outlet />

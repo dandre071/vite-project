@@ -1,6 +1,8 @@
 import Box from "@mui/material/Box";
 import PersonalData from "../components/pages/PersonalData";
 import { motion } from "framer-motion";
+import { Typography } from "@mui/material";
+import { getPageTitle } from "../components/utils/helpers";
 
 const ClientData = () => {
   return (
@@ -11,6 +13,7 @@ const ClientData = () => {
     >
       <Box className={"page-layout"}>
         <Box>
+          
           <PersonalData />
         </Box>
       </Box>
