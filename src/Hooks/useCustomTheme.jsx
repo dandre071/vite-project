@@ -73,6 +73,7 @@ export const customTheme = createTheme({
   },
 
   overrides: {
+    
     MuiFilledInput: {
       overrides: {
         multiline: true,
@@ -96,9 +97,11 @@ export const customTheme = createTheme({
       },
     },
   },
+  
   props: {},
 
   components: {
+    
     MuiButton: {
       variants: [
         {
@@ -277,16 +280,14 @@ export const customTheme = createTheme({
           color: "text.main",
           fontWeight: 600,
           fontSize: 15,
-          "&:hover": {
-            /* backgroundColor: primaryLightherColor, */
+         "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "gray", // Default border color
           },
-          "&:notched": {
-        /*     backgroundColor: primaryLightherColor, */
-            borderStyle: "none",
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "blue", // Border color on hover
           },
-
-          "& .MuiFilledInputLabel": {
-            color: "blue",
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "green", // Border color when focused
           },
         },
       },
@@ -297,20 +298,20 @@ export const customTheme = createTheme({
         multiline: true,
 
         sx: {
-          borderRadius: 1.5,
+          borderRadius: 2,
 /* backgroundColor: 'red', */
           color: "text.main",
           fontWeight: 600,
           fontSize: 17,
-          "&:hover": {
-          /*   backgroundColor: "#f3f3f3", */
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderWidth: 1.8,
+            borderColor: "primary.main", // Default border color
           },
-          "&:notched": {
-        /*     backgroundColor: "#f3f3f3", */
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "primary.main", // Border color on hover
           },
-
-          "& .MuiOutlinedInputLabel": {
-            color: "blue",
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "primary.main", // Border color when focused
           },
         },
       },

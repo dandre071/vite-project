@@ -11,6 +11,7 @@ import {
   ListItemButton,
   ListItemIcon,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 
 import { Settings } from "@mui/icons-material";
@@ -43,7 +44,9 @@ const Root = () => {
     location.pathname.includes("editar-registro");
     /*   console.log(location.pathname.includes("registro")); */
   }, []);
-
+  const isLandscape = useMediaQuery("(orientation: landscape)");
+const mediaQuery = window.matchMedia('(max-width: 560px)')
+console.log(mediaQuery)
   return (
     <ThemeProvider theme={customTheme}>
       <div className="grid-template">
@@ -51,9 +54,9 @@ const Root = () => {
         <div className="aside">
           <Drawer
             variant="permanent"
-            anchor="left"
+            anchor={'left'}
             sx={{
-              width: 200,
+              width: isLandscape ? 250 : "100%",
               flexShrink: 0,
               fontSize: 12,
               "& .MuiDrawer-paper": {
@@ -127,7 +130,7 @@ const Root = () => {
         <div className={"nav-area"}>
           <div>
             <Link to={"/"}>
-              <Box className="logo-container" style={{  }}>
+              <Box className="logo-container" style={{ fill: 'white'}}>
                 <Logo className="logo" />
               </Box>
             </Link>
@@ -148,7 +151,7 @@ const Root = () => {
             {getPageTitle() || ""}
           </Typography>
           <div>
-            {" "}
+      
             <Outlet />
           </div>
         </div>
