@@ -101,7 +101,7 @@ const PersonalData = () => {
         >
           <Box sx={{width: '90%', display: 'flex', flexDirection: 'column', justifyContent:'center', alignItems: 'center'}}>
             <Typography sx={{color: "black",
-              fontSize: 40,
+              fontSize: 30,
               fontWeight: 900,
                      
              
@@ -109,7 +109,7 @@ const PersonalData = () => {
               {getPageTitle()}
             </Typography>
             <Typography sx={{color: darkGrey,
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: 400,
               textAlign: 'center',
               
