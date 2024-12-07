@@ -6,6 +6,7 @@
 }
 :root {
   background-color: var(--lighter);
+  background-color: white;
   font-family: Roboto;
   line-height: 1.5;
   font-weight: 400;
