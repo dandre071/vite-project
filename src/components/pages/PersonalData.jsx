@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import NextBtn from "../Buttons/NextBtn";
 import "../styles/layout.css"
 import { getPageTitle } from "../utils/helpers";
+import { darkGrey } from "../styles/cssVariables";
 
 
 const PersonalData = () => {
@@ -98,16 +99,26 @@ const PersonalData = () => {
          className="client-data-container"
         
         >
-        <Typography sx={{color: "black",
+          <Box sx={{width: '90%', display: 'flex', flexDirection: 'column', justifyContent:'center', alignItems: 'center'}}>
+            <Typography sx={{color: "black",
               fontSize: 40,
               fontWeight: 900,
-              justifySelf: "center",
-           alignSelf: 'end'
+                     
              
               }}>
               {getPageTitle()}
             </Typography>
-         
+            <Typography sx={{color: darkGrey,
+              fontSize: 18,
+              fontWeight: 400,
+              textAlign: 'center',
+              
+   
+             
+              }}>
+              {'Los campos con asterisco (*) son obligatorios.' }
+            </Typography></Box>
+        
           <div
            
          

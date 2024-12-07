@@ -1485,7 +1485,7 @@ body {
   color: var(--success);
 }
 .form-body{
-  display: flex;
+  display: grid;
  
   grid-template-rows: 1fr auto;
  /* background-color: rgb(0, 174, 255); */

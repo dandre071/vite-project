@@ -1,0 +1,1 @@
+export const darkGrey = getComputedStyle(document.body).getPropertyValue('--light-dark')
