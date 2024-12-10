@@ -17,7 +17,7 @@ import { fakeUsers } from "../utils/test";
 import { useNavigate } from "react-router-dom";
 import NextBtn from "../Buttons/NextBtn";
 import "../styles/layout.css"
-import { getPageTitle } from "../utils/helpers";
+import { css, getPageTitle } from "../utils/helpers";
 import { darkGrey } from "../styles/cssVariables";
 
 
@@ -68,6 +68,7 @@ const PersonalData = () => {
     validateOnBlur: false,
   });
   const errors = Object.values(formik.errors);
+  
   console.log(errors);
   useEffect(() => {
     const updateState = () => {
@@ -82,7 +83,7 @@ const PersonalData = () => {
     };
     updateState();
   }, []);
-
+console.log(css('--light'));
   const handleAutoChange = (event, value) => {
     formik.values.name = value;
     const found = users.filter((user) => user == formik.values.name);
@@ -216,7 +217,7 @@ const PersonalData = () => {
               />
       
           </div>
-          <Box >
+          <Box sx={{bgcolor: 'secondary.light', position: 'relative', bottom: 50, minHeight: 50}}>
   
   {   errors.map(error => <Typography sx={{color: 'secondary.main'}}  key={error}>{`* ${error}`}</Typography>)}
      </Box>
