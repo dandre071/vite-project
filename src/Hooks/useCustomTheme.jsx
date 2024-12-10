@@ -304,7 +304,7 @@ export const customTheme = createTheme({
           fontWeight: 600,
           fontSize: 17,
           "& .MuiOutlinedInput-notchedOutline": {
-            borderWidth: 1.8,
+            borderWidth: '2px',
             borderColor: "primary.main", // Default border color
           },
           "&:hover .MuiOutlinedInput-notchedOutline": {

@@ -309,7 +309,9 @@ const itemPrice = formik.values.price
                   }}
                 >
                   <Autocomplete
+                  
                     getOptionLabel={(option) => option || ""}
+                    noOptionsText={'Producto no encontrado'}
                     name="name"
                     onClose={() => {
                       formik.setValues({ ...formik.values, itemTotalPrice: 0 });

@@ -67,7 +67,8 @@ const PersonalData = () => {
     validateOnChange: false,
     validateOnBlur: false,
   });
-
+  const errors = Object.values(formik.errors);
+  console.log(errors);
   useEffect(() => {
     const updateState = () => {
       formik.setValues({
@@ -99,7 +100,7 @@ const PersonalData = () => {
          className="client-data-container"
         
         >
-          <Box sx={{width: '90%', display: 'flex', flexDirection: 'column', justifyContent:'center', alignItems: 'center'}}>
+          {/* <Box sx={{width: '90%', display: 'flex', flexDirection: 'column', justifyContent:'center', alignItems: 'center'}}>
             <Typography sx={{color: "black",
               fontSize: 30,
               fontWeight: 900,
@@ -117,7 +118,7 @@ const PersonalData = () => {
              
               }}>
               {'Los campos con asterisco (*) son obligatorios.' }
-            </Typography></Box>
+            </Typography></Box> */}
         
           <div
            
@@ -132,7 +133,7 @@ const PersonalData = () => {
                 required
                 value={formik.values.billType}
                 error={formik.errors.billType}
-                helperText={formik.errors.billType}
+               
                 fullWidth
                 name="billType"
                 onChange={formik.handleChange}
@@ -158,7 +159,7 @@ const PersonalData = () => {
               <Autocomplete
               className='cliente'
                 value={formik.values.name}
-                helperText={formik.errors.name}
+                /* helperText={formik.errors.name} */
                 error={formik.errors.name}
                 freeSolo={true}
                 name="name"
@@ -173,7 +174,7 @@ const PersonalData = () => {
                     required
                     error={formik.errors.name}
                     value={formik.values.name}
-                    helperText={formik.errors.name}
+                   /*  helperText={formik.errors.name} */
                     name="name"
                     onChange={formik.handleChange}
                     {...params}
@@ -190,7 +191,7 @@ const PersonalData = () => {
               <TextField
                  className='mail'
                 error={formik.touched.email && formik.errors.email}
-                helperText={formik.errors.email}
+               /*  helperText={formik.errors.email} */
                 value={formik.values.email}
                 name="email"
                 onChange={formik.handleChange}
@@ -205,7 +206,7 @@ const PersonalData = () => {
                  className='telefono'
                 required
                 error={formik.touched.phone && formik.errors.phone}
-                helperText={formik.errors.phone}
+              /*   helperText={formik.errors.phone} */
                 value={formik.values.phone}
                 name="phone"
                 onChange={formik.handleChange}
@@ -213,10 +214,14 @@ const PersonalData = () => {
                 label={"Teléfono"}
                 type="text"
               />
-       
+      
           </div>
+          <Box >
+  
+  {   errors.map(error => <Typography sx={{color: 'secondary.main'}}  key={error}>{`* ${error}`}</Typography>)}
+     </Box>
         </Box>
-   
+        
       <div
         style={{
           height: 60,
